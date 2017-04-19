@@ -5,4 +5,9 @@ ul.side-nav.leftside-navigation {
     top: 122px;
     overflow: hidden;
 }
+.wrapper {
+	
+	padding-top :70px;
+	padding-left:100px;
+}
 
