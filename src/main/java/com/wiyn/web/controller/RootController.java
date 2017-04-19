@@ -11,11 +11,10 @@ import org.springframework.web.multipart.MultipartFile;
 public class RootController {
 	
 	
-	@RequestMapping("/index")
-	public String index(){
+	@RequestMapping("index")
+	public String index() {
+
 		return "index";
-		
-		
 	}
 	
 //	@RequestMapping("/upload")
