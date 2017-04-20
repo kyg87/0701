@@ -1,0 +1,35 @@
+@CHARSET "UTF-8";
+
+.menu{
+	
+	width: 300px;
+	
+}
+
+.big-div{
+	width:1500px;
+	height:800px;
+
+}
+
+.content{
+    width:1500px;
+	display:inline-flex;
+
+}
+
+.view{
+	height:800px;
+	width: 1200px;
+	
+}
+
+.view table{
+	margin-left:20px;
+}
+
+.category-admin{
+	width:500px;
+	margin-left:30px;
+	margin-top:30px;
+}
