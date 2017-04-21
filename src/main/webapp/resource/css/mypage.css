@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+
+
+#main{
+	
+    margin-left: auto;
+    margin-right: auto;
+    /* border:1px solid gold; */
+}
+
+#main h1{
+	/* border-bottom:1px solid gold; */
+	padding-bottom: 35px;
+}
+
+div#btn1{
+	float:right;	
+}
+
+.pagination{
+	text-align:center;
+}
