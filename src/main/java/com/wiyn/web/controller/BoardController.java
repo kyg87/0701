@@ -8,14 +8,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 @Controller
-@RequestMapping("/siteBoard/*")
+@RequestMapping("/siteboard/*")
 public class BoardController {
 	
 	
-	@RequestMapping("MainBoard")
+	@RequestMapping("sitemain")
 	public String MainBoard(){
 		
-		return "siteBoard.MainBoard";
+		return "siteboard.sitemain";
 		
 		
 	}
