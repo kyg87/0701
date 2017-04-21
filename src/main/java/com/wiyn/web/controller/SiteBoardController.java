@@ -9,15 +9,20 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/siteboard/*")
-public class BoardController {
+public class SiteBoardController {
 	
 	
 	@RequestMapping("sitemain")
-	public String MainBoard(){
+	public String site(){
 		
-		return "siteboard.sitemain";
+		return "siteboard.sitemain";		
+	}
+	
+	
+	@RequestMapping("site-detail")
+	public String siteDetail(){
 		
-		
+		return "siteboard.siteboard-detail";
 	}
 		
 }
