@@ -12,10 +12,10 @@ import org.springframework.web.multipart.MultipartFile;
 public class SiteBoardController {
 	
 	
-	@RequestMapping("sitemain")
+	@RequestMapping("site-reg")
 	public String site(){
 		
-		return "siteboard.sitemain";		
+		return "siteboard.site-reg";		
 	}
 	
 	
