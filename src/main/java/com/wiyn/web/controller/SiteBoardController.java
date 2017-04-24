@@ -22,7 +22,7 @@ public class SiteBoardController {
 	@RequestMapping("site-detail")
 	public String siteDetail(){
 		
-		return "siteboard.siteboard-detail";
+		return "siteboard.site-detail";
 	}
 		
 }
