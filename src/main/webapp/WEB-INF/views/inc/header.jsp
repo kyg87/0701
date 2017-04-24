@@ -3,11 +3,13 @@
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <header id="header">
   <div class="navbar-fixed">
+ 
          <nav class="navbar-color">
 		<nav class="nav-extended">
+		<a href="#" class="brand-logo">Logo</a> 
 		<div class="container">
 			<div class="nav-wrapper">
-				<a href="#" class="brand-logo">Logo</a> 
+				
 				<ul class="right hide-on-med-and-down">
 					<li><a class="waves-effect waves-light btn" href="#modal1">Login</a></li>
 					<li><a class="waves-effect waves-light btn" href="#">아이디/비번찾기</a></li>
