@@ -18,7 +18,17 @@
 
 </head>
 <body>
-	<a href="main/index">이거 어떻게할지 고민중</a>
-
+	<div>
+	<a href="siteboard/site-detail">사이트 디테일로 가는 것</a>
+	</div>
+	<div>
+	<a href="siteboard/site-reg">사이트 글쓰기로 가는 것</a>
+	</div>
+	<div>
+	<a href="admin/AdminMain">관리자 페이지로 가는 것</a>
+	</div>
+	<div>
+	<a href="user/mypage">유저 페이지로 가는 것</a>
+	</div>
 </body>
 </html>
