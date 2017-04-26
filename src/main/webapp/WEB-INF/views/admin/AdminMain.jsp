@@ -91,105 +91,134 @@
 
 	<form action="#">
 
-		<div class="big-div">
-			<div class="content">
-				<div class="menu">
-					<ul class="collection with-header">
-						<li class="collection-header"><h4>Admin Page</h4></li>
-						<li class="collection-item"><a href="#!"
-							class="collection-item active">카테고리 수정</a></li>
-						<li class="collection-item"><a href="#!"
-							class="collection-item">공지사항 수정</a></li>
-						<li class="collection-item"><a href="#!"
-							class="collection-item">요청게시판 수정</a></li>
-						<li class="collection-item"><a href="#!"
-							class="collection-item">일반게시판 수정</a></li>
-						<li class="collection-item"><a href="#!"
-							class="collection-item">자유게시판 수정</a></li>
-					</ul>
+		<div class="view">
+			<ul class="collection with-header">
+				<li class="collection-header"><h4>카테고리 관리</h4></li>
+			</ul>
+
+			<div class="category-admin">
+
+
+				<div class="input-field">
+					<select>
+						<option value="" disabled selected>카테고리 선택</option>
+						<option value="1">1번 카테고리</option>
+						<option value="2">2번 카테고리</option>
+						<option value="3">3번 카테고리</option>
+					</select>
 				</div>
+				<!-- Modal Trigger -->
+				<a class="waves-effect waves-light btn" href="#modal1">수정</a>
 
-				<div class="view">
-					<ul class="collection with-header">
-						<li class="collection-header"><h4>카테고리 관리</h4></li>
-					</ul>
-
-					<div class="category-admin">
+				<!-- Modal Structure -->
 
 
-						<div class="input-field">
-							<select>
-								<option value="" disabled selected>카테고리 선택</option>
-								<option value="1">1번 카테고리</option>
-								<option value="2">2번 카테고리</option>
-								<option value="3">3번 카테고리</option>
-							</select>
-						</div>
-						<!-- Modal Trigger -->
-						<a class="waves-effect waves-light btn" href="#modal1">수정</a>
 
-						<!-- Modal Structure -->
-						<div id="modal1" class="modal">
-							<div class="modal-content">
-								<h4>카테고리 수정</h4>
-								<div class="row">
-									<form class="col s12">
-										<div class="row">
-											<div class="input-field col s12">
-												<textarea id="textarea1" class="materialize-textarea"></textarea>
-												<label for="textarea1">새로운 카테고리명 입력</label>
-											</div>
-										</div>
-									</form>
-								</div>
+				<!-- Modal Trigger -->
+				<a class="waves-effect waves-light btn" href="#modal2">삭제</a>
 
-							</div>
-							<div class="modal-footer">
-							
-								<a href="#!"
-									class="modal-action modal-close waves-effect waves-green btn-flat blue-text text-darken-2">취소</a>
-							
-								<a href="#!"
-									class="modal-action modal-close waves-effect waves-green btn-flat blue-text text-darken-2">완료</a>
-							</div>
-						</div>
+				<!-- Modal Structure -->
 
 
-						<!-- Modal Trigger -->
-						<a class="waves-effect waves-light btn" href="#modal2">삭제</a>
+				<a class="waves-effect waves-light btn" href="#modal3">대분류 추가</a>
 
-						<!-- Modal Structure -->
-						<div id="modal2" class="modal">
-							<div class="modal-content">
-								<h4>카테고리 삭제</h4>
-								<p>정말 삭제하시겠습니까?</p>
-							</div>
-							<div class="modal-footer">
-								
-								<a href="#!"
-									class="modal-action modal-close waves-effect waves-green btn-flat blue-text text-darken-2">취소</a>
-									
-								<a href="#!"
-									class="modal-action modal-close waves-effect waves-green btn-flat blue-text text-darken-2">삭제</a>
-								
-							</div>
-						</div>
+				<!-- Modal Structure -->
 
 
-					</div>
 
-					<!-- <div class="article-btn right">
+				<a class="waves-effect waves-light btn" href="#modal4">소분류 추가</a>
+
+				<!-- Modal Structure -->
+
+
+
+			</div>
+
+			<!-- <div class="article-btn right">
 						<a class="waves-effect waves-light btn card-panel blue lighten-2">글쓰기</a>
 						<a class="waves-effect waves-light btn card-panel blue lighten-2">선택
 							삭제</a>
 					</div> -->
 
-				</div>
-			</div>
 		</div>
 
 	</form>
 
+	<div id="modal1" class="modal">
+		<div class="modal-content">
+			<h4>카테고리 수정</h4>
+			<div class="row">
+				<form class="col s12">
+					<div class="row">
+						<div class="input-field col s12">
+							<textarea id="textarea1" class="materialize-textarea"></textarea>
+							<label for="textarea1">새로운 카테고리명 입력</label>
+						</div>
+					</div>
+				</form>
+			</div>
+
+		</div>
+		<div class="modal-footer">
+
+			<a href="#!"
+				class="modal-action modal-close waves-effect waves-green btn-flat blue-text text-darken-2">취소</a>
+
+			<a href="#!"
+				class="modal-action modal-close waves-effect waves-green btn-flat blue-text text-darken-2">완료</a>
+		</div>
+	</div>
+
+
+	<div id="modal2" class="modal">
+		<div class="modal-content">
+			<h4>카테고리 삭제</h4>
+			<p>정말 삭제하시겠습니까?</p>
+		</div>
+		<div class="modal-footer">
+
+			<a href="#!"
+				class="modal-action modal-close waves-effect waves-green btn-flat blue-text text-darken-2">취소</a>
+
+			<a href="#!"
+				class="modal-action modal-close waves-effect waves-green btn-flat blue-text text-darken-2">삭제</a>
+
+		</div>
+	</div>
+
+
+	<div id="modal3" class="modal">
+		<div class="modal-content">
+			<h4>대분류 추가</h4>
+			<div class="row">
+				<form class="col s12">
+					<div class="row">
+						<div class="input-field col s12">
+							<textarea id="textarea1" class="materialize-textarea"></textarea>
+							<label for="textarea1">새로운 카테고리명 입력</label>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="modal4" class="modal">
+		<div class="modal-content">
+			<h4>대분류 추가</h4>
+			<div class="row">
+				<form class="col s12">
+					<div class="row">
+						<div class="input-field col s12">
+							<textarea id="textarea1" class="materialize-textarea"></textarea>
+							<label for="textarea1">새로운 카테고리명 입력</label>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 
 
 	<!--  Scripts-->
