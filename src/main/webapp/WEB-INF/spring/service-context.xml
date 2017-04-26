@@ -5,22 +5,25 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-<bean name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-       <property name="driverClassName"  value="com.mysql.jdbc.Driver"/>
-       <property name="url" value="jdbc:mysql://211.238.142.84/newlecture?autoReconnect=true&amp;useSSL=false&amp;characterEncoding=UTF-8"/>
-       <property name="username" value="newlec" />
-       <property name="password" value="sclass"/>
-    </bean>
-<!-- <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
- 	<property name="dataSource" ref="dataSource" />
-    <property name="mapperLocations" value="classpath:com/newlecture/web/data/dao/mybatis/mapper/*.xml" />
-</bean>
+	<bean name="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://211.238.142.84/newlecture?autoReconnect=true&amp;useSSL=false&amp;characterEncoding=UTF-8" />
+		<property name="username" value="lse" />
+		<property name="password" value="1025" />
+	</bean>
 
-<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
-  <constructor-arg index="0" ref="sqlSessionFactory" />
-</bean>
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
 
-	<bean class="com.newlecture.web.data.mysql.MYSQLNoticeDao" />
-	<bean class="com.newlecture.web.data.mysql.MySQLNoticeFileDao" />
-	<bean class="com.newlecture.web.data.mysql.MySQLMemberRole" /> -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations"
+			value="classpath:com/wiyn/web/dao/mybatis/mapper/*.xml" />
+	</bean>
+
+	<bean class="com.wiyn.web.dao.mybatis.MyBatisMemberDao" />	
+
 </beans>
