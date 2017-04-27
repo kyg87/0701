@@ -16,7 +16,13 @@ public class RootController {
 
 		return "index";
 	}
+
 	
+	@RequestMapping("login")
+	public String index3() {
+
+		return "login";
+	}
 
 
 	

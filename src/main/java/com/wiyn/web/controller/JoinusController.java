@@ -1,5 +1,7 @@
 package com.wiyn.web.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.wiyn.web.dao.MemberDao;
 
 @Controller
+@RequestMapping("/joinus/*")
 public class JoinusController {
 	
 
@@ -29,5 +32,28 @@ public class JoinusController {
 		
 		return "index";
 	}
+	
+	
+	@RequestMapping("mypage")
+	public String mypage(Principal principal){
+		
+		String memberId = principal.getName();
+		
+		System.out.println(memberId);
+		
+		return null;
+		
+	/*	String role = "ROLE_TEACHER";//memberRoleDao.getDefaultRoleById(memberId);
+		
+		if(role.equals("ROLE_ADMIN"))
+			return "redirect:../admin/index";
+		else if(role.equals("ROLE_TEACHER"))
+			return "redirect:../teacher/index";
+		else
+			return "redirect:../student/index";	*/	
+	}
+	
+	
+	
 	
 }

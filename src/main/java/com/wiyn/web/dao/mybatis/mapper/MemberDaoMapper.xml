@@ -6,20 +6,15 @@
 <mapper namespace="com.wiyn.web.dao.MemberDao" >
     
 	<insert id="add" parameterType="com.wiyn.web.entity.Member">
-		<selectKey order="BEFORE" keyProperty="id" resultType="String">
-			SELECT IFNULL(MAX(CAST(id AS UNSIGNED)),0)+1 id FROM Member
-		</selectKey>
-		
+
 			INSERT INTO `lsedb`.`Member`
 			(
 			`id`,
-			`email`,
 			`pwd`,
 			`regDate`
 			)
 			VALUES
 			(
-			#{id},
 			#{param1},
 			#{param2},
 			now()

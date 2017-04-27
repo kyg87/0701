@@ -23,6 +23,8 @@
 
 </head>
 <body>
+
+
 	<header>
 		<nav class="nav-extended">
 			<div class="nav-wrapper">
@@ -50,6 +52,33 @@
 			</div>
 		</nav>
 	</header>
+	
+	<h1>로그인${validate}</h1>
+	<form action="${root}/j_spring_security_check" method="post">
+		<fieldset>
+			<table>
+				<c:if test="${not empty validate && not validate}">
+				<tr>
+					<td colspan="2" style="color:red;">아이디 도는 비번이 유효하지 않습니다.</td>
+				</tr>
+				</c:if>
+				<tr>
+					<th>아이디 :</th>
+					<td><input name="j_username" type="text" /></td>
+				</tr>
+				<tr>
+					<th>비밀번호 :</th>
+					<td><input name="j_password" type="password" /></td>
+				</tr>
+				<tr>
+					<td>
+						<input type="submit" value="로그인" />
+					</td>
+				</tr>
+			</table>
+		</fieldset>
+	</form>
+	
 	<!-- 	<div id="test1" class="col s12">Test 1</div>
 	<div id="test2" class="col s12">Test 2</div>
 	<div id="test3" class="col s12">Test 3</div>
@@ -131,7 +160,7 @@
 	<div id="modal1" class="modal">
 		<div class="modal-content">
 			<h4>Modal Header</h4>
-
+			<h1>로그인${validate}</h1>
 			<form action="${root}/j_spring_security_check" method="post">
 				<div class="row">
 					<div class="input-field col s12">
@@ -163,7 +192,7 @@
 	<!-- Modal Structure -->
 	<div id="modal2" class="modal">
 		<div class="modal-content">
-			<form id="myForm" action="singIn" method="post">
+			<form id="myForm" action="joinus/singIn" method="post">
 				<h4>Modal Header</h4>
 				<div class="row">
 					<div class="input-field col s12">
