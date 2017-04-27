@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xsi:schemaLocation="
+    	http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<bean name="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url"
-			value="jdbc:mysql://211.238.142.84/newlecture?autoReconnect=true&amp;useSSL=false&amp;characterEncoding=UTF-8" />
+			value="jdbc:mysql://211.238.142.84/lsedb?autoReconnect=true&amp;useSSL=false&amp;characterEncoding=UTF-8" />
 		<property name="username" value="lse" />
 		<property name="password" value="1025" />
 	</bean>
@@ -24,6 +27,12 @@
 			value="classpath:com/wiyn/web/dao/mybatis/mapper/*.xml" />
 	</bean>
 
-	<bean class="com.wiyn.web.dao.mybatis.MyBatisMemberDao" />	
 
+	<bean class="com.wiyn.web.dao.mybatis.MyBatisMemberDao" />	
+	<context:annotation-config /><!-- Autowired가 필요한 곳에서 설정함 -->
+<!-- 	<context:annotation-config />Autowired가 필요한 곳에서 설정함
+	<bean class="com.newlecture.web.service.AdminService" />
+	<bean class="com.newlecture.web.service.TeacherService" /> -->
+	
+	
 </beans>

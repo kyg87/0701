@@ -1,20 +1,23 @@
 package com.wiyn.web.dao.mybatis;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.wiyn.web.dao.MemberDao;
 import com.wiyn.web.entity.Member;
 
 public class MyBatisMemberDao implements MemberDao {
 
-	@Override
-	public Member get(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
+	@Autowired
+	private SqlSession sqlSession;
 
 	@Override
-	public int add(Member member) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int add(String email, String pwd) {
+		MemberDao memberDao;
+		memberDao = sqlSession.getMapper(MemberDao.class);
+		
+		return memberDao.add(email, pwd);
 	}
 
 }

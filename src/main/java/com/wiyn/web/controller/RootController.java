@@ -17,6 +17,9 @@ public class RootController {
 		return "index";
 	}
 	
+
+
+	
 //	@RequestMapping("/upload")
 //	@ResponseBody
 //	public String upload(MultipartFile files){

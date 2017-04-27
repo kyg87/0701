@@ -4,6 +4,6 @@ import com.wiyn.web.entity.Member;
 
 public interface MemberDao {
 
-	Member get(String id);
-	int add(Member member);
+	
+	int add(String email,String pwd);
 }
