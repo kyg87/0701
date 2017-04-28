@@ -8,7 +8,9 @@ ul.side-nav.leftside-navigation {
 }
 .wrapper {
 	
-	padding-top :70px;
-	padding-left:100px;
-}
 
+}
+#main{
+	padding-top:70px;
+	padding-left: 240px;
+}
