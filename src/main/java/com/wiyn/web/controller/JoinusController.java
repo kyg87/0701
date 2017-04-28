@@ -35,7 +35,6 @@ public class JoinusController {
 	
 	
 	@RequestMapping("mypage")
-	
 	public String mypage(Principal principal){
 		
 		String memberId = principal.getName();

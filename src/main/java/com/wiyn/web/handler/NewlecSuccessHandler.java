@@ -12,17 +12,14 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 public class NewlecSuccessHandler implements AuthenticationSuccessHandler {
 
 	@Override
-	public void onAuthenticationSuccess(
-				HttpServletRequest request, 
-				HttpServletResponse response, 
-				Authentication authentication)
+	public void onAuthenticationSuccess(HttpServletRequest arg0, HttpServletResponse arg1, Authentication arg2)
 			throws IOException, ServletException {
+		// TODO Auto-generated method stub
+		System.out.println("fsfsfsf");
 		
-		//response.sendRedirect("/MavenPrj/admin/index");
-		//response.sendRedirect("/MavenPrj/teacher/index");
-		//response.sendRedirect("/MavenPrj/student/index");
-		//response.sendRedirect("/MavenPrj/index");
 		
 	}
+
+
 
 }
