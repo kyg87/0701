@@ -17,7 +17,7 @@
 		<form-login login-page="/login" 
 			default-target-url="/joinus/mypage"
 			/>
-		<logout logout-success-url="/index"/>
+		<logout logout-success-url="/login"/>
 		<intercept-url pattern="/joinus/mypage" access="hasRole('ROLE_USER')" />
 		<intercept-url pattern="/customer/notice-detail" access="hasRole('ROLE_USER')" />
 		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />

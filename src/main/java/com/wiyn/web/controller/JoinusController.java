@@ -35,13 +35,14 @@ public class JoinusController {
 	
 	
 	@RequestMapping("mypage")
+	
 	public String mypage(Principal principal){
 		
 		String memberId = principal.getName();
 		
 		System.out.println(memberId);
 		
-		return null;
+		return "redirect:../login";
 		
 	/*	String role = "ROLE_TEACHER";//memberRoleDao.getDefaultRoleById(memberId);
 		

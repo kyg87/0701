@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <c:set var="root" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
@@ -53,6 +54,25 @@
 		</nav>
 	</header>
 	
+	<security:authentication property="authorities" var="auths"/>
+	<security:authentication property="name" var="name" />
+	<div>
+		id : ${name} <br />
+		<c:forEach var="role" items="${auths}">
+					role : ${role}<br />
+		</c:forEach>
+	</div>
+	<ul>
+		<li><a href="${root}/index">HOME</a></li>
+		<security:authorize access="isAnonymous()">
+			<li><a href="${root}/login">로그인</a></li>
+		</security:authorize>
+		<security:authorize access="isAuthenticated()">
+			<li><a href="${root}/j_spring_security_logout"> <security:authentication
+						property="name" />님 로그아웃
+			</a></li>
+		</security:authorize>
+	</ul>
 	<h1>로그인${validate}</h1>
 	<form action="${root}/j_spring_security_check" method="post">
 		<fieldset>
