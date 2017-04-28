@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wiyn.web.dao.SiteBoardDao">
+
+<select id="getBoard" resultType="com.wiyn.web.entity.SiteBoard">
+	SELECT id,
+	    title,
+	    content,
+	    regDate,
+	    hit,
+	    url,
+	    tagId,
+	    memberId,
+	    bigCategoryId
+	FROM SiteBoard
+	WHERH id=#{id}
+</select>
+
+</mapper>
