@@ -20,8 +20,9 @@
 					<c:forEach var="role" items="${auths}">
 						<li>role : ${role}</li>
 					</c:forEach>
+					<li><a class="waves-effect waves-light btn" href="${root}/joinus/singin">singin</a></li>
 					<security:authorize access="isAnonymous()">
-						<li><a class="waves-effect waves-light btn" href="#modal10">Login</a></li>
+						<li><a class="waves-effect waves-light btn" href="${root}/joinus/login">Login</a></li>
 					</security:authorize>
 					<security:authorize access="isAuthenticated()">
 						<li><a href="${root}/j_spring_security_logout"> <security:authentication

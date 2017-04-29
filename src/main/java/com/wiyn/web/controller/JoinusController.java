@@ -41,7 +41,7 @@ public class JoinusController {
 		
 		System.out.println(memberId);
 		
-		return "redirect:../login";
+		return "redirect:../main/index";
 		
 	/*	String role = "ROLE_TEACHER";//memberRoleDao.getDefaultRoleById(memberId);
 		
@@ -53,10 +53,16 @@ public class JoinusController {
 			return "redirect:../student/index";	*/	
 	}
 	
-	@RequestMapping("account")
-	public String account(){
+	@RequestMapping("singin")
+	public String singin(){
 		
-		return "joinus.account";		
+		return "joinus.singin";		
+	}
+	
+	@RequestMapping("login")
+	public String login(){
+		
+		return "joinus.login";		
 	}
 	
 	
