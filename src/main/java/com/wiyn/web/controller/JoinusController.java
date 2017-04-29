@@ -53,7 +53,11 @@ public class JoinusController {
 			return "redirect:../student/index";	*/	
 	}
 	
-	
+	@RequestMapping("account")
+	public String account(){
+		
+		return "joinus.account";		
+	}
 	
 	
 }

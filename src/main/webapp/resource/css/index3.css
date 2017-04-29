@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+
+#slide-out  {
+	top: 64px;
+	overflow: hidden;
+}
+
+.logo-wrapper {
+    margin: auto;
+}
+
+#main {
+    padding-left: 240px;
+}
+
+.header-search-wrapper {
+    margin: 10px auto 0 240px;
+    width: calc(100% - 600px);
+    height: 40px;
+    display: inline-block;
+    position: relative;
+}
