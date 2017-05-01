@@ -108,7 +108,7 @@
 					</select>
 				</div>
 				<!-- Modal Trigger -->
-				<a class="waves-effect waves-light btn" href="#modal1">수정</a>
+				<a class="waves-effect waves-light btn" href="#modal11">수정</a>
 
 				<!-- Modal Structure -->
 
@@ -144,7 +144,7 @@
 
 	</form>
 
-	<div id="modal1" class="modal">
+	<div id="modal11" class="modal">
 		<div class="modal-content">
 			<h4>카테고리 수정</h4>
 			<div class="row">
@@ -152,12 +152,11 @@
 					<div class="row">
 						<div class="input-field col s12">
 							<textarea id="textarea1" class="materialize-textarea"></textarea>
-							<label for="textarea1">새로운 카테고리명 입력</label>
+							<label for="textarea1">수정할 카테고리명 입력</label>
 						</div>
 					</div>
 				</form>
 			</div>
-
 		</div>
 		<div class="modal-footer">
 
@@ -206,17 +205,8 @@
 
 	<div id="modal4" class="modal">
 		<div class="modal-content">
-			<h4>대분류 추가</h4>
-			<div class="row">
-				<form class="col s12">
-					<div class="row">
-						<div class="input-field col s12">
-							<textarea id="textarea1" class="materialize-textarea"></textarea>
-							<label for="textarea1">새로운 카테고리명 입력</label>
-						</div>
-					</div>
-				</form>
-			</div>
+			<h4>소분류 추가</h4>
+			
 		</div>
 	</div>
 

@@ -111,7 +111,7 @@ body {
 
 <body>
 
-	<div id="main">
+	<main id="main">
 	<div>공지사항등록</div>
 		<table>
 			<thead>
@@ -175,13 +175,14 @@ body {
 					<div id="btn">
 					 <button class="btn waves-effect waves-light" type="submit" name="action">Submit
    					 <i class="material-icons right">send</i>
-   					 </div>
+   					 
   					</button>
+  					</div>
 					</td>
 				</tr>
 			</tbody>
 		</table>
-	</div>
+	</main>
 
 
 
