@@ -18,11 +18,31 @@
 
 </head>
 <body>
+
 	<div>
-	<a href="siteboard/site-detail">사이트 디테일로 가는 것</a>
+	<a href="siteboard/site-detail">(세은)사이트 디테일로 가는 것</a>
 	</div>
 	<div>
-	<a href="siteboard/site-reg">사이트 글쓰기로 가는 것</a>
+	<a href="siteboard/site-reg">(세은)사이트 글쓰기로 가는 것</a>
+	</div>
+	<div>
+	<a href="requestboard/request-detail">(기윤)요청 디테일로 가는 것</a>
+	</div>
+	<div>
+	<a href="requestboard/request-reg">(기윤)요청 글쓰기로 가는 것</a>
+	</div>
+	<div>
+	<a href="noticeboard/notice-detail">(동근)공지사항 디테일로 가는 것</a>
+	</div>
+	<div>
+	<a href="noticeboard/notice-reg">(동근)공지사항 글쓰기로 가는 것</a>
+	</div>
+	<div>
+	<a href="freeboard/free-detail">(지현)자유 디테일로 가는 것</a>
+	</div>
+	<div>
+	<a href="freeboard/free-reg">(지현)자유 글쓰기로 가는 것</a>
+	
 	</div>
 	<div>
 	<a href="admin/AdminMain">관리자 페이지로 가는 것</a>
@@ -30,9 +50,8 @@
 	<div>
 	<a href="user/mypage">유저 페이지로 가는 것</a>
 	</div>
-	
 	<div>
-	<a href="joinus/account">회원가입 페이지 가는 것</a>
+	<a href="joinus/account">(영균)회원가입 페이지 가는 것</a>
 	</div>
 </body>
 </html>

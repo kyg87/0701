@@ -10,5 +10,16 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 @RequestMapping("/noticeboard/*")
 public class NoticeBoardController {
-
+	@RequestMapping("notice-reg")
+	public String site(){
+		
+		return "noticeboard.notice-reg";		
+	}
+	
+	
+	@RequestMapping("notice-detail")
+	public String siteDetail(){
+		
+		return "noticeboard.notice-detail";
+	}
 }
