@@ -17,7 +17,7 @@
 <!-- <link href="/WiynPrj/resource/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" /> -->
 <link href="/WiynPrj/resource/css/main.css" type="text/css"
 	rel="stylesheet" media="screen,projection" />
-<link href="/WiynPrj/resource/css/admin/adminMain.css" type="text/css"
+<link href="/WiynPrj/resource/css/admin/admin.css" type="text/css"
 	rel="stylesheet" />
 
 </head>

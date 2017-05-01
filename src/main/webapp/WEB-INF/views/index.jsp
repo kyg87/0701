@@ -45,7 +45,7 @@
 	
 	</div>
 	<div>
-	<a href="admin/AdminMain">관리자 페이지로 가는 것</a>
+	<a href="admin/admin">관리자 페이지로 가는 것</a>
 	</div>
 	<div>
 	<a href="user/mypage">유저 페이지로 가는 것</a>
