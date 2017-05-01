@@ -196,6 +196,17 @@
 							<textarea id="textarea1" class="materialize-textarea"></textarea>
 							<label for="textarea1">새로운 카테고리명 입력</label>
 						</div>
+
+						<div class="modal-footer">
+
+							<a href="#!"
+								class="modal-action modal-close waves-effect waves-green btn-flat blue-text text-darken-2">취소</a>
+
+							<a href="#!"
+								class="modal-action modal-close waves-effect waves-green btn-flat blue-text text-darken-2">추가</a>
+
+						</div>
+
 					</div>
 				</form>
 			</div>
@@ -206,7 +217,30 @@
 	<div id="modal4" class="modal">
 		<div class="modal-content">
 			<h4>소분류 추가</h4>
-			
+			<div class="row">
+				<form class="col s12">
+					<div class="row">
+						<div class="input-field">
+							<select>
+								<option value="" disabled selected>카테고리 선택</option>
+								<option value="1">1번 카테고리</option>
+								<option value="2">2번 카테고리</option>
+								<option value="3">3번 카테고리</option>
+							</select>
+						</div>
+						<div class="modal-footer">
+
+							<a href="#!"
+								class="modal-action modal-close waves-effect waves-green btn-flat blue-text text-darken-2">취소</a>
+
+							<a href="#!"
+								class="modal-action modal-close waves-effect waves-green btn-flat blue-text text-darken-2">추가</a>
+
+						</div>
+
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
 
