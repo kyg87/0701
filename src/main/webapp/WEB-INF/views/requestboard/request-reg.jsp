@@ -111,6 +111,7 @@ body {
 
 <body>
 
+<form id="myForm" action="requestBoard-reg" method="post">
 	<div id="main">
 	<div>요청등록</div>
 		<table>
@@ -141,7 +142,7 @@ body {
 					<th>
 						<div id="title">제목</div>
 					</th>
-					<th><input id="titleinput" type="text" value=""></th>
+					<th><input name="title" id="titleinput" type="text" value=""></th>
 				</tr>
 				<tr>
 					<th>
@@ -158,7 +159,7 @@ body {
 							<form>
 								<div class="form-group">
 									<label for="comment">Comment:</label>
-									<textarea class="form-control" rows="15" id="comment"></textarea>
+									<textarea name="content" class="form-control" rows="15" id="comment"></textarea>
 								</div>
 							</form>
 						</div>
@@ -182,6 +183,8 @@ body {
 			</tbody>
 		</table>
 	</div>
+	<input type="hidden" name="memberId" value="22323@bb.v">
+	</form>
 
 
 
