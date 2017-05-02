@@ -28,6 +28,11 @@ public class MyBatisRequestBoardDao implements RequestBoardDao {
 	}
 
 
-	
+	@Override
+	public List<RequestBoard> getList() {
+		RequestBoardDao requestBoardDao;
+		requestBoardDao = sqlSession.getMapper(RequestBoardDao.class);
+	    return requestBoardDao.getList();
+	}
 
 }

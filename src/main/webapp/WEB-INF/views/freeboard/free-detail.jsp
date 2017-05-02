@@ -107,13 +107,13 @@
 		      	</table>
 
 			</div>
-
+			<form action="freeBoard-detail" method="post">
 			<div id="minibox">			
 				<table>
 			        <thead>
 			          <tr>
 			              <td>
-			              	<input type="text" value="댓글을입력하세요." />	<input id="reg" type="submit" value="등록" />	
+			              	<input name="content" type="text" value="댓글을입력하세요." />	<input id="reg"  name="action" type="submit" value="등록" />	
 			              </td>	             
 			          </tr>
 			        </thead>
@@ -126,6 +126,9 @@
 			        </tbody>
 		      	</table>
 			</div>
+						<input type="hidden" name="freeBoardId" value="1">
+			<input type="hidden" name="memberId" value="22323@bb.v">
+			</form>
 		</div>
 	</div>
 
