@@ -26,6 +26,9 @@
 	<a href="siteboard/site-reg">(세은)사이트 글쓰기로 가는 것</a>
 	</div>
 	<div>
+	<a href="requestboard/request">(경주)요청  가는 것</a>
+	</div>
+	<div>
 	<a href="requestboard/request-detail">(기윤)요청 디테일로 가는 것</a>
 	</div>
 	<div>
