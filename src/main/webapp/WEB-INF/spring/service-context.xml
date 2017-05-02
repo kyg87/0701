@@ -29,6 +29,7 @@
 
 
 	<bean class="com.wiyn.web.dao.mybatis.MyBatisMemberDao" />
+	<bean class="com.wiyn.web.dao.mybatis.MyBatisSiteBoardDao" />
 	<bean class="com.wiyn.web.dao.mybatis.MyBatisRequestBoardDao" />
 	<bean class="com.wiyn.web.dao.mybatis.MyBatisRequestCommentDao" />
 	<bean class="com.wiyn.web.dao.mybatis.MyBatisSiteCommentDao" />
