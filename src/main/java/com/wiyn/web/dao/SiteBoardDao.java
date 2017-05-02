@@ -9,6 +9,6 @@ public interface SiteBoardDao {
 	public List<SiteBoard> getList(int page, String query);
 	public String getBoard(String id);
 	
-	
+	public int add(SiteBoard siteBoard);
 	
 }

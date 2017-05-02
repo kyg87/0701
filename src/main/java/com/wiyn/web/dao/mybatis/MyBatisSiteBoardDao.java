@@ -27,4 +27,12 @@ public class MyBatisSiteBoardDao implements SiteBoardDao{
 		return siteBoardDao.getBoard(id);
 	}
 
+	@Override
+	public int add(SiteBoard siteBoard) {
+		SiteBoardDao siteBoardDao;
+		siteBoardDao = sqlSession.getMapper(SiteBoardDao.class);
+		return siteBoardDao.add(siteBoard);
+	}
+
+
 }

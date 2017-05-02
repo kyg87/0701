@@ -18,4 +18,27 @@
 	WHERH id=#{id}
 </select>
 
+<insert id="add" parameterType="com.wiyn.web.entity.SiteBoard">
+	<selectKey order="BEFORE" keyProperty="id" resultType="String">
+		select max(cast(id as unsigned))+1 id from SiteBoard
+	</selectKey>
+		INSERT INTO `lsedb`.`SiteBoard`
+			(`id`,
+			`title`,
+			`content`,
+			`regDate`,
+			`url`,
+			`memberId`
+			)
+			VALUES
+			(
+			#{id},
+			#{title},
+			#{content},
+			now(),
+			#{url},
+			#{memberId}
+			)		
+</insert>
+
 </mapper>

@@ -110,8 +110,9 @@ body {
 
 
 <body>
-
+<form action="reg" method="post">
 	<div id="main">
+	
 		<table>
 			<thead>
 				<tr>
@@ -138,15 +139,15 @@ body {
 				</tr>
 				<tr>
 					<th>
-						<div id="title">제목</div>
+						<div id="title" >제목</div>
 					</th>
-					<th><input id="titleinput" type="text" value=""></th>
+					<th><input name="title" id="titleinput" type="text" value=""></th>
 				</tr>
 				<tr>
 					<th>
-						<div id="address">http://</div>
+						<div id="url">http://</div>
 					</th>
-					<th><input id="titleinput" type="text" value=""></th>
+					<th><input name="url" id="titleinput" type="text" value=""></th>
 				</tr>
 			</thead>
 
@@ -157,7 +158,7 @@ body {
 							<form>
 								<div class="form-group">
 									<label for="comment">Comment:</label>
-									<textarea class="form-control" rows="15" id="comment"></textarea>
+									<textarea name="content" class="form-control" rows="15" id="content"></textarea>
 								</div>
 							</form>
 						</div>
@@ -172,16 +173,16 @@ body {
 				<tr>
 					<td colspan="2">
 					<div id="btn">
-					 <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-   					 <i class="material-icons right">send</i>
-   					 </div>
-  					</button>
+					 <button class="btn waves-effect waves-light" type="submit" name="action">Submit<i class="material-icons right">send</i></button> 
+	   				</div>
 					</td>
 				</tr>
 			</tbody>
 		</table>
+		<input type="hidden" name="bigCategoryId" value="2"/>
+		<input type="hidden" name="memberId" value="LSE@mb.com"/>
 	</div>
-
+</form>
 
 
 
