@@ -111,78 +111,81 @@ body {
 
 <body>
 
-	<main id="main">
-	<div>공지사항등록</div>
-		<table>
-			<thead>
-				<tr>
-					<th>
-						<div class="input-field">
-							<select>
-								<option value="" disabled selected>카테고리 one</option>
-								<option value="1">Option 1</option>
-								<option value="2">Option 2</option>
-								<option value="3">Option 3</option>
-							</select>
-						</div>
-					</th>
-					<th>
-						<div id="input-field2" class="input-field">
-							<select>
-								<option value="" disabled selected>카테고리 two</option>
-								<option value="1">Option 1</option>
-								<option value="2">Option 2</option>
-								<option value="3">Option 3</option>
-							</select>
-						</div>
-					</th>
-				</tr>
-				<tr>
-					<th>
-						<div id="title">제목</div>
-					</th>
-					<th><input id="titleinput" type="text" value=""></th>
-				</tr>
-				<tr>
-					<th>
-						<div id="address">http://</div>
-					</th>
-					<th><input id="titleinput" type="text" value=""></th>
-				</tr>
-			</thead>
-
-			<tbody>
-				<tr>
-					<td colspan="2">
-						<div id="divcontent">
-							<form>
-								<div class="form-group">
-									<label for="comment">Comment:</label>
-									<textarea class="form-control" rows="15" id="comment"></textarea>
-								</div>
-							</form>
-						</div>
-
-					</td>
-
-				</tr>
-				<tr>
-					<td><div id="title">Tag</div></td>
-					<td><input id="titleinput" type="text" value=""></td>
-				</tr>
-				<tr>
-					<td colspan="2">
-					<div id="btn">
-					 <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-   					 <i class="material-icons right">send</i>
-   					 
-  					</button>
-  					</div>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</main>
+	<form id="noticeReg" action="noticeBoard-reg" method="post">
+		<main id="main">
+			<div>공지사항등록</div>
+			<table>
+				<thead>
+					<tr>
+						<th>
+							<div class="input-field">
+								<select>
+									<option value="" disabled selected>카테고리 one</option>
+									<option value="1">Option 1</option>
+									<option value="2">Option 2</option>
+									<option value="3">Option 3</option>
+								</select>
+							</div>
+						</th>
+						<th>
+							<div id="input-field2" class="input-field">
+								<select>
+									<option value="" disabled selected>카테고리 two</option>
+									<option value="1">Option 1</option>
+									<option value="2">Option 2</option>
+									<option value="3">Option 3</option>
+								</select>
+							</div>
+						</th>
+					</tr>
+					<tr>
+						<th>
+							<div id="title">제목</div>
+						</th>
+						<th><input name="title" id="titleinput" type="text" value=""></th>
+					</tr>
+					<tr>
+						<th>
+							<div id="address">http://</div>
+						</th>
+						<th><input id="titleinput" type="text" value=""></th>
+					</tr>
+				</thead>
+	
+				<tbody>
+					<tr>
+						<td colspan="2">
+							<div id="divcontent">
+								<form>
+									<div class="form-group">
+										<label for="comment">Comment:</label>
+										<textarea name="content" class="form-control" rows="15" id="comment"></textarea>
+									</div>
+								</form>
+							</div>
+	
+						</td>
+	
+					</tr>
+					<tr>
+						<td><div id="title">Tag</div></td>
+						<td><input id="titleinput" type="text" value=""></td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<div id="btn">
+								<button class="btn waves-effect waves-light" type="submit" name="action">
+									Submit <i class="material-icons right">send</i>
+	
+								</button>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</main>
+		<input type="hidden" name="memberId" value="dongdong@dong.com">
+	</form>
 
 
 

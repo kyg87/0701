@@ -34,7 +34,7 @@
 	<bean class="com.wiyn.web.dao.mybatis.MyBatisRequestCommentDao" />
 	<bean class="com.wiyn.web.dao.mybatis.MyBatisSiteCommentDao" />
 	<bean class="com.wiyn.web.dao.mybatis.MyBatisFreeCommentDao" />
-	
+	<bean class="com.wiyn.web.dao.mybatis.MyBatisNoticeBoardDao" />
 			
 	<context:annotation-config /><!-- Autowired가 필요한 곳에서 설정함 -->
 <!-- 	<context:annotation-config />Autowired가 필요한 곳에서 설정함
