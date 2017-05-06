@@ -127,7 +127,7 @@
 		      	</table>
 			</div>
 						<input type="hidden" name="freeBoardId" value="1">
-			<input type="hidden" name="memberId" value="22323@bb.v">
+			<input type="hidden" name="memberId" value="large@a.a">
 			</form>
 		</div>
 	</div>

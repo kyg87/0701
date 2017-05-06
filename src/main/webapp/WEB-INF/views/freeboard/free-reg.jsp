@@ -48,6 +48,7 @@ body {
 	/* background: pink; */
 	padding: 10px;
 	margin: 0px auto;
+	margin-top:70px;
 }
 
 #title {
@@ -111,6 +112,7 @@ body {
 
 <body>
 
+<form action="reg" method="post">
 	<div id="main">
 	<div>자유게시판등록</div>
 		<table>
@@ -119,7 +121,7 @@ body {
 					<th>
 						<div class="input-field">
 							<select>
-								<option value="" disabled selected>카테고리 one</option>
+								 <option value="" disabled selected>카테고리 one</option> 
 								<option value="1">Option 1</option>
 								<option value="2">Option 2</option>
 								<option value="3">Option 3</option>
@@ -129,10 +131,10 @@ body {
 					<th>
 						<div id="input-field2" class="input-field">
 							<select>
-								<option value="" disabled selected>카테고리 two</option>
+								 <option value="" disabled selected>카테고리 two</option> 
 								<option value="1">Option 1</option>
 								<option value="2">Option 2</option>
-								<option value="3">Option 3</option>
+								<option value="3">Option 3</option> 
 							</select>
 						</div>
 					</th>
@@ -141,13 +143,20 @@ body {
 					<th>
 						<div id="title">제목</div>
 					</th>
-					<th><input id="titleinput" type="text" value=""></th>
+					<th><input id="titleinput" name="title" type="text" value=""></th>
+					
 				</tr>
 				<tr>
 					<th>
 						<div id="address">http://</div>
 					</th>
 					<th><input id="titleinput" type="text" value=""></th>
+				</tr>
+				<tr>
+					<th>
+						<div id="contentSrc">IMAGE:</div>
+					</th>
+					<th><input id="titleinput" name="contentSrc" type="text" value=""></th>
 				</tr>
 			</thead>
 
@@ -158,7 +167,7 @@ body {
 							<form>
 								<div class="form-group">
 									<label for="comment">Comment:</label>
-									<textarea class="form-control" rows="15" id="comment"></textarea>
+									<textarea class="form-control" name="content" rows="15" id="comment"></textarea>
 								</div>
 							</form>
 						</div>
@@ -173,16 +182,18 @@ body {
 				<tr>
 					<td colspan="2">
 					<div id="btn">
-					 <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-   					 <i class="material-icons right">send</i>
-   					 </div>
+					 <button class="btn waves-effect waves-light" type="submit" name="action">
+					 Submit<i class="material-icons right">send</i>			
   					</button>
+  					 </div>
 					</td>
 				</tr>
 			</tbody>
 		</table>
+		
+		<input type="hidden" name="memberId" value="large@a.a">
 	</div>
-
+</form>
 
 
 
