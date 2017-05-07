@@ -17,16 +17,12 @@ public class MyBatisFreeBoardDao implements FreeBoardDao{
 	private SqlSession sqlSession;
 
 	@Override
-	public List<FreeBoard> getList(int page, String query) {
-		return null;
-	}
-
-	@Override
-	public String getBoard(String id) {
+	public List<FreeBoard> getList() {
 		FreeBoardDao FreeBoardDao;
 		FreeBoardDao = sqlSession.getMapper(FreeBoardDao.class);
-		return FreeBoardDao.getBoard(id);
+	    return FreeBoardDao.getList();
 	}
+
 
 	@Override
 	public int add(FreeBoard freeBoard) {
@@ -36,8 +32,35 @@ public class MyBatisFreeBoardDao implements FreeBoardDao{
 		return FreeBoardDao.add(freeBoard);
 	}
 
+	@Override
+	public int delete(String id) {
+		FreeBoardDao FreeBoardDao;
+		FreeBoardDao = sqlSession.getMapper(FreeBoardDao.class);
+		
+		return FreeBoardDao.delete(id);
+	}
+
+	@Override
+	public String lastId() {
+	    
+	      FreeBoardDao FreeBoardDao;
+	      FreeBoardDao = sqlSession.getMapper(FreeBoardDao.class);
+	      
+	      return FreeBoardDao.lastId();
+	}
+
+
+	@Override
+	public FreeBoard get(String id) {
+		FreeBoardDao FreeBoardDao;
+		FreeBoardDao = sqlSession.getMapper(FreeBoardDao.class);
+	    return FreeBoardDao.get(id);
+	}
+
+
 	
-	
+
+
 	
 	
 }
