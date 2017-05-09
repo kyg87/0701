@@ -54,7 +54,7 @@
 	<a href="user/mypage">유저 페이지로 가는 것</a>
 	</div>
 	<div>
-	<a href="joinus/account">(영균)회원가입 페이지 가는 것</a>
+	<a href="joinus/singin">(영균)회원가입 페이지 가는 것</a>
 	</div>
 </body>
 </html>
