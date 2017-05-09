@@ -3,6 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="tiles"  uri="http://tiles.apache.org/tags-tiles" %>
 <!DOCTYPE html>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <style>
 
@@ -65,26 +69,29 @@
 				</nav>
 				<table>
 			        <thead>
+			        
 			          <tr>
-			              <th id="title">글제목<i id="re" class="small material-icons">launch</i></th>			             
+			              <th>${n.title}<i id="re" class="small material-icons">launch</i></th>			             
 			          </tr>
 			          <tr>
-			          	 <th id="writedate">2017.3.15<i class="small material-icons">star</i> 23</th>
+			          	 <th>${n.regDate}<i class="small material-icons">star</i> 23</th>
 			          </tr>
 			          <tr>
-			          	<th id="writer">writer</th>
+			          	<th>${n.memberId}</th>
 			          </tr>
-			        </thead>
+			         
+			         			        </thead>
 			        <tbody>
 			          <tr>
-			            <td id="thum">thum</td>
+			            <td id="thum">thu11m</td>
 			          </tr>
 			          <tr>
 			            <td id="url">url</td>
 			          </tr>
 			          <tr>
-			            <td id="content">content</td>
+			            <td id="content">${n.content }</td>
 			          </tr>
+			          
 			          <tr>
 			            <td>
 			            	<div class="chip">
@@ -98,11 +105,29 @@
 							</div>
 			            </td>
 			          </tr>
+			           
 			          <tr>
+			          
 			            <td>
 							<a id="btn" class="waves-effect waves-light btn">수정</a>
 			            </td>
+			            
+			            <td>
+			           <form action="free-del" method="post">
+							 <button class="btn waves-effect waves-light" type="submit" name="action">
+							 				 삭제		
+  							</button>
+  							</form>
+  							
+			            </td>
+			            <td>
+			              <form action="freeboard" method="post">
+							 <button class="btn waves-effect waves-light" type="submit" name="action">목록</button>
+						</form>
+			            </td>
+			            
 			          </tr>
+			          
 			        </tbody>
 		      	</table>
 

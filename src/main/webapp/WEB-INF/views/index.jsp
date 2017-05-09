@@ -48,6 +48,11 @@
 	
 	</div>
 	<div>
+	<a href="freeboard/freeboard">(지현)자유 글쓰기 목록보기</a>
+	
+	</div>
+	
+	<div>
 	<a href="admin/admin">관리자 페이지로 가는 것</a>
 	</div>
 	<div>
