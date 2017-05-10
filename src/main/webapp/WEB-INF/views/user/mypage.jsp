@@ -24,19 +24,11 @@
 		})
 	})
 
-	$(document).ready(function() {
-		$('select').material_select();
-	});
 
-	$(document).ready(function() {
-		// the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-		$('.modal').modal();
-	});
-	$(".button-collapse").sideNav();
 </script>
 <main>
 	
-		<h1> M y P a g e</h1>
+		 M y P a g e
 	
 	<div class="row">
 		<div class="col s12">

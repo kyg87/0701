@@ -2,16 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="root" value="${pageContext.request.contextPath}" />
-<link href="/WiynPrj/resource/css/main.css" type="text/css"
-	rel="stylesheet" media="screen,projection" />
-<link href="/WiynPrj/resource/css/mypage.css" type="text/css"
-	rel="stylesheet" media="screen,projection" />
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
-<script type="text/javascript"
-	src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
-
-
 <script type="text/javascript">
 	  $(document).ready(function(){
 		  var myForm1 = $("#myForm1");
@@ -86,7 +76,7 @@
 	  });
   }
 </script>
-<main>
+ <main>
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];

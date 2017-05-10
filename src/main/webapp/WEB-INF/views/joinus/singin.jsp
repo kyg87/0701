@@ -2,21 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<link href="/WiynPrj/resource/css/main.css" type="text/css"
-	rel="stylesheet" media="screen,projection" />
-<link href="/WiynPrj/resource/css/mypage.css" type="text/css"
-	rel="stylesheet" media="screen,projection" />
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
-<script type="text/javascript"
-	src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
-<script type="text/javascript">
-		$(document).ready(function() {
-			// the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-			$('.modal').modal();
-		});
-		$(".button-collapse").sideNav();
-	</script>
+
 
 	<script type="text/javascript">
 	  $(document).ready(function(){
@@ -84,7 +70,7 @@
 
 		});
 	</script>
-<main>
+ <main id="main">
 
 	
 			<form id="myForm" action="singIn" method="post">
