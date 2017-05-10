@@ -2,9 +2,7 @@
 	pageEncoding="EUC-KR"%>
 
 <aside id="left-sidebar-nav">
-	<a href="#" data-activates="nav-mobile"
-		class="button-collapse top-nav full hide-on-large-only"><i
-		class="material-icons">menu</i></a>
+
 <ul id="nav-mobile" class="side-nav fixed" style="overflow: auto; transform: translateX(0%);">
         <li class="logo"><a id="logo-container" href="http://materializecss.com/" class="brand-logo">
             <object id="front-page-logo" type="image/svg+xml" data="res/materialize.svg">Your browser does not support SVG</object></a></li>
@@ -79,5 +77,7 @@
         <li class="bold"><a href="showcase.html" class="waves-effect waves-teal">Showcase</a></li>
         <li class="bold"><a href="themes.html" class="waves-effect waves-teal">Themes</a></li>
       </ul>
-  
+      
+ 
+ <!--  -->
 </aside>
