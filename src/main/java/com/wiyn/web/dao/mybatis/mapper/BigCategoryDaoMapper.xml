@@ -5,8 +5,11 @@
 
 <mapper namespace="com.wiyn.web.dao.BigCategoryDao">
 
-	<!-- <select resultType="com.wiyn.web.entity.BigCategory" id="getList"> 
-		</select> -->
+	<select resultType="com.wiyn.web.entity.BigCategory" id="getList">
+	 
+		SELECT * FROM BigCategory
+		
+	</select>
 		
 	<insert id="add" parameterType="com.wiyn.web.entity.BigCategory">
 		<selectKey order="BEFORE" keyProperty="id" resultType="String">

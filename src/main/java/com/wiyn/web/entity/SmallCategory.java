@@ -5,6 +5,7 @@ public class SmallCategory {
 	private String id;
 	private String name;
 	private String bigCategoryId;
+	
 	public String getId() {
 		return id;
 	}

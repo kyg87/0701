@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wiyn.web.dao.SmallCategoryDao">
+
+	<select resultType="com.wiyn.web.entity.SmallCategory" id="getList">
+	 
+		SELECT * FROM SmallCategory
+		
+	</select>
+		
+	<insert id="add" parameterType="com.wiyn.web.entity.SmallCategory">
+		<selectKey order="BEFORE" keyProperty="id" resultType="String">
+			select max(cast(id as unsigned))+1 id from SmallCategory
+		</selectKey>
+
+		INSERT INTO
+		`lsedb`.`SmallCategory`
+		(
+		`id`,
+		`name`,
+		`bigCategoryId`
+		)
+		VALUES
+		(
+		#{id},
+		#{param1},
+		#{param2}
+		)
+
+	</insert>
+
+</mapper>

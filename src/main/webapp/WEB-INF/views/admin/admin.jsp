@@ -218,23 +218,32 @@
 		<div class="modal-content">
 			<h4>소분류 추가</h4>
 			<div class="row">
-				<form class="col s12">
+				<form class="col s12" id="smallCategory" action="admin-scadd" method="post">
 					<div class="row">
 						<div class="input-field">
-							<select>
-								<option value="" disabled selected>카테고리 선택</option>
-								<option value="1">1번 카테고리</option>
-								<option value="2">2번 카테고리</option>
-								<option value="3">3번 카테고리</option>
+							<select name="bigCategoryId">
+								<option value="" disabled selected> 대분류 선택 </option>
+								
+								<c:forEach var="bc" items="${bcList }">
+									<option value="${bc.id }">${bc.name }</option>
+								</c:forEach>
 							</select>
 						</div>
+						
+						<div class="input-field col s12">
+							<textarea id="textarea1" class="materialize-textarea" name="name"></textarea>
+							<label for="textarea1">새로운 카테고리명 입력</label>
+						</div>
+						
 						<div class="modal-footer">
 
-							<a href="#!"
-								class="modal-action modal-close waves-effect waves-green btn-flat blue-text text-darken-2">취소</a>
+							<button class="btn waves-effect waves-light" type="submit" name="action">
+									Cancel 
+							</button>
 
-							<a href="#!"
-								class="modal-action modal-close waves-effect waves-green btn-flat blue-text text-darken-2">추가</a>
+							<button class="btn waves-effect waves-light" type="submit" name="action">
+									Submit
+							</button>
 
 						</div>
 
