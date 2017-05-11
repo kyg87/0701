@@ -1,6 +1,7 @@
 package com.wiyn.web.entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class RequestBoard {
 	private String id;
@@ -8,6 +9,7 @@ public class RequestBoard {
 	private String content;
 	private Date regDate;
 	private String memberId;
+	private List<RequestComment> requestComment;
 	
 	
 	public String getId() {
@@ -40,6 +42,14 @@ public class RequestBoard {
 	public void setMemberId(String memberId) {
 		this.memberId = memberId;
 	}
+	public List<RequestComment> getRequestComment() {
+		return requestComment;
+	}
+	public void setRequestComment(List<RequestComment> requestComment) {
+		this.requestComment = requestComment;
+	}
+	
+
 	
 
 }
