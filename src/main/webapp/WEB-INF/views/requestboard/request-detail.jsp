@@ -65,24 +65,24 @@
 				<table>
 			        <thead>
 			          <tr>
-			              <th id="title">글제목<i id="re" class="small material-icons">launch</i></th>			             
+			              <th id="title">${n.title}<i id="re" class="small material-icons">launch</i></th>			             
 			          </tr>
 			          <tr>
-			          	 <th id="writedate">2017.3.15<i class="small material-icons">star</i> 23</th>
+			          	 <th id="writedate">${n.regDate}<i class="small material-icons">star</i> 23</th>
 			          </tr>
 			          <tr>
-			          	<th id="writer">writer</th>
+			          	<th id="writer">${n.memberId}</th>
 			          </tr>
 			        </thead>
 			        <tbody>
-			          <tr>
+			        <!--   <tr>
 			            <td id="thum">thum</td>
-			          </tr>
-			          <tr>
+			          </tr> -->
+			          <!-- <tr>
 			            <td id="url">url</td>
-			          </tr>
+			          </tr> -->
 			          <tr>
-			            <td id="content">content</td>
+			            <td id="content">${n.content}</td>
 			          </tr>
 			          <tr>
 			            <td>
@@ -99,7 +99,10 @@
 			          </tr>
 			          <tr>
 			            <td>
-							<a id="btn" class="waves-effect waves-light btn">수정</a>
+							<a  id="btn" class="waves-effect waves-light btn" a href="request-edit?c=${n.id}">수정</a>
+			            </td>
+			            <td>
+							<a id="btn" class="waves-effect waves-light btn">목록</a>
 			            </td>
 			          </tr>
 			        </tbody>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="tiles"  uri="http://tiles.apache.org/tags-tiles" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -111,7 +112,7 @@ body {
 
 <body>
 
-<form action="reg" method="post">
+<form action="edit" method="post">
 	<div id="main">
 	<div>요청등록</div>
 		<table>
@@ -142,7 +143,7 @@ body {
 					<th>
 						<div id="title">제목</div>
 					</th>
-					<th><input name="title" id="titleinput" type="text" value=""></th>
+					<th><input name="title" id="titleinput" type="text" value="${n.title}"></th>
 
 				</tr>
 				<tr>
@@ -161,7 +162,7 @@ body {
 							<form>
 								<div class="form-group">
 									<label for="comment">Comment:</label>
-									<textarea name="content" class="form-control" rows="15" id="comment"></textarea>
+									<textarea name="content" class="form-control" rows="15" id="comment" value="">${n.content}</textarea>
 								</div>
 							</form>
 						</div>

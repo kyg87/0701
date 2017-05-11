@@ -1,4 +1,4 @@
-package com.wiyn.web.controller;
+	package com.wiyn.web.controller;
 
 import java.util.List;
 
@@ -39,16 +39,19 @@ public class RequestBoardController {
 		List<RequestBoard> list = sqlSession.getMapper(RequestBoardDao.class).getList();
 		model.addAttribute("list", list);
 	
-		return "requestboard.request";
+		return "requestboard.requestboard";
 	}
+	
 	@RequestMapping("request-reg")
 	public String site(){
 		
 		return "requestboard.request-reg";		
 	}
 	
-	@RequestMapping(value="requestBoard-reg", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
-	@ResponseBody
+	
+	
+	@RequestMapping(value="reg", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
+
 	public String sited(
 			RequestBoard requestBoard,
 			@RequestParam(value="title")String title, 
@@ -56,25 +59,50 @@ public class RequestBoardController {
 			@RequestParam(value="memberId")String memberId
 			){
 		
-		System.out.println(title);
+	/*	System.out.println(title);
 		System.out.println(content);
-		System.out.println(memberId);
+		System.out.println(memberId);*/
 		
 		requestBoard.setTitle(title);
 		requestBoard.setContent(content);
 		requestBoard.setMemberId(memberId);
 		
 		requestBoardDao.add(requestBoard);
-		return "ok";
+		return "redirect:request-detail?c="+requestBoard.getId();
 		
 
 		
 	}
-	@RequestMapping(value="request-detail")
-	public String siteDetail(){
-		
-		return "requestboard.request-detail";
-	}
+	
+	
+	@RequestMapping("request-edit")
+	   public String RequestEdit(@RequestParam("c")String id, Model model){
+	      
+	         
+	      RequestBoard requestboard = new RequestBoard();
+	      
+	      requestboard = sqlSession.getMapper(RequestBoardDao.class).get(id);   
+	      requestboard.setRequestComment(sqlSession.getMapper(RequestCommentDao.class).getList());
+	      
+	      model.addAttribute("n", requestboard);
+	      
+	      return "requestboard.request-edit";
+	   }
+	
+	
+	@RequestMapping("request-detail")
+	   public String RequestDetail(@RequestParam("c")String id, Model model){
+	      
+	         
+	      RequestBoard requestboard = new RequestBoard();
+	      
+	      requestboard = sqlSession.getMapper(RequestBoardDao.class).get(id);   
+	      requestboard.setRequestComment(sqlSession.getMapper(RequestCommentDao.class).getList());
+	      
+	      model.addAttribute("n", requestboard);
+	      
+	      return "requestboard.request-detail";
+	   }
 	
 	
 	@RequestMapping(value="requestBoard-detail", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
@@ -98,4 +126,6 @@ public class RequestBoardController {
 		return "redirect:request-detail";
 	}
 }
+
+
 	

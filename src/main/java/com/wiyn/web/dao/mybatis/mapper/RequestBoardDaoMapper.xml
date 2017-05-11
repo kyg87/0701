@@ -4,15 +4,15 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.wiyn.web.dao.RequestBoardDao">
-<select resultType="com.wiyn.web.entity.RequestBoard" id="getList"> 
-SELECT `RequestBoard`.`id`, `RequestBoard`.`title`, `RequestBoard`.
-`content`, `RequestBoard`.`regDate`, `RequestBoard`.`memberId` 
-FROM `lsedb`.`RequestBoard` 
-</select>
+	<select resultType="com.wiyn.web.entity.RequestBoard" id="getList">
+		SELECT `RequestBoard`.`id`, `RequestBoard`.`title`, `RequestBoard`.
+		`content`, `RequestBoard`.`regDate`, `RequestBoard`.`memberId`
+		FROM `lsedb`.`RequestBoard`
+	</select>
 	<insert id="add" parameterType="com.wiyn.web.entity.RequestBoard">
-	<selectKey order="BEFORE" keyProperty="id" resultType="String">
-         select max(cast(id as unsigned))+1 id from RequestBoard
-      </selectKey>
+		<selectKey order="BEFORE" keyProperty="id" resultType="String">
+			select max(cast(id as unsigned))+1 id from RequestBoard
+		</selectKey>
 
 		INSERT INTO
 		`lsedb`.`RequestBoard`
@@ -34,5 +34,14 @@ FROM `lsedb`.`RequestBoard`
 
 
 	</insert>
+
+	<update id="update" parameterType="com.wiyn.web.entity.RequestBoard">
+		UPDATE RequestBoard
+		SET
+		title = #{title},
+		content =
+		#{content}>
+		WHERE title = #{title} AND content = #{content}
+	</update>
 
 </mapper>

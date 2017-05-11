@@ -26,6 +26,22 @@ public class MyBatisRequestBoardDao implements RequestBoardDao {
 		requestBoardDao = sqlSession.getMapper(RequestBoardDao.class);
 	    return requestBoardDao.add(requestBoard);
 	}
+	
+	@Override
+	public int update(RequestBoard requestBoard) {
+		
+		RequestBoardDao requestBoardDao;
+		requestBoardDao = sqlSession.getMapper(RequestBoardDao.class);
+	    return requestBoardDao.update(requestBoard);
+	}
+	
+	@Override
+	public int delete(String memberId) {
+		
+		RequestBoardDao requestBoardDao;
+		requestBoardDao = sqlSession.getMapper(RequestBoardDao.class);
+	    return requestBoardDao.delete(memberId);
+	}
 
 
 	@Override
@@ -33,6 +49,12 @@ public class MyBatisRequestBoardDao implements RequestBoardDao {
 		RequestBoardDao requestBoardDao;
 		requestBoardDao = sqlSession.getMapper(RequestBoardDao.class);
 	    return requestBoardDao.getList();
+	}
+
+	@Override
+	public RequestBoard get(String id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
