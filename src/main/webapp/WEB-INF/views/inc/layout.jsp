@@ -15,20 +15,20 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
 <body>
+<!-- <div class="wrapper">	 -->
 		<tiles:insertAttribute name="header" />
-<div class="wrapper">	
-		<tiles:insertAttribute name="aside" />	
-	<div class="container">
-		<div class="row">
 		
+<main>
+<div class="container">
+		<div class="row">	
+		<tiles:insertAttribute name="aside" />
 		<tiles:insertAttribute name="main" />
-		</div>
 	</div>
-</div>
+	</div >
 	<!-- 풋터 -->
+	</main>
 <tiles:insertAttribute name="footer" />
-	
-	
+<!-- </div>	 -->
 	
 	<!-- Modal Structure -->
 	<div id="modal1" class="modal">
