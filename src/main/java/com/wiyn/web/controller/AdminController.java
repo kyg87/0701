@@ -70,7 +70,7 @@ public class AdminController {
 		
 		
 		for (BigCategory bigCategory : bcList) {
-			bigCategory.setSmallcategory(sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId()));
+			bigCategory.setSmallCategory(sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId()));
 		}
 		
 		model.addAttribute("bcList", bcList);

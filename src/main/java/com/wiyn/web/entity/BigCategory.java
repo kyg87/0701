@@ -9,7 +9,7 @@ public class BigCategory {
 	private String id;
 	private String name;
 	
-	private List<SmallCategory> smallcategory;
+	private List<SmallCategory> smallCategory;
 	
 	public String getId() {
 		return id;
@@ -24,12 +24,14 @@ public class BigCategory {
 		this.name = name;
 	}
 	
-	public List<SmallCategory> getSmallcategory() {
-		return smallcategory;
+	public List<SmallCategory> getSmallCategory() {
+		return smallCategory;
 	}
-	public void setSmallcategory(List<SmallCategory> smallcategory) {
-		this.smallcategory = smallcategory;
+	public void setSmallCategory(List<SmallCategory> smallCategory) {
+		this.smallCategory = smallCategory;
 	}
+	
+
 	
 	
 }

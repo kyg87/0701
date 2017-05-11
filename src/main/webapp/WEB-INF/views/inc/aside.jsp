@@ -17,7 +17,7 @@
 						class="collapsible-header  waves-effect waves-teal">${bc.name}</a>
 						<div class="collapsible-body">
 							<ul>
-								<c:forEach var="sc" items="${bc.smallcategory }">
+								<c:forEach var="sc" items="${bc.smallCategory }">
 									<li><a href="color.html">${sc.name }</a></li>
 
 								</c:forEach>
