@@ -35,9 +35,9 @@
     <nav>
       <div class="nav-wrapper">
         <ul class="center menubar">
-          <li><a href="#">공지사항</a></li>
-          <li><a href="#">요청게시판</a></li>
-          <li><a href="#">자유게시판</a></li>
+        	<li><a href="../requestboard/request-detail">요청게시판</a></li>
+        	<li><a href="../freeboard/free-detail">자유게시판</a></li>
+          	<li><a href="../noticeboard/notice-detail">공지사항</a></li> 
         </ul>
       </div>
     </nav>
