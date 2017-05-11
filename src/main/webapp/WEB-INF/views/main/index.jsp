@@ -90,11 +90,11 @@ textScroll.prototype.start = function() {
 		
 
 				<div class="collection">
-					<a href="#!" class="collection-item">Alvin</a> 
-					<a href="#!" class="collection-item">Alvin</a> 
-					<a href="#!" class="collection-item">Alvin</a> 
-					<a href="#!" class="collection-item">Alvin</a> 
-					<a href="#!" class="collection-item">Alvin</a> 
+					<a href="../siteboard/siteboard" class="collection-item">Alvin</a> 
+					<a href="../siteboard/siteboard" class="collection-item">Alvin</a> 
+					<a href="../siteboard/siteboard" class="collection-item">Alvin</a> 
+					<a href="../siteboard/siteboard" class="collection-item">Alvin</a> 
+					<a href="../siteboard/siteboard" class="collection-item">Alvin</a> 
 					<a href="#!" class="collection-item">Alvin</a> 
 					<a href="#!" class="collection-item">Alvin</a> 
 					<a href="#!" class="collection-item">Alvin</a> 

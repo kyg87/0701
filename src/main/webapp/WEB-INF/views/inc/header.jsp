@@ -10,7 +10,7 @@
 		class="button-collapse top-nav full hide-on-large-only"><i
 		class="material-icons">menu</i></a>
 		
-		<a href="${root }/index" class="logo">Wiyn</a> 
+		<a href="${root }/main/index" class="logo">Wiyn</a> 
 		
 		<security:authentication property="authorities" var="auths"/>
 		<security:authentication property="name" var="name" />
