@@ -58,12 +58,15 @@ FROM `lsedb`.`FreeBoard`
 </update>
 
 <update id="update">
+
+	
+	
 	UPDATE `lsedb`.`FreeBoard`
-SET
+	SET
 
 	`title` = #{title},
 	`contentSrc` = #{contentSrc},
-	`content` = #{content},
+	`content` = #{content}
 
 	WHERE `id` = #{id}
 	

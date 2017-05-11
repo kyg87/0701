@@ -9,6 +9,7 @@ public class FreeBoard {
     private String title;
     private String contentSrc;
     private String content;
+    private String address;
     private int hit;
     private Date regDate;
     private String memberId;
@@ -61,6 +62,12 @@ public class FreeBoard {
 	}
 	public void setFreeComment(List<FreeComment> freeComment) {
 		this.freeComment = freeComment;
+	}
+	public String getaddress() {
+		return address;
+	}
+	public void setaddress(String address) {
+		this.address = address;
 	}
 
 

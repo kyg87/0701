@@ -86,7 +86,7 @@
 			            <td id="thum">${n.content}</td>
 			          </tr>
 			          <tr>
-			            <td id="url">url</td>
+			            <td id="address">${n.address}</td>
 			          </tr>
 			          <tr>
 			            <td id="content">${n.content }</td>
@@ -111,15 +111,17 @@
 			            <td>
 			           
 			            	<input type="hidden" name="id" value =${n.id }>
-							 <a href="free-edit?c=${n.id}"><button class="btn waves-effect waves-light" type="submit" name="action">수정</button></a>
+			            	<form action="free-edit?c=${n.id}" method="post">
+								
+								<button class="btn waves-effect waves-light" type="submit" name="action">수정하기</button>
+							</form>
 			            </td>
 			            
 			            <td>
 			            <form action="free-del" method="post">
 							<input type="hidden" name="id" value =${n.id }>
 							 <button class="btn waves-effect waves-light" type="submit" name="action">삭제</button>
-							 				 	
-  						
+				
   						
   						</form>
   							

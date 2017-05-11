@@ -150,7 +150,7 @@ body {
 					<th>
 						<div id="address">http://</div>
 					</th>
-					<th><input id="titleinput" type="text" value=""></th>
+					<th><input id="titleinput" name="address"type="text" value=""></th>
 				</tr>
 				<tr>
 					<th>

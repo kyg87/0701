@@ -58,6 +58,14 @@ public class MyBatisFreeBoardDao implements FreeBoardDao{
 	}
 
 
+	@Override
+	public int update(FreeBoard freeboard) {
+		FreeBoardDao FreeBoardDao;
+		FreeBoardDao = sqlSession.getMapper(FreeBoardDao.class);
+	    return FreeBoardDao.update(freeboard);
+	}
+
+
 	
 
 
