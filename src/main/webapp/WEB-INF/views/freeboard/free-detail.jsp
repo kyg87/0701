@@ -83,7 +83,7 @@
 			         			        </thead>
 			        <tbody>
 			          <tr>
-			            <td id="thum">thu11m</td>
+			            <td id="thum">${n.content}</td>
 			          </tr>
 			          <tr>
 			            <td id="url">url</td>
@@ -109,15 +109,19 @@
 			          <tr>
 			          
 			            <td>
-							<a id="btn" class="waves-effect waves-light btn">수정</a>
+			           
+			            	<input type="hidden" name="id" value =${n.id }>
+							 <a href="free-edit?c=${n.id}"><button class="btn waves-effect waves-light" type="submit" name="action">수정</button></a>
 			            </td>
 			            
 			            <td>
-			           <form action="free-del" method="post">
-							 <button class="btn waves-effect waves-light" type="submit" name="action">
-							 				 삭제		
-  							</button>
-  							</form>
+			            <form action="free-del" method="post">
+							<input type="hidden" name="id" value =${n.id }>
+							 <button class="btn waves-effect waves-light" type="submit" name="action">삭제</button>
+							 				 	
+  						
+  						
+  						</form>
   							
 			            </td>
 			            <td>
@@ -132,7 +136,7 @@
 		      	</table>
 
 			</div>
-			<form action="freeBoard-detail" method="post">
+			<form action="freeBoard-comment-add" method="post">
 			<div id="minibox">			
 				<table>
 			        <thead>
@@ -143,11 +147,16 @@
 			          </tr>
 			        </thead>
 			        <tbody>
+			        <c:forEach var="v" items="${n.freeComment}">
 			          <tr>
+			          	
 			          	<td>
-			          		댓글내용<i id="mini" class="small material-icons">star</i>
+			          	
+			          		${v.content }<i id="mini" class="small material-icons">star</i>
 			          	</td>
+			          
 			          </tr>
+			          	</c:forEach>
 			        </tbody>
 		      	</table>
 			</div>

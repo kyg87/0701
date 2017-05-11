@@ -17,5 +17,7 @@ public interface FreeBoardDao {
 	
 	public int add(FreeBoard freeBoard);
 	public int delete(String id);
+
+	public int update(String id);
 	
 }

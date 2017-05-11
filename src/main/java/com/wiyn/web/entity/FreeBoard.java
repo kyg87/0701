@@ -1,6 +1,7 @@
 package com.wiyn.web.entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class FreeBoard {
 	
@@ -11,6 +12,7 @@ public class FreeBoard {
     private int hit;
     private Date regDate;
     private String memberId;
+    private List<FreeComment> freeComment;
     
 	public String getId() {
 		return id;
@@ -53,6 +55,12 @@ public class FreeBoard {
 	}
 	public void setMemberId(String memberId) {
 		this.memberId = memberId;
+	}
+	public List<FreeComment> getFreeComment() {
+		return freeComment;
+	}
+	public void setFreeComment(List<FreeComment> freeComment) {
+		this.freeComment = freeComment;
 	}
 
 

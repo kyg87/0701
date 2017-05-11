@@ -53,5 +53,21 @@ FROM `lsedb`.`FreeBoard`
 	
 </delete>
 
+<update id="hitInc">
+	UPDATE `lsedb`.`FreeBoard` SET hit=hit+1 WHERE `id`=#{id};
+</update>
+
+<update id="update">
+	UPDATE `lsedb`.`FreeBoard`
+SET
+
+	`title` = #{title},
+	`contentSrc` = #{contentSrc},
+	`content` = #{content},
+
+	WHERE `id` = #{id}
+	
+</update>
+
 
 </mapper>
