@@ -49,12 +49,14 @@ public class FreeBoardController {
 			FreeBoard freeboard,
 			@RequestParam(value="title")String title, 	
 			@RequestParam(value="content" )String content,
+			@RequestParam(value="address" )String address,
 			@RequestParam(value="contentSrc")String contentSrc,
 			@RequestParam(value="memberId")String memberId
 			){
 		
 			freeboard.setTitle(title);
 			freeboard.setContent(content);
+			freeboard.setContent(address);
 			freeboard.setContentSrc(contentSrc);
 			freeboard.setMemberId(memberId);
 		
@@ -113,37 +115,28 @@ public class FreeBoardController {
 				@RequestParam(value="id") String id){
 		
 		
-			System.out.println(id);
+			//System.out.println(id);
 			freeBoardDao.delete(id);
 		
 		return "redirect:freeboard";
 	
 	}
 	
+	  @RequestMapping("free-edit")
+      public String RequestEdit(@RequestParam("c")String id, Model model){
+         
+            
+         FreeBoard freeboard = new FreeBoard();
+         
+         freeboard = sqlSession.getMapper(FreeBoardDao.class).get(id);   
+         freeboard.setFreeComment(sqlSession.getMapper(FreeCommentDao.class).getList());
+         
+         model.addAttribute("n", freeboard);
+         
+         return "freeboard.free-edit";
+      }
 	
-	@RequestMapping(value="free-edit", method=RequestMethod.GET)	
-	public String noticeEdit(@RequestParam("c") String id, Model model,FreeBoard freeboard){
-		freeboard = sqlSession.getMapper(FreeBoardDao.class).get(id);	
-		model.addAttribute("n", freeboard);
-		
-		return "free-reg?c="+freeboard.getId();
-	}
 	
-	@RequestMapping(value="free-reg", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
-	public String freeUpdate(
-			FreeBoard freeboard,
-			
-			@RequestParam(value="id") String id)
-	
-			{
-		
-				
-			System.out.println(id);
-			freeBoardDao.update(id);
-	
-	return "redirect:free-reg?c="+freeboard.getId();
-
-}
 	
 	
 }
