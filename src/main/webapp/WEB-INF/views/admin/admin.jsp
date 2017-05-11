@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="com.wiyn.web.entity.SmallCategory"%>
+<%@page import="com.google.gson.*"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +22,8 @@
 	rel="stylesheet" media="screen,projection" />
 <link href="/WiynPrj/resource/css/admin/admin.css" type="text/css"
 	rel="stylesheet" />
+
+
 
 </head>
 <body>
@@ -89,60 +94,75 @@
 	</form>
 	<!-- --------------------- 게시판 end --------------------- --> --%>
 
-	<form action="#">
-
-		<div class="view">
-			<ul class="collection with-header">
-				<li class="collection-header"><h4>카테고리 관리</h4></li>
-			</ul>
-
-			<div class="category-admin">
 
 
-				<div class="input-field">
-					<select>
-						<option value="" disabled selected>카테고리 선택</option>
-						<option value="1">1번 카테고리</option>
-						<option value="2">2번 카테고리</option>
-						<option value="3">3번 카테고리</option>
-					</select>
-				</div>
-				<!-- Modal Trigger -->
-				<a class="waves-effect waves-light btn" href="#modal11">수정</a>
+	<div class="view">
+		<ul class="collection with-header">
+			<li class="collection-header"><h4>카테고리 관리</h4></li>
+		</ul>
 
-				<!-- Modal Structure -->
+		<div class="category-admin">
 
 
+			<div class="input-field">
+				<select name="bigCategoryId" id="bigCategoryId">
+					<option value="" disabled selected>대분류 선택</option>
 
-				<!-- Modal Trigger -->
-				<a class="waves-effect waves-light btn" href="#modal2">삭제</a>
-
-				<!-- Modal Structure -->
-
-
-				<a class="waves-effect waves-light btn" href="#modal3">대분류 추가</a>
-
-				<!-- Modal Structure -->
-
-
-
-				<a class="waves-effect waves-light btn" href="#modal4">소분류 추가</a>
-
-				<!-- Modal Structure -->
-
-
-
+					<c:forEach var="bc" items="${bcList }">
+						<option value="${bc.id }">${bc.name }</option>
+					</c:forEach>
+				</select>
 			</div>
 
-			<!-- <div class="article-btn right">
+
+
+			<div class="input-field" id="scList">
+				<select name="smallCategoryId">
+					<option value="" disabled selected>소분류 선택</option>
+
+					<c:forEach var="sc" items="${d }">
+						<option value="${sc.id }">${sc.name }</option>
+					</c:forEach>
+
+				</select>
+			</div>
+
+			<!-- Modal Trigger -->
+			<a class="waves-effect waves-light btn" href="#modal11">수정</a>
+
+			<!-- Modal Structure -->
+
+
+
+			<!-- Modal Trigger -->
+			<a class="waves-effect waves-light btn" href="#modal2">삭제</a>
+
+			<!-- Modal Structure -->
+
+
+			<a class="waves-effect waves-light btn" href="#modal3">대분류 추가</a>
+
+			<!-- Modal Structure -->
+
+
+
+			<a class="waves-effect waves-light btn" href="#modal4">소분류 추가</a>
+
+			<!-- Modal Structure -->
+
+
+
+		</div>
+
+		<!-- <div class="article-btn right">
 						<a class="waves-effect waves-light btn card-panel blue lighten-2">글쓰기</a>
 						<a class="waves-effect waves-light btn card-panel blue lighten-2">선택
 							삭제</a>
 					</div> -->
 
-		</div>
+	</div>
 
-	</form>
+	<!-- </form> -->
 
 	<div id="modal11" class="modal">
 		<div class="modal-content">
@@ -190,7 +210,8 @@
 		<div class="modal-content">
 			<h4>대분류 추가</h4>
 			<div class="row">
-				<form class="col s12" id="bigCategory" action="admin-bcadd" method="post">
+				<form class="col s12" id="bigCategory" action="admin-bcadd"
+					method="post">
 					<div class="row">
 						<div class="input-field col s12">
 							<textarea id="textarea1" class="materialize-textarea" name="name"></textarea>
@@ -199,13 +220,11 @@
 
 						<div class="modal-footer">
 
-							<button class="btn waves-effect waves-light" type="submit" name="action">
-									Cancel 
-							</button>
+							<button class="btn waves-effect waves-light" type="submit"
+								name="action">Cancel</button>
 
-							<button class="btn waves-effect waves-light" type="submit" name="action">
-									Submit
-							</button>
+							<button class="btn waves-effect waves-light" type="submit"
+								name="action">Submit</button>
 						</div>
 					</div>
 				</form>
@@ -218,32 +237,31 @@
 		<div class="modal-content">
 			<h4>소분류 추가</h4>
 			<div class="row">
-				<form class="col s12" id="smallCategory" action="admin-scadd" method="post">
+				<form class="col s12" id="smallCategory" action="admin-scadd"
+					method="post">
 					<div class="row">
 						<div class="input-field">
 							<select name="bigCategoryId">
-								<option value="" disabled selected> 대분류 선택 </option>
-								
+								<option value="" disabled selected>대분류 선택</option>
+
 								<c:forEach var="bc" items="${bcList }">
 									<option value="${bc.id }">${bc.name }</option>
 								</c:forEach>
 							</select>
 						</div>
-						
+
 						<div class="input-field col s12">
 							<textarea id="textarea1" class="materialize-textarea" name="name"></textarea>
 							<label for="textarea1">새로운 카테고리명 입력</label>
 						</div>
-						
+
 						<div class="modal-footer">
 
-							<button class="btn waves-effect waves-light" type="submit" name="action">
-									Cancel 
-							</button>
+							<button class="btn waves-effect waves-light" type="submit"
+								name="action">Cancel</button>
 
-							<button class="btn waves-effect waves-light" type="submit" name="action">
-									Submit
-							</button>
+							<button class="btn waves-effect waves-light" type="submit"
+								name="action">Submit</button>
 
 						</div>
 
@@ -268,6 +286,24 @@
 			$('.modal').modal();
 		});
 	    $(".button-collapse").sideNav();
+
+	</script>
+
+	<script>
+		$(function() {
+			$("#bigCategoryId").on('change', function() {
+
+				var data = $("#bigCategoryId");
+
+				$.post("getListWithBC", data, function(d) {
+					
+					alert(d);
+					
+					
+					
+				});
+			});
+		});
 	</script>
 
 </body>

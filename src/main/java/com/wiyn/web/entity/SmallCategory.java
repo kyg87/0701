@@ -25,6 +25,4 @@ public class SmallCategory {
 		this.bigCategoryId = bigCategoryId;
 	}
 	
-	
-	
 }

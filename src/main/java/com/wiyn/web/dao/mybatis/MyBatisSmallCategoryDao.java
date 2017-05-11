@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.wiyn.web.dao.SmallCategoryDao;
+import com.wiyn.web.entity.BigCategory;
 import com.wiyn.web.entity.SmallCategory;
 
 public class MyBatisSmallCategoryDao implements SmallCategoryDao {
@@ -31,6 +32,15 @@ public class MyBatisSmallCategoryDao implements SmallCategoryDao {
 	public boolean check(SmallCategory smallCategory, String name) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public List<SmallCategory> getListWithBC(String bigCategoryId) {
+		
+		SmallCategoryDao smallCategoryDao;
+		smallCategoryDao = sqlSession.getMapper(SmallCategoryDao.class);
+		
+	    return smallCategoryDao.getList();
 	}
 
 

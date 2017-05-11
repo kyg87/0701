@@ -1,5 +1,5 @@
 package com.wiyn.web.controller;
-
+import com.google.gson.Gson;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.wiyn.web.dao.BigCategoryDao;
 import com.wiyn.web.dao.SmallCategoryDao;
@@ -67,8 +68,30 @@ public class AdminController {
 		
 		List<BigCategory> bcList = sqlSession.getMapper(BigCategoryDao.class).getList();
 		model.addAttribute("bcList", bcList);
-
+		
 		return "admin.admin";
 	}
 	
+	@RequestMapping(value="getListWithBC", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
+	@ResponseBody
+	public String GetListWithBC(Model model,
+			@RequestParam(value="bigCategoryId")String bigCategoryId){
+		
+		System.out.println(bigCategoryId);
+		
+		List<SmallCategory> scList = sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategoryId);
+		model.addAttribute("scList", scList);
+		
+		Gson gson = new Gson();
+		String json = gson.toJson(scList);
+		
+		return json;
+	}
+	
 }
+
+
+
+
+
+

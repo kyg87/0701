@@ -10,6 +10,12 @@
 		SELECT * FROM SmallCategory
 		
 	</select>
+	
+	<select resultType="com.wiyn.web.entity.SmallCategory" id="getListWithBC">
+	
+		SELECT id, name FROM SmallCategory WHERE bigCategoryId = #{param1 };
+	
+	</select>
 		
 	<insert id="add" parameterType="com.wiyn.web.entity.SmallCategory">
 		<selectKey order="BEFORE" keyProperty="id" resultType="String">
