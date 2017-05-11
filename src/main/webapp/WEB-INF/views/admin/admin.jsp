@@ -273,8 +273,7 @@
 
 
 	<!--  Scripts-->
-	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<script src="/WiynPrj/resource/js/materialize.js"></script>
+
 	<script type="text/javascript">
 	
 		$(document).ready(function() {
@@ -285,7 +284,6 @@
 			// the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
 			$('.modal').modal();
 		});
-	    $(".button-collapse").sideNav();
 
 	</script>
 

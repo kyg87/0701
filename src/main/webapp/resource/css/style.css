@@ -21,10 +21,10 @@
     font-family: 'Open Sans Condensed',sans-serif;
     font-weight: normal;
     padding-left: 13px;
+
 }
 .singin{
-	position : absolute;
-	top:0;
+
 	right: 85px;
     text-align: right;
     font-size: 20px;
@@ -32,7 +32,10 @@
     letter-spacing: 3px;
     font-family: 'Open Sans Condensed',sans-serif;
     font-weight: normal;
-    padding-left: 13px;
+    padding-right: 15px;
+
+    float: right;
+    white-space: nowrap;
 }
 /* .category>a{
 	display: inline-block;
@@ -43,8 +46,7 @@
     padding: 0 13px;
 } */
 .login{
-	position : absolute;
-	top:0;
+
 	right: 5px;
     text-align: right;
     font-size: 20px;
@@ -52,7 +54,10 @@
     letter-spacing: 3px;
     font-family: 'Open Sans Condensed',sans-serif;
     font-weight: normal;
-    padding-left: 13px;
+    padding-right: 15px;
+
+    float: right;
+    white-space: nowrap;
 }
 
 .role{

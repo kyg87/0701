@@ -14,20 +14,18 @@
 		
 		<security:authentication property="authorities" var="auths"/>
 		<security:authentication property="name" var="name" />
-
-	<%-- 	<c:forEach var="role" items="${auths}">
-			<li>role : ${role}</li>
-		</c:forEach> --%>
-		<a class="singin" href="${root}/joinus/singin">Singin</a>
+		
 		<security:authorize access="isAnonymous()">
 			<a class="login" href="${root}/joinus/login">Login</a>
 		</security:authorize>
 		<security:authorize access="isAuthenticated()">
 			<a class="login" href="${root}/j_spring_security_logout"> <security:authentication
-					property="name" />�떂 濡쒓렇�븘�썐
+					property="name" />LogOut
 			</a>
-
 		</security:authorize>
+		
+		<a class="singin" href="${root}/joinus/singin">Singin</a>
+
 
 
 

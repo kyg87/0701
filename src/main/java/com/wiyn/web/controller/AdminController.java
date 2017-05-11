@@ -67,6 +67,12 @@ public class AdminController {
 	public String admin(Model model) {
 		
 		List<BigCategory> bcList = sqlSession.getMapper(BigCategoryDao.class).getList();
+		
+		
+		for (BigCategory bigCategory : bcList) {
+			bigCategory.setSmallcategory(sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId()));
+		}
+		
 		model.addAttribute("bcList", bcList);
 		
 		return "admin.admin";
