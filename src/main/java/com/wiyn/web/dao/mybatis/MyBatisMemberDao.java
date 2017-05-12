@@ -20,4 +20,23 @@ public class MyBatisMemberDao implements MemberDao {
 		return memberDao.add(email, pwd);
 	}
 
+	@Override
+	public int addRole(String email, String auth) {
+		MemberDao memberDao;
+		memberDao = sqlSession.getMapper(MemberDao.class);
+		
+		return memberDao.addRole(email, auth);
+	}
+
+	@Override
+	public int isExistEmail(String email) {
+		// TODO Auto-generated method stub
+		
+		MemberDao memberDao;
+		memberDao = sqlSession.getMapper(MemberDao.class);
+		
+		System.out.println(memberDao.isExistEmail(email));
+		return memberDao.isExistEmail(email);
+	}
+
 }

@@ -7,20 +7,41 @@
     
 	<insert id="add" parameterType="com.wiyn.web.entity.Member">
 
-			INSERT INTO `lsedb`.`Member`
-			(
-			`id`,
-			`pwd`,
-			`regDate`
-			)
-			VALUES
-			(
-			#{param1},
-			#{param2},
-			now()
-			)
-		
-		
+		INSERT INTO `lsedb`.`Member`
+		(
+		`id`,
+		`pwd`,
+		`regDate`
+		)
+		VALUES
+		(
+		#{param1},
+		#{param2},
+		now()
+		)
+	
 	</insert>
+	
+	<insert id="addRole" parameterType="com.wiyn.web.entity.Member">
+
+		INSERT INTO `lsedb`.`MemberRole`
+		(
+		`memberId`,
+		`roleId`,
+		`defaultRole`
+		)
+		VALUES
+		(
+		#{param1},
+		#{param2},
+		true
+		);
+
+	
+	</insert>
+	
+	<select id="isExistEmail" parameterType="com.wiyn.web.entity.Member" resultType="Integer" >
+	    SELECT count(*) FROM lsedb.Member where id = #{param1};
+	</select>
 	
 </mapper>

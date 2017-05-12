@@ -19,18 +19,21 @@ public class JoinusController {
 	@Autowired
 	private MemberDao memberDao;
 	
+	//회원가입
 	@RequestMapping(value="singIn", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
 	public String singIn(
 			@RequestParam(value="email1")String email, 
 			@RequestParam(value="pass")String pwd
 			) {
 
-		System.out.println(email);
-		System.out.println(pwd);
+		int result = memberDao.add(email, pwd);
 		
-		memberDao.add(email, pwd);
+		System.out.println(result);
 		
-		return "index";
+		if(result > 0) memberDao.addRole(email, "ROLE_USER");
+		
+		
+		return "redirect:../main/index";
 	}
 	
 	
@@ -41,16 +44,7 @@ public class JoinusController {
 		
 		System.out.println(memberId);
 		
-		return "redirect:../main/index";
-		
-	/*	String role = "ROLE_TEACHER";//memberRoleDao.getDefaultRoleById(memberId);
-		
-		if(role.equals("ROLE_ADMIN"))
-			return "redirect:../admin/index";
-		else if(role.equals("ROLE_TEACHER"))
-			return "redirect:../teacher/index";
-		else
-			return "redirect:../student/index";	*/	
+		return "redirect:../main/index";	
 	}
 	
 	@RequestMapping("singin")
@@ -64,6 +58,18 @@ public class JoinusController {
 		
 		return "joinus.login";		
 	}
+	
+	@RequestMapping("isSingIn")
+	@ResponseBody
+	public String isSingIn(
+			@RequestParam(value="email1")String email){
+		
+		int result = memberDao.isExistEmail(email);
+		
+		
+		return Integer.toString(result);
+	}
+
 	
 	
 }

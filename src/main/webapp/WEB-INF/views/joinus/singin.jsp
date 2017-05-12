@@ -55,6 +55,20 @@
 			  
 		  });
 		  
+		  $("#btn2").click(function(){
+			  var email = $("#email1");
+			  
+				$.post("isSingIn", email, function(d) {
+					
+					alert(d);
+					
+					
+					
+				});
+		  });
+		  
+		  
+		  
 		  /*이메일 정규식 검사*/
 		    function emailcheck(strValue)
 		    {
@@ -99,7 +113,10 @@
 
 					<input id="btn1" type="button" class="waves-effect waves-light btn"
 						value="가입하기" >
-
+						
+	<input id="btn2" type="button" class="waves-effect waves-light btn"
+						value="중복체크" >
+					
 				</div>
 			</form>
 		
