@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="tiles"  uri="http://tiles.apache.org/tags-tiles" %>         
+<%@taglib prefix="tiles"  uri="http://tiles.apache.org/tags-tiles" %>    
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>     
                   
 	         <main id="main">
 				<table border="1">
@@ -28,9 +29,14 @@
 						</c:forEach>
 					</tbody>
 				</table>
+
+
+				<security:authorize access="isAnonymous()">
+					<p>글쓰기는 로그인한 유저만 가능합니다 로그인해주세요</p>
+				</security:authorize> <security:authorize access="isAuthenticated()">
+					<button class="waves-effect waves-light btn"
+						onclick="location.href ='free-reg'">글쓰기</button>
+				</security:authorize>
 				
-			
-						
-				<button class="waves-effect waves-light btn" onclick = "location.href ='free-reg'">글쓰기</button>
 	
 </main>
