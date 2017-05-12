@@ -114,16 +114,103 @@
 				</select>
 			</div>
 
+			<script>
+			
+				/* window.addEventListener("load", function() {
+					
+									console.log("loaded");
 
+									var bigCategory = document.querySelector("#bigCategoryId");
+									var smallCategory = document.querySelector("#smallCategoryId");
+
+									bigCategory.onchange = function() {
+										
+										var id = bigCategory.value;
+
+										var request = new XMLHttpRequest();
+										request.onload = function(event) {
+
+											var list = JSON.parse(request.responseText);
+
+											smallCategory.innerHTML = "";
+
+											var option = document.createElement("option");
+
+											option.value = 0;
+											option.textContent = "분류 선택";
+
+											smallCategory.appendChild(option);
+
+											for (var i = 0; i < list.length; i++) {
+
+												option = document.createElement("option");
+												option.value = list[i].id;
+												option.textContent = list[i].title;
+
+												smallCategory.appendChild(option);
+											}
+
+										};
+
+										request.open("GET", "getListWithBC");
+										request.send(null);
+
+									};
+
+								}); */
+
+				$(function() {
+					$("#bigCategoryId").on('change', function() {
+
+								var data = $("#bigCategoryId");
+								var smallCategory = $("#sub-category");
+
+								$.post("getListWithBC", data, function(d) {
+
+									console.log(d);
+
+									var obj = JSON.parse(d);
+									
+									smallCategory.innerHTML = "";
+
+									var option = document.createElement("option");
+					   				
+					   				option.value = 0;
+					   				option.textContent = "소분류 선택";
+					   				
+					   				smallCategory.append(option);
+									
+									for (var i = 0; i < obj.length; i++) {
+										
+										console.log(obj[i].name);
+
+										option = document.createElement("option");
+					   					option.value = obj[i].id;
+					   					option.textContent = obj[i].name;
+					   					
+					   					
+					   					smallCategory.append(option);
+									}
+									
+								});
+							});
+				});
+			</script>
 
 			<div class="input-field" id="scList">
-				<select name="smallCategoryId">
+				<select name="smallCategoryId" id="smallCategoryId">
 					<option value="" disabled selected>소분류 선택</option>
 
-					<c:forEach var="sc" items="${d }">
+					<%-- <c:forEach var="sc" items="${d }">
 						<option value="${sc.id }">${sc.name }</option>
-					</c:forEach>
+					</c:forEach> --%>
 
+				</select>
+			</div>
+
+			<div>
+				<select id="sub-category">
+					<option>분류 선택</option>
 				</select>
 			</div>
 
@@ -276,7 +363,7 @@
 
 	<script type="text/javascript">
 	
-		$(document).ready(function() {
+		$(document).ready(function() {			
 	    	$('select').material_select();
 	  	});
 	
@@ -285,23 +372,6 @@
 			$('.modal').modal();
 		});
 
-	</script>
-
-	<script>
-		$(function() {
-			$("#bigCategoryId").on('change', function() {
-
-				var data = $("#bigCategoryId");
-
-				$.post("getListWithBC", data, function(d) {
-					
-					alert(d);
-					
-					
-					
-				});
-			});
-		});
 	</script>
 
 </body>
