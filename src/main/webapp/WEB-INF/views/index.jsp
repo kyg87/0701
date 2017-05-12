@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,7 +57,8 @@
 	<a href="admin/admin">관리자 페이지로 가는 것</a>
 	</div>
 	<div>
-	<a href="user/mypage">유저 페이지로 가는 것</a>
+	<a href="user/mypage?memberId"+ <security:authentication
+					property="name"/>>유저 페이지로 가는 것</a>
 	</div>
 	<div>
 	<a href="joinus/singin">(영균)회원가입 페이지 가는 것</a>

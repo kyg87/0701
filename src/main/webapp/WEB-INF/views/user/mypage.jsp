@@ -53,14 +53,15 @@
         
 		
         <tbody>
-      		<c:forEach var="i" begin="5" end="9">
+        <c:forEach var="v" items="${list}">
           <tr>
             <td><input type="checkbox" id="test${i}"/><label for="test${i}"></label></td>
-            <td><a href="index3.jsp">가가가가가가가가가</a></td>
-            <td>Eclair</td>
-            <td>112</td>
+            <td><a href="../${v.boardName}board/${v.boardName}-detail?c=${v.id}">글제목 : ${v.title}</a></td>
+            <td>글번호 : ${v.id}</td>
+            <td>작성종류 : ${v.boardName}</td>
           </tr>
-          </c:forEach>
+        </c:forEach>
+        
          </tbody>      
       </table>   
         
