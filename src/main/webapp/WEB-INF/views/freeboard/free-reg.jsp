@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -191,66 +192,13 @@ body {
 			</tbody>
 		</table>
 		
-		<input type="hidden" name="memberId" value="large@a.a">
+		<input type="hidden" name="memberId" value=<security:authentication property="name"/>	>
 	</div>
 </form>
 
+	
 
-
-	<!-- <div id="main">
-		<div>
-			<div>
-				<div class="input-field">
-					<select>
-						<option value="" disabled selected></option>
-						<option value="1">Option 1</option>
-						<option value="2">Option 2</option>
-						<option value="3">Option 3</option>
-					</select>
-				</div>
-
-				<div id="input-field2" class="input-field">
-					<select>
-						<option value="" disabled selected></option>
-						<option value="1">Option 1</option>
-						<option value="2">Option 2</option>
-						<option value="3">Option 3</option>
-					</select>
-				</div>
-			</div>
-
-			<div id="divtitle">
-			<div id="title">제목</div>
-			<input id="titleinput" type="text" value="">
-		</div>
-
-
-		<div id="divaddress">
-			<div id="address">주소</div>
-			<input id="titleinput" type="text" value="">
-		</div>
-
-		<div id="divcontent">
-			<form>
-				<div class="form-group">
-					<label for="comment">Comment:</label>
-					<textarea class="form-control" rows="15" id="comment"></textarea>
-				</div>
-			</form>
-		</div>
-
-		<div id="divtag">
-			<div id="title">Tag</div>
-			<input id="titleinput" type="text" value="">
-		</div>
-
-
-
-
-	</div> -->
-
-
-
+		
 
 	<!--  Scripts-->
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

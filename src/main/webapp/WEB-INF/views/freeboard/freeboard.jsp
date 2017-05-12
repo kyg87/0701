@@ -28,5 +28,9 @@
 						</c:forEach>
 					</tbody>
 				</table>
+				
+			
+						
+				<button class="waves-effect waves-light btn" onclick = "location.href ='free-reg'">글쓰기</button>
 	
 </main>
