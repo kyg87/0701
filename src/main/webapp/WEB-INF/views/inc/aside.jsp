@@ -4,30 +4,37 @@
 <aside id="left-sidebar-nav">
 
 <ul id="nav-mobile" class="side-nav fixed" style="overflow: auto; transform: translateX(0%);">
-        <li class="search">
-          <div class="search-wrapper card">
-            <input id="search"><i class="material-icons">search</i>
-            <div class="search-results"></div>
-          </div>
-        </li>
-		<li class="no-padding">
-			<ul class="collapsible collapsible-accordion">
-				<c:forEach var="bc" items="${bcList}">
-					<li class="bold"><a
-						class="collapsible-header  waves-effect waves-teal">${bc.name}</a>
-						<div class="collapsible-body">
-							<ul>
-								<c:forEach var="sc" items="${bc.smallCategory}">
-									<li><a href="color.html">${sc.name}</a></li>
+    <label>Search</label>
+    <br>
+    <nav>
+    <div class="nav-wrapper">
+      <form>
+        <div class="input-field">
+          <input id="search" type="search" required>
+          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+      </form>
+    </div>
+  </nav>
+  <a class="waves-effect waves-light btn">button</a>
+  <br>
+  <br>
 
-								</c:forEach>
-							</ul>
-						</div></li>
-				</c:forEach>
-			</ul>
-		</li>
-	</ul>
-
- 
- <!--  -->
+  <label>Speed Search</label>
+  <br>
+  <select class="browser-default">
+    <option value="" disabled selected>Choose your option</option>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+    <option value="3">Option 3</option>
+  </select>
+  <br>
+  <select class="browser-default">
+    <option value="" disabled selected>Choose your option</option>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+    <option value="3">Option 3</option>
+  </select>
+  <a class="waves-effect waves-light btn">button</a>
 </aside>
