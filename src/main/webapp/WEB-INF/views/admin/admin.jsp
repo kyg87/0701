@@ -168,6 +168,8 @@
 
 								$.post("getListWithBC", data, function(d) {
 
+									$('select').material_select('destroy');
+									
 									console.log(d);
 
 									var obj = JSON.parse(d);
@@ -178,10 +180,7 @@
 									var lis = document.createElement("li");
 									var spans = document.createElement("span");
 					   				
-					   				option.value = 0;
-					   				option.textContent = "소분류 선택";
-					   				
-					   				smallCategory.append(option);
+									for(var i = 0; i< )									
 									
 									for (var i = 0; i < obj.length; i++) {
 										
@@ -193,14 +192,15 @@
 					   					
 					   					option.value = obj[i].id;
 					   					option.textContent = obj[i].name;
+					   					lis.addClass = "";
 					   					spans.textContent = obj[i].name;
-					   					
-					   					
-					   					console.log(smli);
+					   					spans.value = obj[i].id;
 					   					
 					   					smli.append(lis);
 					   					lis.append(spans);
 					   					smallCategory.append(option);
+					   					
+					   					$('select').material_select();
 									}
 									
 								});
@@ -211,13 +211,22 @@
 			<div class="input-field" id="scList">
 				<select name="smallCategoryId" id="smallCategoryId">
 					<option value="" disabled selected>소분류 선택</option>
-
-					<%-- <c:forEach var="sc" items="${d }">
-						<option value="${sc.id }">${sc.name }</option>
-					</c:forEach> --%>
-
 				</select>
 			</div>
+			
+			<script>
+			
+			$(function() {
+				$("#smallCategoryId").on('change', function() {
+					
+					var smList = $("#smallCategoryId");
+					
+					console.log("change");
+					
+				});
+			});
+			
+			</script>
 
 
 			<!-- Modal Trigger -->
@@ -369,15 +378,10 @@
 
 	<script type="text/javascript">
 	
-		$(document).ready(function() {			
-	    	$('select').material_select('destroy');
+		$(document).ready(function() {
 	    	$('select').material_select();
 	  	});
-		
-		$(document).change(function() {
-			$('select').material_select('destroy');
-	    	$('select').material_select();
-		});
+	
 	
 		$(document).ready(function() {
 			// the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
