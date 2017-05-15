@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -112,32 +113,11 @@ body {
 
 <body>
 
-<form action="free-edit" method="post">
+<form action="free-details" method="post">
 	<div id="main">
-	<div>자유게시판등록</div>
 		<table>
 			<thead>
 				<tr>
-					<th>
-						<div class="input-field">
-							<select>
-								 <option value="" disabled selected>카테고리 one</option> 
-								<option value="1">Option 1</option>
-								<option value="2">Option 2</option>
-								<option value="3">Option 3</option>
-							</select>
-						</div>
-					</th>
-					<th>
-						<div id="input-field2" class="input-field">
-							<select>
-								 <option value="" disabled selected>카테고리 two</option> 
-								<option value="1">Option 1</option>
-								<option value="2">Option 2</option>
-								<option value="3">Option 3</option> 
-							</select>
-						</div>
-					</th>
 				</tr>
 				<tr>
 					<th>
@@ -146,12 +126,6 @@ body {
 					
 					<th><input id="titleinput" name="title" type="text" value="${n.title }"></th>
 					
-				</tr>
-				<tr>
-					<th>
-						<div id="address">주소</div>
-					</th>
-					<th><input id="titleinput" type="text" value=""></th>
 				</tr>
 				<tr>
 					<th>
@@ -183,13 +157,11 @@ body {
 				<tr>
 					<td colspan="2">
 					<div id="btn">
-					  <form action="freeboard" method="post">
+					 
 							<input type="hidden" name="id" value =${n.id }>
+							
 							 <button class="btn waves-effect waves-light" type="submit" name="action">저장</button>
-				
-  						
-  						</form>
-				
+							 <a href="free-detail?c=${n.id}">취소</a>
   					 </div>
 					</td>
 				</tr>

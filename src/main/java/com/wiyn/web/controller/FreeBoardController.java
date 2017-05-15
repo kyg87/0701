@@ -15,128 +15,119 @@ import com.wiyn.web.dao.FreeCommentDao;
 import com.wiyn.web.entity.FreeBoard;
 import com.wiyn.web.entity.FreeComment;
 
-
-
 @Controller
 @RequestMapping("/freeboard/*")
 public class FreeBoardController {
-	
+
 	@Autowired
 	private FreeBoardDao freeBoardDao;
 	@Autowired
 	private FreeCommentDao freeCommentDao;
-	
+
 	@Autowired
 	private SqlSession sqlSession;
-	
-	@RequestMapping("freeboard")	
-	public String request(Model model){
-		
+
+	@RequestMapping("freeboard")
+	public String request(Model model) {
+
 		List<FreeBoard> list = sqlSession.getMapper(FreeBoardDao.class).getList();
 		model.addAttribute("list", list);
-	
+
 		return "freeboard.freeboard";
 	}
-	
+
 	@RequestMapping("free-reg")
-	public String free(){
-		
-		return "freeboard.free-reg";		
+	public String free() {
+
+		return "freeboard.free-reg";
 	}
-	
-	@RequestMapping(value="reg", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
-	public String free(
-			FreeBoard freeboard,
-			@RequestParam(value="title")String title, 	
-			@RequestParam(value="content" )String content,
-			@RequestParam(value="address" )String address,
-			@RequestParam(value="contentSrc")String contentSrc,
-			@RequestParam(value="memberId")String memberId
-			){
-		
-			freeboard.setTitle(title);
-			freeboard.setContent(content);
-			freeboard.setContent(address);
-			freeboard.setContentSrc(contentSrc);
-			freeboard.setMemberId(memberId);
-		
-			freeBoardDao.add(freeboard);
-			
-			return "redirect:free-detail?c="+freeboard.getId();
-		
-		}
-	
+
+	@RequestMapping(value = "reg", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	public String free(FreeBoard freeboard, 
+			@RequestParam(value = "title") String title,
+			@RequestParam(value = "content") String content, 
+			@RequestParam(value = "contentSrc") String contentSrc,
+			@RequestParam(value = "memberId") String memberId) {
+
+		freeboard.setTitle(title);
+		freeboard.setContent(content);
+		freeboard.setContentSrc(contentSrc);
+		freeboard.setMemberId(memberId);
+
+		freeBoardDao.add(freeboard);
+
+		return "redirect:free-detail?c=" + freeboard.getId();
+
+	}
+
 	@RequestMapping("free-detail")
-	public String freeDetail(@RequestParam("c")String id, Model model){
-		
-			
+	public String freeDetail(@RequestParam("c") String id, Model model) {
+
 		FreeBoard freeboard = new FreeBoard();
-		
-		freeboard = sqlSession.getMapper(FreeBoardDao.class).get(id);	
+
+		freeboard = sqlSession.getMapper(FreeBoardDao.class).get(id);
 		freeboard.setFreeComment(sqlSession.getMapper(FreeCommentDao.class).getList());
-		
+
 		model.addAttribute("n", freeboard);
-		
+
 		return "freeboard.free-detail";
 	}
-	
 
-	
-	@RequestMapping(value="freeBoard-comment-add", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
-	public String freeDetailComment(
-			FreeComment freeComment,
-			@RequestParam(value="content")String content,
-			@RequestParam(value="freeBoardId")String freeBoardId,
-			@RequestParam(value="memberId")String memberId
-			
-			
-			){
-		
-		
+	@RequestMapping(value = "freeBoard-comment-add", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	public String freeDetailComment(FreeComment freeComment, @RequestParam(value = "content") String content,
+			@RequestParam(value = "freeBoardId") String freeBoardId, @RequestParam(value = "memberId") String memberId
+
+	) {
+
 		freeComment.setContent(content);
 		freeComment.setFreeBoardId(freeBoardId);
 		freeComment.setMemberId(memberId);
-		
+
 		freeCommentDao.add(freeComment);
-		
-		
+
 		return "redirect:free-detail";
 	}
-/*	@RequestMapping("free-del")
-	public String freeDel(){
-		
-		return "redirect:freeboard";		
-	}*/
-	
-	@RequestMapping(value="free-del", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
-		public String freeDel(
-			FreeBoard freeboard,
-			
-				@RequestParam(value="id") String id){
-		
-		
-			//System.out.println(id);
-			freeBoardDao.delete(id);
-		
+
+	@RequestMapping(value = "free-del", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	public String freeDel(FreeBoard freeboard,
+
+			@RequestParam(value = "id") String id) {
+
+		// System.out.println(id);
+		freeBoardDao.delete(id);
+
 		return "redirect:freeboard";
-	
+
 	}
-	
-	  @RequestMapping("free-edit")
-      public String RequestEdit(@RequestParam("c")String id, Model model){
-         
-            
-         FreeBoard freeboard = new FreeBoard();
-         
-         freeboard = sqlSession.getMapper(FreeBoardDao.class).get(id);   
-         freeboard.setFreeComment(sqlSession.getMapper(FreeCommentDao.class).getList());
-         
-         model.addAttribute("n", freeboard);
-         
-         return "freeboard.free-edit";
-      }
-	
-	
-	
-	
+
+	@RequestMapping("free-edit")
+	public String freeEditGet(@RequestParam("c") String id, Model model) {
+
+
+		model.addAttribute("n", freeBoardDao.get(id));
+
+		return "freeboard.free-edit";
+	}
+
+	@RequestMapping(value = "free-details", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	public String freeEditPost(Model model, FreeBoard freeboard,
+			String title, 
+			 String content,
+			String contentSrc) {
+
+		/*freeboard = sqlSession.getMapper(FreeBoardDao.class).get(id);*/
+
+		model.addAttribute("n", freeboard);
+
+		System.out.println(title);
+		System.out.println(content);
+		
+		freeboard.setTitle(title);
+		freeboard.setContent(content);
+		freeboard.setContentSrc(contentSrc);
+
+		freeBoardDao.update(freeboard);
+
+		return "freeboard.free-detail";
+	}
 }

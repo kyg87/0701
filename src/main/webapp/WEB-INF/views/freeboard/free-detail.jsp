@@ -60,12 +60,7 @@
 		<div id="main">
 			<div id="context">
 				<nav>
-					<div class="nav-wrapper">
-						<div class="col s12">
-							<a href="#!" class="breadcrumb">category1</a> <a href="#!"
-								class="breadcrumb">category2</a>
-						</div>
-					</div>
+				
 				</nav>
 				<table>
 			        <thead>
@@ -84,10 +79,7 @@
 			        <tbody>
 			          <tr>
 			            <td id="thum">${n.content}</td>
-			          </tr>
-			          <tr>
-			            <td id="address">${n.address}</td>
-			          </tr>
+			          </tr>	     
 			          <tr>
 			            <td id="content">${n.content }</td>
 			          </tr>
@@ -111,10 +103,10 @@
 			            <td>
 			           
 			            	<input type="hidden" name="id" value =${n.id }>
-			            	<form action="free-edit?c=${n.id}" method="post">
+			            	<form action="free-edit?c=${n.id}" method="post"> 
 								
 								<button class="btn waves-effect waves-light" type="submit" name="action">수정하기</button>
-							</form>
+							</form> 
 			            </td>
 			            
 			            <td>
@@ -144,7 +136,8 @@
 			        <thead>
 			          <tr>
 			              <td>
-			              	<input name="content" type="text" value="댓글을입력하세요." />	<input id="reg"  name="action" type="submit" value="등록" />	
+			              	<input name="content" type="text" value="댓글을입력하세요." />	
+			              	<input name="action" type="submit" value="등록" />	
 			              </td>	             
 			          </tr>
 			        </thead>
