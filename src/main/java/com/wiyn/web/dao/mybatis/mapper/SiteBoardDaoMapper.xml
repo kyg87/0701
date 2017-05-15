@@ -4,41 +4,59 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wiyn.web.dao.SiteBoardDao">
 
-<select id="getBoard" resultType="com.wiyn.web.entity.SiteBoard">
-	SELECT id,
-	    title,
-	    content,
-	    regDate,
-	    hit,
-	    url,
-	    tagId,
-	    memberId,
-	    bigCategoryId
-	FROM SiteBoard
-	WHERH id=#{id}
-</select>
+	<select id="getBoard" resultType="com.wiyn.web.entity.SiteBoard">
+		SELECT id,
+		title,
+		content,
+		regDate,
+		hit,
+		url,
+		tagId,
+		memberId,
+		bigCategoryId
+		FROM SiteBoard
+		WHERH id=#{id}
+	</select>
 
-<insert id="add" parameterType="com.wiyn.web.entity.SiteBoard">
-	<selectKey order="BEFORE" keyProperty="id" resultType="String">
-		select max(cast(id as unsigned))+1 id from SiteBoard
-	</selectKey>
+	<insert id="add" parameterType="com.wiyn.web.entity.SiteBoard">
+		<selectKey order="BEFORE" keyProperty="id" resultType="String">
+			elect IFNULL(max(cast(id as unsigned)), 0)+1 id from SiteBoard
+		</selectKey>
 		INSERT INTO `lsedb`.`SiteBoard`
-			(`id`,
-			`title`,
-			`content`,
-			`regDate`,
-			`url`,
-			`memberId`
-			)
-			VALUES
-			(
-			#{id},
-			#{title},
-			#{content},
-			now(),
-			#{url},
-			#{memberId}
-			)		
-</insert>
+		(`id`,
+		`title`,
+		`content`,
+		`regDate`,
+		`url`,
+		`memberId`
+		)
+		VALUES
+		(
+		#{id},
+		#{title},
+		#{content},
+		now(),
+		#{url},
+		#{memberId}
+		)
+	</insert>
+
+
+
+	<select id="getList" resultType="com.wiyn.web.entity.SiteBoard">
+		SELECT* FROM SiteBoard WHERE title like '%${query}%' LIMIT ${(page-1)*10},10
+	</select>
+	
+		<select id="lastId" resultType="String">
+		SELECT MAX(CAST(id AS UNSIGNED)) id
+		FROM SiteBoard
+	</select>
+
+	<select id="getSize" resultType="Integer">
+		SELECT COUNT(id) SIZE
+		FROM SiteBoard
+		WHERE BINARY title LIKE '%${param1}%'
+	</select>
+	
 
 </mapper>
