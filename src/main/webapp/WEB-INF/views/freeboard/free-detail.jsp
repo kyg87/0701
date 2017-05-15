@@ -78,7 +78,7 @@
 			         			        </thead>
 			        <tbody>
 			          <tr>
-			            <td id="thum">${n.content}</td>
+			            <td id="thum">${n.contentSrc}</td>
 			          </tr>	     
 			          <tr>
 			            <td id="content">${n.content }</td>
