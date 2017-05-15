@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="tiles"  uri="http://tiles.apache.org/tags-tiles" %>			
+<%@taglib prefix="tiles"  uri="http://tiles.apache.org/tags-tiles" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>			
 <style type="text/css">
 * {margin:0;padding:0;}
 #scroll {height:30px;}
@@ -64,16 +65,9 @@ textScroll.prototype.start = function() {
 			<main id="main">
 			
 <ul id="scroll">
-    <li><a href="">1위</a></li>
-    <li><a href="">2위</a></li>
-    <li><a href="">3위</a></li>
-    <li><a href="">4위</a></li>
-    <li><a href="">5위</a></li>
-    <li><a href="">6위</a></li>
-    <li><a href="">7위</a></li>
-    <li><a href="">8위</a></li>
-    <li><a href="">9위</a></li>
-    <li><a href="">10위</a></li>
+<c:forEach var="n" items="${noticelist}">
+    <li><a href="notice-detail?c=${n.id}">${n.title}</a></li>
+</c:forEach>    
 </ul>
 
 			
@@ -83,42 +77,41 @@ textScroll.prototype.start = function() {
 					<ul class="tabs">
 						<li class="tab col s3"><a href="#test1">최신순</a></li>
 						<li class="tab col s3"><a class="active" href="#test2">점수순</a></li>
-				
 						<li class="tab col s3"><a href="#test4">댓글순</a></li>
 					</ul>
 				</div>
 		
 
 				<div class="collection">
-					<a href="../siteboard/siteboard" class="collection-item">Alvin</a> 
-					<a href="../siteboard/siteboard" class="collection-item">Alvin</a> 
-					<a href="../siteboard/siteboard" class="collection-item">Alvin</a> 
-					<a href="../siteboard/siteboard" class="collection-item">Alvin</a> 
-					<a href="../siteboard/siteboard" class="collection-item">Alvin</a> 
-					<a href="#!" class="collection-item">Alvin</a> 
-					<a href="#!" class="collection-item">Alvin</a> 
-					<a href="#!" class="collection-item">Alvin</a> 
-					<a href="#!" class="collection-item">Alvin</a> 
-					<a href="#!" class="collection-item">Alvin</a> 
-					<a href="#!" class="collection-item">Alvin</a> 
-					<a href="#!" class="collection-item">Alvin</a> 
-					<a href="#!" class="collection-item">Alvin</a> 
-
+				<a href="../siteboard/siteboard" class="collection-item">Alvin</a> 
+					<c:forEach var="s" items="${sitelist}">
+					<a href="site-detail?c=${s.id}" class="collection-item">${s.title}</a></li>
+					</c:forEach>
+					
 				</div>
-
+			<c:set var="last" value="${(size % 10) >= 0 ? size / 10 + 1 : size / 10}"/>	
+			<div>${empty param.p ? 1 : param.p}pages</div>
+			
 				<ul class="pagination center">
 					<li class="disabled"><a href="#!"><i
 							class="material-icons">chevron_left</i></a></li>
-					<li class="active"><a href="#!">1</a></li>
-					<li class="waves-effect"><a href="#!">2</a></li>
+
+					<li class="active"><a href="?p=1&q=${param.q}">1</a></li>
+				<c:forEach var="i" begin="2" end="${last }"> 
+ 		         <li class="waves-effect"><a href="?p=${i }&q=${param.q}">${i }</a></li> 
+		         </c:forEach> 
+<!-- 					<li class="waves-effect"><a href="#!">2</a></li>
 					<li class="waves-effect"><a href="#!">3</a></li>
 					<li class="waves-effect"><a href="#!">4</a></li>
-					<li class="waves-effect"><a href="#!">5</a></li>
+					<li class="waves-effect"><a href="#!">5</a></li> -->
 					<li class="waves-effect"><a href="#!"><i
 							class="material-icons">chevron_right</i></a></li>
 				</ul>
+				
+				
+
+				
 			</div>
-			
 			</main>
 			
 			
@@ -126,4 +119,4 @@ textScroll.prototype.start = function() {
 var real_search_keyword = new textScroll('scroll'); // 스크롤링 하고자하는 ul 엘리먼트의 id값을 인자로 넣습니다
 real_search_keyword.name = "real_search_keyword"; // 인스턴스 네임을 등록합니다
 real_search_keyword.start(); // 스크롤링 시작
-</script>	
+</script>
