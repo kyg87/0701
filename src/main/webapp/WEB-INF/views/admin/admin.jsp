@@ -163,7 +163,8 @@
 					$("#bigCategoryId").on('change', function() {
 
 								var data = $("#bigCategoryId");
-								var smallCategory = $("#sub-category");
+								var smallCategory = $("#smallCategoryId");
+								var smli = $("#scList ul");
 
 								$.post("getListWithBC", data, function(d) {
 
@@ -174,6 +175,8 @@
 									smallCategory.innerHTML = "";
 
 									var option = document.createElement("option");
+									var lis = document.createElement("li");
+									var spans = document.createElement("span");
 					   				
 					   				option.value = 0;
 					   				option.textContent = "소분류 선택";
@@ -185,10 +188,18 @@
 										console.log(obj[i].name);
 
 										option = document.createElement("option");
+					   					lis = document.createElement("li");
+					   					spans = document.createElement("span");
+					   					
 					   					option.value = obj[i].id;
 					   					option.textContent = obj[i].name;
+					   					spans.textContent = obj[i].name;
 					   					
 					   					
+					   					console.log(smli);
+					   					
+					   					smli.append(lis);
+					   					lis.append(spans);
 					   					smallCategory.append(option);
 									}
 									
@@ -208,11 +219,6 @@
 				</select>
 			</div>
 
-			<div>
-				<select id="sub-category">
-					<option>분류 선택</option>
-				</select>
-			</div>
 
 			<!-- Modal Trigger -->
 			<a class="waves-effect waves-light btn" href="#modal11">수정</a>
@@ -364,8 +370,14 @@
 	<script type="text/javascript">
 	
 		$(document).ready(function() {			
+	    	$('select').material_select('destroy');
 	    	$('select').material_select();
 	  	});
+		
+		$(document).change(function() {
+			$('select').material_select('destroy');
+	    	$('select').material_select();
+		});
 	
 		$(document).ready(function() {
 			// the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
