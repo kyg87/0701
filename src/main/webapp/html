@@ -1,8 +1,0 @@
-<html>
-<script>
-var tt ="abc";
-    typeof tt;
-    console.log(typeof 3);
-</script>
-
-</html>
