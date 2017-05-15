@@ -35,17 +35,43 @@
 					</nav>
 				</td>
 			</tr>
+			<tr>
+				<td colspan="2">${n.title }</td>
+				<td>즐겨찾기</td>
+			</tr>
+			<tr>
+				<td>${n.regDate }</td>
+				<td>like</td>
+			</tr>
+			<tr>
+				<td>${n.memberId }</td>
+				<td>hit</td>
+			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td colspan="3">title</td>
+				<td>${n.url }</td>
 			</tr>
 			<tr>
-				<td colspan="3">작성자</td>
+				<td>thum</td>
 			</tr>
 			<tr>
-				<td>2017.5.10</td>
+				<td>${n.content }</td>
 			</tr>
+			<tr>
+				<td>tag</td>
+			</tr>
+			<tr>
+					<td>
+						<input type="hidden" name="id" value=${n.id }>
+						<form action="site-edit?c=${n.id}" method="post">
+							<button class="btn waves-effect waves-light" type="submit"
+								name="action">수정하기</button>
+						</form>
+					</td>
+				</tr>
 		</tbody>
 	</table>
+	<input type="hidden" name="siteBoardId" value="1"> 
+	<input type="hidden"	name="memberId" value="LSE@mb">
 </main>

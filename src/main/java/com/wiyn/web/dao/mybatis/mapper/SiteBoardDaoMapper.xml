@@ -5,17 +5,7 @@
 <mapper namespace="com.wiyn.web.dao.SiteBoardDao">
 
 	<select id="getBoard" resultType="com.wiyn.web.entity.SiteBoard">
-		SELECT id,
-		title,
-		content,
-		regDate,
-		hit,
-		url,
-		tagId,
-		memberId,
-		bigCategoryId
-		FROM SiteBoard
-		WHERH id=#{id}
+		SELECT * FROM lsedb.SiteBoard where id = #{id}
 	</select>
 
 	<insert id="add" parameterType="com.wiyn.web.entity.SiteBoard">
@@ -41,13 +31,11 @@
 		)
 	</insert>
 
-
-
 	<select id="getList" resultType="com.wiyn.web.entity.SiteBoard">
 		SELECT* FROM SiteBoard WHERE title like '%${query}%' LIMIT ${(page-1)*10},10
 	</select>
 	
-		<select id="lastId" resultType="String">
+	<select id="lastId" resultType="String">
 		SELECT MAX(CAST(id AS UNSIGNED)) id
 		FROM SiteBoard
 	</select>
@@ -58,5 +46,18 @@
 		WHERE BINARY title LIKE '%${param1}%'
 	</select>
 	
+	<delete id="delete">
+		DELETE FROM `lsedb`.`SiteBoard`
+		WHERE id=#{id};
+	</delete>
+	
+	<update id="update">
+		UPDATE `lsedb`.`SiteBoard`
+		SET
+		`title` = #{title},
+		`content` = #{content},
+		`url` = #{url}
+		WHERE `id` = #{id};
+	</update>
 
 </mapper>

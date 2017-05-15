@@ -6,7 +6,7 @@ import com.wiyn.web.entity.SiteBoard;
 public interface SiteBoardDao {
 
 	public List<SiteBoard> getList(int page, String query);
-	public String getBoard(String id);
+	SiteBoard getBoard(String id);
 	
 	public int add(SiteBoard siteBoard);
 	public int delete(String id);
