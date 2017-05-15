@@ -83,8 +83,6 @@ public class AdminController {
 	public String GetListWithBC(Model model,
 			@RequestParam(value="bigCategoryId")String bigCategoryId){
 		
-		System.out.println(bigCategoryId);
-		
 		List<SmallCategory> scList = sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategoryId);
 		model.addAttribute("scList", scList);
 		

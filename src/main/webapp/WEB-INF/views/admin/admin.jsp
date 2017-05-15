@@ -116,90 +116,27 @@
 
 			<script>
 			
-				/* window.addEventListener("load", function() {
-					
-									console.log("loaded");
-
-									var bigCategory = document.querySelector("#bigCategoryId");
-									var smallCategory = document.querySelector("#smallCategoryId");
-
-									bigCategory.onchange = function() {
-										
-										var id = bigCategory.value;
-
-										var request = new XMLHttpRequest();
-										request.onload = function(event) {
-
-											var list = JSON.parse(request.responseText);
-
-											smallCategory.innerHTML = "";
-
-											var option = document.createElement("option");
-
-											option.value = 0;
-											option.textContent = "분류 선택";
-
-											smallCategory.appendChild(option);
-
-											for (var i = 0; i < list.length; i++) {
-
-												option = document.createElement("option");
-												option.value = list[i].id;
-												option.textContent = list[i].title;
-
-												smallCategory.appendChild(option);
-											}
-
-										};
-
-										request.open("GET", "getListWithBC");
-										request.send(null);
-
-									};
-
-								}); */
+	
 
 				$(function() {
 					$("#bigCategoryId").on('change', function() {
 
 								var data = $("#bigCategoryId");
 								var smallCategory = $("#smallCategoryId");
-								var smli = $("#scList ul");
-
+								var smli = $("#scList>div>select");
+		
+								smli.empty();
+								
 								$.post("getListWithBC", data, function(d) {
 
-									$('select').material_select('destroy');
-									
-									console.log(d);
-
 									var obj = JSON.parse(d);
-									
-									smallCategory.innerHTML = "";
-
-									var option = document.createElement("option");
-									var lis = document.createElement("li");
-									var spans = document.createElement("span");
-					   				
-									for(var i = 0; i< )									
-									
+		   		
+									smallCategory.append( $('<option disabled selected><span> 소분류 선택 </span></option'));
+									   
 									for (var i = 0; i < obj.length; i++) {
-										
-										console.log(obj[i].name);
-
-										option = document.createElement("option");
-					   					lis = document.createElement("li");
-					   					spans = document.createElement("span");
-					   					
-					   					option.value = obj[i].id;
-					   					option.textContent = obj[i].name;
-					   					lis.addClass = "";
-					   					spans.textContent = obj[i].name;
-					   					spans.value = obj[i].id;
-					   					
-					   					smli.append(lis);
-					   					lis.append(spans);
-					   					smallCategory.append(option);
-					   					
+				   					
+										smallCategory.append( $('<option value=' +obj[i].id +  '><span>'+ obj[i].name +'</span></option>'));
+							
 					   					$('select').material_select();
 									}
 									
@@ -222,7 +159,7 @@
 					var smList = $("#smallCategoryId");
 					
 					console.log("change");
-					
+					alert("선택한 소분류 id 값 : " + $(this).val());
 				});
 			});
 			

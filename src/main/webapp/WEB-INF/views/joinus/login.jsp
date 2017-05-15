@@ -88,6 +88,7 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 	<h4>Modal Header</h4>
 			<h1>로그인${validate}</h1>
+				
 			<form id="myForm1" action="${root}/j_spring_security_check" method="post">
 				<c:if test="${param.error !=null }">
 				<p>Login Error<p/>
