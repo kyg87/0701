@@ -161,7 +161,7 @@ body {
 							<input type="hidden" name="id" value =${n.id }>
 							
 							 <button class="btn waves-effect waves-light" type="submit" name="action">저장</button>
-							 <a href="free-detail?c=${n.id}">취소</a>
+							 <button class="btn waves-effect waves-light" type="submit" value="취소">취소</button>
   					 </div>
 					</td>
 				</tr>

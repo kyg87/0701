@@ -3,8 +3,12 @@
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="tiles"  uri="http://tiles.apache.org/tags-tiles" %>    
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>     
+<%
+	
+%>
                   
 	         <main id="main">
+	         	<h4>< 자유게시판 ></h4>
 				<table border="1">
 					<thead>
 						<tr>
