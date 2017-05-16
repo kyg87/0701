@@ -125,13 +125,34 @@ public class RequestBoardController {
 		RequestBoard requestboard = new RequestBoard();
 
 		requestboard = sqlSession.getMapper(RequestBoardDao.class).get(id);
-	/*	requestboard.setRequestComment(sqlSession.getMapper(RequestCommentDao.class).getList());*/
+		requestboard.setRequestComment(sqlSession.getMapper(RequestCommentDao.class).getList());
 	
 
 		model.addAttribute("n", requestboard);
 
 		return "requestboard.request-detail";
 	}
+	
+	@RequestMapping(value = "requestcomment-detail", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	   public String freeDetailComment(RequestComment requestcomment, 
+	         
+	         @RequestParam(value = "content") String content,
+	         @RequestParam(value = "requestBoardId") String requestBoardId, 
+	         @RequestParam(value = "memberId") String memberId
+	         
+	   ) {
+
+		requestcomment.setContent(content);
+		requestcomment.setRequestBoardId(requestBoardId);
+		requestcomment.setMemberId(memberId);
+
+	      
+	      
+	      
+	      requestCommentDao.add(requestcomment);
+
+	      return "redirect:request-detail?c="+requestcomment.getRequestBoardId();
+	   }
 
 	
 	

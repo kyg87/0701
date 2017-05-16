@@ -122,22 +122,28 @@
 		      	</table>
 
 			</div>
-			<form action="requestBoard-detail" method="post">
+			<form action="requestcomment-detail" method="post">
 			<div id="minibox">		
 				<table>
 			        <thead>
 			          <tr>
 			              <td>
-			              	<input name="content"  type="text" value="댓글을입력하세요." />	<input id="reg"  name="action" type="submit" value="등록" />	
+			              	<input name="content"  type="text" value="댓글을입력하세요." />	
+			              	<input id="reg"  name="action" type="submit" value="등록" />	
 			              </td>	             
 			          </tr>
 			        </thead>
 			        <tbody>
+			         <c:forEach var="v" items="${n.requestComment}">
 			          <tr>
+			          	
 			          	<td>
-			          		댓글내용<i id="mini" class="small material-icons">star</i>
+			          	
+			          		${v.content }<i id="mini" class="small material-icons">star</i>
 			          	</td>
+			          
 			          </tr>
+			          	</c:forEach>
 			        </tbody>
 		      	</table>
 			</div>
