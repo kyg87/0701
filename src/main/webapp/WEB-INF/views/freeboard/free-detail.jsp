@@ -117,7 +117,7 @@
 			          		내용 : ${v.content }
 			          	</td>
 			          	<td>
-			          		해당 글번호 : ${v.freeBoardId }
+			          		등록된 아이디 : ${v.memberId }
 			          	</td>
 			          	<td>
 			          		<i id="mini" class="small material-icons">star</i>

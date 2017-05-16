@@ -66,7 +66,7 @@ public class FreeBoardController {
 		FreeBoard freeboard = new FreeBoard();
 
 		freeboard = sqlSession.getMapper(FreeBoardDao.class).get(id);
-		freeboard.setFreeComment(sqlSession.getMapper(FreeCommentDao.class).getList());
+		freeboard.setFreeComment(sqlSession.getMapper(FreeCommentDao.class).getList(id));
 
 		model.addAttribute("n", freeboard);
 

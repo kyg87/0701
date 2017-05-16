@@ -15,10 +15,10 @@ public class MyBatisFreeCommentDao implements FreeCommentDao {
 	private SqlSession sqlSession;
 
 	@Override
-	public List<FreeComment> getList() {
+	public List<FreeComment> getList(String boardId) {
 	      FreeCommentDao freeCommentDao;
 	      freeCommentDao = sqlSession.getMapper(FreeCommentDao.class);
-		return freeCommentDao.getList();
+		return freeCommentDao.getList(boardId);
 	}
 
 	@Override

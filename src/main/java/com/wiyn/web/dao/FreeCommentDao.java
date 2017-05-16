@@ -7,7 +7,7 @@ import com.wiyn.web.entity.FreeComment;
 
 public interface FreeCommentDao {
 	
-	public List<FreeComment> getList();
+	public List<FreeComment> getList(String boardId);
 	int add(FreeComment freecomment);
 	
 
