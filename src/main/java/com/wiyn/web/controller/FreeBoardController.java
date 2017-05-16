@@ -74,18 +74,27 @@ public class FreeBoardController {
 	}
 
 	@RequestMapping(value = "freeBoard-comment-add", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
-	public String freeDetailComment(FreeComment freeComment, @RequestParam(value = "content") String content,
-			@RequestParam(value = "freeBoardId") String freeBoardId, @RequestParam(value = "memberId") String memberId
-
+	public String freeDetailComment(FreeComment freeComment, 
+			
+			@RequestParam(value = "content") String content,
+			@RequestParam(value = "freeBoardId") String freeBoardId, 
+			@RequestParam(value = "memberId") String memberId
+			
 	) {
 
 		freeComment.setContent(content);
 		freeComment.setFreeBoardId(freeBoardId);
 		freeComment.setMemberId(memberId);
 
+		
+		System.out.println(content);
+		System.out.println(freeBoardId);
+		
 		freeCommentDao.add(freeComment);
 
-		return "redirect:free-detail?c=" + freeBoardId;
+
+		return "redirect:free-detail?c="+freeComment.getFreeBoardId();
+
 	}
 
 	@RequestMapping(value = "free-del", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
@@ -128,6 +137,6 @@ public class FreeBoardController {
 
 		freeBoardDao.update(freeboard);
 
-		return "freeboard.free-detail";
+		return "redirect:free-detail?c="+freeboard.getId();
 	}
 }
