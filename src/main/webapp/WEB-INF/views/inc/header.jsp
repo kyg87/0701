@@ -36,7 +36,7 @@
     <nav>
       <div class="nav-wrapper">
         <ul class="center menubar">
-        	<li><a href="../requestboard/request-detail">요청게시판</a></li>
+        	<li><a href="../requestboard/requestboard">요청게시판</a></li>
         	<li><a href="../freeboard/freeboard">자유게시판</a></li>
           	<li><a href="../noticeboard/notice-detail">공지사항</a></li> 
         </ul>
