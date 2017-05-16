@@ -85,7 +85,7 @@ public class FreeBoardController {
 
 		freeCommentDao.add(freeComment);
 
-		return "redirect:free-detail";
+		return "redirect:free-detail?c=" + freeBoardId;
 	}
 
 	@RequestMapping(value = "free-del", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")

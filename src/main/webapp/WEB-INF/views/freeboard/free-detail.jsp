@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="tiles"  uri="http://tiles.apache.org/tags-tiles" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -146,7 +147,6 @@
 			          <tr>
 			          	
 			          	<td>
-			          	
 			          		${v.content }<i id="mini" class="small material-icons">star</i>
 			          	</td>
 			          
@@ -155,8 +155,8 @@
 			        </tbody>
 		      	</table>
 			</div>
-						<input type="hidden" name="freeBoardId" value="1">
-			<input type="hidden" name="memberId" value="large@a.a">
+				<input type="hidden" name="freeBoardId" value=${n.id }>
+				<input type="hidden" name="memberId" value=<security:authentication property="name"/>>
 			</form>
 		</div>
 	</div>
