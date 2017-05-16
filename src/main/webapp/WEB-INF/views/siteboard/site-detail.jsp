@@ -66,10 +66,17 @@
 						<input type="hidden" name="id" value=${n.id }>
 						<form action="site-edit?c=${n.id}" method="post">
 							<button class="btn waves-effect waves-light" type="submit"
-								name="action">수정하기</button>
+								name="action">수정</button>
 						</form>
 					</td>
-				</tr>
+					<td>
+						<form action="site-delete" method="post">
+							<input type="hidden" name="id" value=${n.id }>
+							<button class="btn waves-effect waves-light" type="submit"
+								name="action">삭제</button>	
+						</form>		
+					</td>
+		</tr>
 		</tbody>
 	</table>
 	<input type="hidden" name="siteBoardId" value="1"> 

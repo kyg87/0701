@@ -112,7 +112,7 @@ body {
 
 <body>
 
-<form action="site-edit" method="post">
+<form action="edit" method="post">
 	<div id="main">
 	<div>자유게시판등록</div>
 		<table>
@@ -151,13 +151,7 @@ body {
 					<th>
 						<div id="address">주소</div>
 					</th>
-					<th><input id="titleinput" type="text" value=""></th>
-				</tr>
-				<tr>
-					<th>
-						<div id="contentSrc">IMAGE : </div>
-					</th>
-					<th><input id="titleinput" name="contentSrc" type="text" value=""></th>
+					<th><input id="titleinput" name="url"  type="text" value=" ${n.url }"></th>
 				</tr>
 			</thead>
 
@@ -183,13 +177,9 @@ body {
 				<tr>
 					<td colspan="2">
 					<div id="btn">
-					  <form action="siteboard" method="post">
 							<input type="hidden" name="id" value =${n.id }>
 							 <button class="btn waves-effect waves-light" type="submit" name="action">저장</button>
-				
-  						
-  						</form>
-				
+							 <a href="site-detail?c=${n.id}">취소</a>				
   					 </div>
 					</td>
 				</tr>

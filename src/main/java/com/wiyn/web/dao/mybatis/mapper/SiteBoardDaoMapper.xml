@@ -48,8 +48,8 @@
 	</select>
 	
 	<delete id="delete">
-		DELETE FROM `lsedb`.`SiteBoard`
-		WHERE id=#{id};
+		DELETE FROM SiteBoard
+		WHERE id=#{id}	 ON DELETE CASCADE
 	</delete>
 	
 	<update id="update">

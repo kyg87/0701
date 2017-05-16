@@ -118,18 +118,18 @@ body {
 				<tr>
 					<th>
 						<div class="input-field">
-							<select>
-								<option value="" disabled selected>카테고리 one</option>
-								<option value="1">Option 1</option>
-								<option value="2">Option 2</option>
-								<option value="3">Option 3</option>
+							<select name="bigCategoryId" id="bigCategoryId">
+								<option value="" disabled selected>대분류</option>
+								<c:forEach var="bc" items="${bcList }">
+									<option value="${bc.id }">${bc.name }</option>
+								</c:forEach>
 							</select>
 						</div>
 					</th>
 					<th>
 						<div id="input-field2" class="input-field">
-							<select>
-								<option value="" disabled selected>카테고리 two</option>
+							<select  name="smallCategoryId" >
+								<option value="" disabled selected>소분류</option>
 								<option value="1">Option 1</option>
 								<option value="2">Option 2</option>
 								<option value="3">Option 3</option>
