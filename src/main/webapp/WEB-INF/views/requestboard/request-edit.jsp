@@ -112,7 +112,7 @@ body {
 
 <body>
 
-<form action="edit" method="post">
+<form action="update" method="post">
 	<div id="main">
 	<div>요청등록</div>
 		<table>
@@ -146,12 +146,7 @@ body {
 					<th><input name="title" id="titleinput" type="text" value="${n.title}"></th>
 
 				</tr>
-				<tr>
-					<th>
-						<div id="address">http://</div>
-					</th>
-					<th><input id="titleinput" type="text" value="" ></th>
-				</tr>
+			
 				
 			</thead>
 
@@ -176,11 +171,14 @@ body {
 				</tr>
 				<tr>
 					<td colspan="2">
+					
 					<div id="btn">
-					 <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+					  <input type="hidden" name="id" value =${n.id }>
+					 <button class="btn waves-effect waves-light" type="submit" name="action"  >Submit
    					 <i class="material-icons right">send</i>
    					 </div>
   					</button>
+  					
 					</td>
 				</tr>
 			</tbody>

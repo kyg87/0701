@@ -5,9 +5,11 @@
 
 <mapper namespace="com.wiyn.web.dao.RequestBoardDao">
 	<select resultType="com.wiyn.web.entity.RequestBoard" id="getList">
-		SELECT `RequestBoard`.`id`, `RequestBoard`.`title`, `RequestBoard`.
+		SELECT
+		`RequestBoard`.`id`, `RequestBoard`.`title`, `RequestBoard`.
 		`content`, `RequestBoard`.`regDate`, `RequestBoard`.`memberId`
-		FROM `lsedb`.`RequestBoard`
+		FROM
+		`lsedb`.`RequestBoard`
 	</select>
 	<insert id="add" parameterType="com.wiyn.web.entity.RequestBoard">
 		<selectKey order="BEFORE" keyProperty="id" resultType="String">
@@ -35,13 +37,27 @@
 
 	</insert>
 
-	<update id="update" parameterType="com.wiyn.web.entity.RequestBoard">
-		UPDATE RequestBoard
+	<update id="update">
+		UPDATE `lsedb`.`RequestBoard`
 		SET
-		title = #{title},
-		content =
-		#{content}>
-		WHERE title = #{title} AND content = #{content}
+		
+		`title` = #{title},
+		`content` = #{content}
+		
+			
+		WHERE `id` = #{id}
+		
+	
 	</update>
+
+	<delete id="delete" parameterType="com.wiyn.web.entity.RequestBoard">
+		
+		DELETE FROM `lsedb`.`RequestBoard`
+		
+		WHERE
+		`id` = #{id}
+		
+		
+	</delete>
 
 </mapper>

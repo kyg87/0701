@@ -61,25 +61,12 @@ public class RequestBoardController {
 		requestBoard.setMemberId(memberId);
 
 		requestBoardDao.add(requestBoard);
-		return "redirect:request-detail?c=" + requestBoard.getId();
+		return "redirect:request-detail	?c=" + requestBoard.getId();
 
 	}
 
 
-	/*
-	 * @RequestMapping(value="request-del", method=RequestMethod.POST,
-	 * produces="text/plain;charset=UTF-8") public String delete( RequestBoard
-	 * requestboard,
-	 * 
-	 * @RequestParam(value="id") String id){
-	 * 
-	 * 
-	 * //System.out.println(id); requestBoardDao.delete(id);
-	 * 
-	 * return "redirect:requestboard";
-	 * 
-	 * }
-	 */
+
 
 	@RequestMapping("request-edit")
 	public String RequestEditGet(@RequestParam("c") String id, Model model) {
@@ -100,6 +87,7 @@ public class RequestBoardController {
 	public String requestUpdate(
 			
 			RequestBoard requestBoard ,
+			String id,
 			String title,
 			String content) {
 		
@@ -107,6 +95,7 @@ public class RequestBoardController {
 		System.out.println(title);
 		System.out.println(content);
 		
+		requestBoard.setId(id);
 		requestBoard.setTitle(title);
 		requestBoard.setContent(content);
 		
@@ -118,13 +107,26 @@ public class RequestBoardController {
 		return "redirect:request-detail?c=" + requestBoard.getId();
 	}
 	
+	@RequestMapping(value = "request-del", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	public String requestDel(RequestBoard requestBoard,
+
+			@RequestParam(value = "id") String id) {
+
+		System.out.println(id);
+		requestBoardDao.delete(id);
+
+		return "redirect:requestboard";
+
+	}
+	
 	@RequestMapping("request-detail")
 	public String RequestDetail(@RequestParam("c") String id, Model model) {
 
 		RequestBoard requestboard = new RequestBoard();
 
 		requestboard = sqlSession.getMapper(RequestBoardDao.class).get(id);
-		requestboard.setRequestComment(sqlSession.getMapper(RequestCommentDao.class).getList());
+	/*	requestboard.setRequestComment(sqlSession.getMapper(RequestCommentDao.class).getList());*/
+	
 
 		model.addAttribute("n", requestboard);
 

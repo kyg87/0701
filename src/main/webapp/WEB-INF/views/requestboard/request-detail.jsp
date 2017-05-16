@@ -49,7 +49,10 @@
 }
 </style>
 
+
+
  <main id="main">
+
 	<div>요청디테일</div>
 	<div id="yy">
 		<div id="main">
@@ -98,6 +101,16 @@
 			            </td>
 			          </tr>
 			          <tr>
+			        
+			          
+			          	
+			          	
+			          	<form action="request-del" method="post">
+			          	<input type="hidden" name="id" value =${n.id }>
+						<button  id="btn" class="waves-effect waves-light btn" type="submit" name="action">삭제</button>
+						</form>
+			            
+			          
 			            <td>
 							<a  id="btn" class="waves-effect waves-light btn" a href="request-edit?c=${n.id}">수정</a>
 			            </td>
@@ -133,5 +146,6 @@
 		</form>	
 		</div>
 	</div>
+
 
 </main>
