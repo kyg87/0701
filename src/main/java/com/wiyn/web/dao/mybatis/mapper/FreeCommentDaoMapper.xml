@@ -6,7 +6,7 @@
 <mapper namespace="com.wiyn.web.dao.FreeCommentDao" >
 
 	<select id="getList" resultType="com.wiyn.web.entity.FreeComment" >
-		SELECT * FROM FreeComment where freeBoardId = #{boardId}
+		SELECT * FROM FreeComment where freeBoardId = #{boardId} order by regDate desc;
 	</select>
     
  	<insert id="add" parameterType="com.wiyn.web.entity.FreeComment">
