@@ -9,6 +9,7 @@ public interface BigCategoryDao {
 	List<BigCategory> getList();
 
 	int add(BigCategory bigCategory);
+	int del(String bigCategoryId);
 	boolean check(BigCategory bigCategory, String name);
 
 }

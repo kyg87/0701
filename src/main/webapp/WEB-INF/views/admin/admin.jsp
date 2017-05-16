@@ -130,16 +130,21 @@
 								$.post("getListWithBC", data, function(d) {
 
 									var obj = JSON.parse(d);
+									console.log(obj);
 		   		
 									smallCategory.append( $('<option disabled selected><span> 소분류 선택 </span></option'));
-									   
-									for (var i = 0; i < obj.length; i++) {
-				   					
-										smallCategory.append( $('<option value=' +obj[i].id +  '><span>'+ obj[i].name +'</span></option>'));
-							
-					   					$('select').material_select();
-									}
 									
+									if(obj.length != 0){
+										for (var i = 0; i < obj.length; i++) {
+						   					
+											smallCategory.append( $('<option value=' +obj[i].id +  '><span>'+ obj[i].name +'</span></option>'));
+								
+						   					$('select').material_select();
+										}
+									}
+									else if(obj.length == 0){
+										$('select').material_select();
+									}
 								});
 							});
 				});
@@ -219,32 +224,38 @@
 		</div>
 		<div class="modal-footer">
 
-			<a href="#!"
-				class="modal-action modal-close waves-effect waves-green btn-flat blue-text text-darken-2">취소</a>
+			<button class="btn waves-effect waves-light"
+					name="action">Cancel</button>
 
-			<a href="#!"
-				class="modal-action modal-close waves-effect waves-green btn-flat blue-text text-darken-2">완료</a>
+				<button class="btn waves-effect waves-light" type="submit"
+					name="action">Submit</button>
 		</div>
 	</div>
 
 
 	<div id="modal2" class="modal">
-		<div class="modal-content">
-			<h4>카테고리 삭제</h4>
-			<p>정말 삭제하시겠습니까?</p>
-		</div>
-		<div class="modal-footer">
+		<form id="Category-Delete" action="admin-category-del" method="post">
+			<div class="modal-content">
+				<h4>카테고리 삭제</h4>
+				<p>정말 삭제하시겠습니까?</p>
+			</div>
+			<div class="modal-footer">
 
-			<a href="#!"
-				class="modal-action modal-close waves-effect waves-green btn-flat blue-text text-darken-2">취소</a>
+				<input type="hidden" value="" name="smallCategoryId" />
+				<input type="hidden" value="" name="bigCategoryId" />
 
-			<a href="#!"
-				class="modal-action modal-close waves-effect waves-green btn-flat blue-text text-darken-2">삭제</a>
+				<button class="btn waves-effect waves-light"
+					name="action">Cancel</button>
 
-		</div>
+				<button class="btn waves-effect waves-light" type="submit" id="CategoryDelBtn"
+					name="action">Submit</button>
+
+			</div>
+		</form>
 	</div>
-
-
+	
+	
+	
 	<div id="modal3" class="modal">
 		<div class="modal-content">
 			<h4>대분류 추가</h4>
@@ -259,7 +270,7 @@
 
 						<div class="modal-footer">
 
-							<button class="btn waves-effect waves-light" type="submit"
+							<button class="btn waves-effect waves-light"
 								name="action">Cancel</button>
 
 							<button class="btn waves-effect waves-light" type="submit"
@@ -296,7 +307,7 @@
 
 						<div class="modal-footer">
 
-							<button class="btn waves-effect waves-light" type="submit"
+							<button class="btn waves-effect waves-light"
 								name="action">Cancel</button>
 
 							<button class="btn waves-effect waves-light" type="submit"

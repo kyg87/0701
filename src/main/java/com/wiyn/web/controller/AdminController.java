@@ -45,7 +45,7 @@ public class AdminController {
 		
 		System.out.println("  " + name);
 		
-		return "admin.admin";		
+		return "redirect:admin";
 	}
 	
 	@RequestMapping(value="admin-scadd", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
@@ -59,7 +59,7 @@ public class AdminController {
 		
 		smallCategoryDao.add(name, bigCategoryId);
 		
-		return "admin.admin";
+		return "redirect:admin";
 		
 	}
 	
@@ -90,6 +90,30 @@ public class AdminController {
 		String json = gson.toJson(scList);
 		
 		return json;
+	}
+	
+	@RequestMapping(value="admin-category-del", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
+	public String DeleteCategory(
+			@RequestParam(value="bigCategoryId")String bigCategoryId,
+			@RequestParam(value="smallCategoryId")String smallCategoryId){
+		
+		
+		System.out.println("del");
+		System.out.println(smallCategoryId);
+		System.out.println(bigCategoryId);
+		
+		if(smallCategoryId.equals("")){
+			bigCategoryDao.del(bigCategoryId);
+			System.out.println("bigdel");
+		}
+		
+		else if(!bigCategoryId.equals("") && !smallCategoryId.equals("")){
+			smallCategoryDao.del(bigCategoryId, smallCategoryId);
+			System.out.println("smalldel");
+		}
+
+		
+		return "redirect:admin";
 	}
 	
 }
