@@ -60,5 +60,16 @@
 		`url` = #{url}
 		WHERE `id` = #{id};
 	</update>
+	
+		<select id="getPrev" resultType="com.wiyn.web.entity.SiteBoard" >
+		SELECT * 
+		FROM `lsedb`.`SiteBoard`
+		WHERE CAST(id AS unsigned) &lt; CAST(#{id} AS unsigned) ORDER BY regDate DESC LIMIT 0, 1
+	</select>
+	<select id="getNext" resultType="com.wiyn.web.entity.SiteBoard" >
+		SELECT * 
+		FROM `lsedb`.`SiteBoard`
+		WHERE CAST(id AS unsigned) &gt; CAST(#{id} AS unsigned) ORDER BY regDate ASC LIMIT 0, 1
+	</select>
 
 </mapper>

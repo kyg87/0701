@@ -31,15 +31,28 @@ public class MainController {
 	private NoticeBoardDao noticBoardDao;
 
 	@RequestMapping("index")
-	public String index(
+	public String index(String id,
 			@RequestParam(value="p", defaultValue="1")Integer page, 
 			@RequestParam(value="q", defaultValue="")String query, Model model) {
 
 		List<SiteBoard> sitelist = sqlSession.getMapper(SiteBoardDao.class).getList(page,query);
-		List<NoticeBoard> noticelist = sqlSession.getMapper(NoticeBoardDao.class).getList();
-		model.addAttribute("noticelist", noticelist);
-		model.addAttribute("sitelist", sitelist);
+		int size= sqlSession.getMapper(SiteBoardDao.class).getSize();
+		String last= sqlSession.getMapper(SiteBoardDao.class).lastId();
+		SiteBoard board=sqlSession.getMapper(SiteBoardDao.class).getBoard(id);
+		SiteBoard prev=sqlSession.getMapper(SiteBoardDao.class).getPrev(id);
+		SiteBoard next=sqlSession.getMapper(SiteBoardDao.class).getNext(id);
 		
+		List<NoticeBoard> noticelist = sqlSession.getMapper(NoticeBoardDao.class).getList();
+		
+		model.addAttribute("noticelist", noticelist);
+		
+		
+		model.addAttribute("sitelist", sitelist);
+		model.addAttribute("size", size);
+		model.addAttribute("last", last);
+		model.addAttribute("prev", prev);
+		model.addAttribute("next", next);
+		model.addAttribute("board", board);
 		
 		return "main.index";
 	}

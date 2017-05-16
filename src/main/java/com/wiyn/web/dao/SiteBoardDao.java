@@ -8,8 +8,11 @@ import com.wiyn.web.entity.SiteBoard;
 
 public interface SiteBoardDao {
 
+
 	public List<SiteBoard> getList(@Param("page") int page,@Param("query") String query);
 	SiteBoard getBoard(String id);
+	SiteBoard getPrev(String id);
+	SiteBoard getNext(String id);
 	
 	public int add(SiteBoard siteBoard);
 	public int delete(String id);
