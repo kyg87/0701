@@ -10,24 +10,25 @@
 
 	<insert id="add" parameterType="com.wiyn.web.entity.SiteBoard">
 		<selectKey order="BEFORE" keyProperty="id" resultType="String">
-			elect IFNULL(max(cast(id as unsigned)), 0)+1 id from SiteBoard
+			select IFNULL(max(cast(id as unsigned)), 0)+1 id from SiteBoard
 		</selectKey>
 		INSERT INTO `lsedb`.`SiteBoard`
-		(`id`,
-		`title`,
-		`content`,
-		`regDate`,
-		`url`,
-		`memberId`
+		(
+			`id`,
+			`title`,
+			`content`,
+			`regDate`,
+			`url`,
+			`memberId`
 		)
 		VALUES
 		(
-		#{id},
-		#{title},
-		#{content},
-		now(),
-		#{url},
-		#{memberId}
+			#{id},
+			#{title},
+			#{content},
+			now(),
+			#{url},
+			#{memberId}
 		)
 	</insert>
 

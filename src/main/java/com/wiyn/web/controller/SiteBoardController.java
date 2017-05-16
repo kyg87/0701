@@ -57,7 +57,7 @@ public class SiteBoardController {
 		
 		siteBoardDao.add(siteBoard);
 		
-		return "redirect:site-detail";
+		return "redirect:site-detail?c=" + siteBoard.getId();
 	}
 
 	@RequestMapping(value="site-detail",produces="text/plain;charset=UTF-8")

@@ -167,7 +167,7 @@ body {
 
 				</tr>
 				<tr>
-					<td><div id="title">Tag</div></td>
+					<td><div>Tag</div></td>
 					<td><input id="titleinput" type="text" value=""></td>
 				</tr>
 				
