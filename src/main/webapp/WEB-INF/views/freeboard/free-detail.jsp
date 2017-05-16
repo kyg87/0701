@@ -3,12 +3,35 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="tiles"  uri="http://tiles.apache.org/tags-tiles" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+<style>
+	span.title {
+	    color: #839705;
+	    font-family: Microsoft YaHei,'NSL';
+	    font-size: 15px;
+	}
+	
+	time {
+	    color: #c1c1c1;
+	    font-size: 13px;
+	    font-family: Microsoft YaHei,'NSL';
+	}
+
+	p {
+	    color: #6d6e71;
+	    font-size: 13px;
+	    font-family: Microsoft YaHei, "NS";
+	    margin-top: 5px;
+	    line-height: 1.5;
+	}
+</style>
 
  <main id="main">
 <div>자유디테일</div>
@@ -87,52 +110,35 @@
 		      	</table>
 
 			</div>
-			<form action="freeBoard-comment-add" method="post">
+			
 			<div id="minibox">			
-				<table>
-			        <thead>
-			          <tr>
-			           	  <td>
-							<security:authorize access="isAnonymous()">
-								<p>글쓰기는 로그인한 유저만 가능합니다 로그인해주세요</p>
-							</security:authorize>
-							<security:authorize access="isAuthenticated()">
-				              	<input name="content" type="text" value="댓글을입력하세요." />	
-				              	<input name="action" type="submit" value="등록" />
-			              	</security:authorize>		
-			              </td>
-			                      
-			          </tr>
-			        </thead>
-			        <tbody>
-			        <c:forEach var="v" items="${n.freeComment}">
-			          <tr>
-			            <td>
-			          		댓글번호 :  ${v.id }
-			          	</td>
-			          	<td>
-			          		등록날짜 : ${v.regDate }
-			          	</td>
-			          	<td>
-			          		내용 : ${v.content }
-			          	</td>
-			          	<td>
-			          		해당 글번호 : ${v.freeBoardId }
-			          	</td>
-			          	<td>
-			          		<i id="mini" class="small material-icons">star</i>
-			          	</td>
-			          
-			          </tr>
-			        </c:forEach>
-			        </tbody>
-		      	</table>
+				<form action="freeBoard-comment-add" method="post">
+					<security:authorize access="isAnonymous()">
+						<p>글쓰기는 로그인한 유저만 가능합니다 로그인해주세요</p>
+					</security:authorize>
+					<security:authorize access="isAuthenticated()">
+						<input name="content" type="text" value="댓글을입력하세요." />
+						<input name="action" type="submit" value="등록" />
+					</security:authorize>
+
+					<input type="hidden" name="freeBoardId" value=${n.id }>
+					<input type="hidden" name="memberId" value=<security:authentication property="name"/>>
+				</form>
+				<ul class="collection">
+				 <c:forEach var="v" items="${n.freeComment}">
+					<li class="collection-item avatar">
+						<img src="/WiynPrj/resource/images/test.png" alt="" class="circle"> 
+						<span class="title">${v.memberId }</span>
+						<time><fmt:formatDate value="${v.regDate}" pattern="yyyy-MM-dd hh:mm"/></time>
+						<p>
+							${v.content }
+						</p> 
+					</li>
+				 </c:forEach>
+				</ul>
+	
 			</div>
-		
-				<input type="hidden" name="freeBoardId" value=${n.id }>
-				
-				<input type="hidden" name="memberId" value=<security:authentication property="name"/>>
-			</form>
+
 		</div>
 	</div>
 
