@@ -9,50 +9,6 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<style>
-
-#main {
-	margin: 10px;
-	float: left
-}
-
-#category {
-	margin: 10px;
-	min-height: 660px;
-	width: 150px;
-	box-shadow: 1px 1px 5px #383838;
-	float: left
-}
-
-#context {
-	min-height: 200px;
-	width: 400px;
-	box-shadow: 1px 1px 5px #383838;
-}
-
-#minibox {
-	min-height: 100px;
-	width: 400px;
-	box-shadow: 1px 1px 5px #383838;
-	margin-top: 10px;
-}
-
-#re {
-	float: right;
-}
-
-#reg {
-	float: right;
-}
-
-#mini{
-	float: right;
-}
-
-#btn{
-	float:right;
-}
-</style>
 
  <main id="main">
 <div>자유디테일</div>
@@ -136,26 +92,45 @@
 				<table>
 			        <thead>
 			          <tr>
-			              <td>
-			              	<input name="content" type="text" value="댓글을입력하세요." />	
-			              	<input name="action" type="submit" value="등록" />	
-			              </td>	             
+			           	  <td>
+							<security:authorize access="isAnonymous()">
+								<p>글쓰기는 로그인한 유저만 가능합니다 로그인해주세요</p>
+							</security:authorize>
+							<security:authorize access="isAuthenticated()">
+				              	<input name="content" type="text" value="댓글을입력하세요." />	
+				              	<input name="action" type="submit" value="등록" />
+			              	</security:authorize>		
+			              </td>
+			                      
 			          </tr>
 			        </thead>
 			        <tbody>
 			        <c:forEach var="v" items="${n.freeComment}">
 			          <tr>
-			          	
+			            <td>
+			          		댓글번호 :  ${v.id }
+			          	</td>
 			          	<td>
-			          		${v.content }<i id="mini" class="small material-icons">star</i>
+			          		등록날짜 : ${v.regDate }
+			          	</td>
+			          	<td>
+			          		내용 : ${v.content }
+			          	</td>
+			          	<td>
+			          		해당 글번호 : ${v.freeBoardId }
+			          	</td>
+			          	<td>
+			          		<i id="mini" class="small material-icons">star</i>
 			          	</td>
 			          
 			          </tr>
-			          	</c:forEach>
+			        </c:forEach>
 			        </tbody>
 		      	</table>
 			</div>
+		
 				<input type="hidden" name="freeBoardId" value=${n.id }>
+				
 				<input type="hidden" name="memberId" value=<security:authentication property="name"/>>
 			</form>
 		</div>

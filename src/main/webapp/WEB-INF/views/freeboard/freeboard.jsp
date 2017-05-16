@@ -37,7 +37,8 @@
 
 				<security:authorize access="isAnonymous()">
 					<p>글쓰기는 로그인한 유저만 가능합니다 로그인해주세요</p>
-				</security:authorize> <security:authorize access="isAuthenticated()">
+				</security:authorize> 
+				<security:authorize access="isAuthenticated()">
 					<button class="waves-effect waves-light btn"
 						onclick="location.href ='free-reg'">글쓰기</button>
 				</security:authorize>
