@@ -111,8 +111,29 @@
 
 			</div>
 			
-			<div id="minibox">			
-				<form action="freeBoard-comment-add" method="post">
+			<div id="minibox">
+			<form action="freeBoard-comment-add" method="post">
+				<div class="row">
+					<security:authorize access="isAnonymous()">
+						<p>글쓰기는 로그인한 유저만 가능합니다 로그인해주세요</p>
+					</security:authorize>
+					
+					<security:authorize access="isAuthenticated()">
+					<div class="input-field">
+						<i class="material-icons prefix">mode_edit</i>
+						<input  id="icon_prefix2" type="text" class="validate" name="content">
+						<label for="icon_prefix2">Message</label>
+						<button class="btn waves-effect waves-light secondary-content" type="submit" name="action">등록
+    						<i class="material-icons right">send</i>
+  						</button>
+					</div>
+					</security:authorize>
+				</div>
+				
+					<input type="hidden" name="freeBoardId" value=${n.id }>
+					<input type="hidden" name="memberId" value=<security:authentication property="name"/>>
+			</form>
+<%-- 			<form action="freeBoard-comment-add" method="post">
 					<security:authorize access="isAnonymous()">
 						<p>글쓰기는 로그인한 유저만 가능합니다 로그인해주세요</p>
 					</security:authorize>
@@ -123,7 +144,7 @@
 
 					<input type="hidden" name="freeBoardId" value=${n.id }>
 					<input type="hidden" name="memberId" value=<security:authentication property="name"/>>
-				</form>
+				</form> --%>
 				<ul class="collection">
 				 <c:forEach var="v" items="${n.freeComment}">
 					<li class="collection-item avatar">
@@ -132,7 +153,14 @@
 						<time><fmt:formatDate value="${v.regDate}" pattern="yyyy-MM-dd hh:mm"/></time>
 						<p>
 							${v.content }
-						</p> 
+						</p>
+					
+						<security:authentication property="name" var="loginID"/>
+						<c:if test="${v.memberId eq loginID}">
+							<form data-confirm ="댓글을 삭제하시겠습니까">
+								<input type="submit" value="삭제">
+							</form>
+						</c:if> 
 					</li>
 				 </c:forEach>
 				</ul>
