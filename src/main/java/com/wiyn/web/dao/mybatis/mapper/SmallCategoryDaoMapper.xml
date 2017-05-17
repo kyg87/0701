@@ -16,6 +16,10 @@
 		SELECT id, name FROM SmallCategory WHERE bigCategoryId = #{param1 };
 	
 	</select>
+	
+	<select resultType="com.wiyn.web.entity.SmallCategory" id="addCheck">
+		SELECT count(*) FROM SmallCategory WHERE bigCategoryId = #{param1} and name = #{param2};
+	</select>
 		
 	<insert id="add" parameterType="com.wiyn.web.entity.SmallCategory">
 		<selectKey order="BEFORE" keyProperty="id" resultType="String">
@@ -37,6 +41,10 @@
 		)
 
 	</insert>
+	
+	<update id="modify" parameterType="com.wiyn.web.entity.BigCategory">
+		UPDATE SmallCategory SET name = #{param3} where id = #{param2} and bigCategoryId = #{param1};
+	</update>
 	
 	<delete id="del" parameterType="com.wiyn.web.entity.SmallCategory">
 		DELETE FROM SmallCategory WHERE bigCategoryId = #{param1} and id = #{param2};

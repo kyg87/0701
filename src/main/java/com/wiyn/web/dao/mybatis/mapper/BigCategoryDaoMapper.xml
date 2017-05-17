@@ -10,6 +10,10 @@
 		SELECT * FROM BigCategory
 		
 	</select>
+	
+	<select resultType="com.wiyn.web.entity.BigCategory" id="addCheck">
+		SELECT count(*) FROM BigCategory WHERE name = #{param2};
+	</select>
 		
 	<insert id="add" parameterType="com.wiyn.web.entity.BigCategory">
 		<selectKey order="BEFORE" keyProperty="id" resultType="String">
@@ -29,6 +33,10 @@
 		)
 
 	</insert>
+	
+	<update id="modify" parameterType="com.wiyn.web.entity.BigCategory">
+		UPDATE BigCategory SET name = #{param2} WHERE id = #{param1};
+	</update>
 	
 	<delete id="del" parameterType="com.wiyn.web.entity.BigCategory">
 		

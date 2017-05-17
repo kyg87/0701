@@ -146,6 +146,15 @@
 										$('select').material_select();
 									}
 								});
+								
+								var bcDelpost = $("#bcdel");
+								var bcModpost = $("#bcmod");
+								var bcCheckpost = $("#bcAddCheck");
+								
+								bcDelpost.val($(this).val());
+								bcModpost.val($(this).val());
+								bcCheckpost.val($(this).val());
+								
 							});
 				});
 			</script>
@@ -164,7 +173,15 @@
 					var smList = $("#smallCategoryId");
 					
 					console.log("change");
-					alert("선택한 소분류 id 값 : " + $(this).val());
+					/* alert("선택한 소분류 id 값 : " + $(this).val()); */
+					
+					var scDelpost = $("#scdel");
+					var scModpost = $("#scmod");
+					var scCheckpost = $("#scAddCheck");
+					
+					scDelpost.val($(this).val());
+					scModpost.val($(this).val());
+					scCheckpost.val($(this).val());
 				});
 			});
 			
@@ -207,31 +224,68 @@
 	</div>
 
 	<!-- </form> -->
+	
 
 	<div id="modal11" class="modal">
-		<div class="modal-content">
-			<h4>카테고리 수정</h4>
-			<div class="row">
-				<form class="col s12">
+		<form class="col s12" id="Category-Modify" action="admin-category-modify" method="post">
+			<div class="modal-content">
+				<h4>카테고리 수정</h4>
 					<div class="row">
-						<div class="input-field col s12">
-							<textarea id="textarea1" class="materialize-textarea"></textarea>
-							<label for="textarea1">수정할 카테고리명 입력</label>
+						<div class="row">
+							<div class="input-field col s12">
+								<textarea id="modify-name" class="materialize-textarea"
+									name="modifyName" ></textarea>
+								<label for="textarea1">수정할 카테고리명 입력</label>
+							</div>
 						</div>
 					</div>
-				</form>
 			</div>
-		</div>
-		<div class="modal-footer">
-
-			<button class="btn waves-effect waves-light"
-					name="action">Cancel</button>
-
+			<div class="modal-footer">
+	
+				<button class="btn waves-effect waves-light" id="modCancel">Cancel</button>
+	
 				<button class="btn waves-effect waves-light" type="submit"
-					name="action">Submit</button>
-		</div>
+					id="CategoryModBtn" name="action">Submit</button>
+			</div>
+			
+			<input type="hidden" value="" name="smallCategoryId" id="scmod" />
+			<input type="hidden" value="" name="bigCategoryId" id="bcmod" />
+			
+		</form>
 	</div>
 
+	<!-- <script>
+	$(function(){
+		
+		$("#CategoryModBtn").on('click', function(){
+			
+			var modCheckId = $("#bigCategoryId");
+			var modForm = $("#Category-Delete");
+			var modCheckSm = $("#smallCategoryId")
+			
+			$.post("getListWithBC", modCheckId, function(c) {
+
+				var modCheck = JSON.parse(c);
+				
+				if(modCheck.length != 0 && modCheckSm.val() == null){
+					alert("소분류가 포함되어있는 대분류는 삭제가 불가능합니다.");						
+				}
+				
+				else
+					modForm.submit();
+				
+			});
+			
+		});
+		
+		$("#modCancel").on('click', function(){
+			
+			location.href='http:\/\/localhost\/WiynPrj\/admin\/admin';
+			
+		});
+		
+	});
+	</script> -->
 
 	<div id="modal2" class="modal">
 		<form id="Category-Delete" action="admin-category-del" method="post">
@@ -241,20 +295,49 @@
 			</div>
 			<div class="modal-footer">
 
-				<input type="hidden" value="" name="smallCategoryId" />
-				<input type="hidden" value="" name="bigCategoryId" />
+				<input type="hidden" value="" name="smallCategoryId" id="scdel" />
+				<input type="hidden" value="" name="bigCategoryId" id="bcdel" />
 
-				<button class="btn waves-effect waves-light"
-					name="action">Cancel</button>
+				<button class="btn waves-effect waves-light" type="button" id="delCancel">Cancel</button>
 
-				<button class="btn waves-effect waves-light" type="submit" id="CategoryDelBtn"
+				<button class="btn waves-effect waves-light" type="button" id="CategoryDelBtn"
 					name="action">Submit</button>
 
 			</div>
 		</form>
 	</div>
 	
-	
+	<script>
+		$(function(){
+			$("#CategoryDelBtn").on('click', function(){
+				
+				var delCheckId = $("#bigCategoryId");
+				var delForm = $("#Category-Delete");
+				var delCheckSm = $("#smallCategoryId")
+				
+				$.post("getListWithBC", delCheckId, function(c) {
+
+					var delCheck = JSON.parse(c);
+					
+					if(delCheck.length != 0 && delCheckSm.val() == null){
+						alert("소분류가 포함되어있는 대분류는 삭제가 불가능합니다.");						
+					}
+					
+					else
+						delForm.submit();
+					
+				});
+				
+			});
+			
+			$("#delCancel").on('click', function(){
+				
+				location.href='http:\/\/localhost\/WiynPrj\/admin\/admin';
+				
+			});
+			
+		});
+	</script>
 	
 	<div id="modal3" class="modal">
 		<div class="modal-content">
@@ -264,8 +347,8 @@
 					method="post">
 					<div class="row">
 						<div class="input-field col s12">
-							<textarea id="textarea1" class="materialize-textarea" name="name"></textarea>
-							<label for="textarea1">새로운 카테고리명 입력</label>
+							<textarea id="BCaddName" class="materialize-textarea" name="name"></textarea>
+							<label for="BCaddName">추가할 대분류 카테고리명</label>
 						</div>
 
 						<div class="modal-footer">
@@ -273,14 +356,42 @@
 							<button class="btn waves-effect waves-light"
 								name="action">Cancel</button>
 
-							<button class="btn waves-effect waves-light" type="submit"
-								name="action">Submit</button>
+							<button class="btn waves-effect waves-light" type="button"
+								id="CategoryAddBtn" name="action">Submit</button>
 						</div>
 					</div>
+					<input type="hidden" value="" name="smallCategoryId" id="scAddCheck" />
+					<input type="hidden" value="" name="bigCategoryId" id="bcAddCheck" />
 				</form>
 			</div>
 		</div>
 	</div>
+	
+	<script>
+	
+	$(function(){
+		$("#CategoryAddBtn").on('click', function(){
+			
+			alert("aa");
+			
+			var checkName = $("#BCaddName");
+			var scAddCheck = $("#scAddCheck");
+			var bcAddCheck = $("#bcAddCheck");
+			
+			console.log(checkName.val());
+			console.log(bcAddCheck.val());
+			
+			$.post("category-addCheck", checkName, bcAddCheck, function(q) {
+				
+				var res = q;
+				console.log(res);
+				
+			});
+			
+		});
+	});
+	
+	</script>
 
 
 	<div id="modal4" class="modal">
@@ -302,7 +413,7 @@
 
 						<div class="input-field col s12">
 							<textarea id="textarea1" class="materialize-textarea" name="name"></textarea>
-							<label for="textarea1">새로운 카테고리명 입력</label>
+							<label for="textarea1">추가할 소분류 카테고리명</label>
 						</div>
 
 						<div class="modal-footer">

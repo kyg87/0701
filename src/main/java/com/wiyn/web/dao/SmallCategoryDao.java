@@ -12,6 +12,7 @@ public interface SmallCategoryDao {
 
 	int add(String name, String bigCategoryId);
 	int del(String bigCategoryId, String smallCategoryId);
-	boolean check(SmallCategory smallCategory, String name);
+	int modify(String bigCategoryId, String smallCategoryId, String name);
+	int addCheck(String bigCategoryId, String name);
 
 }

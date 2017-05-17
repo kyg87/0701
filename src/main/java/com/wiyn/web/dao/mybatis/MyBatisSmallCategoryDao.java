@@ -29,9 +29,10 @@ public class MyBatisSmallCategoryDao implements SmallCategoryDao {
 	}
 
 	@Override
-	public boolean check(SmallCategory smallCategory, String name) {
-		// TODO Auto-generated method stub
-		return false;
+	public int addCheck(String bigCategoryId, String name) {
+		SmallCategoryDao smallCategoryDao;
+		smallCategoryDao = sqlSession.getMapper(SmallCategoryDao.class);
+		return smallCategoryDao.addCheck(bigCategoryId, name);
 	}
 
 	@Override
@@ -48,6 +49,13 @@ public class MyBatisSmallCategoryDao implements SmallCategoryDao {
 		SmallCategoryDao smallCategoryDao;
 		smallCategoryDao = sqlSession.getMapper(SmallCategoryDao.class);
 		return smallCategoryDao.del(bigCategoryId, smallCategoryId);
+	}
+
+	@Override
+	public int modify(String bigCategoryId, String smallCategoryId, String name) {
+		SmallCategoryDao smallCategoryDao;
+		smallCategoryDao = sqlSession.getMapper(SmallCategoryDao.class);
+		return smallCategoryDao.modify(bigCategoryId, smallCategoryId, name);
 	}
 
 

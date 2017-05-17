@@ -30,9 +30,10 @@ public class MyBatisBigCategoryDao implements BigCategoryDao {
 	}
 
 	@Override
-	public boolean check(BigCategory bigCategory, String name) {
-		// TODO Auto-generated method stub
-		return false;
+	public int addCheck(String name) {
+		BigCategoryDao bigCategoryDao;
+		bigCategoryDao = sqlSession.getMapper(BigCategoryDao.class);
+	    return bigCategoryDao.addCheck(name);
 	}
 
 	@Override
@@ -40,6 +41,13 @@ public class MyBatisBigCategoryDao implements BigCategoryDao {
 		BigCategoryDao bigCategoryDao;
 		bigCategoryDao = sqlSession.getMapper(BigCategoryDao.class);
 		return bigCategoryDao.del(bigCategoryId);
+	}
+
+	@Override
+	public int modify(String bigCategoryId, String name) {
+		BigCategoryDao bigCategoryDao;
+		bigCategoryDao = sqlSession.getMapper(BigCategoryDao.class);
+		return bigCategoryDao.modify(bigCategoryId, name);
 	}
 
 

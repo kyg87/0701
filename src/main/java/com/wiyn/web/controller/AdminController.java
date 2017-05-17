@@ -38,12 +38,7 @@ public class AdminController {
 		
 		
 		bigCategory.setName(name);
-		
-		
-	
 		bigCategoryDao.add(bigCategory);
-		
-		System.out.println("  " + name);
 		
 		return "redirect:admin";
 	}
@@ -89,6 +84,8 @@ public class AdminController {
 		Gson gson = new Gson();
 		String json = gson.toJson(scList);
 		
+		//System.out.println(scList);
+		
 		return json;
 	}
 	
@@ -97,23 +94,67 @@ public class AdminController {
 			@RequestParam(value="bigCategoryId")String bigCategoryId,
 			@RequestParam(value="smallCategoryId")String smallCategoryId){
 		
-		
-		System.out.println("del");
 		System.out.println(smallCategoryId);
 		System.out.println(bigCategoryId);
 		
-		if(smallCategoryId.equals("")){
-			bigCategoryDao.del(bigCategoryId);
-			System.out.println("bigdel");
-		}
 		
-		else if(!bigCategoryId.equals("") && !smallCategoryId.equals("")){
+		if(!bigCategoryId.equals("") && !smallCategoryId.equals("")){
 			smallCategoryDao.del(bigCategoryId, smallCategoryId);
 			System.out.println("smalldel");
 		}
 
+		else if(!bigCategoryId.equals("") && smallCategoryId.equals("")){
+			bigCategoryDao.del(bigCategoryId);
+			System.out.println("bigdel");
+		}
 		
 		return "redirect:admin";
+	}
+	
+	@RequestMapping(value="admin-category-modify", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
+	public String ModifyCategory(
+			@RequestParam(value="bigCategoryId")String bigCategoryId,
+			@RequestParam(value="smallCategoryId")String smallCategoryId,
+			@RequestParam(value="modifyName")String modifyName){
+		
+		System.out.println(bigCategoryId);
+		System.out.println(smallCategoryId);
+		System.out.println(modifyName);
+		
+		if(!bigCategoryId.equals("") && !smallCategoryId.equals("")){
+			smallCategoryDao.modify(bigCategoryId, smallCategoryId, modifyName);
+			System.out.println("small mod");
+		}
+
+		else if(!bigCategoryId.equals("") && smallCategoryId.equals("")){
+			bigCategoryDao.modify(bigCategoryId, modifyName);
+			System.out.println("big mod");
+		}
+		
+		return "redirect:admin";
+	}
+	
+	@RequestMapping(value="category-addCheck", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
+	public String CategoryAddCheck(
+			@RequestParam(value="bigCategoryId")String bigCategoryId,
+			@RequestParam(value="name")String name){
+		
+		System.out.println(bigCategoryId);
+		System.out.println(name);
+		
+		if(!bigCategoryId.equals("")){
+			
+			int result = smallCategoryDao.addCheck(bigCategoryId, name);
+			System.out.println(result);
+			return Integer.toString(result);
+		}
+
+		else{
+			
+			int result = bigCategoryDao.addCheck(name);
+			
+			return Integer.toString(result);
+		}
 	}
 	
 }

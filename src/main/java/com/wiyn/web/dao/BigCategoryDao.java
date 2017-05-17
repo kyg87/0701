@@ -10,6 +10,7 @@ public interface BigCategoryDao {
 
 	int add(BigCategory bigCategory);
 	int del(String bigCategoryId);
-	boolean check(BigCategory bigCategory, String name);
+	int modify(String bigCategoryId, String name);
+	int addCheck(String name);
 
 }
