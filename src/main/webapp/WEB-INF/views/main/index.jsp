@@ -65,8 +65,8 @@ textScroll.prototype.start = function() {
 			<main id="main">
 			
 <ul id="scroll">
-<c:forEach var="n" items="${noticelist}">
-    <li><a href="notice-detail?c=${n.id}">${n.title}</a></li>
+<c:forEach var="m" items="${noticelist}">
+    <li><a href="../noticeboard/notice-detail?c=${m.id}">${m.title}</a></li>
 </c:forEach>    
 </ul>
 
@@ -82,9 +82,8 @@ textScroll.prototype.start = function() {
 				</div>
 
                 <div class="collection">
-                <!-- <a href="../siteboard/siteboard" class="collection-item">Alvin</a>  -->
-                    <c:forEach var="s" items="${sitelist}">
-                    <a href="site-detail?c=${s.id}" class="collection-item">${s.title}</a>
+                    <c:forEach var="n" items="${sitelist}">
+                    <a href="../siteboard/site-detail?c=${n.id}" class="collection-item">${n.title}</a>
                     </c:forEach>
                 </div>
             <fmt:parseNumber var="sizeInt" integerOnly="true" value="${size/10 }" />
