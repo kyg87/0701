@@ -1,5 +1,7 @@
 package com.wiyn.web.controller;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.wiyn.web.dao.FreeBoardDao;
 import com.wiyn.web.dao.FreeCommentDao;
 import com.wiyn.web.dao.SiteBoardDao;
+import com.wiyn.web.dao.SiteBoardLikeDao;
 import com.wiyn.web.dao.SiteCommentDao;
 import com.wiyn.web.entity.FreeBoard;
 import com.wiyn.web.entity.SiteBoard;
+import com.wiyn.web.entity.SiteBoardLike;
 import com.wiyn.web.entity.SiteComment;
 
 
@@ -27,11 +31,17 @@ public class SiteBoardController {
 	
 	@Autowired
 	private SiteBoardDao siteBoardDao;
+	
 	@Autowired
 	private SiteCommentDao siteCommentDao;
 	
+	@Autowired
+	private SiteBoardLikeDao siteBoardLikeDao;
+	
 	@RequestMapping("site-reg")
 	public String site(){
+		
+		/*List <BigCoategory>*/
 		
 		return "siteboard.site-reg";		
 	}
@@ -67,19 +77,26 @@ public class SiteBoardController {
 		
 		siteBoard = sqlSession.getMapper(SiteBoardDao.class).getBoard(id);
 		
+		
 		model.addAttribute("n", siteBoard);
 		
 		return "siteboard.site-detail";
 	}
+
 	
-	@RequestMapping("siteboard")
-	public String siteBoard(){
+	/*@RequestMapping("site-list")
+	public String siteList(
+			Model model,
+			SiteBoard siteBoard
+			){
+		List<SiteBoard> list = sqlSession.getMapper(SiteBoardDao.class).getList(page, query);
+		model.addAttribute("n", siteBoard);		 
 		
-		return "siteboard.siteboard";
-	}
+		return "siteboard.site-list";
+	}*/
 	
-	 @RequestMapping("site-edit")
-     public String RequestEdit(@RequestParam("c")String id, Model model){
+	@RequestMapping("site-edit")
+     public String siteEdit(@RequestParam("c")String id, Model model){
         
            
 		 SiteBoard siteBoard = new SiteBoard();
@@ -90,5 +107,58 @@ public class SiteBoardController {
         
         return "siteboard.site-edit";
      }
+	
+	 @RequestMapping(value="edit", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
+		public String siteEdit(
+				SiteBoard siteBoard,
+				Model model,
+				String title, 
+				String content,
+				String url
+				){
+
+		 	model.addAttribute("n", siteBoard);		 
+		 	
+		 	System.out.println(title);
+			System.out.println(url);
+			System.out.println(content);
+		 	
+			siteBoard.setContent(content);
+			siteBoard.setTitle(title);
+			siteBoard.setUrl(url);
+			//siteBoard.setBigCategoryId(bigCategoryId);
+			
+			siteBoardDao.update(siteBoard);
+			
+			return "redirect:site-detail?c=" + siteBoard.getId();
+		}
+	 
+	 
+	 @RequestMapping(value ="site-delete", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+     public String siteDelete(@RequestParam(value = "id") String id,
+    		 SiteBoard siteBoard ){
+   
+		siteBoardDao.delete(id);
+        
+        return "redirect:site-list";
+     }
 		
+	 @RequestMapping(value="like", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
+		public String siteLike(
+				SiteBoardLike siteBoardLike,
+				@RequestParam(value="siteBoardId")String siteBoardId,
+				@RequestParam(value="memberId")String memberId
+				){
+		 System.out.println("Å¸³ª¿©");
+			System.out.println(siteBoardId);
+			System.out.println(memberId);
+		
+ 
+			siteBoardLike.setSiteBoardId(siteBoardId);
+			siteBoardLike.setMemberId(memberId);
+
+			siteBoardLikeDao.add(siteBoardLike);
+			
+			return "redirect:site-detail?c=" + siteBoardLike.getSiteBoardId();
+		}
 }

@@ -16,6 +16,9 @@ td{
 	padding:5px;
 }
 
+.input-field {
+	width: 100%;
+}
 
 </style>
 <script>
@@ -44,7 +47,15 @@ td{
 			</tr>
 			<tr>
 				<td>${n.regDate }</td>
-				<td>like</td>
+				<td>
+					<form action="like" method="post">
+					<button class="btn waves-effect waves-light" type="submit"
+						name="action">	Submit <i class="small material-icons">thumb_up</i>
+					</button>
+						<input type="hidden" name="siteBoardId" value="13"> 
+		`				<input type="hidden"	name="memberId" value="LSE@mb.com">
+					</form>
+				</td>
 			</tr>
 			<tr>
 				<td>${n.memberId }</td>
@@ -83,34 +94,38 @@ td{
 		</tbody>
 	</table>
 	<br>	
+	
+	<div class="row">
+		<form class="col s12">
+			<div class="row">
+				<div class="input-field col s12">
+					<i class="material-icons prefix">mode_edit</i>
+					<textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+					<label for="icon_prefix2">욕설과 비방은 무통보 삭제될 수 있습니다.</label>
+				</div>
+			</div>
+		</form>
+	</div>
+					<a class="waves-effect waves-light btn">button</a>
 	 <table class="table">
         <tbody>
            <tr>
-				<td colspan="2">
-					<div class="row">
-						<form class="col s12">
-							<div class="row">
-								<div class="input-field col s6">
-									<i class="material-icons prefix">mode_edit</i>
-									<textarea id="icon_prefix2" class="materialize-textarea"></textarea>
-									<label for="icon_prefix2">욕설과 비방은 무통보 삭제될 수 있습니다.</label>
-								</div>
-							</div>
-						</form>
-					</div>
+				<td colspan="3">
+					
 				</td>
 				<td colspan="1">
-					<a class="waves-effect waves-light btn">button</a>
+					
 				</td>
 			</tr>
 	        <tr>
 	          <td>Alvin</td>
 	          <td>Eclair</td>
 	          <td>$0.87</td>
+	          <td>0000</td>
 	        </tr>      
         </tbody>
       </table>
 	
-	<input type="hidden" name="siteBoardId" value="1"> 
-	<input type="hidden"	name="memberId" value="LSE@mb">
+	<input type="hidden" name="siteBoardId" value="10"> 
+	<input type="hidden"	name="memberId" value="LSE@mb.com">
 </main>

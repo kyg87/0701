@@ -38,8 +38,8 @@
 	<bean class="com.wiyn.web.dao.mybatis.MyBatisFreeBoardDao" />
 	<bean class="com.wiyn.web.dao.mybatis.MyBatisBigCategoryDao" />
 	<bean class="com.wiyn.web.dao.mybatis.MyBatisSmallCategoryDao" />
-	
 	<bean class="com.wiyn.web.dao.mybatis.MyBatisUserPageDao" />
+	<bean class="com.wiyn.web.dao.mybatis.MyBatisSiteBoardLikeDao" />
 			
 	<context:annotation-config /><!-- Autowired가 필요한 곳에서 설정함 -->
 <!-- 	<context:annotation-config />Autowired가 필요한 곳에서 설정함
