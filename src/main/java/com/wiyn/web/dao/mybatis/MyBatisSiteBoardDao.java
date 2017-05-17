@@ -16,8 +16,9 @@ public class MyBatisSiteBoardDao implements SiteBoardDao{
 	
 	@Override
 	public List<SiteBoard> getList(int page, String query) {
-		// TODO Auto-generated method stub
-		return null;
+		SiteBoardDao siteBoardDao;
+		siteBoardDao = sqlSession.getMapper(SiteBoardDao.class);
+		return siteBoardDao.getList(page, query);
 	}
 
 	@Override
@@ -61,6 +62,20 @@ public class MyBatisSiteBoardDao implements SiteBoardDao{
 		siteBoardDao = sqlSession.getMapper(SiteBoardDao.class);
 		return siteBoardDao.getBoard(id);
 	}
+    @Override
+    public SiteBoard getPrev(String id) {
+        SiteBoardDao siteBoardDao;
+        siteBoardDao = sqlSession.getMapper(SiteBoardDao.class);
+        return siteBoardDao.getPrev(id);
+    }
+
+    @Override
+    public SiteBoard getNext(String id) {
+        SiteBoardDao siteBoardDao;
+        siteBoardDao = sqlSession.getMapper(SiteBoardDao.class);
+        return siteBoardDao.getNext(id);
+    }
+
 
 
 }

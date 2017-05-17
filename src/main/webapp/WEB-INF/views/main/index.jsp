@@ -80,34 +80,37 @@ textScroll.prototype.start = function() {
 						<li class="tab col s3"><a href="#test4">댓글순</a></li>
 					</ul>
 				</div>
-		
 
-				<div class="collection">
-				<a href="../siteboard/siteboard" class="collection-item">Alvin</a> 
-					<c:forEach var="s" items="${sitelist}">
-					<a href="site-detail?c=${s.id}" class="collection-item">${s.title}</a></li>
-					</c:forEach>
-					
-				</div>
-			<c:set var="last" value="${(size % 10) >= 0 ? size / 10 + 1 : size / 10}"/>	
-			<div>${empty param.p ? 1 : param.p}pages</div>
-			
-				<ul class="pagination center">
-					<li class="disabled"><a href="#!"><i
-							class="material-icons">chevron_left</i></a></li>
-
-					<li class="active"><a href="?p=1&q=${param.q}">1</a></li>
-				<c:forEach var="i" begin="2" end="${last }"> 
- 		         <li class="waves-effect"><a href="?p=${i }&q=${param.q}">${i }</a></li> 
-		         </c:forEach> 
-<!-- 					<li class="waves-effect"><a href="#!">2</a></li>
-					<li class="waves-effect"><a href="#!">3</a></li>
-					<li class="waves-effect"><a href="#!">4</a></li>
-					<li class="waves-effect"><a href="#!">5</a></li> -->
-					<li class="waves-effect"><a href="#!"><i
-							class="material-icons">chevron_right</i></a></li>
-				</ul>
-				
+                <div class="collection">
+                <!-- <a href="../siteboard/siteboard" class="collection-item">Alvin</a>  -->
+                    <c:forEach var="s" items="${sitelist}">
+                    <a href="site-detail?c=${s.id}" class="collection-item">${s.title}</a>
+                    </c:forEach>
+                </div>
+            <fmt:parseNumber var="sizeInt" integerOnly="true" value="${size/10 }" />
+            <c:set var="last" value="${(size%10)>0 ? sizeInt+1 : sizeInt }" />
+            <%-- <c:set var="last" value="${(size % 10) >= 0 ? size / 10 + 1 : size / 10}"/>     --%>
+            <div>${empty param.p ? 1 : param.p}/${last }pages  </div>
+            <div>${size}</div>
+                <ul class="pagination center">
+                    <li class="disabled">
+                            <c:if test="${param.p-1>0 }">
+                            <a href="?p=${param.p-1 }&q=${parma.q}"><i
+                            class="material-icons">chevron_left</i></a></c:if></li>        
+                    <%-- <li class="active"><a href="?p=1&q=${param.q}">1</a></li> --%>
+                <c:forEach var="i" begin="1" end="${last }"> 
+                  <li class="waves-effect"><a href="?p=${i }&q=${param.q}">${i }</a></li> 
+                 </c:forEach> 
+<!--                     <li class="waves-effect"><a href="#!">2</a></li>
+                    <li class="waves-effect"><a href="#!">3</a></li>
+                    <li class="waves-effect"><a href="#!">4</a></li>
+                    <li class="waves-effect"><a href="#!">5</a></li> -->
+                    <li class="waves-effect">
+                            <c:if test="${param.p+1<=last }">
+                            <a href="?p=${param.p+1 }&q=${param.q}"><i
+                            class="material-icons">chevron_right</i></a>
+                            </c:if></li>
+                </ul>
 				
 
 				
