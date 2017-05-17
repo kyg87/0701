@@ -5,13 +5,16 @@
 <!DOCTYPE html>
 
 <style>
-#table{
+.table{
 	border:1px solid #e4e4e4;
 	border-radius: 3px;
 	/* box-shadow: 0px 1px 1px #a8a8a8; */
 	
 }
 
+td{
+	padding:5px;
+}
 
 
 </style>
@@ -21,7 +24,7 @@
 
 <main id="main">
 
-	<table id="table">
+	<table class="table">
 		<thead>
 			<tr>
 				<td colspan="3">
@@ -79,6 +82,35 @@
 		</tr>
 		</tbody>
 	</table>
+	<br>	
+	 <table class="table">
+        <tbody>
+           <tr>
+				<td colspan="2">
+					<div class="row">
+						<form class="col s12">
+							<div class="row">
+								<div class="input-field col s6">
+									<i class="material-icons prefix">mode_edit</i>
+									<textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+									<label for="icon_prefix2">욕설과 비방은 무통보 삭제될 수 있습니다.</label>
+								</div>
+							</div>
+						</form>
+					</div>
+				</td>
+				<td colspan="1">
+					<a class="waves-effect waves-light btn">button</a>
+				</td>
+			</tr>
+	        <tr>
+	          <td>Alvin</td>
+	          <td>Eclair</td>
+	          <td>$0.87</td>
+	        </tr>      
+        </tbody>
+      </table>
+	
 	<input type="hidden" name="siteBoardId" value="1"> 
 	<input type="hidden"	name="memberId" value="LSE@mb">
 </main>

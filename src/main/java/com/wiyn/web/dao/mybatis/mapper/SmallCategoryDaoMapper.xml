@@ -37,5 +37,10 @@
 		)
 
 	</insert>
+	
+	<delete id="del" parameterType="com.wiyn.web.entity.SmallCategory">
+		DELETE FROM SmallCategory WHERE bigCategoryId = #{param1} and id = #{param2};
+	
+	</delete>
 
 </mapper>

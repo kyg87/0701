@@ -29,5 +29,12 @@
 		)
 
 	</insert>
+	
+	<delete id="del" parameterType="com.wiyn.web.entity.BigCategory">
+		
+		DELETE FROM BigCategory WHERE id = #{param1};
+		
+		
+	</delete>
 
 </mapper>

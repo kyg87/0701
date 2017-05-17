@@ -43,6 +43,13 @@ public class MyBatisSmallCategoryDao implements SmallCategoryDao {
 	    return smallCategoryDao.getList();
 	}
 
+	@Override
+	public int del(String bigCategoryId, String smallCategoryId) {
+		SmallCategoryDao smallCategoryDao;
+		smallCategoryDao = sqlSession.getMapper(SmallCategoryDao.class);
+		return smallCategoryDao.del(bigCategoryId, smallCategoryId);
+	}
+
 
 
 }

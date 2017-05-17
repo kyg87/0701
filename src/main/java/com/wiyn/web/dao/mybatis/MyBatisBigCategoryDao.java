@@ -35,6 +35,13 @@ public class MyBatisBigCategoryDao implements BigCategoryDao {
 		return false;
 	}
 
+	@Override
+	public int del(String bigCategoryId) {
+		BigCategoryDao bigCategoryDao;
+		bigCategoryDao = sqlSession.getMapper(BigCategoryDao.class);
+		return bigCategoryDao.del(bigCategoryId);
+	}
+
 
 
 }
