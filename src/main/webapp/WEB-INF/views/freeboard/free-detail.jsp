@@ -113,64 +113,6 @@
 			
 			<div id="minibox">
 			<form action="freeBoard-comment-add" method="post">
-			<div id="minibox">			
-				<table>
-			        <thead>
-			          <tr>
-			           	  <td>
-							<security:authorize access="isAnonymous()">
-								<p>글쓰기는 로그인한 유저만 가능합니다 로그인해주세요</p>
-							</security:authorize>
-							<security:authorize access="isAuthenticated()">
-				              	<input name="content" type="text" value="댓글을입력하세요." />	
-				              	<input name="action" type="submit" value="등록" />
-			              	</security:authorize>		
-			              </td>
-			                      
-			          </tr>
-			        </thead>
-			        <tbody>
-			        <c:forEach var="v" items="${n.freeComment}">
-			          <tr>
-			            <td>
-			          		댓글번호 :  ${v.id }
-			          	</td>
-			          	<td>
-			          		등록날짜 : ${v.regDate }
-			          	</td>
-			          	<td>
-			          		내용 : ${v.content }
-			          	</td>
-			          	<td>
-			          		등록된 아이디 : ${v.memberId }
-			          	</td>
-			          	<td>
-			          		<i id="mini" class="small material-icons">star</i>
-			          	</td>
-			          
-			          </tr>
-			        </c:forEach>
-			        </tbody>
-		      	</table>
-			</div>
-		
-				<input type="hidden" name="freeBoardId" value=${n.id }>
-				<div class="row">
-					<security:authorize access="isAnonymous()">
-						<p>글쓰기는 로그인한 유저만 가능합니다 로그인해주세요</p>
-					</security:authorize>
-					
-					<security:authorize access="isAuthenticated()">
-					<div class="input-field">
-						<i class="material-icons prefix">mode_edit</i>
-						<input  id="icon_prefix2" type="text" class="validate" name="content">
-						<label for="icon_prefix2">Message</label>
-						<button class="btn waves-effect waves-light secondary-content" type="submit" name="action">등록
-    						<i class="material-icons right">send</i>
-  						</button>
-					</div>
-					</security:authorize>
-				</div>
 				<div class="row">
 					<security:authorize access="isAnonymous()">
 						<p>글쓰기는 로그인한 유저만 가능합니다 로그인해주세요</p>
@@ -191,6 +133,40 @@
 					<input type="hidden" name="freeBoardId" value=${n.id }>
 					<input type="hidden" name="memberId" value=<security:authentication property="name"/>>
 			</form>
+<%-- 			<form action="freeBoard-comment-add" method="post">
+					<security:authorize access="isAnonymous()">
+						<p>글쓰기는 로그인한 유저만 가능합니다 로그인해주세요</p>
+					</security:authorize>
+					<security:authorize access="isAuthenticated()">
+						<input name="content" type="text" value="댓글을입력하세요." />
+						<input name="action" type="submit" value="등록" />
+					</security:authorize>
+
+					<input type="hidden" name="freeBoardId" value=${n.id }>
+					<input type="hidden" name="memberId" value=<security:authentication property="name"/>>
+				</form> --%>
+				<ul class="collection">
+				 <c:forEach var="v" items="${n.freeComment}">
+					<li class="collection-item avatar">
+						<img src="/WiynPrj/resource/images/test.png" alt="" class="circle"> 
+						<span class="title">${v.memberId }</span>
+						<time><fmt:formatDate value="${v.regDate}" pattern="yyyy-MM-dd hh:mm"/></time>
+						<p>
+							${v.content }
+						</p>
+					
+						<security:authentication property="name" var="loginID"/>
+						<c:if test="${v.memberId eq loginID}">
+							<form data-confirm ="댓글을 삭제하시겠습니까">
+								<input type="submit" value="삭제">
+							</form>
+						</c:if> 
+					</li>
+				 </c:forEach>
+				</ul>
+	
+			</div>
+
 		</div>
 	</div>
 
