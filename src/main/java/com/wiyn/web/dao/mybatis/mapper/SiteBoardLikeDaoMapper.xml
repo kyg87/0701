@@ -20,9 +20,21 @@
 			)
 	</insert>
 
-	<select id="getLike" parameterType="com.wiyn.web.entity.SiteBoardLike">
+	<select id="getLike" resultType="Integer">
 		select count(siteBoardId) 
 		from lsedb.SiteBoardLike 
-		where siteBoardId=#{siteBoardId}	
+		where siteBoardId=#{param1}	
 	</select>
+	
+	<select id="isExitLike" resultType="Integer" >
+		SELECT count(*) 
+		FROM lsedb.SiteBoardLike
+		 where memberId=#{param2} and siteBoardId=#{param1}
+	</select>
+	
+	<delete id="delete">
+		DELETE 
+		FROM lsedb.SiteBoardLike 
+		where memberId=#{param2} and siteBoardId=#{param1}
+	</delete>
 </mapper>

@@ -20,11 +20,27 @@ public class MyBatisSiteBoardLikeDao implements SiteBoardLikeDao{
 	}
 
 	@Override
-	public SiteBoardLike getLike(SiteBoardLike siteBoardLike) {
+	public int getLike(String siteBoardId) {
 		SiteBoardLikeDao siteBoardLikeDao;
 		siteBoardLikeDao =  sqlSession.getMapper(SiteBoardLikeDao.class);
-		return siteBoardLikeDao.getLike(siteBoardLike);
+		return siteBoardLikeDao.getLike(siteBoardId);
 	}
+
+	@Override
+	public int isExitLike(String siteBoardId, String memberId) {
+		SiteBoardLikeDao siteBoardLikeDao;
+		siteBoardLikeDao =  sqlSession.getMapper(SiteBoardLikeDao.class);
+		return siteBoardLikeDao.isExitLike(siteBoardId, memberId);
+	}
+
+	@Override
+	public int delete(String siteBoardId, String memberId) {
+		SiteBoardLikeDao siteBoardLikeDao;
+		siteBoardLikeDao =  sqlSession.getMapper(SiteBoardLikeDao.class);
+		return siteBoardLikeDao.delete(siteBoardId, memberId);
+	}
+
+	
 
 
 }

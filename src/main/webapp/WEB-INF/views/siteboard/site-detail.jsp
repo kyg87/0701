@@ -57,7 +57,7 @@ td{
 					</form>
 				</td>
 				<td>
-					${l.siteBoardLike }
+					${l }
 				</td>
 			</tr>
 			<tr>
@@ -129,6 +129,6 @@ td{
         </tbody>
       </table>
 	
-	<input type="hidden" name="siteBoardId" value="10"> 
+	<input type="hidden" name="siteBoardId" value="15"> 
 	<input type="hidden"	name="memberId" value="LSE@mb.com">
 </main>

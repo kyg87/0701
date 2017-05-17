@@ -70,25 +70,23 @@ public class SiteBoardController {
 		return "redirect:site-detail?c=" + siteBoard.getId();
 	}
 
-	/*@RequestMapping(value="site-detail",produces="text/plain;charset=UTF-8")
+	@RequestMapping(value="site-detail",produces="text/plain;charset=UTF-8")
 	public String siteDetail(
-			@RequestParam(value="siteBoardId") String siteBoardId,
 			@RequestParam("c")String id, 
 			Model model
 			)
 	{
 		SiteBoard siteBoard = new SiteBoard();
-		SiteBoardLike siteBoardLike = new SiteBoardLike();
+		
 		
 		siteBoard = sqlSession.getMapper(SiteBoardDao.class).getBoard(id);
-		siteBoardLike = sqlSession.getMapper(SiteBoardLikeDao.class).getLike(siteBoardLike);
-		
-		
-		model.addAttribute("l", siteBoardLike);
+
+		int likeCount = siteBoardLikeDao.getLike(id);			
+		model.addAttribute("l", likeCount);
 		model.addAttribute("n", siteBoard);
 		
 		return "siteboard.site-detail";
-	}*/
+	}
 
 	
 	/*@RequestMapping("site-list")
@@ -159,12 +157,18 @@ public class SiteBoardController {
 		    System.out.println("Å¸³ª¿©");
 			System.out.println(siteBoardId);
 			System.out.println(memberId);
-		
- 
+
 			siteBoardLike.setSiteBoardId(siteBoardId);
 			siteBoardLike.setMemberId(memberId);
-
-			siteBoardLikeDao.add(siteBoardLike);
+		
+			int exitLike =siteBoardLikeDao.isExitLike(siteBoardId, memberId);
+			
+			if (exitLike>0){
+				siteBoardLikeDao.delete(siteBoardId, memberId);
+			}
+			else{
+				siteBoardLikeDao.add(siteBoardLike);
+			}
 			
 			return "redirect:site-detail?c=" + siteBoardLike.getSiteBoardId();
 		}
