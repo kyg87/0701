@@ -61,13 +61,24 @@ public class FreeBoardController {
 	}
 
 	@RequestMapping("free-detail")
-	public String freeDetail(@RequestParam("c") String id, Model model) {
+	public String freeDetail(
+			@RequestParam(value="p", defaultValue="1")Integer page, 
+			@RequestParam("c") String id, 
+			Model model) {
 
 		FreeBoard freeboard = new FreeBoard();
 
 		freeboard = sqlSession.getMapper(FreeBoardDao.class).get(id);
-		freeboard.setFreeComment(sqlSession.getMapper(FreeCommentDao.class).getList(id));
-
+		freeboard.setFreeComment(sqlSession.getMapper(FreeCommentDao.class).getList(id,page));
+		System.out.println(id);
+		System.out.println(page);
+		System.out.println(sqlSession.getMapper(FreeCommentDao.class).getSize(id));
+		System.out.println(sqlSession.getMapper(FreeCommentDao.class).getList(id,page).size());
+		
+		int size = sqlSession.getMapper(FreeCommentDao.class).getSize(id);
+		
+		model.addAttribute("page", page);
+		model.addAttribute("size", size);
 		model.addAttribute("n", freeboard);
 
 		return "freeboard.free-detail";

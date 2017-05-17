@@ -111,6 +111,17 @@
 
 			</div>
 			
+			
+			<div>
+			현재 페이지 : ${page} </br>
+			전체 글 갯수 : ${size} </br>
+
+		
+			
+
+
+		</div>
+			
 			<div id="minibox">
 			<form action="freeBoard-comment-add" method="post">
 				<div class="row">
@@ -133,18 +144,7 @@
 					<input type="hidden" name="freeBoardId" value=${n.id }>
 					<input type="hidden" name="memberId" value=<security:authentication property="name"/>>
 			</form>
-<%-- 			<form action="freeBoard-comment-add" method="post">
-					<security:authorize access="isAnonymous()">
-						<p>글쓰기는 로그인한 유저만 가능합니다 로그인해주세요</p>
-					</security:authorize>
-					<security:authorize access="isAuthenticated()">
-						<input name="content" type="text" value="댓글을입력하세요." />
-						<input name="action" type="submit" value="등록" />
-					</security:authorize>
 
-					<input type="hidden" name="freeBoardId" value=${n.id }>
-					<input type="hidden" name="memberId" value=<security:authentication property="name"/>>
-				</form> --%>
 				<ul class="collection">
 				 <c:forEach var="v" items="${n.freeComment}">
 					<li class="collection-item avatar">
@@ -166,6 +166,33 @@
 				</ul>
 	
 			</div>
+			
+				<c:if test="${size/10 > 0}">
+			 <ul class="pagination center">
+
+
+				<li class="waves-effect"><a><i class="material-icons">chevron_left</i></a></li>
+
+
+				<c:forEach var="i" begin="1" end="${size/10 }">
+
+					<c:choose>
+
+						<c:when test="${page eq i }">
+							<li class="waves-effect active"><a>${i}</a></li>
+						</c:when>
+
+						<c:otherwise>
+							<li class="waves-effect"><a>${i}</a></li>
+						</c:otherwise>
+
+					</c:choose>
+				</c:forEach>
+
+				<li class="waves-effect"><a><i class="material-icons">chevron_right</i></a></li>
+
+			</ul>
+			</c:if>
 
 		</div>
 	</div>
