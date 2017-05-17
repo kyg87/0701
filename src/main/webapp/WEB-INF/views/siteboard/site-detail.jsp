@@ -52,9 +52,12 @@ td{
 					<button class="btn waves-effect waves-light" type="submit"
 						name="action">	Submit <i class="small material-icons">thumb_up</i>
 					</button>
-						<input type="hidden" name="siteBoardId" value="13"> 
+						<input type="hidden" name="siteBoardId" value=${n.id }> 
 		`				<input type="hidden"	name="memberId" value="LSE@mb.com">
 					</form>
+				</td>
+				<td>
+					${l.siteBoardLike }
 				</td>
 			</tr>
 			<tr>

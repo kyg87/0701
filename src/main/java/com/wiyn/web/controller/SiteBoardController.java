@@ -70,18 +70,25 @@ public class SiteBoardController {
 		return "redirect:site-detail?c=" + siteBoard.getId();
 	}
 
-	@RequestMapping(value="site-detail",produces="text/plain;charset=UTF-8")
-	public String siteDetail(@RequestParam("c")String id, Model model)
+	/*@RequestMapping(value="site-detail",produces="text/plain;charset=UTF-8")
+	public String siteDetail(
+			@RequestParam(value="siteBoardId") String siteBoardId,
+			@RequestParam("c")String id, 
+			Model model
+			)
 	{
 		SiteBoard siteBoard = new SiteBoard();
+		SiteBoardLike siteBoardLike = new SiteBoardLike();
 		
 		siteBoard = sqlSession.getMapper(SiteBoardDao.class).getBoard(id);
+		siteBoardLike = sqlSession.getMapper(SiteBoardLikeDao.class).getLike(siteBoardLike);
 		
 		
+		model.addAttribute("l", siteBoardLike);
 		model.addAttribute("n", siteBoard);
 		
 		return "siteboard.site-detail";
-	}
+	}*/
 
 	
 	/*@RequestMapping("site-list")
@@ -149,7 +156,7 @@ public class SiteBoardController {
 				@RequestParam(value="siteBoardId")String siteBoardId,
 				@RequestParam(value="memberId")String memberId
 				){
-		 System.out.println("타나여");
+		    System.out.println("타나여");
 			System.out.println(siteBoardId);
 			System.out.println(memberId);
 		
@@ -161,4 +168,6 @@ public class SiteBoardController {
 			
 			return "redirect:site-detail?c=" + siteBoardLike.getSiteBoardId();
 		}
+	 
+	 
 }

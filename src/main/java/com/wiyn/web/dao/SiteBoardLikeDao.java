@@ -5,5 +5,6 @@ import com.wiyn.web.entity.SiteBoardLike;
 public interface SiteBoardLikeDao {
 
 	public int add(SiteBoardLike siteBoardLike);
-	
+	SiteBoardLike getLike(SiteBoardLike siteBoardLike);
+
 }

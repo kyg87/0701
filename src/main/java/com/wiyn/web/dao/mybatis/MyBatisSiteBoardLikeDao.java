@@ -19,4 +19,12 @@ public class MyBatisSiteBoardLikeDao implements SiteBoardLikeDao{
 		return siteBoardLikeDao.add(siteBoardLike);
 	}
 
+	@Override
+	public SiteBoardLike getLike(SiteBoardLike siteBoardLike) {
+		SiteBoardLikeDao siteBoardLikeDao;
+		siteBoardLikeDao =  sqlSession.getMapper(SiteBoardLikeDao.class);
+		return siteBoardLikeDao.getLike(siteBoardLike);
+	}
+
+
 }
