@@ -77,18 +77,36 @@ textScroll.prototype.start = function() {
 					<ul class="tabs">
 						<li class="tab col s3"><a href="#test1">최신순</a></li>
 						<li class="tab col s3"><a class="active" href="#test2">점수순</a></li>
-						<li class="tab col s3"><a href="#test4">댓글순</a></li>
+						<li class="tab col s3"><a href="#test3">댓글순</a></li>
 					</ul>
 				</div>
-
-                <div class="collection">
+ 
+    <div id="test1" class="col s12 collection">
                     <c:forEach var="n" items="${sitelist}">
                     <a href="../siteboard/site-detail?c=${n.id}" class="collection-item">${n.title}</a>
                     </c:forEach>
-                </div>
+    </div>
+    <div id="test2" class="col s12 collection">
+                    <c:forEach var="n" items="${sitelistlike}">
+                    <a href="../siteboard/site-detail?c=${n.id}" class="collection-item">${n.title}</a>
+                    </c:forEach>
+    </div>
+    <div id="test3" class="col s12 collection">
+                        <c:forEach var="n" items="${sitelistcomment}">
+                    <a href="../siteboard/site-detail?c=${n.id}" class="collection-item">${n.title}</a>
+                    </c:forEach>
+    </div>
+  </div>
+<%--                 <div class="collection">
+                    <c:forEach var="n" items="${sitelist}">
+                    <a href="../siteboard/site-detail?c=${n.id}" class="collection-item">${n.title}</a>
+                    </c:forEach>
+                </div> --%>
+                
+                
+                
             <fmt:parseNumber var="sizeInt" integerOnly="true" value="${size/10 }" />
             <c:set var="last" value="${(size%10)>0 ? sizeInt+1 : sizeInt }" />
-            <%-- <c:set var="last" value="${(size % 10) >= 0 ? size / 10 + 1 : size / 10}"/>     --%>
             <div>${empty param.p ? 1 : param.p}/${last }pages  </div>
             <div>${size}</div>
                 <ul class="pagination center">
@@ -100,10 +118,6 @@ textScroll.prototype.start = function() {
                 <c:forEach var="i" begin="1" end="${last }"> 
                   <li class="waves-effect"><a href="?p=${i }&q=${param.q}">${i }</a></li> 
                  </c:forEach> 
-<!--                     <li class="waves-effect"><a href="#!">2</a></li>
-                    <li class="waves-effect"><a href="#!">3</a></li>
-                    <li class="waves-effect"><a href="#!">4</a></li>
-                    <li class="waves-effect"><a href="#!">5</a></li> -->
                     <li class="waves-effect">
                             <c:if test="${param.p+1<=last }">
                             <a href="?p=${param.p+1 }&q=${param.q}"><i

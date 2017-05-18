@@ -20,7 +20,21 @@ public class MyBatisSiteBoardDao implements SiteBoardDao{
 		siteBoardDao = sqlSession.getMapper(SiteBoardDao.class);
 		return siteBoardDao.getList(page, query);
 	}
+	@Override
+	public List<SiteBoard> getListLike(int page, String query) {
+		SiteBoardDao siteBoardDao;
+		siteBoardDao = sqlSession.getMapper(SiteBoardDao.class);
+		return siteBoardDao.getListLike(page, query);
+	}
+	
+	@Override
+	public List<SiteBoard> getListComment(int page, String query) {
+		SiteBoardDao siteBoardDao;
+		siteBoardDao = sqlSession.getMapper(SiteBoardDao.class);
+		return siteBoardDao.getListComment(page, query);
+	}
 
+	
 	@Override
 	public int add(SiteBoard siteBoard) {
 		SiteBoardDao siteBoardDao;
@@ -75,6 +89,8 @@ public class MyBatisSiteBoardDao implements SiteBoardDao{
         siteBoardDao = sqlSession.getMapper(SiteBoardDao.class);
         return siteBoardDao.getNext(id);
     }
+
+
 
 
 

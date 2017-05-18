@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.wiyn.web.dao.NoticeBoardDao;
+import com.wiyn.web.dao.RequestBoardDao;
 import com.wiyn.web.dao.SiteBoardDao;
+import com.wiyn.web.entity.FreeBoard;
 import com.wiyn.web.entity.NoticeBoard;
+import com.wiyn.web.entity.RequestBoard;
 import com.wiyn.web.entity.SiteBoard;
 
 
@@ -36,6 +39,8 @@ public class MainController {
             @RequestParam(value="q", defaultValue="")String query, Model model) {
 
         List<SiteBoard> sitelist = sqlSession.getMapper(SiteBoardDao.class).getList(page,query);
+        List<SiteBoard> sitelistlike = sqlSession.getMapper(SiteBoardDao.class).getListLike(page, query);
+        List<SiteBoard> sitelistcomment = sqlSession.getMapper(SiteBoardDao.class).getListComment(page, query);
         int size= sqlSession.getMapper(SiteBoardDao.class).getSize();
         String last= sqlSession.getMapper(SiteBoardDao.class).lastId();
         SiteBoard board=sqlSession.getMapper(SiteBoardDao.class).getBoard(id);
@@ -46,9 +51,9 @@ public class MainController {
         
         model.addAttribute("noticelist", noticelist);
         model.addAttribute("sitelist", sitelist);
+        model.addAttribute("sitelistlike", sitelistlike);
+        model.addAttribute("sitelistcomment", sitelistcomment);
         
-        
-        model.addAttribute("sitelist", sitelist);
         model.addAttribute("size", size);
         model.addAttribute("last", last);
         model.addAttribute("prev", prev);
@@ -57,5 +62,6 @@ public class MainController {
         
         return "main.index";
     }
+    
 
 }
