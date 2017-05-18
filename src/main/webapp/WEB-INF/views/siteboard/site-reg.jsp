@@ -125,14 +125,52 @@ body {
 								</c:forEach>
 							</select>
 						</div>
+						<script>
+							$(function() {
+								$("#bigCategoryId").on('change', function() {
+			
+											var data = $("#bigCategoryId");
+											var smallCategory = $("#smallCategoryId");
+											var smli = $("#scList>div>select");
+					
+											smli.empty();
+											
+											$.post("getListWithBC", data, function(d) {
+			
+												var obj = JSON.parse(d);
+												console.log(obj);
+					   		
+												smallCategory.append( $('<option disabled selected><span> 소분류 선택 </span></option'));
+												
+												if(obj.length != 0){
+													for (var i = 0; i < obj.length; i++) {
+									   					
+														smallCategory.append( $('<option value=' +obj[i].id +  '><span>'+ obj[i].name +'</span></option>'));
+											
+									   					$('select').material_select();
+													}
+												}
+												else if(obj.length == 0){
+													$('select').material_select();
+												}
+											});
+											
+											var bcDelpost = $("#bcdel");
+											var bcModpost = $("#bcmod");
+											var bcCheckpost = $("#bcAddCheck");
+											
+											bcDelpost.val($(this).val());
+											bcModpost.val($(this).val());
+											bcCheckpost.val($(this).val());
+											
+										});
+							});
+						</script>
 					</th>
 					<th>
-						<div id="input-field2" class="input-field">
-							<select  name="smallCategoryId" >
-								<option value="" disabled selected>소분류</option>
-								<option value="1">Option 1</option>
-								<option value="2">Option 2</option>
-								<option value="3">Option 3</option>
+						<div class="input-field" id="scList">
+							<select name="smallCategoryId" id="smallCategoryId">
+								<option value="" disabled selected>소분류 선택</option>
 							</select>
 						</div>
 					</th>
@@ -233,7 +271,6 @@ body {
 				</tr>
 			</tbody>
 		</table>
-		<input type="hidden" name="bigCategoryId" value="2"/>
 		<input type="hidden" name="memberId" value="LSE@mb.com"/>
 	</div>
 </form>

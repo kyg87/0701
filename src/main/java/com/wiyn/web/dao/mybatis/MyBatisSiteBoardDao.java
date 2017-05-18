@@ -90,7 +90,19 @@ public class MyBatisSiteBoardDao implements SiteBoardDao{
         return siteBoardDao.getNext(id);
     }
 
+	@Override
+	public String getBName(String id) {
+		SiteBoardDao siteBoardDao;
+		siteBoardDao = sqlSession.getMapper(SiteBoardDao.class);
+		return siteBoardDao.getBName(id);
+	}
 
+	@Override
+	public String getSName(String id) {
+		SiteBoardDao siteBoardDao;
+		siteBoardDao = sqlSession.getMapper(SiteBoardDao.class);
+		return siteBoardDao.getSName(id);
+	}
 
 
 

@@ -13,6 +13,7 @@ public class SiteBoard {
 	private String tagId;
 	private String memberId;
 	private String bigCategoryId;
+	private String smallCategoryId;
 	
 	private BigCategory bigCategory;
 	private SmallCategory smallCategory;
@@ -83,6 +84,12 @@ public class SiteBoard {
 	}
 	public void setSmallCategory(SmallCategory smallCategory) {
 		this.smallCategory = smallCategory;
+	}
+	public String getSmallCategoryId() {
+		return smallCategoryId;
+	}
+	public void setSmallCategoryId(String smallCategoryId) {
+		this.smallCategoryId = smallCategoryId;
 	}
 	
 	

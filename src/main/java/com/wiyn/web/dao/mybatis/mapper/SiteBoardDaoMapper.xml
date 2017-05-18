@@ -19,7 +19,9 @@
 			`content`,
 			`regDate`,
 			`url`,
-			`memberId`
+			`memberId`,
+			bigCategoryId,
+			smallCategoryId
 		)
 		VALUES
 		(
@@ -28,7 +30,9 @@
 			#{content},
 			now(),
 			#{url},
-			#{memberId}
+			#{memberId},
+			#{bigCategoryId},
+			#{smallCategoryId}
 		)
 	</insert>
 
@@ -85,6 +89,21 @@
         FROM `lsedb`.`SiteBoard`
         WHERE CAST(id AS unsigned) &gt; CAST(#{id} AS unsigned) ORDER BY regDate ASC LIMIT 0, 1
 
+	</select>
+
+
+	<select id="getBName" resultType="String">
+		select BigCategory.name from
+		SiteBoard inner
+		join BigCategory on SiteBoard.bigCategoryId=BigCategory.id where
+		SiteBoard.id=#{param1}
+	</select>
+
+	<select id="getSName" resultType="String">
+		select SmallCategory.name from
+		SiteBoard inner
+		join SmallCategory on SiteBoard.smallCategoryId=SmallCategory.id
+		where SiteBoard.id=#{param1}
 	</select>
 
 </mapper>

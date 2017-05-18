@@ -34,8 +34,8 @@ td{
 					<nav>
 						<div class="nav-wrapper">
 							<div class="col s12">
-								<a href="#!" class="breadcrumb">First</a> <a href="#!"
-									class="breadcrumb">Second</a>
+								<a href="#!" class="breadcrumb">${b }</a> 
+								<a href="#!" class="breadcrumb">${s }</a>
 							</div>
 						</div>
 					</nav>
@@ -53,7 +53,7 @@ td{
 						name="action">	Submit <i class="small material-icons">thumb_up</i>
 					</button>
 						<input type="hidden" name="siteBoardId" value=${n.id }> 
-		`				<input type="hidden"	name="memberId" value="LSE@mb.com">
+						<input type="hidden"	name="memberId" value="LSE@mb.com">
 					</form>
 				</td>
 				<td>

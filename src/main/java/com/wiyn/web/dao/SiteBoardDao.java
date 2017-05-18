@@ -22,4 +22,7 @@ public interface SiteBoardDao {
 	
 	public String lastId();
 	public int getSize();
+	
+	String getBName(String id);
+	String getSName(String id);
 }
