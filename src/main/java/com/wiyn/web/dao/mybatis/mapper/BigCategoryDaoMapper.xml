@@ -11,8 +11,8 @@
 		
 	</select>
 	
-	<select resultType="com.wiyn.web.entity.BigCategory" id="addCheck">
-		SELECT count(*) FROM BigCategory WHERE name = #{param2};
+	<select id="addCheck" resultType="Integer">
+		SELECT count(*) FROM BigCategory WHERE name = #{name};
 	</select>
 		
 	<insert id="add" parameterType="com.wiyn.web.entity.BigCategory">

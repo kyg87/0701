@@ -149,11 +149,11 @@
 								
 								var bcDelpost = $("#bcdel");
 								var bcModpost = $("#bcmod");
-								var bcCheckpost = $("#bcAddCheck");
+								var scCheckpost = $("#scAddCheck");
 								
 								bcDelpost.val($(this).val());
 								bcModpost.val($(this).val());
-								bcCheckpost.val($(this).val());
+								scCheckpost.val($(this).val());
 								
 							});
 				});
@@ -177,11 +177,11 @@
 					
 					var scDelpost = $("#scdel");
 					var scModpost = $("#scmod");
-					var scCheckpost = $("#scAddCheck");
+					
 					
 					scDelpost.val($(this).val());
 					scModpost.val($(this).val());
-					scCheckpost.val($(this).val());
+					
 				});
 			});
 			
@@ -347,21 +347,19 @@
 					method="post">
 					<div class="row">
 						<div class="input-field col s12">
-							<textarea id="BCaddName" class="materialize-textarea" name="name"></textarea>
+							<textarea id="BCaddName" class="materialize-textarea" name="name" required="required"></textarea>
 							<label for="BCaddName">추가할 대분류 카테고리명</label>
 						</div>
 
 						<div class="modal-footer">
 
-							<button class="btn waves-effect waves-light"
-								name="action">Cancel</button>
+							<button class="btn waves-effect waves-light" id="BCaddCancel">Cancel</button>
 
 							<button class="btn waves-effect waves-light" type="button"
-								id="CategoryAddBtn" name="action">Submit</button>
+								id="BCAddBtn">Submit</button>
 						</div>
 					</div>
-					<input type="hidden" value="" name="smallCategoryId" id="scAddCheck" />
-					<input type="hidden" value="" name="bigCategoryId" id="bcAddCheck" />
+					
 				</form>
 			</div>
 		</div>
@@ -370,25 +368,41 @@
 	<script>
 	
 	$(function(){
-		$("#CategoryAddBtn").on('click', function(){
+		$("#BCAddBtn").on('click', function(){
 			
-			alert("aa");
+			var name = $("#BCaddName").val();
+			var bcAddForm = $("#bigCategory");
+						
+			name = name.trim();
 			
-			var checkName = $("#BCaddName");
-			var scAddCheck = $("#scAddCheck");
-			var bcAddCheck = $("#bcAddCheck");
+			if(name == "")
+				alert("카테고리명을 정확히 입력하세요!");
 			
-			console.log(checkName.val());
-			console.log(bcAddCheck.val());
-			
-			$.post("category-addCheck", checkName, bcAddCheck, function(q) {
+			else{
 				
-				var res = q;
-				console.log(res);
+				$.post("BCAddCheck", {"name":name}, function(e){
+					
+					console.log(e);
+					
+					if(e == 0){
+							bcAddForm.submit();
+							alert("tt");
+					}
+					
+					else
+						alert("중복된 이름 존재");
+					
+				});
 				
-			});
+			}	
+		});
+		
+		$("#BCaddCancel").on('click', function(){
+			
+			location.href='http:\/\/localhost\/WiynPrj\/admin\/admin';
 			
 		});
+		
 	});
 	
 	</script>
@@ -402,7 +416,7 @@
 					method="post">
 					<div class="row">
 						<div class="input-field">
-							<select name="bigCategoryId">
+							<select name="bigCategoryId" id="SCaddCheck">
 								<option value="" disabled selected>대분류 선택</option>
 
 								<c:forEach var="bc" items="${bcList }">
@@ -412,25 +426,73 @@
 						</div>
 
 						<div class="input-field col s12">
-							<textarea id="textarea1" class="materialize-textarea" name="name"></textarea>
-							<label for="textarea1">추가할 소분류 카테고리명</label>
+							<textarea id="SCaddName" class="materialize-textarea" name="name"></textarea>
+							<label for="SCaddName">추가할 소분류 카테고리명</label>
 						</div>
 
 						<div class="modal-footer">
 
-							<button class="btn waves-effect waves-light"
-								name="action">Cancel</button>
+							<button class="btn waves-effect waves-light" id="SCaddCancel">Cancel</button>
 
-							<button class="btn waves-effect waves-light" type="submit"
-								name="action">Submit</button>
+							<button class="btn waves-effect waves-light" type="button"
+								id="SCAddBtn">Submit</button>
 
 						</div>
 
 					</div>
+					
+					
 				</form>
 			</div>
 		</div>
 	</div>
+	
+	<script>
+	$(function(){
+		$("#SCAddBtn").on('click', function(){
+			
+			var scaddname = decodeURIComponent($("#SCaddName").val());
+			var scAddCheck = $("#SCaddCheck").val();
+			var scAddForm = $("#smallCategory");
+			
+			var data = scAddForm.serialize();
+
+			
+			console.log(data);
+			console.log(scaddname);
+			
+			scaddname = scaddname.trim();
+			
+			if(scaddname == "")
+				alert("카테고리명을 정확히 입력하세요!");
+			
+			else{
+				
+				$.post("SCAddCheck", {"data":data}, function(t){
+					
+					console.log(t);
+					
+					if(t == 0){
+						scAddForm.submit();
+						alert("tt");
+					}
+					
+					else
+						alert("중복된 이름 존재");
+					
+				});
+				
+			}	
+		});
+		
+		$("#SCaddCancel").on('click', function(){
+			
+			location.href='http:\/\/localhost\/WiynPrj\/admin\/admin';
+			
+		});
+		
+	});
+	</script>
 
 
 	<!--  Scripts-->

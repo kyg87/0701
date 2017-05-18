@@ -1,5 +1,6 @@
 package com.wiyn.web.controller;
-import com.google.gson.Gson;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonNull;
 import com.wiyn.web.dao.BigCategoryDao;
 import com.wiyn.web.dao.SmallCategoryDao;
 import com.wiyn.web.entity.BigCategory;
@@ -36,6 +39,7 @@ public class AdminController {
 			BigCategory bigCategory,
 			@RequestParam(value="name")String name){
 		
+		System.out.println("big add");
 		
 		bigCategory.setName(name);
 		bigCategoryDao.add(bigCategory);
@@ -134,27 +138,37 @@ public class AdminController {
 		return "redirect:admin";
 	}
 	
-	@RequestMapping(value="category-addCheck", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
-	public String CategoryAddCheck(
-			@RequestParam(value="bigCategoryId")String bigCategoryId,
+	
+	@RequestMapping(value="BCAddCheck", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
+	@ResponseBody
+	public String BCAddCheck(
 			@RequestParam(value="name")String name){
 		
-		System.out.println(bigCategoryId);
 		System.out.println(name);
 		
-		if(!bigCategoryId.equals("")){
+		int result = bigCategoryDao.addCheck(name);
+		
+		System.out.println(result);
+						
+		return Integer.toString(result);
+	}
+	
+	@RequestMapping(value="SCAddCheck", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
+	@ResponseBody
+	public String SCAddCheck(
+			@RequestParam(value="data")String data) throws UnsupportedEncodingException{
 			
-			int result = smallCategoryDao.addCheck(bigCategoryId, name);
-			System.out.println(result);
-			return Integer.toString(result);
-		}
-
-		else{
-			
-			int result = bigCategoryDao.addCheck(name);
-			
-			return Integer.toString(result);
-		}
+		
+		String test = URLDecoder.decode(data, "UTF-8");
+				
+		System.out.println(test);
+		
+		
+		/*int result = smallCategoryDao.addCheck(bigCategoryId, name);
+		
+		System.out.println(result);*/
+						
+		return " ";
 	}
 	
 }
