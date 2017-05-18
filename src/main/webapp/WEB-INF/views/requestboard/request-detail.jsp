@@ -115,7 +115,7 @@
 							<a  id="btn" class="waves-effect waves-light btn" a href="request-edit?c=${n.id}">수정</a>
 			            </td>
 			            <td>
-							<a id="btn" class="waves-effect waves-light btn">목록</a>
+							<a id="btn" class="waves-effect waves-light btn" a href="requestboard">목록</a>
 			            </td>
 			          </tr>
 			        </tbody>

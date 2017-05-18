@@ -186,6 +186,7 @@ body {
 			</tbody>
 		</table>
 	</div>
+	
 	<input type="hidden" name="memberId" value=<security:authentication property="name"/>	>
 	</form>
 
