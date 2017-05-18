@@ -17,7 +17,7 @@
 	
 	</select>
 	
-	<select resultType="com.wiyn.web.entity.SmallCategory" id="addCheck">
+	<select resultType="Integer" id="addCheck">
 		SELECT count(*) FROM SmallCategory WHERE bigCategoryId = #{param1} and name = #{param2};
 	</select>
 		

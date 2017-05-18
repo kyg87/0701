@@ -386,7 +386,7 @@
 					
 					if(e == 0){
 							bcAddForm.submit();
-							alert("tt");
+							alert("대분류 추가 성공!");
 					}
 					
 					else
@@ -432,7 +432,7 @@
 
 						<div class="modal-footer">
 
-							<button class="btn waves-effect waves-light" id="SCaddCancel">Cancel</button>
+							<button class="btn waves-effect waves-light" id="SCaddCancel" type="button">Cancel</button>
 
 							<button class="btn waves-effect waves-light" type="button"
 								id="SCAddBtn">Submit</button>
@@ -474,7 +474,7 @@
 					
 					if(t == 0){
 						scAddForm.submit();
-						alert("tt");
+						alert("소분류 추가 성공!");
 					}
 					
 					else

@@ -88,8 +88,6 @@ public class AdminController {
 		Gson gson = new Gson();
 		String json = gson.toJson(scList);
 		
-		//System.out.println(scList);
-		
 		return json;
 	}
 	
@@ -157,18 +155,34 @@ public class AdminController {
 	@ResponseBody
 	public String SCAddCheck(
 			@RequestParam(value="data")String data) throws UnsupportedEncodingException{
-			
 		
 		String test = URLDecoder.decode(data, "UTF-8");
-				
-		System.out.println(test);
+		
+		int firstStart = test.indexOf("d=");
+		int firstEnd = test.indexOf('&');
+		int secondStart = test.indexOf("e=");
+		int secondEnd = test.length();
+		
+		String id = test.substring(firstStart+2, firstEnd);
+		String name = test.substring(secondStart+2, secondEnd);
+		
+		System.out.println("문장 : " + test);
+		System.out.println("1 시작 : " + firstStart);
+		System.out.println("1 끝 : " + firstEnd);
+		System.out.println("2 시작 : " + secondStart);
+		System.out.println("2 끝 : " + secondEnd);
+		
+		System.out.println("id : " + id);
+		System.out.println("name : " + name);
+		
+		System.out.println(test.length());
 		
 		
-		/*int result = smallCategoryDao.addCheck(bigCategoryId, name);
+		int result = smallCategoryDao.addCheck(id, name);
 		
-		System.out.println(result);*/
+		System.out.println(result);
 						
-		return " ";
+		return Integer.toString(result);
 	}
 	
 }
