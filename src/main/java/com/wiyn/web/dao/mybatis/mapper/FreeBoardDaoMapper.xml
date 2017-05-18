@@ -53,7 +53,7 @@ FROM `lsedb`.`FreeBoard`
 	
 </delete>
 
-<update id="hitInc">
+<update id="updateHit">
 	UPDATE `lsedb`.`FreeBoard` SET hit=hit+1 WHERE `id`=#{id};
 </update>
 

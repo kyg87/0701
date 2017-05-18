@@ -5,6 +5,8 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+
+
 <!DOCTYPE html>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -123,59 +125,158 @@
 
 
 		<div id="minibox">
+			 <form action="freeBoard-comment-add" method="post">
+            <div class="row">
+               <security:authorize access="isAnonymous()">
+                  <p>글쓰기는 로그인한 유저만 가능합니다 로그인해주세요</p>
+               </security:authorize>
+               
+               <security:authorize access="isAuthenticated()">
+               <div class="input-field">
+                  <i class="material-icons prefix">mode_edit</i>
+                  <input  id="icon_prefix2" type="text" class="validate" name="content" required="required">
+                  <label for="icon_prefix2">Message</label>
+                  <button class="btn waves-effect waves-light secondary-content" type="submit" name="action">등록
+                      <i class="material-icons right">send</i>
+                    </button>
+               </div>
+               </security:authorize>
+            </div>
+            
+               <input type="hidden" name="freeBoardId" value=${n.id }>
+               <input type="hidden" name="memberId" value=<security:authentication property="name"/>>
+         </form>
 			
 
-				<ul class="collection">
-				 <c:forEach var="v" items="${n.freeComment}">
-					<li class="collection-item avatar">
-						<img src="/WiynPrj/resource/images/test.png" alt="" class="circle"> 
-						<span class="title">${v.memberId }</span>
-						<time><fmt:formatDate value="${v.regDate}" pattern="yyyy-MM-dd hh:mm"/></time>
-						<p>
-							${v.content }
-						</p>
-					
-						<security:authentication property="name" var="loginID"/>
-						<c:if test="${v.memberId eq loginID}">
-							<form data-confirm ="댓글을 삭제하시겠습니까">
-								<input type="submit" value="삭제">
-							</form>
-						</c:if> 
-					</li>
-				 </c:forEach>
+				<ul id ="commentList" class="collection">
+	
 				</ul>
 	
 			</div>
 
-            
-                <c:if test="${size/10 > 0}">
-             <ul class="pagination center">
-
-
-                <li class="waves-effect"><a><i class="material-icons">chevron_left</i></a></li>
-
-
-                <c:forEach var="i" begin="1" end="${size/10 }">
-
-                    <c:choose>
-
-                        <c:when test="${page eq i }">
-                            <li class="waves-effect active"><a>${i}</a></li>
-                        </c:when>
-
-                        <c:otherwise>
-                            <li class="waves-effect"><a>${i}</a></li>
-                        </c:otherwise>
-
-                    </c:choose>
-                </c:forEach>
-
-                <li class="waves-effect"><a><i class="material-icons">chevron_right</i></a></li>
+ 
+             <ul id="pagination" class="pagination center">
 
             </ul>
-            </c:if>
+       
 
 		</div>
 	</div>
 
 </main>
+<security:authentication property="name" var="loginID"/>
+
+<script>
+page(${page});
+  function page(page){
+
+	   $.post("commentPage", {"page":page ,"id":${n.id }}, function(d) {
+		      
+		      $("#commentList").empty();
+		      $("#pagination").empty();
+		      var obj = JSON.parse(d);
+		      
+		     
+		      if(obj.length != 0){
+		    	  
+
+					for (var i = 0; i < obj.length; i++) {
+						
+						if(obj[i].memberId=='${loginID}'){
+						
+							$("#commentList").append($('<li class="collection-item avatar">' + + '</li>')
+								 .append($('<img src="/WiynPrj/resource/images/test.png" alt="" class="circle"> '))
+								 .append($('<span class="title">'+obj[i].memberId+'</span>'))
+								 .append($('<time>'+obj[i].regDate+'</time>'))
+								 .append($('<p>'+obj[i].content+'</p>'))
+								 .append($('<form data-confirm ="댓글을 삭제하시겠습니까"><input type="submit" value="삭제"></form>')));
+						}
+						else{
+							$("#commentList").append($('<li class="collection-item avatar">' + + '</li>')
+									 .append($('<img src="/WiynPrj/resource/images/test.png" alt="" class="circle"> '))
+									 .append($('<span class="title">'+obj[i].memberId+'</span>'))
+									 .append($('<time>'+obj[i].regDate+'</time>'))
+									 .append($('<p>'+obj[i].content+'</p>')));
+						}
+
+					}
+			    	  $("#pagination").append($('<li class="waves-effect"><a><i class="material-icons">chevron_left</i></a></li>'));
+			    	
+					 var lastPage = ${size/10+(1-(size/10%1))%1};
+					  
+			
+					 
+					 for (var i = 1; i <= lastPage; i++){
+						 
+		
+						 if(page == i){
+							 $("#pagination").append($(' <li class="waves-effect active"><a class="page" onclick="page('+i+');" value='+i+'>'+i+'</a></li>'));
+						 }
+						 else{
+							 $("#pagination").append($(' <li class="waves-effect"><a class="page" onclick="page('+i+');" value='+i+'>'+i+'</a></li>'));
+						 }
+					 }
+					 
+					  $("#pagination").append($('<li class="waves-effect"><a><i class="material-icons">chevron_right</i></a></li>'));
+				}
+		      
+		    
+		   	});
+  }
+   $(".page").on("click",function(){
+	
+	   
+   var page = $(this).attr('value');
+
+   $.post("commentPage", {"page":page ,"id":${n.id }}, function(d) {
+      
+      $("#commentList").empty();
+      $("#pagination").empty();
+      var obj = JSON.parse(d);
+      
+     
+      if(obj.length != 0){
+    	  
+
+			for (var i = 0; i < obj.length; i++) {
+					
+				 $("#commentList").append($('<li class="collection-item avatar">' + + '</li>')
+						 .append($('<img src="/WiynPrj/resource/images/test.png" alt="" class="circle"> '))
+						 .append($('<span class="title">'+obj[i].memberId+'</span>'))
+						 .append($('<time>'+obj[i].regDate+'</time>'))
+						 .append($('<p>'+obj[i].content+'</p>')));
+
+			}
+	    	  $("#pagination").append($('<li class="waves-effect"><a><i class="material-icons">chevron_left</i></a></li>'));
+	    	
+			 var lastPage = ${size/10+(1-(size/10%1))%1};
+			  
+		
+			 
+			 for (var i = 1; i <= lastPage; i++){
+				 
+			
+				 if(${page eq i }){
+					 $("#pagination").append($(' <li class="waves-effect active"><a class="page" onclick="page('+i+');" value='+i+'>'+i+'</a></li>'));
+				 }
+				 else{
+					 $("#pagination").append($(' <li class="waves-effect"><a class="page" onclick="page('+i+');" value='+i+'>'+i+'</a></li>'));
+				 }
+			 }
+			 
+			  $("#pagination").append($('<li class="waves-effect"><a><i class="material-icons">chevron_right</i></a></li>'));
+		}
+      
+    
+   	});
+   
+   });
+
+
+$(function(){
+
+   $("#rightBtn").click(function(){
+
+   });
+});
+</script>
