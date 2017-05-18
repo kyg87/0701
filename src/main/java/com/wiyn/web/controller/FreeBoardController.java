@@ -2,6 +2,7 @@ package com.wiyn.web.controller;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -47,13 +48,16 @@ public class FreeBoardController {
 			@RequestParam(value = "title") String title,
 			@RequestParam(value = "content") String content, 
 			@RequestParam(value = "contentSrc") String contentSrc,
-			@RequestParam(value = "memberId") String memberId) {
+			@RequestParam(value = "memberId") String memberId
+			) {
 
 		freeboard.setTitle(title);
 		freeboard.setContent(content);
 		freeboard.setContentSrc(contentSrc);
 		freeboard.setMemberId(memberId);
-
+		
+		
+		
 		freeBoardDao.add(freeboard);
 
 		return "redirect:free-detail?c=" + freeboard.getId();
@@ -61,25 +65,24 @@ public class FreeBoardController {
 	}
 
 	@RequestMapping("free-detail")
-	public String freeDetail(
-			@RequestParam(value="p", defaultValue="1")Integer page, 
-			@RequestParam("c") String id, 
+	public String freeDetail(@RequestParam("c") String id, @RequestParam(value = "p", defaultValue = "1") Integer page,
+
 			Model model) {
 
 		FreeBoard freeboard = new FreeBoard();
 
 		freeboard = sqlSession.getMapper(FreeBoardDao.class).get(id);
-		freeboard.setFreeComment(sqlSession.getMapper(FreeCommentDao.class).getList(id,page));
-		System.out.println(id);
-		System.out.println(page);
-		System.out.println(sqlSession.getMapper(FreeCommentDao.class).getSize(id));
-		System.out.println(sqlSession.getMapper(FreeCommentDao.class).getList(id,page).size());
-		
+		freeboard.setFreeComment(sqlSession.getMapper(FreeCommentDao.class).getList(id, page));
+
 		int size = sqlSession.getMapper(FreeCommentDao.class).getSize(id);
-		
+
 		model.addAttribute("page", page);
 		model.addAttribute("size", size);
 		model.addAttribute("n", freeboard);
+
+		freeboard.getTitle();
+
+		freeBoardDao.updateHit(id);
 
 		return "freeboard.free-detail";
 	}
@@ -150,4 +153,7 @@ public class FreeBoardController {
 
 		return "redirect:free-detail?c="+freeboard.getId();
 	}
+	
+
+	
 }

@@ -3,6 +3,7 @@ package com.wiyn.web.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.wiyn.web.entity.FreeBoard;
 
@@ -19,7 +20,10 @@ public interface FreeBoardDao {
 	public int delete(String id);
 
 	public int update(FreeBoard freeBoard);
+	
+	public int updateHit(String id);
+	
+}
 
 	
 	
-}

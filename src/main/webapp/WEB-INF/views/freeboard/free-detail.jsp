@@ -46,24 +46,28 @@
 			        <thead>
 			        
 			          <tr>
-			              <th>${n.title}<i id="re" class="small material-icons">launch</i></th>			             
+			              <th>제목 : ${n.title}<i id="re" class="small material-icons">launch</i></th>			             
 			          </tr>
 			          <tr>
-			          	 <th>${n.regDate}<i class="small material-icons">star</i> 23</th>
+			          	 <th>작성시간 : ${n.regDate}<i class="small material-icons">star</i> 23</th>
 			          </tr>
 			          <tr>
-			          	<th>${n.memberId}</th>
+			          	<th>ID : ${n.memberId}</th>
 			          </tr>
 			         
 			         			        </thead>
 			        <tbody>
 			          <tr>
-			            <td id="thum">${n.contentSrc}</td>
+			            <td id="thum">IMAGE : ${n.contentSrc}</td>
 			          </tr>	     
 			          <tr>
-			            <td id="content">${n.content }</td>
+			            <td id="content">Content: ${n.content }</td>
 			          </tr>
-			          
+			           <tr>
+			           
+			            <td>Hit : ${n.hit }</td>
+			          </tr>
+			         
 			          <tr>
 			            <td>
 			            	<div class="chip">
@@ -110,40 +114,16 @@
 		      	</table>
 
 			</div>
-			
-			
-			<div>
-			현재 페이지 : ${page} </br>
+
+		<div>
+			현재 페이지 : ${page} </br> 
 			전체 글 갯수 : ${size} </br>
 
-		
-			
-
-
 		</div>
+
+
+		<div id="minibox">
 			
-			<div id="minibox">
-			<form action="freeBoard-comment-add" method="post">
-				<div class="row">
-					<security:authorize access="isAnonymous()">
-						<p>글쓰기는 로그인한 유저만 가능합니다 로그인해주세요</p>
-					</security:authorize>
-					
-					<security:authorize access="isAuthenticated()">
-					<div class="input-field">
-						<i class="material-icons prefix">mode_edit</i>
-						<input  id="icon_prefix2" type="text" class="validate" name="content">
-						<label for="icon_prefix2">Message</label>
-						<button class="btn waves-effect waves-light secondary-content" type="submit" name="action">등록
-    						<i class="material-icons right">send</i>
-  						</button>
-					</div>
-					</security:authorize>
-				</div>
-				
-					<input type="hidden" name="freeBoardId" value=${n.id }>
-					<input type="hidden" name="memberId" value=<security:authentication property="name"/>>
-			</form>
 
 				<ul class="collection">
 				 <c:forEach var="v" items="${n.freeComment}">
@@ -166,33 +146,34 @@
 				</ul>
 	
 			</div>
-			
-				<c:if test="${size/10 > 0}">
-			 <ul class="pagination center">
+
+            
+                <c:if test="${size/10 > 0}">
+             <ul class="pagination center">
 
 
-				<li class="waves-effect"><a><i class="material-icons">chevron_left</i></a></li>
+                <li class="waves-effect"><a><i class="material-icons">chevron_left</i></a></li>
 
 
-				<c:forEach var="i" begin="1" end="${size/10 }">
+                <c:forEach var="i" begin="1" end="${size/10 }">
 
-					<c:choose>
+                    <c:choose>
 
-						<c:when test="${page eq i }">
-							<li class="waves-effect active"><a>${i}</a></li>
-						</c:when>
+                        <c:when test="${page eq i }">
+                            <li class="waves-effect active"><a>${i}</a></li>
+                        </c:when>
 
-						<c:otherwise>
-							<li class="waves-effect"><a>${i}</a></li>
-						</c:otherwise>
+                        <c:otherwise>
+                            <li class="waves-effect"><a>${i}</a></li>
+                        </c:otherwise>
 
-					</c:choose>
-				</c:forEach>
+                    </c:choose>
+                </c:forEach>
 
-				<li class="waves-effect"><a><i class="material-icons">chevron_right</i></a></li>
+                <li class="waves-effect"><a><i class="material-icons">chevron_right</i></a></li>
 
-			</ul>
-			</c:if>
+            </ul>
+            </c:if>
 
 		</div>
 	</div>

@@ -119,26 +119,7 @@ body {
 		<table>
 			<thead>
 				<tr>
-					<th>
-						<div class="input-field">
-							<select>
-								 <option value="" disabled selected>카테고리 one</option> 
-								<option value="1">Option 1</option>
-								<option value="2">Option 2</option>
-								<option value="3">Option 3</option>
-							</select>
-						</div>
-					</th>
-					<th>
-						<div id="input-field2" class="input-field">
-							<select>
-								 <option value="" disabled selected>카테고리 two</option> 
-								<option value="1">Option 1</option>
-								<option value="2">Option 2</option>
-								<option value="3">Option 3</option> 
-							</select>
-						</div>
-					</th>
+				
 				</tr>
 				<tr>
 					<th>
@@ -147,17 +128,12 @@ body {
 					<th><input id="titleinput" name="title" type="text" value=""></th>
 					
 				</tr>
-				<tr>
-					<th>
-						<div id="address">http://</div>
-					</th>
-					<th><input id="titleinput" name="address"type="text" value=""></th>
-				</tr>
+			
 				<tr>
 					<th>
 						<div id="contentSrc">IMAGE:</div>
 					</th>
-					<th><input id="titleinput" name="contentSrc" type="text" value=""></th>
+					<th><input type="file" name="contentSrc" type="text" value=""></th>
 				</tr>
 			</thead>
 
