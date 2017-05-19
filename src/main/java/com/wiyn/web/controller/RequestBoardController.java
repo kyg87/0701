@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.wiyn.web.dao.FreeCommentDao;
 import com.wiyn.web.dao.RequestBoardDao;
 import com.wiyn.web.dao.RequestCommentDao;
 import com.wiyn.web.entity.FreeBoard;
@@ -52,16 +53,15 @@ public class RequestBoardController {
 			RequestBoard requestBoard, @RequestParam(value = "title") String title,
 			@RequestParam(value = "content") String content, @RequestParam(value = "memberId") String memberId) {
 
-		System.out.println(title);
-		System.out.println(content);
-		System.out.println(memberId);
 
 		requestBoard.setTitle(title);
 		requestBoard.setContent(content);
 		requestBoard.setMemberId(memberId);
 
 		requestBoardDao.add(requestBoard);
-		return "redirect:request-detail	?c=" + requestBoard.getId();
+		
+		
+		return "redirect:request-detail?c=" + requestBoard.getId();
 
 	}
 
@@ -75,7 +75,7 @@ public class RequestBoardController {
 		RequestBoard requestboard = new RequestBoard();
 
 		requestboard = sqlSession.getMapper(RequestBoardDao.class).get(id);
-		requestboard.setRequestComment(sqlSession.getMapper(RequestCommentDao.class).getList());
+		
 
 		model.addAttribute("n", requestboard);
 
@@ -120,14 +120,20 @@ public class RequestBoardController {
 	}
 	
 	@RequestMapping("request-detail")
-	public String RequestDetail(@RequestParam("c") String id, Model model) {
+	public String RequestDetail(@RequestParam("c") String id, @RequestParam(value = "p", defaultValue = "1") Integer page,
+
+			Model model) {
+
 
 		RequestBoard requestboard = new RequestBoard();
 
 		requestboard = sqlSession.getMapper(RequestBoardDao.class).get(id);
-	/*	requestboard.setRequestComment(sqlSession.getMapper(RequestCommentDao.class).getList());*/
+		requestboard.setRequestComment(sqlSession.getMapper(RequestCommentDao.class).getList(id, page));
 	
-
+		int size = sqlSession.getMapper(RequestCommentDao.class).getSize(id);
+		
+		model.addAttribute("page", page);
+		model.addAttribute("size", size);
 		model.addAttribute("n", requestboard);
 
 		return "requestboard.request-detail";

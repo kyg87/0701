@@ -15,60 +15,58 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 import com.wiyn.web.dao.FreeBoardDao;
 import com.wiyn.web.dao.FreeCommentDao;
+import com.wiyn.web.dao.RequestBoardDao;
+import com.wiyn.web.dao.RequestCommentDao;
 import com.wiyn.web.dao.SmallCategoryDao;
 import com.wiyn.web.entity.FreeBoard;
 import com.wiyn.web.entity.FreeComment;
+import com.wiyn.web.entity.RequestComment;
 import com.wiyn.web.entity.SmallCategory;
 
 @Controller
-@RequestMapping("/freeboard/*")
-public class FreeBoardCommentController {
+@RequestMapping("/requestboard/*")
+public class RequestBoardCommentController {
 
 	@Autowired
-	private FreeBoardDao freeBoardDao;
+	private RequestBoardDao requestBoardDao;  
 	@Autowired
-	private FreeCommentDao freeCommentDao;
+	private RequestCommentDao requestCommentDao;
 
 	@Autowired
 	private SqlSession sqlSession;
 
 	
 
-	@RequestMapping(value = "freeBoard-comment-add", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
-	public String freeDetailComment(FreeComment freeComment, 
+	@RequestMapping(value = "requestboard-comment-add", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	public String freeDetailComment(RequestComment requestComment, 
 			
 			@RequestParam(value = "content") String content,
-			@RequestParam(value = "freeBoardId") String freeBoardId, 
+			@RequestParam(value = "requestBoardId") String requestBoardId, 
 			@RequestParam(value = "memberId") String memberId
 			
 	) {
 
-		freeComment.setContent(content);
-		freeComment.setFreeBoardId(freeBoardId);
-		freeComment.setMemberId(memberId);
+		requestComment.setContent(content);
+		requestComment.setRequestBoardId(requestBoardId);
+		requestComment.setMemberId(memberId);
 
-		freeCommentDao.add(freeComment);
+		requestCommentDao.add(requestComment);
 
+		System.out.println("요청 댓글 등록");
 
-		return "redirect:free-detail?c="+freeComment.getFreeBoardId();
+		return "redirect:request-detail?c="+requestComment.getRequestBoardId();
 
 	}
 	
-	@RequestMapping("freeCommentDelete")
+	@RequestMapping("requestboard-commentDelete")
 	public String freeCommentDelete(
 			@RequestParam(value="id")String id
 			){
 		
-		System.out.println(id);
-		int result = freeCommentDao.delete(id);
-		
-		System.out.println(result);
-		
-		
+		requestBoardDao.delete(id);
 
-		return "redirect:free-detail?c=1";
-		
-		
+		return "redirect:requestboard";
+
 	}
 
 
@@ -80,11 +78,11 @@ public class FreeBoardCommentController {
 			@RequestParam(value="id")String id){
 		
 
-		List<FreeComment> freeComments = sqlSession.getMapper(FreeCommentDao.class).getList(id, Integer.parseInt(page));
+		List<RequestComment> requestComments = sqlSession.getMapper(RequestCommentDao.class).getList(id, Integer.parseInt(page));
 	
 		
 		Gson gson = new Gson();
-		String json = gson.toJson(freeComments);
+		String json = gson.toJson(requestComments);
 		
 		return json;
 	}

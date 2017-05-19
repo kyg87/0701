@@ -17,17 +17,33 @@ public class MyBatisRequestCommentDao implements RequestCommentDao {
 	private SqlSession sqlSession;
 
 	@Override
-	public List<RequestComment> getList() {
+	public List<RequestComment> getList(String boardId, int page) {
 		RequestCommentDao requestCommentDao;
 		requestCommentDao = sqlSession.getMapper(RequestCommentDao.class);
-		return requestCommentDao.getList();
+		return requestCommentDao.getList(boardId, page);
 	}
 
 	@Override
-	public int add(RequestComment requestcomment) {
+	public int add(RequestComment requestComment) {
 		RequestCommentDao requestCommentDao;
 		requestCommentDao = sqlSession.getMapper(RequestCommentDao.class);
-		return requestCommentDao.add(requestcomment);
+		return requestCommentDao.add(requestComment);
 	}
+
+	@Override
+	public int delete(String boardId) {
+		RequestCommentDao requestCommentDao;
+		requestCommentDao = sqlSession.getMapper(RequestCommentDao.class);
+		return requestCommentDao.delete(boardId);
+	}
+
+	@Override
+	public int getSize(String boardId) {
+		RequestCommentDao requestCommentDao;
+		requestCommentDao = sqlSession.getMapper(RequestCommentDao.class);
+		return requestCommentDao.getSize(boardId);
+	}
+
+
 
 }

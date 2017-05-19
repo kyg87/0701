@@ -193,7 +193,7 @@ page(${page});
 								 .append($('<span class="title">'+obj[i].memberId+'</span>'))
 								 .append($('<time>'+obj[i].regDate+'</time>'))
 								 .append($('<p>'+obj[i].content+'</p>'))
-								 .append($('<form data-confirm ="댓글을 삭제하시겠습니까"><input type="submit" value="삭제"></form>')));
+								 .append($('<form action="freeCommentDelete" method="post"><input type="submit" value="삭제"><input type="hidden" name="id" value='+obj[i].id+'></form>')));
 						}
 						else{
 							$("#commentList").append($('<li class="collection-item avatar">' + + '</li>')

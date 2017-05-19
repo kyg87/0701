@@ -36,9 +36,10 @@ public class MyBatisFreeCommentDao implements FreeCommentDao {
 	}
 
 	@Override
-	public int delete(String id) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int delete(String boardId) {
+		FreeCommentDao freeCommentDao;
+		freeCommentDao = sqlSession.getMapper(FreeCommentDao.class);
+		return freeCommentDao.delete(boardId);
 	}
 
 
