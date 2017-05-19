@@ -35,4 +35,10 @@
 	<select id="getSize" resultType="Integer">
 		SELECT count(*) FROM FreeComment where freeBoardId = #{boardId} order by regDate desc;
 	</select>
+	
+	<delete id="delete">
+		DELETE FROM FreeComment
+		WHERE id=#{id}
+	
+	</delete>
 </mapper>

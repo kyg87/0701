@@ -12,7 +12,7 @@ public interface FreeCommentDao {
 	List<FreeComment> getList(@Param("boardId")String boardId,@Param("page") int page);
 	
 	int add(FreeComment freecomment);
-	
+	int delete(String boardId);
 	int getSize(String boardId);
 
 

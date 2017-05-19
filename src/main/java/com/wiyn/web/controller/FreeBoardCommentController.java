@@ -47,15 +47,20 @@ public class FreeBoardCommentController {
 		freeComment.setFreeBoardId(freeBoardId);
 		freeComment.setMemberId(memberId);
 
-		
-		System.out.println(content);
-		System.out.println(freeBoardId);
-		
 		freeCommentDao.add(freeComment);
 
 
 		return "redirect:free-detail?c="+freeComment.getFreeBoardId();
 
+	}
+	
+	@RequestMapping("freeCommentDelete")
+	public String freeCommentDelete(
+			@RequestParam(value="id")String id
+			){
+		
+		
+		return null;
 	}
 
 

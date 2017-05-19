@@ -35,5 +35,11 @@ public class MyBatisFreeCommentDao implements FreeCommentDao {
 		return freeCommentDao.getSize(boardId);
 	}
 
+	@Override
+	public int delete(String id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 
 }
