@@ -106,7 +106,7 @@
 
 			<div class="input-field">
 				<select name="bigCategoryId" id="bigCategoryId">
-					<option value="" disabled selected>대분류 선택</option>
+					<option id="default" value="" disabled selected>대분류를 선택하세요</option>
 
 					<c:forEach var="bc" items="${bcList }">
 						<option value="${bc.id }">${bc.name }</option>
@@ -130,7 +130,6 @@
 								$.post("getListWithBC", data, function(d) {
 
 									var obj = JSON.parse(d);
-									console.log(obj);
 		   		
 									smallCategory.append( $('<option disabled selected><span> 소분류 선택 </span></option'));
 									
@@ -161,7 +160,7 @@
 
 			<div class="input-field" id="scList">
 				<select name="smallCategoryId" id="smallCategoryId">
-					<option value="" disabled selected>소분류 선택</option>
+					<option id="default" value="" disabled selected >소분류를 선택하세요</option>
 				</select>
 			</div>
 			
@@ -171,9 +170,6 @@
 				$("#smallCategoryId").on('change', function() {
 					
 					var smList = $("#smallCategoryId");
-					
-					console.log("change");
-					/* alert("선택한 소분류 id 값 : " + $(this).val()); */
 					
 					var scDelpost = $("#scdel");
 					var scModpost = $("#scmod");
@@ -189,7 +185,7 @@
 
 
 			<!-- Modal Trigger -->
-			<a class="waves-effect waves-light btn" href="#modal11">수정</a>
+			<a class="waves-effect waves-light btn" href="#modal11" id="CategoryModifyStart">수정</a>
 
 			<!-- Modal Structure -->
 
@@ -214,13 +210,6 @@
 
 
 		</div>
-
-		<!-- <div class="article-btn right">
-						<a class="waves-effect waves-light btn card-panel blue lighten-2">글쓰기</a>
-						<a class="waves-effect waves-light btn card-panel blue lighten-2">선택
-							삭제</a>
-					</div> -->
-
 	</div>
 
 	<!-- </form> -->
@@ -234,7 +223,7 @@
 						<div class="row">
 							<div class="input-field col s12">
 								<textarea id="modify-name" class="materialize-textarea"
-									name="modifyName" ></textarea>
+									name="modifyName" onkeypress="noEnter()"></textarea>
 								<label for="textarea1">수정할 카테고리명 입력</label>
 							</div>
 						</div>
@@ -244,7 +233,7 @@
 	
 				<button class="btn waves-effect waves-light" id="modCancel">Cancel</button>
 	
-				<button class="btn waves-effect waves-light" type="submit"
+				<button class="btn waves-effect waves-light" type="button"
 					id="CategoryModBtn" name="action">Submit</button>
 			</div>
 			
@@ -254,28 +243,72 @@
 		</form>
 	</div>
 
-	<!-- <script>
+	<script>
 	$(function(){
-		
 		$("#CategoryModBtn").on('click', function(){
 			
-			var modCheckId = $("#bigCategoryId");
-			var modForm = $("#Category-Delete");
-			var modCheckSm = $("#smallCategoryId")
+			var name = $("#modify-name").val();
+			var ModForm = $("#Category-Modify");
+			var modCheckBc = $("#bigCategoryId").val();
+			var modCheckSc = $("#smallCategoryId").val();
 			
-			$.post("getListWithBC", modCheckId, function(c) {
-
-				var modCheck = JSON.parse(c);
+			if(modCheckSc == null && modCheckBc == null)
+				alert("수정할 카테고리를 정확히 선택해주세요!");
+			
+			else if(modCheckSc == null && modCheckBc != null){
+				// 대분류 수정
+				name = name.trim();
+			
+				if(name == "")
+					alert("카테고리명을 정확히 입력하세요!");
 				
-				if(modCheck.length != 0 && modCheckSm.val() == null){
-					alert("소분류가 포함되어있는 대분류는 삭제가 불가능합니다.");						
+				else{
+					
+					$.post("BCAddCheck", {"name":name}, function(bm){
+						
+						if(bm == 0){
+								ModForm.submit();
+								alert("대분류 수정 성공!");
+						}
+						
+						else
+							alert("중복된 이름 존재");
+						
+					});
+					
 				}
-				
-				else
-					modForm.submit();
-				
-			});
+			}
 			
+			else if(modCheckSc != null && modCheckBc != null){
+				// 소분류 수정
+				
+				var data = ModForm.serialize();
+				
+				name = name.trim();
+				
+				if(name == "")
+					alert("카테고리명을 정확히 입력하세요!");
+				
+				else{
+					
+					$.post("SCModCheck", {"data":data}, function(sm){
+						
+						if(sm == 0){
+							ModForm.submit();
+							alert("소분류 수정 성공!");
+						}
+						
+						else
+							alert("중복된 이름 존재");
+						
+					});
+					
+				}	
+				
+				
+			}
+			
+				
 		});
 		
 		$("#modCancel").on('click', function(){
@@ -285,7 +318,7 @@
 		});
 		
 	});
-	</script> -->
+	</script>
 
 	<div id="modal2" class="modal">
 		<form id="Category-Delete" action="admin-category-del" method="post">
@@ -313,20 +346,25 @@
 				
 				var delCheckId = $("#bigCategoryId");
 				var delForm = $("#Category-Delete");
-				var delCheckSm = $("#smallCategoryId")
-				
-				$.post("getListWithBC", delCheckId, function(c) {
+				var delCheckSm = $("#smallCategoryId");
 
-					var delCheck = JSON.parse(c);
-					
-					if(delCheck.length != 0 && delCheckSm.val() == null){
-						alert("소분류가 포함되어있는 대분류는 삭제가 불가능합니다.");						
-					}
-					
-					else
-						delForm.submit();
-					
-				});
+				if(delCheckSm.val() == null && delCheckId.val() == null)
+					alert("삭제할 카테고리를 정확히 선택해주세요!");
+				
+				else{
+					$.post("getListWithBC", delCheckId, function(c) {
+
+						var delCheck = JSON.parse(c);
+						
+						if(delCheck.length != 0 && delCheckSm.val() == null){
+							alert("소분류가 포함되어있는 대분류는 삭제가 불가능합니다.");						
+						}
+						
+						else
+							delForm.submit();
+						
+					});
+				}
 				
 			});
 			
@@ -347,7 +385,8 @@
 					method="post">
 					<div class="row">
 						<div class="input-field col s12">
-							<textarea id="BCaddName" class="materialize-textarea" name="name" required="required"></textarea>
+							<textarea id="BCaddName" class="materialize-textarea" name="name"
+							 onkeypress="noEnter()"></textarea>
 							<label for="BCaddName">추가할 대분류 카테고리명</label>
 						</div>
 
@@ -381,8 +420,6 @@
 			else{
 				
 				$.post("BCAddCheck", {"name":name}, function(e){
-					
-					console.log(e);
 					
 					if(e == 0){
 							bcAddForm.submit();
@@ -426,7 +463,8 @@
 						</div>
 
 						<div class="input-field col s12">
-							<textarea id="SCaddName" class="materialize-textarea" name="name"></textarea>
+							<textarea id="SCaddName" class="materialize-textarea" name="name"
+							onkeypress="noEnter()"></textarea>
 							<label for="SCaddName">추가할 소분류 카테고리명</label>
 						</div>
 
@@ -456,10 +494,6 @@
 			var scAddForm = $("#smallCategory");
 			
 			var data = scAddForm.serialize();
-
-			
-			console.log(data);
-			console.log(scaddname);
 			
 			scaddname = scaddname.trim();
 			
@@ -469,8 +503,6 @@
 			else{
 				
 				$.post("SCAddCheck", {"data":data}, function(t){
-					
-					console.log(t);
 					
 					if(t == 0){
 						scAddForm.submit();
@@ -496,6 +528,14 @@
 
 
 	<!--  Scripts-->
+
+	<script type='text/javaScript'>
+		// textarea 줄바꿈 제한
+		function noEnter() {
+			if (event.keyCode == 13)
+				event.returnValue = false;
+		}
+	</script>
 
 	<script type="text/javascript">
 	

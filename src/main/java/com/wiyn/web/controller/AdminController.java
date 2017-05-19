@@ -39,8 +39,6 @@ public class AdminController {
 			BigCategory bigCategory,
 			@RequestParam(value="name")String name){
 		
-		System.out.println("big add");
-		
 		bigCategory.setName(name);
 		bigCategoryDao.add(bigCategory);
 		
@@ -96,18 +94,12 @@ public class AdminController {
 			@RequestParam(value="bigCategoryId")String bigCategoryId,
 			@RequestParam(value="smallCategoryId")String smallCategoryId){
 		
-		System.out.println(smallCategoryId);
-		System.out.println(bigCategoryId);
-		
-		
 		if(!bigCategoryId.equals("") && !smallCategoryId.equals("")){
 			smallCategoryDao.del(bigCategoryId, smallCategoryId);
-			System.out.println("smalldel");
 		}
 
 		else if(!bigCategoryId.equals("") && smallCategoryId.equals("")){
 			bigCategoryDao.del(bigCategoryId);
-			System.out.println("bigdel");
 		}
 		
 		return "redirect:admin";
@@ -119,18 +111,13 @@ public class AdminController {
 			@RequestParam(value="smallCategoryId")String smallCategoryId,
 			@RequestParam(value="modifyName")String modifyName){
 		
-		System.out.println(bigCategoryId);
-		System.out.println(smallCategoryId);
-		System.out.println(modifyName);
 		
 		if(!bigCategoryId.equals("") && !smallCategoryId.equals("")){
 			smallCategoryDao.modify(bigCategoryId, smallCategoryId, modifyName);
-			System.out.println("small mod");
 		}
 
 		else if(!bigCategoryId.equals("") && smallCategoryId.equals("")){
 			bigCategoryDao.modify(bigCategoryId, modifyName);
-			System.out.println("big mod");
 		}
 		
 		return "redirect:admin";
@@ -142,11 +129,7 @@ public class AdminController {
 	public String BCAddCheck(
 			@RequestParam(value="name")String name){
 		
-		System.out.println(name);
-		
 		int result = bigCategoryDao.addCheck(name);
-		
-		System.out.println(result);
 						
 		return Integer.toString(result);
 	}
@@ -157,6 +140,7 @@ public class AdminController {
 			@RequestParam(value="data")String data) throws UnsupportedEncodingException{
 		
 		String test = URLDecoder.decode(data, "UTF-8");
+		System.out.println("문장 : " + test);
 		
 		int firstStart = test.indexOf("d=");
 		int firstEnd = test.indexOf('&');
@@ -166,19 +150,29 @@ public class AdminController {
 		String id = test.substring(firstStart+2, firstEnd);
 		String name = test.substring(secondStart+2, secondEnd);
 		
-		System.out.println("문장 : " + test);
-		System.out.println("1 시작 : " + firstStart);
-		System.out.println("1 끝 : " + firstEnd);
-		System.out.println("2 시작 : " + secondStart);
-		System.out.println("2 끝 : " + secondEnd);
-		
-		System.out.println("id : " + id);
-		System.out.println("name : " + name);
-		
-		System.out.println(test.length());
-		
-		
 		int result = smallCategoryDao.addCheck(id, name);
+						
+		return Integer.toString(result);
+	}
+	
+	@RequestMapping(value="SCModCheck", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
+	@ResponseBody
+	public String SCModCheck(
+			@RequestParam(value="data")String data) throws UnsupportedEncodingException{
+		
+		String test = URLDecoder.decode(data, "UTF-8");
+		System.out.println("문장 : " + test);
+		
+		int firstStart = test.indexOf("e=");
+		int firstEnd = test.indexOf("&s");
+		int thirdStart = test.indexOf("big");
+		int thirdEnd = test.length();
+		
+		String name = test.substring(firstStart+2, firstEnd);
+		String BcId = test.substring(thirdStart+14, thirdEnd);
+		
+		
+		int result = smallCategoryDao.addCheck(BcId, name);
 		
 		System.out.println(result);
 						
