@@ -91,30 +91,6 @@ public class FreeBoardController {
 		return "freeboard.free-detail";
 	}
 
-	@RequestMapping(value = "freeBoard-comment-add", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
-	public String freeDetailComment(FreeComment freeComment, 
-			
-			@RequestParam(value = "content") String content,
-			@RequestParam(value = "freeBoardId") String freeBoardId, 
-			@RequestParam(value = "memberId") String memberId
-			
-	) {
-
-		freeComment.setContent(content);
-		freeComment.setFreeBoardId(freeBoardId);
-		freeComment.setMemberId(memberId);
-
-		
-		System.out.println(content);
-		System.out.println(freeBoardId);
-		
-		freeCommentDao.add(freeComment);
-
-
-		return "redirect:free-detail?c="+freeComment.getFreeBoardId();
-
-	}
-
 	@RequestMapping(value = "free-del", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	public String freeDel(FreeBoard freeboard,
 
@@ -158,21 +134,7 @@ public class FreeBoardController {
 		return "redirect:free-detail?c="+freeboard.getId();
 	}
 	
-	@RequestMapping(value="commentPage", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
-	@ResponseBody
-	public String commentPage(Model model,
-			@RequestParam(value="page")String page,
-			@RequestParam(value="id")String id){
-		
 
-		List<FreeComment> freeComments = sqlSession.getMapper(FreeCommentDao.class).getList(id, Integer.parseInt(page));
-	
-		
-		Gson gson = new Gson();
-		String json = gson.toJson(freeComments);
-		
-		return json;
-	}
 
 	
 }

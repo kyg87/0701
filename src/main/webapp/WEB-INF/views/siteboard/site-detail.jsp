@@ -9,14 +9,14 @@
 	border:1px solid #e4e4e4;
 	border-radius: 3px;
 	/* box-shadow: 0px 1px 1px #a8a8a8; */
-	
+	width:100%;
 }
 
 td{
 	padding-left: 5px;
 	padding-right: 5px;
+	padding-top: 5px;
 	padding-bottom: 5px;
-	padding-top: 0px;
 }
 
 .input-field {
@@ -38,10 +38,6 @@ td{
 	margin-top:3px;
 }
 
-i .left{
-	margin-right:2.5px !important;
-}
-
 .hidden{
 	display: none;
 }
@@ -58,6 +54,10 @@ i .left{
 }
 .form-end{
 	text-align: right;
+}
+
+#icon-margin{
+	margin-right:2.5px !important;
 }
 
 </style>
@@ -107,25 +107,25 @@ i .left{
 					<form action="like" method="post">
 						<button class="waves-effect waves-light btn" type="submit"
 							name="action">
-							<i class="material-icons left ">thumb_up</i>${l }</button>
+							<i id="icon-margin" class="material-icons left ">thumb_up</i>${l }</button>
 						<input type="hidden" name="siteBoardId" value=${n.id }> <input
 							type="hidden" name="memberId" value="LSE@mb.com">
 					</form>
 				</td>
 				<td colspan="2" >
-					<input type="hidden" name="id" value=${n.id }>
-					<form class="form-end"  action="site-edit?c=${n.id}" method="post">
+					<form class="form-end" action="site-delete" method="post">
+						<input type="hidden" name="id" value=${n.id }>
 						<button class="btn waves-effect waves-light" type="submit"
-							name="action">수정</button>
+							name="action">목록</button>
 					</form>		
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2" >
-					<form action="site-delete" method="post">
+					<form  action="site-edit?c="${n.id} method="post">
 						<input type="hidden" name="id" value=${n.id }>
 						<button class="btn waves-effect waves-light" type="submit"
-							name="action">목록</button>
+							name="action">수정</button>
 					</form>
 				</td>
 				<td colspan="2" >
@@ -138,39 +138,8 @@ i .left{
 			</tr>
 	</tbody>
 	</table>
-	<br>	
-	
-<!-- 	<div class="row">
-		<form class="col s12">
-			<div class="row">
-				<div class="input-field col s12">
-					<i class="material-icons prefix">mode_edit</i>
-					<textarea id="icon_prefix2" class="materialize-textarea"></textarea>
-					<label for="icon_prefix2">욕설과 비방은 무통보 삭제될 수 있습니다.</label>
-				</div>
-			</div>
-		</form>
-	</div>
-					<a class="waves-effect waves-light btn">button</a>
-	 <table class="table">
-        <tbody>
-           <tr>
-				<td colspan="3">
-					
-				</td>
-				<td colspan="1">
-					
-				</td>
-			</tr>
-	        <tr>
-	          <td>Alvin</td>
-	          <td>Eclair</td>
-	          <td>$0.87</td>
-	          <td>0000</td>
-	        </tr>      
-        </tbody> -->
-      </table>
-	
+	<br>
+
 	<input type="hidden" name="siteBoardId" value="15"> 
 	<input type="hidden"	name="memberId" value="LSE@mb.com">
 </main>
