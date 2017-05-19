@@ -76,7 +76,7 @@ textScroll.prototype.start = function() {
 				<div class="col s12">
 					<ul class="tabs">
 						<li class="tab col s3"><a href="#test1">최신순</a></li>
-						<li class="tab col s3"><a class="active" href="#test2">점수순</a></li>
+						<li class="tab col s3"><a href="#test2">점수순</a></li>
 						<li class="tab col s3"><a href="#test3">댓글순</a></li>
 					</ul>
 				</div>
@@ -97,11 +97,6 @@ textScroll.prototype.start = function() {
                     </c:forEach>
     </div>
   </div>
-<%--                 <div class="collection">
-                    <c:forEach var="n" items="${sitelist}">
-                    <a href="../siteboard/site-detail?c=${n.id}" class="collection-item">${n.title}</a>
-                    </c:forEach>
-                </div> --%>
                 
                 
                 

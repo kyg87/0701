@@ -49,8 +49,8 @@
 	</select>
 	<select id="getListComment" resultType="com.wiyn.web.entity.SiteBoard">
 	select S.*,COUNT(C.siteBoardId) COMMENT_COUNT
-	FROM SiteBoard S LEFT OUTER JOIN SiteComment C ON C.siteBoardId= S.id WHERE S.title like '%%'
-	GROUP BY S.id order by COMMENT_COUNT DESC LIMIT 0,10;
+	FROM SiteBoard S LEFT OUTER JOIN SiteComment C ON C.siteBoardId= S.id WHERE S.title like '%${query}%'
+	GROUP BY S.id, S.title, S.content, S.regDate, S.url, S.hit  order by COMMENT_COUNT DESC LIMIT 0,10;
 	</select>
 	
 	<select id="lastId" resultType="String">
@@ -105,5 +105,10 @@
 		join SmallCategory on SiteBoard.smallCategoryId=SmallCategory.id
 		where SiteBoard.id=#{param1}
 	</select>
-
+	
+<!-- <select id="getListSpeed" resultType="com.wiyn.web.entity.SiteBoard" >	
+select * from SiteBoard where title like '%${query}%' and bigCategoryId like '%${bigCategoryId}%' and smallCategoryId like '%${smallCategoryId}%' 
+order by regDate desc LIMIT ${(page-1)*10},10
+</select>	
+ -->
 </mapper>
