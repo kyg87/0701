@@ -182,7 +182,8 @@ public class SiteBoardController {
 	 @RequestMapping(value ="site-delete", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
      public String siteDelete(@RequestParam(value = "id") String id,
     		 SiteBoard siteBoard ){
-   
+     
+		 
 		siteBoardDao.delete(id);
         
         return "redirect:site-list";
