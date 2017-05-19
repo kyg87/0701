@@ -1,6 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<style>
+aside{
+	background : rgba(250,250,250,0.95);
+}
+#nav-mobile{
+background : rgb(250,250,250);
+}
+
+</style>
+
+
+
 <aside id="left-sidebar-nav">
 
 <ul id="nav-mobile" class="side-nav fixed" style="overflow: auto; transform: translateX(0%);">

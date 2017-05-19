@@ -9,16 +9,22 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
+import com.wiyn.web.dao.BigCategoryDao;
 import com.wiyn.web.dao.FreeBoardDao;
 import com.wiyn.web.dao.FreeCommentDao;
 import com.wiyn.web.dao.SiteBoardDao;
 import com.wiyn.web.dao.SiteBoardLikeDao;
 import com.wiyn.web.dao.SiteCommentDao;
+import com.wiyn.web.dao.SmallCategoryDao;
+import com.wiyn.web.entity.BigCategory;
 import com.wiyn.web.entity.FreeBoard;
 import com.wiyn.web.entity.SiteBoard;
 import com.wiyn.web.entity.SiteBoardLike;
 import com.wiyn.web.entity.SiteComment;
+import com.wiyn.web.entity.SmallCategory;
 
 
 
@@ -38,12 +44,40 @@ public class SiteBoardController {
 	@Autowired
 	private SiteBoardLikeDao siteBoardLikeDao;
 	
+	@Autowired
+	private BigCategoryDao bigCategoryDao;
+	
+	@Autowired
+	private SmallCategoryDao smallCategoryDao;
+	
 	@RequestMapping("site-reg")
-	public String site(){
+	public String site(Model model){
 		
-		/*List <BigCoategory>*/
+		
+		List<BigCategory> bcList = sqlSession.getMapper(BigCategoryDao.class).getList();
+		
+		for (BigCategory bigCategory : bcList) {
+			bigCategory.setSmallCategory(sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId()));
+		}
+
+		model.addAttribute("bcList", bcList);
 		
 		return "siteboard.site-reg";		
+	}
+	
+	@RequestMapping(value="getListWithBC", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
+	@ResponseBody
+	public String GetListWithBC(Model model,
+			@RequestParam(value="bigCategoryId")String bigCategoryId){
+
+		List<SmallCategory> scList = sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategoryId);
+		model.addAttribute("scList", scList);
+
+		
+		Gson gson = new Gson();
+		String json = gson.toJson(scList);
+		
+		return json;
 	}
 	
 	@RequestMapping(value="reg", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
@@ -52,19 +86,22 @@ public class SiteBoardController {
 			@RequestParam(value="title")String title, 
 			@RequestParam(value="content")String content,
 			@RequestParam(value="url")String url,
-			@RequestParam(value="memberId")String memberId
+			@RequestParam(value="memberId")String memberId,
+			@RequestParam(value="bigCategoryId")String bigCategoryId,
+			@RequestParam(value="smallCategoryId")String smallCategoryId
 			){
 					
 		System.out.println(title);
 		System.out.println(url);
 		System.out.println(content);
+		System.out.println(bigCategoryId);
 		
 		siteBoard.setContent(content);
 		siteBoard.setTitle(title);
 		siteBoard.setUrl(url);
 		siteBoard.setMemberId(memberId);
-		//siteBoard.setBigCategoryId(bigCategoryId);
-		
+		siteBoard.setBigCategoryId(bigCategoryId);
+		siteBoard.setSmallCategoryId(smallCategoryId);
 		siteBoardDao.add(siteBoard);
 		
 		return "redirect:site-detail?c=" + siteBoard.getId();
@@ -77,14 +114,17 @@ public class SiteBoardController {
 			)
 	{
 		SiteBoard siteBoard = new SiteBoard();
-		
-		
+
 		siteBoard = sqlSession.getMapper(SiteBoardDao.class).getBoard(id);
 
-		int likeCount = siteBoardLikeDao.getLike(id);			
+		int likeCount = siteBoardLikeDao.getLike(id);	
+		
+		String bName = siteBoardDao.getBName(id);
+		String sName = siteBoardDao.getSName(id);
 		model.addAttribute("l", likeCount);
 		model.addAttribute("n", siteBoard);
-		
+		model.addAttribute("b", bName);
+		model.addAttribute("s", sName);
 		return "siteboard.site-detail";
 	}
 

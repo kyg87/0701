@@ -19,6 +19,10 @@ td{
 	padding-bottom: 5px;
 }
 
+td i{
+	margin-right:3px;
+}
+
 .input-field {
 	width: 100%;
 }
@@ -60,6 +64,29 @@ td{
 	margin-right:2.5px !important;
 }
 
+.title{
+	font-weight:900;
+    font-size: 23px;
+	font-family: din_blackregular;
+	color: #616161;
+}
+
+.detail-font{
+	font-family: 'Abel', sans-serif;
+	padding-top:0px;
+}
+
+.detail-title{
+	font-weight: 700;
+    text-transform: uppercase;
+    font-family: 'Abel', sans-serif;
+}
+
+.small-category{
+	font-weight: 900;
+}
+
+
 </style>
 
 <main id="main">
@@ -71,22 +98,22 @@ td{
 					<nav>
 						<div class="nav-wrapper">
 							<div class="col s12">
-								<a href="#!" class="breadcrumb">${b }</a> 
-								<a href="#!" class="breadcrumb">${s }</a>
+								<a href="#!" class="breadcrumb big-category">${b }</a> 
+								<a href="#!" class="breadcrumb small-category">${s }</a>
 							</div>
 						</div>
 					</nav>
 				</td>
 			</tr>
 			<tr>
-				<td colspan="4">${n.title } / hit</td>
+				<td class="title" colspan="4">${n.title }</td>
 				<td class="hidden">즐겨찾기</td>
 			</tr>
 			<tr class="reg-like">
-				<td colspan="4" class="reg-date">${n.regDate }</td>
+				<td class="detail-font" colspan="4" class="reg-date"><i class="tiny material-icons">schedule</i>${n.regDate }</td>
 			</tr>
 			<tr>
-				<td colspan="4">${n.memberId }</td>
+				<td class="detail-font" colspan="4"><i class="tiny material-icons">perm_identity</i>${n.memberId }</td>
 			</tr>
 		</thead>
 		<tbody>
