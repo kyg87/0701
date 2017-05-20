@@ -59,13 +59,15 @@ public class RequestBoardCommentController {
 	}
 	
 	@RequestMapping("requestboard-commentDelete")
+	@ResponseBody
 	public String freeCommentDelete(
 			@RequestParam(value="id")String id
 			){
 		
-		requestBoardDao.delete(id);
+		int result = requestBoardDao.delete(id);
 
-		return "redirect:requestboard";
+		
+		return  String.valueOf(result);
 
 	}
 

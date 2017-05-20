@@ -126,7 +126,7 @@
 
 
 		<div id="minibox">
-			 <form action="freeBoard-comment-add" method="post">
+			 <form id="comment-add-form" action="freeBoard-comment-add" method="post">
             <div class="row">
                <security:authorize access="isAnonymous()">
                   <p>글쓰기는 로그인한 유저만 가능합니다 로그인해주세요</p>
@@ -137,7 +137,7 @@
                   <i class="material-icons prefix">mode_edit</i>
                   <input  id="icon_prefix2" type="text" class="validate" name="content" required="required">
                   <label for="icon_prefix2">Message</label>
-                  <button class="btn waves-effect waves-light secondary-content" type="submit" name="action">등록
+                  <button class="btn waves-effect waves-light secondary-content" type="button" onclick="onCreate();">등록
                       <i class="material-icons right">send</i>
                     </button>
                </div>
@@ -163,6 +163,8 @@
 
 		</div>
 	</div>
+	
+	
 
 </main>
 
@@ -171,9 +173,71 @@
 <security:authentication property="name" var="loginID"/>
 
 <script>
-page(${page});
-  function page(page){
 
+	
+page(${page});
+
+
+
+var currentPage = ${page};
+	
+	function onCreate(){
+		
+		var count = 0;
+		
+		var text = $("#comment-add-form").find("input");
+		
+	
+		var tt= text.val();
+		tt = tt.trim();//공백 제거
+        
+        if(!tt){
+            alert("내용이 없습니다.");
+            text.focus();//해당입력란으로 포커싱
+            return;
+        }
+		
+
+		var data = $("#comment-add-form").serialize();
+	
+	
+		
+		$.post("freeBoard-comment-add", data, function(z) {
+
+			if(z =="1"){
+
+				page(1);
+	 		/* 	count++;
+				if(count <100)onCreate(); */ 
+			}
+			
+		});
+		
+	}
+	
+	
+	function onDelete(d){
+		
+		if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+			$.post("freeCommentDelete", {"id":d}, function(z) {
+				if(z =="1"){
+					alert("삭제했습니다.");
+					
+					page(currentPage);
+					
+				
+				}
+				
+			});
+			
+		}else{   //취소
+		    return;
+		}
+
+	}
+  function page(page){
+	   currentPage = page;
+		console.log(currentPage);
 	   $.post("commentPage", {"page":page ,"id":${n.id }}, function(d) {
 		      
 		      $("#commentList").empty();
@@ -193,7 +257,7 @@ page(${page});
 								 .append($('<span class="title">'+obj[i].memberId+'</span>'))
 								 .append($('<time>'+obj[i].regDate+'</time>'))
 								 .append($('<p>'+obj[i].content+'</p>'))
-								 .append($('<form action="freeCommentDelete" method="post"><input type="submit" value="삭제"><input type="hidden" name="id" value='+obj[i].id+'></form>')));
+								 .append($('<a class="waves-effect waves-light btn" onclick="onDelete('+obj[i].id+ ');" value='+obj[i].id+'>삭제</a>')));
 						}
 						else{
 							$("#commentList").append($('<li class="collection-item avatar">' + + '</li>')
@@ -227,54 +291,6 @@ page(${page});
 		    
 		   	});
   }
-   $(".page").on("click",function(){
-	
-	   
-   var page = $(this).attr('value');
-
-   $.post("commentPage", {"page":page ,"id":${n.id }}, function(d) {
-      
-      $("#commentList").empty();
-      $("#pagination").empty();
-      var obj = JSON.parse(d);
-      
-     
-      if(obj.length != 0){
-    	  
-
-			for (var i = 0; i < obj.length; i++) {
-					
-				 $("#commentList").append($('<li class="collection-item avatar">' + + '</li>')
-						 .append($('<img src="/WiynPrj/resource/images/test.png" alt="" class="circle"> '))
-						 .append($('<span class="title">'+obj[i].memberId+'</span>'))
-						 .append($('<time>'+obj[i].regDate+'</time>'))
-						 .append($('<p>'+obj[i].content+'</p>')));
-
-			}
-	    	  $("#pagination").append($('<li class="waves-effect"><a><i class="material-icons">chevron_left</i></a></li>'));
-	    	
-			 var lastPage = ${size/10+(1-(size/10%1))%1};
-			  
-		
-			 
-			 for (var i = 1; i <= lastPage; i++){
-				 
-			
-				 if(${page eq i }){
-					 $("#pagination").append($(' <li class="waves-effect active"><a class="page" onclick="page('+i+');" value='+i+'>'+i+'</a></li>'));
-				 }
-				 else{
-					 $("#pagination").append($(' <li class="waves-effect"><a class="page" onclick="page('+i+');" value='+i+'>'+i+'</a></li>'));
-				 }
-			 }
-			 
-			  $("#pagination").append($('<li class="waves-effect"><a><i class="material-icons">chevron_right</i></a></li>'));
-		}
-      
-    
-   	});
-   
-   });
 
 
 $(function(){
@@ -283,4 +299,6 @@ $(function(){
 
    });
 });
+
+
 </script>
