@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wiyn.web.dao.SiteCommentDao" >
+
+	<select id="getList" resultType="com.wiyn.web.entity.SiteComment" >
+		SELECT * FROM SiteComment where siteBoardId =  ${boardId} order by regDate desc LIMIT ${(page-1) *10},10;
+	</select>
+    
+ 	<insert id="add" parameterType="com.wiyn.web.entity.SiteComment">
+		<selectKey order="BEFORE" keyProperty="id" resultType="String">
+			select IFNULL(max(cast(id as unsigned)), 0)+1 id from SiteComment
+		</selectKey>
+			INSERT INTO `lsedb`.`SiteComment`
+				(
+				`id`,
+				`content`,
+				`regDate`,
+				`siteBoardId`,
+				`memberId`
+				)
+				VALUES
+				(
+				#{id },
+				#{content },
+				now(),
+				#{siteBoardId},
+				#{memberId }
+				)
+		
+	</insert>
+	
+	<select id="getSize" resultType="Integer">
+		SELECT count(*) FROM SiteComment where siteBoardId = #{boardId} order by regDate desc;
+	</select>
+	
+	<delete id="delete">
+	
+		DELETE FROM `lsedb`.`SiteComment`WHERE id = #{boardId};
+	
+	</delete>
+</mapper>

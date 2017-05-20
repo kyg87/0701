@@ -1,6 +1,7 @@
 package com.wiyn.web.entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class SiteBoard {
 	
@@ -18,7 +19,9 @@ public class SiteBoard {
 	private BigCategory bigCategory;
 	private SmallCategory smallCategory;
 	
+	private List<SiteComment> siteComments;
 	
+
 	public String getId() {
 		return id;
 	}
@@ -91,9 +94,12 @@ public class SiteBoard {
 	public void setSmallCategoryId(String smallCategoryId) {
 		this.smallCategoryId = smallCategoryId;
 	}
-	
-	
-	
+	public List<SiteComment> getSiteComments() {
+		return siteComments;
+	}
+	public void setSiteComments(List<SiteComment> siteComments) {
+		this.siteComments = siteComments;
+	}
 	
 
 }

@@ -123,6 +123,7 @@ textScroll.prototype.start = function() {
 
 				
 			</div>
+			<a href="../siteboard/site-reg">(세은)사이트 글쓰기로 가는 것</a>
 			</main>
 			
 			

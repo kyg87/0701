@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="tiles"  uri="http://tiles.apache.org/tags-tiles" %>
+<%@ taglib prefix="tiles"  uri="http://tiles.apache.org/tags-tiles" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
@@ -126,8 +126,8 @@
 
 
 		<div id="minibox">
-			 <form id="comment-add-form" action="freeBoard-comment-add" method="post">
-            <div class="row">
+		   <form id="comment-add-form" action="freeBoard-comment-add" method="post">
+             <div class="row">
                <security:authorize access="isAnonymous()">
                   <p>글쓰기는 로그인한 유저만 가능합니다 로그인해주세요</p>
                </security:authorize>
@@ -142,26 +142,26 @@
                     </button>
                </div>
                </security:authorize>
-            </div>
+             </div>
             
-               <input type="hidden" name="freeBoardId" value=${n.id }>
-               <input type="hidden" name="memberId" value=<security:authentication property="name"/>>
-         </form>
-			
+     	     <input type="hidden" name="freeBoardId" value=${n.id }>
+        	 <input type="hidden" name="memberId" value=<security:authentication property="name"/>>
+         	</form>
 
-				<ul id ="commentList" class="collection">
-	
-				</ul>
-	
-			</div>
 
- 
-             <ul id="pagination" class="pagination center">
+			<ul id="commentList" class="collection">
 
-            </ul>
-       
+			</ul>
 
 		</div>
+
+
+		<ul id="pagination" class="pagination center">
+
+		</ul>
+
+
+	</div>
 	</div>
 	
 	

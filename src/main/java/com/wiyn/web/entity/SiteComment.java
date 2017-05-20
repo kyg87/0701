@@ -9,6 +9,7 @@ public class SiteComment {
 	private Date regDate;
 	private String siteBoardId;
 	private String memberId;
+	
 	public String getId() {
 		return id;
 	}

@@ -37,7 +37,8 @@ public class RequestBoardCommentController {
 
 	
 
-	@RequestMapping(value = "requestboard-comment-add", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	@RequestMapping(value = "requestBoard-comment-add", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	@ResponseBody
 	public String freeDetailComment(RequestComment requestComment, 
 			
 			@RequestParam(value = "content") String content,
@@ -50,17 +51,19 @@ public class RequestBoardCommentController {
 		requestComment.setRequestBoardId(requestBoardId);
 		requestComment.setMemberId(memberId);
 
+		int result = requestCommentDao.add(requestComment);
+		
 		requestCommentDao.add(requestComment);
 
-		System.out.println("요청 댓글 등록");
+	
 
-		return "redirect:request-detail?c="+requestComment.getRequestBoardId();
+		return String.valueOf(result);
 
 	}
 	
-	@RequestMapping("requestboard-commentDelete")
+	@RequestMapping("requestCommentDelete")
 	@ResponseBody
-	public String freeCommentDelete(
+	public String requestCommentDelete(
 			@RequestParam(value="id")String id
 			){
 		

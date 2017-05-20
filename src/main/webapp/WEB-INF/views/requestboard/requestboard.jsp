@@ -28,5 +28,7 @@
 						</c:forEach>
 					</tbody>
 				</table>
+				
+				<a href="../requestboard/request-reg">(기윤)요청 글쓰기로 가는 것</a>
 	
 </main>

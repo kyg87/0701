@@ -69,7 +69,8 @@ public class FreeBoardController {
 	}
 
 	@RequestMapping("free-detail")
-	public String freeDetail(@RequestParam("c") String id, @RequestParam(value = "p", defaultValue = "1") Integer page,
+	public String freeDetail(@RequestParam("c") String id, 
+			@RequestParam(value = "p", defaultValue = "1") Integer page,
 
 			Model model) {
 

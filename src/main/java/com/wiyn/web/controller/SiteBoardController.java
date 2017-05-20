@@ -110,21 +110,32 @@ public class SiteBoardController {
 	@RequestMapping(value="site-detail",produces="text/plain;charset=UTF-8")
 	public String siteDetail(
 			@RequestParam("c")String id, 
+			@RequestParam(value = "p", defaultValue = "1") Integer page,
 			Model model
 			)
 	{
 		SiteBoard siteBoard = new SiteBoard();
 
 		siteBoard = sqlSession.getMapper(SiteBoardDao.class).getBoard(id);
-
+		siteBoard.setSiteComments(sqlSession.getMapper(SiteCommentDao.class).getList(id, page));
+		
+		System.out.println(siteBoard.getMemberId());
+		int size = sqlSession.getMapper(SiteCommentDao.class).getSize(id);
+		
 		int likeCount = siteBoardLikeDao.getLike(id);	
 		
 		String bName = siteBoardDao.getBName(id);
 		String sName = siteBoardDao.getSName(id);
+		
 		model.addAttribute("l", likeCount);
 		model.addAttribute("n", siteBoard);
 		model.addAttribute("b", bName);
 		model.addAttribute("s", sName);
+		
+		model.addAttribute("page", page);
+		model.addAttribute("size", size);
+		
+		
 		return "siteboard.site-detail";
 	}
 

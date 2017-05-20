@@ -17,17 +17,30 @@ public class MyBatisSiteCommentDao implements SiteCommentDao {
 	private SqlSession sqlSession;
 
 	@Override
-	public List<SiteComment> getList() {
-	      SiteCommentDao siteCommentDao;
-	      siteCommentDao = sqlSession.getMapper(SiteCommentDao.class);
-		return siteCommentDao.getList();
+	public List<SiteComment> getList(String boardId,int page) {
+		SiteCommentDao siteCommentDao;
+		siteCommentDao = sqlSession.getMapper(SiteCommentDao.class);
+		return siteCommentDao.getList(boardId, page);
 	}
 
 	@Override
-	public int add(SiteComment sitecomment) {
-	      SiteCommentDao siteCommentDao;
-	      siteCommentDao = sqlSession.getMapper(SiteCommentDao.class);
-		return siteCommentDao.add(sitecomment);
+	public int add(SiteComment freecomment) {
+		SiteCommentDao siteCommentDao;
+		siteCommentDao = sqlSession.getMapper(SiteCommentDao.class);
+		return siteCommentDao.add(freecomment);
 	}
 
+	@Override
+	public int getSize(String boardId) {
+		SiteCommentDao siteCommentDao;
+		siteCommentDao = sqlSession.getMapper(SiteCommentDao.class);
+		return siteCommentDao.getSize(boardId);
+	}
+
+	@Override
+	public int delete(String boardId) {
+		SiteCommentDao siteCommentDao;
+		siteCommentDao = sqlSession.getMapper(SiteCommentDao.class);
+		return siteCommentDao.delete(boardId);
+	}
 }

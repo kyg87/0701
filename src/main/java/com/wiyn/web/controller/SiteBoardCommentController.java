@@ -15,55 +15,59 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 import com.wiyn.web.dao.FreeBoardDao;
 import com.wiyn.web.dao.FreeCommentDao;
+import com.wiyn.web.dao.SiteBoardDao;
+import com.wiyn.web.dao.SiteCommentDao;
 import com.wiyn.web.dao.SmallCategoryDao;
 import com.wiyn.web.entity.FreeBoard;
 import com.wiyn.web.entity.FreeComment;
+import com.wiyn.web.entity.SiteComment;
 import com.wiyn.web.entity.SmallCategory;
 
 @Controller
-@RequestMapping("/freeboard/*")
-public class FreeBoardCommentController {
+@RequestMapping("/siteboard/*")
+public class SiteBoardCommentController {
 
 	@Autowired
-	private FreeBoardDao freeBoardDao;
+	private SiteBoardDao siteBoardDao;
 	@Autowired
-	private FreeCommentDao freeCommentDao;
+	private SiteCommentDao siteCommentDao;
 
 	@Autowired
 	private SqlSession sqlSession;
 
 	
 
-	@RequestMapping(value = "freeBoard-comment-add", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	@RequestMapping(value = "siteBoard-comment-add", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	@ResponseBody
-	public String freeDetailComment(FreeComment freeComment, 
+	public String freeDetailComment(SiteComment siteComment, 
 			
 			@RequestParam(value = "content") String content,
-			@RequestParam(value = "freeBoardId") String freeBoardId, 
+			@RequestParam(value = "siteBoardId") String siteBoardId, 
 			@RequestParam(value = "memberId") String memberId
 			
 	) {
 
-		freeComment.setContent(content);
-		freeComment.setFreeBoardId(freeBoardId);
-		freeComment.setMemberId(memberId);
+		siteComment.setContent(content);
+		siteComment.setSiteBoardId(siteBoardId);
+		siteComment.setMemberId(memberId);
 
-		int result = freeCommentDao.add(freeComment);
+		int result = siteCommentDao.add(siteComment);
 
 
 		return String.valueOf(result);
 
 	}
 	
-	@RequestMapping("freeCommentDelete")
+	@RequestMapping("siteCommentDelete")
 	@ResponseBody
 	public String freeCommentDelete(
 			@RequestParam(value="id")String id
 			){
 		
-
-		int result = freeCommentDao.delete(id);
+		System.out.println(id);
+		int result = siteCommentDao.delete(id);
 		
+		System.out.println(result);
 		
 		
 
@@ -81,11 +85,11 @@ public class FreeBoardCommentController {
 			@RequestParam(value="id")String id){
 		
 
-		List<FreeComment> freeComments = sqlSession.getMapper(FreeCommentDao.class).getList(id, Integer.parseInt(page));
+		List<SiteComment> siteComments = sqlSession.getMapper(SiteCommentDao.class).getList(id, Integer.parseInt(page));
 	
 		
 		Gson gson = new Gson();
-		String json = gson.toJson(freeComments);
+		String json = gson.toJson(siteComments);
 		
 		return json;
 	}
