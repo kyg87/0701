@@ -142,8 +142,7 @@ td i{
 					</form>
 				</td>
 				<td colspan="2" >
-					<form class="form-end" action="site-delete" method="post">
-						<input type="hidden" name="id" value=${n.id }>
+					<form class="form-end" action="site-list" method="post">
 						<button class="btn waves-effect waves-light" type="submit"
 							name="action">목록</button>
 					</form>		

@@ -108,9 +108,7 @@ body {
 
 </style>
 
-
-
-<body>
+<main>
 
 <form action="edit" method="post">
 	<div id="main">
@@ -144,7 +142,7 @@ body {
 						<div id="title">제목</div>
 					</th>
 					
-					<th><input id="titleinput" name="title" type="text" value="${n.title }"></th>
+					<th><input id="titleinput" name="title" type="text" value=${n.title }></th>
 					
 				</tr>
 				<tr>
@@ -159,12 +157,10 @@ body {
 				<tr>
 					<td colspan="2">
 						<div id="divcontent">
-							<form>
 								<div class="form-group">
 									<label for="comment">Comment :</label>
 									<textarea class="form-control" name="content" rows="15" id="comment">${n.content }</textarea>
 								</div>
-							</form>
 						</div>
 
 					</td>
@@ -265,4 +261,4 @@ body {
 	
 	</script>
 
-</body>
+</main>

@@ -50,6 +50,14 @@ public class SiteBoardController {
 	@Autowired
 	private SmallCategoryDao smallCategoryDao;
 	
+	@RequestMapping("site-list")
+	public String request() {
+
+
+		return "siteboard.site-list";
+	}
+	
+	
 	@RequestMapping("site-reg")
 	public String site(Model model){
 		
@@ -70,6 +78,7 @@ public class SiteBoardController {
 	public String GetListWithBC(Model model,
 			@RequestParam(value="bigCategoryId")String bigCategoryId){
 
+		System.out.println(bigCategoryId);
 		List<SmallCategory> scList = sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategoryId);
 		model.addAttribute("scList", scList);
 
@@ -152,14 +161,13 @@ public class SiteBoardController {
 	}*/
 	
 	@RequestMapping("site-edit")
-     public String siteEdit(@RequestParam("c")String id, Model model){
+     public String siteEdit(String id, Model model){
         
-           
-		 SiteBoard siteBoard = new SiteBoard();
+		System.out.println("Å¸´×");
+
+        model.addAttribute("n", siteBoardDao.getBoard(id));
         
-		siteBoard = sqlSession.getMapper(SiteBoardDao.class).getBoard(id);
-        
-        model.addAttribute("n", siteBoard);
+        System.out.println(id);
         
         return "siteboard.site-edit";
      }
