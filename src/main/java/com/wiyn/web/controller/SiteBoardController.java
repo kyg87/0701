@@ -60,8 +60,7 @@ public class SiteBoardController {
 	
 	@RequestMapping("site-reg")
 	public String site(Model model){
-		
-		
+				
 		List<BigCategory> bcList = sqlSession.getMapper(BigCategoryDao.class).getList();
 		
 		for (BigCategory bigCategory : bcList) {
@@ -165,7 +164,16 @@ public class SiteBoardController {
         
 		System.out.println("Å¸´×");
 
+		List<BigCategory> bcList = sqlSession.getMapper(BigCategoryDao.class).getList();
+		
+		for (BigCategory bigCategory : bcList) {
+			bigCategory.setSmallCategory(sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId()));
+		}
+
+		model.addAttribute("bcList", bcList);
         model.addAttribute("n", siteBoardDao.getBoard(id));
+        model.addAttribute("b", siteBoardDao.getBName(id));
+        model.addAttribute("s", siteBoardDao.getSName(id));
         
         System.out.println(id);
         
@@ -190,7 +198,7 @@ public class SiteBoardController {
 			siteBoard.setContent(content);
 			siteBoard.setTitle(title);
 			siteBoard.setUrl(url);
-			//siteBoard.setBigCategoryId(bigCategoryId);
+			
 			
 			siteBoardDao.update(siteBoard);
 			

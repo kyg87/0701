@@ -170,7 +170,7 @@ td{
 						</div>
  					</td>
 				</tr>
-				<script>
+				<!-- <script>
 					$('.chips').material_chip();
 					  $('.chips-initial').material_chip({
 					    data: [{
@@ -216,7 +216,7 @@ td{
 						  $('.chips').on('chip.select', function(e, chip){
 						    // you have the selected chip here
 						  });
-				</script>			
+				</script>	 -->		
 				<tr>
 					<td colspan="2">
 						<div id="btn">

@@ -118,22 +118,89 @@ body {
 				<tr>
 					<th>
 						<div class="input-field">
-							<select>
-								 <option value="" disabled selected>카테고리 one</option> 
+							<select name="bigCategoryId" id="bigCategoryId">
+								<option id="default" value="" disabled selected>${b }</option>
+								<c:forEach var="bc" items="${bcList }">
+									<option value="${bc.id }">${bc.name }</option>
+								</c:forEach>
+							</select>
+							<script>
+						$(function() {
+				               $("#bigCategoryId").on('change', function() {
+
+				                        var data = $("#bigCategoryId");
+				                        var smallCategory = $("#smallCategoryId");
+				                        var smli = $("#scList>div>select");
+				      
+				                        smli.empty();
+				                        
+				                        $.post("getListWithBC", data, function(d) {
+
+				                           var obj = JSON.parse(d);
+				               
+				                           smallCategory.append( $('<option disabled selected><span> 소분류 선택 </span></option'));
+				                           
+				                           if(obj.length != 0){
+				                              for (var i = 0; i < obj.length; i++) {
+				                                    
+				                                 smallCategory.append( $('<option value=' +obj[i].id +  '><span>'+ obj[i].name +'</span></option>'));
+				                        
+				                                    $('select').material_select();
+				                              }
+				                           }
+				                           else if(obj.length == 0){
+				                              $('select').material_select();
+				                           }
+				                        });
+				                        
+				                        var bcDelpost = $("#bcdel");
+				                        var bcModpost = $("#bcmod");
+				                        var scCheckpost = $("#scAddCheck");
+				                        
+				                        bcDelpost.val($(this).val());
+				                        bcModpost.val($(this).val());
+				                        scCheckpost.val($(this).val());
+				                        
+				                     });
+				            });
+						</script>
+<!-- 							<select>
+								 <option value="" disabled selected>${b }</option> 
 								<option value="1">Option 1</option>
 								<option value="2">Option 2</option>
 								<option value="3">Option 3</option>
-							</select>
+							</select> -->
 						</div>
 					</th>
 					<th>
-						<div id="input-field2" class="input-field">
-							<select>
-								 <option value="" disabled selected>카테고리 two</option> 
+						
+						<div class="input-field" id="scList">
+						<select name="smallCategoryId" id="smallCategoryId">
+							<option id="default" value="" disabled selected>${s }</option>
+						</select>
+					</div> 
+					<script>
+						$(function() {
+							$("#smallCategoryId").on('change', function() {
+
+								var smList = $("#smallCategoryId");
+
+								var scDelpost = $("#scdel");
+								var scModpost = $("#scmod");
+
+								scDelpost.val($(this).val());
+								scModpost.val($(this).val());
+
+							});
+						});
+					</script> 
+<%-- <div id="input-field2" class="input-field">							
+<select>
+								<option value="" disabled selected>${s }</option> 
 								<option value="1">Option 1</option>
 								<option value="2">Option 2</option>
 								<option value="3">Option 3</option> 
-							</select>
+							</select> --%>
 						</div>
 					</th>
 				</tr>
