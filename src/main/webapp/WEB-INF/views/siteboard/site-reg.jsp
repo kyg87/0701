@@ -35,12 +35,12 @@ td{
 			<thead>
 				<tr>
 					<td>
-					<select class="browser-default" name="bigCategoryId" id="bigCategoryId">
+				<%-- 	<select class="browser-default" name="bigCategoryId" id="bigCategoryId">
 						<option value="" disabled selected>대분류</option>
 						<c:forEach var="bc" items="${bcList }">
 							<option value="${bc.id }">${bc.name }</option>
 						</c:forEach>
-					</select> 
+					</select>  --%>
 					<%-- <div class="input-field">
 							<select name="bigCategoryId" id="bigCategoryId">
 								<option value="" disabled selected>대분류</option>
@@ -49,7 +49,15 @@ td{
 								</c:forEach>
 							</select>
 						</div> --%>
-						<script>
+					<div class="input-field">
+						<select name="bigCategoryId" id="bigCategoryId">
+							<option id="default" value="" disabled selected>대분류를 선택하세요</option>
+
+							<c:forEach var="bc" items="${bcList }">
+								<option value="${bc.id }">${bc.name }</option>
+							</c:forEach>
+						</select>
+					</div> <script>
 						$(function() {
 				               $("#bigCategoryId").on('change', function() {
 
@@ -91,11 +99,31 @@ td{
 						</script>
 					</td>
 					<td>
-						<div id="scList">
+					<div class="input-field" id="scList">
+						<select name="smallCategoryId" id="smallCategoryId">
+							<option id="default" value="" disabled selected>소분류를 선택하세요</option>
+						</select>
+					</div> 
+					<script>
+						$(function() {
+							$("#smallCategoryId").on('change', function() {
+
+								var smList = $("#smallCategoryId");
+
+								var scDelpost = $("#scdel");
+								var scModpost = $("#scmod");
+
+								scDelpost.val($(this).val());
+								scModpost.val($(this).val());
+
+							});
+						});
+					</script> 
+					<!-- <div id="scList">
 							<select class="browser-default"  name="smallCategoryId" id="smallCategoryId">
 								<option value="" disabled selected>소분류</option>
 							</select>
-						</div>
+						</div> -->
 					</td>
 					<td>
 					</td>
