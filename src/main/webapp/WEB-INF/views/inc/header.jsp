@@ -97,7 +97,7 @@ nav{
         <ul class="center menubar">
         	<li><a class="board" href="../requestboard/requestboard">Request</a></li>
         	<li><a class="board" href="../freeboard/freeboard">Free</a></li>
-          	<li><a class="board" href="../noticeboard/notice-detail">Notice</a></li> 
+          	<li><a class="board" href="../noticeboard/noticeboard">Notice</a></li> 
         </ul>
       </div>
     </nav>

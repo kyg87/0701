@@ -5,11 +5,25 @@
 
 <mapper namespace="com.wiyn.web.dao.NoticeBoardDao">
 <select resultType="com.wiyn.web.entity.NoticeBoard" id="getList"> 
-SELECT `NoticeBoard`.`id`, `NoticeBoard`.`title`, `NoticeBoard`.
-`content`, `NoticeBoard`.`regDate`, `NoticeBoard`.`memberId` 
-FROM `lsedb`.`NoticeBoard` 
+
+SELECT `NoticeBoard`.`id`,
+    `NoticeBoard`.`title`,
+    `NoticeBoard`.`content`,
+    `NoticeBoard`.`contentSrc`,
+    `NoticeBoard`.`hit`,
+    `NoticeBoard`.`regDate`,
+    `NoticeBoard`.`memberId`
+FROM `lsedb`.`NoticeBoard`
+
 </select>
-	<insert id="add" parameterType="com.wiyn.web.entity.NoticeBoard">
+
+<select resultType="com.wiyn.web.entity.NoticeBoard" id="get"> 
+
+	SELECT * FROM NoticeBoard WHERE id = #{id}
+
+</select>
+
+<insert id="add" parameterType="com.wiyn.web.entity.NoticeBoard">
 	<selectKey order="BEFORE" keyProperty="id" resultType="String">
          select max(cast(id as unsigned))+1 id from NoticeBoard
       </selectKey>
@@ -32,6 +46,6 @@ FROM `lsedb`.`NoticeBoard`
 		#{memberId}
 		)
 
-	</insert>
+</insert>
 
 </mapper>

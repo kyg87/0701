@@ -29,6 +29,13 @@ public class MyBatisNoticeBoardDao implements NoticeBoardDao {
 	    return noticeBoardDao.getList();
 	}
 
+	@Override
+	public List<NoticeBoard> get(String id) {
+		NoticeBoardDao noticeBoardDao;
+		noticeBoardDao = sqlSession.getMapper(NoticeBoardDao.class);
+	    return noticeBoardDao.get(id);
+	}
+
 
 
 }

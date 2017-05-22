@@ -67,13 +67,13 @@
 				<table>
 			        <thead>
 			          <tr>
-			              <th id="title">글제목<i id="re" class="small material-icons">launch</i></th>			             
+			              <th id="title"> 제목 : ${list.title }   <i id="re" class="small material-icons">launch</i></th>			             
 			          </tr>
 			          <tr>
-			          	 <th id="writedate">2017.3.15<i class="small material-icons">star</i> 23</th>
+			          	 <th id="writedate"> 작성 날짜 :  ${list.regDate } <i class="small material-icons">star</i> 23</th>
 			          </tr>
 			          <tr>
-			          	<th id="writer">writer</th>
+			          	<th id="writer"> 작성자 : ${list.memberId } </th>
 			          </tr>
 			        </thead>
 			        <tbody>
@@ -81,10 +81,10 @@
 			            <td id="thum">thum</td>
 			          </tr>
 			          <tr>
-			            <td id="url">url</td>
+			            <td id="url"> 주소 :  ${list.contentSrc }</td>
 			          </tr>
 			          <tr>
-			            <td id="content">content</td>
+			            <td id="content"> 내용 : ${list.content }</td>
 			          </tr>
 			          <tr>
 			            <td>
