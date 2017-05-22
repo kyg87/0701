@@ -124,6 +124,49 @@ textScroll.prototype.start = function() {
 				
 			</div>
 			<a href="../siteboard/site-reg">(세은)사이트 글쓰기로 가는 것</a>
+			
+	<!-- -------------------------------랜덤 페이지--------------------------------- -->
+	<table class="table">
+		<thead>
+			<tr>
+				<td colspan="4">
+					<nav>
+						<div class="nav-wrapper">
+							<div class="col s12">
+								<a href="#!" class="breadcrumb big-category">${b }</a> 
+								<a href="#!" class="breadcrumb small-category">${s }</a>
+							</div>
+						</div>
+					</nav>
+				</td>
+			</tr>
+			<tr>
+				<td class="title" colspan="4">${random.title }</td>
+				<td class="hidden">즐겨찾기</td>
+			</tr>
+			<tr class="reg-like">
+				<td class="detail-font" colspan="4" class="reg-date"><i class="tiny material-icons">schedule</i>${random.regDate }</td>
+			</tr>
+			<tr>
+				<td class="detail-font" colspan="4"><i class="tiny material-icons">perm_identity</i>${random.memberId }</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td colspan="4">${random.url }</td>
+			</tr>
+			<tr>
+				<td colspan="4">thum</td>
+			</tr>
+			<tr>
+				<td colspan="4">${random.content }</td>
+			</tr>
+			<tr>
+				<td colspan="4"> <div class="chip">Tag</div> <div class="chip">Tag</div> <div class="chip">Tag</div> <div class="chip">Tag</div> <div class="chip">Tag</div></td>
+			</tr>
+			</tbody>
+			</table>
+			
 			</main>
 			
 			

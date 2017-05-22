@@ -111,4 +111,8 @@ select * from SiteBoard where title like '%${query}%' and bigCategoryId like '%$
 order by regDate desc LIMIT ${(page-1)*10},10
 </select>	
  -->
+ 
+ 	<select id="getRandom" resultType="com.wiyn.web.entity.SiteBoard">
+ 		select * from SiteBoard order by rand() limit 1
+ 	</select>
 </mapper>

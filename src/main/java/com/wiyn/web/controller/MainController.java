@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.wiyn.web.dao.NoticeBoardDao;
 import com.wiyn.web.dao.RequestBoardDao;
 import com.wiyn.web.dao.SiteBoardDao;
+import com.wiyn.web.dao.SiteBoardLikeDao;
 import com.wiyn.web.entity.FreeBoard;
 import com.wiyn.web.entity.NoticeBoard;
 import com.wiyn.web.entity.RequestBoard;
@@ -32,12 +33,16 @@ public class MainController {
 	
 	@Autowired
 	private NoticeBoardDao noticBoardDao;
+	
+	
+	@Autowired
+	private SiteBoardLikeDao siteBoardLikeDao;
 
     @RequestMapping("index")
     public String index(String id,
             @RequestParam(value="p", defaultValue="1")Integer page, 
-            @RequestParam(value="q", defaultValue="")String query, Model model) {
-
+            @RequestParam(value="q", defaultValue="")String query,
+            Model model) {
         List<SiteBoard> sitelist = sqlSession.getMapper(SiteBoardDao.class).getList(page,query);
         List<SiteBoard> sitelistlike = sqlSession.getMapper(SiteBoardDao.class).getListLike(page, query);
         List<SiteBoard> sitelistcomment = sqlSession.getMapper(SiteBoardDao.class).getListComment(page, query);
@@ -47,9 +52,13 @@ public class MainController {
         SiteBoard prev=sqlSession.getMapper(SiteBoardDao.class).getPrev(id);
         SiteBoard next=sqlSession.getMapper(SiteBoardDao.class).getNext(id);
         
-        List<NoticeBoard> noticelist = sqlSession.getMapper(NoticeBoardDao.class).getList();
         
+       
+        /*-------공지사항 불러오기----------*/
+        List<NoticeBoard> noticelist = sqlSession.getMapper(NoticeBoardDao.class).getList();
         model.addAttribute("noticelist", noticelist);
+        
+        /*-------사이트게시판 불러오기-------*/
         model.addAttribute("sitelist", sitelist);
         model.addAttribute("sitelistlike", sitelistlike);
         model.addAttribute("sitelistcomment", sitelistcomment);
@@ -59,6 +68,18 @@ public class MainController {
         model.addAttribute("prev", prev);
         model.addAttribute("next", next);
         model.addAttribute("board", board);
+        /*-------------랜덤페이지 가져오기----------------*/
+    
+        SiteBoard random=sqlSession.getMapper(SiteBoardDao.class).getRandom();
+		int likeCount = siteBoardLikeDao.getLike(id);	
+		String bName = siteBoardDao.getBName(id);
+		String sName = siteBoardDao.getSName(id);
+		
+		
+        model.addAttribute("random", random);
+		model.addAttribute("l", likeCount);
+		model.addAttribute("b", bName);
+		model.addAttribute("s", sName);
         
         return "main.index";
     }

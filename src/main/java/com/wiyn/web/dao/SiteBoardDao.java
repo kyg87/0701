@@ -14,7 +14,11 @@ public interface SiteBoardDao {
 	SiteBoard getBoard(String id);
     SiteBoard getPrev(String id);
     SiteBoard getNext(String id);
+    SiteBoard getRandom();
     
+/*    public List<SiteBoard> getListSpeed(@Param("page") int page,
+     @Param("query") String query, @Param("bigCategoryId") String bigCategoryId, 
+     @Param("smallCategoryId") String smallCategoryId);*/
 
 	public int add(SiteBoard siteBoard);
 	public int delete(String id);
