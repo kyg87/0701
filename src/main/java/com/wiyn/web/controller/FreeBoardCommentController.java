@@ -36,7 +36,7 @@ public class FreeBoardCommentController {
 
 	@RequestMapping(value = "freeBoard-comment-add", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	@ResponseBody
-	public String freeDetailComment(FreeComment freeComment, 
+	public String freeDetailComment(FreeComment freeComment, String commentCount,
 			
 			@RequestParam(value = "content") String content,
 			@RequestParam(value = "freeBoardId") String freeBoardId, 
@@ -48,9 +48,15 @@ public class FreeBoardCommentController {
 		freeComment.setFreeBoardId(freeBoardId);
 		freeComment.setMemberId(memberId);
 
+		
+		
 		int result = freeCommentDao.add(freeComment);
+		
+		
+		
+		freeBoardDao.updateCommentCount(freeBoardId);
 
-
+		
 		return String.valueOf(result);
 
 	}
@@ -61,11 +67,12 @@ public class FreeBoardCommentController {
 			@RequestParam(value="id")String id
 			){
 		
+		
 
 		int result = freeCommentDao.delete(id);
 		
 		
-		
+		//freeBoardDao.updateCommentCount(freeBoardId);
 
 		return String.valueOf(result);
 		

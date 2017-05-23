@@ -8,12 +8,12 @@ public class FreeBoard {
 	private String id;
     private String title;
     private String contentSrc;
-    private String content;
-   
+    private String content; 
     private int hit;
     private Date regDate;
     private String memberId;
     private List<FreeComment> freeComment;
+    private String commentCount;
     
 	public String getId() {
 		return id;
@@ -63,8 +63,13 @@ public class FreeBoard {
 	public void setFreeComment(List<FreeComment> freeComment) {
 		this.freeComment = freeComment;
 	}
+	public String getCommentCount() {
+		return commentCount;
+	}
+	public void setCommentCount(String commentCount) {
+		this.commentCount = commentCount;
+	}
 
-
-
-
+	
+	
 }

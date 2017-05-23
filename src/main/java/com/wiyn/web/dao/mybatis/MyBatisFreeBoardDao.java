@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.wiyn.web.dao.FreeBoardDao;
+import com.wiyn.web.dao.FreeCommentDao;
 import com.wiyn.web.entity.FreeBoard;
 
 
@@ -74,8 +75,22 @@ public class MyBatisFreeBoardDao implements FreeBoardDao{
 	}
 
 
+	@Override
+	public String getSize(String commentCount) {
+		FreeBoardDao FreeBoardDao;
+		FreeBoardDao = sqlSession.getMapper(FreeBoardDao.class);
+	    return FreeBoardDao.getSize(commentCount);
+	}
 
-	
-	
+
+	@Override
+	public int updateCommentCount(String commentCount) {
+		FreeBoardDao FreeBoardDao;
+		FreeBoardDao = sqlSession.getMapper(FreeBoardDao.class);
+	    return FreeBoardDao.updateCommentCount(commentCount);
+	}
+
+
+
 	
 }

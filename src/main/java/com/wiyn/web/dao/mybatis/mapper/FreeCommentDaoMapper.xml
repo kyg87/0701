@@ -20,6 +20,7 @@
 				`regDate`,
 				`freeBoardId`,
 				`memberId`
+				
 				)
 				VALUES
 				(
@@ -33,7 +34,7 @@
 	</insert>
 	
 	<select id="getSize" resultType="Integer">
-		SELECT count(*) FROM FreeComment where freeBoardId = #{boardId} order by regDate desc;
+		SELECT count(*) FROM FreeComment where freeBoardId = #{boardId};
 	</select>
 	
 	<delete id="delete">

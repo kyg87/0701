@@ -26,18 +26,27 @@ public class FreeBoardController {
 
 	@Autowired
 	private FreeBoardDao freeBoardDao;
-	@Autowired
-	private FreeCommentDao freeCommentDao;
 
 	@Autowired
 	private SqlSession sqlSession;
+	
+	@Autowired
+	private FreeCommentDao freeCommentDao;
+	
+
 
 	@RequestMapping("freeboard")
-	public String request(Model model) {
-
+	public String request(Model model,String commentCount) {
 		List<FreeBoard> list = sqlSession.getMapper(FreeBoardDao.class).getList();
-		model.addAttribute("list", list);
-
+			
+		
+		
+		for (FreeBoard freeBoard : list) {
+			freeBoard.setFreeComment(sqlSession.getMapper(FreeCommentDao.class).getList(freeBoard.getId(), 5));
+			
+		}
+		model.addAttribute("list", list);	
+		
 		return "freeboard.freeboard";
 	}
 
@@ -78,6 +87,8 @@ public class FreeBoardController {
 
 		freeboard = sqlSession.getMapper(FreeBoardDao.class).get(id);
 		freeboard.setFreeComment(sqlSession.getMapper(FreeCommentDao.class).getList(id, page));
+		
+		/*System.out.println(id);*/
 
 		int size = sqlSession.getMapper(FreeCommentDao.class).getSize(id);
 

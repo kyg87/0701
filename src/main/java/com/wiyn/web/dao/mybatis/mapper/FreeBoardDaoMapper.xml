@@ -17,8 +17,9 @@
     `FreeBoard`.`content`,
     `FreeBoard`.`hit`,
     `FreeBoard`.`regDate`,
-    `FreeBoard`.`memberId`
-FROM `lsedb`.`FreeBoard`
+    `FreeBoard`.`memberId`,
+    `FreeBoard`.`commentCount`
+FROM `lsedb`.`FreeBoard` ORDER BY regDate DESC;
 
 </select>
 
@@ -57,10 +58,12 @@ FROM `lsedb`.`FreeBoard`
 	UPDATE `lsedb`.`FreeBoard` SET hit=hit+1 WHERE `id`=#{id};
 </update>
 
+<update id="updateCommentCount">
+	UPDATE `lsedb`.`FreeBoard` SET `commentCount`=(SELECT COUNT(*) FROM FreeComment Where `freeBoardId`=#{id}) WHERE `id`=#{id};
+</update>
+
 <update id="update">
 
-	
-	
 	UPDATE `lsedb`.`FreeBoard`
 	SET
 
@@ -71,6 +74,10 @@ FROM `lsedb`.`FreeBoard`
 	WHERE `id` = #{id}
 	
 </update>
+
+<select id="getSize" resultType="String">
+		SELECT count(*) FROM FreeComment where freeBoardId = #{id};
+</select>
 
 
 </mapper>

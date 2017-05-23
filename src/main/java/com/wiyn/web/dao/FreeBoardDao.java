@@ -18,11 +18,11 @@ public interface FreeBoardDao {
 	
 	public int add(FreeBoard freeBoard);
 	public int delete(String id);
-
 	public int update(FreeBoard freeBoard);
 	
 	public int updateHit(String id);
-	
+	public String getSize(String commentCount);
+	public int updateCommentCount(String id);
 }
 
 	
