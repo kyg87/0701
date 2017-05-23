@@ -112,7 +112,7 @@ body {
 
 <body>
 
-	<form id="noticeReg" action="noticeBoard-reg" method="post">
+	<form id="noticeReg" action="noticeBoard-reg" method="post" enctype="multipart/form-data">
 		<main id="main">
 			<div>공지사항등록</div>
 			<table>
@@ -128,6 +128,11 @@ body {
 							<div id="address">http://</div>
 						</th>
 						<th><input id="contentSrc" type="text" value="" name="contentSrc"></th>
+					</tr>
+					
+					<tr>
+						<th>파일 첨부</th>
+						<td><input type="file" name="file" /></td>
 					</tr>
 				</thead>
 	

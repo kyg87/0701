@@ -1,6 +1,13 @@
 package com.wiyn.web.controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.List;
+
+import javax.servlet.ServletContext;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +16,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.wiyn.web.dao.NoticeBoardDao;
+import com.wiyn.web.dao.NoticeBoardFileDao;
 import com.wiyn.web.entity.NoticeBoard;
+import com.wiyn.web.entity.NoticeFile;
 
 
 
@@ -23,7 +33,16 @@ public class NoticeBoardController {
 	private NoticeBoardDao noticeBoardDao;
 	
 	@Autowired
+	private NoticeBoardFileDao noticeBoardFileDao;
+	
+	@Autowired
+	private NoticeFile noticeFile;
+	
+	@Autowired
 	private SqlSession sqlSession;
+	
+	@Autowired
+	private ServletContext context;
 	
 	@RequestMapping("noticeboard")
 	public String site(Model model){
@@ -62,8 +81,34 @@ public class NoticeBoardController {
 			@RequestParam(value="title")String title, 
 			@RequestParam(value="content")String content,
 			@RequestParam(value="memberId")String memberId,
-			@RequestParam(value="contentSrc")String contentSrc
-			){
+			@RequestParam(value="contentSrc")String contentSrc,
+			@RequestParam(value = "file") List<MultipartFile> file
+			)throws IOException{
+		
+		String path = context.getRealPath("/resource/upload");
+		
+		File d = new File(path);
+		if(!d.exists())//경로가 존재하지 않는다면
+			d.mkdir();
+	
+		byte[] buf = new byte[1024];
+					
+		for(MultipartFile fi : file){
+			if(!fi.isEmpty()){
+				String fileName = fi.getOriginalFilename();
+				InputStream fis = fi.getInputStream();
+				OutputStream fos = new FileOutputStream(path+File.separator+fileName);
+				
+				int len = 0; 
+				
+				while((len = fis.read(buf)) > 0)
+					fos.write(buf, 0, len);
+				
+				fis.close();
+				fos.close();
+			}
+		}
+		
 						
 		noticeBoard.setTitle(title);
 		noticeBoard.setContent(content);
@@ -71,6 +116,16 @@ public class NoticeBoardController {
 		noticeBoard.setContentSrc(contentSrc);
 		
 		noticeBoardDao.add(noticeBoard);
+		
+		for(MultipartFile fi : file){
+			if(!fi.isEmpty()){
+				String fileName = fi.getOriginalFilename();
+				NoticeFile f = new NoticeFile();
+				f.setNoticeId(noticeBoardDao.lastCode());
+				f.setSrc(fileName);
+				noticeBoardFileDao.add(f);
+			}
+		}
 		
 		return "redirect:notice-detail?c=" + noticeBoard.getId();
 		
