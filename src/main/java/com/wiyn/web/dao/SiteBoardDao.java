@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.wiyn.web.entity.SiteBoard;
+import com.wiyn.web.entity.Tag;
 
 public interface SiteBoardDao {
 
@@ -29,7 +30,7 @@ public interface SiteBoardDao {
 	
 	String getBName(String id);
 	String getSName(String id);
-	String getTName(String id);
+	List<Tag> getTName(String id);
 	
 	
 }

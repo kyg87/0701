@@ -122,12 +122,9 @@ public class SiteBoardController {
 		tag.setName(name);
 		System.out.println("사이트보드아이디"+siteBoard.getId());
 		tag.setSiteBoardId(siteBoard.getId());
-		
-		
 		tagDao.add(tag);
+
 		
-		siteBoard.setTagId(tag.getId());
-		siteBoardDao.add(siteBoard);
 		return "redirect:site-detail?c=" + siteBoard.getId();
 	}
 
@@ -150,7 +147,7 @@ public class SiteBoardController {
 		
 		String bName = siteBoardDao.getBName(id);
 		String sName = siteBoardDao.getSName(id);
-		String tName = siteBoardDao.getTName(id);
+		List<Tag> tName = siteBoardDao.getTName(id);
 		
 		
 		

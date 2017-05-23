@@ -172,21 +172,28 @@ td{
 				</tr>
 				<tr>
 					<td colspan="4">
-						<div>
-							<input name="tag" type="text"/>
+						<div class="chips chips-placeholder">
+							<input id="e385bafe-7ce5-436e-e3f3-12af51285ada a" name="tag" type="text" placeholder="+Tag"/>
 						</div>
-						<div>
-							<input name="tag" type="text"/>
-						</div>
-						<div>
-							<input name="tag" type="text"/>
-						</div>
-						<div>
-							<input name="tag" type="text"/>
-						</div>
-						<div>
-							<input name="tag" type="text"/>
-						</div>
+						<script>
+							$('.chips').material_chip();
+							$('.chips-placeholder').material_chip({
+								placeholder : 'Enter a tag',
+								secondaryPlaceholder : '+Tag',
+							});
+							$('#a').live('keypress', function(e) {
+								if (e.which == 13) {/* 13 == enter key@ascii */
+									alert("you pressed enter key");
+								}
+							}
+							$('.chips').on('chip.add', function(e, chip) {
+								
+							});
+
+							$('.chips').on('chip.delete', function(e, chip) {
+								
+							});
+						</script>
 						<!-- <div class="chips hips-placeholder" data-index="0" data-initialized="true">
 							<input id="f1b80b77-35ee-ead5-f62f-91f5eaa70be0" class="input" placeholder="+Tag">
 						</div>  -->

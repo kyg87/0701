@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.wiyn.web.dao.SiteBoardDao;
 import com.wiyn.web.entity.SiteBoard;
+import com.wiyn.web.entity.Tag;
 
 public class MyBatisSiteBoardDao implements SiteBoardDao{
 	
@@ -116,12 +117,12 @@ public class MyBatisSiteBoardDao implements SiteBoardDao{
 		return siteBoardDao.getRandom();
 	}
 	@Override
-	public String getTName(String id) {
+	public List<Tag> getTName(String id) {
 		SiteBoardDao siteBoardDao;
 		siteBoardDao = sqlSession.getMapper(SiteBoardDao.class);
 		return siteBoardDao.getTName(id);
 	}
-
+	
 
 
 }

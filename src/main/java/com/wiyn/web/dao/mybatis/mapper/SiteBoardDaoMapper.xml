@@ -120,7 +120,7 @@
 		union all select 9 union all select 10) numbers INNER JOIN Tag
 		on CHAR_LENGTH ( Tag.name )
 		- CHAR_LENGTH ( REPLACE ( Tag.name , ',' , '' ))>= numbers . n-1
-		inner join SiteBoard on SiteBoard.Id = Tag.siteBoardId where SiteBoard.Id=#{param1}
+		inner join SiteBoard on SiteBoard.Id = Tag.siteBoardId where Tag.siteBoardId=#{param1}
 	</select>
 	
 <!-- <select id="getListSpeed" resultType="com.wiyn.web.entity.SiteBoard" >	

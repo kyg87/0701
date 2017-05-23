@@ -129,9 +129,11 @@ td i{
 				<td colspan="4">${n.content }</td>
 			</tr>
 			<tr>
-				
-				<td colspan="4"><div class="chip">${t.name }</div></td>
-				
+				<td colspan="4">
+				<c:forEach var="tag" items="${t }">
+				<div class="chip">${tag }</div>
+				</c:forEach>
+				</td>			
 			</tr>
 			<tr class="td-padding">
 				<td colspan="2">
