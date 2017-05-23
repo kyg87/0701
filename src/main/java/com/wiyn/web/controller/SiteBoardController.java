@@ -1,5 +1,6 @@
 package com.wiyn.web.controller;
 
+import java.io.File;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -19,14 +20,14 @@ import com.wiyn.web.dao.SiteBoardDao;
 import com.wiyn.web.dao.SiteBoardLikeDao;
 import com.wiyn.web.dao.SiteCommentDao;
 import com.wiyn.web.dao.SmallCategoryDao;
+import com.wiyn.web.dao.TagDao;
 import com.wiyn.web.entity.BigCategory;
 import com.wiyn.web.entity.FreeBoard;
 import com.wiyn.web.entity.SiteBoard;
 import com.wiyn.web.entity.SiteBoardLike;
 import com.wiyn.web.entity.SiteComment;
 import com.wiyn.web.entity.SmallCategory;
-
-
+import com.wiyn.web.entity.Tag;
 
 @Controller
 @RequestMapping("/siteboard/*")
@@ -49,6 +50,9 @@ public class SiteBoardController {
 	
 	@Autowired
 	private SmallCategoryDao smallCategoryDao;
+	
+	@Autowired
+	private TagDao tagDao;
 	
 	@RequestMapping("site-list")
 	public String request() {
@@ -96,14 +100,17 @@ public class SiteBoardController {
 			@RequestParam(value="url")String url,
 			@RequestParam(value="memberId")String memberId,
 			@RequestParam(value="bigCategoryId")String bigCategoryId,
-			@RequestParam(value="smallCategoryId")String smallCategoryId
+			@RequestParam(value="smallCategoryId")String smallCategoryId,
+			Tag tag,
+			@RequestParam(value="tag")String name
 			){
 					
 		System.out.println(title);
 		System.out.println(url);
 		System.out.println(content);
 		System.out.println(bigCategoryId);
-		
+		System.out.println(name);
+	
 		siteBoard.setContent(content);
 		siteBoard.setTitle(title);
 		siteBoard.setUrl(url);
@@ -112,6 +119,15 @@ public class SiteBoardController {
 		siteBoard.setSmallCategoryId(smallCategoryId);
 		siteBoardDao.add(siteBoard);
 		
+		tag.setName(name);
+		System.out.println("사이트보드아이디"+siteBoard.getId());
+		tag.setSiteBoardId(siteBoard.getId());
+		
+		
+		tagDao.add(tag);
+		
+		siteBoard.setTagId(tag.getId());
+		siteBoardDao.add(siteBoard);
 		return "redirect:site-detail?c=" + siteBoard.getId();
 	}
 
@@ -125,8 +141,8 @@ public class SiteBoardController {
 		SiteBoard siteBoard = new SiteBoard();
 
 		siteBoard = sqlSession.getMapper(SiteBoardDao.class).getBoard(id);
-		siteBoard.setSiteComments(sqlSession.getMapper(SiteCommentDao.class).getList(id, page));
 		
+		siteBoard.setSiteComments(sqlSession.getMapper(SiteCommentDao.class).getList(id, page));
 		System.out.println(siteBoard.getMemberId());
 		int size = sqlSession.getMapper(SiteCommentDao.class).getSize(id);
 		
@@ -134,16 +150,20 @@ public class SiteBoardController {
 		
 		String bName = siteBoardDao.getBName(id);
 		String sName = siteBoardDao.getSName(id);
+		String tName = siteBoardDao.getTName(id);
+		
+		
 		
 		model.addAttribute("l", likeCount);
 		model.addAttribute("n", siteBoard);
 		model.addAttribute("b", bName);
 		model.addAttribute("s", sName);
+		model.addAttribute("t", tName);
 		
 		model.addAttribute("page", page);
 		model.addAttribute("size", size);
 		
-		
+		System.out.println("태그네임"+tName);
 		return "siteboard.site-detail";
 	}
 
@@ -186,7 +206,9 @@ public class SiteBoardController {
 				Model model,
 				String title, 
 				String content,
-				String url
+				String url,
+				String bigCategoryId,
+				String smallCategoryId
 				){
 
 		 	model.addAttribute("n", siteBoard);		 
@@ -198,6 +220,8 @@ public class SiteBoardController {
 			siteBoard.setContent(content);
 			siteBoard.setTitle(title);
 			siteBoard.setUrl(url);
+			siteBoard.setBigCategoryId(bigCategoryId);
+			siteBoard.setSmallCategoryId(smallCategoryId);
 			
 			
 			siteBoardDao.update(siteBoard);
@@ -241,5 +265,5 @@ public class SiteBoardController {
 			return "redirect:site-detail?c=" + siteBoardLike.getSiteBoardId();
 		}
 	 
-	 
+
 }

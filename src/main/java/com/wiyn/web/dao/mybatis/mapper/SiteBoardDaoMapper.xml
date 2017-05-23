@@ -19,6 +19,7 @@
 			`content`,
 			`regDate`,
 			`url`,
+			tagId,
 			`memberId`,
 			bigCategoryId,
 			smallCategoryId
@@ -30,6 +31,7 @@
 			#{content},
 			now(),
 			#{url},
+			#{tagId},
 			#{memberId},
 			#{bigCategoryId},
 			#{smallCategoryId}
@@ -93,17 +95,32 @@
 
 
 	<select id="getBName" resultType="String">
-		select BigCategory.name from
-		SiteBoard inner
-		join BigCategory on SiteBoard.bigCategoryId=BigCategory.id where
+		select BigCategory.name 
+		from SiteBoard 
+		inner join BigCategory 
+		on SiteBoard.bigCategoryId=BigCategory.id where
 		SiteBoard.id=#{param1}
 	</select>
 
 	<select id="getSName" resultType="String">
-		select SmallCategory.name from
-		SiteBoard inner
-		join SmallCategory on SiteBoard.smallCategoryId=SmallCategory.id
+		select SmallCategory.name 
+		from SiteBoard 
+		inner join SmallCategory 
+		on SiteBoard.smallCategoryId=SmallCategory.id
 		where SiteBoard.id=#{param1}
+	</select>
+	
+	<select id="getTName" resultType="String">
+		select SUBSTRING_INDEX (SUBSTRING_INDEX(Tag.name,',',numbers.n),',',-1) name
+		from
+		(select 1 n union all select 2
+		union all select 3 union all select 4
+		union all select 5 union all select 6
+		union all select 7 union all select 8
+		union all select 9 union all select 10) numbers INNER JOIN Tag
+		on CHAR_LENGTH ( Tag.name )
+		- CHAR_LENGTH ( REPLACE ( Tag.name , ',' , '' ))>= numbers . n-1
+		inner join SiteBoard on SiteBoard.Id = Tag.siteBoardId where SiteBoard.Id=#{param1}
 	</select>
 	
 <!-- <select id="getListSpeed" resultType="com.wiyn.web.entity.SiteBoard" >	

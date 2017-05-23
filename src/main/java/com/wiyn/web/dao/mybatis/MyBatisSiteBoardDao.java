@@ -115,6 +115,12 @@ public class MyBatisSiteBoardDao implements SiteBoardDao{
 		siteBoardDao = sqlSession.getMapper(SiteBoardDao.class);
 		return siteBoardDao.getRandom();
 	}
+	@Override
+	public String getTName(String id) {
+		SiteBoardDao siteBoardDao;
+		siteBoardDao = sqlSession.getMapper(SiteBoardDao.class);
+		return siteBoardDao.getTName(id);
+	}
 
 
 

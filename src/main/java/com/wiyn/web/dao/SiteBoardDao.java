@@ -29,4 +29,7 @@ public interface SiteBoardDao {
 	
 	String getBName(String id);
 	String getSName(String id);
+	String getTName(String id);
+	
+	
 }

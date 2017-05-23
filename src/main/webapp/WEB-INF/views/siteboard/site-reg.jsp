@@ -50,14 +50,21 @@ td{
 							</select>
 						</div> --%>
 					<div class="input-field">
-						<select name="bigCategoryId" id="bigCategoryId">
+						<select name="bigCategoryId" id="bigCategoryId" required>
 							<option id="default" value="" disabled selected>대분류를 선택하세요</option>
-
 							<c:forEach var="bc" items="${bcList }">
 								<option value="${bc.id }">${bc.name }</option>
 							</c:forEach>
 						</select>
-					</div> <script>
+					</div> 
+					<script>
+						/* $(function(){
+							if(!$('#bigCategoryId > option:selected').val()) {
+						
+						    alert("대분류를 선택해주세요.");}
+						}
+						 */
+						
 						$(function() {
 				               $("#bigCategoryId").on('change', function() {
 
@@ -100,7 +107,7 @@ td{
 					</td>
 					<td>
 					<div class="input-field" id="scList">
-						<select name="smallCategoryId" id="smallCategoryId">
+						<select name="smallCategoryId" id="smallCategoryId" required>
 							<option id="default" value="" disabled selected>소분류를 선택하세요</option>
 						</select>
 					</div> 
@@ -133,7 +140,7 @@ td{
 				<tr>
 					<td colspan=4">
 						<div class="input-field col s12">
-							<input id="email" name="title" type="text" class=" input-border validate"> 
+							<input id="email" name="title" type="text" class=" input-border validate" required> 
 							<label for="email">제목</label>
 						</div>
 					</td>
@@ -144,7 +151,7 @@ td{
 				<tr>
 					<td colspan="4">
 						<div class="input-field col s12">
-							<input id="url" name="url"" type="text" class="input-border validate"> 
+							<input id="url" name="url"" type="text" class="input-border validate" required> 
 							<label for="email">http://</label>
 						</div>
 					</td>
@@ -157,7 +164,7 @@ td{
 							<form>
 								<div>
 									<label for="comment">Comment:</label>
-									<textarea name="content" class="form-control" rows="15" id="content"></textarea>
+									<textarea name="content" class="form-control" rows="15" id="content" required></textarea>
 								</div>
 							</form>
 						</div>
@@ -165,58 +172,26 @@ td{
 				</tr>
 				<tr>
 					<td colspan="4">
-						<div class="chips chips-placeholder" data-index="0" data-initialized="true">
-							<input id="f1b80b77-35ee-ead5-f62f-91f5eaa70be0" class="input" placeholder="+Tag">
+						<div>
+							<input name="tag" type="text"/>
 						</div>
- 					</td>
+						<div>
+							<input name="tag" type="text"/>
+						</div>
+						<div>
+							<input name="tag" type="text"/>
+						</div>
+						<div>
+							<input name="tag" type="text"/>
+						</div>
+						<div>
+							<input name="tag" type="text"/>
+						</div>
+						<!-- <div class="chips hips-placeholder" data-index="0" data-initialized="true">
+							<input id="f1b80b77-35ee-ead5-f62f-91f5eaa70be0" class="input" placeholder="+Tag">
+						</div>  -->
+				</td>
 				</tr>
-				<!-- <script>
-					$('.chips').material_chip();
-					  $('.chips-initial').material_chip({
-					    data: [{
-					      tag: 'Apple',
-					    }, {
-					      tag: 'Microsoft',
-					    }, {
-					      tag: 'Google',
-					    }],
-					  });
-					  $('.chips-placeholder').material_chip({
-					    placeholder: 'Enter a tag',
-					    secondaryPlaceholder: '+Tag',
-					  });
-					  $('.chips-autocomplete').material_chip({
-					    autocompleteOptions: {
-					      data: {
-					        'Apple': null,
-					        'Microsoft': null,
-					        'Google': null
-					      },
-					      limit: Infinity,
-					      minLength: 1
-					    }
-					  });
-					  
-					  var chip = {
-							    tag: 'chip content',
-							    image: '', //optional
-							    id: 1, //optional
-							  };
-					  
-					  $('.chips-initial').material_chip('data');
-					  
-					  $('.chips').on('chip.add', function(e, chip){
-						    // you have the added chip here
-						  });
-
-						  $('.chips').on('chip.delete', function(e, chip){
-						    // you have the deleted chip here
-						  });
-
-						  $('.chips').on('chip.select', function(e, chip){
-						    // you have the selected chip here
-						  });
-				</script>	 -->		
 				<tr>
 					<td colspan="2">
 						<div id="btn">

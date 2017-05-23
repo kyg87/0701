@@ -72,8 +72,12 @@ public class MainController {
     
         SiteBoard random=sqlSession.getMapper(SiteBoardDao.class).getRandom();
 		int likeCount = siteBoardLikeDao.getLike(id);	
-		String bName = siteBoardDao.getBName(id);
-		String sName = siteBoardDao.getSName(id);
+		
+		
+		String bName = siteBoardDao.getBName(random.getId());
+		String sName = siteBoardDao.getSName(random.getId());
+		
+		System.out.println(bName);
 		
 		
         model.addAttribute("random", random);

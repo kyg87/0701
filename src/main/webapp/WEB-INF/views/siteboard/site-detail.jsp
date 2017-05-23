@@ -129,7 +129,9 @@ td i{
 				<td colspan="4">${n.content }</td>
 			</tr>
 			<tr>
-				<td colspan="4"> <div class="chip">Tag</div> <div class="chip">Tag</div> <div class="chip">Tag</div> <div class="chip">Tag</div> <div class="chip">Tag</div></td>
+				
+				<td colspan="4"><div class="chip">${t.name }</div></td>
+				
 			</tr>
 			<tr class="td-padding">
 				<td colspan="2">
@@ -168,7 +170,7 @@ td i{
 	</table>
 	<br>
 
-	<input type="hidden" name="siteBoardId" value="15"> 
+	<!-- <input type="hidden" name="siteBoardId" value="">  -->
 	<input type="hidden"	name="memberId" value="LSE@mb.com">
 	
 	
