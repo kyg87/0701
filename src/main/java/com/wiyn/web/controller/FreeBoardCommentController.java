@@ -68,11 +68,12 @@ public class FreeBoardCommentController {
 			){
 		
 		
+		String freeBoardId = freeCommentDao.get(id).getFreeBoardId();
 
 		int result = freeCommentDao.delete(id);
 		
 		
-		//freeBoardDao.updateCommentCount(freeBoardId);
+		freeBoardDao.updateCommentCount(freeBoardId);
 
 		return String.valueOf(result);
 		

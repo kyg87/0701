@@ -42,4 +42,12 @@
 		DELETE FROM `lsedb`.`FreeComment`WHERE id = #{boardId};
 	
 	</delete>
+	
+	<select resultType="com.wiyn.web.entity.FreeComment" id="get"> 
+
+		SELECT * FROM FreeComment WHERE id = #{id}
+
+	</select>
+	
+		
 </mapper>

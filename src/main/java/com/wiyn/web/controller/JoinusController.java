@@ -19,7 +19,6 @@ public class JoinusController {
 	@Autowired
 	private MemberDao memberDao;
 	
-	//�쉶�썝媛��엯
 	@RequestMapping(value="singIn", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
 	public String singIn(
 			@RequestParam(value="email1")String email, 

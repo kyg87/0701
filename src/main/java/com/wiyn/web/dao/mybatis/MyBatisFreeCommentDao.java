@@ -42,5 +42,12 @@ public class MyBatisFreeCommentDao implements FreeCommentDao {
 		return freeCommentDao.delete(boardId);
 	}
 
+	@Override
+	public FreeComment get(String boardId) {
+		FreeCommentDao freeCommentDao;
+		freeCommentDao = sqlSession.getMapper(FreeCommentDao.class);
+		return freeCommentDao.get(boardId);
+	}
+
 
 }

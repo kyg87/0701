@@ -14,6 +14,8 @@ public interface FreeCommentDao {
 	int add(FreeComment freecomment);
 	int delete(String boardId);
 	int getSize(String boardId);
+	
+	FreeComment get(String boardId);
 
 
 }
