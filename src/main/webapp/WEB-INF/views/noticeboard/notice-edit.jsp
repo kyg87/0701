@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -100,49 +100,53 @@ body {
 	float: left;
 	margin-left: 10px;
 }
-#btn{
- margin-left: 500px;
+
+#btn {
+	margin-left: 500px;
 }
-
-
-
 </style>
 
 
 
 <body>
 
-	<form id="noticeReg" action="noticeBoard-reg" method="post">
-		<main id="main">
-			<div>공지사항등록</div>
+	<form id="update" action="notice-update" method="post">
+		<div id="main">
+			<div>공지사항 수정</div>
 			<table>
-				<thead>					
+				<thead>
+
 					<tr>
 						<th>
 							<div id="title">제목</div>
 						</th>
-						<th><input name="title" id="titleinput" type="text" value=""></th>
+						<th><input name="title" id="titleinput" type="text"
+							value="${list.title}" /></th>
+
 					</tr>
+					
 					<tr>
 						<th>
 							<div id="address">http://</div>
 						</th>
-						<th><input id="contentSrc" type="text" value="" name="contentSrc"></th>
+						<th><input id="contentSrc" name="contentSrc" type="text" value="${list.contentSrc }"></th>
 					</tr>
+
 				</thead>
-	
+
 				<tbody>
 					<tr>
 						<td colspan="2">
-							<div id="divcontent">								
-								<div class="form-group">
-									<label for="comment">Comment:</label>
-									<textarea name="content" class="form-control" rows="15" id="comment"></textarea>
-								</div>								
+							<div id="divcontent">
+									<div class="form-group">
+										<label for="comment">Comment:</label>
+										<textarea name="content" class="form-control" rows="15"
+											id="comment">${list.content}</textarea>
+									</div>
 							</div>
-	
+
 						</td>
-	
+
 					</tr>
 					<tr>
 						<td><div id="title">Tag</div></td>
@@ -150,27 +154,26 @@ body {
 					</tr>
 					<tr>
 						<td colspan="2">
+
 							<div id="btn">
-								<button class="btn waves-effect waves-light" type="submit" name="action">
-									Submit <i class="material-icons right">send</i>
-	
-								</button>
+								<input type="hidden" name="id" value=${list.id }>
+								<button class="btn waves-effect waves-light" type="submit"
+									name="action">Submit</button>
 							</div>
+
 						</td>
 					</tr>
 				</tbody>
 			</table>
-		</main>
-		<input type="hidden" name="memberId" value=<security:authentication property="name"/> />
+		</div>
+		
 	</form>
-
-
 
 	<!--  Scripts-->
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="/WiynPrj/resource/js/materialize.js"></script>
 	<script type="text/javascript">
-	$('select').material_select('destroy');
+		$('select').material_select('destroy');
 		$(document).ready(function() {
 			$('select').material_select();
 		});
@@ -180,8 +183,6 @@ body {
 			$('.modal').modal();
 		});
 		$(".button-collapse").sideNav();
-		
-	
 	</script>
 
 </body>

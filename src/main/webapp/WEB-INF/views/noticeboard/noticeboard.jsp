@@ -11,7 +11,7 @@
 			<td>제목</td>
 			<td>작성자</td>
 			<td>조회 수</td>
-			<td>작성 시간</td>
+			<td>작성 날짜</td>
 		</tr>
 	</thead>
 	<tbody>

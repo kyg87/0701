@@ -30,10 +30,38 @@ public class MyBatisNoticeBoardDao implements NoticeBoardDao {
 	}
 
 	@Override
-	public List<NoticeBoard> get(String id) {
+	public NoticeBoard get(String id) {
 		NoticeBoardDao noticeBoardDao;
 		noticeBoardDao = sqlSession.getMapper(NoticeBoardDao.class);
 	    return noticeBoardDao.get(id);
+	}
+
+	@Override
+	public NoticeBoard modify(String id) {
+		NoticeBoardDao noticeBoardDao;
+		noticeBoardDao = sqlSession.getMapper(NoticeBoardDao.class);
+		return noticeBoardDao.get(id);
+	}
+
+	@Override
+	public int update(NoticeBoard noticeBoard) {
+		NoticeBoardDao noticeBoardDao;
+		noticeBoardDao = sqlSession.getMapper(NoticeBoardDao.class);
+		return noticeBoardDao.update(noticeBoard);
+	}
+
+	@Override
+	public int delete(String id) {
+		NoticeBoardDao noticeBoardDao;
+		noticeBoardDao = sqlSession.getMapper(NoticeBoardDao.class);
+		return noticeBoardDao.delete(id);
+	}
+
+	@Override
+	public int updateViewCnt(String id) {
+		NoticeBoardDao noticeBoardDao;
+		noticeBoardDao = sqlSession.getMapper(NoticeBoardDao.class);
+		return noticeBoardDao.updateViewCnt(id);
 	}
 
 

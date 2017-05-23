@@ -51,7 +51,7 @@ public class NoticeBoardController {
 		
 		model.addAttribute("list", noticeBoard);
 		
-		
+		noticeBoardDao.updateViewCnt(id);
 		
 		return "noticeboard.notice-detail";
 	}
@@ -61,22 +61,70 @@ public class NoticeBoardController {
 			NoticeBoard noticeBoard,
 			@RequestParam(value="title")String title, 
 			@RequestParam(value="content")String content,
-			@RequestParam(value="memberId")String memberId
+			@RequestParam(value="memberId")String memberId,
+			@RequestParam(value="contentSrc")String contentSrc
 			){
 						
 		noticeBoard.setTitle(title);
 		noticeBoard.setContent(content);
 		noticeBoard.setMemberId(memberId);
+		noticeBoard.setContentSrc(contentSrc);
 		
 		noticeBoardDao.add(noticeBoard);
 		
-		return "noticeboard.notice-detail";
+		return "redirect:notice-detail?c=" + noticeBoard.getId();
 		
 	}
 	
-	/*@RequestMapping("notice-detail")
-	public String siteDetail(){
+	@RequestMapping("notice-modify-load")
+	public String modifyDetail(Model model,
+			@RequestParam(value="id")String id){
 		
-		return "noticeboard.notice-detail";
-	}*/
+		NoticeBoard noticeBoard = new NoticeBoard();
+		noticeBoard = sqlSession.getMapper(NoticeBoardDao.class).get(id);
+		
+		model.addAttribute("list", noticeBoard);
+		
+		return "noticeboard.notice-edit";
+	}
+	
+	@RequestMapping("notice-delete")
+	public String Delete(
+			@RequestParam(value="id")String id){
+		
+		noticeBoardDao.delete(id);
+		
+		return "redirect:noticeboard";
+	}
+	
+	@RequestMapping(value = "notice-update", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	public String updateNotice(NoticeBoard noticeBoard,
+			@RequestParam(value="title")String title, 
+			@RequestParam(value="content")String content,
+			@RequestParam(value="contentSrc")String contentSrc,
+			@RequestParam(value="id")String id){
+		
+		noticeBoard.setTitle(title);
+		noticeBoard.setContent(content);
+		noticeBoard.setContentSrc(contentSrc);
+		
+		noticeBoardDao.update(noticeBoard);
+		
+		return "redirect:notice-detail?c=" + id;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
