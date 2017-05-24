@@ -1,13 +1,18 @@
 package com.wiyn.web.controller;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,9 +39,6 @@ public class NoticeBoardController {
 	
 	@Autowired
 	private NoticeBoardFileDao noticeBoardFileDao;
-	
-	@Autowired
-	private NoticeFile noticeFile;
 	
 	@Autowired
 	private SqlSession sqlSession;
@@ -68,7 +70,11 @@ public class NoticeBoardController {
 		NoticeBoard noticeBoard = new NoticeBoard();
 		noticeBoard = sqlSession.getMapper(NoticeBoardDao.class).get(id);
 		
+		NoticeFile noticeFile = new NoticeFile();
+		noticeFile = sqlSession.getMapper(NoticeBoardFileDao.class).get(id);
+		
 		model.addAttribute("list", noticeBoard);
+		model.addAttribute("file", noticeFile);
 		
 		noticeBoardDao.updateViewCnt(id);
 		
@@ -78,11 +84,12 @@ public class NoticeBoardController {
 	@RequestMapping(value="noticeBoard-reg", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
 	public String sited(
 			NoticeBoard noticeBoard,
+			NoticeFile noticeFile,
+			@RequestParam(value="file") MultipartFile file,
 			@RequestParam(value="title")String title, 
 			@RequestParam(value="content")String content,
 			@RequestParam(value="memberId")String memberId,
-			@RequestParam(value="contentSrc")String contentSrc,
-			@RequestParam(value = "file") List<MultipartFile> file
+			@RequestParam(value="contentSrc")String contentSrc
 			)throws IOException{
 		
 		String path = context.getRealPath("/resource/upload");
@@ -91,24 +98,29 @@ public class NoticeBoardController {
 		if(!d.exists())//경로가 존재하지 않는다면
 			d.mkdir();
 	
-		byte[] buf = new byte[1024];
-					
-		for(MultipartFile fi : file){
-			if(!fi.isEmpty()){
-				String fileName = fi.getOriginalFilename();
-				InputStream fis = fi.getInputStream();
-				OutputStream fos = new FileOutputStream(path+File.separator+fileName);
-				
-				int len = 0; 
-				
-				while((len = fis.read(buf)) > 0)
-					fos.write(buf, 0, len);
-				
-				fis.close();
-				fos.close();
-			}
-		}
+		String originalFilename = file.getOriginalFilename(); // fileName.jpg
+	    //String onlyFileName = originalFilename.substring(0, originalFilename.indexOf(".")); // fileName
+	    //String extension = originalFilename.substring(originalFilename.indexOf(".")); // .jpg
 		
+	    //String rename = onlyFileName + "_" + getCurrentDayTime() + extension; // fileName_20150721-14-07-50.jpg
+	    String fullPath = path + "\\" + originalFilename;
+	    
+	    if (!file.isEmpty()) {
+	        try {
+	            byte[] bytes = file.getBytes();
+	            BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(fullPath)));
+	            stream.write(bytes);
+	            stream.close();
+	            //model.addAttribute("resultMsg", "파일을 업로드 성공!");
+	            System.out.println("업로드 성공");
+	        } catch (Exception e) {
+	            //model.addAttribute("resultMsg", "파일을 업로드하는 데에 실패했습니다.");
+	        	System.out.println("업로드 실패");
+	        }
+	    } else {
+	        //model.addAttribute("resultMsg", "업로드할 파일을 선택해주시기 바랍니다.");
+	    	System.out.println("업로드 파일 x");
+	    }
 						
 		noticeBoard.setTitle(title);
 		noticeBoard.setContent(content);
@@ -117,18 +129,20 @@ public class NoticeBoardController {
 		
 		noticeBoardDao.add(noticeBoard);
 		
-		for(MultipartFile fi : file){
-			if(!fi.isEmpty()){
-				String fileName = fi.getOriginalFilename();
-				NoticeFile f = new NoticeFile();
-				f.setNoticeId(noticeBoardDao.lastCode());
-				f.setSrc(fileName);
-				noticeBoardFileDao.add(f);
-			}
-		}
+		noticeFile.setName(originalFilename);
+		noticeFile.setNoticeBoardId(noticeBoard.getId());
+		noticeFile.setSrc(fullPath);
+		
+		noticeBoardFileDao.add(noticeFile);
 		
 		return "redirect:notice-detail?c=" + noticeBoard.getId();
 		
+	}
+	
+	public String getCurrentDayTime(){
+	    long time = System.currentTimeMillis();
+	    SimpleDateFormat dayTime = new SimpleDateFormat("yyyyMMdd-HH-mm-ss", Locale.KOREA);
+	    return dayTime.format(new Date(time));
 	}
 	
 	@RequestMapping("notice-modify-load")

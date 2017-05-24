@@ -78,6 +78,11 @@
 			          <tr>
 			          	<th id="writer"> 작성자 : ${list.memberId } </th>
 			          </tr>
+			          <tr>
+			          	<th id="attachFile"> 첨부된 파일 :
+			          		<a href="${file.src }" download> ${file.name } </a>
+			          	</th>
+			          </tr>
 			        </thead>
 			        <tbody>
 			          <tr>

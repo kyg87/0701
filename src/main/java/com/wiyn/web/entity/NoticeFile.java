@@ -6,6 +6,7 @@ public class NoticeFile {
 	
 	private String id;
 	private String src;
+	private String name;
 	private String noticeBoardId;
 	public String getId() {
 		return id;
@@ -18,6 +19,12 @@ public class NoticeFile {
 	}
 	public void setSrc(String src) {
 		this.src = src;
+	}	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getNoticeBoardId() {
 		return noticeBoardId;
