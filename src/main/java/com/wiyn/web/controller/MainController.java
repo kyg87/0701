@@ -17,6 +17,7 @@ import com.wiyn.web.entity.FreeBoard;
 import com.wiyn.web.entity.NoticeBoard;
 import com.wiyn.web.entity.RequestBoard;
 import com.wiyn.web.entity.SiteBoard;
+import com.wiyn.web.entity.Tag;
 
 
 
@@ -53,6 +54,7 @@ public class MainController {
         SiteBoard next=sqlSession.getMapper(SiteBoardDao.class).getNext(id);
         
         
+        
        
         /*-------공지사항 불러오기----------*/
         List<NoticeBoard> noticelist = sqlSession.getMapper(NoticeBoardDao.class).getList();
@@ -76,6 +78,7 @@ public class MainController {
 		
 		String bName = siteBoardDao.getBName(random.getId());
 		String sName = siteBoardDao.getSName(random.getId());
+		List<Tag> tName = siteBoardDao.getTName(random.getId());
 		
 		System.out.println(bName);
 		
@@ -84,7 +87,8 @@ public class MainController {
 		model.addAttribute("l", likeCount);
 		model.addAttribute("b", bName);
 		model.addAttribute("s", sName);
-        
+		model.addAttribute("t", tName);
+		
         return "main.index";
     }
     

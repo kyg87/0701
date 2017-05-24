@@ -171,7 +171,11 @@ textScroll.prototype.start = function() {
 				<td colspan="4">${random.content }</td>
 			</tr>
 			<tr>
-				<td colspan="4"> <div class="chip">Tag</div> <div class="chip">Tag</div> <div class="chip">Tag</div> <div class="chip">Tag</div> <div class="chip">Tag</div></td>
+				<td colspan="4">
+				<c:forEach var="tag" items="${t }">
+				<div class="chip">${tag }</div>
+				</c:forEach>
+				</td>			
 			</tr>
 			</tbody>
 			</table>
