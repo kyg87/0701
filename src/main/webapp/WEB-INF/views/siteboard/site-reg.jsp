@@ -173,30 +173,43 @@ td{
 				<tr>
 					<td colspan="4">
 						<div class="chips chips-placeholder">
-							<input id="e385bafe-7ce5-436e-e3f3-12af51285ada a" name="tag" type="text" placeholder="+Tag"/>
+							<!-- add생성될곳 -->
+							<input id="e385bafe-7ce5-436e-e3f3-12af51285ada" type="text"  placeholder="+Tag" />
+							<!-- add가생성되는곳 -->
 						</div>
-						<script>
-							$('.chips').material_chip();
+						<!-- <script>
+						$(document).ready(function(){
 							$('.chips-placeholder').material_chip({
-								placeholder : 'Enter a tag',
-								secondaryPlaceholder : '+Tag',
-							});
-							$('#a').live('keypress', function(e) {
-								if (e.which == 13) {/* 13 == enter key@ascii */
-									alert("you pressed enter key");
-								}
-							}
-							$('.chips').on('chip.add', function(e, chip) {
-								
-							});
+							    placeholder: 'Enter a tag',
+							    secondaryPlaceholder: '+Tag'
+							 });
+							
+							/* var value =	$(".chip").val();
+							 alert(value); */
+							
+							 
+						});
+						</script> -->
+						
+						<script>	
+							$('input').keydown(function(e){
 
-							$('.chips').on('chip.delete', function(e, chip) {
+								   if(e.keyCode == 32){
+									   
+									   var value = $(this).val();
+									   
+									   /*  $("<div class='chip'>"+value+"<i class='material-icons close'>close</i></div>").appendTo('.chips');  */
+									   $("<div class='chip'><input type='hidden' name='tag' value='"+value+"'>"+value+"</input><i class='material-icons close'>close</i></div>").appendTo('.chips');
+									   alert(value);
+									   $(this).val(null);
+								   }	  
 								
-							});
+							});					
+							
+							  /* $('.chips').on('chip.delete', function(e, chip){
+							    // you have the deleted chip here
+							  }); */
 						</script>
-						<!-- <div class="chips hips-placeholder" data-index="0" data-initialized="true">
-							<input id="f1b80b77-35ee-ead5-f62f-91f5eaa70be0" class="input" placeholder="+Tag">
-						</div>  -->
 				</td>
 				</tr>
 				<tr>
