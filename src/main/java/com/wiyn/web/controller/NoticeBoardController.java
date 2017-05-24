@@ -99,11 +99,11 @@ public class NoticeBoardController {
 			d.mkdir();
 	
 		String originalFilename = file.getOriginalFilename(); // fileName.jpg
-	    //String onlyFileName = originalFilename.substring(0, originalFilename.indexOf(".")); // fileName
-	    //String extension = originalFilename.substring(originalFilename.indexOf(".")); // .jpg
+	    String onlyFileName = originalFilename.substring(0, originalFilename.indexOf(".")); // fileName
+	    String extension = originalFilename.substring(originalFilename.indexOf(".")); // .jpg
 		
-	    //String rename = onlyFileName + "_" + getCurrentDayTime() + extension; // fileName_20150721-14-07-50.jpg
-	    String fullPath = path + "\\" + originalFilename;
+	    String rename = onlyFileName + "_" + getCurrentDayTime() + extension; // fileName_20150721-14-07-50.jpg
+	    String fullPath = path + "\\" + rename;
 	    
 	    if (!file.isEmpty()) {
 	        try {
