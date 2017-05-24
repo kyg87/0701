@@ -27,6 +27,8 @@ public interface SiteBoardDao {
 	
 	public String lastId();
 	public int getSize();
+	public int updateHit(String id);
+	
 	
 	String getBName(String id);
 	String getSName(String id);

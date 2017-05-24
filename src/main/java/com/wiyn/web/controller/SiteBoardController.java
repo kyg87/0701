@@ -159,6 +159,7 @@ public class SiteBoardController {
 		
 		model.addAttribute("page", page);
 		model.addAttribute("size", size);
+		siteBoardDao.updateHit(id);
 		
 		System.out.println("태그네임"+tName);
 		return "siteboard.site-detail";

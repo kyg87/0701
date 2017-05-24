@@ -5,7 +5,7 @@
 <mapper namespace="com.wiyn.web.dao.SiteBoardDao">
 
 	<select id="getBoard" resultType="com.wiyn.web.entity.SiteBoard">
-		SELECT * FROM lsedb.SiteBoard where id = #{id}
+		SELECT * FROM lsedb.SiteBoard where id = #{id} order by regDate desc
 	</select>
 
 	<insert id="add" parameterType="com.wiyn.web.entity.SiteBoard">
@@ -39,7 +39,7 @@
 	</insert>
 
 	<select id="getList" resultType="com.wiyn.web.entity.SiteBoard">
-		SELECT* FROM SiteBoard WHERE title like '%${query}%' LIMIT ${(page-1)*10},10
+		SELECT* FROM SiteBoard WHERE title like '%${query}%' order by regDate desc LIMIT ${(page-1)*10},10
 	</select>
 	
 		<select id="getListLike" resultType="com.wiyn.web.entity.SiteBoard">
@@ -132,4 +132,8 @@ order by regDate desc LIMIT ${(page-1)*10},10
  	<select id="getRandom" resultType="com.wiyn.web.entity.SiteBoard">
  		select * from SiteBoard order by rand() limit 1
  	</select>
+ 	
+ 	<update id="updateHit">
+	UPDATE `lsedb`.`SiteBoard` SET hit=hit+1 WHERE `id`=#{id};
+</update>
 </mapper>

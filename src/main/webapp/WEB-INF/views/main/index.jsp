@@ -119,11 +119,20 @@ textScroll.prototype.start = function() {
                             class="material-icons">chevron_right</i></a>
                             </c:if></li>
                 </ul>
-				
-
-				
+                			
 			</div>
 			<a href="../siteboard/site-reg">(세은)사이트 글쓰기로 가는 것</a>
+			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+
+         </script>
+			<script>
+			$(".pagination").on('click','li',function(){
+    // remove classname 'active' from all li who already has classname 'active'
+    $(".pagination li.active").removeClass("active"); 
+    // adding classname 'active' to current click li 
+    $(this).addClass("active"); 
+});
+			</script>			
 			
 	<!-- -------------------------------랜덤 페이지--------------------------------- -->
 	<table class="table">
