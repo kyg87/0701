@@ -128,6 +128,7 @@ td i{
 				<a href="http://${n.url}">	
 					<img src="http://api.thumbalizr.com/?url=http://${n.url}&width=250" />
 				</a>
+				<div><a href="http://${n.url}">http://${n.url}</a></div>
 				</td>
 			</tr>
 			<tr>

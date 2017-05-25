@@ -169,6 +169,7 @@ textScroll.prototype.start = function() {
 				<a href="http://${random.url}">	
 					<img src="http://api.thumbalizr.com/?url=http://${random.url}&width=250" />
 				</a>
+				<div><a href="http://${random.url}">http://${random.url}</a></div>
 				</td>
 			</tr>
 			<tr>
