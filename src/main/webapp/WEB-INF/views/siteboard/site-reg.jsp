@@ -174,7 +174,7 @@ td{
 					<td colspan="4">
 						<div class="chips chips-placeholder">
 							<!-- add생성될곳 -->
-							<input id="e385bafe-7ce5-436e-e3f3-12af51285ada" type="text"  placeholder="+Tag" />
+							<input class="tag" id="e385bafe-7ce5-436e-e3f3-12af51285ada" type="text"  placeholder="+Tag" />
 							<!-- add가생성되는곳 -->
 						</div>
 						<!-- <script>
@@ -190,17 +190,18 @@ td{
 							 
 						});
 						</script> -->
-						
+						<input type="hidden" id="check" value=1 />
 						<script>	
-							$('input').keydown(function(e){
-
+							$('.tag').keydown(function(e){
+								
 								   if(e.keyCode == 32){
 									   
 									   var value = $(this).val();
 									   
 									   /*  $("<div class='chip'>"+value+"<i class='material-icons close'>close</i></div>").appendTo('.chips');  */
-									   $("<div class='chip'><input type='hidden' name='tag' value='"+value+"'>"+value+"</input><i class='material-icons close'>close</i></div>").appendTo('.chips');
+									   $("<div class='chip' id='tag"+$("#check").val()+"'><input type='hidden' name='tag' value='"+value+"'>"+value+"</input><i class='material-icons close'>close</i></div>").appendTo('.chips');
 									   alert(value);
+									   $("#check").val($("#check").val()+1);
 									   $(this).val(null);
 								   }	  
 								
