@@ -78,15 +78,10 @@
 			          <tr>
 			          	<th id="writer"> 작성자 : ${list.memberId } </th>
 			          </tr>
-			          <tr>
-			          	<th id="attachFile"> 첨부된 파일 :
-			          		<a href="${file.src }" download> ${file.name } </a>
-			          	</th>
-			          </tr>
 			        </thead>
 			        <tbody>
 			          <tr>
-			            <td id="thum">thum</td>
+			            <td id="thum"><img src=${file.src }${file.name } /></td>
 			          </tr>
 			          <tr>
 			            <td id="url"> 주소 :  ${list.contentSrc }</td>
@@ -109,8 +104,6 @@
 			          </tr>
 			          <tr>
 			            <td class="udButtons">
-							<%-- <a id="btn" class="waves-effect waves-light btn"
-							href="notice-delete?id=${list.id}">삭제</a> --%>
 							<a class="waves-effect waves-light btn" href="#modal2" id="noticeArticleDel">삭제</a>
 							<a id="btn" class="waves-effect waves-light btn"
 							href="notice-modify-load?id=${list.id}">수정</a>

@@ -94,6 +94,8 @@ public class NoticeBoardController {
 		
 		String path = context.getRealPath("/resource/upload");
 		
+		/*String path = "WiynPrj\\resources\\upload";*/
+		
 		File d = new File(path);
 		if(!d.exists())//경로가 존재하지 않는다면
 			d.mkdir();
@@ -121,6 +123,9 @@ public class NoticeBoardController {
 	        //model.addAttribute("resultMsg", "업로드할 파일을 선택해주시기 바랍니다.");
 	    	System.out.println("업로드 파일 x");
 	    }
+	    
+	    fullPath = "\\WiynPrj\\resource\\upload\\";
+	    System.out.println(fullPath);
 						
 		noticeBoard.setTitle(title);
 		noticeBoard.setContent(content);
@@ -129,7 +134,7 @@ public class NoticeBoardController {
 		
 		noticeBoardDao.add(noticeBoard);
 		
-		noticeFile.setName(originalFilename);
+		noticeFile.setName(rename);
 		noticeFile.setNoticeBoardId(noticeBoard.getId());
 		noticeFile.setSrc(fullPath);
 		
