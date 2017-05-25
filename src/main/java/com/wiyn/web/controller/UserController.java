@@ -29,7 +29,11 @@ public class UserController {
 		
 		System.out.println(auth.getName());
 		List<AddBoard> list = sqlSession.getMapper(UserPageDao.class).getList(auth.getName());
+		List<AddBoard> list2 = sqlSession.getMapper(UserPageDao.class).getCommentList(auth.getName());
+		
 		model.addAttribute("list",list);
+		model.addAttribute("list2",list2);
+
 	
 		return "user.mypage";
 	}

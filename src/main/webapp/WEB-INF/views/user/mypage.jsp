@@ -44,9 +44,10 @@
         <thead>
           <tr>
 				<th><input type="checkbox" id="allCheck"/><label for="allCheck"></label></th>
-				<th>게시글</th>
-				<th>작성자</th>
-				<th>조회수</th>
+				<th style="text-align: center">게시글</th>
+				<th style="text-align: center">작성시간</th>
+				
+				<th style="text-align: center">게시판종류</th>
 				
 		</tr>
         </thead>
@@ -56,9 +57,10 @@
         <c:forEach var="v" items="${list}">
           <tr>
             <td><input type="checkbox" id="test${i}"/><label for="test${i}"></label></td>
-            <td><a href="../${v.boardName}board/${v.boardName}-detail?c=${v.id}">글제목 : ${v.title}</a></td>
-            <td>글번호 : ${v.id}</td>
-            <td>작성종류 : ${v.boardName}</td>
+            <td style="text-align: center"><a href="../${v.boardName}board/${v.boardName}-detail?c=${v.id}">${v.title}</a></td>
+            <td style="text-align: center">${v.regDate }</td>
+          
+            <td style="text-align: center">${v.boardName}</td>
           </tr>
         </c:forEach>
         
@@ -69,47 +71,27 @@
         <thead>
           <tr>
           		<th><input type="checkbox" id="allCheck"/><label for="allCheck"></label></th>
-              <th>댓글</th>
-              <th>작성자</th>
-              
+              <th style="text-align: center">댓글</th>
+              <th style="text-align: center">작성시간</th>
+             
           </tr>
         </thead>
-
-        <tbody>
-        <c:forEach var="i" begin="10" end="14">
-          <tr>
-             <td><input type="checkbox" id="test${i}"/><label for="test${i}"></label></td>
-            <td>
-            	<a href="index.jsp">ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</a>
-            </td>
-            <td>Eclair</td>
-          </tr>
-         </c:forEach> 
           
-        </tbody>
-      </table>
-      
-      	<table class="bordered" id="test3">
-        <thead>
-          <tr>
-          	  <th><input type="checkbox" id="allCheck"/><label for="allCheck"></label></th>
-              <th>게시글</th>
-              <th>작성자</th>
-              <th>조회수</th>
-          </tr>
-        </thead>
 
-        <tbody>
-         <c:forEach var="i" begin="15" end="19">
+      
+          <tbody>
+        <c:forEach var="v" items="${list2}">
           <tr>
-          <td><input type="checkbox" id="test${i}"/><label for="test${i}"></label></td>
-            <td><a href="index3.jsp">44444444444444444444</a></td>
-            <td>asdsadsad</td>
-            <td>3</td>
+            <td><input type="checkbox" id="test${i}"/><label for="test${i}"></label></td>
+            <td style="text-align: center"><a href="../${v.boardName}board/${v.boardName}-detail?c=${v.id}">${v.content }</a></td>
+            <td style="text-align: center">${v.regDate}</td>
+           
           </tr>
         </c:forEach>
-        </tbody>
+        
+         </tbody>      
       </table>
+     
         <div id="btn1" style="float: right; margin-top:10px;">
         
       	<a class="waves-effect waves-light btn " href="#modal2">삭제</a>

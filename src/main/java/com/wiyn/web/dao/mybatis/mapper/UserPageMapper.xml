@@ -7,11 +7,25 @@
 
 	<select resultType="com.wiyn.web.entity.AddBoard" id="getList">
 	 
-		SELECT  FreeBoard.boardName,FreeBoard.id,FreeBoard.title,FreeBoard.regDate 
+		SELECT  FreeBoard.boardName,FreeBoard.id,FreeBoard.title,FreeBoard.regDate
 FROM lsedb.FreeBoard where FreeBoard.memberId = #{param1} union select 
-RequestBoard.boardName, RequestBoard.id,RequestBoard.title,RequestBoard.regDate 
+RequestBoard.boardName, RequestBoard.id,RequestBoard.title,RequestBoard.regDate
 From lsedb.RequestBoard  where RequestBoard.memberId =#{param1}
 order by regDate desc;
+		
+		
+	</select>
+	
+	<select resultType="com.wiyn.web.entity.AddBoard" id="getCommentList">
+	 
+		SELECT  FreeComment.boardName,FreeComment.content,FreeComment.regDate, FreeComment.freeBoardId id
+			FROM lsedb.FreeComment where FreeComment.memberId = #{param1} union select 
+			RequestComment.boardName,RequestComment.content,RequestComment.regDate, RequestComment.requestBoardId id
+			From lsedb.RequestComment  where RequestComment.memberId =#{param1} union select 
+			SiteComment.boardName,SiteComment.content,SiteComment.regDate, SiteComment.siteBoardId id
+			From lsedb.SiteComment where SiteComment.memberId=#{param1}
+			order by regDate desc;
+		
 		
 	</select>
 	

@@ -14,6 +14,7 @@ public class FreeBoard {
     private String memberId;
     private List<FreeComment> freeComment;
     private String commentCount;
+    private String boardName;
     
 	public String getId() {
 		return id;
@@ -68,6 +69,12 @@ public class FreeBoard {
 	}
 	public void setCommentCount(String commentCount) {
 		this.commentCount = commentCount;
+	}
+	public String getBoardName() {
+		return boardName;
+	}
+	public void setBoardName(String boardName) {
+		this.boardName = boardName;
 	}
 
 	

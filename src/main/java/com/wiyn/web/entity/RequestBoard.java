@@ -10,6 +10,7 @@ public class RequestBoard {
 	private Date regDate;
 	private String memberId;
 	private List<RequestComment> requestComment;
+	private String boardName;
 	
 	
 	public String getId() {
@@ -47,6 +48,12 @@ public class RequestBoard {
 	}
 	public void setRequestComment(List<RequestComment> requestComment) {
 		this.requestComment = requestComment;
+	}
+	public String getBoardName() {
+		return boardName;
+	}
+	public void setBoardName(String boardName) {
+		this.boardName = boardName;
 	}
 	
 

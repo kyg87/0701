@@ -53,7 +53,7 @@ public class RequestBoardController {
 			RequestBoard requestBoard, @RequestParam(value = "title") String title,
 			@RequestParam(value = "content") String content, @RequestParam(value = "memberId") String memberId) {
 
-
+		
 		requestBoard.setTitle(title);
 		requestBoard.setContent(content);
 		requestBoard.setMemberId(memberId);

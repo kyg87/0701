@@ -8,6 +8,8 @@ public class AddBoard {
 	private String id;
 	private String title;
 	private Date regDate;
+	private String content;
+	
 	
 	public String getBoardName() {
 		return boardName;
@@ -33,6 +35,13 @@ public class AddBoard {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+
 	
 
 }

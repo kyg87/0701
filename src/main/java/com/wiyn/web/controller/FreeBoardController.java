@@ -64,10 +64,12 @@ public class FreeBoardController {
 			@RequestParam(value = "memberId") String memberId
 			) {
 
+		String boardName="free";
 		freeboard.setTitle(title);
 		freeboard.setContent(content);
 		freeboard.setContentSrc(contentSrc);
 		freeboard.setMemberId(memberId);
+		freeboard.setBoardName(boardName);
 		
 		
 		

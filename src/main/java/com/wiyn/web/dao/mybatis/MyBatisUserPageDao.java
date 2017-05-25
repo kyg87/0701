@@ -20,4 +20,13 @@ public class MyBatisUserPageDao implements UserPageDao {
 	    return userPageDao.getList(memberId);
 	}
 
+	@Override
+	public List<AddBoard> getCommentList(String memberId) {
+		
+		UserPageDao userPageDao;
+		userPageDao = sqlSession.getMapper(UserPageDao.class);
+	    return userPageDao.getCommentList(memberId);
+	}
+	
+
 }
