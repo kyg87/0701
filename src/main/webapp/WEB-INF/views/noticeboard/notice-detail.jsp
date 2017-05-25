@@ -103,10 +103,13 @@
 			            </td>
 			          </tr>
 			          <tr>
-			            <td class="udButtons">
-							<a class="waves-effect waves-light btn" href="#modal2" id="noticeArticleDel">삭제</a>
+			            <td class="udButtons">			            	
+							<a id="btn" class="waves-effect waves-light btn"
+							href="#modal2" id="noticeArticleDel">삭제</a>							
 							<a id="btn" class="waves-effect waves-light btn"
 							href="notice-modify-load?id=${list.id}">수정</a>
+							<a class="waves-effect waves-light btn"
+							href="noticeboard">목록으로</a>
 			            </td>
 			          </tr>
 			        </tbody>

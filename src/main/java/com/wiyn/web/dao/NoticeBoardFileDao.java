@@ -8,5 +8,7 @@ public interface NoticeBoardFileDao {
 	List<NoticeFile> getList(String noticeId);
 	
 	int add(NoticeFile file);
+	int update(NoticeFile file);
 	NoticeFile get(String noticeBoardId);
+	
 }

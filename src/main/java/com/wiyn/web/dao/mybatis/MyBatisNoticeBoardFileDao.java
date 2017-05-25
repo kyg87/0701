@@ -38,5 +38,13 @@ public class MyBatisNoticeBoardFileDao implements NoticeBoardFileDao{
 		return noticeBoardFileDao.get(noticeBoardId);
 	}
 
+	@Override
+	public int update(NoticeFile file) {
+		NoticeBoardFileDao noticeBoardFileDao;
+		  noticeBoardFileDao = sqlSession.getMapper(NoticeBoardFileDao.class);
+	      
+	      return noticeBoardFileDao.update(file);
+	}
+
 
 }

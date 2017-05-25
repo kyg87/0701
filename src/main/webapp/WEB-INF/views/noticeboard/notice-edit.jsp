@@ -110,7 +110,7 @@ body {
 
 <body>
 
-	<form id="update" action="notice-update" method="post">
+	<form id="update" action="notice-update" method="post" enctype="multipart/form-data">
 		<div id="main">
 			<div>공지사항 수정</div>
 			<table>
@@ -131,7 +131,10 @@ body {
 						</th>
 						<th><input id="contentSrc" name="contentSrc" type="text" value="${list.contentSrc }"></th>
 					</tr>
-
+					<tr>
+						<th>파일 첨부</th>
+						<td><input type="file" name="file" /></td>
+					</tr>
 				</thead>
 
 				<tbody>

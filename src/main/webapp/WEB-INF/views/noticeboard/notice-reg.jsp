@@ -132,16 +132,17 @@ body {
 					
 					<tr>
 						<th>파일 첨부</th>
-						<td><input type="file" name="file" /></td>
+						<td><input type="file" name="file" multiple/></td>
 					</tr>
 				</thead>
 	
 				<tbody>
 					<tr>
 						<td colspan="2">
-							<div id="divcontent">								
+							<div id="divcontent">
 								<div class="form-group">
 									<label for="comment">Comment:</label>
+									<div id="preView"></div>
 									<textarea name="content" class="form-control" rows="15" id="comment"></textarea>
 								</div>								
 							</div>
@@ -168,6 +169,10 @@ body {
 		</main>
 		<input type="hidden" name="memberId" value=<security:authentication property="name"/> />
 	</form>
+	
+	<script>
+		
+	</script>
 
 
 

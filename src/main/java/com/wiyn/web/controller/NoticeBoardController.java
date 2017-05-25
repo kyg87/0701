@@ -172,17 +172,56 @@ public class NoticeBoardController {
 	}
 	
 	@RequestMapping(value = "notice-update", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
-	public String updateNotice(NoticeBoard noticeBoard,
+	public String updateNotice(
+			NoticeBoard noticeBoard,
+			NoticeFile noticeFile,
+			@RequestParam(value="file") MultipartFile file,
 			@RequestParam(value="title")String title, 
 			@RequestParam(value="content")String content,
 			@RequestParam(value="contentSrc")String contentSrc,
-			@RequestParam(value="id")String id){
+			@RequestParam(value="id")String id)throws IOException{
+		
+		String path = context.getRealPath("/resource/upload");
+		
+		File d = new File(path);
+		if(!d.exists())//경로가 존재하지 않는다면
+			d.mkdir();
+	
+		String originalFilename = file.getOriginalFilename(); // fileName.jpg
+	    String onlyFileName = originalFilename.substring(0, originalFilename.indexOf(".")); // fileName
+	    String extension = originalFilename.substring(originalFilename.indexOf(".")); // .jpg
+		
+	    String rename = onlyFileName + "_" + getCurrentDayTime() + extension; // fileName_20150721-14-07-50.jpg
+	    String fullPath = path + "\\" + rename;
+	    
+	    if (!file.isEmpty()) {
+	        try {
+	            byte[] bytes = file.getBytes();
+	            BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(fullPath)));
+	            stream.write(bytes);
+	            stream.close();
+	            //model.addAttribute("resultMsg", "파일을 업로드 성공!");
+	            System.out.println("업로드 성공");
+	        } catch (Exception e) {
+	            //model.addAttribute("resultMsg", "파일을 업로드하는 데에 실패했습니다.");
+	        	System.out.println("업로드 실패");
+	        }
+	    } else {
+	        //model.addAttribute("resultMsg", "업로드할 파일을 선택해주시기 바랍니다.");
+	    	System.out.println("업로드 파일 x");
+	    }
+	    
+	    fullPath = "\\WiynPrj\\resource\\upload\\";
+	    System.out.println(fullPath);
 		
 		noticeBoard.setTitle(title);
 		noticeBoard.setContent(content);
 		noticeBoard.setContentSrc(contentSrc);
 		
 		noticeBoardDao.update(noticeBoard);
+		
+		noticeFile.setName(rename);
+		noticeBoardFileDao.update(noticeFile);
 		
 		return "redirect:notice-detail?c=" + id;
 	}
