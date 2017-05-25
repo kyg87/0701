@@ -120,10 +120,15 @@ td i{
 		</thead>
 		<tbody>
 			<tr>
-				<td colspan="4">${n.url }</td>
+				<td colspan="4">
+				</td>
 			</tr>
 			<tr>
-				<td colspan="4">thum</td>
+				<td colspan="4">
+				<a href="http://${n.url}">	
+					<img src="http://api.thumbalizr.com/?url=http://${n.url}&width=250" />
+				</a>
+				</td>
 			</tr>
 			<tr>
 				<td colspan="4">${n.content }</td>

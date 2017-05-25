@@ -102,14 +102,14 @@ public class SiteBoardController {
 			@RequestParam(value="bigCategoryId")String bigCategoryId,
 			@RequestParam(value="smallCategoryId")String smallCategoryId,
 			Tag tag,
-			@RequestParam(value="tag")String name
+			String name
 			){
 					
 		System.out.println(title);
 		System.out.println(url);
 		System.out.println(content);
 		System.out.println(bigCategoryId);
-		System.out.println(name);
+		
 	
 		siteBoard.setContent(content);
 		siteBoard.setTitle(title);
@@ -119,11 +119,12 @@ public class SiteBoardController {
 		siteBoard.setSmallCategoryId(smallCategoryId);
 		siteBoardDao.add(siteBoard);
 		
+		if(name!=null){
 		tag.setName(name);
 		System.out.println("사이트보드아이디"+siteBoard.getId());
 		tag.setSiteBoardId(siteBoard.getId());
 		tagDao.add(tag);
-
+		}
 		
 		return "redirect:site-detail?c=" + siteBoard.getId();
 	}

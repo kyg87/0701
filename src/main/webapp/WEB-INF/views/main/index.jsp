@@ -165,7 +165,11 @@ textScroll.prototype.start = function() {
 				<td colspan="4">${random.url }</td>
 			</tr>
 			<tr>
-				<td colspan="4">thum</td>
+				<td colspan="4">
+				<a href="http://${random.url}">	
+					<img src="http://api.thumbalizr.com/?url=http://${random.url}&width=250" />
+				</a>
+				</td>
 			</tr>
 			<tr>
 				<td colspan="4">${random.content }</td>
