@@ -130,6 +130,12 @@ td i{
 				</a>
 				<div><a href="http://${n.url}">http://${n.url}</a></div>
 				</td>
+				
+				<script>
+				$(document).ready(function(){
+					$("a[href^='http://']").attr("target","_blank");
+				});
+				</script>
 			</tr>
 			<tr>
 				<td colspan="4">${n.content }</td>
