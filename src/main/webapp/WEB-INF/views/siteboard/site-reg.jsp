@@ -190,8 +190,9 @@ td{
 							 
 						});
 						</script> -->
-						<input type="hidden" id="check" value=1 />
+						<input type="hidden" id="check" value="1"/>
 						<script>	
+						
 							$('.tag').keydown(function(e){
 								
 								   if(e.keyCode == 32){
@@ -200,7 +201,7 @@ td{
 									   
 									   /*  $("<div class='chip'>"+value+"<i class='material-icons close'>close</i></div>").appendTo('.chips');  */
 									   $("<div class='chip' id='tag"+$("#check").val()+"'><input type='hidden' name='tag' value='"+value+"'>"+value+"</input><i class='material-icons close'>close</i></div>").appendTo('.chips');
-									   alert(value);
+									   /* alert(value); */
 									   $("#check").val($("#check").val()+1);
 									   $(this).val(null);
 								   }	  
