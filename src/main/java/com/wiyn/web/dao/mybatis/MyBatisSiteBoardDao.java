@@ -128,7 +128,13 @@ public class MyBatisSiteBoardDao implements SiteBoardDao{
 		siteBoardDao = sqlSession.getMapper(SiteBoardDao.class);
 		return siteBoardDao.updateHit(id);
 	}
-	
+	@Override
+	public List<SiteBoard> getTagLoad(String query) {
+		SiteBoardDao siteBoardDao;
+		siteBoardDao = sqlSession.getMapper(SiteBoardDao.class);
+		return siteBoardDao.getTagLoad(query);
+	}
+
 
 
 }

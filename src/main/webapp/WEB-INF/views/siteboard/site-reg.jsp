@@ -190,7 +190,6 @@ td{
 							 
 						});
 						</script> -->
-						<input type="hidden" id="check" value="1"/>
 						<script>	
 						
 							$('.tag').keydown(function(e){
@@ -200,9 +199,8 @@ td{
 									   var value = $(this).val();
 									   
 									   /*  $("<div class='chip'>"+value+"<i class='material-icons close'>close</i></div>").appendTo('.chips');  */
-									   $("<div class='chip' id='tag"+$("#check").val()+"'><input type='hidden' name='tag' value='"+value+"'>"+value+"</input><i class='material-icons close'>close</i></div>").appendTo('.chips');
+									   $("<div class='chip'><input type='hidden' name='tag' value='"+value+"'>"+value+"</input><i class='material-icons close'>close</i></div>").appendTo('.chips');
 									   /* alert(value); */
-									   $("#check").val($("#check").val()+1);
 									   $(this).val(null);
 								   }	  
 								

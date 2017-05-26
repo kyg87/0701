@@ -17,17 +17,15 @@
 						</tr>
 					</thead>
 					<tbody>
-						<%-- <c:forEach var="v" items="${list}">
-							<tr>
-				
+						<c:forEach var="v" items="${list}">
+							<tr>				
 								<td>${v.id}</td>
 								<td><a href="free-detail?c=${v.id}">${v.title}</a></td>
 								<td>${v.regDate}</td>
 								<td>${v.memberId}</td>
 								<td>${v.hit}</td>
-				
 							</tr>
-						</c:forEach> --%>
+						</c:forEach>
 					</tbody>
 				</table>
 

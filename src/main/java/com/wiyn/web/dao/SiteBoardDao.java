@@ -3,6 +3,7 @@ package com.wiyn.web.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.wiyn.web.entity.SiteBoard;
 import com.wiyn.web.entity.Tag;
@@ -34,5 +35,6 @@ public interface SiteBoardDao {
 	String getSName(String id);
 	List<Tag> getTName(String id);
 	
-	
+	List<SiteBoard> getTagLoad(@Param("query") String query);
+
 }

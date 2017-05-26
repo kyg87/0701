@@ -143,8 +143,9 @@ td i{
 			<tr>
 				<td colspan="4">
 				<c:forEach var="tag" items="${t }">
-				<input type="hidden" id="check" value="1"/>
+				<form action="tag-load" method="post">
 				<a href="site-list?c=${tag }"><div class="chip">${tag }</div></a>
+				</form>
 				</c:forEach>
 				</td>			
 			</tr>

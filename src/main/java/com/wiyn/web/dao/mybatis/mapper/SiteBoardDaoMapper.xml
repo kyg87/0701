@@ -111,7 +111,8 @@
 	</select>
 	
 	<select id="getTName" resultType="String">
-		select SUBSTRING_INDEX (SUBSTRING_INDEX(Tag.name,',',numbers.n),',',-1) name
+		select Tag.name FROM Tag inner join SiteBoard on Tag.siteBoardId=SiteBoard.id where SiteBoard.id=#{param1}
+		<!-- select SUBSTRING_INDEX (SUBSTRING_INDEX(Tag.name,',',numbers.n),',',-1) name
 		from
 		(select 1 n union all select 2
 		union all select 3 union all select 4
@@ -120,7 +121,7 @@
 		union all select 9 union all select 10) numbers INNER JOIN Tag
 		on CHAR_LENGTH ( Tag.name )
 		- CHAR_LENGTH ( REPLACE ( Tag.name , ',' , '' ))>= numbers . n-1
-		inner join SiteBoard on SiteBoard.Id = Tag.siteBoardId where Tag.siteBoardId=#{param1}
+		inner join SiteBoard on SiteBoard.Id = Tag.siteBoardId where Tag.siteBoardId=#{param1} -->
 	</select>
 	
 <!-- <select id="getListSpeed" resultType="com.wiyn.web.entity.SiteBoard" >	
@@ -136,4 +137,10 @@ order by regDate desc LIMIT ${(page-1)*10},10
  	<update id="updateHit">
 	UPDATE `lsedb`.`SiteBoard` SET hit=hit+1 WHERE `id`=#{id};
 </update>
+
+
+	<select id="getTagLoad" resultType="com.wiyn.web.entity.SiteBoard">
+		select * from SiteBoard inner join Tag on Tag.siteBoardId=SiteBoard.id where Tag.name='%${query}%'
+	</select>
+	
 </mapper>

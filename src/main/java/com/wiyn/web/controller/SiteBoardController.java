@@ -102,7 +102,7 @@ public class SiteBoardController {
 			@RequestParam(value="bigCategoryId")String bigCategoryId,
 			@RequestParam(value="smallCategoryId")String smallCategoryId,
 			Tag tag,
-			String name
+			@RequestParam(value="tag")String name
 			){
 					
 		System.out.println(title);
@@ -120,13 +120,32 @@ public class SiteBoardController {
 		siteBoardDao.add(siteBoard);
 		
 		if(name!=null){
-		tag.setName(name);
-		System.out.println("사이트보드아이디"+siteBoard.getId());
-		tag.setSiteBoardId(siteBoard.getId());
-		tagDao.add(tag);
+			
+			System.out.println("포문전태그네임"+name);
+			
+			
+			String[] tagName=(name.replace(" ", "")).split(",");
+			
+			System.out.println(name);
+			
+			
+			for(int i=0; i<tagName.length; i++){
+				
+				tag.setName(tagName[i]);
+				tag.setSiteBoardId(siteBoard.getId());
+				tagDao.add(tag);
+				
+				System.out.println("사이트보드아이디"+siteBoard.getId());
+				System.out.println("태그네임"+tagName[i]);
+				System.out.println("아이디"+tag.getId());
+			}
+			
+			
+			
 		}
-		
+
 		return "redirect:site-detail?c=" + siteBoard.getId();
+		
 	}
 
 	@RequestMapping(value="site-detail",produces="text/plain;charset=UTF-8")
@@ -149,9 +168,7 @@ public class SiteBoardController {
 		String bName = siteBoardDao.getBName(id);
 		String sName = siteBoardDao.getSName(id);
 		List<Tag> tName = siteBoardDao.getTName(id);
-		
-		
-		
+
 		model.addAttribute("l", likeCount);
 		model.addAttribute("n", siteBoard);
 		model.addAttribute("b", bName);
@@ -164,6 +181,20 @@ public class SiteBoardController {
 		
 		System.out.println("태그네임"+tName);
 		return "siteboard.site-detail";
+	}
+	
+	
+	@RequestMapping(value="tag-load",  method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
+	public String siteTag(
+			@RequestParam(value="tag")String query,
+			Model model
+			)
+	{
+
+		System.out.println("이케쿼리"+query);
+		siteBoardDao.getTagLoad(query);
+
+		return "siteboard.site-list";
 	}
 
 	
@@ -264,5 +295,6 @@ public class SiteBoardController {
 			return "redirect:site-detail?c=" + siteBoardLike.getSiteBoardId();
 		}
 	 
+	
 
 }
