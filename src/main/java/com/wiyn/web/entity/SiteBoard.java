@@ -20,8 +20,14 @@ public class SiteBoard {
 	private SmallCategory smallCategory;
 	
 	private List<SiteComment> siteComments;
-	
+	private int countcomment;
 
+	public int getCountcomment() {
+		return countcomment;
+	}
+	public void setCountcomment(int countcomment) {
+		this.countcomment = countcomment;
+	}
 	public String getId() {
 		return id;
 	}

@@ -76,19 +76,11 @@ textScroll.prototype.start = function() {
 				<div class="col s12">
 					<ul class="tabs">
 						<li class="tab col s3"><a target="_self" href="index">최신순</a></li>
-						<li class="tab col s3"> <a target="_self"" href="index2">점수순</a></li>
-						<li class="tab col s3"> <a target="_self"" href="index3">댓글순</a></li>
+						<li class="tab col s3"> <a target="_self" href="index2">점수순</a></li>
+						<li class="tab col s3"> <a class="active" target="_self" href="index3">댓글순</a></li>
 					</ul>
 				</div>
- 	
-<%--     <div id="test1" class="col s12 collection">
-                    <c:forEach var="n" items="${sitelist}">
-                    <a href="../siteboard/site-detail?c=${n.id}" class="collection-item">${n.title} [${n.countcomment }]</a>
-                    </c:forEach>
-    </div> --%>
-    
-    
-
+ 
       <table class="highlight">
         <thead>
           <tr>
@@ -99,20 +91,24 @@ textScroll.prototype.start = function() {
               <th>작성날짜</th>
           </tr>
         </thead>
-
+<fmt:formatDate  value="${n.regDate}" pattern="yyyy-MM-dd"/>
         <tbody>
-          <c:forEach var="n" items="${sitelist}">
+          <c:forEach var="n" items="${sitelistcomment}">
          	 <tr>    
 		            <td>${n.id}</td>
-		            <td class="orange-text text-accent-3"><a href="../siteboard/site-detail?c=${n.id}">${n.title}</a>[${n.countcomment }]</td>
+		            <td class="orange-text text-accent-3"><a href="../siteboard/site-detail?c=${n.id}">${n.title}</a> [${n.countcomment }]</td>
 		            <td>${n.memberId }</td>
 		            <td>${n.hit }</td>
-		            <td><fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-					
+					<td><fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
           		</tr>
           	</c:forEach>	
           </tbody>
           </table>
+<%--     <div id="test3" class="col s12 collection">
+                        <c:forEach var="n" items="${sitelistcomment}">
+                    <a href="../siteboard/site-detail?c=${n.id}" class="collection-item">${n.title} [${n.countcomment }]</a>
+                    </c:forEach>
+    </div> --%>
   </div>
                 
                 
@@ -182,22 +178,13 @@ textScroll.prototype.start = function() {
 				<td colspan="4">${random.url }</td>
 			</tr>
 			<tr>
-				<td colspan="4">
-				<a href="http://${random.url}">	
-					<img src="http://api.thumbalizr.com/?url=http://${random.url}&width=250" />
-				</a>
-				<div><a href="http://${random.url}">http://${random.url}</a></div>
-				</td>
+				<td colspan="4">thum</td>
 			</tr>
 			<tr>
 				<td colspan="4">${random.content }</td>
 			</tr>
 			<tr>
-				<td colspan="4">
-				<c:forEach var="tag" items="${t }">
-				<div class="chip">${tag }</div>
-				</c:forEach>
-				</td>			
+				<td colspan="4"> <div class="chip">Tag</div> <div class="chip">Tag</div> <div class="chip">Tag</div> <div class="chip">Tag</div> <div class="chip">Tag</div></td>
 			</tr>
 			</tbody>
 			</table>
@@ -210,8 +197,3 @@ var real_search_keyword = new textScroll('scroll'); // 스크롤링 하고자하
 real_search_keyword.name = "real_search_keyword"; // 인스턴스 네임을 등록합니다
 real_search_keyword.start(); // 스크롤링 시작
 </script>
-<script>
-$(document).ready(function(){
-    $('ul.tabs').tabs('select_tab', '#test1');
-  });
- </script>
