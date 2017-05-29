@@ -186,17 +186,18 @@ public class SiteBoardController {
 	
 	@RequestMapping(value="tag-load",  method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
 	public String siteTag(
-			@RequestParam(value="tag")String query,
+			@RequestParam("x")String query,
 			Model model
 			)
 	{
 
 		System.out.println("ÀÌÄÉÄõ¸®"+query);
-		siteBoardDao.getTagLoad(query);
+	    List<SiteBoard> q	= sqlSession.getMapper(SiteBoardDao.class).getTagLoad(query);
+		System.out.println(q);
+		model.addAttribute("list",q);
 
-		return "siteboard.site-list";
+		return "redirect:site-list?c="+query;
 	}
-
 	
 	/*@RequestMapping("site-list")
 	public String siteList(
@@ -215,6 +216,7 @@ public class SiteBoardController {
 		System.out.println("Å¸´×");
 
 		List<BigCategory> bcList = sqlSession.getMapper(BigCategoryDao.class).getList();
+		
 		
 		for (BigCategory bigCategory : bcList) {
 			bigCategory.setSmallCategory(sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId()));

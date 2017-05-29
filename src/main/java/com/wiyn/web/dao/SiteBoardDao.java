@@ -35,6 +35,6 @@ public interface SiteBoardDao {
 	String getSName(String id);
 	List<Tag> getTName(String id);
 	
-	List<SiteBoard> getTagLoad(@Param("query") String query);
+	List<SiteBoard> getTagLoad(String query);
 
 }

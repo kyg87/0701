@@ -129,8 +129,7 @@ td i{
 					<img src="http://api.thumbalizr.com/?url=http://${n.url}&width=250" />
 				</a>
 				<div><a href="http://${n.url}">http://${n.url}</a></div>
-				</td>
-				
+				</td>	
 				<script>
 				$(document).ready(function(){
 					$("a[href^='http://']").attr("target","_blank");
@@ -143,10 +142,32 @@ td i{
 			<tr>
 				<td colspan="4">
 				<c:forEach var="tag" items="${t }">
-				<form action="tag-load" method="post">
-				<a href="site-list?c=${tag }"><div class="chip">${tag }</div></a>
-				</form>
+					<div id="chip" class="chip"><input type="hidden">${tag }</div>
 				</c:forEach>
+				<script>
+				$(function(){
+					$(".chip").on('click', function(){
+							var x = $(this).text();
+							alert(x);
+							
+							$.post("tag-load", {"x":x}, function(){
+								
+							}); 
+					});
+				});
+				
+				 /* $(document).ready(function(){
+					 $(".chip").on('click', function(){
+						 var x = $(this).text();
+			                $.post("tag-load",
+			                { 'Msg':'Post방식으로 전송'},
+			               
+			                 function(x){
+			                	alert(x);
+			                 });
+			            });
+			       }); */
+				</script>
 				</td>			
 			</tr>
 			<tr class="td-padding">
@@ -367,6 +388,7 @@ $(function(){
 
    });
 });
+
 
 
 </script>
