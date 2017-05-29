@@ -54,13 +54,7 @@ public class SiteBoardController {
 	@Autowired
 	private TagDao tagDao;
 	
-	@RequestMapping("site-list")
-	public String request() {
 
-
-		return "siteboard.site-list";
-	}
-	
 	
 	@RequestMapping("site-reg")
 	public String site(Model model){
@@ -184,19 +178,22 @@ public class SiteBoardController {
 	}
 	
 	
-	@RequestMapping(value="tag-load",  method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
+	@RequestMapping(value="site-list",  produces="text/plain;charset=UTF-8")
 	public String siteTag(
-			@RequestParam("x")String query,
+			@RequestParam("query")String query,
 			Model model
 			)
 	{
 
 		System.out.println("¿Ãƒ…ƒı∏Æ"+query);
-	    List<SiteBoard> q	= sqlSession.getMapper(SiteBoardDao.class).getTagLoad(query);
-		System.out.println(q);
-		model.addAttribute("list",q);
+	    List<SiteBoard> list	= sqlSession.getMapper(SiteBoardDao.class).getTagLoad(query);
 
-		return "redirect:site-list?c="+query;
+		System.out.println(list);
+		
+		model.addAttribute("query", query);
+		model.addAttribute("list",list);
+		
+		return "siteboard.site-list";
 	}
 	
 	/*@RequestMapping("site-list")
@@ -265,8 +262,7 @@ public class SiteBoardController {
 	 @RequestMapping(value ="site-delete", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
      public String siteDelete(@RequestParam(value = "id") String id,
     		 SiteBoard siteBoard ){
-     
-		 
+ 
 		siteBoardDao.delete(id);
         
         return "redirect:site-list";

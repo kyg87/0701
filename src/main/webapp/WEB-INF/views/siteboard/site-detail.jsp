@@ -142,16 +142,22 @@ td i{
 			<tr>
 				<td colspan="4">
 				<c:forEach var="tag" items="${t }">
-					<div id="chip" class="chip"><input type="hidden">${tag }</div>
+					<div id="chip" class="chip">${tag }</div>
 				</c:forEach>
+				<%-- <form action="site-list?c="+${tag } method="post">
+				<c:forEach var="tag" items="${t }">
+					<div id="chip" class="chip"><input type="hidden" value="${tag }"><button type="submit"
+							name="action">${tag }</button></div>
+				</c:forEach>
+				</form> --%>
 				<script>
 				$(function(){
 					$(".chip").on('click', function(){
-							var x = $(this).text();
-							alert(x);
+							var query = $(this).text();
+							alert(query);
 							
-							$.post("tag-load", {"x":x}, function(){
-								
+							$.post("site-list", {"query":query}, function(){
+								location.replace("site-list?query="+query);
 							}); 
 					});
 				});

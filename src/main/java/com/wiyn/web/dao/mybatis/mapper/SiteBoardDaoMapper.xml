@@ -140,7 +140,7 @@ order by regDate desc LIMIT ${(page-1)*10},10
 
 
 	<select id="getTagLoad" resultType="com.wiyn.web.entity.SiteBoard">
-		select * from SiteBoard inner join Tag on Tag.siteBoardId=SiteBoard.id where Tag.name=#{x}
+		select * from SiteBoard inner join Tag on Tag.siteBoardId=SiteBoard.id where Tag.name=#{tag}
 	</select>
 	
 </mapper>

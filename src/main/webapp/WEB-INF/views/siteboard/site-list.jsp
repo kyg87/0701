@@ -5,7 +5,7 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>     
              
 	         <main id="main">
-	         	<h4>< 사이트게시판 ></h4>
+	         	<h4>#${query }</h4>
 				<table border="1">
 					<thead>
 						<tr>
@@ -20,7 +20,7 @@
 						<c:forEach var="v" items="${list}">
 							<tr>				
 								<td>${v.id}</td>
-								<td><a href="free-detail?c=${v.id}">${v.title}</a></td>
+								<td><a href="site-detail?c=${v.id}">${v.title}</a></td>
 								<td>${v.regDate}</td>
 								<td>${v.memberId}</td>
 								<td>${v.hit}</td>
