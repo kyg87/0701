@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>	
 <link href="/WiynPrj/resource/css/main.css" type="text/css"
 	rel="stylesheet" media="screen,projection" />
 <link href="/WiynPrj/resource/css/mypage.css" type="text/css"
@@ -51,14 +51,13 @@
 				
 		</tr>
         </thead>
-        
-		
+     	
         <tbody>
         <c:forEach var="v" items="${list}">
           <tr>
             <td><input type="checkbox" id="test${i}"/><label for="test${i}"></label></td>
             <td style="text-align: center"><a href="../${v.boardName}board/${v.boardName}-detail?c=${v.id}">${v.title}</a></td>
-            <td style="text-align: center">${v.regDate }</td>
+            <td style="text-align: center"><fmt:formatDate value="${v.regDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
           
             <td style="text-align: center">${v.boardName}</td>
           </tr>
@@ -84,7 +83,7 @@
           <tr>
             <td><input type="checkbox" id="test${i}"/><label for="test${i}"></label></td>
             <td style="text-align: center"><a href="../${v.boardName}board/${v.boardName}-detail?c=${v.id}">${v.content }</a></td>
-            <td style="text-align: center">${v.regDate}</td>
+            <td style="text-align: center"><fmt:formatDate value="${v.regDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
            
           </tr>
         </c:forEach>
@@ -92,6 +91,30 @@
          </tbody>      
       </table>
      
+       	<table class="bordered" id="test3">
+        <thead>
+          <tr>
+          		<th><input type="checkbox" id="allCheck"/><label for="allCheck"></label></th>
+              <th style="text-align: center">게시글</th>
+              <th style="text-align: center">작성시간</th>
+             
+          </tr>
+        </thead>
+          
+
+      
+          <tbody>
+        <c:forEach var="v" items="${list3}">
+          <tr>
+            <td><input type="checkbox" id="test${i}"/><label for="test${i}"></label></td>
+            <td style="text-align: center"><a href="../${v.boardName}board/${v.boardName}-detail?c=${v.id}">${v.content }</a></td>
+            <td style="text-align: center"><fmt:formatDate value="${v.regDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+           
+          </tr>
+        </c:forEach>
+        
+         </tbody>      
+      </table>
         <div id="btn1" style="float: right; margin-top:10px;">
         
       	<a class="waves-effect waves-light btn " href="#modal2">삭제</a>
@@ -110,7 +133,7 @@
 								
 							</div>
 						</div>
-      	<a class="waves-effect waves-light btn">글쓰기</a>
+      	
       
       </div><br>
      </div>

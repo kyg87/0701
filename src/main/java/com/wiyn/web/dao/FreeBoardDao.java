@@ -2,10 +2,12 @@ package com.wiyn.web.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+
 
 import com.wiyn.web.entity.FreeBoard;
+
 
 public interface FreeBoardDao {
 
@@ -14,6 +16,7 @@ public interface FreeBoardDao {
 	@Select("SELECT * FROM FreeBoard WHERE id=#{id}")
 	FreeBoard get(String id);
 	
+	List<FreeBoard> getList(@Param("id")String id, @Param("page") int page);
 	public List<FreeBoard> getList();
 	
 	public int add(FreeBoard freeBoard);

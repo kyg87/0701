@@ -8,11 +8,11 @@
 	<select resultType="com.wiyn.web.entity.AddBoard" id="getList">
 	 
 		SELECT  FreeBoard.boardName,FreeBoard.id,FreeBoard.title,FreeBoard.regDate
-FROM lsedb.FreeBoard where FreeBoard.memberId = #{param1} union select 
-RequestBoard.boardName, RequestBoard.id,RequestBoard.title,RequestBoard.regDate
-From lsedb.RequestBoard  where RequestBoard.memberId =#{param1}
-order by regDate desc;
-		
+			FROM lsedb.FreeBoard where FreeBoard.memberId = #{param1} union select 
+			RequestBoard.boardName, RequestBoard.id,RequestBoard.title,RequestBoard.regDate
+			From lsedb.RequestBoard  where RequestBoard.memberId =#{param1}
+			order by regDate desc;
+					
 		
 	</select>
 	
@@ -28,6 +28,15 @@ order by regDate desc;
 		
 		
 	</select>
+	
+		<select resultType="com.wiyn.web.entity.AddBoard" id="getLikeList">
+	 
+		SELECT  SiteBoardLike.boardName, SiteBoardLike.siteBoardId
+		FROM lsedb.SiteBoardLike where SiteBoardLike.memberId = #{param1} 
+		
+		
+	</select>
+	
 	
 
 

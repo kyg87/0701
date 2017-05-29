@@ -27,6 +27,13 @@ public class MyBatisUserPageDao implements UserPageDao {
 		userPageDao = sqlSession.getMapper(UserPageDao.class);
 	    return userPageDao.getCommentList(memberId);
 	}
+
+	@Override
+	public List<AddBoard> getLikeList(String memberId) {
+		UserPageDao userPageDao;
+		userPageDao = sqlSession.getMapper(UserPageDao.class);
+	    return userPageDao.getLikeList(memberId);
+	}
 	
 
 }

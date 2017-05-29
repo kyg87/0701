@@ -8,5 +8,6 @@ public interface UserPageDao {
 	
 	List<AddBoard> getList(String memberId);
 	List<AddBoard> getCommentList(String memberId);
+	List<AddBoard> getLikeList(String memberId);
 
 }
