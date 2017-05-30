@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="tiles"  uri="http://tiles.apache.org/tags-tiles" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 
 <style>
@@ -50,7 +51,7 @@
 			              <th id="title">${n.title}<i id="re" class="small material-icons">launch</i></th>			             
 			          </tr>
 			          <tr>
-			          	 <th id="writedate">${n.regDate}<i class="small material-icons">star</i> 23</th>
+			          	 <th id="writedate"><fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd HH:mm:ss"/><i class="small material-icons">star</i> 23</th>
 			          </tr>
 			          <tr>
 			          	<th id="writer">${n.memberId}</th>

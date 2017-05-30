@@ -96,7 +96,7 @@ public class SiteBoardController {
 			@RequestParam(value="bigCategoryId")String bigCategoryId,
 			@RequestParam(value="smallCategoryId")String smallCategoryId,
 			Tag tag,
-			@RequestParam(value="tag")String name
+			@RequestParam(value="tag", defaultValue = "")String name
 			){
 					
 		System.out.println(title);
@@ -113,7 +113,7 @@ public class SiteBoardController {
 		siteBoard.setSmallCategoryId(smallCategoryId);
 		siteBoardDao.add(siteBoard);
 		
-		if(name!=null){
+		if(!name.isEmpty()){
 			
 			System.out.println("포문전태그네임"+name);
 			

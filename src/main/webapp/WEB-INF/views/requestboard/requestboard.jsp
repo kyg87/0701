@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="tiles"  uri="http://tiles.apache.org/tags-tiles" %>         
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
                   
               <main id="main">
 				<table border="1">
@@ -21,7 +22,7 @@
 								<td>${v.id}</td>
 								<td><a href="request-detail?c=${v.id}">${v.title}</a></td>
 								<td>${v.content}</td>
-								<td>${v.regDate}</td>
+								<td><fmt:formatDate value="${v.regDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 								<td>22323@bb.v</td>
 				
 							</tr>

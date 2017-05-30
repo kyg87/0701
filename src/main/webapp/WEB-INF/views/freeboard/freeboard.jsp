@@ -15,8 +15,8 @@
 						<tr>
 							<td>번호</td>
 							<td>제목</td>					
-							<td>작성시간</td>
 							<td>작성자</td>				
+							<td>작성시간</td>
 							<td>조회수</td>
 						</tr>
 					</thead>
@@ -26,8 +26,8 @@
 				
 								<td>${v.id}</td>				
 								<td><a href="free-detail?c=${v.id}">${v.title} [ ${v.commentCount } ]</a></td>		
-								<td><fmt:formatDate value="${v.regDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 								<td>${v.memberId}</td>
+								<td><fmt:formatDate value="${v.regDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 								<td>${v.hit}</td>
 				
 							</tr>

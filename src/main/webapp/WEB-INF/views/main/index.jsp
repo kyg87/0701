@@ -139,10 +139,10 @@ textScroll.prototype.start = function() {
                 </ul>
                 			
 			</div>
-			<security:authorize access="isAuthenticated()">
-				<a href="../siteboard/site-reg">(세은)사이트 글쓰기로 가는 것</a>
-				<input type="hidden" name="memberId" value=<security:authentication property="name"/>>
-   			</security:authorize> 
+			
+			<a href="../siteboard/site-reg">(세은)사이트 글쓰기로 가는 것</a>
+			<input type="hidden" name="memberId" value=<security:authentication property="name"/>>
+ 
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
 
          </script>

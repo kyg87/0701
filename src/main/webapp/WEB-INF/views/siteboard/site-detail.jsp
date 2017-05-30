@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="tiles"  uri="http://tiles.apache.org/tags-tiles" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>	
 
 <!DOCTYPE html>
 
@@ -112,7 +113,7 @@ td i{
 				<td class="hidden">즐겨찾기</td>
 			</tr>
 			<tr class="reg-like">
-				<td class="detail-font" colspan="4" class="reg-date"><i class="tiny material-icons">schedule</i>${n.regDate }</td>
+				<td class="detail-font" colspan="4" class="reg-date"><i class="tiny material-icons">schedule</i><fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 			</tr>
 			<tr>
 				<td class="detail-font" colspan="4"><i class="tiny material-icons">perm_identity</i>${n.memberId }</td>
