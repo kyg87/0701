@@ -179,11 +179,13 @@ td i{
 			<tr class="td-padding">
 				<td colspan="2">
 					<form action="like" method="post">
-						<button class="waves-effect waves-light btn" type="submit"
-							name="action">
+						<button id="likebtn" class="waves-effect waves-light btn" type="submit"name="action">
 							<i id="icon-margin" class="material-icons left ">thumb_up</i>${l }</button>
-						<input type="hidden" name="siteBoardId" value=${n.id }> <input
-							type="hidden" name="memberId" value="LSE@mb.com">
+								 <input type="hidden" name="siteBoardId" value=${n.id }> 
+		 					
+		              			 <security:authorize access="isAuthenticated()">
+		    						<input type="hidden" name="memberId" value=<security:authentication property="name"/>>
+		              			 </security:authorize> 
 					</form>
 				</td>
 				<td colspan="2" >
@@ -268,7 +270,22 @@ td i{
 <security:authentication property="name" var="loginID"/>
 
 <script>
+$(document).ready(function(){
+	$("#likebtn").click(function(){
+		console.log('${loginID}');
+		
+		
+		if('${loginID}' == 'anonymousUser') {
+			alert("로그인한 유저만 사용 가능합니다.");
+			return false;
+		}
+		else{
+			return true;
+		}
 
+		
+	});
+});
 	
 page(${page});
 
