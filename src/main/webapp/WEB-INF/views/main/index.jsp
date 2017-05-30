@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="tiles"  uri="http://tiles.apache.org/tags-tiles" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>			
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>		
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>	
 <style type="text/css">
 * {margin:0;padding:0;}
 #scroll {height:30px;}
@@ -138,7 +139,10 @@ textScroll.prototype.start = function() {
                 </ul>
                 			
 			</div>
-			<a href="../siteboard/site-reg">(세은)사이트 글쓰기로 가는 것</a>
+			<security:authorize access="isAuthenticated()">
+				<a href="../siteboard/site-reg">(세은)사이트 글쓰기로 가는 것</a>
+				<input type="hidden" name="memberId" value=<security:authentication property="name"/>>
+   			</security:authorize> 
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
 
          </script>

@@ -3,8 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
 .page-footer{
-background:#d32f2f ;
+	/* background:#31343c; */
+	background: rgb(66,66,66);
 }
+
+.page-footer .footer-copyright{
+	background:#31343c;
+}
+ 
 </style>
 
  <footer class="page-footer">

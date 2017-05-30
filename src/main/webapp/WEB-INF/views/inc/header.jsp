@@ -22,7 +22,8 @@ nav{
 }
 
 .header{
-	 background: #d32f2f ;
+	 background: #455f8c;
+	 font-family: "open sans","Helvetica","Arial",sans-serif;
 }
 
 .logo{
@@ -34,6 +35,7 @@ nav{
 }
 
 .login{
+	font-family: "open sans","Helvetica","Arial",sans-serif;
 	transition: background-color .3s;
     font-size: 1rem;
     color: #fff;
@@ -58,8 +60,10 @@ nav{
     display: block;
     padding: 0 15px;
     cursor: pointer;
-    letter-spacing: 2px;
+
 }
+
+
 
 </style>
 
