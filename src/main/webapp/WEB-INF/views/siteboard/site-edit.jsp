@@ -234,8 +234,30 @@ body {
 
 				</tr>
 				<tr>
-					<td><div id="title">Tag</div></td>
-					<td><input id="titleinput" type="text" value=""></td>
+					<td colspan="4">
+						<div class="chips chips-placeholder">
+							<input class="tag" id="e385bafe-7ce5-436e-e3f3-12af51285ada" type="text"  placeholder="+Tag" />
+							<c:forEach var="tag" items="${t }">
+								<div id="chip" class="chip">${tag }<i class='material-icons close'>close</i></div>
+							</c:forEach>
+						</div>
+						<script>	
+						
+							$('.tag').keydown(function(e){
+								
+								   if(e.keyCode == 32){
+									   
+									   var value = $(this).val();
+									   
+									   /*  $("<div class='chip'>"+value+"<i class='material-icons close'>close</i></div>").appendTo('.chips');  */
+									   $("<div class='chip'><input type='hidden' name='name' value='"+value+"'>"+value+"</input><i class='material-icons close'>close</i></div>").appendTo('.chips');
+									   /* alert(value); */
+									   $(this).val(null);
+								   }	  
+								
+							});					
+						</script>
+				</td>
 				</tr>
 				<tr>
 					<td colspan="2">
