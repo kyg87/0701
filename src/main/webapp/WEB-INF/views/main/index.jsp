@@ -140,8 +140,30 @@ textScroll.prototype.start = function() {
                 			
 			</div>
 			
-			<a href="../siteboard/site-reg">(세은)사이트 글쓰기로 가는 것</a>
-			<input type="hidden" name="memberId" value=<security:authentication property="name"/>>
+			<a class="sitego" href="">(세은)사이트 글쓰기로 가는 것</a>
+			<input class="sitein" type="hidden" name="memberId" value=<security:authentication property="name"/>>
+			<script>
+			$(document).ready(function(){
+				$('.sitego').on('click', function(){
+					
+					var value = $('.sitein').val();
+
+					alert(value);
+					alert(typeof value);
+					
+					if(value=='anonymousUser')
+					{
+						alert("로그인을 한 회원만 이용이 가능합니다.");
+						$('.sitego').prop('href', "../joinus/login");
+					}
+				 	else{
+				 		$('.sitego').prop('href', "../siteboard/site-reg");
+					}    
+ 
+				});
+			});
+			
+			</script>
  
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
 

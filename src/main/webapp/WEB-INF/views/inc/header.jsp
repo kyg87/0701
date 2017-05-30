@@ -22,7 +22,8 @@ nav{
 }
 
 .header{
-	 background: #455f8c;
+	 /* background: #455f8c; */
+	 background:#4a5d80;
 	 font-family: "open sans","Helvetica","Arial",sans-serif;
 }
 
