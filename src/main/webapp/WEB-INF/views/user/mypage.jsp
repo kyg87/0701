@@ -100,14 +100,12 @@
              
           </tr>
         </thead>
-          
-
-      
+     
           <tbody>
         <c:forEach var="v" items="${list3}">
           <tr>
             <td><input type="checkbox" id="test${i}"/><label for="test${i}"></label></td>
-            <td style="text-align: center"><a href="../${v.boardName}board/${v.boardName}-detail?c=${v.id}">${v.content }</a></td>
+            <td style="text-align: center"><a href="../siteboard/site-detail?c=${v.siteBoardId}">${v.title }</a></td>
             <td style="text-align: center"><fmt:formatDate value="${v.regDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
            
           </tr>

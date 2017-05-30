@@ -7,10 +7,12 @@
 
 	<select resultType="com.wiyn.web.entity.AddBoard" id="getList">
 	 
-		SELECT  FreeBoard.boardName,FreeBoard.id,FreeBoard.title,FreeBoard.regDate
-			FROM lsedb.FreeBoard where FreeBoard.memberId = #{param1} union select 
-			RequestBoard.boardName, RequestBoard.id,RequestBoard.title,RequestBoard.regDate
-			From lsedb.RequestBoard  where RequestBoard.memberId =#{param1}
+	SELECT  FreeBoard.boardName,FreeBoard.id,FreeBoard.title,FreeBoard.regDate
+			FROM lsedb.FreeBoard where FreeBoard.memberId = #{param1} union select
+			SiteBoard.boardName, SiteBoard.id,SiteBoard.title,SiteBoard.regDate
+			From lsedb.SiteBoard  where SiteBoard.memberId =#{param1} union select
+            RequestBoard.boardName, RequestBoard.id, RequestBoard.title, RequestBoard.regDate
+            From lsedb.RequestBoard where RequestBoard.memberId=#{param1}
 			order by regDate desc;
 					
 		
@@ -31,8 +33,8 @@
 	
 		<select resultType="com.wiyn.web.entity.AddBoard" id="getLikeList">
 	 
-		SELECT  SiteBoardLike.boardName, SiteBoardLike.siteBoardId
-		FROM lsedb.SiteBoardLike where SiteBoardLike.memberId = #{param1} 
+		select SiteBoardLike.*, SiteBoard.title, SiteBoard.regDate from SiteBoardLike 
+    	inner join SiteBoard on SiteBoardLike.siteBoardId = SiteBoard.id where SiteBoardLike.memberId = #{param1}
 		
 		
 	</select>

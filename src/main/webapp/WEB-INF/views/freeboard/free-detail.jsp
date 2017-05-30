@@ -48,10 +48,10 @@
 			        <thead>
 			        
 			          <tr>
-			              <th>제목 : ${n.title}<i id="re" class="small material-icons">launch</i></th>			             
+			              <th>제목 : ${n.title}</th>			             
 			          </tr>
 			          <tr>
-			          	 <th>작성시간 : ${n.regDate}<i class="small material-icons">star</i> 23</th>
+			          	<th>작성시간 : <fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd HH:mm:ss"/></th>
 			          </tr>
 			          <tr>
 			          	<th>ID : ${n.memberId}</th>
@@ -60,15 +60,14 @@
 			         			        </thead>
 			        <tbody>
 			          <tr>
-			            <td id="thum">IMAGE : ${n.contentSrc}</td>
+			            <td id="thum"><img src="../../../WiynPrj/resource/images/foto/13.jpg"/>${n.contentSrc}</td>
 			          </tr>	     
 			          <tr>
+			          
 			            <td id="content">Content: ${n.content }</td>
+			            
 			          </tr>
-			           <tr>
-			           
-			            <td>Hit : ${n.hit }</td>
-			          </tr>
+			          
 			         
 			          <tr>
 			            <td>
@@ -91,7 +90,7 @@
 			            	<input type="hidden" name="id" value =${n.id }>
 			            	<form action="free-edit?c=${n.id}" method="post"> 
 								
-								<button class="btn waves-effect waves-light" type="submit" name="action">수정하기</button>
+								<button class="btn waves-effect waves-light" type="submit" name="action">수정</button>
 							</form> 
 			            </td>
 			            

@@ -9,6 +9,8 @@ public class AddBoard {
 	private String title;
 	private Date regDate;
 	private String content;
+	private String siteBoardId;
+
 	
 	
 	public String getBoardName() {
@@ -40,6 +42,12 @@ public class AddBoard {
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public String getSiteBoardId() {
+		return siteBoardId;
+	}
+	public void setSiteBoardId(String siteBoardId) {
+		this.siteBoardId = siteBoardId;
 	}
 
 	

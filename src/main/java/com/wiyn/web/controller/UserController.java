@@ -24,15 +24,23 @@ public class UserController {
 	private UserPageDao userPageDao;
 	
 	@RequestMapping("mypage")
-	public String UserMain(Authentication auth,Model model) {
+	public String UserMain(Authentication auth,Model model, AddBoard addboard, String title) {
 
 		
 		System.out.println(auth.getName());
 		List<AddBoard> list = sqlSession.getMapper(UserPageDao.class).getList(auth.getName());
 		List<AddBoard> list2 = sqlSession.getMapper(UserPageDao.class).getCommentList(auth.getName());
+		List<AddBoard> list3 = sqlSession.getMapper(UserPageDao.class).getLikeList(auth.getName());
 		
+		
+		
+		for (AddBoard addBoard2 : list3) {
+			System.out.println(addBoard2.getTitle());
+		}
 		model.addAttribute("list",list);
 		model.addAttribute("list2",list2);
+		model.addAttribute("list3",list3);
+		
 
 	
 		return "user.mypage";

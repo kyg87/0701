@@ -36,15 +36,14 @@ public class FreeBoardController {
 
 
 	@RequestMapping("freeboard")
-	public String request(Model model,String commentCount) {
+	public String request(Model model,String commentCount) {		
+		
 		List<FreeBoard> list = sqlSession.getMapper(FreeBoardDao.class).getList();
-			
-		
-		
 		for (FreeBoard freeBoard : list) {
-			freeBoard.setFreeComment(sqlSession.getMapper(FreeCommentDao.class).getList(freeBoard.getId(), 5));
+			freeBoard.setFreeComment(sqlSession.getMapper(FreeCommentDao.class).getList(freeBoard.getId(), 2));
 			
 		}
+		
 		model.addAttribute("list", list);	
 		
 		return "freeboard.freeboard";
@@ -148,7 +147,21 @@ public class FreeBoardController {
 		return "redirect:free-detail?c="+freeboard.getId();
 	}
 	
+	@RequestMapping(value="ListPage", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
+	@ResponseBody
+	public String ListPage(Model model,
+			@RequestParam(value="page")String page,
+			@RequestParam(value="id")String id){
+		
 
+		List<FreeBoard> freeboard = sqlSession.getMapper(FreeBoardDao.class).getList(id, Integer.parseInt(page));
+	
+		
+		Gson gson = new Gson();
+		String json = gson.toJson(freeboard);
+		
+		return json;
+	}
 
 	
 }
