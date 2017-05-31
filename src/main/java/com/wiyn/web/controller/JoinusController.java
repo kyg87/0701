@@ -54,7 +54,7 @@ public class JoinusController {
 	
 	@RequestMapping("login")
 	public String login(){
-		
+		System.out.println("login");
 		return "joinus.login";		
 	}
 	
@@ -69,6 +69,25 @@ public class JoinusController {
 		return Integer.toString(result);
 	}
 
+	@RequestMapping("callback")
+	public String callback(){
+		System.out.println("callback");
+		return "joinus.callback";
+	}
+	
+	@RequestMapping(value="naver", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
+
+	public String naver(
+			@RequestParam(value="email")String email
+			
+			) {
+
+
+		System.out.println(email);
+		
+		
+		return "joinus.login";
+	}
 	
 	
 }
