@@ -148,9 +148,6 @@ textScroll.prototype.start = function() {
 					
 					var value = $('.sitein').val();
 
-					alert(value);
-					alert(typeof value);
-					
 					if(value=='anonymousUser')
 					{
 						alert("로그인을 한 회원만 이용이 가능합니다.");

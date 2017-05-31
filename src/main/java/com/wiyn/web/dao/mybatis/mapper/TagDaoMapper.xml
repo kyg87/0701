@@ -24,6 +24,9 @@
 		)
 	</insert>
 	
-
+	<delete id="delete">
+		DELETE FROM Tag
+		WHERE siteBoardId=#{siteBoardId}
+	</delete>
 
 </mapper>

@@ -155,7 +155,7 @@ td i{
 				$(function(){
 					$(".chip").on('click', function(){
 							var query = $(this).text();
-							alert(query);
+							
 							
 							$.post("site-list", {"query":query}, function(){
 								location.replace("site-list?query="+query);
