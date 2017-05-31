@@ -10,9 +10,9 @@ import com.wiyn.web.entity.Tag;
 
 public interface SiteBoardDao {
 
-	public List<SiteBoard> getList(@Param("page") int page,@Param("query") String query);
-	public List<SiteBoard> getListLike(@Param("page") int page,@Param("query") String query);
-	public List<SiteBoard> getListComment(@Param("page") int page,@Param("query") String query);
+	public List<SiteBoard> getList(@Param("page") int page,@Param("query") String query, @Param("bigCa") String bigCategoryId, @Param("smallCa") String smallCategoryId);
+	public List<SiteBoard> getListLike(@Param("page") int page,@Param("query") String query, @Param("bigCa") String bigCategoryId, @Param("smallCa") String smallCategoryId);
+	public List<SiteBoard> getListComment(@Param("page") int page,@Param("query") String query, @Param("bigCa") String bigCategoryId, @Param("smallCa") String smallCategoryId);
 	SiteBoard getBoard(String id);
     SiteBoard getPrev(String id);
     SiteBoard getNext(String id);

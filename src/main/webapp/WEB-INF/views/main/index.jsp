@@ -120,25 +120,37 @@ textScroll.prototype.start = function() {
                 
             <fmt:parseNumber var="sizeInt" integerOnly="true" value="${size/10 }" />
             <c:set var="last" value="${(size%10)>0 ? sizeInt+1 : sizeInt }" />
+            
+            
             <div>${empty param.p ? 1 : param.p}/${last }pages  </div>
             <div>${size}</div>
                 <ul class="pagination center">
                     <li class="disabled">
                             <c:if test="${param.p-1>0 }">
-                            <a href="?p=${param.p-1 }&q=${parma.q}"><i
+                            <a href="?p=${param.p-1 }&q=${parma.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}"><i
                             class="material-icons">chevron_left</i></a></c:if></li>        
-                    <%-- <li class="active"><a href="?p=1&q=${param.q}">1</a></li> --%>
                 <c:forEach var="i" begin="1" end="${last }"> 
-                  <li class="waves-effect"><a href="?p=${i }&q=${param.q}">${i }</a></li> 
+				       <c:choose>
+							<c:when test="${i eq param.p or empty param.p and i eq '1'}">
+								<li class="waves-effect  active"><a href="?p=${i }&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}">${i}</a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="waves-effect "><a href="?p=${i }&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}">${i}</a></li>
+							</c:otherwise>
+						</c:choose>
+                  <%-- <li class="waves-effect"><a href="?p=${i }&q=${param.q}">${i }</a></li>  --%>
                  </c:forEach> 
                     <li class="waves-effect">
                             <c:if test="${param.p+1<=last }">
-                            <a href="?p=${param.p+1 }&q=${param.q}"><i
+                            <a href="?p=${param.p+1 }&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}"><i
                             class="material-icons">chevron_right</i></a>
                             </c:if></li>
                 </ul>
-                			
-			</div>
+
+		
+		
+
+
 			
 			<a class="sitego" href="">(세은)사이트 글쓰기로 가는 것</a>
 			<input class="sitein" type="hidden" name="memberId" value=<security:authentication property="name"/>>

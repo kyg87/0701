@@ -16,23 +16,23 @@ public class MyBatisSiteBoardDao implements SiteBoardDao{
 	private SqlSession sqlSession;
 	
 	@Override
-	public List<SiteBoard> getList(int page, String query) {
+	public List<SiteBoard> getList(int page, String query, String bigCategoryId, String smallCategoryId) {
 		SiteBoardDao siteBoardDao;
 		siteBoardDao = sqlSession.getMapper(SiteBoardDao.class);
-		return siteBoardDao.getList(page, query);
+		return siteBoardDao.getList(page, query, bigCategoryId, smallCategoryId);
 	}
 	@Override
-	public List<SiteBoard> getListLike(int page, String query) {
+	public List<SiteBoard> getListLike(int page, String query, String bigCategoryId, String smallCategoryId) {
 		SiteBoardDao siteBoardDao;
 		siteBoardDao = sqlSession.getMapper(SiteBoardDao.class);
-		return siteBoardDao.getListLike(page, query);
+		return siteBoardDao.getListLike(page, query, bigCategoryId, smallCategoryId);
 	}
 	
 	@Override
-	public List<SiteBoard> getListComment(int page, String query) {
+	public List<SiteBoard> getListComment(int page, String query, String bigCategoryId, String smallCategoryId) {
 		SiteBoardDao siteBoardDao;
 		siteBoardDao = sqlSession.getMapper(SiteBoardDao.class);
-		return siteBoardDao.getListComment(page, query);
+		return siteBoardDao.getListComment(page, query, bigCategoryId, smallCategoryId);
 	}
 
 	
@@ -134,7 +134,5 @@ public class MyBatisSiteBoardDao implements SiteBoardDao{
 		siteBoardDao = sqlSession.getMapper(SiteBoardDao.class);
 		return siteBoardDao.getTagLoad(query);
 	}
-
-
 
 }

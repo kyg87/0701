@@ -8,46 +8,120 @@ aside{
 #nav-mobile{
 background : rgb(250,250,250);
 }
+.input-field{
+display: block;
+}
 
+.material-icons{
+	height: 100%;
+}
 </style>
 
 
 
 <aside id="left-sidebar-nav">
 
-<ul id="nav-mobile" class="side-nav fixed" style="overflow: auto; transform: translateX(0%);">
-    <label>Search</label>
-    <br>
-    <nav>
-    <div class="nav-wrapper">
-      <form>
-        <div class="input-field">	
-                    <input type="hidden" name="p" value="1" />
-          <input name="q"  id="search" type="search"  value="${param.q}"  required>
-          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-          <i class="material-icons">close</i>
-        </div>
-      </form>
-    </div>
-  </nav>
-  <a class="waves-effect waves-light btn">button</a>
-  <br>
-  <br>
+	<ul id="nav-mobile" class="side-nav fixed"
+		style="overflow: auto; transform: translateX(0%);">
+		<label>Search</label>
+		<form>
+			<nav>
+				<div class="nav-wrapper">
+					<div class="input-field">
+						<input type="hidden" name="p" value="1" /> <input name="q"
+							id="search" type="search" value="${param.q}" required> <label
+							class="label-icon" for="search"><i class="material-icons">search</i></label>
+						<i class="material-icons">close</i>
+					</div>
 
-  <label>Speed Search</label>
-  <br>
-  <select class="browser-default">
-    <option value="" disabled selected>Choose your option</option>
-    <option value="1">Option 1</option>
-    <option value="2">Option 2</option>
-    <option value="3">Option 3</option>
-  </select>
-  <br>
-  <select class="browser-default">
-    <option value="" disabled selected>Choose your option</option>
-    <option value="1">Option 1</option>
-    <option value="2">Option 2</option>
-    <option value="3">Option 3</option>
-  </select>
-  <a class="waves-effect waves-light btn">button</a>
+				</div>
+			</nav>
+			<button class="btn waves-effect waves-light right" type="search">
+				<i class="material-icons">search</i>
+			</button>
+		</form>
+		<label>Speed Search</label>
+		
+		<form>
+			<div class="input-field col s12">
+				<select class="browser-default" name="bigCa" id="bigCategoryIdaside" required>
+					<option id="default" value="" disabled selected>대분류를 선택하세요</option>
+					<c:forEach var="bct" items="${bcbList }">
+						<option value="${bct.id }">${bct.name }</option>
+					</c:forEach>
+				</select>
+			</div>
+			<br/>
+				<div class="input-field col s12" id="scaList">
+					<select class="browser-default" name="smallCa" id="smallCategoryIdaside" required>
+						<option id="default" value="" disabled selected>소분류를
+							선택하세요</option>
+					</select>
+				</div>
+				<button class="btn waves-effect waves-light right" type="search">
+					<i class="material-icons">search</i>
+				</button>	
+		</form>
+	</ul>
+	<script>
+					
+						$(function() {
+				               $("#bigCategoryIdaside").on('change', function() {
+
+				                        var data = $("#bigCategoryIdaside");
+				                        var smallCategory = $("#smallCategoryIdaside");
+				                        var smli = $("#scaList>div>select");
+				      
+				                        smli.empty();
+				                        
+				                        $.post("getListBC", data, function(d) {
+
+				                           var obj = JSON.parse(d);
+				               
+				                           smallCategory.append( $('<option disabled selected><span> 소분류 선택 </span></option'));
+				                           
+				                           if(obj.length != 0){
+				                              for (var i = 0; i < obj.length; i++) {
+				                                    
+				                                 smallCategory.append( $('<option value=' +obj[i].id +  '><span>'+ obj[i].name +'</span></option>'));
+				                        
+				                                    $('select').material_select();
+				                              }
+				                           }
+				                           else if(obj.length == 0){
+				                              $('select').material_select();
+				                           }
+				                        });
+				                        
+				                        var bcDelpost = $("#bctdel");
+				                        var bcModpost = $("#bctmod");
+				                        var scCheckpost = $("#scaAddCheck");
+				                        
+				                        bcDelpost.val($(this).val());
+				                        bcModpost.val($(this).val());
+				                        scCheckpost.val($(this).val());
+				                        
+				                     });
+				            });
+						</script>
+
+
+	<script>
+						$(function() {
+							$("#smallCategoryIdaside").on('change', function() {
+
+								var smList = $("#smallCategoryIdaside");
+
+								var scDelpost = $("#scadel");
+								var scModpost = $("#scamod");
+
+								scDelpost.val($(this).val());
+								scModpost.val($(this).val());
+
+							});
+						});
+</script>
 </aside>
+
+
+

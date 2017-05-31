@@ -7,16 +7,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
+import com.wiyn.web.dao.BigCategoryDao;
 import com.wiyn.web.dao.NoticeBoardDao;
 import com.wiyn.web.dao.RequestBoardDao;
 import com.wiyn.web.dao.SiteBoardDao;
 import com.wiyn.web.dao.SiteBoardLikeDao;
+import com.wiyn.web.dao.SmallCategoryDao;
+import com.wiyn.web.entity.BigCategory;
 import com.wiyn.web.entity.FreeBoard;
 import com.wiyn.web.entity.NoticeBoard;
 import com.wiyn.web.entity.RequestBoard;
 import com.wiyn.web.entity.SiteBoard;
+import com.wiyn.web.entity.SmallCategory;
 import com.wiyn.web.entity.Tag;
 
 
@@ -38,15 +45,43 @@ public class MainController {
 	
 	@Autowired
 	private SiteBoardLikeDao siteBoardLikeDao;
+	
+	
+	@Autowired
+	private BigCategoryDao bigCategoryDao;
+	
+	@Autowired
+	private SmallCategoryDao smallCategoryDao;
 
+	@RequestMapping(value="getListBC", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
+	@ResponseBody
+	public String GetListWithBC(Model model,
+			@RequestParam(value="bigCa")String bigCategoryId){
+
+		System.out.println(bigCategoryId);
+		List<SmallCategory> bcaList = sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategoryId);
+		model.addAttribute("bcaList", bcaList);
+
+		
+		Gson gson = new Gson();
+		String json = gson.toJson(bcaList);
+		
+		return json;
+	}
+	
     @RequestMapping("index")
     public String index(String id,
             @RequestParam(value="p", defaultValue="1")Integer page, 
             @RequestParam(value="q", defaultValue="")String query,
+            @RequestParam(value="bigCa",defaultValue="")String bigCategoryId,
+            @RequestParam(value="smallCa",defaultValue="")String smallCategoryId,
             Model model) {
-        List<SiteBoard> sitelist = sqlSession.getMapper(SiteBoardDao.class).getList(page,query);
-        List<SiteBoard> sitelistlike = sqlSession.getMapper(SiteBoardDao.class).getListLike(page, query);
-        List<SiteBoard> sitelistcomment = sqlSession.getMapper(SiteBoardDao.class).getListComment(page, query);
+        List<SiteBoard> sitelist = sqlSession.getMapper(SiteBoardDao.class).getList(page,query,bigCategoryId, smallCategoryId);
+        List<SiteBoard> sitelistlike = sqlSession.getMapper(SiteBoardDao.class).getListLike(page, query,bigCategoryId, smallCategoryId);
+        List<SiteBoard> sitelistcomment = sqlSession.getMapper(SiteBoardDao.class).getListComment(page, query,bigCategoryId, smallCategoryId);
+        
+
+        
         int size= sqlSession.getMapper(SiteBoardDao.class).getSize();
         String last= sqlSession.getMapper(SiteBoardDao.class).lastId();
         SiteBoard board=sqlSession.getMapper(SiteBoardDao.class).getBoard(id);
@@ -89,17 +124,31 @@ public class MainController {
 		model.addAttribute("s", sName);
 		model.addAttribute("t", tName);
 		
-        return "main.index";
+		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
+		
+		for (BigCategory bigCategory : bcbList) {
+			bigCategory.setSmallCategory(sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId()));
+		}
+
+		model.addAttribute("bcbList", bcbList);
+		
+        return "main.index";        
+        
     }
     
     @RequestMapping("index2")
     public String index2(String id,
             @RequestParam(value="p", defaultValue="1")Integer page, 
             @RequestParam(value="q", defaultValue="")String query,
+            @RequestParam(value="bigCa",defaultValue="")String bigCategoryId,
+            @RequestParam(value="smallCa",defaultValue="")String smallCategoryId,
             Model model) {
-        List<SiteBoard> sitelist = sqlSession.getMapper(SiteBoardDao.class).getList(page,query);
-        List<SiteBoard> sitelistlike = sqlSession.getMapper(SiteBoardDao.class).getListLike(page, query);
-        List<SiteBoard> sitelistcomment = sqlSession.getMapper(SiteBoardDao.class).getListComment(page, query);
+        List<SiteBoard> sitelist = sqlSession.getMapper(SiteBoardDao.class).getList(page,query,bigCategoryId, smallCategoryId);
+        List<SiteBoard> sitelistlike = sqlSession.getMapper(SiteBoardDao.class).getListLike(page, query,bigCategoryId, smallCategoryId);
+        List<SiteBoard> sitelistcomment = sqlSession.getMapper(SiteBoardDao.class).getListComment(page, query,bigCategoryId, smallCategoryId);
+        
+
+        
         int size= sqlSession.getMapper(SiteBoardDao.class).getSize();
         String last= sqlSession.getMapper(SiteBoardDao.class).lastId();
         SiteBoard board=sqlSession.getMapper(SiteBoardDao.class).getBoard(id);
@@ -141,6 +190,14 @@ public class MainController {
 		model.addAttribute("b", bName);
 		model.addAttribute("s", sName);
 		model.addAttribute("t", tName);
+		
+		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
+		
+		for (BigCategory bigCategory : bcbList) {
+			bigCategory.setSmallCategory(sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId()));
+		}
+
+		model.addAttribute("bcbList", bcbList);
 		
         return "main.index2";
     }
@@ -150,16 +207,21 @@ public class MainController {
     public String index3(String id,
             @RequestParam(value="p", defaultValue="1")Integer page, 
             @RequestParam(value="q", defaultValue="")String query,
+            @RequestParam(value="bigCa",defaultValue="")String bigCategoryId,
+            @RequestParam(value="smallCa",defaultValue="")String smallCategoryId,
             Model model) {
-        List<SiteBoard> sitelist = sqlSession.getMapper(SiteBoardDao.class).getList(page,query);
-        List<SiteBoard> sitelistlike = sqlSession.getMapper(SiteBoardDao.class).getListLike(page, query);
-        List<SiteBoard> sitelistcomment = sqlSession.getMapper(SiteBoardDao.class).getListComment(page, query);
+        List<SiteBoard> sitelist = sqlSession.getMapper(SiteBoardDao.class).getList(page,query,bigCategoryId, smallCategoryId);
+        List<SiteBoard> sitelistlike = sqlSession.getMapper(SiteBoardDao.class).getListLike(page, query,bigCategoryId, smallCategoryId);
+        List<SiteBoard> sitelistcomment = sqlSession.getMapper(SiteBoardDao.class).getListComment(page, query,bigCategoryId, smallCategoryId);
+        
+
+        
         int size= sqlSession.getMapper(SiteBoardDao.class).getSize();
         String last= sqlSession.getMapper(SiteBoardDao.class).lastId();
         SiteBoard board=sqlSession.getMapper(SiteBoardDao.class).getBoard(id);
         SiteBoard prev=sqlSession.getMapper(SiteBoardDao.class).getPrev(id);
         SiteBoard next=sqlSession.getMapper(SiteBoardDao.class).getNext(id);
-
+        
         
         
        
@@ -177,9 +239,6 @@ public class MainController {
         model.addAttribute("prev", prev);
         model.addAttribute("next", next);
         model.addAttribute("board", board);
-        
-    
-        
         /*-------------랜덤페이지 가져오기----------------*/
     
         SiteBoard random=sqlSession.getMapper(SiteBoardDao.class).getRandom();
@@ -199,6 +258,15 @@ public class MainController {
 		model.addAttribute("s", sName);
 		model.addAttribute("t", tName);
 		
+		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
+		
+		for (BigCategory bigCategory : bcbList) {
+			bigCategory.setSmallCategory(sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId()));
+		}
+
+		model.addAttribute("bcbList", bcbList);
+		
         return "main.index3";
     }
+    
 }
