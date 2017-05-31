@@ -16,8 +16,6 @@ public class SiteBoard {
 	private String bigCategoryId;
 	private String smallCategoryId;
 	
-	private BigCategory bigCategory;
-	private SmallCategory smallCategory;
 	
 	private List<SiteComment> siteComments;
 	private int countcomment;
@@ -82,18 +80,7 @@ public class SiteBoard {
 	public void setBigCategoryId(String bigCategoryId) {
 		this.bigCategoryId = bigCategoryId;
 	}
-	public BigCategory getBigCategory() {
-		return bigCategory;
-	}
-	public void setBigCategory(BigCategory bigCategory) {
-		this.bigCategory = bigCategory;
-	}
-	public SmallCategory getSmallCategory() {
-		return smallCategory;
-	}
-	public void setSmallCategory(SmallCategory smallCategory) {
-		this.smallCategory = smallCategory;
-	}
+
 	public String getSmallCategoryId() {
 		return smallCategoryId;
 	}

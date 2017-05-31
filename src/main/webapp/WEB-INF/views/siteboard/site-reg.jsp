@@ -58,13 +58,7 @@ td{
 						</select>
 					</div> 
 					<script>
-						/* $(function(){
-							if(!$('#bigCategoryId > option:selected').val()) {
-						
-						    alert("대분류를 선택해주세요.");}
-						}
-						 */
-						
+					
 						$(function() {
 				               $("#bigCategoryId").on('change', function() {
 

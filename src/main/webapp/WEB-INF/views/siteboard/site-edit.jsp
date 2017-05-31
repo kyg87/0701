@@ -241,8 +241,7 @@ body {
 								<div id="chip" class="chip">${tag }<i class='material-icons close'>close</i></div>
 							</c:forEach>
 						</div>
-						<script>	
-						
+						<script>				
 							$('.tag').keydown(function(e){
 								
 								   if(e.keyCode == 32){
@@ -250,12 +249,12 @@ body {
 									   var value = $(this).val();
 									   
 									   /*  $("<div class='chip'>"+value+"<i class='material-icons close'>close</i></div>").appendTo('.chips');  */
-									   $("<div class='chip'><input type='hidden' name='name' value='"+value+"'>"+value+"</input><i class='material-icons close'>close</i></div>").appendTo('.chips');
+									   $("<div class='chip'><input type='hidden' name='tag' value='"+value+"'>"+value+"</input><i class='material-icons close'>close</i></div>").appendTo('.chips');
 									   /* alert(value); */
 									   $(this).val(null);
 								   }	  
 								
-							});					
+							});	
 						</script>
 				</td>
 				</tr>
