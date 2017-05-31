@@ -8,12 +8,46 @@
 <!DOCTYPE html>
 
 <style>
+
 .table{
-	border:1px solid #e4e4e4;
 	border-radius: 3px;
-	/* box-shadow: 0px 1px 1px #a8a8a8; */
 	width:100%;
+	background:rgb(250,250,250);
+	/* border: 1px solid #e0e0e0; */
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
+
+.table .head{
+box-shadow:0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 1px 0 rgba(0, 0, 0, 0.12), 0 1px 1px -1px rgba(0, 0, 0, 0.2);
+}
+
+.table .nav{
+	background:rgb(250,250,250); 
+	box-shadow:none;
+}
+
+.table .breadcrumb{
+	color: #666666;
+    font-size: 13px;
+}
+
+.breadcrumb:before {
+    font-style: normal;
+    font-weight:bold;
+    speak: none;
+    text-align: center;
+    width: 1em;
+    display: inline-block;
+    font-size: 15px;
+    color: #bababa;
+} 
+
+.table .category{
+	height: 30px;
+	box-sizing:content-box;
+}
+
+
 
 td{
 	padding-left: 5px;
@@ -85,20 +119,15 @@ td i{
     font-family: 'Abel', sans-serif;
 }
 
-.small-category{
-	font-weight: 900;
-}
-
-
 </style>
 
 <main id="main">
 
 	<table class="table">
-		<thead>
+		<thead class="head">
 			<tr>
-				<td colspan="4">
-					<nav>
+				<td class="category" colspan="4">
+					<nav class="nav">
 						<div class="nav-wrapper">
 							<div class="col s12">
 								<a href="#!" class="breadcrumb big-category">${b }</a> 
@@ -182,8 +211,7 @@ td i{
 					<form action="like" method="post">
 						<button id="likebtn" class="waves-effect waves-light btn" type="submit"name="action">
 							<i id="icon-margin" class="material-icons left ">thumb_up</i>${l }</button>
-								 <input type="hidden" name="siteBoardId" value=${n.id }> 
-		 					
+								 <input type="hidden" name="siteBoardId" value=${n.id }> 					
 		              			 <security:authorize access="isAuthenticated()">
 		    						<input type="hidden" name="memberId" value=<security:authentication property="name"/>>
 		              			 </security:authorize> 
