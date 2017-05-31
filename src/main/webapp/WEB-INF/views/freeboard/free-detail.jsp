@@ -254,7 +254,7 @@ var currentPage = ${page};
 							$("#commentList").append($('<li class="collection-item avatar">' + + '</li>')
 								 .append($('<img src="/WiynPrj/resource/images/test.png" alt="" class="circle"> '))
 								 .append($('<span class="title">'+obj[i].memberId+'</span>'))
-								 .append($('<time>'+obj[i].regDate+'</time>'))
+								 .append($('<time>'+js_yyyy_mm_dd_hh_mm_ss(obj[i].regDate)+'</time>'))
 								 .append($('<p>'+obj[i].content+'</p>'))
 								 .append($('<a class="waves-effect waves-light btn" onclick="onDelete('+obj[i].id+ ');" value='+obj[i].id+'>삭제</a>')));
 						}
@@ -262,7 +262,7 @@ var currentPage = ${page};
 							$("#commentList").append($('<li class="collection-item avatar">' + + '</li>')
 									 .append($('<img src="/WiynPrj/resource/images/test.png" alt="" class="circle"> '))
 									 .append($('<span class="title">'+obj[i].memberId+'</span>'))
-									 .append($('<time>'+obj[i].regDate+'</time>'))
+									 .append($('<time>'+js_yyyy_mm_dd_hh_mm_ss(obj[i].regDate)+'</time>'))
 									 .append($('<p>'+obj[i].content+'</p>')));
 						}
 
@@ -289,15 +289,18 @@ var currentPage = ${page};
 		      
 		    
 		   	});
-  }
-
-
-$(function(){
-
-   $("#rightBtn").click(function(){
-
-   });
-});
-
+  	}
+  
+  function js_yyyy_mm_dd_hh_mm_ss (date) {
+	  
+	  now = new Date(date);
+	  year = "" + now.getFullYear();
+	  month = "" + (now.getMonth() + 1); if (month.length == 1) { month = "0" + month; }
+	  day = "" + now.getDate(); if (day.length == 1) { day = "0" + day; }
+	  hour = "" + now.getHours(); if (hour.length == 1) { hour = "0" + hour; }
+	  minute = "" + now.getMinutes(); if (minute.length == 1) { minute = "0" + minute; }
+	  second = "" + now.getSeconds(); if (second.length == 1) { second = "0" + second; }
+	  return year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
+	}
 
 </script>
