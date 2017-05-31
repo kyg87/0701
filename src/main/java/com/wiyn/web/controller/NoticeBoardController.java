@@ -168,6 +168,8 @@ public class NoticeBoardController {
 		
 		noticeBoardDao.delete(id);
 		
+		System.out.println("del?!");
+		
 		return "redirect:noticeboard";
 	}
 	

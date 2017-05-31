@@ -135,21 +135,22 @@
 	
 	<script>
 	$(function(){
-		$("#noticeArticleDel").on('click', function(){
 			
-			$("#ArticleDelBtn").on('click', function(){
-				
-				location.href='http:\/\/localhost\/WiynPrj\/noticeboard\/notice-delete?id='+${list.id};
-				
-			});
-
-			$("#ArticleDelCancel").on('click', function(){
-				
-				location.href='http:\/\/localhost\/WiynPrj\/noticeboard\/notice-detail?c='+${list.id};
-				
-			});
+		$("#ArticleDelBtn").on('click', function(){
+			
+			var id = ${list.id};
+			
+			$.post("notice-delete", {"id":id});
+			location.href='noticeboard';
 			
 		});
+
+		$("#ArticleDelCancel").on('click', function(){
+			
+			location.href='http:\/\/localhost\/WiynPrj\/noticeboard\/notice-detail?c='+${list.id};
+			
+		});
+			
 	});
 	</script>
 	
