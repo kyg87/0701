@@ -15,6 +15,7 @@ display: block;
 .material-icons{
 	height: 100%;
 }
+
 </style>
 
 
@@ -43,7 +44,7 @@ display: block;
 		<label>Speed Search</label>
 		
 		<form>
-			<div class="input-field col s12">
+			<div class="input-field">
 				<select class="browser-default" name="bigCa" id="bigCategoryIdaside" required>
 					<option id="default" value="" disabled selected>대분류를 선택하세요</option>
 					<c:forEach var="bct" items="${bcbList }">
@@ -52,7 +53,7 @@ display: block;
 				</select>
 			</div>
 			<br/>
-				<div class="input-field col s12" id="scaList">
+				<div class="input-field" id="scaList">
 					<select class="browser-default" name="smallCa" id="smallCategoryIdaside" required>
 						<option id="default" value="" disabled selected>소분류를
 							선택하세요</option>
