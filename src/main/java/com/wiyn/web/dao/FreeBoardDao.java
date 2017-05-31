@@ -16,6 +16,7 @@ public interface FreeBoardDao {
 	@Select("SELECT * FROM FreeBoard WHERE id=#{id}")
 	FreeBoard get(String id);
 	
+	List<FreeBoard> getList(@Param("page") int page);
 	List<FreeBoard> getList(@Param("id")String id, @Param("page") int page);
 	public List<FreeBoard> getList();
 	
@@ -26,6 +27,9 @@ public interface FreeBoardDao {
 	public int updateHit(String id);
 	public String getSize(String commentCount);
 	public int updateCommentCount(String id);
+	
+	// 페이징 함수
+	public int getPage();
 }
 
 	

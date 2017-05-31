@@ -98,6 +98,22 @@ public class MyBatisFreeBoardDao implements FreeBoardDao{
 	    return FreeBoardDao.getList(id,page);
 	}
 
+	
+	//getpage
+	@Override
+	public int getPage() {
+		FreeBoardDao FreeBoardDao;
+		FreeBoardDao = sqlSession.getMapper(FreeBoardDao.class);
+	    return FreeBoardDao.getPage();
+	}
+
+
+	@Override
+	public List<FreeBoard> getList(int page) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 
 	

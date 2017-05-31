@@ -4,6 +4,11 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wiyn.web.dao.FreeBoardDao">
 
+	<select id ="getPage"  resultType="Integer">
+	
+		 select count(*) from FreeBoard; 
+	</select>
+
 	<select id="lastId" resultType="String">
 		SELECT MAX(CAST(id AS UNSIGNED)) id 
 		FROM FreeBoard
@@ -11,7 +16,9 @@
 
 <select resultType="com.wiyn.web.entity.FreeBoard" id="getList"> 
 
-		SELECT `FreeBoard`.`id`,
+ select*from FreeBoard  order by regDate desc limit ${(page-1) *10},10; 
+
+<!-- 		SELECT `FreeBoard`.`id`,
     `FreeBoard`.`title`,
     `FreeBoard`.`contentSrc`,
     `FreeBoard`.`content`,
@@ -20,7 +27,7 @@
     `FreeBoard`.`memberId`,
     `FreeBoard`.`commentCount`
    
-FROM `lsedb`.`FreeBoard` ORDER BY regDate DESC;
+FROM `lsedb`.`FreeBoard` ORDER BY regDate DESC; -->
 
 </select>
 

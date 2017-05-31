@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 import com.wiyn.web.dao.FreeBoardDao;
 import com.wiyn.web.dao.FreeCommentDao;
+import com.wiyn.web.dao.RequestBoardDao;
 import com.wiyn.web.dao.SmallCategoryDao;
 import com.wiyn.web.entity.FreeBoard;
 import com.wiyn.web.entity.FreeComment;
+import com.wiyn.web.entity.RequestBoard;
 import com.wiyn.web.entity.SmallCategory;
 
 @Controller
@@ -36,16 +38,25 @@ public class FreeBoardController {
 
 
 	@RequestMapping("freeboard")
-	public String request(Model model,String commentCount) {		
+	public String request(@RequestParam(value="p", defaultValue="1")Integer page,
+			Model model,String commentCount) {		
 		
-		List<FreeBoard> list = sqlSession.getMapper(FreeBoardDao.class).getList();
+	/*	List<FreeBoard> list = sqlSession.getMapper(FreeBoardDao.class).getList();
 		for (FreeBoard freeBoard : list) {
 			freeBoard.setFreeComment(sqlSession.getMapper(FreeCommentDao.class).getList(freeBoard.getId(), 2));
 			
-		}
+		}*/
 		
-		model.addAttribute("list", list);	
+
+		List<FreeBoard> pageList = sqlSession.getMapper(FreeBoardDao.class).getList(page);
+		int paging = sqlSession.getMapper(FreeBoardDao.class).getPage();
 		
+		model.addAttribute("pageList", pageList);
+		model.addAttribute("paging", paging);
+	/*	model.addAttribute("list", list);*/
+		
+		
+		System.out.println("www"+paging);
 		return "freeboard.freeboard";
 	}
 
