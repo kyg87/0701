@@ -32,11 +32,19 @@ public class RequestBoardController {
 	private SqlSession sqlSession;
 
 	@RequestMapping("requestboard")
-	public String request(Model model) {
+	public String request(@RequestParam(value="p", defaultValue="1")Integer page,
+			Model model) {
 
-		List<RequestBoard> list = sqlSession.getMapper(RequestBoardDao.class).getList();
+		
+		List<RequestBoard> list = sqlSession.getMapper(RequestBoardDao.class).getList(page);
+		int size = sqlSession.getMapper(RequestBoardDao.class).getSize();
+		
 		model.addAttribute("list", list);
+		model.addAttribute("size", size);
+		
+		System.out.println("www"+size);
 
+		
 		return "requestboard.requestboard";
 	}
 

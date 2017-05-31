@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
+
 import com.wiyn.web.dao.MemberDao;
 import com.wiyn.web.dao.RequestBoardDao;
 import com.wiyn.web.entity.Member;
@@ -15,8 +16,19 @@ public class MyBatisRequestBoardDao implements RequestBoardDao {
 	
 	@Autowired
 	private SqlSession sqlSession;
+	
+	
 
-
+	
+	
+	
+	
+	@Override
+	public int getSize() {
+		RequestBoardDao requestBoardDao;
+		requestBoardDao = sqlSession.getMapper(RequestBoardDao.class);
+	    return requestBoardDao.getSize();
+	}
 
 
 	@Override
@@ -56,5 +68,45 @@ public class MyBatisRequestBoardDao implements RequestBoardDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
+/*
+	@Override
+	public List<RequestBoard> getList(int page, String query) {
+		// TODO Auto-generated method stub
+		return null;
+	}*/
+
+	@Override
+	public RequestBoard getBoard(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public RequestBoard getPrev(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public RequestBoard getNext(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String lastId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public List<RequestBoard> getList(int page) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
 
 }
