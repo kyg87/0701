@@ -96,7 +96,7 @@ public class SiteBoardController {
 			@RequestParam(value="bigCategoryId")String bigCategoryId,
 			@RequestParam(value="smallCategoryId")String smallCategoryId,
 			Tag tag,
-			@RequestParam(value="tag", defaultValue = "")String name
+			@RequestParam(value="tag")String name
 			){
 					
 		System.out.println(title);
@@ -113,7 +113,7 @@ public class SiteBoardController {
 		siteBoard.setSmallCategoryId(smallCategoryId);
 		siteBoardDao.add(siteBoard);
 		
-		if(!name.isEmpty()){
+		if(name!=null){
 			
 			System.out.println("포문전태그네임"+name);
 			
@@ -185,10 +185,10 @@ public class SiteBoardController {
 			)
 	{
 
-		System.out.println("이케쿼리"+query);
+		/*System.out.println("이케쿼리"+query);*/
 	    List<SiteBoard> list	= sqlSession.getMapper(SiteBoardDao.class).getTagLoad(query);
 
-		System.out.println(list);
+		/*System.out.println(list);*/
 		
 		model.addAttribute("query", query);
 		model.addAttribute("list",list);
@@ -218,12 +218,14 @@ public class SiteBoardController {
 		for (BigCategory bigCategory : bcList) {
 			bigCategory.setSmallCategory(sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId()));
 		}
-
+		
+		
 		model.addAttribute("bcList", bcList);
         model.addAttribute("n", siteBoardDao.getBoard(id));
         model.addAttribute("b", siteBoardDao.getBName(id));
         model.addAttribute("s", siteBoardDao.getSName(id));
-        
+        model.addAttribute("t", siteBoardDao.getTName(id));
+      
         System.out.println(id);
         
         return "siteboard.site-edit";
@@ -232,19 +234,22 @@ public class SiteBoardController {
 	 @RequestMapping(value="edit", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
 		public String siteEdit(
 				SiteBoard siteBoard,
-				Model model,
-				String title, 
-				String content,
-				String url,
-				String bigCategoryId,
-				String smallCategoryId
+				@RequestParam(value="title")String title, 
+				@RequestParam(value="content")String content,
+				@RequestParam(value="url")String url,
+				@RequestParam(value="memberId")String memberId,
+				@RequestParam(value="bigCategoryId")String bigCategoryId,
+				@RequestParam(value="smallCategoryId")String smallCategoryId,
+				Tag tag,
+				@RequestParam(value="tag")String name,
+				Model model
 				){
 
-		 	model.addAttribute("n", siteBoard);		 
+		 	model.addAttribute("n", siteBoard);	
 		 	
-		 	System.out.println(title);
+		 	/*System.out.println(title);
 			System.out.println(url);
-			System.out.println(content);
+			System.out.println(content);*/
 		 	
 			siteBoard.setContent(content);
 			siteBoard.setTitle(title);
@@ -253,6 +258,32 @@ public class SiteBoardController {
 			siteBoard.setSmallCategoryId(smallCategoryId);
 			
 			
+			System.out.println("태크삭제할아이디"+siteBoard.getId());
+			
+			tagDao.delete(siteBoard.getId());
+			
+			if(name!=null){
+				
+				System.out.println("포문전태그네임"+name);
+				
+				
+				String[] tagName=(name.replace(" ", "")).split(",");
+				
+				System.out.println(name);
+				
+				
+				for(int i=0; i<tagName.length; i++){
+					
+					tag.setName(tagName[i]);
+					tag.setSiteBoardId(siteBoard.getId());
+					tagDao.add(tag);
+					
+					System.out.println("사이트보드아이디"+siteBoard.getId());
+					System.out.println("태그네임"+tagName[i]);
+					System.out.println("아이디"+tag.getId());
+				}
+			}
+
 			siteBoardDao.update(siteBoard);
 			
 			return "redirect:site-detail?c=" + siteBoard.getId();
@@ -275,8 +306,8 @@ public class SiteBoardController {
 				@RequestParam(value="memberId")String memberId
 				){
 		    System.out.println("타나여");
-			System.out.println(siteBoardId);
-			System.out.println(memberId);
+			System.out.println("좋아요누른사이트아이디"+siteBoardId);
+			System.out.println("좋아요누른멤버아이디"+memberId);
 
 			siteBoardLike.setSiteBoardId(siteBoardId);
 			siteBoardLike.setMemberId(memberId);
