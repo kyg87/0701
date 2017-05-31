@@ -45,18 +45,25 @@
 	</select>
 	
 		<select id="getListLike" resultType="com.wiyn.web.entity.SiteBoard">
-		select N.*, COUNT(C.siteBoardId) Good , COUNT(B.siteBoardId) countcomment
+		
+		select N.*, COUNT(C.siteBoardId) Good, count(B.siteBoardId) countcomment
 		FROM SiteBoard N 
-        inner join SiteComment B on B.siteBoardId=N.id
+		LEFT OUTER JOIN SiteBoardLike C ON C.siteBoardId= N.id 
+		left outer join SiteComment B ON B.siteBoardId=N.id
+		WHERE N.title like '%${query}%'
+		GROUP BY N.id, N.title, N.content, N.regDate, N.url, N.hit 
+		order by Good desc, regDate desc LIMIT ${(page-1)*10},10
+<!-- 		select N.*, COUNT(C.siteBoardId) Good
+		FROM SiteBoard N 
 		LEFT OUTER JOIN SiteBoardLike C ON C.siteBoardId= N.id WHERE N.title like '%${query}%'
 		GROUP BY N.id, N.title, N.content, N.regDate, N.url, N.hit 
-		order by Good desc LIMIT ${(page-1)*10},10
+		order by Good desc LIMIT ${(page-1)*10},10 -->
 	</select>
 	
 	<select id="getListComment" resultType="com.wiyn.web.entity.SiteBoard">
 	select S.*,COUNT(C.siteBoardId) countcomment
 	FROM SiteBoard S LEFT OUTER JOIN SiteComment C ON C.siteBoardId= S.id WHERE S.title like '%${query}%'
-	GROUP BY S.id, S.title, S.content, S.regDate, S.url, S.hit  order by countcomment DESC LIMIT ${(page-1)*10},10
+	GROUP BY S.id, S.title, S.content, S.regDate, S.url, S.hit  order by countcomment DESC, regDate desc LIMIT ${(page-1)*10},10
 	</select>
 
 	
