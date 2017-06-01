@@ -90,7 +90,9 @@
 		SET
 		`title` = #{title},
 		`content` = #{content},
-		`url` = #{url}
+		`url` = #{url},
+		bigCategoryId=#{bigCategoryId},
+		smallCategoryId=#{smallCategoryId}
 		WHERE `id` = #{id};
 	</update>
 	

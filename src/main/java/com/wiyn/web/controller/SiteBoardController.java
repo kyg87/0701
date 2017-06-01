@@ -237,19 +237,18 @@ public class SiteBoardController {
 				@RequestParam(value="title")String title, 
 				@RequestParam(value="content")String content,
 				@RequestParam(value="url")String url,
-				@RequestParam(value="memberId")String memberId,
-				@RequestParam(value="bigCategoryId")String bigCategoryId,
-				@RequestParam(value="smallCategoryId")String smallCategoryId,
+				@RequestParam(value="bigCategoryId", defaultValue="xx")String bigCategoryId,
+				@RequestParam(value="smallCategoryId", defaultValue="gg")String smallCategoryId,
 				Tag tag,
-				@RequestParam(value="tag")String name,
+				@RequestParam(value="tag", defaultValue="hh")String name,
 				Model model
 				){
 
 		 	model.addAttribute("n", siteBoard);	
 		 	
-		 	/*System.out.println(title);
-			System.out.println(url);
-			System.out.println(content);*/
+
+			System.out.println("대분류"+bigCategoryId);
+			System.out.println("소분류"+smallCategoryId);
 		 	
 			siteBoard.setContent(content);
 			siteBoard.setTitle(title);
@@ -296,7 +295,7 @@ public class SiteBoardController {
  
 		siteBoardDao.delete(id);
         
-        return "redirect:site-list";
+        return "redirect:siteboard";
      }
 		
 	 @RequestMapping(value="like", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")

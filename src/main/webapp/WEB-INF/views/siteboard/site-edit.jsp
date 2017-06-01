@@ -119,7 +119,7 @@ body {
 					<th>
 						<div class="input-field">
 							<select name="bigCategoryId" id="bigCategoryId">
-								<option id="default" value="" disabled selected>${b }</option>
+								<option name="xx" id="default" value="" disabled selected>${b }</option>
 								<c:forEach var="bc" items="${bcList }">
 									<option value="${bc.id }">${bc.name }</option>
 								</c:forEach>
@@ -176,7 +176,7 @@ body {
 						
 						<div class="input-field" id="scList">
 						<select name="smallCategoryId" id="smallCategoryId">
-							<option id="default" value="" disabled selected>${s }</option>
+							<option id="default" name="gg" value="" disabled selected>${s }</option>
 						</select>
 					</div> 
 					<script>
@@ -255,6 +255,12 @@ body {
 								   }	  
 								
 							});	
+							
+							$(document).ready(function(){
+								alert("aa");
+								var a=$('.chip').toArray();
+								alert(a);
+							});
 						</script>
 				</td>
 				</tr>
