@@ -5,11 +5,15 @@
 <c:set var="root" value="${pageContext.request.contextPath}" />
 <style>
 body{
-	background : rgba(250,250,250,0.95);
+	background-color:#F6F4F1;
+	/* background : rgba(236,236,236,0.95); */
 }
 
 #header nav{
-	background: rgba(250,250,250,0.95);
+	/* background : rgba(236,236,236,0.95); */
+	/* background: rgba(250,250,250,0.95);  */
+	/* background-color:#F6F4F1; */
+	background:#fff;
 	color: #616161 !important; 
 	border:1px solid #f2f2f2;
 }

@@ -208,7 +208,7 @@ public class SiteBoardController {
 	}*/
 	
 	@RequestMapping("site-edit")
-     public String siteEdit(String id, Model model){
+     public String siteEdit(@RequestParam("c") String id,Model model){
         
 		System.out.println("타닝");
 
@@ -237,53 +237,61 @@ public class SiteBoardController {
 				@RequestParam(value="title")String title, 
 				@RequestParam(value="content")String content,
 				@RequestParam(value="url")String url,
-				@RequestParam(value="bigCategoryId", defaultValue="xx")String bigCategoryId,
-				@RequestParam(value="smallCategoryId", defaultValue="gg")String smallCategoryId,
+				@RequestParam(value="bigCategoryId", defaultValue="aa")String bigCategoryId,
+				@RequestParam(value="aa")String tegoryId,
+				@RequestParam(value="smallCategoryId", defaultValue="bb")String smallCategoryId,
+				@RequestParam(value="bb")String oryId,
 				Tag tag,
-				@RequestParam(value="tag", defaultValue="hh")String name,
-				Model model
+				@RequestParam(value="tag", required=false)String name
 				){
 
-		 	model.addAttribute("n", siteBoard);	
+		 	/*model.addAttribute("n", siteBoard);	*/
+		 		if(bigCategoryId.equals("aa"))bigCategoryId = tegoryId;
+		 		if(smallCategoryId.equals("bb"))smallCategoryId = oryId;
+		 		
+		 		siteBoard.setContent(content);
+				siteBoard.setTitle(title);
+				siteBoard.setUrl(url);
+				
+				siteBoard.setBigCategoryId(bigCategoryId);
+				siteBoard.setSmallCategoryId(smallCategoryId);
+				
+				System.out.println("이게수정할사이트아이디"+siteBoard.getId());
+				
+				tagDao.delete(siteBoard.getId());
+				
+				if(name!=null){
+					
+					System.out.println("포문전태그네임"+name);
+					
+					
+					String[] tagName=(name.replace(" ", "")).split(",");
+					
+					System.out.println(name);
+					
+					
+					for(int i=0; i<tagName.length; i++){
+						
+						tag.setName(tagName[i]);
+						tag.setSiteBoardId(siteBoard.getId());
+						tagDao.add(tag);
+						
+						System.out.println("사이트보드아이디"+siteBoard.getId());
+						System.out.println("태그네임"+tagName);
+						System.out.println("아이디"+tag.getId());
+					}
+				}
+				
+				siteBoardDao.update(siteBoard);
 		 	
-
 			System.out.println("대분류"+bigCategoryId);
 			System.out.println("소분류"+smallCategoryId);
-		 	
-			siteBoard.setContent(content);
-			siteBoard.setTitle(title);
-			siteBoard.setUrl(url);
-			siteBoard.setBigCategoryId(bigCategoryId);
-			siteBoard.setSmallCategoryId(smallCategoryId);
-			
-			
+
 			System.out.println("태크삭제할아이디"+siteBoard.getId());
 			
-			tagDao.delete(siteBoard.getId());
 			
-			if(name!=null){
-				
-				System.out.println("포문전태그네임"+name);
-				
-				
-				String[] tagName=(name.replace(" ", "")).split(",");
-				
-				System.out.println(name);
-				
-				
-				for(int i=0; i<tagName.length; i++){
-					
-					tag.setName(tagName[i]);
-					tag.setSiteBoardId(siteBoard.getId());
-					tagDao.add(tag);
-					
-					System.out.println("사이트보드아이디"+siteBoard.getId());
-					System.out.println("태그네임"+tagName[i]);
-					System.out.println("아이디"+tag.getId());
-				}
-			}
 
-			siteBoardDao.update(siteBoard);
+			
 			
 			return "redirect:site-detail?c=" + siteBoard.getId();
 		}
@@ -295,7 +303,7 @@ public class SiteBoardController {
  
 		siteBoardDao.delete(id);
         
-        return "redirect:siteboard";
+        return "redirect:/main/index";
      }
 		
 	 @RequestMapping(value="like", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")

@@ -118,8 +118,9 @@ body {
 				<tr>
 					<th>
 						<div class="input-field">
+						<input type="hidden" value="${n.bigCategoryId }" name="aa"/>
 							<select name="bigCategoryId" id="bigCategoryId">
-								<option name="xx" id="default" value="" disabled selected>${b }</option>
+								<option id="default" value="" disabled selected>${b }</option>
 								<c:forEach var="bc" items="${bcList }">
 									<option value="${bc.id }">${bc.name }</option>
 								</c:forEach>
@@ -175,8 +176,9 @@ body {
 					<th>
 						
 						<div class="input-field" id="scList">
+						<input type="hidden" value="${n.smallCategoryId }" name="bb"/>
 						<select name="smallCategoryId" id="smallCategoryId">
-							<option id="default" name="gg" value="" disabled selected>${s }</option>
+							<option id="default"  value="" disabled selected>${s }</option>
 						</select>
 					</div> 
 					<script>
@@ -237,8 +239,9 @@ body {
 					<td colspan="4">
 						<div class="chips chips-placeholder">
 							<input class="tag" id="e385bafe-7ce5-436e-e3f3-12af51285ada" type="text"  placeholder="+Tag" />
+							
 							<c:forEach var="tag" items="${t }">
-								<div id="chip" class="chip">${tag }<i class='material-icons close'>close</i></div>
+								<div id="chip" class="chip" ><input type="hidden" name="tag" value="${tag }"/>${tag }<i class='material-icons close'>close</i></div>
 							</c:forEach>
 						</div>
 						<script>				
@@ -247,20 +250,13 @@ body {
 								   if(e.keyCode == 32){
 									   
 									   var value = $(this).val();
-									   
-									   /*  $("<div class='chip'>"+value+"<i class='material-icons close'>close</i></div>").appendTo('.chips');  */
+
 									   $("<div class='chip'><input type='hidden' name='tag' value='"+value+"'>"+value+"</input><i class='material-icons close'>close</i></div>").appendTo('.chips');
-									   /* alert(value); */
+
 									   $(this).val(null);
 								   }	  
 								
 							});	
-							
-							$(document).ready(function(){
-								alert("aa");
-								var a=$('.chip').toArray();
-								alert(a);
-							});
 						</script>
 				</td>
 				</tr>

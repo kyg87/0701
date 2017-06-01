@@ -218,15 +218,23 @@ td i{
 					</form>
 				</td>
 				<td colspan="2" >
-					<form class="form-end" action="site-list" method="post">
-						<button class="btn waves-effect waves-light" type="submit"
-							name="action">목록</button>
-					</form>		
+					<a class="back form-end" href="">
+					<button class="btn waves-effect waves-light list-btn" type="submit"
+					name="action">목록</button></a>							
+					<script>
+					$(document).ready(function(){
+														
+						$(".list-btn").on("click",function(){
+					
+							$('.back').prop('href', history.back());
+						});
+					});
+					</script>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2" >
-					<form  action="site-edit?c="${n.id} method="post">
+					<form  action="site-edit?c=${n.id}" method="post">
 						<input type="hidden" name="id" value=${n.id }>
 						<button class="btn waves-effect waves-light" type="submit"
 							name="action">수정</button>
@@ -245,7 +253,7 @@ td i{
 	<br>
 
 	<!-- <input type="hidden" name="siteBoardId" value="">  -->
-	<input type="hidden"	name="memberId" value="LSE@mb.com">
+	<input type="hidden"	name="memberId" value="${n.memberId }"/>
 	
 	
 	

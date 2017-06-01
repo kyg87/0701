@@ -7,6 +7,102 @@
 <style type="text/css">
 * {margin:0;padding:0;}
 #scroll {height:30px;}
+#main .table{
+	border-radius: 3px;
+	width:100%;
+	background:white;
+	/* background:rgb(250,250,250); */
+	/* border: 1px solid #e0e0e0; */
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+.card{
+	/* background:rgb(250,250,250); */
+	background:#fff;
+}
+
+.breadcrumb{
+	font-size: 12px;
+    font-weight: 500;
+    display: block;
+    text-transform: uppercase;
+    color: #4284f3;
+}
+
+.breadcrumb:last-child{
+	font-size: 12px;
+    font-weight: bold;
+    display: block;
+    text-transform: uppercase;
+    color: #4284f3;
+}
+
+.breadcrumb:before {
+    font-style: normal;
+    font-weight:bold;
+    speak: none;
+    text-align: center;
+    width: 1em;
+    display: inline-block;
+    font-size: 15px;
+    color: #bababa;
+} 
+
+.card {
+	padding: 15px;
+}
+
+.card .card-action{
+	border-top:none;
+	padding:0px;
+}
+
+.card .card-content{
+	padding:0px;
+}
+
+.card .card-img img{
+    padding-right: 20px;
+}
+
+.card.line{
+	display:flex;
+	justify-content:space-around;
+}
+
+.card .contents{
+	display:flex;
+	flex-direction:colum;
+}
+
+.contents .title{
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.contents .content{
+	font-size: 15px;
+}
+
+.card .top{
+	display:flex;
+	justify-content:space-between;
+}
+
+.card .category{
+	display:flex;
+	align-items: center;
+}
+
+.card .date{
+	font-size: 12px;
+	display:flex;
+	align-items: center;
+}
+
+.col{
+	padding:10px;
+}
+
 </style>
 <script type="text/javascript">
 function textScroll(scroll_el_id) {
@@ -90,7 +186,7 @@ textScroll.prototype.start = function() {
     
     
 
-      <table class="highlight">
+      <table class="highlight table">
         <thead>
           <tr>
               <th>번호</th>
@@ -145,14 +241,12 @@ textScroll.prototype.start = function() {
                             <a href="?p=${param.p+1 }&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}"><i
                             class="material-icons">chevron_right</i></a>
                             </c:if></li>
+                            <li>
+                            <a class="waves-effect waves-light btn sitego" href="">글쓰기</a>
+                            </li>
+                            
                 </ul>
 
-		
-		
-
-
-			
-			<a class="sitego" href="">(세은)사이트 글쓰기로 가는 것</a>
 			<input class="sitein" type="hidden" name="memberId" value=<security:authentication property="name"/>>
 			<script>
 			$(document).ready(function(){
@@ -187,7 +281,70 @@ textScroll.prototype.start = function() {
 			</script>			
 			
 	<!-- -------------------------------랜덤 페이지--------------------------------- -->
-	<table class="table">
+	
+	<div class="row">
+    <div class="col s12 m6">
+      <div class="card">
+        <div class="card-image">
+          <img src="images/sample-1.jpg">
+          <span class="card-title">Card Title</span>
+          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+        </div>
+        <div class="card-content">
+          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+	
+	
+	
+	
+<div class="col s12 m7">
+	<div class="card horizontal line">
+		<div class="card-image">
+			<a href="http://${random.url}"> <img
+				src="http://api.thumbalizr.com/?url=http://${random.url}&width=250" />
+			</a>
+		</div>
+
+		<div class="card-stacked contents">
+			<div class="top">
+				<span class="category"> <a href="#!"
+					class="breadcrumb big-category">${b }</a> <a href="#!"
+					class="breadcrumb small-category">${s }</a>
+				</span> <span class="date"> <i class="tiny material-icons">schedule</i>
+					<fmt:formatDate value="${random.regDate }"
+						pattern="yyyy-MM-dd HH:mm:ss" />
+				</span>
+			</div>
+			<div class="card-content">
+				<span class="title">${random.title }</span>
+				<p class="content">${random.content }</p>
+			</div>
+			<div class="card-action">
+				<c:forEach var="tag" items="${t }">
+					<div class="chip">${tag }</div>
+				</c:forEach>
+				<script>
+					$(function() {
+						$(".chip").on('click', function() {
+							var query = $(this).text();
+
+							$.post("site-list", {
+								"query" : query
+							}, function() {
+								location.replace("site-list?query=" + query);
+							});
+						});
+					});
+				</script>
+			</div>
+		</div>
+	</div>
+</div>
+
+<%-- <table class="table">
 		<thead>
 			<tr>
 				<td colspan="4">
@@ -235,7 +392,7 @@ textScroll.prototype.start = function() {
 				</td>			
 			</tr>
 			</tbody>
-			</table>
+			</table> --%>
 			
 			</main>
 			

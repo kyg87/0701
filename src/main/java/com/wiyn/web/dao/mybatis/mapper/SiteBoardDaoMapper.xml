@@ -91,13 +91,13 @@
 		`title` = #{title},
 		`content` = #{content},
 		`url` = #{url},
-		bigCategoryId=#{bigCategoryId},
-		smallCategoryId=#{smallCategoryId}
+		`bigCategoryId` = #{bigCategoryId },
+		`smallCategoryId` = #{smallCategoryId }
 		WHERE `id` = #{id};
 	</update>
 	
 	    
-        <select id="getPrev" resultType="com.wiyn.web.entity.SiteBoard" >
+    <select id="getPrev" resultType="com.wiyn.web.entity.SiteBoard" >
         SELECT * 
         FROM `lsedb`.`SiteBoard`
         WHERE CAST(id AS unsigned) &lt; CAST(#{id} AS unsigned) ORDER BY regDate DESC LIMIT 0, 1
