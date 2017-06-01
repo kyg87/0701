@@ -36,5 +36,7 @@ public interface SiteBoardDao {
 	List<Tag> getTName(String id);
 	
 	List<SiteBoard> getTagLoad(String query);
+	
+	public int updateCommentCount(String Id);
 
 }

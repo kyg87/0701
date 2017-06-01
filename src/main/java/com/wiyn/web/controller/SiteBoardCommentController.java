@@ -53,7 +53,7 @@ public class SiteBoardCommentController {
 
 		int result = siteCommentDao.add(siteComment);
 
-
+		siteBoardDao.updateCommentCount(siteBoardId);
 		return String.valueOf(result);
 
 	}

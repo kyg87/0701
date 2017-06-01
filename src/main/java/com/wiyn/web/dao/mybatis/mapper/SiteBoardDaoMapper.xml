@@ -39,33 +39,35 @@
 	</insert>
 
 	<select id="getList" resultType="com.wiyn.web.entity.SiteBoard">
-		select S.*,COUNT(C.siteBoardId) countcomment
-		FROM SiteBoard S LEFT OUTER JOIN SiteComment C ON C.siteBoardId= S.id
-		WHERE S.title like '%${query}%' and bigCategoryId like '%${bigCa}%' and smallCategoryId like '%${smallCa}%'  group by S.id order by regDate DESC LIMIT ${(page-1)*10},10 
+		select * FROM SiteBoard 
+		WHERE title like '%${query}%' and bigCategoryId
+		 like '%${bigCa}%' and smallCategoryId like '%${smallCa}%'  
+		 order by regDate DESC LIMIT ${(page-1)*10},10 
 	</select>
-	
 		<select id="getListLike" resultType="com.wiyn.web.entity.SiteBoard">
-		
-		select N.*, COUNT(C.siteBoardId) Good, count(B.siteBoardId) countcomment
+
+		select N.*, COUNT(C.siteBoardId) Good
 		FROM SiteBoard N 
 		LEFT OUTER JOIN SiteBoardLike C ON C.siteBoardId= N.id 
-		left outer join SiteComment B ON B.siteBoardId=N.id
 		WHERE N.title like '%${query}%' and bigCategoryId like '%${bigCa}%' and smallCategoryId like '%${smallCa}%'
 		GROUP BY N.id, N.title, N.content, N.regDate, N.url, N.hit 
 		order by Good desc, regDate desc LIMIT ${(page-1)*10},10
-<!-- 		select N.*, COUNT(C.siteBoardId) Good
+
+	</select>
+	<!-- 		select N.*, COUNT(C.siteBoardId) Good
 		FROM SiteBoard N 
 		LEFT OUTER JOIN SiteBoardLike C ON C.siteBoardId= N.id WHERE N.title like '%${query}%'
 		GROUP BY N.id, N.title, N.content, N.regDate, N.url, N.hit 
 		order by Good desc LIMIT ${(page-1)*10},10 -->
-	</select>
-	
 	<select id="getListComment" resultType="com.wiyn.web.entity.SiteBoard">
-	select S.*,COUNT(C.siteBoardId) countcomment
-	FROM SiteBoard S LEFT OUTER JOIN SiteComment C ON C.siteBoardId= S.id WHERE S.title like '%${query}%' and bigCategoryId like '%${bigCa}%' and smallCategoryId like '%${smallCa}%'
-	GROUP BY S.id, S.title, S.content, S.regDate, S.url, S.hit  order by countcomment DESC, regDate desc LIMIT ${(page-1)*10},10
+	select *
+	FROM SiteBoard WHERE title like '%${query}%' and 
+	bigCategoryId like '%${bigCa}%' and smallCategoryId like '%${smallCa}%'
+	order by countcomment DESC, regDate desc LIMIT ${(page-1)*10},10
 	</select>
-
+<!-- select S.*,COUNT(C.siteBoardId) countcomment
+	FROM SiteBoard S LEFT OUTER JOIN SiteComment C ON C.siteBoardId= S.id WHERE S.title like '%${query}%' and bigCategoryId like '%${bigCa}%' and smallCategoryId like '%${smallCa}%'
+	GROUP BY S.id, S.title, S.content, S.regDate, S.url, S.hit  order by countcomment DESC, regDate desc LIMIT ${(page-1)*10},10 -->
 	
 	<select id="lastId" resultType="String">
 		SELECT MAX(CAST(id AS UNSIGNED)) id
@@ -136,11 +138,6 @@
 		inner join SiteBoard on SiteBoard.Id = Tag.siteBoardId where Tag.siteBoardId=#{param1} -->
 	</select>
 	
-<!-- <select id="getListSpeed" resultType="com.wiyn.web.entity.SiteBoard" >	
-select * from SiteBoard where title like '%${query}%' and bigCategoryId like '%${bigCategoryId}%' and smallCategoryId like '%${smallCategoryId}%' 
-order by regDate desc LIMIT ${(page-1)*10},10
-</select>	
- -->
  
  	<select id="getRandom" resultType="com.wiyn.web.entity.SiteBoard">
  		select * from SiteBoard order by rand() limit 1
@@ -149,7 +146,9 @@ order by regDate desc LIMIT ${(page-1)*10},10
  	<update id="updateHit">
 	UPDATE `lsedb`.`SiteBoard` SET hit=hit+1 WHERE `id`=#{id};
 </update>
-
+<update id="updateCommentCount">
+	UPDATE `lsedb`.`SiteBoard` SET `countcomment`=(SELECT COUNT(*) FROM SiteComment Where `siteBoardId`=#{id}) WHERE `id`=#{id};
+</update>
 
 	<select id="getTagLoad" resultType="com.wiyn.web.entity.SiteBoard">
 		select * from SiteBoard inner join Tag on Tag.siteBoardId=SiteBoard.id where Tag.name=#{tag}
