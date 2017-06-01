@@ -11,9 +11,9 @@
 	
 	$(function() {
 		//전체선택 체크박스 클릭
-		$("#allCheck").click(function() {
+		$("#ListCheck").click(function() {
 			//만약 전체 선택 체크박스가 체크된상태일경우
-			if ($("#allCheck").prop("checked")) {
+			if ($("#ListCheck").prop("checked")) {
 				//해당화면에 전체 checkbox들을 체크해준다
 				$("input[type=checkbox]").prop("checked", true);
 				// 전체선택 체크박스가 해제된 경우
@@ -24,10 +24,62 @@
 		})
 	})
 
+	$(function(){
+		$("#CommentCheck").click(function() {
+			//만약 전체 선택 체크박스가 체크된상태일경우
+			if ($("#CommentCheck").prop("checked")) {
+				//해당화면에 전체 checkbox들을 체크해준다
+				$("input[type=checkbox]").prop("checked", true);
+				// 전체선택 체크박스가 해제된 경우
+			} else {
+				//해당화면에 모든 checkbox들의 체크를해제시킨다.
+				$("input[type=checkbox]").prop("checked", false);
+			}
+		})
+	})
+	$(function(){
+		$("#LikeCheck").click(function() {
+			//만약 전체 선택 체크박스가 체크된상태일경우
+			if ($("#LikeCheck").prop("checked")) {
+				//해당화면에 전체 checkbox들을 체크해준다
+				$("input[type=checkbox]").prop("checked", true);
+				// 전체선택 체크박스가 해제된 경우
+			} else {
+				//해당화면에 모든 checkbox들의 체크를해제시킨다.
+				$("input[type=checkbox]").prop("checked", false);
+			}
+		})
+	})
 
+	$("#test${v}").click(function){
+		var dd = $(".cc").val();
+		
+		alert(dd);
+		
+		$("dd").click(function() {
+			  $('<input type="hidden" name="boardName" value="${v.boardName}"/>').appendTo(".bn"); 
+			 alert("gg");
+		});
+	})
+	function go_delete() {
+		if ($(":checkbox[name='check']:checked").length == 0) {
+			alert("삭제할 항목을 하나이상 체크해주세요.");
+			return;
+		}
+	}
+	function get_chked_values() {
+		var chked_val = "";
+		$(":checkbox[name='check']:checked").each(function(pi, po) {
+			chked_val += "," + po.value;
+		});
+		if (chked_val != "")
+			chked_val = chked_val.substring(1);
+		return chked_val;
+	}
+﻿
 </script>
 <main>
-	
+	<form action="del" method="post">
 		 M y P a g e
 	
 	<div class="row">
@@ -41,25 +93,32 @@
 		</div>
 		
 		<table class="bordered" id="test1">
+		
         <thead>
           <tr>
-				<th><input type="checkbox" id="allCheck"/><label for="allCheck"></label></th>
-				<th style="text-align: center">게시글</th>
-				<th style="text-align: center">작성시간</th>
-				
+          
+				<th><input type="checkbox" id="ListCheck"/><label for="ListCheck"></label></th>
+				<th style="text-align: center">게시글	</th>
+				<th style="text-align: center">작성시간</th>			
 				<th style="text-align: center">게시판종류</th>
+	
 				
 		</tr>
         </thead>
      	
+
+
         <tbody>
-        <c:forEach var="v" items="${list}">
+       
+    
+         <c:forEach var="v" items="${list}">
           <tr>
-            <td><input type="checkbox" id="test${i}"/><label for="test${i}"></label></td>
+   				
+            <td><input type="checkbox" id="test${v }" class="cc" value="${v.id }" name="check"/><label for="test${v}"></label></td>
             <td style="text-align: center"><a href="../${v.boardName}board/${v.boardName}-detail?c=${v.id}">${v.title}</a></td>
             <td style="text-align: center"><fmt:formatDate value="${v.regDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
           
-            <td style="text-align: center">${v.boardName}</td>
+            <td class="bn" style="text-align: center" ><input type ="hidden" name="boardName" value="${v.boardName}"/>${v.boardName}</td>
           </tr>
         </c:forEach>
         
@@ -69,7 +128,7 @@
       	<table class="bordered" id="test2">
         <thead>
           <tr>
-          		<th><input type="checkbox" id="allCheck"/><label for="allCheck"></label></th>
+          		<th><input type="checkbox" id="CommentCheck"/><label for="CommentCheck"></label></th>
               <th style="text-align: center">댓글</th>
               <th style="text-align: center">작성시간</th>
              
@@ -81,7 +140,7 @@
           <tbody>
         <c:forEach var="v" items="${list2}">
           <tr>
-            <td><input type="checkbox" id="test${i}"/><label for="test${i}"></label></td>
+            <td><input type="checkbox" id="test${v}"/><label for="test${v}"></label></td>
             <td style="text-align: center"><a href="../${v.boardName}board/${v.boardName}-detail?c=${v.id}">${v.content }</a></td>
             <td style="text-align: center"><fmt:formatDate value="${v.regDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
            
@@ -94,9 +153,10 @@
        	<table class="bordered" id="test3">
         <thead>
           <tr>
-          		<th><input type="checkbox" id="allCheck"/><label for="allCheck"></label></th>
+          		<th><input type="checkbox" id="LikeCheck"/><label for="LikeCheck"></label></th>
               <th style="text-align: center">게시글</th>
-              <th style="text-align: center">작성시간</th>
+              <th style="text-align: center">작성시간
+              </th>
              
           </tr>
         </thead>
@@ -104,7 +164,7 @@
           <tbody>
         <c:forEach var="v" items="${list3}">
           <tr>
-            <td><input type="checkbox" id="test${i}"/><label for="test${i}"></label></td>
+            <td><input type="checkbox" id="test${v}"/><label for="test${v}"></label></td>
             <td style="text-align: center"><a href="../siteboard/site-detail?c=${v.siteBoardId}">${v.title }</a></td>
             <td style="text-align: center"><fmt:formatDate value="${v.regDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
            
@@ -115,7 +175,14 @@
       </table>
         <div id="btn1" style="float: right; margin-top:10px;">
         
-      	<a class="waves-effect waves-light btn " href="#modal2">삭제</a>
+        					
+        					
+        					<input type="hidden" name="id" value ="${n.id }">
+        					
+        					
+        					
+							 <button class="btn waves-effect waves-light" type="submit" name="action" onclick="go_delete();">삭제</button>
+      <!-- 	<a class="waves-effect waves-light btn " href="#modal2">삭제</a> -->
       	<div id="modal2" class="modal">
 							<div class="modal-content">
 								
@@ -126,15 +193,17 @@
 								<a href="#!"
 									class="modal-action modal-close waves-effect waves-green btn-flat blue-text text-darken-2">취소</a>
 									
-								<a href="#!"
+								<a href=""
 									class="modal-action modal-close waves-effect waves-green btn-flat blue-text text-darken-2">삭제</a>
-								
+								 
+							
 							</div>
 						</div>
       	
       
       </div><br>
      </div>
+     </form>
       
     <ul class="pagination">
     <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
