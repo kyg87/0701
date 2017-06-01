@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="com.google.gson.*"%>
+<%@page import="com.wiyn.web.entity.SmallCategory"%>
 <style>
 aside{
 	background : rgba(250,250,250,0.95);
@@ -21,7 +23,6 @@ display: block;
 
 
 <aside id="left-sidebar-nav">
-
 	<ul id="nav-mobile" class="side-nav fixed"
 		style="overflow: auto; transform: translateX(0%);">
 		<label>Search</label>
@@ -45,26 +46,15 @@ display: block;
 		
 		<form>
 			<div class="input-field">
-				<select class="browser-default" name="bigCa" id="bigCategoryIdaside" required>
+				<select name="bigCa" id="bigCategoryIdaside" required>
 					<option id="default" value="" disabled selected>대분류를 선택하세요</option>
-					<c:forEach var="bct" items="${bcbList }">
-						<option value="${bct.id }">${bct.name }</option>
+					<c:forEach var="bcb" items="${bcbList }">
+						<option value="${bcb.id }">${bcb.name }</option>
 					</c:forEach>
 				</select>
 			</div>
-			<br/>
-				<div class="input-field" id="scaList">
-					<select class="browser-default" name="smallCa" id="smallCategoryIdaside" required>
-						<option id="default" value="" disabled selected>소분류를
-							선택하세요</option>
-					</select>
-				</div>
-				<button class="btn waves-effect waves-light right" type="search">
-					<i class="material-icons">search</i>
-				</button>	
-		</form>
-	</ul>
-	<script>
+			
+				<script>
 					
 						$(function() {
 				               $("#bigCategoryIdaside").on('change', function() {
@@ -105,9 +95,14 @@ display: block;
 				                     });
 				            });
 						</script>
-
-
-	<script>
+			<br/>
+				<div class="input-field" id="scaList">
+					<select name="smallCa" id="smallCategoryIdaside" required>
+						<option id="default" value="" disabled selected>소분류를
+							선택하세요</option>
+					</select>
+				</div>
+					<script>
 						$(function() {
 							$("#smallCategoryIdaside").on('change', function() {
 
@@ -121,7 +116,25 @@ display: block;
 
 							});
 						});
+										
 </script>
+				
+				<button class="btn waves-effect waves-light right" type="search">
+					<i class="material-icons">search</i>
+				</button>	
+		</form>
+	</ul>
+
+<script type="text/javascript">
+	
+		$(document).ready(function() {
+	    	$('select').material_select();
+	  	});
+	
+
+	</script>
+
+
 </aside>
 
 
