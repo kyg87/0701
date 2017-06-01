@@ -15,5 +15,6 @@ public interface NoticeBoardDao {
 	int update(NoticeBoard noticeBoard);
 	int delete(String id);
 	int updateViewCnt(String id);
+	int count();
 	
 }

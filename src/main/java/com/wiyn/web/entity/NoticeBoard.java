@@ -11,6 +11,14 @@ public class NoticeBoard {
 	private int hit;
 	private Date regDate;
 	private String memberId;
+	private int page;
+	
+	public int getPage() {
+		return page;
+	}
+	public void setPage(int page) {
+		this.page = page;
+	}
 	public String getId() {
 		return id;
 	}

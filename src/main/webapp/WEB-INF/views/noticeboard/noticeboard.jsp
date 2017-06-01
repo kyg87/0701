@@ -15,7 +15,9 @@
 		</tr>
 	</thead>
 	<tbody>
-		<c:forEach var="mem" items="${list}">
+		
+		<c:forEach var="mem" begin="${(page*10)-10 }" end="${page*10-1 }" items="${list}">
+		
 			<tr>
 
 				<td>${mem.id}</td>
@@ -34,15 +36,24 @@
 
 <div>
 	<ul class="pagination">
-		<li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-		<li class="active"><a href="#!">1</a></li>
-		<li class="waves-effect"><a href="#!">2</a></li>
+				
+		<c:forEach var="p_cnt" begin="1" end="${cnt }">
+			<li class="waves-effect" id="${p_cnt }"><a href="noticeboard?p=${p_cnt }">${p_cnt }</a></li>
+		</c:forEach>
+		
+		
+		
+		<!-- <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
 		<li class="waves-effect"><a href="#!">3</a></li>
 		<li class="waves-effect"><a href="#!">4</a></li>
 		<li class="waves-effect"><a href="#!">5</a></li>
-		<li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+		<li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li> -->
 	</ul>
 </div>
+
+<script>
+				
+</script>
 
 </main>
 

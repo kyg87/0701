@@ -47,12 +47,23 @@ public class NoticeBoardController {
 	private ServletContext context;
 	
 	@RequestMapping("noticeboard")
-	public String site(Model model){
+	public String site(Model model,
+			@RequestParam(value="p", defaultValue="1")Integer page){
 		
 		List<NoticeBoard> list = sqlSession.getMapper(NoticeBoardDao.class).getList();
-		model.addAttribute("list", list);
+		int cnt = sqlSession.getMapper(NoticeBoardDao.class).count();
 		
-		return "noticeboard.noticeboard";		
+		model.addAttribute("list", list);
+		model.addAttribute("page", page);
+		
+		if(cnt % 10 == 0)
+			model.addAttribute("cnt", cnt/10);
+		else
+			model.addAttribute("cnt", (cnt/10)+1);
+		
+		System.out.println(page);
+		
+		return "noticeboard.noticeboard";
 	}
 	
 	@RequestMapping("notice-reg")
@@ -85,60 +96,63 @@ public class NoticeBoardController {
 	public String sited(
 			NoticeBoard noticeBoard,
 			NoticeFile noticeFile,
-			@RequestParam(value="file") MultipartFile file,
+			@RequestParam(value="file", defaultValue="null") MultipartFile file,
 			@RequestParam(value="title")String title, 
 			@RequestParam(value="content")String content,
 			@RequestParam(value="memberId")String memberId,
 			@RequestParam(value="contentSrc")String contentSrc
 			)throws IOException{
 		
-		String path = context.getRealPath("/resource/upload");
-		
-		/*String path = "WiynPrj\\resources\\upload";*/
-		
-		File d = new File(path);
-		if(!d.exists())//경로가 존재하지 않는다면
-			d.mkdir();
-	
-		String originalFilename = file.getOriginalFilename(); // fileName.jpg
-	    String onlyFileName = originalFilename.substring(0, originalFilename.indexOf(".")); // fileName
-	    String extension = originalFilename.substring(originalFilename.indexOf(".")); // .jpg
-		
-	    String rename = onlyFileName + "_" + getCurrentDayTime() + extension; // fileName_20150721-14-07-50.jpg
-	    String fullPath = path + "\\" + rename;
-	    
-	    if (!file.isEmpty()) {
-	        try {
-	            byte[] bytes = file.getBytes();
-	            BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(fullPath)));
-	            stream.write(bytes);
-	            stream.close();
-	            //model.addAttribute("resultMsg", "파일을 업로드 성공!");
-	            System.out.println("업로드 성공");
-	        } catch (Exception e) {
-	            //model.addAttribute("resultMsg", "파일을 업로드하는 데에 실패했습니다.");
-	        	System.out.println("업로드 실패");
-	        }
-	    } else {
-	        //model.addAttribute("resultMsg", "업로드할 파일을 선택해주시기 바랍니다.");
-	    	System.out.println("업로드 파일 x");
-	    }
-	    
-	    fullPath = "\\WiynPrj\\resource\\upload\\";
-	    System.out.println(fullPath);
-						
 		noticeBoard.setTitle(title);
 		noticeBoard.setContent(content);
 		noticeBoard.setMemberId(memberId);
 		noticeBoard.setContentSrc(contentSrc);
 		
-		noticeBoardDao.add(noticeBoard);
+		noticeBoardDao.add(noticeBoard);		
 		
-		noticeFile.setName(rename);
-		noticeFile.setNoticeBoardId(noticeBoard.getId());
-		noticeFile.setSrc(fullPath);
+		if(!file.isEmpty()){
+			String path = context.getRealPath("/resource/upload");
+			
+			/*String path = "WiynPrj\\resources\\upload";*/
+			
+			File d = new File(path);
+			if(!d.exists())//경로가 존재하지 않는다면
+				d.mkdir();
 		
-		noticeBoardFileDao.add(noticeFile);
+			String originalFilename = file.getOriginalFilename(); // fileName.jpg
+		    String onlyFileName = originalFilename.substring(0, originalFilename.indexOf(".")); // fileName
+		    String extension = originalFilename.substring(originalFilename.indexOf(".")); // .jpg
+			
+		    String rename = onlyFileName + "_" + getCurrentDayTime() + extension; // fileName_20150721-14-07-50.jpg
+		    String fullPath = path + "\\" + rename;
+		    
+		    if (!file.isEmpty()) {
+		        try {
+		            byte[] bytes = file.getBytes();
+		            BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(fullPath)));
+		            stream.write(bytes);
+		            stream.close();
+		            //model.addAttribute("resultMsg", "파일을 업로드 성공!");
+		            System.out.println("업로드 성공");
+		        } catch (Exception e) {
+		            //model.addAttribute("resultMsg", "파일을 업로드하는 데에 실패했습니다.");
+		        	System.out.println("업로드 실패");
+		        }
+		    } else {
+		        //model.addAttribute("resultMsg", "업로드할 파일을 선택해주시기 바랍니다.");
+		    	System.out.println("업로드 파일 x");
+		    }
+		    
+		    fullPath = "\\WiynPrj\\resource\\upload\\";
+		    
+		    noticeFile.setName(rename);
+			noticeFile.setNoticeBoardId(noticeBoard.getId());
+			noticeFile.setSrc(fullPath);
+			
+			noticeBoardFileDao.add(noticeFile);
+		    
+		    System.out.println(fullPath);
+		}
 		
 		return "redirect:notice-detail?c=" + noticeBoard.getId();
 		
@@ -177,44 +191,11 @@ public class NoticeBoardController {
 	public String updateNotice(
 			NoticeBoard noticeBoard,
 			NoticeFile noticeFile,
-			@RequestParam(value="file") MultipartFile file,
+			@RequestParam(value="file", defaultValue="null") MultipartFile file,
 			@RequestParam(value="title")String title, 
 			@RequestParam(value="content")String content,
 			@RequestParam(value="contentSrc")String contentSrc,
 			@RequestParam(value="id")String id)throws IOException{
-		
-		String path = context.getRealPath("/resource/upload");
-		
-		File d = new File(path);
-		if(!d.exists())//경로가 존재하지 않는다면
-			d.mkdir();
-	
-		String originalFilename = file.getOriginalFilename(); // fileName.jpg
-	    String onlyFileName = originalFilename.substring(0, originalFilename.indexOf(".")); // fileName
-	    String extension = originalFilename.substring(originalFilename.indexOf(".")); // .jpg
-		
-	    String rename = onlyFileName + "_" + getCurrentDayTime() + extension; // fileName_20150721-14-07-50.jpg
-	    String fullPath = path + "\\" + rename;
-	    
-	    if (!file.isEmpty()) {
-	        try {
-	            byte[] bytes = file.getBytes();
-	            BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(fullPath)));
-	            stream.write(bytes);
-	            stream.close();
-	            //model.addAttribute("resultMsg", "파일을 업로드 성공!");
-	            System.out.println("업로드 성공");
-	        } catch (Exception e) {
-	            //model.addAttribute("resultMsg", "파일을 업로드하는 데에 실패했습니다.");
-	        	System.out.println("업로드 실패");
-	        }
-	    } else {
-	        //model.addAttribute("resultMsg", "업로드할 파일을 선택해주시기 바랍니다.");
-	    	System.out.println("업로드 파일 x");
-	    }
-	    
-	    fullPath = "\\WiynPrj\\resource\\upload\\";
-	    System.out.println(fullPath);
 		
 		noticeBoard.setTitle(title);
 		noticeBoard.setContent(content);
@@ -222,8 +203,44 @@ public class NoticeBoardController {
 		
 		noticeBoardDao.update(noticeBoard);
 		
-		noticeFile.setName(rename);
-		noticeBoardFileDao.update(noticeFile);
+		if(!file.isEmpty()){
+			String path = context.getRealPath("/resource/upload");
+			
+			File d = new File(path);
+			if(!d.exists())//경로가 존재하지 않는다면
+				d.mkdir();
+		
+			String originalFilename = file.getOriginalFilename(); // fileName.jpg
+		    String onlyFileName = originalFilename.substring(0, originalFilename.indexOf(".")); // fileName
+		    String extension = originalFilename.substring(originalFilename.indexOf(".")); // .jpg
+			
+		    String rename = onlyFileName + "_" + getCurrentDayTime() + extension; // fileName_20150721-14-07-50.jpg
+		    String fullPath = path + "\\" + rename;
+		    
+		    if (!file.isEmpty()) {
+		        try {
+		            byte[] bytes = file.getBytes();
+		            BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(fullPath)));
+		            stream.write(bytes);
+		            stream.close();
+		            //model.addAttribute("resultMsg", "파일을 업로드 성공!");
+		            System.out.println("업로드 성공");
+		        } catch (Exception e) {
+		            //model.addAttribute("resultMsg", "파일을 업로드하는 데에 실패했습니다.");
+		        	System.out.println("업로드 실패");
+		        }
+		    } else {
+		        //model.addAttribute("resultMsg", "업로드할 파일을 선택해주시기 바랍니다.");
+		    	System.out.println("업로드 파일 x");
+		    }
+		    
+		    fullPath = "\\WiynPrj\\resource\\upload\\";
+		    System.out.println(fullPath);
+		    
+		    noticeFile.setName(rename);
+		    
+		    noticeBoardFileDao.update(noticeFile);
+		}
 		
 		return "redirect:notice-detail?c=" + id;
 	}

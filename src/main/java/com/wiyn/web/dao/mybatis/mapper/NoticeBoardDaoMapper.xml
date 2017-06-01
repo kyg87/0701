@@ -14,7 +14,12 @@ SELECT `NoticeBoard`.`id`,
     `NoticeBoard`.`regDate`,
     `NoticeBoard`.`memberId`
 FROM `lsedb`.`NoticeBoard`
+ORDER BY regDate DESC
 
+</select>
+
+<select id="count" resultType="Integer">
+	SELECT COUNT(*) FROM NoticeBoard
 </select>
 
 <select resultType="com.wiyn.web.entity.NoticeBoard" id="get"> 

@@ -81,7 +81,9 @@
 			        </thead>
 			        <tbody>
 			          <tr>
-			            <td id="thum"><img src=${file.src }${file.name } /></td>
+			            <c:if test="${file.src != null }">
+			            	<td id="thum"><img src=${file.src }${file.name } /></td>
+			            </c:if>
 			          </tr>
 			          <tr>
 			            <td id="url"> 주소 :  ${list.contentSrc }</td>

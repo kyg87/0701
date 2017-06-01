@@ -64,6 +64,13 @@ public class MyBatisNoticeBoardDao implements NoticeBoardDao {
 		return noticeBoardDao.updateViewCnt(id);
 	}
 
+	@Override
+	public int count() {
+		NoticeBoardDao noticeBoardDao;
+		noticeBoardDao = sqlSession.getMapper(NoticeBoardDao.class);
+		return noticeBoardDao.count();
+	}
+
 
 
 }
