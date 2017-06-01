@@ -267,14 +267,31 @@ var currentPage = ${page};
 						}
 
 					}
-			    	  $("#pagination").append($('<li class="waves-effect"><a><i class="material-icons">chevron_left</i></a></li>'));
+			    	
 			    	
 					 var lastPage = ${size/10+(1-(size/10%1))%1};
 					  
-			
+					 var last_block = Math.ceil(lastPage / 5);
+	
+					
+			        //현재 블럭 구하기 
+			        var n_block = Math.ceil(currentPage / 5);
+
+			        //페이징의 시작페이지와 끝페이지 구하기
+			        var s_page = (n_block - 1) * 5 + 1; // 현재블럭의 시작 페이지
+			        var e_page = n_block * 5; // 현재블럭의 끝 페이지
+				
+				
+
+					 if(n_block != 1){
+						  	$("#pagination").append($('<li class="waves-effect"><a onclick="prevButton();"><i class="material-icons">chevron_left</i></a></li>'));
+						 }
 					 
-					 for (var i = 1; i <= lastPage; i++){
+					 for (var i = s_page; i <= e_page; i++){
+						 if (i > lastPage)    break;
 						 
+
+
 		
 						 if(page == i){
 							 $("#pagination").append($(' <li class="waves-effect active"><a class="page" onclick="page('+i+');" value='+i+'>'+i+'</a></li>'));
@@ -283,8 +300,12 @@ var currentPage = ${page};
 							 $("#pagination").append($(' <li class="waves-effect"><a class="page" onclick="page('+i+');" value='+i+'>'+i+'</a></li>'));
 						 }
 					 }
-					 
-					  $("#pagination").append($('<li class="waves-effect"><a><i class="material-icons">chevron_right</i></a></li>'));
+			        
+		
+					 if(n_block != last_block){
+						$("#pagination").append($('<li class="waves-effect"><a onclick="nextButton();"><i class="material-icons">chevron_right</i></a></li>')); 
+					 }
+					  
 				}
 		      
 		    
@@ -302,5 +323,21 @@ var currentPage = ${page};
 	  second = "" + now.getSeconds(); if (second.length == 1) { second = "0" + second; }
 	  return year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
 	}
+  
+  function prevButton(){
+	  var n_block = Math.ceil(currentPage / 5);
+
+      //페이징의 시작페이지와 끝페이지 구하기
+      var s_page = (n_block) * 5 ; // 현재블럭의 시작 페이지
+      page(s_page);
+  }
+  
+  function nextButton(){
+	  var n_block = Math.ceil(currentPage / 5);
+
+      //페이징의 시작페이지와 끝페이지 구하기
+      var s_page = (n_block) * 5 + 1; // 현재블럭의 시작 페이지
+      page(s_page);
+  }
 
 </script>
