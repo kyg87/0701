@@ -84,7 +84,7 @@ body {
 
 
 <main id = "main">
-	teste
+
 	<form id="update" action="notice-update" method="post" enctype="multipart/form-data">
 		
 			<div>공지사항 수정</div>

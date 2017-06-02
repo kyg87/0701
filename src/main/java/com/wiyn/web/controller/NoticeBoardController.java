@@ -275,8 +275,6 @@ public class NoticeBoardController {
 			@RequestParam(value="p")String page,
 			@RequestParam(value="id")String id)throws IOException{
 		
-		
-		
 		noticeBoard.setTitle(title);
 		noticeBoard.setContent(content);
 		noticeBoard.setContentSrc(contentSrc);
