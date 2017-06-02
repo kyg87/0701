@@ -4,13 +4,7 @@
 <%@ taglib prefix="tiles"  uri="http://tiles.apache.org/tags-tiles" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
-
 <style>
-
-/* body {
-	background-color: rgb(238, 238, 238);
-} */
-
 td{
 	padding-left: 5px;
 	padding-right: 5px;
@@ -26,7 +20,6 @@ td{
 .input-border{
 	border-bottom: 0px;
 }
-
 </style>
 
 <main id="main">
