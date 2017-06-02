@@ -11,12 +11,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
+import com.wiyn.web.dao.BigCategoryDao;
 import com.wiyn.web.dao.FreeCommentDao;
 import com.wiyn.web.dao.RequestBoardDao;
 import com.wiyn.web.dao.RequestCommentDao;
+import com.wiyn.web.dao.SmallCategoryDao;
+import com.wiyn.web.entity.BigCategory;
 import com.wiyn.web.entity.FreeBoard;
 import com.wiyn.web.entity.RequestBoard;
 import com.wiyn.web.entity.RequestComment;
+import com.wiyn.web.entity.SmallCategory;
 
 @Controller
 @RequestMapping("/requestboard/*")
@@ -31,9 +36,34 @@ public class RequestBoardController {
 	@Autowired
 	private SqlSession sqlSession;
 
+	
+	@Autowired
+	private BigCategoryDao bigCategoryDao;
+	
+	@Autowired
+	private SmallCategoryDao smallCategoryDao;
+	
+	@RequestMapping(value="getListBC", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
+	@ResponseBody
+	public String GetListWithBC(Model model,
+			@RequestParam(value="bigCa")String bigCategoryId){
+
+		System.out.println(bigCategoryId);
+		List<SmallCategory> bcaList = sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategoryId);
+		model.addAttribute("bcaList", bcaList);
+
+		
+		Gson gson = new Gson();
+		String json1 = gson.toJson(bcaList);
+		
+		return json1;
+	}
+	
 	@RequestMapping("requestboard")
 	public String request(@RequestParam(value="p", defaultValue="1")Integer page,
-			Model model) {
+			@RequestParam(value="bigCa",defaultValue="")String bigCategoryId,
+            @RequestParam(value="smallCa",defaultValue="")String smallCategoryId,
+            Model model) {
 
 		
 		List<RequestBoard> list = sqlSession.getMapper(RequestBoardDao.class).getList(page);
@@ -43,7 +73,15 @@ public class RequestBoardController {
 		model.addAttribute("size", size);
 		
 		System.out.println("www"+size);
+		
+		
+		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
+		
+		for (BigCategory bigCategory : bcbList) {
+			bigCategory.setSmallCategory(sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId()));
+		}
 
+		model.addAttribute("bcbList", bcbList);
 		
 		return "requestboard.requestboard";
 	}
@@ -77,7 +115,10 @@ public class RequestBoardController {
 
 
 	@RequestMapping("request-edit")
-	public String RequestEditGet(@RequestParam("c") String id, Model model) {
+	public String RequestEditGet(@RequestParam("c") String id,
+			@RequestParam(value="bigCa",defaultValue="")String bigCategoryId,
+            @RequestParam(value="smallCa",defaultValue="")String smallCategoryId,
+			Model model) {
 
 		System.out.println("fdfdf");
 		RequestBoard requestboard = new RequestBoard();
@@ -86,6 +127,15 @@ public class RequestBoardController {
 		
 
 		model.addAttribute("n", requestboard);
+		
+		
+		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
+		
+		for (BigCategory bigCategory : bcbList) {
+			bigCategory.setSmallCategory(sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId()));
+		}
+
+		model.addAttribute("bcbList", bcbList);
 
 		return "requestboard.request-edit";
 	}
@@ -129,7 +179,8 @@ public class RequestBoardController {
 	
 	@RequestMapping("request-detail")
 	public String RequestDetail(@RequestParam("c") String id, @RequestParam(value = "p", defaultValue = "1") Integer page,
-
+			@RequestParam(value="bigCa",defaultValue="")String bigCategoryId,
+            @RequestParam(value="smallCa",defaultValue="")String smallCategoryId,
 			Model model) {
 
 
@@ -143,6 +194,15 @@ public class RequestBoardController {
 		model.addAttribute("page", page);
 		model.addAttribute("size", size);
 		model.addAttribute("n", requestboard);
+		
+		
+		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
+		
+		for (BigCategory bigCategory : bcbList) {
+			bigCategory.setSmallCategory(sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId()));
+		}
+
+		model.addAttribute("bcbList", bcbList);
 
 		return "requestboard.request-detail";
 	}

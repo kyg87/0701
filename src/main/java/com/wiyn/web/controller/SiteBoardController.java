@@ -54,10 +54,26 @@ public class SiteBoardController {
 	@Autowired
 	private TagDao tagDao;
 	
+	@RequestMapping(value="getListBC", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
+	@ResponseBody
+	public String GetListBC(Model model,
+			@RequestParam(value="bigCa")String bigCategoryId){
 
+		System.out.println(bigCategoryId);
+		List<SmallCategory> bcaList = sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategoryId);
+		model.addAttribute("bcaList", bcaList);
+
+		
+		Gson gson = new Gson();
+		String json1 = gson.toJson(bcaList);
+		
+		return json1;
+	}
 	
 	@RequestMapping("site-reg")
-	public String site(Model model){
+	public String site(Model model,
+			@RequestParam(value="bigCa",defaultValue="")String bigcategoryId,
+            @RequestParam(value="smallCa",defaultValue="")String smallcategoryId){
 				
 		List<BigCategory> bcList = sqlSession.getMapper(BigCategoryDao.class).getList();
 		
@@ -66,6 +82,15 @@ public class SiteBoardController {
 		}
 
 		model.addAttribute("bcList", bcList);
+		
+		
+		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
+		
+		for (BigCategory bigcategory : bcbList) {
+			bigcategory.setSmallCategory(sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigcategory.getId()));
+		}
+
+		model.addAttribute("bcbList", bcbList);
 		
 		return "siteboard.site-reg";		
 	}
@@ -146,6 +171,8 @@ public class SiteBoardController {
 	public String siteDetail(
 			@RequestParam("c")String id, 
 			@RequestParam(value = "p", defaultValue = "1") Integer page,
+			@RequestParam(value="bigCa",defaultValue="")String bigCategoryId,
+            @RequestParam(value="smallCa",defaultValue="")String smallCategoryId,
 			Model model
 			)
 	{
@@ -174,6 +201,17 @@ public class SiteBoardController {
 		siteBoardDao.updateHit(id);
 		
 		System.out.println("태그네임"+tName);
+		
+		
+		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
+		
+		for (BigCategory bigCategory : bcbList) {
+			bigCategory.setSmallCategory(sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId()));
+		}
+
+		model.addAttribute("bcbList", bcbList);
+		
+		
 		return "siteboard.site-detail";
 	}
 	
@@ -208,7 +246,10 @@ public class SiteBoardController {
 	}*/
 	
 	@RequestMapping("site-edit")
-     public String siteEdit(@RequestParam("c") String id,Model model){
+     public String siteEdit(@RequestParam("c") String id,
+    		 @RequestParam(value="bigCa",defaultValue="")String bigCategoryId,
+             @RequestParam(value="smallCa",defaultValue="")String smallCategoryId,
+             Model model){
         
 		System.out.println("타닝");
 
@@ -227,6 +268,17 @@ public class SiteBoardController {
         model.addAttribute("t", siteBoardDao.getTName(id));
       
         System.out.println(id);
+        
+        
+		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
+		
+		for (BigCategory bigCategory : bcbList) {
+			bigCategory.setSmallCategory(sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId()));
+		}
+
+		model.addAttribute("bcbList", bcbList);
+        
+        
         
         return "siteboard.site-edit";
      }

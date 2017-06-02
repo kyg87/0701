@@ -21,12 +21,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.gson.Gson;
+import com.wiyn.web.dao.BigCategoryDao;
 import com.wiyn.web.dao.NoticeBoardDao;
 import com.wiyn.web.dao.NoticeBoardFileDao;
+import com.wiyn.web.dao.SmallCategoryDao;
+import com.wiyn.web.entity.BigCategory;
 import com.wiyn.web.entity.NoticeBoard;
 import com.wiyn.web.entity.NoticeFile;
+import com.wiyn.web.entity.SmallCategory;
 
 
 
@@ -46,8 +52,35 @@ public class NoticeBoardController {
 	@Autowired
 	private ServletContext context;
 	
+//	---------어사이드 리스트 불러오기-------
+	@Autowired
+	private BigCategoryDao bigCategoryDao;
+	
+	@Autowired
+	private SmallCategoryDao smallCategoryDao;
+	
+	@RequestMapping(value="getListBC", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
+	@ResponseBody
+	public String GetListWithBC(Model model,
+			@RequestParam(value="bigCa")String bigCategoryId){
+
+		System.out.println(bigCategoryId);
+		List<SmallCategory> bcaList = sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategoryId);
+		model.addAttribute("bcaList", bcaList);
+
+		
+		Gson gson = new Gson();
+		String json1 = gson.toJson(bcaList);
+		
+		return json1;
+	}
+	
+	
+	
 	@RequestMapping("noticeboard")
 	public String site(Model model,
+			@RequestParam(value="bigCa",defaultValue="")String bigCategoryId,
+            @RequestParam(value="smallCa",defaultValue="")String smallCategoryId,
 			@RequestParam(value="p", defaultValue="1")Integer page){
 		
 		List<NoticeBoard> list = sqlSession.getMapper(NoticeBoardDao.class).getList();
@@ -63,6 +96,15 @@ public class NoticeBoardController {
 		
 		System.out.println(page);
 		
+		
+		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
+		
+		for (BigCategory bigCategory : bcbList) {
+			bigCategory.setSmallCategory(sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId()));
+		}
+
+		model.addAttribute("bcbList", bcbList);
+		
 		return "noticeboard.noticeboard";
 	}
 	
@@ -76,6 +118,8 @@ public class NoticeBoardController {
 	
 	@RequestMapping("notice-detail")
 	public String noticeDetail(Model model,
+			@RequestParam(value="bigCa",defaultValue="")String bigCategoryId,
+            @RequestParam(value="smallCa",defaultValue="")String smallCategoryId,
 			@RequestParam(value="c")String id){
 		
 		NoticeBoard noticeBoard = new NoticeBoard();
@@ -88,6 +132,15 @@ public class NoticeBoardController {
 		model.addAttribute("file", noticeFile);
 		
 		noticeBoardDao.updateViewCnt(id);
+		
+		
+		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
+		
+		for (BigCategory bigCategory : bcbList) {
+			bigCategory.setSmallCategory(sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId()));
+		}
+
+		model.addAttribute("bcbList", bcbList);
 		
 		return "noticeboard.notice-detail";
 	}
@@ -166,12 +219,23 @@ public class NoticeBoardController {
 	
 	@RequestMapping("notice-modify-load")
 	public String modifyDetail(Model model,
+			@RequestParam(value="bigCa",defaultValue="")String bigCategoryId,
+            @RequestParam(value="smallCa",defaultValue="")String smallCategoryId,
 			@RequestParam(value="id")String id){
 		
 		NoticeBoard noticeBoard = new NoticeBoard();
 		noticeBoard = sqlSession.getMapper(NoticeBoardDao.class).get(id);
 		
 		model.addAttribute("list", noticeBoard);
+		
+		
+		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
+		
+		for (BigCategory bigCategory : bcbList) {
+			bigCategory.setSmallCategory(sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId()));
+		}
+
+		model.addAttribute("bcbList", bcbList);
 		
 		return "noticeboard.notice-edit";
 	}

@@ -26,7 +26,7 @@ display: block;
 	<ul id="nav-mobile" class="side-nav fixed"
 		style="overflow: auto; transform: translateX(0%);">
 		<label>Search</label>
-		<form>
+		<form action="http://localhost/WiynPrj/main/index" method="GET">
 			<nav>
 				<div class="nav-wrapper">
 					<div class="input-field">
@@ -34,6 +34,7 @@ display: block;
 							id="search" type="search" value="${param.q}" required> <label
 							class="label-icon" for="search"><i class="material-icons">search</i></label>
 						<i class="material-icons">close</i>
+						
 					</div>
 
 				</div>
@@ -44,7 +45,7 @@ display: block;
 		</form>
 		<label>Speed Search</label>
 		
-		<form>
+		<form action="http://localhost/WiynPrj/main/index" method="GET">
 			<div class="input-field">
 				<select name="bigCa" id="bigCategoryIdaside" required>
 					<option id="default" value="" disabled selected>대분류를 선택하세요</option>
@@ -98,8 +99,7 @@ display: block;
 			<br/>
 				<div class="input-field" id="scaList">
 					<select name="smallCa" id="smallCategoryIdaside" required>
-						<option id="default" value="" disabled selected>소분류를
-							선택하세요</option>
+						<option id="default" value="" disabled selected>소분류를 선택하세요</option>
 					</select>
 				</div>
 					<script>
@@ -134,7 +134,10 @@ display: block;
 
 	</script>
 
+<script>
 
+
+</script>
 </aside>
 
 
