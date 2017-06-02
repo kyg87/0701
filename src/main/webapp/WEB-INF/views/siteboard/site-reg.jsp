@@ -13,8 +13,10 @@ td{
 }
 
 .table{
-	border:1px solid #e4e4e4;
-	border-radius: 3px;
+	border-radius: 2px;
+	width:100%;
+	background:white;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
 .input-border{
@@ -150,7 +152,6 @@ td{
 						<div>
 							<form>
 								<div>
-									<label for="comment">Comment:</label>
 									<textarea name="content" class="form-control" rows="15" id="content" required></textarea>
 								</div>
 							</form>
@@ -210,8 +211,6 @@ td{
 		</table>
 		<input type="hidden" name="memberId" value=<security:authentication property="name"/>	>
 	</form>
-
-
 
 	<!-- <div id="main">
 		<div>

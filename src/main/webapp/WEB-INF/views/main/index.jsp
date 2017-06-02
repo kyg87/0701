@@ -6,13 +6,34 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>	
 <style type="text/css">
 * {margin:0;padding:0;}
-#scroll {height:30px;}
+
+#scroll {
+	height:30px;
+    font-weight: 300;
+    background-color:white;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    border-radius:1.5px;
+    cursor: pointer;
+}
+
+.col.line{
+	padding:0px;
+	padding-top:10px;
+	background:none;
+}
+
+.tabs .tab a{
+color:rgb(69, 95, 140);
+}
+
+.tabs .tab a.active{
+color:rgb(69, 95, 140);
+}
+
 #main .table{
-	border-radius: 3px;
+	border-radius: 2px;
 	width:100%;
 	background:white;
-	/* background:rgb(250,250,250); */
-	/* border: 1px solid #e0e0e0; */
 	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 .card{
@@ -155,65 +176,56 @@ textScroll.prototype.start = function() {
 </script>
 
 
+<!-- li 엘리먼트들이 position:absolute 되므로 ul 엘리먼트에는 height 값이 있어야 합니다 --> 	
 
-<!-- li 엘리먼트들이 position:absolute 되므로 ul 엘리먼트에는 height 값이 있어야 합니다 --> 
+<main id="main">
+	<div>
+		<ul id="scroll">
+		<c:forEach var="m" items="${noticelist}">
+		    <li><a href="../noticeboard/notice-detail?c=${m.id}">${m.title}</a></li>
+		</c:forEach>    
+		</ul>
+	</div>
 
-					
-			<main id="main">
-			
-<ul id="scroll">
-<c:forEach var="m" items="${noticelist}">
-    <li><a href="../noticeboard/notice-detail?c=${m.id}">${m.title}</a></li>
-</c:forEach>    
-</ul>
+	<div class="col-xs-12 col-md-8">
+	
+		<div class="col s12 line">
+			<ul class="tabs">
+				<li class="tab col s3"><a href="#index">최신순</a></li>
+				<li class="tab col s3"> <a href="#index2">점수순</a></li>
+				<li class="tab col s3"> <a href="#index3">댓글순</a></li>
+			</ul>
+		</div>
 
-			
-			<div class="col-xs-12 col-md-8">
+		<table id="index" class="highlight table">
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>제목</th>
+					<th>작성자</th>
+					<th>조회수</th>
+					<th>작성날짜</th>
+				</tr>
+			</thead>
+	
+			<tbody>
+				<c:forEach var="n" items="${sitelist}">
+					<tr>
+						<td>${n.id}</td>
+						<td class="orange-text text-accent-3"><a
+							href="../siteboard/site-detail?c=${n.id}">${n.title}</a>[${n.countcomment }]</td>
+						<td>${n.memberId }</td>
+						<td>${n.hit }</td>
+						<td><fmt:formatDate value="${n.regDate}"
+								pattern="yyyy-MM-dd HH:mm:ss" /></td>
+	
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
 
-				<div class="col s12">
-					<ul class="tabs">
-												<!-- target="_self" -->
-						<li class="tab col s3"><a href="#index">최신순</a></li>
-						<li class="tab col s3"> <a href="#index2">점수순</a></li>
-						<li class="tab col s3"> <a href="#index3">댓글순</a></li>
-					</ul>
-				</div>
- 	
-<%--     <div id="test1" class="col s12 collection">
-                    <c:forEach var="n" items="${sitelist}">
-                    <a href="../siteboard/site-detail?c=${n.id}" class="collection-item">${n.title} [${n.countcomment }]</a>
-                    </c:forEach>
-    </div> --%>
-    
-    
 
-      <table id="index"class="highlight table">
-        <thead>
-          <tr>
-              <th>번호</th>
-              <th>제목</th>
-              <th>작성자</th>
-              <th>조회수</th>
-              <th>작성날짜</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <c:forEach var="n" items="${sitelist}">
-         	 <tr>    
-		            <td>${n.id}</td>
-		            <td class="orange-text text-accent-3"><a href="../siteboard/site-detail?c=${n.id}">${n.title}</a>[${n.countcomment }]</td>
-		            <td>${n.memberId }</td>
-		            <td>${n.hit }</td>
-		            <td><fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-					
-          		</tr>
-          	</c:forEach>	
-          </tbody>
-          </table>
-          
-          
-      <table id="index2"class="highlight table">
+	<table id="index2"class="highlight table">
         <thead>
           <tr>
               <th>번호</th>

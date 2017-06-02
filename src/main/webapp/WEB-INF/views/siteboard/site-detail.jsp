@@ -12,17 +12,16 @@
 .table{
 	border-radius: 3px;
 	width:100%;
-	background:rgb(250,250,250);
-	/* border: 1px solid #e0e0e0; */
+	background:#fff;
 	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
 .table .head{
-box-shadow:0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 1px 0 rgba(0, 0, 0, 0.12), 0 1px 1px -1px rgba(0, 0, 0, 0.2);
+	border-bottom:none;
 }
 
 .table .nav{
-	background:rgb(250,250,250); 
+	background:none;
 	box-shadow:none;
 }
 
@@ -43,11 +42,8 @@ box-shadow:0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 1px 0 rgba(0, 0, 0, 0.12), 0 1
 } 
 
 .table .category{
-	height: 30px;
-	box-sizing:content-box;
+
 }
-
-
 
 td{
 	padding-left: 5px;
@@ -119,6 +115,11 @@ td i{
     font-family: 'Abel', sans-serif;
 }
 
+.head td:first-child{
+	height: 15px;
+}
+
+
 </style>
 
 <main id="main">
@@ -130,8 +131,8 @@ td i{
 					<nav class="nav">
 						<div class="nav-wrapper">
 							<div class="col s12">
-								<a href="#!" class="breadcrumb big-category">${b }</a> 
-								<a href="#!" class="breadcrumb small-category">${s }</a>
+								<a href="#!" class="breadcrumb big-category">${b }</a> <a
+									href="#!" class="breadcrumb small-category">${s }</a>
 							</div>
 						</div>
 					</nav>
@@ -142,28 +143,32 @@ td i{
 				<td class="hidden">즐겨찾기</td>
 			</tr>
 			<tr class="reg-like">
-				<td class="detail-font" colspan="4" class="reg-date"><i class="tiny material-icons">schedule</i><fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+				<td class="detail-font" colspan="4" class="reg-date"><i
+					class="tiny material-icons">schedule</i>
+				<fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 			</tr>
 			<tr>
-				<td class="detail-font" colspan="4"><i class="tiny material-icons">perm_identity</i>${n.memberId }</td>
+				<td class="detail-font" colspan="4"><i
+					class="tiny material-icons">perm_identity</i>${n.memberId }</td>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td colspan="4">
-				</td>
+				<td colspan="4"></td>
 			</tr>
 			<tr>
 				<td colspan="4">
-				<a href="http://${n.url}">	
+					<a href="http://${n.url}"> 
 					<img src="http://api.thumbalizr.com/?url=http://${n.url}&width=250" />
-				</a>
-				<div><a href="http://${n.url}">http://${n.url}</a></div>
-				</td>	
+					</a>
+					<div>
+						<a href="http://${n.url}">http://${n.url}</a>
+					</div>
+				</td>
 				<script>
-				$(document).ready(function(){
-					$("a[href^='http://']").attr("target","_blank");
-				});
+					$(document).ready(function(){
+						$("a[href^='http://']").attr("target","_blank");
+					});
 				</script>
 			</tr>
 			<tr>
@@ -171,85 +176,65 @@ td i{
 			</tr>
 			<tr>
 				<td colspan="4">
-				<c:forEach var="tag" items="${t }">
+					<c:forEach var="tag" items="${t }">
 					<div id="chip" class="chip">${tag }</div>
-				</c:forEach>
-				<%-- <form action="site-list?c="+${tag } method="post">
-				<c:forEach var="tag" items="${t }">
-					<div id="chip" class="chip"><input type="hidden" value="${tag }"><button type="submit"
-							name="action">${tag }</button></div>
-				</c:forEach>
-				</form> --%>
-				<script>
-				$(function(){
-					$(".chip").on('click', function(){
-							var query = $(this).text();
-							
-							
-							$.post("site-list", {"query":query}, function(){
-								location.replace("site-list?query="+query);
-							}); 
-					});
-				});
-				
-				 /* $(document).ready(function(){
-					 $(".chip").on('click', function(){
-						 var x = $(this).text();
-			                $.post("tag-load",
-			                { 'Msg':'Post방식으로 전송'},
-			               
-			                 function(x){
-			                	alert(x);
-			                 });
-			            });
-			       }); */
-				</script>
-				</td>			
+					</c:forEach>
+					<script>
+						$(function(){
+							$(".chip").on('click', function(){
+								var query = $(this).text();
+								$.post("site-list", {"query":query}, function(){
+									location.replace("site-list?query="+query);
+								}); 
+							});
+						});
+					</script>
+				</td>
 			</tr>
 			<tr class="td-padding">
 				<td colspan="2">
 					<form action="like" method="post">
-						<button id="likebtn" class="waves-effect waves-light btn" type="submit"name="action">
-							<i id="icon-margin" class="material-icons left ">thumb_up</i>${l }</button>
-								 <input type="hidden" name="siteBoardId" value=${n.id }> 					
-		              			 <security:authorize access="isAuthenticated()">
-		    						<input type="hidden" name="memberId" value=<security:authentication property="name"/>>
-		              			 </security:authorize> 
+						<button id="likebtn" class="waves-effect waves-light btn" type="submit" name="action">
+							<i id="icon-margin" class="material-icons left ">thumb_up</i>
+							${l }
+						</button>
+						<input type="hidden" name="siteBoardId" value=${n.id }>
+						<security:authorize access="isAuthenticated()">
+							<input type="hidden" name="memberId" value=<security:authentication property="name"/>>
+						</security:authorize>
 					</form>
 				</td>
-				<td colspan="2" >
-					<a class="back form-end" href="">
-					<button class="btn waves-effect waves-light list-btn" type="submit"
-					name="action">목록</button></a>							
+				<td class="form-end"colspan="2">
+					<a class="back" href="">
+					<button class="btn waves-effect waves-light list-btn" type="submit" name="action">목록</button>
+					</a> 
 					<script>
-					$(document).ready(function(){
-														
-						$(".list-btn").on("click",function(){
-					
-							$('.back').prop('href', history.back());
+						$(document).ready(function(){									
+							$(".list-btn").on("click",function(){
+								$('.back').prop('href', history.back());
+							});
 						});
-					});
 					</script>
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" >
-					<form  action="site-edit?c=${n.id}" method="post">
+				<td colspan="2">
+					<form action="site-edit?c=${n.id}" method="post">
 						<input type="hidden" name="id" value=${n.id }>
 						<button class="btn waves-effect waves-light" type="submit"
 							name="action">수정</button>
 					</form>
 				</td>
-				<td colspan="2" >
-					<form  class="form-end"  action="site-delete" method="post">
+				<td colspan="2">
+					<form class="form-end" action="site-delete" method="post">
 						<input type="hidden" name="id" value=${n.id }>
 						<button class="btn waves-effect waves-light" type="submit"
 							name="action">삭제</button>
 					</form>
 				</td>
 			</tr>
-	</tbody>
-	</table>
+		</tbody>
+</table>
 	<br>
 
 	<!-- <input type="hidden" name="siteBoardId" value="">  -->
@@ -258,11 +243,10 @@ td i{
 	
 	
 	<!------------------------------------------------------------- 댓글 영역 ------------------------------------------------------------------------>
-		<div>
+		<%-- <div>
 			현재 페이지 : ${page} </br> 
 			전체 글 갯수 : ${size} </br>
-
-		</div>
+		</div> --%>
 
 
 		<div id="minibox">
