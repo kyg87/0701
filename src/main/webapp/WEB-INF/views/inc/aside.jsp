@@ -4,12 +4,6 @@
 <%@page import="com.google.gson.*"%>
 <%@page import="com.wiyn.web.entity.SmallCategory"%>
 <style>
-aside{
-	background : rgba(250,250,250,0.95);
-}
-#nav-mobile{
-background : rgb(250,250,250);
-}
 .input-field{
 display: block;
 }
