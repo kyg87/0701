@@ -85,14 +85,22 @@ public class NoticeBoardController {
 		
 		List<NoticeBoard> list = sqlSession.getMapper(NoticeBoardDao.class).getList();
 		int cnt = sqlSession.getMapper(NoticeBoardDao.class).count();
+		int listPerFive = (page-1)/5;
+		int checkLast = (listPerFive*5) + 5;
+		
+		if(cnt % 10 == 0)
+			cnt = cnt/10;
+		else
+			cnt = (cnt/10)+1;
+		
+		if(checkLast > cnt)
+			checkLast = cnt;
 		
 		model.addAttribute("list", list);
 		model.addAttribute("page", page);
-		
-		if(cnt % 10 == 0)
-			model.addAttribute("cnt", cnt/10);
-		else
-			model.addAttribute("cnt", (cnt/10)+1);
+		model.addAttribute("listPerFive", listPerFive);
+		model.addAttribute("checkLast", checkLast);
+		model.addAttribute("cnt", cnt);
 		
 		System.out.println(page);
 		
@@ -120,6 +128,7 @@ public class NoticeBoardController {
 	public String noticeDetail(Model model,
 			@RequestParam(value="bigCa",defaultValue="")String bigCategoryId,
             @RequestParam(value="smallCa",defaultValue="")String smallCategoryId,
+            @RequestParam(value="p")String page,
 			@RequestParam(value="c")String id){
 		
 		NoticeBoard noticeBoard = new NoticeBoard();
@@ -130,6 +139,7 @@ public class NoticeBoardController {
 		
 		model.addAttribute("list", noticeBoard);
 		model.addAttribute("file", noticeFile);
+		model.addAttribute("page", page);
 		
 		noticeBoardDao.updateViewCnt(id);
 		
@@ -221,12 +231,14 @@ public class NoticeBoardController {
 	public String modifyDetail(Model model,
 			@RequestParam(value="bigCa",defaultValue="")String bigCategoryId,
             @RequestParam(value="smallCa",defaultValue="")String smallCategoryId,
+            @RequestParam(value="p")String page,
 			@RequestParam(value="id")String id){
 		
 		NoticeBoard noticeBoard = new NoticeBoard();
 		noticeBoard = sqlSession.getMapper(NoticeBoardDao.class).get(id);
 		
 		model.addAttribute("list", noticeBoard);
+		model.addAttribute("page", page);
 		
 		
 		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
@@ -253,13 +265,17 @@ public class NoticeBoardController {
 	
 	@RequestMapping(value = "notice-update", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	public String updateNotice(
+			Model model,
 			NoticeBoard noticeBoard,
 			NoticeFile noticeFile,
 			@RequestParam(value="file", defaultValue="null") MultipartFile file,
 			@RequestParam(value="title")String title, 
 			@RequestParam(value="content")String content,
 			@RequestParam(value="contentSrc")String contentSrc,
+			@RequestParam(value="p")String page,
 			@RequestParam(value="id")String id)throws IOException{
+		
+		
 		
 		noticeBoard.setTitle(title);
 		noticeBoard.setContent(content);
@@ -305,6 +321,8 @@ public class NoticeBoardController {
 		    
 		    noticeBoardFileDao.update(noticeFile);
 		}
+		
+		model.addAttribute("p", page);
 		
 		return "redirect:notice-detail?c=" + id;
 	}

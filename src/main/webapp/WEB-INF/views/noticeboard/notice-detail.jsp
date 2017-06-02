@@ -109,9 +109,9 @@
 							<a id="btn" class="waves-effect waves-light btn"
 							href="#modal2" id="noticeArticleDel">삭제</a>							
 							<a id="btn" class="waves-effect waves-light btn"
-							href="notice-modify-load?id=${list.id}">수정</a>
+							href="notice-modify-load?id=${list.id}&p=${page}">수정</a>
 							<a class="waves-effect waves-light btn"
-							href="noticeboard">목록으로</a>
+							href="noticeboard?p=${page }">목록으로</a>
 			            </td>
 			          </tr>
 			        </tbody>
@@ -149,7 +149,7 @@
 
 		$("#ArticleDelCancel").on('click', function(){
 			
-			location.href='http:\/\/localhost\/WiynPrj\/noticeboard\/notice-detail?c='+${list.id};
+			location.href='http:\/\/localhost\/WiynPrj\/noticeboard\/notice-detail?c='+${list.id}+'&p='+${page};
 			
 		});
 			

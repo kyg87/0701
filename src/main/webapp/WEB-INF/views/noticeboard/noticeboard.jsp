@@ -21,7 +21,7 @@
 			<tr>
 
 				<td>${mem.id}</td>
-				<td><a href="notice-detail?c=${mem.id}">${mem.title}</a></td>
+				<td><a href="notice-detail?c=${mem.id}&p=${page}">${mem.title}</a></td>
 				<td>${mem.memberId }</td>
 				<td>${mem.hit }</td>
 				<td>${mem.regDate}</td>
@@ -34,26 +34,33 @@
 <a class="waves-effect waves-light btn card-panel blue lighten-2" 
 	href="/WiynPrj/noticeboard/notice-reg">글쓰기</a>
 
-<div>
+<div align="center">
 	<ul class="pagination">
+		
+		<c:if test="${((listPerFive-1)*5 + 5) > 1 }">
+			<li class="waves-effect"><a href="noticeboard?p=${(listPerFive-1)*5 + 5 }"><i class="material-icons">chevron_left</i></a></li>
+		</c:if>
+		
+		<c:forEach var="p_cnt" begin="${(listPerFive*5) + 1 }" end="${checkLast }" >
+			<c:choose>
+				<c:when test="${page eq p_cnt }">
+					<li class="waves-effect active" id="${p_cnt }"><a href="noticeboard?p=${p_cnt }">${p_cnt }</a></li>
+				</c:when>
 				
-		<c:forEach var="p_cnt" begin="1" end="${cnt }">
-			<li class="waves-effect" id="${p_cnt }"><a href="noticeboard?p=${p_cnt }">${p_cnt }</a></li>
+				<c:otherwise>
+					<li class="waves-effect" id="${p_cnt }"><a href="noticeboard?p=${p_cnt }">${p_cnt }</a></li>
+				</c:otherwise>
+			</c:choose>
+			
 		</c:forEach>
 		
+		<c:if test="${cnt > ((listPerFive+1)*5 + 1) }">
+			<li class="waves-effect"><a href="noticeboard?p=${(listPerFive+1)*5 + 1 }"><i class="material-icons">chevron_right</i></a></li>
+		</c:if>
 		
-		
-		<!-- <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-		<li class="waves-effect"><a href="#!">3</a></li>
-		<li class="waves-effect"><a href="#!">4</a></li>
-		<li class="waves-effect"><a href="#!">5</a></li>
-		<li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li> -->
 	</ul>
+	
 </div>
-
-<script>
-				
-</script>
 
 </main>
 

@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <!DOCTYPE html>
+
 <style>
 body {
 	background-color: rgb(238, 238, 238);
@@ -82,10 +83,10 @@ body {
 
 
 
-<body>
-
+<main id = "main">
+	teste
 	<form id="update" action="notice-update" method="post" enctype="multipart/form-data">
-		<div id="main">
+		
 			<div>공지사항 수정</div>
 			<table>
 				<thead>
@@ -142,7 +143,7 @@ body {
 					</tr>
 				</tbody>
 			</table>
-		</div>
+			<input type="hidden" name="p" value="${page }" />
 		
 	</form>
 
@@ -162,4 +163,4 @@ body {
 		$(".button-collapse").sideNav();
 	</script>
 
-</body>
+</main>
