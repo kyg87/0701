@@ -143,9 +143,9 @@ public class MainController {
             @RequestParam(value="bigCa",defaultValue="")String bigCategoryId,
             @RequestParam(value="smallCa",defaultValue="")String smallCategoryId,
             Model model) {
-        List<SiteBoard> sitelist = sqlSession.getMapper(SiteBoardDao.class).getList(page,query,bigCategoryId, smallCategoryId);
+//        List<SiteBoard> sitelist = sqlSession.getMapper(SiteBoardDao.class).getList(page,query,bigCategoryId, smallCategoryId);
         List<SiteBoard> sitelistlike = sqlSession.getMapper(SiteBoardDao.class).getListLike(page, query,bigCategoryId, smallCategoryId);
-        List<SiteBoard> sitelistcomment = sqlSession.getMapper(SiteBoardDao.class).getListComment(page, query,bigCategoryId, smallCategoryId);
+//        List<SiteBoard> sitelistcomment = sqlSession.getMapper(SiteBoardDao.class).getListComment(page, query,bigCategoryId, smallCategoryId);
         
 
         
@@ -163,9 +163,9 @@ public class MainController {
         model.addAttribute("noticelist", noticelist);
         
         /*-------사이트게시판 불러오기-------*/
-        model.addAttribute("sitelist", sitelist);
+//        model.addAttribute("sitelist", sitelist);
         model.addAttribute("sitelistlike", sitelistlike);
-        model.addAttribute("sitelistcomment", sitelistcomment);
+//        model.addAttribute("sitelistcomment", sitelistcomment);
         
         model.addAttribute("size", size);
         model.addAttribute("last", last);
@@ -210,8 +210,8 @@ public class MainController {
             @RequestParam(value="bigCa",defaultValue="")String bigCategoryId,
             @RequestParam(value="smallCa",defaultValue="")String smallCategoryId,
             Model model) {
-        List<SiteBoard> sitelist = sqlSession.getMapper(SiteBoardDao.class).getList(page,query,bigCategoryId, smallCategoryId);
-        List<SiteBoard> sitelistlike = sqlSession.getMapper(SiteBoardDao.class).getListLike(page, query,bigCategoryId, smallCategoryId);
+ //       List<SiteBoard> sitelist = sqlSession.getMapper(SiteBoardDao.class).getList(page,query,bigCategoryId, smallCategoryId);
+ //       List<SiteBoard> sitelistlike = sqlSession.getMapper(SiteBoardDao.class).getListLike(page, query,bigCategoryId, smallCategoryId);
         List<SiteBoard> sitelistcomment = sqlSession.getMapper(SiteBoardDao.class).getListComment(page, query,bigCategoryId, smallCategoryId);
         
 
@@ -230,8 +230,8 @@ public class MainController {
         model.addAttribute("noticelist", noticelist);
         
         /*-------사이트게시판 불러오기-------*/
-        model.addAttribute("sitelist", sitelist);
-        model.addAttribute("sitelistlike", sitelistlike);
+//        model.addAttribute("sitelist", sitelist);
+//        model.addAttribute("sitelistlike", sitelistlike);
         model.addAttribute("sitelistcomment", sitelistcomment);
         
         model.addAttribute("size", size);
