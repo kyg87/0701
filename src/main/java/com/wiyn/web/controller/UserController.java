@@ -59,34 +59,43 @@ public class UserController {
 	
 		return "user.mypage";
 	}
-	
+	/*@RequestMapping(value="/check_del", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	@ResponseBody
+	public void testCheck(@RequestParam(value="valueArrTest[]") List<String> valueArr){
+		System.out.println(valueArr);
+	}
+	*/
 	@RequestMapping(value = "del", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	
 	public String delList(Authentication auth,Model model,
-			@RequestParam(value="check")String id,
+		
 			SiteBoard siteBoard,AddBoard addBoard,
-			@RequestParam(value="boardName")String boardname
+			@RequestParam(value="boardName")String boardname,
+			@RequestParam(value="array")String send_array
 			){
 		
-		/*for(){*/
-		System.out.println(boardname);
+		System.out.println("삭제");
+		System.out.println(send_array);
+		
+		
+		
+		/*System.out.println(boardname);
 		String[] aa = boardname.split(",");
 		for(int i=0;i<aa.length;i++){
-		System.out.println(aa[i]);
+		
 		
 		if(aa[i].equals("free")){		
 			freeBoardDao.delete(id);
-			System.out.println("프리지워");
+			
 		}
 		else if(aa[i].equals("site")){
 			siteBoardDao.delete(id);
-			System.out.println("사이트지워");
+			
 		}
 		else{
 			requestBoardDao.delete(id);
-			System.out.println("요청지워");
 		}
-		}
+		}*/
 		return "redirect:mypage";
 	}
 

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>	
+
 <link href="/WiynPrj/resource/css/main.css" type="text/css"
 	rel="stylesheet" media="screen,projection" />
 <link href="/WiynPrj/resource/css/mypage.css" type="text/css"
@@ -13,8 +14,10 @@
 		//전체선택 체크박스 클릭
 		$("#ListCheck").click(function() {
 			//만약 전체 선택 체크박스가 체크된상태일경우
+			
 			if ($("#ListCheck").prop("checked")) {
 				//해당화면에 전체 checkbox들을 체크해준다
+				alert("전체선택");
 				$("input[type=checkbox]").prop("checked", true);
 				// 전체선택 체크박스가 해제된 경우
 			} else {
@@ -23,59 +26,53 @@
 			}
 		})
 	})
+	
+	/*  $(function(){
+		$(".aa").click(function(){
+	  		$('input:checkbox[name="check_del"]').each(function() {
 
-	$(function(){
-		$("#CommentCheck").click(function() {
-			//만약 전체 선택 체크박스가 체크된상태일경우
-			if ($("#CommentCheck").prop("checked")) {
-				//해당화면에 전체 checkbox들을 체크해준다
-				$("input[type=checkbox]").prop("checked", true);
-				// 전체선택 체크박스가 해제된 경우
-			} else {
-				//해당화면에 모든 checkbox들의 체크를해제시킨다.
-				$("input[type=checkbox]").prop("checked", false);
-			}
-		})
-	})
-	$(function(){
-		$("#LikeCheck").click(function() {
-			//만약 전체 선택 체크박스가 체크된상태일경우
-			if ($("#LikeCheck").prop("checked")) {
-				//해당화면에 전체 checkbox들을 체크해준다
-				$("input[type=checkbox]").prop("checked", true);
-				// 전체선택 체크박스가 해제된 경우
-			} else {
-				//해당화면에 모든 checkbox들의 체크를해제시킨다.
-				$("input[type=checkbox]").prop("checked", false);
-			}
-		})
-	})
+	      		this.checked = true; //checked 처리
 
-	$("#test${v}").click(function){
-		var dd = $(".cc").val();
-		
-		alert(dd);
-		
-		$("dd").click(function() {
-			  $('<input type="hidden" name="boardName" value="${v.boardName}"/>').appendTo(".bn"); 
-			 alert("gg");
-		});
+	      		
+
+	 })
 	})
+	})  */
+			var send_array = Array();
+	    		var send_cnt = 0;
+	    		var chkbox = $(".cc");
+	    		
+	    		for(i=0;i<chkbox.length;i++) {
+	    		    if (chkbox[i].checked == true){
+	    		        send_array[send_cnt] = chkbox[i].value;
+	    		        send_cnt++;
+	    		    }
+	    		}
+	    		
+	    		$("#array").val(send_array);
+				console.log(send_array);
+
+
+
+
+		
+
+	 	/* $("#tes[]").on("click", function() {
+			var chk = $("checkbox[name='check']:checked").map(function() {
+				return $(this).val();
+			}).get().join(" | ");
+			$("#result").text(chk);
+		});  */
+	
 	function go_delete() {
 		if ($(":checkbox[name='check']:checked").length == 0) {
-			alert("삭제할 항목을 하나이상 체크해주세요.");
-			return;
+			//alert("삭제할 항목을 하나이상 체크해주세요.");
+			return "";
 		}
+		
+			
 	}
-	function get_chked_values() {
-		var chked_val = "";
-		$(":checkbox[name='check']:checked").each(function(pi, po) {
-			chked_val += "," + po.value;
-		});
-		if (chked_val != "")
-			chked_val = chked_val.substring(1);
-		return chked_val;
-	}
+	
 ﻿
 </script>
 <main>
@@ -110,15 +107,16 @@
 
         <tbody>
        
-    
+   
          <c:forEach var="v" items="${list}">
+       
           <tr>
    				
-            <td><input type="checkbox" id="test${v }" class="cc" value="${v.id }" name="check"/><label for="test${v}"></label></td>
+            <td><input type="checkbox" id="tes${v.id}" name="check_del" value="${v.id }" class="aa"/><label for="tes${v.id}"></label></td>
             <td style="text-align: center"><a href="../${v.boardName}board/${v.boardName}-detail?c=${v.id}">${v.title}</a></td>
             <td style="text-align: center"><fmt:formatDate value="${v.regDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
           
-            <td class="bn" style="text-align: center" ><input type ="hidden" name="boardName" value="${v.boardName}"/>${v.boardName}</td>
+            <td style="text-align: center" ><input type ="hidden" name="boardName" value="${v.boardName}"/>${v.boardName}</td>
           </tr>
         </c:forEach>
         
@@ -173,6 +171,8 @@
         
          </tbody>      
       </table>
+     
+      
         <div id="btn1" style="float: right; margin-top:10px;">
         
         					
@@ -204,7 +204,11 @@
       </div><br>
      </div>
      </form>
-      
+      <div>
+      	  <input name="button" type="submit" value="보내기">
+
+
+      </div>
     <ul class="pagination">
     <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
     <li class="active"><a href="#!">1</a></li>
