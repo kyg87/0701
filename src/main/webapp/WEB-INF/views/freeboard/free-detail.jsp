@@ -328,7 +328,7 @@ var currentPage = ${page};
 	  var n_block = Math.ceil(currentPage / 5);
 
       //페이징의 시작페이지와 끝페이지 구하기
-      var s_page = (n_block) * 5 ; // 현재블럭의 시작 페이지
+      var s_page = (n_block-1) * 5 -4 ; // 현재블럭의 시작 페이지
       page(s_page);
   }
   
