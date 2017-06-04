@@ -42,6 +42,12 @@
 	cursor: pointer;
 }
 
+#scroll a{
+	padding-left:10px;
+	color:rgb(23, 56, 125);
+	font-family: 'Jeju Gothic', serif;
+}
+
 /*------------------------- 최신순,점수순,댓글순 부분 ----------------------------------*/
 .tabs {
 	font-family: 'Jeju Gothic', serif;
@@ -80,6 +86,10 @@
 
 .table .table-title{
 	text-align: left;
+}
+
+.table .table-title a{
+	color:#505050;
 }
 
 
@@ -265,7 +275,7 @@ textScroll.prototype.start = function() {
 <div>
 	<ul id="scroll">
 		<c:forEach var="m" items="${noticelist}">
-			<li><a href="../noticeboard/notice-detail?c=${m.id}">${m.title}</a></li>
+			<li><a href="../noticeboard/notice-detail?c=${m.id}">"${m.title}</a></li>
 		</c:forEach>
 	</ul>
 </div>
