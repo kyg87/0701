@@ -41,6 +41,8 @@ display: block;
 		
 		<form action="http://localhost/WiynPrj/main/index" method="GET">
 			<div class="input-field">
+					<input type="hidden" name="p" value="1" /> <input name="q"
+							id="search" type="hidden" value="${param.q}" required>
 				<select name="bigCa" id="bigCategoryIdaside" required>
 					<option id="default" value="" disabled selected>대분류를 선택하세요</option>
 					<c:forEach var="bcb" items="${bcbList }">

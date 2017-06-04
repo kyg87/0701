@@ -279,7 +279,7 @@ textScroll.prototype.start = function() {
 <div>
 	<ul id="scroll">
 		<c:forEach var="m" items="${noticelist}">
-			<li><a href="../noticeboard/notice-detail?c=${m.id}">"${m.title}</a></li>
+			<li><a href="../noticeboard/notice-detail?c=${mem.id}&p=${param.p}">"${m.title}</a></li>
 		</c:forEach>
 	</ul>
 </div>
