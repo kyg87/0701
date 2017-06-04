@@ -5,8 +5,11 @@
 <c:set var="root" value="${pageContext.request.contextPath}" />
 
 <style>
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+
 body{
-	background-color:#F6F4F1;
+	/* background-color:#F6F4F1; */
+	background: #fff;
 }
 
 #header nav{

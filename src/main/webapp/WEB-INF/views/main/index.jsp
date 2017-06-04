@@ -1,129 +1,212 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="tiles"  uri="http://tiles.apache.org/tags-tiles" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>		
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>	
-<style type="text/css">
-* {margin:0;padding:0;}
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
 
-#scroll {
-	height:30px;
-    font-weight: 300;
-    background-color:white;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-    border-radius:1.5px;
-    cursor: pointer;
+
+
+<style type="text/css">
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+@import url(http://fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
+
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+@import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+
+@import
+	url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+* {
+	margin: 0;
+	padding: 0;
 }
 
-.col.line{
-	padding:0px;
-	padding-top:10px;
+/*------------------------- 공지사항 스크롤 부분 ----------------------------------*/
+#scroll {
+	height: 30px;
+	font-weight: 300;
+	background-color: white;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0
+		rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+	border-radius: 1.5px;
+	cursor: pointer;
+}
+
+/*------------------------- 최신순,점수순,댓글순 부분 ----------------------------------*/
+.tabs {
+	font-family: 'Jeju Gothic', serif;
+	font-size: 12px;
 	background:none;
 }
 
-.tabs .tab a{
-color:rgb(69, 95, 140);
+.tabs .tab a {
+	color: rgb(69, 95, 140);
+	font-size: 12px;
 }
 
-.tabs .tab a.active{
-color:rgb(69, 95, 140);
+.tabs .tab a.active {
+	color: rgb(69, 95, 140);
+	font-size: 12px;
+	border:1px solid #e9e9e9;
+	border-bottom:none;
 }
 
-#main .table{
+.row .col.s3{
+	width:initial;
+}
+
+/*------------------------- 메인 테이블 부분 ----------------------------------*/
+#main .table {
 	border-radius: 2px;
-	width:100%;
-	background:white;
-	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+	width: 100%;
+	background: none;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0
+		rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
-.card{
+
+.table *{
+	text-align: center;
+}
+
+.table .table-title{
+	text-align: left;
+}
+
+
+.table-head {
+	font-family: 'Jeju Gothic', serif;
+	font: menu;
+	border-bottom:1px solid #e9e9e9;
+}
+
+.table-body {
+	text-align: center;
+	font:14px;
+}
+
+.table-body {
+	font-family: 'Nanum Gothic Coding', serif;
+}
+
+/*------------------------- 사이트글쓰기 부분 ----------------------------------*/
+.site-button{
+	display: flex;
+	justify-content:flex-end;
+	
+}
+
+.sitego{
+	background:rgba(27, 80, 162, 0.69);
+}
+
+.sitego:hover{
+	background:rgba(23, 56, 125, 0.79);
+}
+
+/*------------------------- 랜덤페이지 부분 ----------------------------------*/
+.col.line {
+	padding: 0px;
+	padding-top: 10px;
+	background: none;
+}
+
+.card {
 	/* background:rgb(250,250,250); */
-	background:#fff;
+	background: #fff;
 }
 
-.breadcrumb{
+.breadcrumb {
 	font-size: 12px;
-    font-weight: 500;
-    display: block;
-    text-transform: uppercase;
-    color: #4284f3;
+	font-weight: 500;
+	display: block;
+	text-transform: uppercase;
+	color: #4284f3;
 }
 
-.breadcrumb:last-child{
+.breadcrumb:last-child {
 	font-size: 12px;
-    font-weight: bold;
-    display: block;
-    text-transform: uppercase;
-    color: #4284f3;
+	font-weight: bold;
+	display: block;
+	text-transform: uppercase;
+	color: #4284f3;
 }
 
 .breadcrumb:before {
-    font-style: normal;
-    font-weight:bold;
-    speak: none;
-    text-align: center;
-    width: 1em;
-    display: inline-block;
-    font-size: 15px;
-    color: #bababa;
-} 
+	font-style: normal;
+	font-weight: bold;
+	speak: none;
+	text-align: center;
+	width: 1em;
+	display: inline-block;
+	font-size: 15px;
+	color: #bababa;
+}
 
 .card {
 	padding: 15px;
 }
 
-.card .card-action{
-	border-top:none;
-	padding:0px;
+.card .card-action {
+	border-top: none;
+	padding: 0px;
 }
 
-.card .card-content{
-	padding:0px;
+.card .card-content {
+	padding: 0px;
 }
 
-.card .card-img img{
-    padding-right: 20px;
+.card .card-img img {
+	padding-right: 20px;
 }
 
-.card.line{
-	display:flex;
-	justify-content:space-around;
+.card.line {
+	display: flex;
+	justify-content: space-around;
 }
 
-.card .contents{
-	display:flex;
-	flex-direction:colum;
+.card .contents {
+	display: flex;
+	flex-direction: colum;
 }
 
-.contents .title{
+.contents .title {
 	font-size: 24px;
 	font-weight: bold;
 }
 
-.contents .content{
+.contents .content {
 	font-size: 15px;
 }
 
-.card .top{
-	display:flex;
-	justify-content:space-between;
+.card .top {
+	display: flex;
+	justify-content: space-between;
 }
 
-.card .category{
-	display:flex;
+.card .category {
+	display: flex;
 	align-items: center;
 }
 
-.card .date{
+.card .date {
 	font-size: 12px;
-	display:flex;
+	display: flex;
 	align-items: center;
 }
 
-.col{
-	padding:10px;
+.col {
+	padding: 10px;
 }
-
 </style>
 <script type="text/javascript">
 function textScroll(scroll_el_id) {
@@ -176,142 +259,147 @@ textScroll.prototype.start = function() {
 </script>
 
 
-<!-- li 엘리먼트들이 position:absolute 되므로 ul 엘리먼트에는 height 값이 있어야 합니다 --> 	
+<!-- li 엘리먼트들이 position:absolute 되므로 ul 엘리먼트에는 height 값이 있어야 합니다 -->
 
 <main id="main">
-	<div>
-		<ul id="scroll">
+<div>
+	<ul id="scroll">
 		<c:forEach var="m" items="${noticelist}">
-		    <li><a href="../noticeboard/notice-detail?c=${m.id}">${m.title}</a></li>
-		</c:forEach>    
+			<li><a href="../noticeboard/notice-detail?c=${m.id}">${m.title}</a></li>
+		</c:forEach>
+	</ul>
+</div>
+
+<div class="col-xs-12 col-md-8">
+
+	<div class="col s12 line">
+		<ul class="tabs">
+			<li class="tab col s3"><a href="#index">최신순</a></li>
+			<li class="tab col s3"><a href="#index2">점수순</a></li>
+			<li class="tab col s3"><a href="#index3">댓글순</a></li>
 		</ul>
 	</div>
 
-	<div class="col-xs-12 col-md-8">
-	
-		<div class="col s12 line">
-			<ul class="tabs">
-				<li class="tab col s3"><a href="#index">최신순</a></li>
-				<li class="tab col s3"> <a href="#index2">점수순</a></li>
-				<li class="tab col s3"> <a href="#index3">댓글순</a></li>
-			</ul>
-		</div>
+	<table id="index" class="highlight table">
+		<thead class="table-head">
+			<tr class="head-tr">
+				<th>번호</th>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>조회수</th>
+				<th>작성날짜</th>
+			</tr>
+		</thead>
 
-		<table id="index" class="highlight table">
-			<thead>
+		<tbody class="table-body">
+			<c:forEach var="n" items="${sitelist}">
 				<tr>
-					<th>번호</th>
-					<th>제목</th>
-					<th>작성자</th>
-					<th>조회수</th>
-					<th>작성날짜</th>
+					<td>${n.id}</td>
+					<td class="orange-text text-accent-3 table-title"><a
+						href="../siteboard/site-detail?c=${n.id}">${n.title}</a>[${n.countcomment }]</td>
+					<td>${n.memberId }</td>
+					<td>${n.hit }</td>
+					<td><fmt:formatDate value="${n.regDate}"
+							pattern="yyyy-MM-dd HH:mm:ss" /></td>
+
 				</tr>
-			</thead>
-	
-			<tbody>
-				<c:forEach var="n" items="${sitelist}">
-					<tr>
-						<td>${n.id}</td>
-						<td class="orange-text text-accent-3"><a
-							href="../siteboard/site-detail?c=${n.id}">${n.title}</a>[${n.countcomment }]</td>
-						<td>${n.memberId }</td>
-						<td>${n.hit }</td>
-						<td><fmt:formatDate value="${n.regDate}"
-								pattern="yyyy-MM-dd HH:mm:ss" /></td>
-	
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
+			</c:forEach>
+		</tbody>
+	</table>
 
 
-	<table id="index2"class="highlight table">
-        <thead>
-          <tr>
-              <th>번호</th>
-              <th>제목</th>
-              <th>작성자</th>
-              <th>조회수</th>
-              <th>작성날짜</th>
-          </tr>
-        </thead>
+	<table id="index2" class="highlight table">
+		<thead class="table-head">
+			<tr class="head-tr">
+				<th>번호</th>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>조회수</th>
+				<th>작성날짜</th>
+			</tr>
+		</thead>
+		<tbody>
+			<fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd" />
+			<c:forEach var="n" items="${sitelistlike}">
+				<tr>
+					<td>${n.id}</td>
+					<td class="orange-text text-accent-3 table-title"><a
+						href="../siteboard/site-detail?c=${n.id}">${n.title}</a>[${n.countcomment }]</td>
+					<td>${n.memberId }</td>
+					<td>${n.hit }</td>
+					<td><fmt:formatDate value="${n.regDate}"
+							pattern="yyyy-MM-dd HH:mm:ss" /></td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
 
-        <tbody>
-        <fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd"/>
-          <c:forEach var="n" items="${sitelistlike}">
-         	 <tr>    
-		            <td>${n.id}</td>
-		            <td class="orange-text text-accent-3"><a href="../siteboard/site-detail?c=${n.id}">${n.title}</a>[${n.countcomment }]</td>
-		            <td>${n.memberId }</td>
-		            <td>${n.hit }</td>
-					<td><fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-          		</tr>
-          	</c:forEach>	
-          </tbody>
-          </table>
-          
-  <table id="index3"class="highlight table">
-        <thead>
-          <tr>
-              <th>번호</th>
-              <th>제목</th>
-              <th>작성자</th>
-              <th>조회수</th>
-              <th>작성날짜</th>
-          </tr>
-        </thead>
-<fmt:formatDate  value="${n.regDate}" pattern="yyyy-MM-dd"/>
-        <tbody>
-          <c:forEach var="n" items="${sitelistcomment}">
-         	 <tr>    
-		            <td>${n.id}</td>
-		            <td class="orange-text text-accent-3"><a href="../siteboard/site-detail?c=${n.id}">${n.title}</a> [${n.countcomment }]</td>
-		            <td>${n.memberId }</td>
-		            <td>${n.hit }</td>
-					<td><fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-          		</tr>
-          	</c:forEach>	
-          </tbody>
-          </table>
-  </div>
-                
-                
-                
-            <fmt:parseNumber var="sizeInt" integerOnly="true" value="${size/10 }" />
-            <c:set var="last" value="${(size%10)>0 ? sizeInt+1 : sizeInt }" />
-            
-            
-            <div>${empty param.p ? 1 : param.p}/${last }pages  </div>
-            <div>${size}</div>
-                <ul class="pagination center">
-                    <li class="disabled">
-                            <c:if test="${param.p-1>0 }">
-                            <a href="?p=${param.p-1 }&q=${parma.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}"><i
-                            class="material-icons">chevron_left</i></a></c:if></li>        
-                <c:forEach var="i" begin="1" end="${last }"> 
-				       <c:choose>
-							<c:when test="${i eq param.p or empty param.p and i eq '1'}">
-								<li class="waves-effect  active"><a href="?p=${i }&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}">${i}</a></li>
-							</c:when>
-							<c:otherwise>
-								<li class="waves-effect "><a href="?p=${i }&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}">${i}</a></li>
-							</c:otherwise>
-						</c:choose>
-                  <%-- <li class="waves-effect"><a href="?p=${i }&q=${param.q}">${i }</a></li>  --%>
-                 </c:forEach> 
-                    <li class="waves-effect">
-                            <c:if test="${param.p+1<=last }">
-                            <a href="?p=${param.p+1 }&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}"><i
-                            class="material-icons">chevron_right</i></a>
-                            </c:if></li>
-                            <li>
-                            <a class="waves-effect waves-light btn sitego" href="">글쓰기</a>
-                            </li>
-                            
-                </ul>
+	<table id="index3" class="highlight table">
+		<thead class="table-head">
+			<tr class="head-tr">
+				<th>번호</th>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>조회수</th>
+				<th>작성날짜</th>
+			</tr>
+		</thead>
+		<fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd" />
+		<tbody>
+			<c:forEach var="n" items="${sitelistcomment}">
+				<tr>
+					<td>${n.id}</td>
+					<td class="orange-text text-accent-3 table-title"><a
+						href="../siteboard/site-detail?c=${n.id}">${n.title}</a>
+						[${n.countcomment }]</td>
+					<td>${n.memberId }</td>
+					<td>${n.hit }</td>
+					<td><fmt:formatDate value="${n.regDate}"
+							pattern="yyyy-MM-dd HH:mm:ss" /></td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+</div>
+<br>
+<div class="site-button"><a class="waves-effect waves-light btn sitego" href="">Write</a></div>
+<br>
+<fmt:parseNumber var="sizeInt" integerOnly="true" value="${size/10 }" />
+<c:set var="last" value="${(size%10)>0 ? sizeInt+1 : sizeInt }" />
 
-			<input class="sitein" type="hidden" name="memberId" value=<security:authentication property="name"/>>
-			<script>
+
+<%-- <div>${empty param.p ? 1 : param.p}/${last }pages</div>
+<div>${size}</div> --%>
+<ul class="pagination center">
+	<li class="disabled"><c:if test="${param.p-1>0 }">
+			<a
+				href="?p=${param.p-1 }&q=${parma.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}"><i
+				class="material-icons">chevron_left</i></a>
+		</c:if></li>
+	<c:forEach var="i" begin="1" end="${last }">
+		<c:choose>
+			<c:when test="${i eq param.p or empty param.p and i eq '1'}">
+				<li class="waves-effect  active"><a
+					href="?p=${i }&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}">${i}</a></li>
+			</c:when>
+			<c:otherwise>
+				<li class="waves-effect "><a
+					href="?p=${i }&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}">${i}</a></li>
+			</c:otherwise>
+		</c:choose>
+		<%-- <li class="waves-effect"><a href="?p=${i }&q=${param.q}">${i }</a></li>  --%>
+	</c:forEach>
+	<li class="waves-effect"><c:if test="${param.p+1<=last }">
+			<a
+				href="?p=${param.p+1 }&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}"><i
+				class="material-icons">chevron_right</i></a>
+		</c:if></li>
+</ul>
+
+
+
+<input class="sitein" type="hidden" name="memberId"
+	value=<security:authentication property="name"/>> <script>
 			$(document).ready(function(){
 				$('.sitego').on('click', function(){
 					
@@ -329,40 +417,39 @@ textScroll.prototype.start = function() {
 				});
 			});
 			
-			</script>
- 
-			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+			</script> <script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
 
-         </script>
-			<script>
+         </script> <script>
 			$(".pagination").on('click','li',function(){
     // remove classname 'active' from all li who already has classname 'active'
     $(".pagination li.active").removeClass("active"); 
     // adding classname 'active' to current click li 
     $(this).addClass("active"); 
 });
-			</script>			
-			
-	<!-- -------------------------------랜덤 페이지--------------------------------- -->
-	
-	<div class="row">
-    <div class="col s12 m6">
-      <div class="card">
-        <div class="card-image">
-          <img src="images/sample-1.jpg">
-          <span class="card-title">Card Title</span>
-          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-        </div>
-        <div class="card-content">
-          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-	
-	
-	
-	
+			</script> <!-- -------------------------------랜덤 페이지--------------------------------- -->
+
+<%-- <div class="row">
+	<div class="col s12 m6">
+		<div class="card">
+			<div class="card-image">
+				<img src="images/sample-1.jpg"> <span class="card-title">Card
+					Title</span> <a
+					class="btn-floating halfway-fab waves-effect waves-light red"><i
+					class="material-icons">add</i></a>
+			</div>
+			<div class="card-content">
+				<p>I am a very simple card. I am good at containing small bits
+					of information. I am convenient because I require little markup to
+					use effectively.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
 <div class="col s12 m7">
 	<div class="card horizontal line">
 		<div class="card-image">
@@ -405,7 +492,7 @@ textScroll.prototype.start = function() {
 			</div>
 		</div>
 	</div>
-</div>
+</div> --%>
 
 <%-- <table class="table">
 		<thead>
@@ -455,11 +542,9 @@ textScroll.prototype.start = function() {
 				</td>			
 			</tr>
 			</tbody>
-			</table> --%>
-			
-			</main>
-			
-			
+			</table> --%> </main>
+
+
 <script type="text/javascript">
 var real_search_keyword = new textScroll('scroll'); // 스크롤링 하고자하는 ul 엘리먼트의 id값을 인자로 넣습니다
 real_search_keyword.name = "real_search_keyword"; // 인스턴스 네임을 등록합니다
