@@ -16,6 +16,7 @@ body{
 	background:#fff;
 	color: #616161 !important; 
 	border:1px solid #f2f2f2;
+	font-family: 'Nanum Gothic Coding', serif;
 }
 
 .header{

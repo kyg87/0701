@@ -112,7 +112,7 @@
 .site-button{
 	display: flex;
 	justify-content:flex-end;
-	
+	font-family: 'Nanum Gothic Coding', serif;
 }
 
 .sitego{
@@ -121,6 +121,10 @@
 
 .sitego:hover{
 	background:rgba(23, 56, 125, 0.79);
+}
+
+.write{
+	display: flex;
 }
 
 /*------------------------- 랜덤페이지 부분 ----------------------------------*/
@@ -372,7 +376,12 @@ textScroll.prototype.start = function() {
 	</table>
 </div>
 <br>
-<div class="site-button"><a class="waves-effect waves-light btn sitego" href="">Write</a></div>
+<div class="site-button">
+	<a class="waves-effect waves-light btn sitego" href="">
+	<div class="write">Write<i class="tiny material-icons">mode-edit</i>
+	</div>
+	</a>
+</div>
 <br>
 <fmt:parseNumber var="sizeInt" integerOnly="true" value="${size/10 }" />
 <c:set var="last" value="${(size%10)>0 ? sizeInt+1 : sizeInt }" />
