@@ -217,7 +217,11 @@ td i{
 					</script>
 				</td>
 			</tr>
+			
+			<security:authentication property="name" var="loginID"/>
+			<security:authorize access="isAuthenticated()">
 			<tr>
+				<c:if test="${loginID eq n.memberId }">
 				<td colspan="2">
 					<form action="site-edit?c=${n.id}" method="post">
 						<input type="hidden" name="id" value=${n.id }>
@@ -232,11 +236,15 @@ td i{
 							name="action">삭제</button>
 					</form>
 				</td>
+				</c:if>
 			</tr>
+			</security:authorize>
+			
 		</tbody>
 </table>
 	<br>
-
+	
+			
 	<!-- <input type="hidden" name="siteBoardId" value="">  -->
 	<input type="hidden"	name="memberId" value="${n.memberId }"/>
 	
@@ -340,8 +348,8 @@ var currentPage = ${page};
 			if(z =="1"){
 
 				page(1);
-	 		 	//count++;
-				//if(count <100)onCreate(); 
+	 	/* 	 	count++;
+				if(count <100)onCreate();  */
 			}
 			
 		});
@@ -388,7 +396,7 @@ var currentPage = ${page};
 							$("#commentList").append($('<li class="collection-item avatar">' + + '</li>')
 								 .append($('<img src="/WiynPrj/resource/images/test.png" alt="" class="circle"> '))
 								 .append($('<span class="title">'+obj[i].memberId+'</span>'))
-								 .append($('<time>'+obj[i].regDate+'</time>'))
+								 .append($('<time>'+js_yyyy_mm_dd_hh_mm_ss(obj[i].regDate)+'</time>'))
 								 .append($('<p>'+obj[i].content+'</p>'))
 								 .append($('<a class="waves-effect waves-light btn" onclick="onDelete('+obj[i].id+ ');" value='+obj[i].id+'>삭제</a>')));
 						}
@@ -396,19 +404,36 @@ var currentPage = ${page};
 							$("#commentList").append($('<li class="collection-item avatar">' + + '</li>')
 									 .append($('<img src="/WiynPrj/resource/images/test.png" alt="" class="circle"> '))
 									 .append($('<span class="title">'+obj[i].memberId+'</span>'))
-									 .append($('<time>'+obj[i].regDate+'</time>'))
+									 .append($('<time>'+js_yyyy_mm_dd_hh_mm_ss(obj[i].regDate)+'</time>'))
 									 .append($('<p>'+obj[i].content+'</p>')));
 						}
 
 					}
-			    	  $("#pagination").append($('<li class="waves-effect"><a><i class="material-icons">chevron_left</i></a></li>'));
+			    	
 			    	
 					 var lastPage = ${size/10+(1-(size/10%1))%1};
 					  
-			
+					 var last_block = Math.ceil(lastPage / 5);
+	
+					
+			        //현재 블럭 구하기 
+			        var n_block = Math.ceil(currentPage / 5);
+
+			        //페이징의 시작페이지와 끝페이지 구하기
+			        var s_page = (n_block - 1) * 5 + 1; // 현재블럭의 시작 페이지
+			        var e_page = n_block * 5; // 현재블럭의 끝 페이지
+				
+				
+
+					 if(n_block != 1){
+						  	$("#pagination").append($('<li class="waves-effect"><a onclick="prevButton();"><i class="material-icons">chevron_left</i></a></li>'));
+						 }
 					 
-					 for (var i = 1; i <= lastPage; i++){
+					 for (var i = s_page; i <= e_page; i++){
+						 if (i > lastPage)    break;
 						 
+
+
 		
 						 if(page == i){
 							 $("#pagination").append($(' <li class="waves-effect active"><a class="page" onclick="page('+i+');" value='+i+'>'+i+'</a></li>'));
@@ -417,22 +442,44 @@ var currentPage = ${page};
 							 $("#pagination").append($(' <li class="waves-effect"><a class="page" onclick="page('+i+');" value='+i+'>'+i+'</a></li>'));
 						 }
 					 }
-					 
-					  $("#pagination").append($('<li class="waves-effect"><a><i class="material-icons">chevron_right</i></a></li>'));
+			        
+		
+					 if(n_block != last_block){
+						$("#pagination").append($('<li class="waves-effect"><a onclick="nextButton();"><i class="material-icons">chevron_right</i></a></li>')); 
+					 }
+					  
 				}
 		      
 		    
 		   	});
-  }
+ 	}
+ 
+ function js_yyyy_mm_dd_hh_mm_ss (date) {
+	  
+	  now = new Date(date);
+	  year = "" + now.getFullYear();
+	  month = "" + (now.getMonth() + 1); if (month.length == 1) { month = "0" + month; }
+	  day = "" + now.getDate(); if (day.length == 1) { day = "0" + day; }
+	  hour = "" + now.getHours(); if (hour.length == 1) { hour = "0" + hour; }
+	  minute = "" + now.getMinutes(); if (minute.length == 1) { minute = "0" + minute; }
+	  second = "" + now.getSeconds(); if (second.length == 1) { second = "0" + second; }
+	  return year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
+	}
+ 
+ function prevButton(){
+	  var n_block = Math.ceil(currentPage / 5);
 
+     //페이징의 시작페이지와 끝페이지 구하기
+     var s_page = (n_block-1) * 5 -4 ; // 현재블럭의 시작 페이지
+     page(s_page);
+ }
+ 
+ function nextButton(){
+	  var n_block = Math.ceil(currentPage / 5);
 
-$(function(){
-
-   $("#rightBtn").click(function(){
-
-   });
-});
-
-
+     //페이징의 시작페이지와 끝페이지 구하기
+     var s_page = (n_block) * 5 + 1; // 현재블럭의 시작 페이지
+     page(s_page);
+ }
 
 </script>
