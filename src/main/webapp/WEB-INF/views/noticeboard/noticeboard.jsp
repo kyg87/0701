@@ -54,7 +54,7 @@
 			
 		</c:forEach>
 		
-		<c:if test="${cnt > ((listPerFive+1)*5 + 1) }">
+		<c:if test="${cnt > ((listPerFive+1)*5 ) }">
 			<li class="waves-effect"><a href="noticeboard?p=${(listPerFive+1)*5 + 1 }"><i class="material-icons">chevron_right</i></a></li>
 		</c:if>
 		
