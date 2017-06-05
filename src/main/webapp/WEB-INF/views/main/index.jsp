@@ -279,7 +279,7 @@ textScroll.prototype.start = function() {
 <div>
 	<ul id="scroll">
 		<c:forEach var="m" items="${noticelist}">
-			<li><a href="../noticeboard/notice-detail?c=${m.id}&p=${param.p}">"${m.title}</a></li>
+			<li><a href="../noticeboard/notice-detail?c=${m.id}&p=${param.p}">${m.title}</a></li>
 		</c:forEach>
 	</ul>
 </div>
@@ -310,7 +310,7 @@ textScroll.prototype.start = function() {
 				<tr>
 					<td>${n.id}</td>
 					<td class="orange-text text-accent-3 table-title"><a
-						href="../siteboard/site-detail?c=${n.id}">${n.title}</a>[${n.countcomment }]</td>
+						href="../siteboard/site-detail?c=${n.id}&p=${param.p}">${n.title}</a>[${n.countcomment }]</td>
 					<td>${n.memberId }</td>
 					<td>${n.hit }</td>
 					<td><fmt:formatDate value="${n.regDate}"
