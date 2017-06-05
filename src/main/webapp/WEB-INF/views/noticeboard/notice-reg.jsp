@@ -110,8 +110,6 @@ body {
 
 
 
-<body>
-
 	<form id="noticeReg" action="noticeBoard-reg?p=${page }" method="post" enctype="multipart/form-data">
 		<main id="main">
 			<div>공지사항등록</div>
@@ -150,10 +148,7 @@ body {
 						</td>
 	
 					</tr>
-					<tr>
-						<td><div id="title">Tag</div></td>
-						<td><input id="titleinput" type="text" value=""></td>
-					</tr>
+					
 					<tr>
 						<td colspan="2">
 							<div id="btn">
@@ -193,5 +188,3 @@ body {
 		
 	
 	</script>
-
-</body>
