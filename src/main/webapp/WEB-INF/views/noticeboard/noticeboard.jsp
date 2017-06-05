@@ -32,7 +32,7 @@
 </table>
 
 <a class="waves-effect waves-light btn card-panel blue lighten-2" 
-	href="/WiynPrj/noticeboard/notice-reg">글쓰기</a>
+	href="/WiynPrj/noticeboard/notice-reg?p=${page }">글쓰기</a>
 
 <div align="center">
 	<ul class="pagination">
