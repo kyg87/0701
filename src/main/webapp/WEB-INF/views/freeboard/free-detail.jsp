@@ -252,7 +252,7 @@ var currentPage = ${page};
 						if(obj[i].memberId=='${loginID}'){
 						
 							$("#commentList").append($('<li class="collection-item avatar">' + + '</li>')
-								 .append($('<img src="/WiynPrj/resource/images/test.png" alt="" class="circle"> '))
+								 .append($('<img src="https://yt3.ggpht.com/-X8NM_peInU0/AAAAAAAAAAI/AAAAAAAAAAA/5YLtRwfY47Y/s88-c-k-no-mo-rj-c0xffffff/photo.jpg" alt="" class="circle"> '))
 								 .append($('<span class="title">'+obj[i].memberId+'</span>'))
 								 .append($('<time>'+js_yyyy_mm_dd_hh_mm_ss(obj[i].regDate)+'</time>'))
 								 .append($('<p>'+obj[i].content+'</p>'))
@@ -260,7 +260,7 @@ var currentPage = ${page};
 						}
 						else{
 							$("#commentList").append($('<li class="collection-item avatar">' + + '</li>')
-									 .append($('<img src="/WiynPrj/resource/images/test.png" alt="" class="circle"> '))
+									 .append($('<img src="https://yt3.ggpht.com/-X8NM_peInU0/AAAAAAAAAAI/AAAAAAAAAAA/5YLtRwfY47Y/s88-c-k-no-mo-rj-c0xffffff/photo.jpg" alt="" class="circle"> '))
 									 .append($('<span class="title">'+obj[i].memberId+'</span>'))
 									 .append($('<time>'+js_yyyy_mm_dd_hh_mm_ss(obj[i].regDate)+'</time>'))
 									 .append($('<p>'+obj[i].content+'</p>')));

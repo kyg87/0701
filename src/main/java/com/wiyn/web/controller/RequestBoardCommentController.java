@@ -53,9 +53,6 @@ public class RequestBoardCommentController {
 
 		int result = requestCommentDao.add(requestComment);
 		
-		requestCommentDao.add(requestComment);
-
-	
 
 		return String.valueOf(result);
 

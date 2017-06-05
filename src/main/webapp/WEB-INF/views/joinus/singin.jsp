@@ -2,7 +2,17 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
+<style>
+.card-content {
+    position: relative;
+    margin: .5rem 0 1rem 0;
+    background-color: #FFD;
+    transition: box-shadow .25s;
+    border-radius: 2px;
+        box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+        
+}
+</style>
 
 	<script type="text/javascript">
 	  $(document).ready(function(){
@@ -83,41 +93,45 @@
 
 		});
 	</script>
- <main id="main">
+<main id="main">
 
-	
-			<form id="myForm" action="singIn" method="post">
-				<h4>Modal Header</h4>
-				<div class="row">
-					<div class="input-field col s12">
-						<input name="email1" id="email1" type="email" class="validate" required="required" > <label
-							for="email" >Email</label>
-					</div>
+<div class="col s12 m8 offset-m2 offset-l3">
+	<form id="myForm" action="singIn" method="post">
+		<div class="card-content">
+			<div class="row">
+				<h4>Sing up</h4> 
+			</div>
+			<div class="row">
+				<div class="input-field col s12">
+					<input name="email1" id="email1" type="email" class="validate"
+						required="required"> <label for="email">Email</label>
 				</div>
-				<div class="row">
-					<div class="input-field col s12">
-						<input name="pass" id="pass" type="password" class="validate" required="required"> <label
-							for="password">Password</label>
-					</div>
+			</div> 
+			<div class="row">
+				<div class="input-field col s12">
+					<input name="pass" id="pass" type="password" class="validate"
+						required="required"> <label for="password">Password</label>
 				</div>
+			</div>
 
-				<div class="row">
-					<div class="input-field col s12">
-						<input id="pass1" type="password" class="validate" required="required"> <label
-							for="password">Password</label>
-					</div>
+			<div class="row">
+				<div class="input-field col s12">
+					<input id="pass1" type="password" class="validate"
+						required="required"> <label for="password">Password</label>
 				</div>
+			</div>
 
-				<div>
+			<div class="row">
 
-					<input id="btn1" type="button" class="waves-effect waves-light btn"
-						value="가입하기" >
-						
-					
-				</div>
-			</form>
-		
-	
+				<input id="btn1" type="button"
+					class="waves-effect waves-light blue btn right" value="가입하기">
+
+
+			</div>
+		</div>
+	</form>
+
+</div>
 </main>
 
 
