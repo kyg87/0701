@@ -60,18 +60,13 @@
 		<div id="main">
 			<div id="context">
 				<nav>
-					<div class="nav-wrapper">
-						<div class="col s12">
-							<a href="#!" class="breadcrumb">category1</a> <a href="#!"
-								class="breadcrumb">category2</a>
-						</div>
-					</div>
+					제목 : ${list.title }
 				</nav>
 				<table>
 			        <thead>
-			          <tr>
+			          <%-- <tr>
 			              <th id="title"> 제목 : ${list.title } <i id="re" class="small material-icons">launch</i></th>			             
-			          </tr>
+			          </tr> --%>
 			          <tr>
 			          	 <th id="writedate"> 작성 날짜 :  ${list.regDate } <i class="small material-icons">star</i> 23</th>
 			          </tr>
@@ -91,19 +86,7 @@
 			          <tr>
 			            <td id="content"> 내용 : ${list.content }</td>
 			          </tr>
-			          <tr>
-			            <td>
-			            	<div class="chip">
-								Tag
-							</div>
-							<div class="chip">
-								Tag
-							</div>
-							<div class="chip">
-								Tag
-							</div>
-			            </td>
-			          </tr>
+			         
 			          <tr>
 			            <td class="udButtons">			            	
 							<a id="btn" class="waves-effect waves-light btn"

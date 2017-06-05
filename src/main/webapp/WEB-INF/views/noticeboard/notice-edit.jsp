@@ -126,10 +126,10 @@ body {
 						</td>
 
 					</tr>
-					<tr>
+					<!-- <tr>
 						<td><div id="title">Tag</div></td>
 						<td><input id="titleinput" type="text" value=""></td>
-					</tr>
+					</tr> -->
 					<tr>
 						<td colspan="2">
 
