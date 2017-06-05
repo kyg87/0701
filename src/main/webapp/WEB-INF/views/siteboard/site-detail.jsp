@@ -119,6 +119,52 @@ td i{
 	height: 15px;
 }
 
+span.title {
+    color: #839705;
+    font-family: Microsoft;
+}
+time {
+    margin-left: 17px;
+}
+.box_write{
+	background-color: #f7f7f7;
+    height: 98px;
+    box-sizing: border-box;
+    padding: 13px 18px;
+    border: 1px solid #e6e6e6;
+        display: flex;
+}
+    
+.box_write textarea {
+  /*   width: 535px; */
+    height: 71px;
+    box-sizing: border-box;
+    border: 1px solid #e6e6e6;
+    resize: none;
+    float: left;
+    color: #c7c7c7;
+    font-size: 16px;
+    font-family: Microsoft YaHei,'NSL';
+    text-align: center;
+    padding-top: 20px;
+    color: #313131;
+    overflow: auto;
+
+}
+.box_write button {
+    /* display: block; */
+    width: 123px; 
+    height: 71px;
+    background-color: #ff6d00;
+    border: none;
+    color: #fff;
+    font-size: 17px;
+    font-family: Microsoft YaHei,'NSL';
+    float: right;
+    line-height: 80px\0;
+    margin-left: 10px;
+}
+
 
 </style>
 
@@ -258,13 +304,18 @@ td i{
 
 
 		<div id="minibox">
-		   <form id="comment-add-form" action="siteBoard-comment-add" method="post">
-             <div class="row">
+		   <form class = "box_write" id="comment-add-form" action="siteBoard-comment-add" method="post">
+         
                <security:authorize access="isAnonymous()">
                   <p>글쓰기는 로그인한 유저만 가능합니다 로그인해주세요</p>
                </security:authorize>
                
                <security:authorize access="isAuthenticated()">
+               <textarea placeholder="한 줄 댓글을 남겨주세요." name="content" required="required"></textarea>
+               
+               
+               <button name="button" type="button" onclick="onCreate();">댓글남기기</button>
+               <!-- 
                <div class="input-field">
                   <i class="material-icons prefix">mode_edit</i>
                   <input  id="icon_prefix2" type="text" class="validate" name="content" required="required">
@@ -273,8 +324,10 @@ td i{
                       <i class="material-icons right">send</i>
                     </button>
                </div>
+ -->               
                </security:authorize>
-             </div>
+             
+             
             
      	     <input type="hidden" name="siteBoardId" value=${n.id }>
         	 <input type="hidden" name="memberId" value=<security:authentication property="name"/>>
@@ -326,7 +379,7 @@ var currentPage = ${page};
 		
 		var count = 0;
 		
-		var text = $("#comment-add-form").find("input");
+		var text = $("#comment-add-form").find("textarea");
 		
 	
 		var tt= text.val();
