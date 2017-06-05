@@ -101,9 +101,13 @@
 
 
  --%>
+ 
+ <div class="site-button">
+	<a class="waves-effect waves-light btn sitego" href="../requestboard/request-reg"">
+	<div class="write">Write<i class="tiny material-icons">mode-edit</i>
+	</div>
+	</a>
+</div>
 
-<button>
-	<a href="../requestboard/request-reg">(기윤)요청 글쓰기로 가는 것</a>
-</button>
 
 </main>
