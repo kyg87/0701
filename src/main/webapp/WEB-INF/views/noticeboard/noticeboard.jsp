@@ -32,7 +32,7 @@
 </table>
 
 <a class="waves-effect waves-light btn card-panel blue lighten-2" 
-	href="/WiynPrj/noticeboard/notice-reg">글쓰기</a>
+	href="/WiynPrj/noticeboard/notice-reg?p=${page }">글쓰기</a>
 
 <div align="center">
 	<ul class="pagination">
@@ -54,7 +54,7 @@
 			
 		</c:forEach>
 		
-		<c:if test="${cnt > ((listPerFive+1)*5 + 1) }">
+		<c:if test="${cnt > ((listPerFive+1)*5 ) }">
 			<li class="waves-effect"><a href="noticeboard?p=${(listPerFive+1)*5 + 1 }"><i class="material-icons">chevron_right</i></a></li>
 		</c:if>
 		

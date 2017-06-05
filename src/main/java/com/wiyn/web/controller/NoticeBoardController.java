@@ -119,8 +119,6 @@ public class NoticeBoardController {
 	@RequestMapping("notice-reg")
 	public String noticeReg(Model model){
 		
-		
-		
 		return null;
 	}
 	
@@ -160,6 +158,7 @@ public class NoticeBoardController {
 			NoticeBoard noticeBoard,
 			NoticeFile noticeFile,
 			@RequestParam(value="file", defaultValue="null") MultipartFile file,
+			@RequestParam(value="p")String page,
 			@RequestParam(value="title")String title, 
 			@RequestParam(value="content")String content,
 			@RequestParam(value="memberId")String memberId,
@@ -217,7 +216,7 @@ public class NoticeBoardController {
 		    System.out.println(fullPath);
 		}
 		
-		return "redirect:notice-detail?c=" + noticeBoard.getId();
+		return "redirect:notice-detail?c="+noticeBoard.getId()+"&p="+page;
 		
 	}
 	
