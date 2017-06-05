@@ -44,21 +44,7 @@ public class FreeBoardController {
 	@Autowired
 	private SmallCategoryDao smallCategoryDao;
 	
-	@RequestMapping(value="getListBC", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
-	@ResponseBody
-	public String GetListWithBC(Model model,
-			@RequestParam(value="bigCa")String bigCategoryId){
 
-		System.out.println(bigCategoryId);
-		List<SmallCategory> bcaList = sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategoryId);
-		model.addAttribute("bcaList", bcaList);
-
-		
-		Gson gson = new Gson();
-		String json1 = gson.toJson(bcaList);
-		
-		return json1;
-	}
 
 	@RequestMapping("freeboard")
 	public String request(@RequestParam(value="p", defaultValue="1")Integer page,
@@ -88,9 +74,9 @@ public class FreeBoardController {
 		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
 		
 		for (BigCategory bigCategory : bcbList) {
-			bigCategory.setSmallCategory(sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId()));
+			List<SmallCategory> small = sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId());
+			bigCategory.setSmallCategory(small);
 		}
-
 		model.addAttribute("bcbList", bcbList);
 		
 		return "freeboard.freeboard";
@@ -105,9 +91,9 @@ public class FreeBoardController {
 		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
 		
 		for (BigCategory bigCategory : bcbList) {
-			bigCategory.setSmallCategory(sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId()));
+			List<SmallCategory> small = sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId());
+			bigCategory.setSmallCategory(small);
 		}
-
 		model.addAttribute("bcbList", bcbList);
 		return "freeboard.free-reg";
 	}
@@ -165,6 +151,7 @@ public class FreeBoardController {
 		for (BigCategory bigCategory : bcbList) {
 			bigCategory.setSmallCategory(sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId()));
 		}
+
 		model.addAttribute("bcbList", bcbList);
 
 		return "freeboard.free-detail";
@@ -194,7 +181,8 @@ public class FreeBoardController {
 		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
 		
 		for (BigCategory bigCategory : bcbList) {
-			bigCategory.setSmallCategory(sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId()));
+			List<SmallCategory> small = sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId());
+			bigCategory.setSmallCategory(small);
 		}
 		model.addAttribute("bcbList", bcbList);
 

@@ -390,12 +390,12 @@ textScroll.prototype.start = function() {
 <%-- <div>${empty param.p ? 1 : param.p}/${last }pages</div>
 <div>${size}</div> --%>
 <ul class="pagination center">
-	<li class="disabled"><c:if test="${param.p-1>0 }">
+	<li class="disabled"><c:if test="${((listPerFive-1)*5 + 5) > 1 }">
 			<a
-				href="?p=${param.p-1 }&q=${parma.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}"><i
+				href="?p=${(listPerFive-1)*5 + 5 }&q=${parma.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}"><i
 				class="material-icons">chevron_left</i></a>
 		</c:if></li>
-	<c:forEach var="i" begin="1" end="${last }">
+	<c:forEach var="i" begin="${(listPerFive*5) + 1 }" end="${checkLast }">
 		<c:choose>
 			<c:when test="${i eq param.p or empty param.p and i eq '1'}">
 				<li class="waves-effect  active"><a
@@ -408,9 +408,9 @@ textScroll.prototype.start = function() {
 		</c:choose>
 		<%-- <li class="waves-effect"><a href="?p=${i }&q=${param.q}">${i }</a></li>  --%>
 	</c:forEach>
-	<li class="waves-effect"><c:if test="${param.p+1<=last }">
+	<li class="waves-effect"><c:if test="${cnt > ((listPerFive+1)*5 + 1) }">
 			<a
-				href="?p=${param.p+1 }&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}"><i
+				href="?p=${(listPerFive+1)*5 + 1 }&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}"><i
 				class="material-icons">chevron_right</i></a>
 		</c:if></li>
 </ul>

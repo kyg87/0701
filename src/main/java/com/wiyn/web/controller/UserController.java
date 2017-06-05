@@ -12,13 +12,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.wiyn.web.dao.BigCategoryDao;
 import com.wiyn.web.dao.FreeBoardDao;
 import com.wiyn.web.dao.RequestBoardDao;
 import com.wiyn.web.dao.SiteBoardDao;
+import com.wiyn.web.dao.SmallCategoryDao;
 import com.wiyn.web.dao.UserPageDao;
 import com.wiyn.web.entity.AddBoard;
+import com.wiyn.web.entity.BigCategory;
 import com.wiyn.web.entity.FreeBoard;
 import com.wiyn.web.entity.SiteBoard;
+import com.wiyn.web.entity.SmallCategory;
 
 @Controller
 @RequestMapping("/user/*")
@@ -37,8 +41,16 @@ public class UserController {
 	@Autowired
 	private RequestBoardDao requestBoardDao;
 	
+	@Autowired
+	private BigCategoryDao bigCategoryDao;
+	
+	@Autowired
+	private SmallCategoryDao smallCategoryDao;
+	
 	@RequestMapping("mypage")
-	public String UserMain(Authentication auth,Model model, AddBoard addboard, String title) {
+	public String UserMain(Authentication auth,Model model, AddBoard addboard, String title,
+			@RequestParam(value="bigCa",defaultValue="")String bigCategoryId,
+            @RequestParam(value="smallCa",defaultValue="")String smallCategoryId){
 
 		
 		System.out.println(auth.getName());
@@ -55,6 +67,14 @@ public class UserController {
 		model.addAttribute("list2",list2);
 		model.addAttribute("list3",list3);
 		
+		
+		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
+		
+		for (BigCategory bigCategory : bcbList) {
+			List<SmallCategory> small = sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId());
+			bigCategory.setSmallCategory(small);
+		}
+		model.addAttribute("bcbList", bcbList);
 
 	
 		return "user.mypage";

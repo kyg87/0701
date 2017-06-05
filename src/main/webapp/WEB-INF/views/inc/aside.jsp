@@ -19,7 +19,7 @@ display: block;
 <aside id="left-sidebar-nav">
 	<ul id="nav-mobile" class="side-nav fixed"
 		style="overflow: auto; transform: translateX(0%);">
-		<label>Search</label>
+		<label style="display: none">Search</label>
 		<form action="http://localhost/WiynPrj/main/index" method="GET">
 			<nav>
 				<div class="nav-wrapper">
@@ -33,93 +33,23 @@ display: block;
 
 				</div>
 			</nav>
-			<button class="btn waves-effect waves-light right" type="search">
-				<i class="material-icons">search</i>
-			</button>
 		</form>
-		<label>Speed Search</label>
-		
-		<form action="http://localhost/WiynPrj/main/index" method="GET">
-			<div class="input-field">
-					<input type="hidden" name="p" value="1" /> <input name="q"
-							id="search" type="hidden" value="${param.q}" required>
-				<select name="bigCa" id="bigCategoryIdaside" required>
-					<option id="default" value="" disabled selected>대분류를 선택하세요</option>
-					<c:forEach var="bcb" items="${bcbList }">
-						<option value="${bcb.id }">${bcb.name }</option>
-					</c:forEach>
-				</select>
-			</div>
-			
-				<script>
-					
-						$(function() {
-				               $("#bigCategoryIdaside").on('change', function() {
-
-				                        var data = $("#bigCategoryIdaside");
-				                        var smallCategory = $("#smallCategoryIdaside");
-				                        var smli = $("#scaList>div>select");
-				      
-				                        smli.empty();
-				                        
-				                        $.post("getListBC", data, function(d) {
-
-				                           var obj = JSON.parse(d);
-				               
-				                           smallCategory.append( $('<option disabled selected><span> 소분류 선택 </span></option'));
-				                           
-				                           if(obj.length != 0){
-				                              for (var i = 0; i < obj.length; i++) {
-				                                    
-				                                 smallCategory.append( $('<option value=' +obj[i].id +  '><span>'+ obj[i].name +'</span></option>'));
-				                        
-				                                    $('select').material_select();
-				                              }
-				                           }
-				                           else if(obj.length == 0){
-				                              $('select').material_select();
-				                           }
-				                        });
-				                        
-				                        var bcDelpost = $("#bctdel");
-				                        var bcModpost = $("#bctmod");
-				                        var scCheckpost = $("#scaAddCheck");
-				                        
-				                        bcDelpost.val($(this).val());
-				                        bcModpost.val($(this).val());
-				                        scCheckpost.val($(this).val());
-				                        
-				                     });
-				            });
-						</script>
-			<br/>
-				<div class="input-field" id="scaList">
-					<select name="smallCa" id="smallCategoryIdaside" required>
-						<option id="default" value="" disabled selected>소분류를 선택하세요</option>
-					</select>
-				</div>
-					<script>
-						$(function() {
-							$("#smallCategoryIdaside").on('change', function() {
-
-								var smList = $("#smallCategoryIdaside");
-
-								var scDelpost = $("#scadel");
-								var scModpost = $("#scamod");
-
-								scDelpost.val($(this).val());
-								scModpost.val($(this).val());
-
-							});
-						});
-										
-</script>
-				
-				<button class="btn waves-effect waves-light right" type="search">
-					<i class="material-icons">search</i>
-				</button>	
-		</form>
-	</ul>
+		<label style="display: none">Speed Search</label>
+		<c:forEach var="bcb" items="${bcbList }">
+          <ul class="collapsible collapsible-accordion">
+            <li class="bold" ><a class="collapsible-header  waves-effect waves-teal">
+            <input type="hidden"  value="${bcb.id }" name="bigCa" />${bcb.name }</a>
+              <div class="collapsible-body">
+                <ul>
+                <c:forEach var="small" items="${bcb.smallCategory}">
+                  <li><a href="http://localhost/WiynPrj/main/index?p=1&q=&bigCa=${bcb.id}&smallCa=${small.id}"><input type="hidden"  value="${small.id }" name="SmallCa" />${small.name }</a></li>
+                </c:forEach>
+                </ul>
+              </div>
+            </li>
+ 		</c:forEach>
+          </ul>
+	</ul>	
 
 <script type="text/javascript">
 	

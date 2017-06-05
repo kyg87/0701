@@ -18,9 +18,6 @@ public interface SiteBoardDao {
     SiteBoard getNext(String id);
     SiteBoard getRandom();
     
-/*    public List<SiteBoard> getListSpeed(@Param("page") int page,
-     @Param("query") String query, @Param("bigCategoryId") String bigCategoryId, 
-     @Param("smallCategoryId") String smallCategoryId);*/
 
 	public int add(SiteBoard siteBoard);
 	public int delete(String id);
@@ -38,5 +35,5 @@ public interface SiteBoardDao {
 	List<SiteBoard> getTagLoad(String query);
 	
 	public int updateCommentCount(String Id);
-
+	int count();
 }

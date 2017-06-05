@@ -9,7 +9,9 @@ public interface SmallCategoryDao {
 
 	List<SmallCategory> getList();
 	List<SmallCategory> getListWithBC(String bigCategoryId);
-
+	List<SmallCategory> getListOfBC(String bigCategoryId);
+	
+	
 	int add(String name, String bigCategoryId);
 	int del(String bigCategoryId, String smallCategoryId);
 	int modify(String bigCategoryId, String smallCategoryId, String name);

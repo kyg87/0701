@@ -44,6 +44,12 @@
 		 like '%${bigCa}%' and smallCategoryId like '%${smallCa}%'  
 		 order by regDate DESC LIMIT ${(page-1)*10},10 
 	</select>
+	
+	<select id="count" resultType="Integer">
+	SELECT COUNT(*) FROM SiteBoard
+</select>
+	
+	
 		<select id="getListLike" resultType="com.wiyn.web.entity.SiteBoard">
 
 		select N.*, COUNT(C.siteBoardId) Good

@@ -100,9 +100,9 @@ public class RequestBoardController {
 		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
 		
 		for (BigCategory bigCategory : bcbList) {
-			bigCategory.setSmallCategory(sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId()));
+			List<SmallCategory> small = sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId());
+			bigCategory.setSmallCategory(small);
 		}
-
 		model.addAttribute("bcbList", bcbList);
 		
 		return "requestboard.requestboard";
@@ -154,9 +154,9 @@ public class RequestBoardController {
 		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
 		
 		for (BigCategory bigCategory : bcbList) {
-			bigCategory.setSmallCategory(sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId()));
+			List<SmallCategory> small = sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId());
+			bigCategory.setSmallCategory(small);
 		}
-
 		model.addAttribute("bcbList", bcbList);
 
 		return "requestboard.request-edit";
@@ -221,9 +221,9 @@ public class RequestBoardController {
 		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
 		
 		for (BigCategory bigCategory : bcbList) {
-			bigCategory.setSmallCategory(sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId()));
+			List<SmallCategory> small = sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId());
+			bigCategory.setSmallCategory(small);
 		}
-
 		model.addAttribute("bcbList", bcbList);
 
 		return "requestboard.request-detail";

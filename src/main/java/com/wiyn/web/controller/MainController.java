@@ -52,22 +52,6 @@ public class MainController {
 	
 	@Autowired
 	private SmallCategoryDao smallCategoryDao;
-
-	@RequestMapping(value="getListBC", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
-	@ResponseBody
-	public String GetListWithBC(Model model,
-			@RequestParam(value="bigCa")String bigCategoryId){
-
-		System.out.println(bigCategoryId);
-		List<SmallCategory> bcaList = sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategoryId);
-		model.addAttribute("bcaList", bcaList);
-
-		
-		Gson gson = new Gson();
-		String json = gson.toJson(bcaList);
-		
-		return json;
-	}
 	
     @RequestMapping("index")
     public String index(String id,
@@ -123,13 +107,30 @@ public class MainController {
 		model.addAttribute("b", bName);
 		model.addAttribute("s", sName);
 		model.addAttribute("t", tName);
+//		--------------------페이지-------------------
+		int cnt= sqlSession.getMapper(SiteBoardDao.class).count();
+		int listPerFive = (page-1)/5;
+		int checkLast = (listPerFive*5) + 5;
 		
+		if(cnt % 10 == 0)
+			cnt = cnt/10;
+		else
+			cnt = (cnt/10)+1;
+		
+		if(checkLast > cnt)
+			checkLast = cnt;
+		
+		model.addAttribute("listPerFive", listPerFive);
+		model.addAttribute("checkLast", checkLast);
+		model.addAttribute("cnt", cnt);
+		
+//		-------------------------어사이드-----------------------
 		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
 		
 		for (BigCategory bigCategory : bcbList) {
-			bigCategory.setSmallCategory(sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId()));
+			List<SmallCategory> small = sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId());
+			bigCategory.setSmallCategory(small);
 		}
-
 		model.addAttribute("bcbList", bcbList);
 		
         return "main.index";        

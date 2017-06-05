@@ -54,21 +54,6 @@ public class SiteBoardController {
 	@Autowired
 	private TagDao tagDao;
 	
-	@RequestMapping(value="getListBC", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
-	@ResponseBody
-	public String GetListBC(Model model,
-			@RequestParam(value="bigCa")String bigCategoryId){
-
-		System.out.println(bigCategoryId);
-		List<SmallCategory> bcaList = sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategoryId);
-		model.addAttribute("bcaList", bcaList);
-
-		
-		Gson gson = new Gson();
-		String json1 = gson.toJson(bcaList);
-		
-		return json1;
-	}
 	
 	@RequestMapping("site-reg")
 	public String site(Model model,
@@ -86,10 +71,10 @@ public class SiteBoardController {
 		
 		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
 		
-		for (BigCategory bigcategory : bcbList) {
-			bigcategory.setSmallCategory(sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigcategory.getId()));
+		for (BigCategory bigCategory : bcbList) {
+			List<SmallCategory> small = sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId());
+			bigCategory.setSmallCategory(small);
 		}
-
 		model.addAttribute("bcbList", bcbList);
 		
 		return "siteboard.site-reg";		
@@ -206,9 +191,9 @@ public class SiteBoardController {
 		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
 		
 		for (BigCategory bigCategory : bcbList) {
-			bigCategory.setSmallCategory(sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId()));
+			List<SmallCategory> small = sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId());
+			bigCategory.setSmallCategory(small);
 		}
-
 		model.addAttribute("bcbList", bcbList);
 		
 		
@@ -273,9 +258,9 @@ public class SiteBoardController {
 		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
 		
 		for (BigCategory bigCategory : bcbList) {
-			bigCategory.setSmallCategory(sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId()));
+			List<SmallCategory> small = sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId());
+			bigCategory.setSmallCategory(small);
 		}
-
 		model.addAttribute("bcbList", bcbList);
         
         

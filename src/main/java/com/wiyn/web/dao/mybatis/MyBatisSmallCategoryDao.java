@@ -58,6 +58,13 @@ public class MyBatisSmallCategoryDao implements SmallCategoryDao {
 		return smallCategoryDao.modify(bigCategoryId, smallCategoryId, name);
 	}
 
+	@Override
+	public List<SmallCategory> getListOfBC(String bigCategoryId) {
+		SmallCategoryDao smallCategoryDao;
+		smallCategoryDao = sqlSession.getMapper(SmallCategoryDao.class);
+		return smallCategoryDao.getListOfBC(bigCategoryId);
+	}
+
 
 
 }
