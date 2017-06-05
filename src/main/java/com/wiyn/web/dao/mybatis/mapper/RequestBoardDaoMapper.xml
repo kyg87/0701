@@ -5,6 +5,10 @@
 
 <mapper namespace="com.wiyn.web.dao.RequestBoardDao">
 
+	<select id="count" resultType="Integer">
+	SELECT COUNT(*) FROM RequestBoard;
+	</select>
+
 	<select id ="getSize" resultType="Integer">
 	
 	select count(*) from RequestBoard;
@@ -14,7 +18,7 @@
 	
 	<select id ="getList" resultType="com.wiyn.web.entity.RequestBoard">
 	
-	 select*from RequestBoard  order by regDate desc limit ${(page-1) *10},10; ;
+	 select*from RequestBoard  order by regDate desc limit ${(page-1) *10},10; 
 	
 	</select>
 

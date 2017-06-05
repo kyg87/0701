@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 import com.wiyn.web.dao.BigCategoryDao;
 import com.wiyn.web.dao.FreeCommentDao;
+import com.wiyn.web.dao.NoticeBoardDao;
 import com.wiyn.web.dao.RequestBoardDao;
 import com.wiyn.web.dao.RequestCommentDao;
 import com.wiyn.web.dao.SmallCategoryDao;
@@ -69,8 +70,29 @@ public class RequestBoardController {
 		List<RequestBoard> list = sqlSession.getMapper(RequestBoardDao.class).getList(page);
 		int size = sqlSession.getMapper(RequestBoardDao.class).getSize();
 		
+		int cnt = sqlSession.getMapper(RequestBoardDao.class).count();
+		int listPerFive = (page-1)/5;
+		int checkLast = (listPerFive*5) + 5;
+		
+		if(cnt % 10 == 0)
+			cnt = cnt/10;
+		else
+			cnt = (cnt/10)+1;
+		
+		if(checkLast > cnt)
+			checkLast = cnt;
+		
 		model.addAttribute("list", list);
 		model.addAttribute("size", size);
+		model.addAttribute("page", page);
+		model.addAttribute("listPerFive", listPerFive);
+		model.addAttribute("checkLast", checkLast);
+		model.addAttribute("cnt", cnt);
+		
+		System.out.println("page  : " +page);
+		System.out.println("listPerFive  : " +listPerFive);
+		System.out.println("checkLast  : " +checkLast);
+		System.out.println("cnt  : " +cnt);
 		
 		System.out.println("www"+size);
 		
@@ -94,10 +116,10 @@ public class RequestBoardController {
 
 	@RequestMapping(value = "reg", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 
-	public String sited(
-
-			RequestBoard requestBoard, @RequestParam(value = "title") String title,
-			@RequestParam(value = "content") String content, @RequestParam(value = "memberId") String memberId) {
+	public String sited(RequestBoard requestBoard,
+			@RequestParam(value = "title") String title,
+			@RequestParam(value = "content") String content,
+			@RequestParam(value = "memberId") String memberId) {
 
 		
 		requestBoard.setTitle(title);
