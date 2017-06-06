@@ -41,7 +41,6 @@
 <fmt:parseNumber var="pageInt" integerOnly="true" value="${paging/10 }" />
 <c:set var="last" value="${(paging%10)>0 ? pageInt+1 : pageInt }" /> 
 <c:if test="${empty param.p }">
-	<p>파람 값이 널1</p>
 	<c:set var="param.p" value="1" />
 </c:if>
 

@@ -65,7 +65,7 @@ public class FreeBoardController {
 		model.addAttribute("pageList", pageList);
 		model.addAttribute("paging", paging);
 	/*	model.addAttribute("list", list);*/
-		
+		model.addAttribute("freeboard", "freeboard");
 		
 		System.out.println("www"+paging);
 		

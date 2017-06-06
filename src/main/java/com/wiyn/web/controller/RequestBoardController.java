@@ -88,6 +88,7 @@ public class RequestBoardController {
 		model.addAttribute("listPerFive", listPerFive);
 		model.addAttribute("checkLast", checkLast);
 		model.addAttribute("cnt", cnt);
+		model.addAttribute("requestboard", "requestboard");
 		
 		System.out.println("page  : " +page);
 		System.out.println("listPerFive  : " +listPerFive);
