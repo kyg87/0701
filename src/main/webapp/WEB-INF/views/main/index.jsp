@@ -378,8 +378,7 @@ textScroll.prototype.start = function() {
 <br>
 <div class="site-button">
 	<a class="waves-effect waves-light btn sitego" href="">
-	<div class="write">Write<i class="tiny material-icons">mode-edit</i>
-	</div>
+	<div class="write">Write<i class="tiny material-icons">mode_edit</i></div>
 	</a>
 </div>
 <br>
