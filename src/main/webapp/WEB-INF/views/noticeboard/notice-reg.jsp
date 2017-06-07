@@ -141,9 +141,24 @@ body {
 								<div class="form-group">
 									<label for="comment">Comment:</label>
 									<div id="preView"></div>
-									<textarea name="content" class="form-control" rows="15" id="comment"></textarea>
+									<textarea name="content" class="form-control materialize-textarea" rows="15" id="comment"
+									data-length="130"></textarea>
 								</div>								
 							</div>
+							
+							<script>
+								$(function(){
+									$("#comment").keydown(function(e){
+										
+										if($("#comment").val().length > 130){
+											if(e.keyCode != 8){
+												alert("글자수 초과!!");
+											}
+										}
+										
+									});
+								});
+							</script>
 	
 						</td>
 	
@@ -154,7 +169,6 @@ body {
 							<div id="btn">
 								<button class="btn waves-effect waves-light" type="submit" name="action">
 									Submit <i class="material-icons right">send</i>
-	
 								</button>
 							</div>
 						</td>
