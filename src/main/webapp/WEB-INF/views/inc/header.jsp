@@ -106,6 +106,11 @@ body{
 .personal .tiny{
 	margin-left:3px;
 }
+
+nav ul li.active {
+    /* background-color: yellow; */
+}
+
 </style>
 
 <header id="header">
@@ -146,9 +151,42 @@ body{
 			<nav>
 				<div class="nav-wrapper">
 					<ul class="center menubar">
-						<li><a class="board" href="../requestboard/requestboard">Request</a></li>
-						<li><a class="board" href="../freeboard/freeboard">Free</a></li>
-						<li><a class="board" href="../noticeboard/noticeboard">Notice</a></li>
+					
+						<c:choose>
+							<c:when test="${not empty requestboard  }">
+								<li class="active"><a class="board " href="../requestboard/requestboard">Request</a></li>
+							</c:when>
+							
+							<c:otherwise>
+								<li><a class="board " href="../requestboard/requestboard">Request</a></li>
+							</c:otherwise>
+						</c:choose>
+						
+				
+						
+						<c:choose>
+							<c:when test="${not empty freeboard  }">
+								<li class="active"><a class="board " href="../freeboard/freeboard">Free</a></li>
+							</c:when>
+							
+							<c:otherwise>
+								<li><a class="board " href="../freeboard/freeboard">Free</a></li>
+							</c:otherwise>
+						</c:choose>
+					
+						
+						
+						<c:choose>
+							<c:when test="${not empty noticeboard  }">
+								<li class="active"><a class="board " href="../noticeboard/noticeboard">Notice</a></li>
+							</c:when>
+							
+							<c:otherwise>
+								<li><a class="board " href="../noticeboard/noticeboard">Notice</a></li>
+							</c:otherwise>
+						</c:choose>
+						
+				
 					</ul>
 				</div>
 			</nav>

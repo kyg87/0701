@@ -61,7 +61,9 @@ public class AdminController {
 	}
 	
 	@RequestMapping("admin")
-	public String admin(Model model) {
+	public String admin(@RequestParam(value="bigCa",defaultValue="")String bigcategoryId,
+            @RequestParam(value="smallCa",defaultValue="")String smallcategoryId,
+            Model model) {
 		
 		List<BigCategory> bcList = sqlSession.getMapper(BigCategoryDao.class).getList();
 		
@@ -71,6 +73,16 @@ public class AdminController {
 		}
 		
 		model.addAttribute("bcList", bcList);
+		
+		
+		
+		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
+		
+		for (BigCategory bigCategory : bcbList) {
+			List<SmallCategory> small = sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId());
+			bigCategory.setSmallCategory(small);
+		}
+		model.addAttribute("bcbList", bcbList);
 		
 		return "admin.admin";
 	}

@@ -85,7 +85,7 @@ public class NoticeBoardController {
 		model.addAttribute("listPerFive", listPerFive);
 		model.addAttribute("checkLast", checkLast);
 		model.addAttribute("cnt", cnt);
-		
+		model.addAttribute("noticeboard", "noticeboard");
 		System.out.println(page);
 		
 		

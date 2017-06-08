@@ -10,6 +10,7 @@ td{
 	padding-right: 5px;
 	padding-top: 5px;
 	padding-bottom: 5px;
+	text-align: left;
 }
 
 .table{
@@ -22,31 +23,100 @@ td{
 .input-border{
 	border-bottom: 0px;
 }
+
+.div-bar{
+	width: auto;
+	height: 20px;
+	background: #e9e9e9;
+	border-radius: 2px;
+	font:20px;
+}
+
+.table-head {
+	font-family: 'Jeju Gothic', serif;
+	font: menu;
+	border-bottom:none;
+}
+
+.flex{
+	width:auto;
+	display: flex;
+	justify-direction:space-around;
+}
+
+textarea{
+    height: auto;
+}
+
+.td-border{
+border:1px solid #e9e9e9;
+border-radius: 2px;
+}
 </style>
 
 <main id="main">
 <form action="reg" method="post">
-		<table class="table">
-			<thead>
+
+	<%-- <i class="tiny material-icons">mode_edit</i><label>Site Add</label>
+	<div class="div-bar"></div>
+	<div class="flex">
+	<label>대분류</label> 
+	<select name="bigCategoryId" id="bigCategoryId"
+		required>
+		<option id="default" value="" disabled selected>선택하세요.</option>
+		<c:forEach var="bc" items="${bcList }">
+			<option value="${bc.id }">${bc.name }</option>
+		</c:forEach>
+	</select>
+	</div>
+	<div class="flex">
+		<label>소분류</label> 
+		<select name="smallCategoryId" id="smallCategoryId"
+			required>
+			<option id="default" value="" disabled selected>선택하세요.</option>
+		</select>
+	</div>
+	<div class="flex">
+		<label>제목</label>
+		<div class="input-field col s12">
+			<input id="input_text" name="title" type="text" data-length="30"
+				required>
+		</div>
+	</div>
+	<div class="flex">
+		<label>홈페이지</label>
+		<div class="input-field col s12">
+			<input id="url" name="url"" type="text" class="input-border validate" required> 
+			<label for="email">http://</label>
+		</div>
+	</div>
+	<div class="flex">
+		<label>내용</label>
+		<div>
+			<textarea name="content" class="form-control" rows="15"
+				id="content" required></textarea>
+		</div>
+	</div>
+	<div class="flex">
+		<div class="chips chips-placeholder">
+			<!-- add생성될곳 -->
+			<input class="tag" id="e385bafe-7ce5-436e-e3f3-12af51285ada"
+				type="text" placeholder="+Tag" />
+			<!-- add가생성되는곳 -->
+		</div>
+	</div> --%>
+	<i class="tiny material-icons">mode_edit</i><label>Site Add</label>
+	<div class="div-bar"></div>
+	<table class="table">
+			<thead class="table-head">
 				<tr>
 					<td>
-				<%-- 	<select class="browser-default" name="bigCategoryId" id="bigCategoryId">
-						<option value="" disabled selected>대분류</option>
-						<c:forEach var="bc" items="${bcList }">
-							<option value="${bc.id }">${bc.name }</option>
-						</c:forEach>
-					</select>  --%>
-					<%-- <div class="input-field">
-							<select name="bigCategoryId" id="bigCategoryId">
-								<option value="" disabled selected>대분류</option>
-								<c:forEach var="bc" items="${bcList }">
-									<option value="${bc.id }">${bc.name }</option>
-								</c:forEach>
-							</select>
-						</div> --%>
+					<label>대분류</label>
+					</td>
+					<td class="td-border">
 					<div class="input-field">
 						<select name="bigCategoryId" id="bigCategoryId" required>
-							<option id="default" value="" disabled selected>대분류를 선택하세요</option>
+							<option id="default" value="" disabled selected>선택하세요.</option>
 							<c:forEach var="bc" items="${bcList }">
 								<option value="${bc.id }">${bc.name }</option>
 							</c:forEach>
@@ -94,10 +164,15 @@ td{
 				            });
 						</script>
 					</td>
+					</tr>
+					<tr>
 					<td>
+					<label>소분류</label>
+					</td>
+					<td class="td-border">
 					<div class="input-field" id="scList">
 						<select name="smallCategoryId" id="smallCategoryId" required>
-							<option id="default" value="" disabled selected>소분류를 선택하세요</option>
+							<option id="default" value="" disabled selected>선택하세요.</option>
 						</select>
 					</div> 
 					<script>
@@ -121,24 +196,31 @@ td{
 							</select>
 						</div> -->
 					</td>
-					<td>
-					</td>
-					<td>
-					</td>
 				</tr>
 				<tr>
-					<td colspan=4">
+					<td>
+						<label>제목</label>
+					</td>
+					<td class="td-border">
+					<div class="row">
 						<div class="input-field col s12">
+							<input id="input_text" name="title" type="text" data-length="30" required>
+						</div>
+					</div>
+					<!-- <div class="input-field col s12">
 							<input id="email" name="title" type="text" class=" input-border validate" required> 
 							<label for="email">제목</label>
-						</div>
+						</div> -->
 					</td>
 					<!-- <td colspan="3">
 						<input  id="titleinput" type="" value="">
 					</td> -->
 				</tr>
 				<tr>
-					<td colspan="4">
+					<td>
+						<label>홈페이지</label>
+					</td>
+					<td class="td-border">
 						<div class="input-field col s12">
 							<input id="url" name="url"" type="text" class="input-border validate" required> 
 							<label for="email">http://</label>
@@ -148,6 +230,15 @@ td{
 			</thead>
 			<tbody>
 				<tr>
+				<td><label>내용</label></td>
+				<td class="td-border">
+					<div>
+						<textarea name="content" class="form-control" rows="20"
+							id="content" required></textarea>
+					</div>
+				</td>
+			</tr>
+				<!-- <tr>
 					<td colspan="4">
 						<div>
 							<form>
@@ -157,7 +248,7 @@ td{
 							</form>
 						</div>
 					</td>
-				</tr>
+				</tr> -->
 				<tr>
 					<td colspan="4">
 						<div class="chips chips-placeholder">

@@ -12,6 +12,18 @@ display: block;
 	height: 100%;
 }
 
+.main-nav-div{
+	background: #fff;
+}
+
+.main-nav{
+	border:none;
+}
+
+nav .input-field label i{
+	color:rgba(183, 182, 182, 0.7);
+}
+
 </style>
 
 
@@ -21,12 +33,12 @@ display: block;
 		style="overflow: auto; transform: translateX(0%);">
 		<label style="display: none">Search</label>
 		<form action="http://localhost/WiynPrj/main/index" method="GET">
-			<nav>
-				<div class="nav-wrapper">
+			<nav class="main-nav">
+				<div class="nav-wrapper main-nav-div">
 					<div class="input-field">
 						<input type="hidden" name="p" value="1" /> <input name="q"
 							id="search" type="search" value="${param.q}" required> <label
-							class="label-icon" for="search"><i class="material-icons">search</i></label>
+							class="label-icon" for="search"><i class="material-icons search-icon">search</i></label>
 						<i class="material-icons">close</i>
 						
 					</div>
@@ -36,8 +48,34 @@ display: block;
 		</form>
 		<label style="display: none">Speed Search</label>
 		<c:forEach var="bcb" items="${bcbList }">
+		<c:choose>
+			<c:when test="${param.bigCa eq bcb.id }">
           <ul class="collapsible collapsible-accordion">
-            <li class="bold" ><a class="collapsible-header  waves-effect waves-teal">
+           	<li class="bold" ><a class="collapsible-header  active waves-effect waves-teal">
+            <input type="hidden"  value="${bcb.id }" name="bigCa" />${bcb.name }</a>
+              <div class="collapsible-body">
+                <ul>
+                
+                
+                <c:forEach var="small" items="${bcb.smallCategory}">
+                <c:choose>
+                	<c:when test="${param.smallCa eq small.id }">
+                  <li class="active"><a href="http://localhost/WiynPrj/main/index?p=1&q=&bigCa=${bcb.id}&smallCa=${small.id}"><input type="hidden"  value="${small.id }" name="SmallCa" />${small.name }</a></li>
+                	</c:when>
+                	<c:otherwise>
+                	<li><a href="http://localhost/WiynPrj/main/index?p=1&q=&bigCa=${bcb.id}&smallCa=${small.id}"><input type="hidden"  value="${small.id }" name="SmallCa" />${small.name }</a></li>
+                	</c:otherwise>
+                </c:choose>
+                </c:forEach>
+                </ul>
+              </div>
+            </li>
+            </ul>
+         </c:when>
+         
+         <c:otherwise>
+       <ul class="collapsible collapsible-accordion">
+           	<li class="bold" ><a class="collapsible-header  waves-effect waves-teal">
             <input type="hidden"  value="${bcb.id }" name="bigCa" />${bcb.name }</a>
               <div class="collapsible-body">
                 <ul>
@@ -47,8 +85,11 @@ display: block;
                 </ul>
               </div>
             </li>
- 		</c:forEach>
-          </ul>
+         </ul> 
+         </c:otherwise>
+         
+		</c:choose>
+		</c:forEach> 
 	</ul>	
 
 <script type="text/javascript">
@@ -62,9 +103,5 @@ display: block;
 
 <script>
 
-
 </script>
 </aside>
-
-
-

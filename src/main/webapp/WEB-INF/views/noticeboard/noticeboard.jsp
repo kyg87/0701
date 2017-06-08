@@ -3,6 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 
+
 <main id="main">
 <table border="1">
 	<thead>
@@ -31,7 +32,7 @@
 	</tbody>
 </table>
 
-<a class="waves-effect waves-light btn card-panel blue lighten-2" 
+<a class="waves-effect waves-light btn card-panel blue lighten-2 right" 
 	href="/WiynPrj/noticeboard/notice-reg?p=${page }">글쓰기</a>
 
 <div align="center">
