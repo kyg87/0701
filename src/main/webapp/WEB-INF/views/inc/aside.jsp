@@ -48,8 +48,34 @@ nav .input-field label i{
 		</form>
 		<label style="display: none">Speed Search</label>
 		<c:forEach var="bcb" items="${bcbList }">
+		<c:choose>
+			<c:when test="${param.bigCa eq bcb.id }">
           <ul class="collapsible collapsible-accordion">
-            <li class="bold" ><a class="collapsible-header  waves-effect waves-teal">
+           	<li class="bold" ><a class="collapsible-header  active waves-effect waves-teal">
+            <input type="hidden"  value="${bcb.id }" name="bigCa" />${bcb.name }</a>
+              <div class="collapsible-body">
+                <ul>
+                
+                
+                <c:forEach var="small" items="${bcb.smallCategory}">
+                <c:choose>
+                	<c:when test="${param.smallCa eq small.id }">
+                  <li class="active"><a href="http://localhost/WiynPrj/main/index?p=1&q=&bigCa=${bcb.id}&smallCa=${small.id}"><input type="hidden"  value="${small.id }" name="SmallCa" />${small.name }</a></li>
+                	</c:when>
+                	<c:otherwise>
+                	<li><a href="http://localhost/WiynPrj/main/index?p=1&q=&bigCa=${bcb.id}&smallCa=${small.id}"><input type="hidden"  value="${small.id }" name="SmallCa" />${small.name }</a></li>
+                	</c:otherwise>
+                </c:choose>
+                </c:forEach>
+                </ul>
+              </div>
+            </li>
+            </ul>
+         </c:when>
+         
+         <c:otherwise>
+       <ul class="collapsible collapsible-accordion">
+           	<li class="bold" ><a class="collapsible-header  waves-effect waves-teal">
             <input type="hidden"  value="${bcb.id }" name="bigCa" />${bcb.name }</a>
               <div class="collapsible-body">
                 <ul>
@@ -59,8 +85,11 @@ nav .input-field label i{
                 </ul>
               </div>
             </li>
- 		</c:forEach>
-          </ul>
+         </ul> 
+         </c:otherwise>
+         
+		</c:choose>
+		</c:forEach> 
 	</ul>	
 
 <script type="text/javascript">
@@ -74,9 +103,5 @@ nav .input-field label i{
 
 <script>
 
-
 </script>
 </aside>
-
-
-
