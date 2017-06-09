@@ -1,5 +1,6 @@
 package com.wiyn.web.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -91,16 +92,17 @@ public class UserController {
 		
 			SiteBoard siteBoard,AddBoard addBoard,
 			@RequestParam(value="boardName")String boardname,
-			@RequestParam(value="array")String send_array
+			@RequestParam(value="array")ArrayList<String> send_array, //[id=18, boardname=asdkfj]
+			@RequestParam(value="id") String id
 			){
 		
-		System.out.println("삭제");
-		System.out.println(send_array);
+		//System.out.println("삭제");
+		System.out.println(send_array.get(0));
+		System.out.println(boardname);
 		
 		
 		
-		/*System.out.println(boardname);
-		String[] aa = boardname.split(",");
+		/*send_array = send_array.split(",");
 		for(int i=0;i<aa.length;i++){
 		
 		
