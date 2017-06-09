@@ -103,7 +103,7 @@ public class NoticeBoardController {
 	@RequestMapping("notice-reg")
 	public String noticeReg(Model model){
 		
-		return null;
+		return "noticeboard.notice-reg";
 	}
 	
 	@RequestMapping("notice-detail")
