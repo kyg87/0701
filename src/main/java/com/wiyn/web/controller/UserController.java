@@ -1,7 +1,10 @@
 package com.wiyn.web.controller;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.wiyn.web.dao.BigCategoryDao;
 import com.wiyn.web.dao.FreeBoardDao;
@@ -21,7 +23,6 @@ import com.wiyn.web.dao.SmallCategoryDao;
 import com.wiyn.web.dao.UserPageDao;
 import com.wiyn.web.entity.AddBoard;
 import com.wiyn.web.entity.BigCategory;
-import com.wiyn.web.entity.FreeBoard;
 import com.wiyn.web.entity.SiteBoard;
 import com.wiyn.web.entity.SmallCategory;
 
@@ -91,14 +92,41 @@ public class UserController {
 	public String delList(Authentication auth,Model model,
 		
 			SiteBoard siteBoard,AddBoard addBoard,
-			@RequestParam(value="boardName")String boardname,
+			@RequestParam(value="boardName")ArrayList<String> boardname,
 			@RequestParam(value="array")ArrayList<String> send_array, //[id=18, boardname=asdkfj]
 			@RequestParam(value="id") String id
 			){
 		
+		
 		//System.out.println("삭제");
-		System.out.println(send_array.get(0));
-		System.out.println(boardname);
+		System.out.println(boardname.get(4));
+		//System.out.println(boardname);
+	
+		
+		HashMap hm = new HashMap();
+		List al = new ArrayList();
+		for(int i=0;i<send_array.size();i++){
+		hm.put(send_array.get(i), boardname.get(i));
+		
+		}
+		al.add(hm);
+		System.out.println("결과"+ al);
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		
