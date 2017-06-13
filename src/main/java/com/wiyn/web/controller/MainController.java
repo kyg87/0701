@@ -144,61 +144,78 @@ public class MainController {
             @RequestParam(value="bigCa",defaultValue="")String bigCategoryId,
             @RequestParam(value="smallCa",defaultValue="")String smallCategoryId,
             Model model) {
-//        List<SiteBoard> sitelist = sqlSession.getMapper(SiteBoardDao.class).getList(page,query,bigCategoryId, smallCategoryId);
-        List<SiteBoard> sitelistlike = sqlSession.getMapper(SiteBoardDao.class).getListLike(page, query,bigCategoryId, smallCategoryId);
-//        List<SiteBoard> sitelistcomment = sqlSession.getMapper(SiteBoardDao.class).getListComment(page, query,bigCategoryId, smallCategoryId);
-        
+    	 List<SiteBoard> sitelist = sqlSession.getMapper(SiteBoardDao.class).getList(page,query,bigCategoryId, smallCategoryId);
+         List<SiteBoard> sitelistlike = sqlSession.getMapper(SiteBoardDao.class).getListLike(page, query,bigCategoryId, smallCategoryId);
+         List<SiteBoard> sitelistcomment = sqlSession.getMapper(SiteBoardDao.class).getListComment(page, query,bigCategoryId, smallCategoryId);
+         
 
+         
+         int size= sqlSession.getMapper(SiteBoardDao.class).getSize();
+         String last= sqlSession.getMapper(SiteBoardDao.class).lastId();
+         SiteBoard board=sqlSession.getMapper(SiteBoardDao.class).getBoard(id);
+         SiteBoard prev=sqlSession.getMapper(SiteBoardDao.class).getPrev(id);
+         SiteBoard next=sqlSession.getMapper(SiteBoardDao.class).getNext(id);
+         
+         
+         
         
-        int size= sqlSession.getMapper(SiteBoardDao.class).getSize();
-        String last= sqlSession.getMapper(SiteBoardDao.class).lastId();
-        SiteBoard board=sqlSession.getMapper(SiteBoardDao.class).getBoard(id);
-        SiteBoard prev=sqlSession.getMapper(SiteBoardDao.class).getPrev(id);
-        SiteBoard next=sqlSession.getMapper(SiteBoardDao.class).getNext(id);
-        
-        
-        
-       
-        /*-------공지사항 불러오기----------*/
-        List<NoticeBoard> noticelist = sqlSession.getMapper(NoticeBoardDao.class).getList();
-        model.addAttribute("noticelist", noticelist);
-        
-        /*-------사이트게시판 불러오기-------*/
-//        model.addAttribute("sitelist", sitelist);
-        model.addAttribute("sitelistlike", sitelistlike);
-//        model.addAttribute("sitelistcomment", sitelistcomment);
-        
-        model.addAttribute("size", size);
-        model.addAttribute("last", last);
-        model.addAttribute("prev", prev);
-        model.addAttribute("next", next);
-        model.addAttribute("board", board);
-        /*-------------랜덤페이지 가져오기----------------*/
-    
-        SiteBoard random=sqlSession.getMapper(SiteBoardDao.class).getRandom();
-		int likeCount = siteBoardLikeDao.getLike(id);	
-		
-		
-		String bName = siteBoardDao.getBName(random.getId());
-		String sName = siteBoardDao.getSName(random.getId());
-		List<Tag> tName = siteBoardDao.getTName(random.getId());
-		
-		System.out.println(bName);
-		
-		
-        model.addAttribute("random", random);
-		model.addAttribute("l", likeCount);
-		model.addAttribute("b", bName);
-		model.addAttribute("s", sName);
-		model.addAttribute("t", tName);
-		
-		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
-		
-		for (BigCategory bigCategory : bcbList) {
-			bigCategory.setSmallCategory(sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId()));
-		}
-
-		model.addAttribute("bcbList", bcbList);
+         /*-------공지사항 불러오기----------*/
+         List<NoticeBoard> noticelist = sqlSession.getMapper(NoticeBoardDao.class).getList();
+         model.addAttribute("noticelist", noticelist);
+         
+         /*-------사이트게시판 불러오기-------*/
+         model.addAttribute("sitelist", sitelist);
+         model.addAttribute("sitelistlike", sitelistlike);
+         model.addAttribute("sitelistcomment", sitelistcomment);
+         
+         model.addAttribute("size", size);
+         model.addAttribute("last", last);
+         model.addAttribute("prev", prev);
+         model.addAttribute("next", next);
+         model.addAttribute("board", board);
+         /*-------------랜덤페이지 가져오기----------------*/
+     
+         SiteBoard random=sqlSession.getMapper(SiteBoardDao.class).getRandom();
+ 		int likeCount = siteBoardLikeDao.getLike(id);	
+ 		
+ 		
+ 		String bName = siteBoardDao.getBName(random.getId());
+ 		String sName = siteBoardDao.getSName(random.getId());
+ 		List<Tag> tName = siteBoardDao.getTName(random.getId());
+ 		
+ 		System.out.println(bName);
+ 		
+ 		
+         model.addAttribute("random", random);
+ 		model.addAttribute("l", likeCount);
+ 		model.addAttribute("b", bName);
+ 		model.addAttribute("s", sName);
+ 		model.addAttribute("t", tName);
+// 		--------------------페이지-------------------
+ 		int cnt= sqlSession.getMapper(SiteBoardDao.class).count();
+ 		int listPerFive = (page-1)/5;
+ 		int checkLast = (listPerFive*5) + 5;
+ 		
+ 		if(cnt % 10 == 0)
+ 			cnt = cnt/10;
+ 		else
+ 			cnt = (cnt/10)+1;
+ 		
+ 		if(checkLast > cnt)
+ 			checkLast = cnt;
+ 		
+ 		model.addAttribute("listPerFive", listPerFive);
+ 		model.addAttribute("checkLast", checkLast);
+ 		model.addAttribute("cnt", cnt);
+ 		
+// 		-------------------------어사이드-----------------------
+ 		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
+ 		
+ 		for (BigCategory bigCategory : bcbList) {
+ 			List<SmallCategory> small = sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId());
+ 			bigCategory.setSmallCategory(small);
+ 		}
+ 		model.addAttribute("bcbList", bcbList);
 		
         return "main.index2";
     }
@@ -211,61 +228,78 @@ public class MainController {
             @RequestParam(value="bigCa",defaultValue="")String bigCategoryId,
             @RequestParam(value="smallCa",defaultValue="")String smallCategoryId,
             Model model) {
- //       List<SiteBoard> sitelist = sqlSession.getMapper(SiteBoardDao.class).getList(page,query,bigCategoryId, smallCategoryId);
- //       List<SiteBoard> sitelistlike = sqlSession.getMapper(SiteBoardDao.class).getListLike(page, query,bigCategoryId, smallCategoryId);
-        List<SiteBoard> sitelistcomment = sqlSession.getMapper(SiteBoardDao.class).getListComment(page, query,bigCategoryId, smallCategoryId);
-        
+    	 List<SiteBoard> sitelist = sqlSession.getMapper(SiteBoardDao.class).getList(page,query,bigCategoryId, smallCategoryId);
+         List<SiteBoard> sitelistlike = sqlSession.getMapper(SiteBoardDao.class).getListLike(page, query,bigCategoryId, smallCategoryId);
+         List<SiteBoard> sitelistcomment = sqlSession.getMapper(SiteBoardDao.class).getListComment(page, query,bigCategoryId, smallCategoryId);
+         
 
+         
+         int size= sqlSession.getMapper(SiteBoardDao.class).getSize();
+         String last= sqlSession.getMapper(SiteBoardDao.class).lastId();
+         SiteBoard board=sqlSession.getMapper(SiteBoardDao.class).getBoard(id);
+         SiteBoard prev=sqlSession.getMapper(SiteBoardDao.class).getPrev(id);
+         SiteBoard next=sqlSession.getMapper(SiteBoardDao.class).getNext(id);
+         
+         
+         
         
-        int size= sqlSession.getMapper(SiteBoardDao.class).getSize();
-        String last= sqlSession.getMapper(SiteBoardDao.class).lastId();
-        SiteBoard board=sqlSession.getMapper(SiteBoardDao.class).getBoard(id);
-        SiteBoard prev=sqlSession.getMapper(SiteBoardDao.class).getPrev(id);
-        SiteBoard next=sqlSession.getMapper(SiteBoardDao.class).getNext(id);
-        
-        
-        
-       
-        /*-------공지사항 불러오기----------*/
-        List<NoticeBoard> noticelist = sqlSession.getMapper(NoticeBoardDao.class).getList();
-        model.addAttribute("noticelist", noticelist);
-        
-        /*-------사이트게시판 불러오기-------*/
-//        model.addAttribute("sitelist", sitelist);
-//        model.addAttribute("sitelistlike", sitelistlike);
-        model.addAttribute("sitelistcomment", sitelistcomment);
-        
-        model.addAttribute("size", size);
-        model.addAttribute("last", last);
-        model.addAttribute("prev", prev);
-        model.addAttribute("next", next);
-        model.addAttribute("board", board);
-        /*-------------랜덤페이지 가져오기----------------*/
-    
-        SiteBoard random=sqlSession.getMapper(SiteBoardDao.class).getRandom();
-		int likeCount = siteBoardLikeDao.getLike(id);	
-		
-		
-		String bName = siteBoardDao.getBName(random.getId());
-		String sName = siteBoardDao.getSName(random.getId());
-		List<Tag> tName = siteBoardDao.getTName(random.getId());
-		
-		System.out.println(bName);
-		
-		
-        model.addAttribute("random", random);
-		model.addAttribute("l", likeCount);
-		model.addAttribute("b", bName);
-		model.addAttribute("s", sName);
-		model.addAttribute("t", tName);
-		
-		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
-		
-		for (BigCategory bigCategory : bcbList) {
-			bigCategory.setSmallCategory(sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId()));
-		}
-
-		model.addAttribute("bcbList", bcbList);
+         /*-------공지사항 불러오기----------*/
+         List<NoticeBoard> noticelist = sqlSession.getMapper(NoticeBoardDao.class).getList();
+         model.addAttribute("noticelist", noticelist);
+         
+         /*-------사이트게시판 불러오기-------*/
+         model.addAttribute("sitelist", sitelist);
+         model.addAttribute("sitelistlike", sitelistlike);
+         model.addAttribute("sitelistcomment", sitelistcomment);
+         
+         model.addAttribute("size", size);
+         model.addAttribute("last", last);
+         model.addAttribute("prev", prev);
+         model.addAttribute("next", next);
+         model.addAttribute("board", board);
+         /*-------------랜덤페이지 가져오기----------------*/
+     
+         SiteBoard random=sqlSession.getMapper(SiteBoardDao.class).getRandom();
+ 		int likeCount = siteBoardLikeDao.getLike(id);	
+ 		
+ 		
+ 		String bName = siteBoardDao.getBName(random.getId());
+ 		String sName = siteBoardDao.getSName(random.getId());
+ 		List<Tag> tName = siteBoardDao.getTName(random.getId());
+ 		
+ 		System.out.println(bName);
+ 		
+ 		
+         model.addAttribute("random", random);
+ 		model.addAttribute("l", likeCount);
+ 		model.addAttribute("b", bName);
+ 		model.addAttribute("s", sName);
+ 		model.addAttribute("t", tName);
+// 		--------------------페이지-------------------
+ 		int cnt= sqlSession.getMapper(SiteBoardDao.class).count();
+ 		int listPerFive = (page-1)/5;
+ 		int checkLast = (listPerFive*5) + 5;
+ 		
+ 		if(cnt % 10 == 0)
+ 			cnt = cnt/10;
+ 		else
+ 			cnt = (cnt/10)+1;
+ 		
+ 		if(checkLast > cnt)
+ 			checkLast = cnt;
+ 		
+ 		model.addAttribute("listPerFive", listPerFive);
+ 		model.addAttribute("checkLast", checkLast);
+ 		model.addAttribute("cnt", cnt);
+ 		
+// 		-------------------------어사이드-----------------------
+ 		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
+ 		
+ 		for (BigCategory bigCategory : bcbList) {
+ 			List<SmallCategory> small = sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId());
+ 			bigCategory.setSmallCategory(small);
+ 		}
+ 		model.addAttribute("bcbList", bcbList);
 		
         return "main.index3";
     }
