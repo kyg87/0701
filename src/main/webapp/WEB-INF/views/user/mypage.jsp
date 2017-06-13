@@ -61,10 +61,9 @@
 		}
 	*/
 		var send_array = [];
-	
+		var boardname = [];
 		function go_delete() {
-			
-			
+		
     		var send_cnt = 0;
     		
 			if ($(":checkbox[name='check_del']:checked").length == 0) {
@@ -73,14 +72,15 @@
 			}
 
     		$("#array").val(send_array);
-			console.log(send_array);	
+			$("#boardName").val(boardname);	
 			
 			$('input:checkbox[name="check_del"]').each(function() {
 
-			//this.checked = true; //checked 처리
+			
 
 				if(this.checked){//checked 처리된 항목의 값
 					send_array[send_cnt] = this.value;
+					boardname[send_cnt] = this.value;
 					//alert(send_array[send_cnt]); 
 					send_cnt++;
 				}
@@ -89,9 +89,10 @@
 
 			});
 			
-			document.del.array.value = send_array; 
+			 document.del.array.value = send_array;  
+			document.del.boardName.value = boardname;
 			
-			alert("인풋>" + $("input[name=array]").val());
+			alert("인풋>" + $("input[name=boardName]").val() );
 			
 		}
 	
@@ -134,7 +135,7 @@
 				<c:forEach var="v" items="${list}">
 
 					<tr>
-						<td><input type="checkbox" id="${v.id}" name="check_del" value="${v.id }" class="aa" /><label for="${v.id}"></label></td>
+						<td><input type="checkbox" id="${v.id}" name="check_del" value="${v.id }" /><label for="${v.id}"></label></td>
 						<td style="text-align: center"><a
 							href="../${v.boardName}board/${v.boardName}-detail?c=${v.id}">${v.title}</a></td>
 						<td style="text-align: center"><fmt:formatDate
@@ -211,6 +212,7 @@
 
 			<input type="hidden" name="id" value="${n.id }">
 			<input type="hidden" name="array" value=""/>
+			<input type="hidden" name="boardName" value=""/>
 			
 
 
