@@ -26,12 +26,16 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
 import com.wiyn.web.dao.BigCategoryDao;
+import com.wiyn.web.dao.FreeBoardDao;
 import com.wiyn.web.dao.NoticeBoardDao;
 import com.wiyn.web.dao.NoticeBoardFileDao;
+import com.wiyn.web.dao.SiteBoardDao;
 import com.wiyn.web.dao.SmallCategoryDao;
 import com.wiyn.web.entity.BigCategory;
+import com.wiyn.web.entity.FreeBoard;
 import com.wiyn.web.entity.NoticeBoard;
 import com.wiyn.web.entity.NoticeFile;
+import com.wiyn.web.entity.SiteBoard;
 import com.wiyn.web.entity.SmallCategory;
 
 
@@ -61,13 +65,15 @@ public class NoticeBoardController {
 	
 
 	
-	@RequestMapping("noticeboard")
+	@RequestMapping(value = "noticeboard", produces="text/plain;charset=UTF-8")
 	public String site(Model model,
 			@RequestParam(value="bigCa",defaultValue="")String bigCategoryId,
             @RequestParam(value="smallCa",defaultValue="")String smallCategoryId,
 			@RequestParam(value="p", defaultValue="1")Integer page){
 		
 		List<NoticeBoard> list = sqlSession.getMapper(NoticeBoardDao.class).getList();
+		/*List<FreeBoard> flist = sqlSession.getMapper(FreeBoardDao.class).getList();*/
+		
 		int cnt = sqlSession.getMapper(NoticeBoardDao.class).count();
 		int listPerFive = (page-1)/5;
 		int checkLast = (listPerFive*5) + 5;
@@ -85,7 +91,7 @@ public class NoticeBoardController {
 		model.addAttribute("listPerFive", listPerFive);
 		model.addAttribute("checkLast", checkLast);
 		model.addAttribute("cnt", cnt);
-		model.addAttribute("noticeboard", "noticeboard");
+		/*model.addAttribute("noticeboard", "noticeboard");*/
 		System.out.println(page);
 		
 		

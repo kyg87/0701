@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="tiles"  uri="http://tiles.apache.org/tags-tiles" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 
 <style>
@@ -68,10 +69,12 @@
 			              <th id="title"> 제목 : ${list.title } <i id="re" class="small material-icons">launch</i></th>			             
 			          </tr> --%>
 			          <tr>
-			          	 <th id="writedate"> 작성 날짜 :  ${list.regDate } <i class="small material-icons">star</i> 23</th>
+			          	 <th id="writedate"><i class="tiny material-icons">schedule</i>
+							<fmt:formatDate value="${list.regDate }" pattern="yyyy-MM-dd HH:mm:ss" />
+						 </th>
 			          </tr>
 			          <tr>
-			          	<th id="writer"> 작성자 : ${list.memberId } </th>
+			          	<th id="writer"><i class="tiny material-icons">perm_identity</i> ${list.memberId } </th>
 			          </tr>
 			        </thead>
 			        <tbody>
