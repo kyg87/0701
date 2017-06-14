@@ -17,8 +17,7 @@
 
 @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 
-@import
-	url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+@import	url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
 
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
 
@@ -78,14 +77,25 @@
 }
 
 .site-button{
+	margin-top:20px;
 	display: flex;
 	justify-content:flex-end;
 	font-family: 'Nanum Gothic Coding', serif;
 }
 
+.board-title{
+	
+}
+
+.head-tr{
+	background: rgba(84, 135, 164, 0.3);
+}
+
 </style>
 
-
+<div>
+	<label class="board-title">Notice Board</label>
+</div>
 
 <main id="main">
 <table border="1" class="highlight table">
