@@ -20,6 +20,7 @@ public interface RequestBoardDao {
 	int update(RequestBoard requestBoard);
 	int delete(String memberId);
 	int count();
+	int updateViewCnt(String id);
 	
 	public String lastId();
 	public int getSize();

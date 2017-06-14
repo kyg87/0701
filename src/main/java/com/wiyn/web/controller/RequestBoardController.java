@@ -218,6 +218,8 @@ public class RequestBoardController {
 		model.addAttribute("size", size);
 		model.addAttribute("n", requestboard);
 		
+		requestBoardDao.updateViewCnt(id);
+		
 		
 		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
 		

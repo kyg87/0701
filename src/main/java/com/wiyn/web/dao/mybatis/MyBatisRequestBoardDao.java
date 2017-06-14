@@ -70,6 +70,14 @@ public class MyBatisRequestBoardDao implements RequestBoardDao {
 		requestBoardDao = sqlSession.getMapper(RequestBoardDao.class);
 		return requestBoardDao.count();
 	}
+	
+	@Override
+	public int updateViewCnt(String id) {
+		RequestBoardDao requestBoardDao;
+		requestBoardDao = sqlSession.getMapper(RequestBoardDao.class);
+		return requestBoardDao.updateViewCnt(id);
+		}
+	
 	@Override
 	public RequestBoard get(String id) {
 		// TODO Auto-generated method stub
@@ -112,6 +120,7 @@ public class MyBatisRequestBoardDao implements RequestBoardDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 
 
