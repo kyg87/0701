@@ -3,41 +3,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, maximum-scale=1.0" />
-<title>Starter Template - Materialize</title>
-
-<!-- CSS  -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
-<link href="/WiynPrj/resource/css/materialize.css" type="text/css"
-	rel="stylesheet" media="screen,projection" />
-<link href="/WiynPrj/resource/css/style.css" type="text/css"
-	rel="stylesheet" media="screen,projection" />
-<link href="/WiynPrj/resource/css/main.css" type="text/css"
-	rel="stylesheet" media="screen,projection" />
-
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-</head>
 
 <style>
+
 body {
 	background-color: rgb(238, 238, 238);
 }
 
 #main {
-	width: 600px;
+	width: 100%;
 	margin-top: 30px;
-	margin: 0px auto;
+	/* margin: 0px auto; */
 	min-height: 500px;
 	font-size: 14px;
 	line-height: 1.5em;
@@ -48,11 +24,11 @@ body {
 	background-color: white;
 	/* background: pink; */
 	padding: 10px;
-	margin: 0px auto;
+	/* margin: 0px auto; */
 }
 
 #title {
-	width: 40px;
+	width: 20px;
 	/* border: 1px solid black; */
 	font-family: bold;
 	display: inline;
@@ -62,7 +38,7 @@ body {
 }
 
 #address {
-	width: 40px;
+	width: 20px;
 	/* border: 1px solid black; */
 	display: inline;
 	font-style: black;
@@ -87,8 +63,8 @@ body {
 }
 
 #titleinput {
-	width: 400px;
-	margin-right: 100px;
+	width: 100%;
+	margin-right: 10%;
 }
 
 #input-field1 {
@@ -106,30 +82,55 @@ body {
 
 
 
+
 </style>
 
 
 
 	<form id="noticeReg" action="noticeBoard-reg?p=${page }" method="post" enctype="multipart/form-data">
 		<main id="main">
-			<div>공지사항등록</div>
+		
+			<div><h3>공지사항 등록</h3></div>
+			
+			<div>
+				<span> 제목 입력 : </span>
+				<textarea></textarea>
+			</div>
+			
+			<div>
+				<span> 페이지 주소 입력 : </span>
+				<textarea></textarea>
+			</div>
+			
+			<div>
+				<span>파일 첨부 : </span>
+				<input type="file" name="file" multiple/>
+			</div>
+			
+			<div>
+				<span>내용 입력 : </span>
+				<textarea rows="20" cols="50"></textarea>
+			</div>
+		
+		
+			<!-- <div><h3>공지사항 등록하기~</h3></div>
 			<table>
 				<thead>					
 					<tr>
 						<th>
-							<div id="title">제목</div>
+							<div id="title">제목 입력하기 : </div>
 						</th>
 						<th><input name="title" id="titleinput" type="text" value=""></th>
 					</tr>
 					<tr>
 						<th>
-							<div id="address">http://</div>
+							<div id="address">주소 입력하기 : </div>
 						</th>
 						<th><input id="contentSrc" type="text" value="" name="contentSrc"></th>
 					</tr>
 					
 					<tr>
-						<th>파일 첨부</th>
+						<th>파일 첨부하기~</th>
 						<td><input type="file" name="file" multiple/></td>
 					</tr>
 				</thead>
@@ -139,7 +140,7 @@ body {
 						<td colspan="2">
 							<div id="divcontent">
 								<div class="form-group">
-									<label for="comment">Comment:</label>
+									<label for="comment">내용 입력하기 :</label>
 									<div id="preView"></div>
 									<textarea name="content" class="form-control materialize-textarea" rows="15" id="comment"
 									data-length="130"></textarea>
@@ -168,14 +169,65 @@ body {
 						<td colspan="2">
 							<div id="btn">
 								<button class="btn waves-effect waves-light" type="submit" name="action">
-									Submit <i class="material-icons right">send</i>
+									등록 완료 <i class="material-icons right">send</i>
 								</button>
 							</div>
 						</td>
 					</tr>
 				</tbody>
-			</table>
-		</main>
+			</table> -->
+			
+			
+	<!-- <fieldset>
+		<legend>레시피 등록하기</legend>
+
+		<dl>
+			<dt>
+				<h5>제목 입력하기</h5>
+			</dt>
+			<dd>
+				<div class="dd-chunk">
+					<input placeholder="레시피의 제목을 입력해주세요" type="text"
+						name="recipe[title]" />
+					<div class="input-error"></div>
+				</div>
+			</dd>
+
+			<dt>
+				<h2>한줄설명 입력하기</h2>
+			</dt>
+			<dd>
+				<div class="dd-chunk">
+					<input placeholder="레시피를 소개할 수 있는 한줄설명을 입력해주세요" type="text"
+						name="recipe[sub_title]" />
+					<div class="input-error"></div>
+				</div>
+			</dd>
+
+			<dt class="mate">
+				<h2>음식정보</h2>
+			</dt>
+			<dd>
+				<div class="dd-chunk">
+					<h3>음식이름</h3>
+					<ul class="lst_mate">
+						<li class="food-info"><input class="lft input-name"
+							placeholder="음식명을 입력하세요" type="text" name="recipe[name]" /> <input
+							class="rgt" placeholder="조리분량" type="text"
+							name="recipe[serving_for]" /> 인분</li>
+					</ul>
+					<div class="input-error"></div>
+				</div>
+
+
+
+			</dd>
+		</dl>
+
+		</dl>
+	</fieldset> -->
+
+	</main>
 		<input type="hidden" name="memberId" value=<security:authentication property="name"/> />
 	</form>
 	

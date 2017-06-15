@@ -6,14 +6,7 @@
 <mapper namespace="com.wiyn.web.dao.NoticeBoardDao">
 <select resultType="com.wiyn.web.entity.NoticeBoard" id="getList"> 
 
-SELECT `NoticeBoard`.`id`,
-    `NoticeBoard`.`title`,
-    `NoticeBoard`.`content`,
-    `NoticeBoard`.`contentSrc`,
-    `NoticeBoard`.`hit`,
-    `NoticeBoard`.`regDate`,
-    `NoticeBoard`.`memberId`
-FROM `lsedb`.`NoticeBoard`
+SELECT * FROM `lsedb`.`NoticeBoard`
 ORDER BY regDate DESC
 
 </select>

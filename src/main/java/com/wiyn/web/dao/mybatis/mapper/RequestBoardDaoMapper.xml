@@ -68,6 +68,10 @@
 		
 	
 	</update>
+	
+	<update id="updateViewCnt">
+	UPDATE RequestBoard SET hit = hit + 1 where id = #{id}  
+     </update>
 
 	<delete id="delete" parameterType="com.wiyn.web.entity.RequestBoard">
 		

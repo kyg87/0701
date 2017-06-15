@@ -288,9 +288,9 @@ textScroll.prototype.start = function() {
 
 	<div class="col s12 line">
 		<ul class="tabs">
-			<li class="tab col s3"><a href="#index">최신순</a></li>
-			<li class="tab col s3"><a href="#index2">점수순</a></li>
-			<li class="tab col s3"><a href="#index3">댓글순</a></li>
+			<li class="tab col s3"><a class="active" target="_self" href="index?p=${param.p}&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}">최신순</a></li>
+			<li class="tab col s3"> <a target="_self" href="index2?p=${param.p}&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}">점수순</a></li>
+			<li class="tab col s3"> <a target="_self" href="index3?p=${param.p}&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}">댓글순</a></li>
 		</ul>
 	</div>
 
@@ -316,60 +316,6 @@ textScroll.prototype.start = function() {
 					<td><fmt:formatDate value="${n.regDate}"
 							pattern="yyyy-MM-dd HH:mm:ss" /></td>
 
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-
-
-	<table id="index2" class="highlight table">
-		<thead class="table-head">
-			<tr class="head-tr">
-				<th>번호</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>조회수</th>
-				<th>작성날짜</th>
-			</tr>
-		</thead>
-		<tbody>
-			<fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd" />
-			<c:forEach var="n" items="${sitelistlike}">
-				<tr>
-					<td>${n.id}</td>
-					<td class="orange-text text-accent-3 table-title"><a
-						href="../siteboard/site-detail?c=${n.id}">${n.title}</a>[${n.countcomment }]</td>
-					<td>${n.memberId }</td>
-					<td>${n.hit }</td>
-					<td><fmt:formatDate value="${n.regDate}"
-							pattern="yyyy-MM-dd HH:mm:ss" /></td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-
-	<table id="index3" class="highlight table">
-		<thead class="table-head">
-			<tr class="head-tr">
-				<th>번호</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>조회수</th>
-				<th>작성날짜</th>
-			</tr>
-		</thead>
-		<fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd" />
-		<tbody>
-			<c:forEach var="n" items="${sitelistcomment}">
-				<tr>
-					<td>${n.id}</td>
-					<td class="orange-text text-accent-3 table-title"><a
-						href="../siteboard/site-detail?c=${n.id}">${n.title}</a>
-						[${n.countcomment }]</td>
-					<td>${n.memberId }</td>
-					<td>${n.hit }</td>
-					<td><fmt:formatDate value="${n.regDate}"
-							pattern="yyyy-MM-dd HH:mm:ss" /></td>
 				</tr>
 			</c:forEach>
 		</tbody>

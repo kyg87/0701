@@ -12,8 +12,15 @@ public class RequestBoard {
 	private List<RequestComment> requestComment;
 	private String boardName;
 	private int page;
+	private int hit;
 	
 	
+	public int getHit() {
+		return hit;
+	}
+	public void setHit(int hit) {
+		this.hit = hit;
+	}
 	public int getPage() {
 		return page;
 	}
