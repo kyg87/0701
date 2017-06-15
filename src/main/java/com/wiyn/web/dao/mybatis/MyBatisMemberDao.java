@@ -35,8 +35,15 @@ public class MyBatisMemberDao implements MemberDao {
 		MemberDao memberDao;
 		memberDao = sqlSession.getMapper(MemberDao.class);
 		
-		System.out.println(memberDao.isExistEmail(email));
 		return memberDao.isExistEmail(email);
+	}
+
+	@Override
+	public int isLogin(String email, String pwd) {
+		MemberDao memberDao;
+		memberDao = sqlSession.getMapper(MemberDao.class);
+		
+		return memberDao.isLogin(email, pwd);
 	}
 
 }

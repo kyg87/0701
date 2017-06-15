@@ -132,7 +132,7 @@ nav ul li.active {
 			<a class="login font personal input" href="${root}/joinus/singin">
 				Join <i class="tiny material-icons">input</i>
 			</a>
-			<a class="login font personal loge" href="${root}/joinus/login">
+			<a class="login font personal loge" href="#modal10">
 				Login <i class="tiny material-icons">lock</i>
 			</a>
 		</security:authorize>
@@ -192,7 +192,87 @@ nav ul li.active {
 			</nav>
 		</div>
 		
-	</div>
+	</div>\\  <!-- Modal Structure -->
+  <div id="modal10" class="modal">
+    <form id="myForm20" action="${root}/j_spring_security_check" method="post">
+			<div class="modal-content">
+				<div class="row margin">
+					<div class="input-field col s12 center">
+						<img src="${root}/resource/images/login-logo.png" alt=""
+							class="circle responsive-img valign profile-image-login">
+						<p class="center login-form-text">Material Design Admin
+							Template</p>
+					</div>
+				</div>
+
+				<c:if test="${param.error !=null }">
+					<p>Login Error
+					<p />
+					<p>message:${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message }</p>
+				${error}
+	
+			</c:if>
+				<div class="row margin">
+					<div class="input-field col s12">
+						 <i class="material-icons prefix">email</i>
+						 <input name="j_username" id="j_username" type="email" class="validate">
+						<label for="email" class="center-align">Email</label>
+					</div>
+				<!-- 	<div class="input-field col s12">
+			            <i class="mdi-social-person-outline prefix"></i>
+			            <input id="username" type="text">
+			            <label for="username" class="center-align">Username</label>
+			          </div> -->
+				</div>
+				<div class="row margin">
+				
+					<div class="input-field col s12">
+					<i class="material-icons prefix">lock_outline</i>
+						<input name="j_password" id="j_password" type="password"
+							class="validate"> <label for="password">Password</label>
+					</div>
+				</div>
+
+				<div  id="btn2" class="row">
+
+					<input class="btn waves-effect waves-light col s12"
+						type="button" value="LOGIN" />
+
+				</div>
+			</div>
+	</form>
+	
+    </div>
+<script type="text/javascript">
+	  $(document).ready(function(){
+		  var myForm1 = $("#myForm20");
+		  var j_name = $("#j_username");
+		  var j_pwd = $("#j_password");
+
+		var data = myForm1.serialize();
+		  $("#btn2").click(function(){
+	
+				  console.log(j_name.val());
+				  console.log(j_pwd.val());
+				$.post("${root}/joinus/login", {"j_username":j_name.val(),"j_password":j_pwd.val()}, function(d) {
+				 
+					if(d =='1'){
+						alert("로그인 성공했습니다.");
+						myForm1.submit();
+					}
+					else {
+						alert("아이디 또는 비빌번호가 틀렸습니다.");
+						return;
+					}
+					
+		
+				});
+		        //myForm1.submit();
+			
+		  });
+
+		});
+	</script>
 </header>
 
 	

@@ -80,22 +80,16 @@ public class JoinusController {
 	}
 	
 	@RequestMapping("login")
+	@ResponseBody
 	public String login(
-			@RequestParam(value="bigCa",defaultValue="")String bigCategoryId,
-            @RequestParam(value="smallCa",defaultValue="")String smallCategoryId,
-            Model model){
+			@RequestParam(value="j_username")String j_username,
+			@RequestParam(value="j_password")String j_password){
 		
 		
-		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
-		
-		for (BigCategory bigCategory : bcbList) {
-			List<SmallCategory> small = sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId());
-			bigCategory.setSmallCategory(small);
-		}
-		model.addAttribute("bcbList", bcbList);
-		
-		System.out.println("login");
-		return "joinus.login";		
+		System.out.println(j_username);
+		System.out.println(j_password);
+		int result = memberDao.isLogin(j_username, j_password);
+		return Integer.toString(result);
 	}
 	
 	@RequestMapping("isSingIn")

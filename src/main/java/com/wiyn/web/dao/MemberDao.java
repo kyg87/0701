@@ -10,4 +10,6 @@ public interface MemberDao {
 	int addRole(String email,String auth);
 	
 	int isExistEmail(String email);
+	
+	int isLogin(String email,String pwd);
 }
