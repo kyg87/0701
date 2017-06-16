@@ -115,7 +115,8 @@ body, html {
 			</div>
 
 			<div class="col s12 l6">
-				<form id="update" action="notice-update" method="post" enctype="multipart/form-data">
+				<form id="update" action="notice-update" method="post" enctype="multipart/form-data"
+				 class="card-panel">
 
 					<div class="row">
 						<div class="input-field col s12">
