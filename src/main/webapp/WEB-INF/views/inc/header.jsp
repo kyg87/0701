@@ -323,7 +323,7 @@ nav form{
     
       <!-- Modal Structure -->
   <div id="modal11" class="modal">
-  <form id="myForm20" action="${root}/j_spring_security_check" method="post">
+  <form id="myForm3" action="${root}/joinus/singIn" method="post">
             <div class="modal-content">
                 <div class="row">
 			         <div class="input-field col s12 center">
@@ -362,7 +362,7 @@ nav form{
 					<input  type="button"
 						class="btn waves-effect waves-light col s12" value="Register Now">
 				</div>
-			
+			 
                
             </div>
     </form>
@@ -409,7 +409,7 @@ nav form{
 		        var pass = $("#pass");
 		        var pass1 = $("#pass1");
 		    
-		        var myForm = $("#myForm");
+		        var myForm = $("#myForm3");
 		        
 		        var str = email.val();//이메일 데이터값
 		         
@@ -446,13 +446,16 @@ nav form{
 		            return;
 		        }
 		        
-				$.post("isSingIn", email, function(d) {
+				$.post("${root}/joinus/isSingIn", email, function(d) {
 					
 					if(d == '1'){
 						alert("중복된 이메일입니다");	
 					}
-					else
-						 myForm.submit();
+					else{
+						alert("회원가입에 성공");
+						myForm.submit();
+					}
+						
 		
 				});
 			  
