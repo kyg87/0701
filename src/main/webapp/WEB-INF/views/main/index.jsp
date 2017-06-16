@@ -31,6 +31,27 @@
 	padding: 0;
 }
 
+/*--------------------------비쥬얼-----------------------------------*/
+
+.visual{
+	background-color: #fff;
+	height: 400px;
+	text-align: center;
+	
+	background-image: url("/WiynPrj/resource/images/season-1985856_1920.jpg");
+	background-position:center;
+	background-origin:content-box;
+	background-size: 100%;
+}
+
+.visual p{
+	background-color: rgba(255,255,255,0.5);
+	height: inherit;
+	font-style: bold;
+	font-size: 45px;
+	font-family: 'Jeju Gothic', serif;
+}
+
 /*------------------------- 공지사항 스크롤 부분 ----------------------------------*/
 #scroll {
 	height: 30px;
@@ -302,7 +323,11 @@ textScroll.prototype.start = function() {
 <!-- li 엘리먼트들이 position:absolute 되므로 ul 엘리먼트에는 height 값이 있어야 합니다 -->
 
 <main id="main">
-
+<visual>
+	<div class="visual">
+		<p>사이트 소개 및 이용방법<br>안녕안여</p>
+	</div>
+</visual>
 <!-- 공지사항 스크롤부분 -->
 <div>
 	<ul id="scroll">

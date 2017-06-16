@@ -110,20 +110,153 @@
 	margin-left: 3px;
 }
 
-nav ul li.active {
-	/* background-color: yellow; */
-	
+nav form{
+	height: auto;
 }
 </style>
 
 <header id="header">
+	<nav>
+	    <div class="nav-wrapper">
+	      <a href="${root }/main/index" class="brand-logo logo font">로고로고</a>
+	      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+	      <security:authentication property="authorities" var="auths" />
+		  <security:authentication property="name" var="name" />
+	      <ul class="right hide-on-med-and-down">
+	        <c:choose>
+				<c:when test="${not empty noticeboard  }">
+					<li class="active"><a class="board "
+						href="../noticeboard/noticeboard">Notice</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a class="board " href="../noticeboard/noticeboard">Notice</a></li>
+				</c:otherwise>
+			</c:choose>
 
-	<div class="flex end">
+			<c:choose>
+				<c:when test="${not empty siteboard  }">
+					<li class="active"><a class="board "
+						href="../siteboard/siteboard">Site</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a class="board " href="../siteboard/siteboard">Site</a></li>
+				</c:otherwise>
+			</c:choose>
+
+			<c:choose>
+				<c:when test="${not empty freeboard  }">
+					<li class="active"><a class="board "
+						href="../freeboard/freeboard">Free</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a class="board " href="../freeboard/freeboard">Free</a></li>
+				</c:otherwise>
+			</c:choose>
+
+			<c:choose>
+				<c:when test="${not empty requestboard  }">
+					<li class="active"><a class="board "
+						href="../requestboard/requestboard">Request</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a class="board " href="../requestboard/requestboard">Request</a></li>
+				</c:otherwise>
+			</c:choose>
+			<security:authorize access="isAnonymous()">
+				<a class="login font personal loge" href="${root}/joinus/login">Login
+					<i class="tiny material-icons">lock</i>
+				</a>
+			</security:authorize>
+			<security:authorize access="isAuthenticated()">
+				<a class="login font personal pin" href="${root}/user/mypage"> <security:authentication
+						property="name" /><i class="tiny material-icons">person_pin</i>
+				</a>
+				<a class="login font personal lock"
+					href="${root}/j_spring_security_logout"> Logout <i
+					class="tiny material-icons">lock_outline</i>
+				</a>
+			</security:authorize>
+	      </ul>
+	      <ul class="side-nav" id="mobile-demo">
+	      			<security:authorize access="isAnonymous()">
+				<a class="login font personal loge" href="${root}/joinus/login">Login
+					<i class="tiny material-icons">lock</i>
+				</a>
+				<a class="login font personal input" href="${root}/joinus/singin">Join 
+					<i class="tiny material-icons">input</i>
+				</a>
+			</security:authorize>
+			<security:authorize access="isAuthenticated()">
+				<a class="login font personal pin" href="${root}/user/mypage"> <security:authentication
+						property="name" /><i class="tiny material-icons">person_pin</i>
+				</a>
+				<a class="login font personal lock"
+					href="${root}/j_spring_security_logout"> Logout <i
+					class="tiny material-icons">lock_outline</i>
+				</a>
+			</security:authorize>
+			<form action="http://localhost:8080/WiynPrj/main/index" method="GET">
+				<nav class="main-nav">
+						<div class="input-field">
+							<input type="hidden" name="p" value="1" /> <input name="q"
+								id="search" type="search" value="${param.q}" required> <label
+								class="label-icon" for="search"><i class="material-icons search-icon">search</i></label>
+							<i class="material-icons">close</i>
+						</div>
+				</nav>
+			</form>
+	        <c:choose>
+				<c:when test="${not empty noticeboard  }">
+					<li class="active"><a class="board "
+						href="../noticeboard/noticeboard">Notice</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a class="board " href="../noticeboard/noticeboard">Notice</a></li>
+				</c:otherwise>
+			</c:choose>
+
+			<c:choose>
+				<c:when test="${not empty siteboard  }">
+					<li class="active"><a class="board "
+						href="../siteboard/siteboard">Site</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a class="board " href="../siteboard/siteboard">Site</a></li>
+				</c:otherwise>
+			</c:choose>
+
+			<c:choose>
+				<c:when test="${not empty freeboard  }">
+					<li class="active"><a class="board "
+						href="../freeboard/freeboard">Free</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a class="board " href="../freeboard/freeboard">Free</a></li>
+				</c:otherwise>
+			</c:choose>
+
+			<c:choose>
+				<c:when test="${not empty requestboard  }">
+					<li class="active"><a class="board "
+						href="../requestboard/requestboard">Request</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a class="board " href="../requestboard/requestboard">Request</a></li>
+				</c:otherwise>
+			</c:choose>
+
+	      </ul>
+	    </div>
+	 </nav>
+
+
+	<%-- <nav class="flex end">
 
 		<a href="#" data-activates="nav-mobile"
 			class="button-collapse top-nav full hide-on-large-only"> <i
 			class="material-icons">menu</i>
-		</a> <span class="logo-icon"> <a href="${root }/main/index"
+		</a> 
+		<span class="logo-icon"> <a href="${root }/main/index"
 			class="logo font"> 로고로고 </a>
 		</span>
 		<security:authentication property="authorities" var="auths" />
@@ -181,9 +314,9 @@ nav ul li.active {
 				<a class="login font personal loge" href="${root}/joinus/login">Login
 					<i class="tiny material-icons">lock</i>
 				</a>
-				<%-- <a class="login font personal input" href="${root}/joinus/singin">Join 
+				<a class="login font personal input" href="${root}/joinus/singin">Join 
 					<i class="tiny material-icons">input</i>
-				</a> --%>
+				</a>
 			</security:authorize>
 			<security:authorize access="isAuthenticated()">
 				<a class="login font personal pin" href="${root}/user/mypage"> <security:authentication
@@ -194,7 +327,7 @@ nav ul li.active {
 					class="tiny material-icons">lock_outline</i>
 				</a>
 			</security:authorize>
-		</div>
+		</div> --%>
 		<%-- <div class="navbar-fixed">
 			<nav>
 				<div class="nav-wrapper">
@@ -227,6 +360,6 @@ nav ul li.active {
 				</div>
 			</nav>
 		</div> --%>
-	</div>
+	
 </header>
 

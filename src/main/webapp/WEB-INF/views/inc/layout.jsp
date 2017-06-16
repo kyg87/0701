@@ -36,9 +36,6 @@ s"></script>
 		<tiles:insertAttribute name="header" />
 	</div>
 	<div>
-		<tiles:insertAttribute name="visual" />	
-	</div>
-	<div>
 		<tiles:insertAttribute name="main" />
 	</div>
 	<div>
