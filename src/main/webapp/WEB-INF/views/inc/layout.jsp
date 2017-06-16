@@ -60,6 +60,7 @@ s"></script>
 	<script type="text/javascript" src="/WiynPrj/resource/js/materialize.min.js"></script>
 	<script type="text/javascript">
       $(".button-collapse").sideNav();
+      $('.modal').modal();
       </script>
 </body>
 </html>
