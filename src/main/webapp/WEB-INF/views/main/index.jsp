@@ -122,6 +122,17 @@
 	padding:20px;
 }
 
+.card-content span{
+	overflow: hidden;
+	height: 32px;
+}
+
+.card-title p{
+	overflow: hidden;
+	height: 10px;
+	width:250px;
+}
+
 /*------------------------- 최신순,점수순,댓글순 부분 ----------------------------------*/
 .tabs {
 	font-family: 'Jeju Gothic', serif;
@@ -250,6 +261,8 @@
 
 .card {
 	padding: 15px;
+	max-width: 280px;
+	max-height: 280px;
 }
 
 .card .card-action {
@@ -376,7 +389,7 @@ textScroll.prototype.start = function() {
 
 <!-- 핫한사이트부분 -->
 <div>
-<label>요즘 뜨는 사이트</label>
+<p>ㄴㅁㅇㅁㄴㅇㄴㅁㅇ</p>
 <div class="flex space">
 	<div class="card">
 		<div class="card-image waves-effect waves-block waves-light">
@@ -385,7 +398,7 @@ textScroll.prototype.start = function() {
 		<div class="card-content">
 			<span class="card-title activator grey-text text-darken-4">${random.title}<i class="material-icons right">more_vert</i></span>
 			<p>
-				<a href="#">${random.content}</a>
+				<a class="card-content" href="#">${random.content}</a>
 			</p>
 		</div>
 		<div class="card-reveal">
@@ -516,8 +529,26 @@ textScroll.prototype.start = function() {
 	<div>
 	<h5 class="white-text">당신이 알고 있는 "유용한 사이트"를 모두에게 추천해주세요!</h5>
 	</div>
-	<a class="waves-effect waves-light btn">글을 쓰러 가시겠습니까?</a>
+	<a class="waves-effect waves-light btn sitego" href="">글을 쓰러 가시겠습니까?</a>
 </div>
+<input class="sitein" type="hidden" name="memberId"
+	value=<security:authentication property="name"/>>
+<script>
+	$(document).ready(function() {
+		$('.sitego').on('click', function() {
+
+			var value = $('.sitein').val();
+
+			if (value == 'anonymousUser') {
+				alert("로그인을 한 회원만 이용이 가능합니다.");
+				$('.sitego').prop('href', "../joinus/login");
+			} else {
+				$('.sitego').prop('href', "../siteboard/site-reg");
+			}
+
+		});
+	});
+</script>
 
 <div class="flex background space category-add">
 		<div>
