@@ -98,6 +98,25 @@ body, html {
                 <div class="content">
                     <h5>예압 췌키랏! 등록해봐 공지사항 예압 노티스!!</h5>
                 </div>
+                
+                <div>
+                	<img src="C:\Users\sist-c12345\Desktop\imagesDK\51.gif" id="preView">
+                </div>
+                
+                <script>
+                $(function() {
+					$("#file").on('change', function(){
+						
+						var ImgReader = new window.FileReader();
+						
+						
+						$("#preView").src = $("#file").val();
+						alert($("#preView").src);
+						
+					});              	
+                	
+				});
+                </script>
 
 			</div>
 
@@ -128,7 +147,8 @@ body, html {
 					<div class="file-field input-field">
 					
 						<div class="btn">
-							<span>파일을 첨부 : 해애봅시이다아 </span> <input type="file" name="file" multiple />
+							<span>파일을 첨부 : 해애봅시이다아 </span>
+							<input id="file" type="file" name="file" multiple />
 						</div>
 						
 						<div class="file-path-wrapper">
