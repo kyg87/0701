@@ -93,11 +93,12 @@
 
 </style>
 
+
+
+<main id="main">
 <div>
 	<label class="board-title">Notice Board</label>
 </div>
-
-<main id="main">
 <table border="1" class="highlight table">
 	<thead class="table-head">
 		<tr class="head-tr">

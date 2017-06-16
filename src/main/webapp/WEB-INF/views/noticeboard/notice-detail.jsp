@@ -7,11 +7,6 @@
 
 <style>
 
-#main {
-	margin: 10px;
-	float: left
-}
-
 #category {
 	margin: 10px;
 	min-height: 660px;
@@ -22,13 +17,13 @@
 
 #context {
 	min-height: 200px;
-	width: 400px;
+	/* width: 400px; */
 	box-shadow: 1px 1px 5px #383838;
 }
 
 #minibox {
 	min-height: 100px;
-	width: 400px;
+	/* width: 400px; */
 	box-shadow: 1px 1px 5px #383838;
 	margin-top: 10px;
 }
@@ -56,9 +51,7 @@
 </style>
 
  <main id="main">
-<div>공지사항디테일</div>
 	<div id="yy">
-		<div id="main">
 			<div id="context">
 				<nav>
 					제목 : ${list.title }
@@ -103,7 +96,6 @@
 			        </tbody>
 		      	</table>
 			</div>
-		</div>
 	</div>
 	
 	<div id="modal2" class="modal">
