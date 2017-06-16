@@ -31,7 +31,7 @@
 	padding: 0;
 }
 
-@media only screen and (max-width: 370px){
+@media only screen and (max-width: 480px){
 	.flex .card.second{
 		display: none;
 	}
