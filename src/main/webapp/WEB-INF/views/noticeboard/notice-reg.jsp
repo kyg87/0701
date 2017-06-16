@@ -83,22 +83,6 @@ body, html {
  margin-left: 500px;
 }
 
-.content-border{
-	width: 600px;
-	border: 1px solid;
-	margin-top: 5px;
-}
-
-.cwrap{
-	padding-left: 5px;
-	padding-right: 5px;
-	padding-bottom: 5px;
-}
-
-.file-top{
-	margin-top: 5px;
-}
-
 
 </style>
 
@@ -134,7 +118,7 @@ body, html {
 					<div class="row">
 						<div class="input-field col s12">
 							<input placeholder=" http:// " id="contentSrc" type="text"
-								name="title" class="contentSrc" value="">
+								name="contentSrc" class="contentSrc" value="">
 								<label for="name" class="active">
 									주소를 입력 : 하시오오오오~~
 								</label>
