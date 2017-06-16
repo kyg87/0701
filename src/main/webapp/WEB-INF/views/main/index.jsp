@@ -31,14 +31,22 @@
 	padding: 0;
 }
 
-#main{
-	padding-top:64px;
+@media only screen and (max-width: 370px){
+	.flex .card.second{
+		display: none;
+	}
 }
 
-@media only screen and (max-width: 601px){
-	#main{
-	padding-top:56px;
+@media only screen and (max-width: 680px){
+	.flex .card.third{
+		display: none;
+	}
 }
+
+@media only screen and (max-width: 992px){
+	.flex .card:last-child{
+		display: none;
+	}
 }
 
 /*--------------------------비쥬얼-----------------------------------*/
@@ -367,6 +375,7 @@ textScroll.prototype.start = function() {
 </div>
 
 <!-- 핫한사이트부분 -->
+<div>
 <label>요즘 뜨는 사이트</label>
 <div class="flex space">
 	<div class="card">
@@ -385,7 +394,7 @@ textScroll.prototype.start = function() {
 			<p>${random.content}</p>
 		</div>
 	</div>
-	<div class="card">
+	<div class="card second">
 		<div class="card-image waves-effect waves-block waves-light">
 			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${random.url}&width=250" />
 		</div>
@@ -401,7 +410,7 @@ textScroll.prototype.start = function() {
 			<p>${random.content}</p>
 		</div>
 	</div>
-	<div class="card">
+	<div class="card third">
 		<div class="card-image waves-effect waves-block waves-light">
 			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${random.url}&width=250" />
 		</div>
@@ -453,7 +462,7 @@ textScroll.prototype.start = function() {
 			<p>${random.content}</p>
 		</div>
 	</div>
-	<div class="card">
+	<div class="card second">
 		<div class="card-image waves-effect waves-block waves-light">
 			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${random.url}&width=250" />
 		</div>
@@ -469,7 +478,7 @@ textScroll.prototype.start = function() {
 			<p>${random.content}</p>
 		</div>
 	</div>
-	<div class="card">
+	<div class="card third">
 		<div class="card-image waves-effect waves-block waves-light">
 			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${random.url}&width=250" />
 		</div>
@@ -502,7 +511,7 @@ textScroll.prototype.start = function() {
 		</div>
 	</div>
 </div>
-
+</div>
 <div class="write">
 	<div>
 	<h5 class="white-text">당신이 알고 있는 "유용한 사이트"를 모두에게 추천해주세요!</h5>
