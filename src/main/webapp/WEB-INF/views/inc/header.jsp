@@ -124,19 +124,10 @@ nav a{
 	color:#000;
 }
 
-.modal {
-    display: none;
-    position: fixed;
-    left: 0;
-    right: 0;
-    background-color: #fafafa;
-    padding: 0;
-    max-height: 70%;
-    width: 33%;
-    margin: auto;
-    overflow-y: auto;
-    border-radius: 2px;
-    will-change: top, opacity;
+@media only screen and (min-width: 993px) {
+  .modal {
+    width: 40%;
+  }
 }
 
 </style>
@@ -207,7 +198,7 @@ nav a{
 	      </ul>
 	      <ul class="side-nav" id="mobile-demo">
 	      			<security:authorize access="isAnonymous()">
-				<a class="login font personal loge" href="${root}/joinus/login">Login
+				<a class="login font personal loge" href="#modal10">Login
 					<i class="tiny material-icons">lock</i>
 				</a>
 				<a class="login font personal input" href="${root}/joinus/singin">Join 
