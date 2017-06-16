@@ -48,6 +48,30 @@
 	font-family: 'Jeju Gothic', serif;
 }
 
+/*------------------------- 핫한사이트 ----------------------------------*/
+
+.flex{
+	display: flex;
+}
+
+.space{
+	justify-content:space-around;
+}
+
+.background{
+	background-color:#e9e9e9;
+}
+
+.write{
+	justify-content:center;
+}
+
+
+
+#main .category-add{
+	padding:20px;
+}
+
 /*------------------------- 최신순,점수순,댓글순 부분 ----------------------------------*/
 .tabs {
 	font-family: 'Jeju Gothic', serif;
@@ -125,6 +149,8 @@
 
 .write{
 	display: flex;
+	flex-direction:column;
+	text-align:center;
 }
 
 /*------------------------- 랜덤페이지 부분 ----------------------------------*/
@@ -276,17 +302,197 @@ textScroll.prototype.start = function() {
 <!-- li 엘리먼트들이 position:absolute 되므로 ul 엘리먼트에는 height 값이 있어야 합니다 -->
 
 <main id="main">
+
+<!-- 공지사항 스크롤부분 -->
 <div>
 	<ul id="scroll">
+		<label>공지사항</label>
 		<c:forEach var="m" items="${noticelist}">
 			<li><a href="../noticeboard/notice-detail?c=${m.id}&p=${param.p}">${m.title}</a></li>
 		</c:forEach>
 	</ul>
 </div>
 
-<div class="col-xs-12 col-md-8">
+<!-- 핫한사이트부분 -->
+<label>요즘 뜨는 사이트</label>
+<div class="flex space">
+	<div class="card">
+		<div class="card-image waves-effect waves-block waves-light">
+			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${random.url}&width=250" />
+		</div>
+		<div class="card-content">
+			<span class="card-title activator grey-text text-darken-4">${random.title}<i class="material-icons right">more_vert</i></span>
+			<p>
+				<a href="#">${random.content}</a>
+			</p>
+		</div>
+		<div class="card-reveal">
+			<span class="card-title grey-text text-darken-4">${random.title}<i
+				class="material-icons right">close</i></span>
+			<p>${random.content}</p>
+		</div>
+	</div>
+	<div class="card">
+		<div class="card-image waves-effect waves-block waves-light">
+			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${random.url}&width=250" />
+		</div>
+		<div class="card-content">
+			<span class="card-title activator grey-text text-darken-4">${random.title}<i class="material-icons right">more_vert</i></span>
+			<p>
+				<a href="#">${random.content}</a>
+			</p>
+		</div>
+		<div class="card-reveal">
+			<span class="card-title grey-text text-darken-4">${random.title}<i
+				class="material-icons right">close</i></span>
+			<p>${random.content}</p>
+		</div>
+	</div>
+	<div class="card">
+		<div class="card-image waves-effect waves-block waves-light">
+			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${random.url}&width=250" />
+		</div>
+		<div class="card-content">
+			<span class="card-title activator grey-text text-darken-4">${random.title}<i class="material-icons right">more_vert</i></span>
+			<p>
+				<a href="#">${random.content}</a>
+			</p>
+		</div>
+		<div class="card-reveal">
+			<span class="card-title grey-text text-darken-4">${random.title}<i
+				class="material-icons right">close</i></span>
+			<p>${random.content}</p>
+		</div>
+	</div>
+	<div class="card">
+		<div class="card-image waves-effect waves-block waves-light">
+			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${random.url}&width=250" />
+		</div>
+		<div class="card-content">
+			<span class="card-title activator grey-text text-darken-4">${random.title}<i class="material-icons right">more_vert</i></span>
+			<p>
+				<a href="#">${random.content}</a>
+			</p>
+		</div>
+		<div class="card-reveal">
+			<span class="card-title grey-text text-darken-4">${random.title}<i
+				class="material-icons right">close</i></span>
+			<p>${random.content}</p>
+		</div>
+	</div>
+</div>
 
-	<div class="col s12 line">
+<label>~~유용한 사이트</label>
+<div class="flex space">
+	<div class="card">
+		<div class="card-image waves-effect waves-block waves-light">
+			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${random.url}&width=250" />
+		</div>
+		<div class="card-content">
+			<span class="card-title activator grey-text text-darken-4">${random.title}<i class="material-icons right">more_vert</i></span>
+			<p>
+				<a href="#">${random.content}</a>
+			</p>
+		</div>
+		<div class="card-reveal">
+			<span class="card-title grey-text text-darken-4">${random.title}<i
+				class="material-icons right">close</i></span>
+			<p>${random.content}</p>
+		</div>
+	</div>
+	<div class="card">
+		<div class="card-image waves-effect waves-block waves-light">
+			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${random.url}&width=250" />
+		</div>
+		<div class="card-content">
+			<span class="card-title activator grey-text text-darken-4">${random.title}<i class="material-icons right">more_vert</i></span>
+			<p>
+				<a href="#">${random.content}</a>
+			</p>
+		</div>
+		<div class="card-reveal">
+			<span class="card-title grey-text text-darken-4">${random.title}<i
+				class="material-icons right">close</i></span>
+			<p>${random.content}</p>
+		</div>
+	</div>
+	<div class="card">
+		<div class="card-image waves-effect waves-block waves-light">
+			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${random.url}&width=250" />
+		</div>
+		<div class="card-content">
+			<span class="card-title activator grey-text text-darken-4">${random.title}<i class="material-icons right">more_vert</i></span>
+			<p>
+				<a href="#">${random.content}</a>
+			</p>
+		</div>
+		<div class="card-reveal">
+			<span class="card-title grey-text text-darken-4">${random.title}<i
+				class="material-icons right">close</i></span>
+			<p>${random.content}</p>
+		</div>
+	</div>
+	<div class="card">
+		<div class="card-image waves-effect waves-block waves-light">
+			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${random.url}&width=250" />
+		</div>
+		<div class="card-content">
+			<span class="card-title activator grey-text text-darken-4">${random.title}<i class="material-icons right">more_vert</i></span>
+			<p>
+				<a href="#">${random.content}</a>
+			</p>
+		</div>
+		<div class="card-reveal">
+			<span class="card-title grey-text text-darken-4">${random.title}<i
+				class="material-icons right">close</i></span>
+			<p>${random.content}</p>
+		</div>
+	</div>
+</div>
+
+<div class="write background">
+	<label>당신이 알고 있는 "유용한 사이트"를 모두에게 추천해주세요!</label>
+	<a class="waves-effect waves-light btn">글을 쓰러 가시겠습니까?</a>
+</div>
+
+<div class="flex background space category-add">
+		<div>
+			<label>원하는 카테고리가 없다면?</label>
+			<p>~~~~~~카테고리추가 설명</p>
+		</div>
+		<div>
+			<div class="input-field col s12">
+				<input id="last_name" type="text" class="validate"> <label
+					for="Title">Title</label>
+			</div>
+			<div class="row">
+				<div class="input-field col s6">
+					<input id="last_name" type="text" class="validate"> <label
+						for="Category1">Category1</label>
+				</div>
+				<div class="input-field col s6">
+					<input id="last_name" type="text" class="validate"> <label
+						for="Category2">Category2</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s12">
+					<input id="last_name" type="text" class="validate"> <label
+						for="Url">Url</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s12">
+					<input id="last_name" type="text" class="validate"> <label
+						for="Content">Content</label>
+				</div>
+			</div>
+			<div class="row">
+				<a class="waves-effect waves-light btn right">카테고리 요청하기</a>
+			</div>
+		</div>
+	</div>
+	<%-- <div class="col s12 line">
 		<ul class="tabs">
 			<li class="tab col s3"><a class="active" target="_self" href="index?p=${param.p}&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}">최신순</a></li>
 			<li class="tab col s3"> <a target="_self" href="index2?p=${param.p}&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}">점수순</a></li>
@@ -332,8 +538,8 @@ textScroll.prototype.start = function() {
 <c:set var="last" value="${(size%10)>0 ? sizeInt+1 : sizeInt }" />
 
 
-<%-- <div>${empty param.p ? 1 : param.p}/${last }pages</div>
-<div>${size}</div> --%>
+<div>${empty param.p ? 1 : param.p}/${last }pages</div>
+<div>${size}</div>
 <ul class="pagination center">
 	<li class="disabled"><c:if test="${((listPerFive-1)*5 + 5) > 1 }">
 			<a
@@ -351,7 +557,7 @@ textScroll.prototype.start = function() {
 					href="?p=${i }&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}">${i}</a></li>
 			</c:otherwise>
 		</c:choose>
-		<%-- <li class="waves-effect"><a href="?p=${i }&q=${param.q}">${i }</a></li>  --%>
+		<li class="waves-effect"><a href="?p=${i }&q=${param.q}">${i }</a></li> 
 	</c:forEach>
 	<li class="waves-effect"><c:if test="${cnt > ((listPerFive+1)*5 + 1) }">
 			<a
@@ -392,7 +598,7 @@ textScroll.prototype.start = function() {
     $(this).addClass("active"); 
 });
 			</script> <!-- -------------------------------랜덤 페이지--------------------------------- -->
-
+ --%>
 <%-- <div class="row">
 	<div class="col s12 m6">
 		<div class="card">
