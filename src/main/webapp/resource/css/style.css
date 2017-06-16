@@ -1,7 +1,7 @@
 @CHARSET "EUC-KR";
 
 
-.header {
+/* .header {
     z-index: 100;
     position: fixed;
     width: 100%;
@@ -37,14 +37,14 @@
     float: right;
     white-space: nowrap;
 }
-/* .category>a{
+.category>a{
 	display: inline-block;
     overflow: hidden;
     color: #222;
     font-size: 14px;
     line-height: 45px;
     padding: 0 13px;
-} */
+}
 .login{
 
 	right: 5px;
@@ -75,22 +75,31 @@
 }
 
 .side-nav{
-	top:110px;
+	top:46px;
 }
 
 main .container{
-	margin-top: 100px;
-	margin-left: 300px;
+	margin-top: 46px;
+	margin-left: 0px;
+	max-height: 790px;
+}
+
+main .row{
+	padding-top: 0px;
+	display: flex;
 }
 
 footer .container{
+	width:100%;
 	margin-left: 300px;
 	padding-left: 10px;
 }
 
-main .row{
-	padding: 20px;
+footer{
+	bottom: 0;
+	width: 100%;
 }
+ */
 
 /* ------------------------------------------------------------------------------------------------ */
 
