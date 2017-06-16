@@ -25,51 +25,48 @@ footer .first{
 	min-height: 270px;
 	color:#fff;
 }
+
+.category.column{
+	flex-direction:column;
+}
+
+.flex{
+	display: flex;
+}
+
+.space{
+	justify-content:space-around;
+}
 </style>
 
 <footer class="page-footer">
 	<div class="first space">
 		<div class="category space">
 			<div class="col s12 m3 hide-on-small-only">
-				<p>게시판</p>
+				<h5 class="white-text">Board</h5>
 				<ul>
-					<li>공지사항</li>
-					<li>사이트 추천</li>
-					<li>자유게시판</li>
-					<li>요청게시판</li>
+					<li><a class="grey-text text-lighten-3"
+						href="../noticeboard/noticeboard">Notice</a></li>
+					<li><a class="grey-text text-lighten-3"
+						href="../siteboard/siteboard">Site</a></li>
+					<li><a class="grey-text text-lighten-3"
+						href="../freeboard/freeboard">Free</a></li>
+					<li><a class="grey-text text-lighten-3"
+						href="../requestboard/requestboard">Request</a></li>
 				</ul>
 			</div>
-			<div class="col s12 m3 hide-on-small-only">
-				<p>대분류</p>
-				<ul>
-					<li>소분류</li>
-				</ul>
-			</div>
-			<div class="col s12 m3 hide-on-small-only">
-				<p>대분류</p>
-				<ul>
-					<li>소분류</li>
-				</ul>
-			</div>
-			<div class="col s12 m3 hide-on-small-only">
-				<p>대분류</p>
-				<ul>
-					<li>소분류</li>
-				</ul>
-			</div>
-			<div class="col s12 m3 hide-on-small-only">
-				<p>대분류</p>
-				<ul>
-					<li>소분류</li>
-				</ul>
-			</div>
-			<div class="col s12 m3 hide-on-small-only">
-				<p>대분류</p>
-				<ul>
-					<li>소분류</li>
-				</ul>
-			</div>
-		</div>
+			<c:forEach var="bcb" items="${bcbList }">
+				<div class="col category column s12 m3 hide-on-small-only">
+					<h5 class="white-text">
+						<input type="hidden" value="${bcb.id }" name="bigCa" />${bcb.name }</h5>
+					<ul>
+						<c:forEach var="small" items="${bcb.smallCategory}">
+							<li><a class="grey-text text-lighten-3"
+								href="http://localhost:8080/WiynPrj/main/index?p=1&q=&bigCa=${bcb.id}&smallCa=${small.id}"> <input type="hidden"  value="${small.id }" name="SmallCa" />${small.name }</a></li>
+	         			</c:forEach>
+	            	</ul>
+	            </div>
+			</c:forEach>	
 	</div>
 	<div class="footer-copyright">
 		<div class="container">

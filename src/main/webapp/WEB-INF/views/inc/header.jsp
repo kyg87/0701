@@ -9,6 +9,14 @@
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
 #header {
 	background-color: #555;
+	z-index: 998;
+    position: fixed;
+    width: 100%;
+}
+
+#header nav{
+	background-color: #fff;
+	
 }
 
 .flex {
@@ -17,10 +25,6 @@
 
 .flex.end {
 	justify-content: space-between;
-}
-
-.flex nav {
-	box-shadow: none;
 }
 
 .logo-icon {
@@ -43,6 +47,7 @@
 
 .logo.font {
 	margin-left: 10px;
+	color: black;
 }
 
 .login.input {
@@ -97,7 +102,7 @@
 
 .font {
 	font-size: 1rem;
-	color: #fff;
+	color: white;
 	letter-spacing: 0px;
 }
 
@@ -113,6 +118,12 @@
 nav form{
 	height: auto;
 }
+
+nav a{
+	color:#000;
+}
+
+
 </style>
 
 <header id="header">
@@ -162,20 +173,22 @@ nav form{
 					<li><a class="board " href="../requestboard/requestboard">Request</a></li>
 				</c:otherwise>
 			</c:choose>
+			<li>
 			<security:authorize access="isAnonymous()">
-				<a class="login font personal loge" href="#modal10">Login
+				<a class="login font personal loge btn" href="#modal10">Login
 					<i class="tiny material-icons">lock</i>
 				</a>
 			</security:authorize>
 			<security:authorize access="isAuthenticated()">
-				<a class="login font personal pin" href="${root}/user/mypage"> <security:authentication
+				<a class="login font personal pin btn" href="${root}/user/mypage"> <security:authentication
 						property="name" /><i class="tiny material-icons">person_pin</i>
 				</a>
-				<a class="login font personal lock"
+				<%-- <a class="login font personal lock"
 					href="${root}/j_spring_security_logout"> Logout <i
 					class="tiny material-icons">lock_outline</i>
-				</a>
+				</a> --%>
 			</security:authorize>
+			</li>
 	      </ul>
 	      <ul class="side-nav" id="mobile-demo">
 	      			<security:authorize access="isAnonymous()">
@@ -249,7 +262,9 @@ nav form{
 	    </div>
 	 </nav>
 
-    </div>\\  <!-- Modal Structure -->
+    </div>
+    
+    <!-- Modal Structure -->
   <div id="modal10" class="modal">
     <form id="myForm20" action="${root}/j_spring_security_check" method="post">
             <div class="modal-content">
