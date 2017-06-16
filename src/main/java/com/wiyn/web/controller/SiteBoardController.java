@@ -55,6 +55,56 @@ public class SiteBoardController {
 	private TagDao tagDao;
 	
 	
+	
+	@RequestMapping("siteboard")
+	public String siteboard(String id,
+            @RequestParam(value="p", defaultValue="1")Integer page, 
+            @RequestParam(value="q", defaultValue="")String query,
+            @RequestParam(value="bigCa",defaultValue="")String bigCategoryId,
+            @RequestParam(value="smallCa",defaultValue="")String smallCategoryId,
+            Model model){
+		
+
+		List<SiteBoard> sitelist = sqlSession.getMapper(SiteBoardDao.class).getList(page,query,bigCategoryId, smallCategoryId);
+	        
+
+		model.addAttribute("sitelist", sitelist);
+		
+	    int size= sqlSession.getMapper(SiteBoardDao.class).getSize();
+	    String last= sqlSession.getMapper(SiteBoardDao.class).lastId();
+	    SiteBoard board=sqlSession.getMapper(SiteBoardDao.class).getBoard(id);
+        model.addAttribute("size", size);
+        model.addAttribute("last", last);
+        model.addAttribute("board", board);
+		
+		int cnt= sqlSession.getMapper(SiteBoardDao.class).count();
+		int listPerFive = (page-1)/5;
+		int checkLast = (listPerFive*5) + 5;
+		
+		if(cnt % 10 == 0)
+			cnt = cnt/10;
+		else
+			cnt = (cnt/10)+1;
+		
+		if(checkLast > cnt)
+			checkLast = cnt;
+		
+		model.addAttribute("listPerFive", listPerFive);
+		model.addAttribute("checkLast", checkLast);
+		model.addAttribute("cnt", cnt);
+		
+//		-------------------------어사이드-----------------------
+		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
+		
+		for (BigCategory bigCategory : bcbList) {
+			List<SmallCategory> small = sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId());
+			bigCategory.setSmallCategory(small);
+		}
+		model.addAttribute("bcbList", bcbList);
+		
+		return "siteboard.siteboard";	
+	}
+	
 	@RequestMapping("site-reg")
 	public String site(Model model,
 			@RequestParam(value="bigCa",defaultValue="")String bigcategoryId,
@@ -204,6 +254,8 @@ public class SiteBoardController {
 	@RequestMapping(value="site-list",  produces="text/plain;charset=UTF-8")
 	public String siteTag(
 			@RequestParam("query")String query,
+			@RequestParam(value="bigCa",defaultValue="")String bigCategoryId,
+            @RequestParam(value="smallCa",defaultValue="")String smallCategoryId,
 			Model model
 			)
 	{
@@ -215,6 +267,15 @@ public class SiteBoardController {
 		
 		model.addAttribute("query", query);
 		model.addAttribute("list",list);
+		
+		
+		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
+		
+		for (BigCategory bigCategory : bcbList) {
+			List<SmallCategory> small = sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId());
+			bigCategory.setSmallCategory(small);
+		}
+		model.addAttribute("bcbList", bcbList);
 		
 		return "siteboard.site-list";
 	}
@@ -340,7 +401,7 @@ public class SiteBoardController {
  
 		siteBoardDao.delete(id);
         
-        return "redirect:/main/index";
+        return "redirect:siteboard";
      }
 		
 	 @RequestMapping(value="like", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
