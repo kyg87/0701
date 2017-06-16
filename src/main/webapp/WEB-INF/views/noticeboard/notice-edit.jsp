@@ -5,13 +5,30 @@
 <!DOCTYPE html>
 
 <style>
+
 body {
 	background-color: rgb(238, 238, 238);
 }
 
+body, html {
+    font-family: 'Abel', sans-serif;
+    color: #846C63;
+}
+
 #main {
+	width: 100%;
+	min-height: 500px;
+	font-size: 14px;
+	line-height: 1.5em;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 3px;
+	box-shadow: 1px 1px 5px #383838;
+	background: #F6F4F1!important;
+}
+
+/* #main {
 	width: 600px;
-	margin-top: 30px;
 	margin: 0px auto;
 	min-height: 500px;
 	font-size: 14px;
@@ -21,10 +38,9 @@ body {
 	-webkit-border-radius: 3px;
 	box-shadow: 1px 1px 5px #383838;
 	background-color: white;
-	/* background: pink; */
-	padding: 10px;
+	background: pink;
 	margin: 0px auto;
-}
+} */
 
 #title {
 	width: 40px;
@@ -85,7 +101,99 @@ body {
 
 <main id = "main">
 
-	<form id="update" action="notice-update" method="post" enctype="multipart/form-data">
+<div class="container">
+	<div class="section">
+		<div class="row">
+
+			<div class="col s12 l6">
+				<h2 class="title">고옹지이사하아아아앙~~</h2>
+
+				<div class="content">
+					<h5>예압 췌키랏! 수정해봐 공지사항 예압 노티스!!</h5>
+				</div>
+
+			</div>
+
+			<div class="col s12 l6">
+				<form id="update" action="notice-update" method="post" enctype="multipart/form-data">
+
+					<div class="row">
+						<div class="input-field col s12">
+							<input placeholder=" title " id="titleinput" type="text"
+								name="title" class="validate" value="${list.title}">
+								<label for="name" class="active"> 제목을 입력 : 하시오~ </label>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="input-field col s12">
+							<input placeholder=" http:// " id="contentSrc" type="text"
+								name="contentSrc" class="contentSrc" value="${list.contentSrc }">
+								<label for="name" class="active"> 주소를 입력 : 하시오오오오~~ </label>
+						</div>
+					</div>
+
+					<div class="file-field input-field">
+
+						<div class="btn">
+							<span>파일을 첨부 : 해애봅시이다아 </span> <input type="file" name="file"
+								multiple />
+						</div>
+
+						<div class="file-path-wrapper">
+							<input class="file-path validate" type="text">
+						</div>
+
+					</div>
+
+
+					<div class="row">
+						<div class="input-field col s12">
+							<textarea name="content"
+								class="form-control materialize-textarea" rows="15" id="comment"
+								data-length="130">${list.content}</textarea>
+							<label for="name" class="active"> 내용을 입력 : 하시오오오오옹!~!~!~</label>
+						</div>
+					</div>
+
+					<div id="btn">
+						<input type="hidden" name="id" value=${list.id }>
+						<button class="btn waves-effect waves-light" type="submit" name="action">
+							등록 완료 <i class="material-icons right">send</i>
+						</button>
+					</div>
+
+
+
+
+					<script>
+						$(function() {
+							$("#comment").keydown(function(e) {
+
+								if ($("#comment").val().length > 130) {
+									if (e.keyCode != 8) {
+										alert("글자수 초과!!");
+									}
+								}
+
+							});
+						});
+					</script>
+
+
+
+					<!-- <input type="hidden" name="memberId"
+						value=<security:authentication property="name"/> /> -->
+						<input type="hidden" name="p" value="${page }" />
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- ----------------------------------------------------------------------------------------------------------- -->
+
+<%-- <form id="update" action="notice-update" method="post" enctype="multipart/form-data">
 		
 			<div>공지사항 수정</div>
 			<table>
@@ -134,7 +242,7 @@ body {
 						<td colspan="2">
 
 							<div id="btn">
-								<input type="hidden" name="id" value=${list.id }>
+								
 								<button class="btn waves-effect waves-light" type="submit"
 									name="action">Submit</button>
 							</div>
@@ -143,9 +251,9 @@ body {
 					</tr>
 				</tbody>
 			</table>
-			<input type="hidden" name="p" value="${page }" />
+			
 		
-	</form>
+	</form> --%>
 
 	<!--  Scripts-->
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
