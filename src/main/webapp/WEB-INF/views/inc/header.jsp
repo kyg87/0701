@@ -9,6 +9,14 @@
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
 #header {
 	background-color: #555;
+	z-index: 998;
+    position: fixed;
+    width: 100%;
+}
+
+#header nav{
+	background-color: #fff;
+	
 }
 
 .flex {
@@ -17,10 +25,6 @@
 
 .flex.end {
 	justify-content: space-between;
-}
-
-.flex nav {
-	box-shadow: none;
 }
 
 .logo-icon {
@@ -43,6 +47,7 @@
 
 .logo.font {
 	margin-left: 10px;
+	color: black;
 }
 
 .login.input {
@@ -97,7 +102,7 @@
 
 .font {
 	font-size: 1rem;
-	color: #fff;
+	color: white;
 	letter-spacing: 0px;
 }
 
@@ -115,19 +120,11 @@ nav form{
 }
 
 
-/* .btn, .btn-large {
-  text-decoration: none;
-  color: #fff;
-  background-color: #ff4081;
-  text-align: center;
-  letter-spacing: .5px;
-  transition: .2s ease-out;
-  cursor: pointer;
+nav a{
+	color:#000;
 }
 
-.btn:hover, .btn-large:hover {
-  background-color: #ff5a92;
-} */
+
 
 </style>
 
@@ -178,20 +175,22 @@ nav form{
 					<li><a class="board " href="../requestboard/requestboard">Request</a></li>
 				</c:otherwise>
 			</c:choose>
+			<li>
 			<security:authorize access="isAnonymous()">
-				<a class="login font personal loge" href="#modal10">Login
+				<a class="login font personal loge btn" href="#modal10">Login
 					<i class="tiny material-icons">lock</i>
 				</a>
 			</security:authorize>
 			<security:authorize access="isAuthenticated()">
-				<a class="login font personal pin" href="${root}/user/mypage"> <security:authentication
+				<a class="login font personal pin btn" href="${root}/user/mypage"> <security:authentication
 						property="name" /><i class="tiny material-icons">person_pin</i>
 				</a>
-				<a class="login font personal lock"
+				<%-- <a class="login font personal lock"
 					href="${root}/j_spring_security_logout"> Logout <i
 					class="tiny material-icons">lock_outline</i>
-				</a>
+				</a> --%>
 			</security:authorize>
+			</li>
 	      </ul>
 	      <ul class="side-nav" id="mobile-demo">
 	      			<security:authorize access="isAnonymous()">
@@ -265,8 +264,13 @@ nav form{
 	    </div>
 	 </nav>
 
+
     </div> 
-  <!-- Modal Structure -->
+
+    </div>
+    
+    <!-- Modal Structure -->
+
   <div id="modal10" class="modal">
     <form id="myForm20" action="${root}/j_spring_security_check" method="post">
             <div class="modal-content">
@@ -426,11 +430,7 @@ nav form{
 		            email.focus();
 		            return;
 		        }
-		/*         if(user.value.length ==0){
-		            alert("유저네임을 입력하세요");
-		            user.focus();
-		            return;
-		        } */
+
 		        if(pass.val().length ==0){
 		            alert("비밀번호를 입력하세요");
 		            pass.focus();
