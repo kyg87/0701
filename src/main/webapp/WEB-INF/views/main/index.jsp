@@ -31,6 +31,24 @@
 	padding: 0;
 }
 
+@media only screen and (max-width: 480px){
+	.flex .card.second{
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 680px){
+	.flex .card.third{
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 992px){
+	.flex .card:last-child{
+		display: none;
+	}
+}
+
 /*--------------------------비쥬얼-----------------------------------*/
 
 .visual{
@@ -54,19 +72,31 @@
 
 /*------------------------- 공지사항 스크롤 부분 ----------------------------------*/
 #scroll {
-	height: 30px;
+	height: 50px;
 	font-weight: 300;
 	background-color: white;
 	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0
 		rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 	border-radius: 1.5px;
 	cursor: pointer;
+	
+	display: flex;
+   flex-direction: column;
+   justify-content: center;
 }
 
 #scroll a{
-	padding-left:10px;
-	color:rgb(23, 56, 125);
+	padding-left:110px;
+	color:#000;
 	font-family: 'Jeju Gothic', serif;
+	font-size: 21px;
+}
+
+.noticelabel{
+	padding-left: 30px;
+	font-family: 'Jeju Gothic', serif;
+	font-size:15px;
+	font-style: bold;
 }
 
 /*------------------------- 핫한사이트 ----------------------------------*/
@@ -88,9 +118,19 @@
 }
 
 
-
 #main .category-add{
 	padding:20px;
+}
+
+.card-content span{
+	overflow: hidden;
+	height: 32px;
+}
+
+.card-title p{
+	overflow: hidden;
+	height: 10px;
+	width:250px;
 }
 
 /*------------------------- 최신순,점수순,댓글순 부분 ----------------------------------*/
@@ -174,6 +214,12 @@
 	text-align:center;
 }
 
+.write div{
+	min-height:200px;
+	background-color: red;
+	text-align:center;
+	margin:0px;
+}
 /*------------------------- 랜덤페이지 부분 ----------------------------------*/
 .col.line {
 	padding: 0px;
@@ -215,6 +261,8 @@
 
 .card {
 	padding: 15px;
+	max-width: 280px;
+	max-height: 280px;
 }
 
 .card .card-action {
@@ -276,7 +324,8 @@ function textScroll(scroll_el_id) {
     this.objElement.style.overflow = 'hidden';
 
     this.objLi = this.objElement.getElementsByTagName('li');
-    this.height = this.objElement.offsetHeight; // li 엘리먼트가 움직이는 높이(외부에서 변경가능)
+    this.height = 50;
+    //this.height = this.objElement.offsetHeight; // li 엘리먼트가 움직이는 높이(외부에서 변경가능)
     this.num = this.objLi.length; // li 엘리먼트의 총 갯수
     this.totalHeight = this.height*this.num; // 총 높이
     this.scrollspeed = 2; // 스크롤되는 px
@@ -286,14 +335,14 @@ function textScroll(scroll_el_id) {
     for(var i=0; i<this.num; i++){
         this.objLi[i].style.position = 'absolute';
         this.objTop[i] = this.height*i;
-        this.objLi[i].style.top = this.objTop[i]+"px";
+        this.objLi[i].style.top = this.objTop[i]+11+"px";
     }
 }
 
 textScroll.prototype.move = function(){
     for(var i=0; i<this.num; i++) {
         this.objTop[i] = this.objTop[i] - this.scrollspeed;
-        this.objLi[i].style.top = this.objTop[i]+"px";
+        this.objLi[i].style.top = this.objTop[i]+11+"px";
     }
     if(this.objTop[0]%this.height == 0){
         this.jump();
@@ -325,21 +374,22 @@ textScroll.prototype.start = function() {
 <main id="main">
 <visual>
 	<div class="visual">
-		<p>사이트 소개 및 이용방법<br>안녕안여</p>
+		<p><br><br>사이트 소개 및 이용방법<br>안녕안여</p>
 	</div>
 </visual>
 <!-- 공지사항 스크롤부분 -->
 <div>
 	<ul id="scroll">
-		<label>공지사항</label>
-		<c:forEach var="m" items="${noticelist}">
-			<li><a href="../noticeboard/notice-detail?c=${m.id}&p=${param.p}">${m.title}</a></li>
-		</c:forEach>
-	</ul>
+   <label class="noticelabel">공지사항 > </label>
+      <c:forEach var="m" items="${noticelist}">
+         <li class="hite"><a href="../noticeboard/notice-detail?c=${m.id}&p=${param.p}">${m.title}</a></li>
+      </c:forEach>
+   </ul>
 </div>
 
 <!-- 핫한사이트부분 -->
-<label>요즘 뜨는 사이트</label>
+<div>
+<p>ㄴㅁㅇㅁㄴㅇㄴㅁㅇ</p>
 <div class="flex space">
 	<div class="card">
 		<div class="card-image waves-effect waves-block waves-light">
@@ -348,7 +398,7 @@ textScroll.prototype.start = function() {
 		<div class="card-content">
 			<span class="card-title activator grey-text text-darken-4">${random.title}<i class="material-icons right">more_vert</i></span>
 			<p>
-				<a href="#">${random.content}</a>
+				<a class="card-content" href="#">${random.content}</a>
 			</p>
 		</div>
 		<div class="card-reveal">
@@ -357,7 +407,7 @@ textScroll.prototype.start = function() {
 			<p>${random.content}</p>
 		</div>
 	</div>
-	<div class="card">
+	<div class="card second">
 		<div class="card-image waves-effect waves-block waves-light">
 			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${random.url}&width=250" />
 		</div>
@@ -373,7 +423,7 @@ textScroll.prototype.start = function() {
 			<p>${random.content}</p>
 		</div>
 	</div>
-	<div class="card">
+	<div class="card third">
 		<div class="card-image waves-effect waves-block waves-light">
 			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${random.url}&width=250" />
 		</div>
@@ -425,7 +475,7 @@ textScroll.prototype.start = function() {
 			<p>${random.content}</p>
 		</div>
 	</div>
-	<div class="card">
+	<div class="card second">
 		<div class="card-image waves-effect waves-block waves-light">
 			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${random.url}&width=250" />
 		</div>
@@ -441,7 +491,7 @@ textScroll.prototype.start = function() {
 			<p>${random.content}</p>
 		</div>
 	</div>
-	<div class="card">
+	<div class="card third">
 		<div class="card-image waves-effect waves-block waves-light">
 			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${random.url}&width=250" />
 		</div>
@@ -474,11 +524,34 @@ textScroll.prototype.start = function() {
 		</div>
 	</div>
 </div>
+</div>
+<div class="write">
+	<div>
+	<h5 class="white-text">당신이 알고 있는 "유용한 사이트"를 모두에게 추천해주세요!</h5>
+	</div>
+	<a class="waves-effect waves-light btn sitego" href="#">글을 쓰러 가시겠습니까?</a>
+</div>
+<input class="sitein" type="hidden" name="memberId"
+	value=<security:authentication property="name"/>>
+<script>
+	$(document).ready(function() {
+		$('.sitego').on('click', function() {
 
-<div class="write background">
-	<label>당신이 알고 있는 "유용한 사이트"를 모두에게 추천해주세요!</label>
-	<a class="waves-effect waves-light btn">글을 쓰러 가시겠습니까?</a>
-</div>
+	
+ 			var value = $('.sitein').val();
+
+ 			//console.log(value);
+			if (value == 'anonymousUser') {
+				alert("로그인을 한 회원만 이용이 가능합니다.");
+				//$('.sitego').prop('href', "../joinus/login"); 
+				 $('#modal10').modal('open');
+			} else {
+				$('.sitego').prop('href', "../siteboard/site-reg");
+			} 
+
+		});
+	});
+</script>
 
 <div class="flex background space category-add">
 		<div>
