@@ -51,6 +51,8 @@
 
 /*--------------------------비쥬얼-----------------------------------*/
 
+
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 .visual{
 	background-color: #fff;
 	height: 400px;
@@ -62,19 +64,36 @@
 	background-size: 100%;
 }
 
-.visual p{
-	background-color: rgba(255,255,255,0.5);
+.visual p:first-child{
+	/* background-color: rgba(255,255,255,0.4); */
 	height: inherit;
-	font-style: bold;
-	font-size: 45px;
-	font-family: 'Jeju Gothic', serif;
+	font-size: 30px;
+	color:#b86065;
+
+	font-family: 'Hanna', serif;
+}
+
+.visual p{
+	/* background-color: rgba(255,255,255,0.4); */
+	
+	height: inherit;
+	font-size: 20px;
+	color:#b86065;
+
+	font-family: 'Hanna', serif;
+}
+
+.visual .banner-text{
+	position: relative;
+	top:150px;
+	background-color: rgba(255,255,255,0.4);
 }
 
 /*------------------------- 공지사항 스크롤 부분 ----------------------------------*/
 #scroll {
 	height: 50px;
 	font-weight: 300;
-	background-color: white;
+	background-color: #f3e8d7;
 	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0
 		rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 	border-radius: 1.5px;
@@ -100,6 +119,13 @@
 }
 
 /*------------------------- 핫한사이트 ----------------------------------*/
+
+
+.tm1{
+	border: 1px solid red;
+	
+}
+
 
 .flex{
 	display: flex;
@@ -374,8 +400,13 @@ textScroll.prototype.start = function() {
 <main id="main">
 <visual>
 	<div class="visual">
-		<p><br><br>사이트 소개 및 이용방법<br>안녕안여</p>
+			<div class="banner-text">
+			<p>What is your needs?</p>
+			<p>당신이 원하는 사이트, 당신에게 필요한 사이트</p>
+			<p>추천 받고, 추천할 수 있는 자유로운 공간입니다!</p>
+		</div>
 	</div>
+
 </visual>
 <!-- 공지사항 스크롤부분 -->
 <div>
@@ -457,7 +488,7 @@ textScroll.prototype.start = function() {
 	</div>
 </div>
 
-<label>~~유용한 사이트</label>
+<label class="tm1">~~유용한 사이트</label>
 <div class="flex space">
 	<div class="card">
 		<div class="card-image waves-effect waves-block waves-light">
