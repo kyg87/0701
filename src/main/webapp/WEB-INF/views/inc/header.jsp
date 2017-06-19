@@ -77,7 +77,6 @@
 	transition: background-color .3s;
 	font-size: 1rem;
 	color: #fff;
-	display: block;
 	padding: 0 15px;
 	cursor: pointer;
 }
@@ -113,6 +112,10 @@
 
 .personal .tiny {
 	margin-left: 3px;
+}
+
+.btn{
+text-transform: none;
 }
 
 nav form{
@@ -181,20 +184,21 @@ nav a{
 			</c:choose>
 			<li>
 			<security:authorize access="isAnonymous()">
-				<a class="login font personal loge btn" href="#modal10">Login
-					<i class="tiny material-icons">lock</i>
-				</a>
+				<a class="login font loge btn" href="#modal10">Login</a>
 			</security:authorize>
 			<security:authorize access="isAuthenticated()">
-				<a class="login font personal pin btn" href="${root}/user/mypage"> <security:authentication
-						property="name" /><i class="tiny material-icons">person_pin</i>
+				<a class="login font pin btn" href="${root}/user/mypage"> <security:authentication
+						property="name" />
 				</a>
-				<%-- <a class="login font personal lock"
-					href="${root}/j_spring_security_logout"> Logout <i
-					class="tiny material-icons">lock_outline</i>
-				</a> --%>
 			</security:authorize>
 			</li>
+			<li>
+			<security:authorize access="isAuthenticated()">
+				<a class="login font lock btn"
+					href="${root}/j_spring_security_logout"> Logout
+				</a>
+			</security:authorize>
+			</li>		
 	      </ul>
 	      <ul class="side-nav" id="mobile-demo">
 	      			<security:authorize access="isAnonymous()">
