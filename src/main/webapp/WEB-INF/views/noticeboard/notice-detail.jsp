@@ -86,6 +86,8 @@
 			          <tr>
 			            <td id="content"> 내용 : ${list.content }</td>
 			          </tr>
+			          
+			          
 			         
 			          <tr>
 			            <td class="udButtons">			            	
@@ -117,6 +119,14 @@
 			</div>
 		</form>
 	</div>
+
+	<script>
+		$(function() {
+	
+			$("#content").val().replace("<br>", "\n");
+	
+		});
+	</script>
 	
 	<script>
 	$(function(){
