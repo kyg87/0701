@@ -7,6 +7,8 @@ import com.wiyn.web.entity.BigCategory;
 public interface BigCategoryDao {
 
 	List<BigCategory> getList();
+	
+	BigCategory getbig(String id);
 
 	int add(BigCategory bigCategory);
 	int del(String bigCategoryId);

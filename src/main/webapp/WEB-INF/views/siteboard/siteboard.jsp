@@ -8,7 +8,13 @@
     
     <main id="main">
     <div class="col-xs-12 col-md-8">
-    
+
+	<h4><input type="hidden" value="${param.bigCa}" />${bn.name}</h4>
+    <h5><input type="hidden"  value="${param.smallCa }" />${sn.name}</h5>
+	<script>
+	
+	</script>
+	
 	<table class="highlight table">
 		<thead>
 			<tr>

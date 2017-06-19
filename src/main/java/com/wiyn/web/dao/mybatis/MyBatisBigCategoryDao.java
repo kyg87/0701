@@ -50,6 +50,12 @@ public class MyBatisBigCategoryDao implements BigCategoryDao {
 		return bigCategoryDao.modify(bigCategoryId, name);
 	}
 
+	@Override
+	public BigCategory getbig(String id) {
+		BigCategoryDao bigCategoryDao;
+		bigCategoryDao = sqlSession.getMapper(BigCategoryDao.class);
+		return bigCategoryDao.getbig(id);
+	}
 
-
+	
 }

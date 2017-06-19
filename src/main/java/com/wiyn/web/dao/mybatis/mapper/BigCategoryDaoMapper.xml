@@ -10,7 +10,11 @@
 		SELECT * FROM BigCategory
 		
 	</select>
-	
+	<select resultType="com.wiyn.web.entity.BigCategory" id="getbig">
+	 
+		SELECT * FROM BigCategory where id= #{id}
+		
+	</select>
 	<select id="addCheck" resultType="Integer">
 		SELECT count(*) FROM BigCategory WHERE name = #{name};
 	</select>

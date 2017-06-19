@@ -100,6 +100,11 @@ public class SiteBoardController {
         }
         model.addAttribute("bcbList", bcbList);
         
+        
+        BigCategory bigCatego = sqlSession.getMapper(BigCategoryDao.class).getbig(bigCategoryId);
+        SmallCategory smallCatego = sqlSession.getMapper(SmallCategoryDao.class).getsmall(bigCategoryId,smallCategoryId);
+        model.addAttribute("bn", bigCatego);
+        model.addAttribute("sn", smallCatego);
         return "siteboard.siteboard";    
     }
 
@@ -388,7 +393,7 @@ public class SiteBoardController {
  
 		siteBoardDao.delete(id);
         
-        return "redirect:/main/index";
+        return "redirect:siteboard.siteboard";
      }
 		
 	 @RequestMapping(value="like", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
