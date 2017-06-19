@@ -6,23 +6,21 @@
 <!DOCTYPE html>
 
 <style>
-
+/* 
 #main {
 	margin: 10px;
-	float: left
-}
+} */
 
 #category {
 	margin: 10px;
 	min-height: 660px;
 	width: 150px;
 	box-shadow: 1px 1px 5px #383838;
-	float: left
 }
 
 #context {
 	min-height: 200px;
-	width: 400px;
+	/* width: 400px; */
 	box-shadow: 1px 1px 5px #383838;
 }
 
@@ -56,7 +54,6 @@
 </style>
 
  <main id="main">
-<div>공지사항디테일</div>
 	<div id="yy">
 		<div id="main">
 			<div id="context">

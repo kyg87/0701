@@ -1,19 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 
 <style>
-
 body {
 	background-color: rgb(238, 238, 238);
 }
 
+body, html {
+	font-family: 'Abel', sans-serif;
+	color: #846C63;
+}
+
 #main {
 	width: 100%;
-	margin-top: 30px;
-	/* margin: 0px auto; */
 	min-height: 500px;
 	font-size: 14px;
 	line-height: 1.5em;
@@ -21,15 +24,11 @@ body {
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 3px;
 	box-shadow: 1px 1px 5px #383838;
-	background-color: white;
-	/* background: pink; */
-	padding: 10px;
-	/* margin: 0px auto; */
+	background: #F6F4F1 !important;
 }
 
 #title {
 	width: 20px;
-	/* border: 1px solid black; */
 	font-family: bold;
 	display: inline;
 	font-style: black;
@@ -39,7 +38,6 @@ body {
 
 #address {
 	width: 20px;
-	/* border: 1px solid black; */
 	display: inline;
 	font-style: black;
 	font-weight: bolder;
@@ -76,181 +74,124 @@ body {
 	float: left;
 	margin-left: 10px;
 }
-#btn{
- margin-left: 500px;
+
+#btn {
+	margin-left: 500px;
 }
-
-
-
-
 </style>
 
+<main id="main">
+
+<div class="container">
+	<div class="section">
+		<div class="row">
+
+			<div class="col s12 l6">
+				<h2 class="title">고옹지이사하아아아앙~~</h2>
+
+				<div class="content">
+					<h5>예압 췌키랏! 등록해봐 공지사항 예압 노티스!!</h5>
+				</div>
+
+				<div>
+					<h3>공지사항 등록하기~</h3>
+				</div>
+			</div>
+
+			<div class="col s12 l6">
+				<form id="noticeReg" action="noticeBoard-reg?p=${page }"
+					method="post" enctype="multipart/form-data" class="card-panel">
+
+					<div class="row">
+						<div class="input-field col s12">
+							<input placeholder=" title " id="titleinput" type="text"
+								name="title" class="validate" value=""> <label
+								for="name" class="active"> 제목을 입력 : 하시오~ </label>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="input-field col s12">
+							<input placeholder=" http:// " id="contentSrc" type="text"
+								name="contentSrc" class="contentSrc" value=""> <label
+								for="name" class="active"> 주소를 입력 : 하시오오오오~~ </label>
+						</div>
+					</div>
+
+					<div class="file-field input-field">
+
+						<div class="btn">
+							<span>파일을 첨부 : 해애봅시이다아 </span> <input type="file" name="file"
+								multiple />
+						</div>
+
+						<div class="file-path-wrapper">
+							<input class="file-path validate" type="text">
+						</div>
+
+					</div>
 
 
-	<form id="noticeReg" action="noticeBoard-reg?p=${page }" method="post" enctype="multipart/form-data">
-		<main id="main">
-		
-			<div><h3>공지사항 등록</h3></div>
-			
-			<div>
-				<span> 제목 입력 : </span>
-				<textarea></textarea>
-			</div>
-			
-			<div>
-				<span> 페이지 주소 입력 : </span>
-				<textarea></textarea>
-			</div>
-			
-			<div>
-				<span>파일 첨부 : </span>
-				<input type="file" name="file" multiple/>
-			</div>
-			
-			<div>
-				<span>내용 입력 : </span>
-				<textarea rows="20" cols="50"></textarea>
-			</div>
-		
-		
-			<!-- <div><h3>공지사항 등록하기~</h3></div>
-			<table>
-				<thead>					
-					<tr>
-						<th>
-							<div id="title">제목 입력하기 : </div>
-						</th>
-						<th><input name="title" id="titleinput" type="text" value=""></th>
-					</tr>
-					<tr>
-						<th>
-							<div id="address">주소 입력하기 : </div>
-						</th>
-						<th><input id="contentSrc" type="text" value="" name="contentSrc"></th>
-					</tr>
-					
-					<tr>
-						<th>파일 첨부하기~</th>
-						<td><input type="file" name="file" multiple/></td>
-					</tr>
-				</thead>
-	
-				<tbody>
-					<tr>
-						<td colspan="2">
-							<div id="divcontent">
-								<div class="form-group">
-									<label for="comment">내용 입력하기 :</label>
-									<div id="preView"></div>
-									<textarea name="content" class="form-control materialize-textarea" rows="15" id="comment"
-									data-length="130"></textarea>
-								</div>								
-							</div>
-							
-							<script>
-								$(function(){
-									$("#comment").keydown(function(e){
-										
-										if($("#comment").val().length > 130){
-											if(e.keyCode != 8){
-												alert("글자수 초과!!");
-											}
+					<div class="row">
+						<div class="input-field col s12">
+							<textarea name="content"
+								class="form-control materialize-textarea" rows="15" id="comment"
+								data-length="130"></textarea>
+							<label for="name" class="active"> 내용을 입력 : 하시오오오오옹!~!~!~
+							</label>
+						</div>
+					</div>
+
+					<div id="btn">
+						<button class="btn waves-effect waves-light" type="submit"
+							name="action">
+							등록 완료 <i class="material-icons right">send</i>
+						</button>
+					</div>
+
+
+
+
+					<script>
+							$(function() {
+								$("#comment").keydown(function(e) {
+
+									if ($("#comment").val().length > 130) {
+										if (e.keyCode != 8) {
+											alert("글자수 초과!!");
 										}
-										
-									});
+									}
+
 								});
-							</script>
-	
-						</td>
-	
-					</tr>
-					
-					<tr>
-						<td colspan="2">
-							<div id="btn">
-								<button class="btn waves-effect waves-light" type="submit" name="action">
-									등록 완료 <i class="material-icons right">send</i>
-								</button>
-							</div>
-						</td>
-					</tr>
-				</tbody>
-			</table> -->
-			
-			
-	<!-- <fieldset>
-		<legend>레시피 등록하기</legend>
-
-		<dl>
-			<dt>
-				<h5>제목 입력하기</h5>
-			</dt>
-			<dd>
-				<div class="dd-chunk">
-					<input placeholder="레시피의 제목을 입력해주세요" type="text"
-						name="recipe[title]" />
-					<div class="input-error"></div>
-				</div>
-			</dd>
-
-			<dt>
-				<h2>한줄설명 입력하기</h2>
-			</dt>
-			<dd>
-				<div class="dd-chunk">
-					<input placeholder="레시피를 소개할 수 있는 한줄설명을 입력해주세요" type="text"
-						name="recipe[sub_title]" />
-					<div class="input-error"></div>
-				</div>
-			</dd>
-
-			<dt class="mate">
-				<h2>음식정보</h2>
-			</dt>
-			<dd>
-				<div class="dd-chunk">
-					<h3>음식이름</h3>
-					<ul class="lst_mate">
-						<li class="food-info"><input class="lft input-name"
-							placeholder="음식명을 입력하세요" type="text" name="recipe[name]" /> <input
-							class="rgt" placeholder="조리분량" type="text"
-							name="recipe[serving_for]" /> 인분</li>
-					</ul>
-					<div class="input-error"></div>
-				</div>
+							});
+						</script>
 
 
 
-			</dd>
-		</dl>
-
-		</dl>
-	</fieldset> -->
-
-	</main>
-		<input type="hidden" name="memberId" value=<security:authentication property="name"/> />
-	</form>
-	
-	<script>
-		
-	</script>
+					<input type="hidden" name="memberId"
+						value=<security:authentication property="name"/> />
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+</main>
 
 
 
-	<!--  Scripts-->
-	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<script src="/WiynPrj/resource/js/materialize.js"></script>
-	<script type="text/javascript">
+
+<!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="/WiynPrj/resource/js/materialize.js"></script>
+<script type="text/javascript">
 	$('select').material_select('destroy');
-		$(document).ready(function() {
-			$('select').material_select();
-		});
+	$(document).ready(function() {
+		$('select').material_select();
+	});
 
-		$(document).ready(function() {
-			// the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-			$('.modal').modal();
-		});
-		$(".button-collapse").sideNav();
-		
-	
-	</script>
+	$(document).ready(function() {
+		// the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+		$('.modal').modal();
+	});
+	$(".button-collapse").sideNav();
+</script>
