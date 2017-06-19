@@ -54,7 +54,55 @@ public class SiteBoardController {
 	@Autowired
 	private TagDao tagDao;
 	
-	
+    @RequestMapping("siteboard")
+    public String siteboard(String id,
+            @RequestParam(value="p", defaultValue="1")Integer page, 
+            @RequestParam(value="q", defaultValue="")String query,
+            @RequestParam(value="bigCa",defaultValue="")String bigCategoryId,
+            @RequestParam(value="smallCa",defaultValue="")String smallCategoryId,
+            Model model){
+        
+
+        List<SiteBoard> sitelist = sqlSession.getMapper(SiteBoardDao.class).getList(page,query,bigCategoryId, smallCategoryId);
+            
+
+        model.addAttribute("sitelist", sitelist);
+        
+        int size= sqlSession.getMapper(SiteBoardDao.class).getSize();
+        String last= sqlSession.getMapper(SiteBoardDao.class).lastId();
+        SiteBoard board=sqlSession.getMapper(SiteBoardDao.class).getBoard(id);
+        model.addAttribute("size", size);
+        model.addAttribute("last", last);
+        model.addAttribute("board", board);
+        
+        int cnt= sqlSession.getMapper(SiteBoardDao.class).count();
+        int listPerFive = (page-1)/5;
+        int checkLast = (listPerFive*5) + 5;
+        
+        if(cnt % 10 == 0)
+            cnt = cnt/10;
+        else
+            cnt = (cnt/10)+1;
+        
+        if(checkLast > cnt)
+            checkLast = cnt;
+        
+        model.addAttribute("listPerFive", listPerFive);
+        model.addAttribute("checkLast", checkLast);
+        model.addAttribute("cnt", cnt);
+        
+//        -------------------------ï¿½ï¿½ï¿½ï¿½Ìµï¿½-----------------------
+        List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
+        
+        for (BigCategory bigCategory : bcbList) {
+            List<SmallCategory> small = sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId());
+            bigCategory.setSmallCategory(small);
+        }
+        model.addAttribute("bcbList", bcbList);
+        
+        return "siteboard.siteboard";    
+    }
+
 	@RequestMapping("site-reg")
 	public String site(Model model,
 			@RequestParam(value="bigCa",defaultValue="")String bigcategoryId,
@@ -125,7 +173,7 @@ public class SiteBoardController {
 		
 		if(name!=null){
 			
-			System.out.println("Æ÷¹®ÀüÅÂ±×³×ÀÓ"+name);
+			System.out.println("í¬ë¬¸ì „íƒœê·¸ë„¤ì„"+name);
 			
 			
 			String[] tagName=(name.replace(" ", "")).split(",");
@@ -139,9 +187,9 @@ public class SiteBoardController {
 				tag.setSiteBoardId(siteBoard.getId());
 				tagDao.add(tag);
 				
-				System.out.println("»çÀÌÆ®º¸µå¾ÆÀÌµğ"+siteBoard.getId());
-				System.out.println("ÅÂ±×³×ÀÓ"+tagName[i]);
-				System.out.println("¾ÆÀÌµğ"+tag.getId());
+				System.out.println("ì‚¬ì´íŠ¸ë³´ë“œì•„ì´ë””"+siteBoard.getId());
+				System.out.println("íƒœê·¸ë„¤ì„"+tagName[i]);
+				System.out.println("ì•„ì´ë””"+tag.getId());
 			}
 			
 			
@@ -185,7 +233,7 @@ public class SiteBoardController {
 		model.addAttribute("size", size);
 		siteBoardDao.updateHit(id);
 		
-		System.out.println("ÅÂ±×³×ÀÓ"+tName);
+		System.out.println("íƒœê·¸ë„¤ì„"+tName);
 		
 		
 		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
@@ -208,7 +256,7 @@ public class SiteBoardController {
 			)
 	{
 
-		/*System.out.println("ÀÌÄÉÄõ¸®"+query);*/
+		/*System.out.println("ì´ì¼€ì¿¼ë¦¬"+query);*/
 	    List<SiteBoard> list	= sqlSession.getMapper(SiteBoardDao.class).getTagLoad(query);
 
 		/*System.out.println(list);*/
@@ -236,7 +284,7 @@ public class SiteBoardController {
              @RequestParam(value="smallCa",defaultValue="")String smallCategoryId,
              Model model){
         
-		System.out.println("Å¸´×");
+		System.out.println("íƒ€ë‹");
 
 		List<BigCategory> bcList = sqlSession.getMapper(BigCategoryDao.class).getList();
 		
@@ -293,13 +341,13 @@ public class SiteBoardController {
 				siteBoard.setBigCategoryId(bigCategoryId);
 				siteBoard.setSmallCategoryId(smallCategoryId);
 				
-				System.out.println("ÀÌ°Ô¼öÁ¤ÇÒ»çÀÌÆ®¾ÆÀÌµğ"+siteBoard.getId());
+				System.out.println("ì´ê²Œìˆ˜ì •í• ì‚¬ì´íŠ¸ì•„ì´ë””"+siteBoard.getId());
 				
 				tagDao.delete(siteBoard.getId());
 				
 				if(name!=null){
 					
-					System.out.println("Æ÷¹®ÀüÅÂ±×³×ÀÓ"+name);
+					System.out.println("í¬ë¬¸ì „íƒœê·¸ë„¤ì„"+name);
 					
 					
 					String[] tagName=(name.replace(" ", "")).split(",");
@@ -313,18 +361,18 @@ public class SiteBoardController {
 						tag.setSiteBoardId(siteBoard.getId());
 						tagDao.add(tag);
 						
-						System.out.println("»çÀÌÆ®º¸µå¾ÆÀÌµğ"+siteBoard.getId());
-						System.out.println("ÅÂ±×³×ÀÓ"+tagName);
-						System.out.println("¾ÆÀÌµğ"+tag.getId());
+						System.out.println("ì‚¬ì´íŠ¸ë³´ë“œì•„ì´ë””"+siteBoard.getId());
+						System.out.println("íƒœê·¸ë„¤ì„"+tagName);
+						System.out.println("ì•„ì´ë””"+tag.getId());
 					}
 				}
 				
 				siteBoardDao.update(siteBoard);
 		 	
-			System.out.println("´ëºĞ·ù"+bigCategoryId);
-			System.out.println("¼ÒºĞ·ù"+smallCategoryId);
+			System.out.println("ëŒ€ë¶„ë¥˜"+bigCategoryId);
+			System.out.println("ì†Œë¶„ë¥˜"+smallCategoryId);
 
-			System.out.println("ÅÂÅ©»èÁ¦ÇÒ¾ÆÀÌµğ"+siteBoard.getId());
+			System.out.println("íƒœí¬ì‚­ì œí• ì•„ì´ë””"+siteBoard.getId());
 			
 			
 
@@ -349,9 +397,9 @@ public class SiteBoardController {
 				@RequestParam(value="siteBoardId")String siteBoardId,
 				@RequestParam(value="memberId")String memberId
 				){
-		    System.out.println("Å¸³ª¿©");
-			System.out.println("ÁÁ¾Æ¿ä´©¸¥»çÀÌÆ®¾ÆÀÌµğ"+siteBoardId);
-			System.out.println("ÁÁ¾Æ¿ä´©¸¥¸â¹ö¾ÆÀÌµğ"+memberId);
+		    System.out.println("íƒ€ë‚˜ì—¬");
+			System.out.println("ì¢‹ì•„ìš”ëˆ„ë¥¸ì‚¬ì´íŠ¸ì•„ì´ë””"+siteBoardId);
+			System.out.println("ì¢‹ì•„ìš”ëˆ„ë¥¸ë©¤ë²„ì•„ì´ë””"+memberId);
 
 			siteBoardLike.setSiteBoardId(siteBoardId);
 			siteBoardLike.setMemberId(memberId);
