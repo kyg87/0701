@@ -40,7 +40,7 @@ footer .first{
 </style>
 
 <footer class="page-footer">
-   <div class="first space">
+   <div class="first space container">
       <div class="category space">
          <div class="col s12 m3 hide-on-small-only">
             <h5 class="white-text">Board</h5>

@@ -31,19 +31,19 @@
 	padding: 0;
 }
 
-@media only screen and (max-width: 480px){
+@media only screen and (max-width: 680px){
 	.flex .card.second{
 		display: none;
 	}
 }
 
-@media only screen and (max-width: 680px){
+@media only screen and (max-width: 1220px){
 	.flex .card.third{
 		display: none;
 	}
 }
 
-@media only screen and (max-width: 992px){
+@media only screen and (max-width: 1560px){
 	.flex .card:last-child{
 		display: none;
 	}
@@ -51,6 +51,13 @@
 
 /*--------------------------비쥬얼-----------------------------------*/
 
+.hanna{
+font-family: 'Hanna', serif;
+}
+
+.jeju{
+font-family: 'Jeju Gothic', serif;
+}
 
 @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 .visual{
@@ -86,7 +93,7 @@
 .visual .banner-text{
 	position: relative;
 	top:150px;
-	background-color: rgba(255,255,255,0.4);
+	background-color: rgba(255,255,255,0.5);
 }
 
 /*------------------------- 공지사항 스크롤 부분 ----------------------------------*/
@@ -132,7 +139,7 @@
 }
 
 .space{
-	justify-content:space-around;
+	justify-content:space-between;
 }
 
 .background{
@@ -341,6 +348,50 @@
 
 .col {
 	padding: 10px;
+	
+}
+
+
+
+.hanna .point{
+	font-size: 25px;
+}
+.hot-site{
+	margin-top: 40px;
+}
+
+
+.section-title:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    border-bottom: 4px solid #dddddd;
+}
+
+.section-title {
+    position: relative;
+    margin-bottom: 1em;
+    font-size: 22px;
+    font-weight: 400;
+    text-align: left;
+}
+
+.section-title:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    border-bottom: 4px solid #dddddd;
+}
+
+.section-title p{
+    position: relative;
+    display: inline-block;
+    padding-right: 1.4em;
+    background: #fff;
 }
 </style>
 <script type="text/javascript">
@@ -411,16 +462,22 @@ textScroll.prototype.start = function() {
 <!-- 공지사항 스크롤부분 -->
 <div>
 	<ul id="scroll">
-   <label class="noticelabel">공지사항 > </label>
+	<div class="container">
+   <label class="noticelabel hanna">공지사항 > </label>
       <c:forEach var="m" items="${noticelist}">
          <li class="hite"><a href="../noticeboard/notice-detail?c=${m.id}&p=${param.p}">${m.title}</a></li>
       </c:forEach>
    </ul>
+   </div>
 </div>
 
 <!-- 핫한사이트부분 -->
+<div class="hot-site container">
 <div>
-<p>ㄴㅁㅇㅁㄴㅇㄴㅁㅇ</p>
+<div class="hanna">
+	<p>"무엇이" 필요한 당신에게</p>
+	<p class="point">~~~한 사이트</p>	
+</div>
 <div class="flex space">
 	<div class="card">
 		<div class="card-image waves-effect waves-block waves-light">
@@ -487,8 +544,14 @@ textScroll.prototype.start = function() {
 		</div>
 	</div>
 </div>
+</div>
 
-<label class="tm1">~~유용한 사이트</label>
+<div class="hot-site">
+<h2 class="header lighten-1 section-title">
+<div class="hanna">
+	<p>"무엇이" 필요한 당신에게<br> ~~~한 사이트</p>
+</div>
+</h2>
 <div class="flex space">
 	<div class="card">
 		<div class="card-image waves-effect waves-block waves-light">
@@ -556,7 +619,9 @@ textScroll.prototype.start = function() {
 	</div>
 </div>
 </div>
-<div class="write">
+</div>
+
+<div class="write hot-site">
 	<div>
 	<h5 class="white-text">당신이 알고 있는 "유용한 사이트"를 모두에게 추천해주세요!</h5>
 	</div>
