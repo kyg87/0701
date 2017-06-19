@@ -121,7 +121,7 @@ body, html {
 					<div class="file-field input-field">
 
 						<div class="btn">
-							<span>파일을 첨부 : 해애봅시이다아 </span> <input type="file" name="file"
+							<span>파일을 첨부 : 해애봅시이다아 </span> <input type="file" name="file" value="test"
 								multiple />
 						</div>
 

@@ -78,7 +78,31 @@ body, html {
 #btn {
 	margin-left: 500px;
 }
+
+
 </style>
+
+<script type="text/javascript">
+        $(function() {
+            $("#imgInp").on('change', function(){
+                readURL(this);
+            });
+        });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                    $('#blah').attr('src', e.target.result);
+                }
+
+              reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+
+    </script>
 
 <main id="main">
 
@@ -96,7 +120,13 @@ body, html {
 				<div>
 					<h3>공지사항 등록하기~</h3>
 				</div>
+				
+				<div class = "preview">
+					<img id="blah" src="#" alt="your image" style="width:300px; height:300px; float:right;" />
+				</div>
+				
 			</div>
+			
 
 			<div class="col s12 l6">
 				<form id="noticeReg" action="noticeBoard-reg?p=${page }"
@@ -105,7 +135,7 @@ body, html {
 					<div class="row">
 						<div class="input-field col s12">
 							<input placeholder=" title " id="titleinput" type="text"
-								name="title" class="validate" value=""> <label
+								name="title" class="validate" value="" required="required"> <label
 								for="name" class="active"> 제목을 입력 : 하시오~ </label>
 						</div>
 					</div>
@@ -113,7 +143,7 @@ body, html {
 					<div class="row">
 						<div class="input-field col s12">
 							<input placeholder=" http:// " id="contentSrc" type="text"
-								name="contentSrc" class="contentSrc" value=""> <label
+								name="contentSrc" class="contentSrc" value="" required="required"> <label
 								for="name" class="active"> 주소를 입력 : 하시오오오오~~ </label>
 						</div>
 					</div>
@@ -121,8 +151,8 @@ body, html {
 					<div class="file-field input-field">
 
 						<div class="btn">
-							<span>파일을 첨부 : 해애봅시이다아 </span> <input type="file" name="file"
-								multiple />
+							<span>파일을 첨부 : 해애봅시이다아 </span>
+							<input type="file" id="imgInp" name="file" multiple />
 						</div>
 
 						<div class="file-path-wrapper">
@@ -136,7 +166,7 @@ body, html {
 						<div class="input-field col s12">
 							<textarea name="content"
 								class="form-control materialize-textarea" rows="15" id="comment"
-								data-length="130"></textarea>
+								data-length="130" required="required"></textarea>
 							<label for="name" class="active"> 내용을 입력 : 하시오오오오옹!~!~!~
 							</label>
 						</div>
@@ -163,8 +193,11 @@ body, html {
 									}
 
 								});
+								
+								$("#comment").val().replace("/n", "<br>");
+								
 							});
-						</script>
+					</script>
 
 
 
