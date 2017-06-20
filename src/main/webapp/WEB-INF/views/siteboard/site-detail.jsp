@@ -69,7 +69,7 @@ ul {
 hr {
     border-bottom: 0;
     border-right: 0;
-    border-top:1px solid rgb(246, 244, 241);
+    border-top:1px solid #846C63;
 }
 
 a {
@@ -90,7 +90,9 @@ font-family: "Material-Design-Icons";
 }
 
 
-
+i.tiny {
+    padding-top: 3px;
+}
 /* .table{
 	border-radius: 3px;
 	width:100%;
@@ -237,6 +239,14 @@ time {
     margin-left: 10px;
 } 
 
+
+.margin{
+	margin-left:3px;
+}
+
+.column{
+	flex-direction:column;
+}
 </style>
 
 <main id="main">
@@ -244,7 +254,21 @@ time {
 	<div class="section">
 		<div class="row">
 			<div class="col l5 s12">
+			<div class="flex">
 				<h2 class="jeju">${n.title }</h2>
+				<div>
+				<form action="like" method="post">
+						<button id="likebtn" class="waves-effect waves-light btn" type="submit" name="action">
+							<i id="icon-margin" class="material-icons left ">thumb_up</i>
+							${l }
+						</button>
+						<input type="hidden" name="siteBoardId" value=${n.id }>
+						<security:authorize access="isAuthenticated()">
+							<input type="hidden" name="memberId" value=<security:authentication property="name"/>>
+						</security:authorize>
+				</form>
+				</div>
+				</div>
 				<a href="http://${n.url}"> <img
 						sizes="(max-width: 800px) 100vw, 800px" width="800" height="400"
 						class="single-photo responsive-img z-depth-3 wp-post-image" 
@@ -267,28 +291,55 @@ time {
 					<div class="jeju">
 						<span >${b }</span> <span>> ${s }</span> 
 					</div> 
-					<hr>
-
-			<span class="detail-title"><i class="material-icons">person_pin</i></span> 
-			<span class="">${n.memberId }</span>
-			<hr>
-			
-			<span class="detail-title"><i class="material-icons">av_timer</i></span>
+					<hr>	
 			<ul class="opening-hours">
-				<li>${n.regDate }</li>
+				
+				<li class="flex column">
+					<div class="flex detail-title">
+						<i class="material-icons tiny">person_pin</i>
+						<div class="margin">Writer</div>
+					</div>
+					<div>${n.memberId }</div>
+				</li>
+				<hr>
+				<li class="flex column">
+					<div class="flex detail-title">
+						<i class="material-icons tiny">schedule</i>
+						<div class="margin">Date</div>
+					</div>
+					<div><fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd HH:mm:ss" /></div>
+				</li>
+				<hr>
+				<li class="flex column">
+					<div class="flex detail-title">
+						<i class="material-icons tiny">language</i>
+						<div class="margin">Url</div>
+					</div>
+					<div><a href="http://${n.url}">http://${n.url}</a></div>
+				</li>
+				<hr>
+				<li class="flex column">
+					<div class="flex detail-title">
+						<i class="material-icons tiny">textsms</i>
+						<div class="margin">Content</div>
+					</div>
+					<div>${n.content }</div>
+				</li>
+				<li>
+				<c:forEach var="tag" items="${t }">
+					<div id="chip" class="chip">${tag }</div>
+					</c:forEach>
+				</li>
 			</ul>
 			<hr>
-			<span class=""><i class="material-icons">language</i><a href="http://${n.url}">http://${n.url}</a></span>
-			<hr>
-			<span class="detail-title"><i class="material-icons">textsms </i>comment<div
+			
+			<%-- <span class="detail-title"><i class="material-icons">textsms </i>comment<div
 							id="minibox">
 			<span class="">${n.content }</span>
 			<span class="detail-title">
-			<c:forEach var="tag" items="${t }">
-					<div id="chip" class="chip">${tag }</div>
-					</c:forEach>
+			
 			</span>
-			<hr>
+			<hr> --%>
 		   <form class="box_write" id="comment-add-form"
 								action="siteBoard-comment-add" method="post">
          
@@ -326,19 +377,25 @@ time {
 
 			</ul>
 
+
+					<form action="like" method="post">
+						<button id="likebtn" class="waves-effect waves-light btn" type="submit" name="action">
+							<i id="icon-margin" class="material-icons left ">thumb_up</i>
+							${l }
+						</button>
+						<input type="hidden" name="siteBoardId" value=${n.id }>
+						<security:authorize access="isAuthenticated()">
+							<input type="hidden" name="memberId" value=<security:authentication property="name"/>>
+						</security:authorize>
+					</form>
+		<button class="btn waves-effect waves-light list-btn" type="submit" name="action">목록</button>
 		</div>
-			</span>
 
-
-			<hr>
-
-			<!-- Modal Trigger -->
-			<button class="btn waves-effect waves-light list-btn" type="submit" name="action">목록</button>
 			</div>
 			</div>
 			</div>
 </div>
-</div>
+
 
 
 	<%-- <table class="table">
