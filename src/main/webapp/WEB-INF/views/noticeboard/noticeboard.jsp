@@ -17,7 +17,8 @@
 
 @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 
-@import	url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+@import
+	url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
 
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
 
@@ -34,61 +35,62 @@
 		rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
-.table *{
+.table * {
 	text-align: center;
 }
 
-.table .table-title{
+.table .table-title {
 	text-align: left;
 }
 
-.table .table-title a{
-	color:#505050;
+.table .table-title a {
+	color: #505050;
 }
-
 
 .table-head {
 	font-family: 'Jeju Gothic', serif;
 	font: menu;
-	border-bottom:1px solid #e9e9e9;
+	border-bottom: 1px solid #e9e9e9;
 }
 
 .table-body {
 	text-align: center;
-	font:14px;
+	font: 14px;
 }
 
 .table-body {
 	font-family: 'Nanum Gothic Coding', serif;
 }
 
-
-
-.sitego{
-	background:rgba(27, 80, 162, 0.69);
+.sitego {
+	background: rgba(27, 80, 162, 0.69);
 }
 
-.sitego:hover{
-	background:rgba(23, 56, 125, 0.79);
+.sitego:hover {
+	background: rgba(23, 56, 125, 0.79);
 }
 
-.write{
+.write {
 	display: flex;
 }
 
-.site-button{
-	margin-top:20px;
+.site-button {
+	margin-top: 20px;
 	display: flex;
-	justify-content:flex-end;
+	justify-content: flex-end;
 	font-family: 'Nanum Gothic Coding', serif;
 }
 
-.board-title{
+.board-title {
 	
 }
 
-.head-tr{
+.head-tr {
 	background: rgba(84, 135, 164, 0.3);
+}
+
+.pagination{
+	margin-bottom: 10px;
 }
 
 </style>
@@ -98,73 +100,81 @@
 </div>
 
 <main id="main">
-<table border="1" class="highlight table">
-	<thead class="table-head">
-		<tr class="head-tr">
-			<th>번호</th>
-			<th>제목</th>
-			<th>작성자</th>
-			<th>조회 수</th>
-			<th>작성 날짜</th>
-		</tr>
-	</thead>
-	<tbody class="table-body">
-		
-		<c:forEach var="mem" begin="${(page*10)-10 }" end="${page*10-1 }" items="${list}">
-		
-			<tr>
-
-				<td>${mem.id}</td>
-				<td class="orange-text text-accent-3 table-title">
-					<a href="notice-detail?c=${mem.id}&p=${page}">${mem.title}</a>
-				</td>
-				<td>${mem.memberId }</td>
-				<td>${mem.hit }</td>
-				<td><fmt:formatDate value="${mem.regDate}"
-						pattern="yyyy-MM-dd HH:mm:ss" /></td>
-
+<div class="container">
+	<table border="1" class="highlight table">
+		<thead class="table-head">
+			<tr class="head-tr">
+				<th>번호</th>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>조회 수</th>
+				<th>작성 날짜</th>
 			</tr>
-		</c:forEach>
-	</tbody>
-</table>
+		</thead>
+		<tbody class="table-body">
 
-<div class="site-button">
-	<a class="waves-effect waves-light btn sitego" 
-		href="/WiynPrj/noticeboard/notice-reg?p=${page }">
-		<div class="write">Write
-			<i class="tiny material-icons">mode_edit</i>
-		</div>
-	</a>
+			<c:forEach var="mem" begin="${(page*10)-10 }" end="${page*10-1 }"
+				items="${list}">
+
+				<tr>
+
+					<td>${mem.id}</td>
+					<td class="orange-text text-accent-3 table-title"><a
+						href="notice-detail?c=${mem.id}&p=${page}">${mem.title}</a></td>
+					<td>${mem.memberId }</td>
+					<td>${mem.hit }</td>
+					<td><fmt:formatDate value="${mem.regDate}"
+							pattern="yyyy-MM-dd HH:mm:ss" /></td>
+
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+
+	<div class="site-button">
+		<a class="waves-effect waves-light btn sitego"
+			href="/WiynPrj/noticeboard/notice-reg?p=${page }">
+			<div class="write">
+				Write <i class="tiny material-icons">mode_edit</i>
+			</div>
+		</a>
+	</div>
+
+	<div align="center">
+		<ul class="pagination">
+
+			<c:if test="${((listPerFive-1)*5 + 5) > 1 }">
+				<li class="waves-effect"><a
+					href="noticeboard?p=${(listPerFive-1)*5 + 5 }"><i
+						class="material-icons">chevron_left</i></a></li>
+			</c:if>
+
+			<c:forEach var="p_cnt" begin="${(listPerFive*5) + 1 }"
+				end="${checkLast }">
+				<c:choose>
+					<c:when test="${page eq p_cnt }">
+						<li class="waves-effect active" id="${p_cnt }"><a
+							href="noticeboard?p=${p_cnt }">${p_cnt }</a></li>
+					</c:when>
+
+					<c:otherwise>
+						<li class="waves-effect" id="${p_cnt }"><a
+							href="noticeboard?p=${p_cnt }">${p_cnt }</a></li>
+					</c:otherwise>
+				</c:choose>
+
+			</c:forEach>
+
+			<c:if test="${cnt > ((listPerFive+1)*5 ) }">
+				<li class="waves-effect"><a
+					href="noticeboard?p=${(listPerFive+1)*5 + 1 }"><i
+						class="material-icons">chevron_right</i></a></li>
+			</c:if>
+
+		</ul>
+
+	</div>
 </div>
-
-<div align="center">
-	<ul class="pagination">
-		
-		<c:if test="${((listPerFive-1)*5 + 5) > 1 }">
-			<li class="waves-effect"><a href="noticeboard?p=${(listPerFive-1)*5 + 5 }"><i class="material-icons">chevron_left</i></a></li>
-		</c:if>
-		
-		<c:forEach var="p_cnt" begin="${(listPerFive*5) + 1 }" end="${checkLast }" >
-			<c:choose>
-				<c:when test="${page eq p_cnt }">
-					<li class="waves-effect active" id="${p_cnt }"><a href="noticeboard?p=${p_cnt }">${p_cnt }</a></li>
-				</c:when>
-				
-				<c:otherwise>
-					<li class="waves-effect" id="${p_cnt }"><a href="noticeboard?p=${p_cnt }">${p_cnt }</a></li>
-				</c:otherwise>
-			</c:choose>
-			
-		</c:forEach>
-		
-		<c:if test="${cnt > ((listPerFive+1)*5 ) }">
-			<li class="waves-effect"><a href="noticeboard?p=${(listPerFive+1)*5 + 1 }"><i class="material-icons">chevron_right</i></a></li>
-		</c:if>
-		
-	</ul>
-	
-</div>
-
 </main>
 
 
