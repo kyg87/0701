@@ -8,10 +8,11 @@
 <style>
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
 #header {
-	background-color: #555;
+	background-color: #fff;
 	z-index: 998;
     position: fixed;
     width: 100%;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
 #header nav{
@@ -122,6 +123,9 @@ nav form{
 	height: auto;
 }
 
+nav{
+	box-shadow: none;
+}
 
 nav a{
 	color:#000;
@@ -136,7 +140,7 @@ nav a{
 </style>
 
 <header id="header">
-	<nav>
+	<nav class="container">
 	    <div class="nav-wrapper">
 	      <a href="${root }/main/index" class="brand-logo logo font">로고로고</a>
 	      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>

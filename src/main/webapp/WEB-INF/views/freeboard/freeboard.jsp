@@ -92,7 +92,7 @@
 
 
 <main id="main">
-
+<div class="container">
 <table border="1" class="highlight table">
 	<thead class="table-head">
 		<tr class="head-tr">
@@ -169,4 +169,6 @@
 </security:authorize> <security:authorize access="isAuthenticated()">
 	<!-- <button style="float: right;" class="waves-effect waves-light btn"
 		onclick="location.href ='free-reg'">글쓰기</button> -->
-</security:authorize> </main>
+</security:authorize> <
+
+</div></main>

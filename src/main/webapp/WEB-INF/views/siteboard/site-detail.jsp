@@ -9,7 +9,88 @@
 
 <style>
 
-.table{
+/*--------------------font--------------------------*/
+
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
+
+.hanna{
+	font-family: 'Hanna', serif;
+}
+.jeju{
+	font-family: 'Jeju Gothic', serif;
+}
+.nanum{
+	font-family: 'Nanum Myeongjo', serif;
+}
+
+/*--------------------common--------------------------*/
+
+body{
+	color: #846C63;
+}
+
+/*--------------------detail--------------------------*/
+
+.alcaramel {
+    background-color: #F0E5D7 !important;
+}
+
+.card-panel {
+    transition: box-shadow .25s;
+    padding: 20px;
+    margin: 0.5rem 0 1rem 0;
+    border-radius: 2px;
+    background-color: #fff;
+}
+.card-panel {
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+}
+
+.detail-title {
+    font-weight: 700;
+    display: block;
+    /* text-transform: uppercase; */
+}
+
+i {
+    line-height: inherit;
+}
+
+.opening-hours {
+    margin: 0;
+}
+ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+hr {
+    border-bottom: 0;
+    border-right: 0;
+    border-top: 1px solid #846C63;
+}
+
+a {
+    text-decoration: none;
+}
+h6 {
+    font-size: 1rem;
+    line-height: 110%;
+    margin: 0.5rem 0 0.4rem 0;
+}
+
+h2{margin-top: 10px;}
+
+
+i{
+font-family: "Material-Design-Icons";
+}
+
+
+
+/* .table{
 	border-radius: 3px;
 	width:100%;
 	background:#fff;
@@ -43,17 +124,6 @@
 
 .table .category{
 
-}
-
-td{
-	padding-left: 5px;
-	padding-right: 5px;
-	padding-top: 5px;
-	padding-bottom: 5px;
-}
-
-td i{
-	margin-right:3px;
 }
 
 .input-field {
@@ -115,6 +185,7 @@ td i{
     font-family: 'Abel', sans-serif;
 }
 
+*/
 .head td:first-child{
 	height: 15px;
 }
@@ -163,14 +234,165 @@ time {
     float: right;
     line-height: 80px\0;
     margin-left: 10px;
-}
-
+} 
 
 </style>
 
 <main id="main">
+<div class="container">
+	<div class="section">
+		<div class="row">
+			<div class="col l5 s12">
+				<h2 class="jeju">${n.title }</h2>
+				<a href="http://${n.url}"> <img
+						sizes="(max-width: 800px) 100vw, 800px" width="800" height="400"
+						class="single-photo responsive-img z-depth-3 wp-post-image" 
+						src="http://api.thumbalizr.com/?url=http://${n.url}&width=250" />
+					</a>
+                    <div class="section">
+                            <!-- AREA -->
+                            <c:forEach var="tag" items="${t }">
+					<div id="chip" class="chip">${tag }</div>
+					</c:forEach>
+                                                      <!--   <a title="City" class="btn white-text" href="https://adbeus.com/coffee/montreal/westmount/">Westmount</a> -->
+                            
+                            <!-- ROASTERS -->
+                            
+                          </div>
 
-	<table class="table">
+                      </div>
+	<div class="col l7 s12">
+		<div class="card-panel alcaramel" style="min-height: 640px;">
+					<div class="jeju">
+						<span >${b }</span> <span>> ${s }</span> 
+					</div> 
+					<hr>
+
+			<span class="detail-title"><i class="material-icons">person_pin</i></span> 
+			<span class="">${n.memberId }</span>
+			<hr>
+			
+			<span class="detail-title"><i class="material-icons">av_timer</i></span>
+			<ul class="opening-hours">
+				<li>${n.regDate }</li>
+			</ul>
+			<hr>
+			<span class=""><a href="http://${n.url}">http://${n.url}</a></span>
+			<hr>
+			<span class="detail-title"><i class="material-icons">textsms </i>comment<div
+							id="minibox">
+			<span class="">${n.content }</span>
+			<hr>
+			
+		   <form class="box_write" id="comment-add-form"
+								action="siteBoard-comment-add" method="post">
+         
+               <security:authorize access="isAnonymous()">
+                  <p>글쓰기는 로그인한 유저만 가능합니다 로그인해주세요</p>
+               </security:authorize>
+               
+               <security:authorize access="isAuthenticated()">
+               <textarea placeholder="한 줄 댓글을 남겨주세요." name="content"
+										required="required"></textarea>
+               
+               
+               <button name="button" type="button" onclick="onCreate();">댓글남기기</button>
+               <!-- 
+               <div class="input-field">
+                  <i class="material-icons prefix">mode_edit</i>
+                  <input  id="icon_prefix2" type="text" class="validate" name="content" required="required">
+                  <label for="icon_prefix2">Message</label>
+                  <button class="btn waves-effect waves-light secondary-content" type="button" onclick="onCreate();">등록
+                      <i class="material-icons right">send</i>
+                    </button>
+               </div>
+ -->               
+               </security:authorize>
+             
+             
+            
+     	     <input type="hidden" name="siteBoardId" value=${n.id }>
+        	 <input type="hidden" name="memberId"
+									value=<security:authentication property="name"/>>
+         	</form>
+
+
+			<ul id="commentList" class="collection">
+
+			</ul>
+
+		</div>
+			</span>
+
+			<span class="detail-title"><i class="mdi-image-photo-camera"></i>
+				Header photo by <a target="_blank" href="http://mtlbeanstalk.com/">Linh
+					Le-Kim</a></span>
+			<hr>
+
+			<!-- Modal Trigger -->
+			<a class="waves-effect waves-light btn modal-trigger"
+						href="#edit-modal">Submit a change</a>
+
+			<!-- Modal Structure -->
+			<div id="edit-modal" class="modal bottom-sheet modal-fixed-footer">
+
+				<form action="" method="POST">
+
+					<div class="modal-content">
+
+						<div class="row">
+
+							<div class="col s12">
+
+								<h4>Submit a change</h4>
+
+
+								<div class="collection edit-options">
+									<a href="#" class="collection-item">Coffee Shop closed
+										permanently</a> <a href="#" class="collection-item">Opening
+										Hours have changed</a> <a href="#" class="collection-item">This
+										coffee shop is using a new roaster</a> <a href="#" data-text=""
+												class="collection-item">Other</a>
+								</div>
+
+							</div>
+
+							<div class="input-field col s12">
+								<textarea id="edit_text" name="edit_text" rows="20"
+											class="materialize-textarea"></textarea>
+								<label for="edit_text">Some details about the change</label>
+							</div>
+
+							<div class="input-field col s12">
+								<input id="edit_email" name="edit_email" type="email"
+											class="validate" value=""> <label for="edit_email">Your
+									email address</label>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="modal-footer">
+						<input type="hidden" id="nonce" name="nonce" value="512a793c20"><input
+									type="hidden" name="_wp_http_referer"
+									value="/montreal/westmount/standard-coffee-bar/">
+						<button type="submit" name="action" value="edit_shop"
+									class="btn teal">Submit</button>
+					</div>
+
+				</form>
+
+			</div>
+			</div>
+			</div>
+</div>
+</div>
+</div>
+
+
+
+	<%-- <table class="table">
 		<thead class="head">
 			<tr>
 				<td class="category" colspan="4">
@@ -297,10 +519,10 @@ time {
 	
 	
 	<!------------------------------------------------------------- 댓글 영역 ------------------------------------------------------------------------>
-		<%-- <div>
+		<div>
 			현재 페이지 : ${page} </br> 
 			전체 글 갯수 : ${size} </br>
-		</div> --%>
+		</div>
 
 
 		<div id="minibox">
@@ -343,15 +565,24 @@ time {
 
 		<ul id="pagination" class="pagination center">
 
-		</ul>
+		</ul> --%>
 	
 	
 </main>
-
-<!------------------------------------------------------------- 댓글 영역 ------------------------------------------------------------------------>
 <security:authentication property="name" var="loginID"/>
 
 <script>
+<!-----------------------------------------태그--------------------------------------------->
+$(function(){
+	$(".chip").on('click', function(){
+		var query = $(this).text();
+		$.post("site-list", {"query":query}, function(){
+			location.replace("site-list?query="+query);
+		}); 
+	});
+});
+
+
 $(document).ready(function(){
 	$("#likebtn").click(function(){
 		console.log('${loginID}');

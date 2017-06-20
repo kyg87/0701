@@ -4,16 +4,19 @@
 <%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>   
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<style>
+</style>
 
-    
-    <main id="main">
-    <div class="col-xs-12 col-md-8">
+<main id="main">
+
+    <div class="col-xs-12 col-md-8 container">
 
 	<h4><input type="hidden" value="${param.bigCa}" />${bn.name}</h4>
     <h5><input type="hidden"  value="${param.smallCa }" />${sn.name}</h5>
-	<script>
+
 	
-	</script>
+	
+	
 	
 	<table class="highlight table">
 		<thead>

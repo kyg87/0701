@@ -86,6 +86,7 @@
 
 
 <main id="main">
+<div class="container">
 <table border="1" class="highlight table">
 	<thead class="table-head">
 		<tr class="head-tr">
@@ -196,6 +197,7 @@
 
  --%>
  
+</div>
 
 
 </main>

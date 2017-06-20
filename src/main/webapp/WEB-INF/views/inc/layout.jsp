@@ -29,6 +29,10 @@ src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.j
 s"></script>
 </head>
 <style>
+
+body{ 
+background-color: #F6F4F1!important;
+}
 </style>
 <body>
 	<!-- <div class="wrapper">	 -->
