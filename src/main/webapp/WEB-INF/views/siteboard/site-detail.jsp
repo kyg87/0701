@@ -287,11 +287,9 @@ time {
 		   <form class="box_write" id="comment-add-form"
 								action="siteBoard-comment-add" method="post">
          
-               <security:authorize access="isAnonymous()">
-                  <p>글쓰기는 로그인한 유저만 가능합니다 로그인해주세요</p>
-               </security:authorize>
+          
                
-               <security:authorize access="isAuthenticated()">
+ 
                <textarea placeholder="한 줄 댓글을 남겨주세요." name="content"
 										required="required"></textarea>
                
@@ -307,7 +305,7 @@ time {
                     </button>
                </div>
  -->               
-               </security:authorize>
+   
              
              
             
@@ -609,6 +607,12 @@ var currentPage = ${page};
 	function onCreate(){
 		
 		var count = 0;
+		
+		if('${loginID}' == 'anonymousUser') {
+			alert("로그인한 유저만 사용 가능합니다.");
+			return;
+		}
+
 		
 		var text = $("#comment-add-form").find("textarea");
 		

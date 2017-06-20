@@ -15,7 +15,7 @@
 	 <!-- 인증 정보를 표현하는 표현식을 true로 설정 -->
  	<http use-expressions="true" >
 		<form-login login-page="/login" 
-			authentication-success-handler-ref="NewlecSuccessHandler"
+			authentication-success-handler-ref="successHandler"
 			authentication-failure-url="/joinus/login?error"	
 			/>
 		<logout logout-success-url="/main/index"/>
