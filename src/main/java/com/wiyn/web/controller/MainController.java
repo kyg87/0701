@@ -42,6 +42,8 @@ public class MainController {
 	@Autowired
 	private NoticeBoardDao noticBoardDao;
 	
+	@Autowired
+	private RequestBoardDao requestBoardDao;
 	
 	@Autowired
 	private SiteBoardLikeDao siteBoardLikeDao;
@@ -303,5 +305,27 @@ public class MainController {
 		
         return "main.index3";
     }
+    
+    @RequestMapping(value = "reg-index", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+
+   	public String regindex(RequestBoard requestBoard,
+   			@RequestParam(value = "title") String title,
+   			@RequestParam(value = "content") String content,
+   			@RequestParam(value = "memberId") String memberId) {
+   		
+   		
+
+   		
+   		requestBoard.setTitle(title);
+   		requestBoard.setContent(content);
+   		requestBoard.setMemberId(memberId);
+
+   		requestBoardDao.add(requestBoard);
+   		
+   		
+   		/*return "redirect:request-detail?c=" + requestBoard.getId();*/
+   		return "redirect:index#location123";
+
+   	}
     
 }

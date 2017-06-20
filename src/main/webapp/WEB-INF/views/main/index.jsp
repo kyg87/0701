@@ -10,21 +10,13 @@
 
 <style type="text/css">
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
-
-@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
-
 @import url(http://fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
-
 @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
-
 @import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
-
 @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
-
-@import
-	url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
-
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 
 * {
 	margin: 0;
@@ -49,7 +41,7 @@
 	}
 }
 
-/*--------------------------비쥬얼-----------------------------------*/
+/*--------------------------폰트-----------------------------------*/
 
 .hanna{
 font-family: 'Hanna', serif;
@@ -59,7 +51,8 @@ font-family: 'Hanna', serif;
 font-family: 'Jeju Gothic', serif;
 }
 
-@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+/*--------------------------비쥬얼-----------------------------------*/
+
 .visual{
 	background-color: #fff;
 	height: 400px;
@@ -654,37 +647,42 @@ textScroll.prototype.start = function() {
 			<label>원하는 카테고리가 없다면?</label>
 			<p>~~~~~~카테고리추가 설명</p>
 		</div>
+		<form  id="reqRegform" action="reg-index" method="post">
+<span id="location123"></span>
+
+	<div class="flex background space category-add">
 		<div>
-			<div class="input-field col s12">
-				<input id="last_name" type="text" class="validate"> <label
-					for="Title">Title</label>
-			</div>
-			<div class="row">
-				<div class="input-field col s6">
-					<input id="last_name" type="text" class="validate"> <label
-						for="Category1">Category1</label>
-				</div>
-				<div class="input-field col s6">
-					<input id="last_name" type="text" class="validate"> <label
-						for="Category2">Category2</label>
-				</div>
-			</div>
-			<div class="row">
-				<div class="input-field col s12">
-					<input id="last_name" type="text" class="validate"> <label
-						for="Url">Url</label>
-				</div>
-			</div>
-			<div class="row">
-				<div class="input-field col s12">
-					<input id="last_name" type="text" class="validate"> <label
-						for="Content">Content</label>
-				</div>
-			</div>
-			<div class="row">
-				<a class="waves-effect waves-light btn right">카테고리 요청하기</a>
-			</div>
+			<label>원하는 카테고리가 없다면?</label>
+			<p>~~~~~~카테고리추가 설명</p>
 		</div>
+
+		
+			<div>
+				<div id="title" class="input-field col s12">
+					<input name="title" id="title1" type="text" class="validate" required="required">
+					<label for="Title">Title</label>
+				</div>
+
+
+			</div>
+			<div id="content" class="row">
+				
+					<div class="row">
+						<div class="input-field col s12">
+							<textarea name="content" id="textarea1" class="materialize-textarea" required="required"></textarea>
+							<label for="textarea1"></label>
+						</div>
+					</div>
+				
+			</div>
+	<div class="row">
+					<button id="target" class="btn waves-effect waves-light" type="submit" name="action">카테고리 요청하기</button>
+	</div>
+				
+			<input type="hidden" name="memberId" value=<security:authentication property="name"/>	>
+		</div>
+
+</form>
 	</div>
 	<%-- <div class="col s12 line">
 		<ul class="tabs">
@@ -907,7 +905,56 @@ textScroll.prototype.start = function() {
 			</tr>
 			</tbody>
 			</table> --%> </main>
+			
+			<security:authentication property="name" var="loginID"/>
+<script>
+/* 
+$(document).ready(function(){
+	$('button').click(function(){
+		alert($('.jbbox').scrollTop());
+		
+	});
+	
+}); */
 
+
+
+$("#target").click(function(d){
+	console.log('${loginID}');
+	var form = $("#reqRegform");
+	var title1 = $("#title1");
+	var textarea1 = $("#textarea1");
+	
+	var str = title1.val();
+	var str1 = textarea1.val();
+	
+	str = str.trim();
+	str1 = str1.trim();
+	
+	if(!str){
+		alert("제목을 입력하세요");
+		title.focus();
+		return;
+	}
+	if(!str1){
+		alert("내용을 입력하세요");
+		textarea1.focus();
+		return;
+	}
+	
+	else if('${loginID}' == 'anonymousUser') {
+		alert("로그인한 유저만 사용 가능합니다.");
+		
+		return false;
+	}
+	else{
+		alert("요청게시판에 글이 등록되었습니다.");
+		return true;
+	} 
+});
+
+
+</script>
 
 <script type="text/javascript">
 var real_search_keyword = new textScroll('scroll'); // 스크롤링 하고자하는 ul 엘리먼트의 id값을 인자로 넣습니다
