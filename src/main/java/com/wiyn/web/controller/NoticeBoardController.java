@@ -229,7 +229,11 @@ public class NoticeBoardController {
 		NoticeBoard noticeBoard = new NoticeBoard();
 		noticeBoard = sqlSession.getMapper(NoticeBoardDao.class).get(id);
 		
+		NoticeFile noticeFile = new NoticeFile();
+		noticeFile = sqlSession.getMapper(NoticeBoardFileDao.class).get(id);
+		
 		model.addAttribute("list", noticeBoard);
+		model.addAttribute("file", noticeFile);
 		model.addAttribute("page", page);
 		
 		
@@ -306,10 +310,20 @@ public class NoticeBoardController {
 		    
 		    fullPath = "\\WiynPrj\\resource\\upload\\";
 		    System.out.println(fullPath);
+		    System.out.println(rename);
+		    System.out.println(id);
 		    
 		    noticeFile.setName(rename);
+		    noticeFile.setSrc(fullPath);
+		    noticeFile.setId(id);
 		    
-		    noticeBoardFileDao.update(noticeFile);
+		    int result = noticeBoardFileDao.update(noticeFile);
+		    System.out.println(result);
+		    
+		    System.out.println(noticeFile.getId());
+		    System.out.println(noticeFile.getSrc());
+		    System.out.println(noticeFile.getName());
+		    
 		}
 		
 		model.addAttribute("p", page);

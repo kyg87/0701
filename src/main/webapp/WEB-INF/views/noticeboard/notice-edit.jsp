@@ -94,7 +94,29 @@ body, html {
 
 </style>
 
+<script type="text/javascript">
+        $(function() {
+            $("#imgInp").on('change', function(){
+                readURL(this);
+                $("#originImg").attr('style', "display: none;");
+                $("#blah").attr('style', "visibility:visible; width:300px; height:300px;"+
+                "float:right; margin-top:100px; margin-right:50px;");
+            });
+        });
 
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                    $('#blah').attr('src', e.target.result);
+                }
+
+              reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+</script>
 
 <main id = "main">
 
@@ -107,6 +129,17 @@ body, html {
 
 				<div class="content">
 					<h5>Notice Edit</h5>
+				</div>
+				
+				<div>
+				
+					<c:if test="${file.src != null }">
+			           	<img src=${file.src }${file.name } id="originImg" style="width:300px; height:300px; float:right;
+			           	 margin-top:100px; margin-right:50px;" />
+			        </c:if>
+					
+					<img id="blah" src="#" style="width:300px; height:300px; float:right; visibility:hidden;" />
+					
 				</div>
 
 			</div>
@@ -135,7 +168,7 @@ body, html {
 
 						<div class="btn">
 							<span>파일 첨부 </span> <input type="file" name="file" value="test"
-								class="btn" multiple />
+								class="btn" id="imgInp" multiple />
 						</div>
 
 						<div class="file-path-wrapper">

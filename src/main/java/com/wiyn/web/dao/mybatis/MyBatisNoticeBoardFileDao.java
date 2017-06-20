@@ -41,9 +41,9 @@ public class MyBatisNoticeBoardFileDao implements NoticeBoardFileDao{
 	@Override
 	public int update(NoticeFile file) {
 		NoticeBoardFileDao noticeBoardFileDao;
-		  noticeBoardFileDao = sqlSession.getMapper(NoticeBoardFileDao.class);
-	      
-	      return noticeBoardFileDao.update(file);
+		noticeBoardFileDao = sqlSession.getMapper(NoticeBoardFileDao.class);
+	   
+	    return noticeBoardFileDao.update(file);
 	}
 
 

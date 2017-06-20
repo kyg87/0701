@@ -53,7 +53,7 @@ ORDER BY regDate DESC
 </update>
 
 <update id="updateViewCnt">
-	UPDATE NoticeBoard SET hit = hit + 1 where id = #{id}  
+	UPDATE NoticeBoard SET hit = hit + 1 where id = #{id}
 </update>
 
 <delete id="delete">

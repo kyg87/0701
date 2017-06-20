@@ -111,8 +111,7 @@ body, html {
             }
         }
 
-
-    </script>
+</script>
 
 <main id="main">
 
