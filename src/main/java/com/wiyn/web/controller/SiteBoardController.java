@@ -91,7 +91,7 @@ public class SiteBoardController {
         model.addAttribute("checkLast", checkLast);
         model.addAttribute("cnt", cnt);
         
-//        -------------------------����̵�-----------------------
+//        -------------------------占쏙옙占쏙옙絹占�-----------------------
         List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
         
         for (BigCategory bigCategory : bcbList) {
@@ -159,7 +159,7 @@ public class SiteBoardController {
 			@RequestParam(value="bigCategoryId")String bigCategoryId,
 			@RequestParam(value="smallCategoryId")String smallCategoryId,
 			Tag tag,
-			@RequestParam(value="tag")String name
+			@RequestParam(value="tag", required=false)String name
 			){
 					
 		System.out.println(title);
@@ -178,7 +178,7 @@ public class SiteBoardController {
 		
 		if(name!=null){
 			
-			System.out.println("포문전태그네임"+name);
+			System.out.println("�룷臾몄쟾�깭洹몃꽕�엫"+name);
 			
 			
 			String[] tagName=(name.replace(" ", "")).split(",");
@@ -192,9 +192,9 @@ public class SiteBoardController {
 				tag.setSiteBoardId(siteBoard.getId());
 				tagDao.add(tag);
 				
-				System.out.println("사이트보드아이디"+siteBoard.getId());
-				System.out.println("태그네임"+tagName[i]);
-				System.out.println("아이디"+tag.getId());
+				System.out.println("�궗�씠�듃蹂대뱶�븘�씠�뵒"+siteBoard.getId());
+				System.out.println("�깭洹몃꽕�엫"+tagName[i]);
+				System.out.println("�븘�씠�뵒"+tag.getId());
 			}
 			
 			
@@ -238,7 +238,7 @@ public class SiteBoardController {
 		model.addAttribute("size", size);
 		siteBoardDao.updateHit(id);
 		
-		System.out.println("태그네임"+tName);
+		System.out.println("�깭洹몃꽕�엫"+tName);
 		
 		
 		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
@@ -261,7 +261,7 @@ public class SiteBoardController {
 			)
 	{
 
-		/*System.out.println("이케쿼리"+query);*/
+		/*System.out.println("�씠耳�荑쇰━"+query);*/
 	    List<SiteBoard> list	= sqlSession.getMapper(SiteBoardDao.class).getTagLoad(query);
 
 		/*System.out.println(list);*/
@@ -289,7 +289,7 @@ public class SiteBoardController {
              @RequestParam(value="smallCa",defaultValue="")String smallCategoryId,
              Model model){
         
-		System.out.println("타닝");
+		System.out.println("���떇");
 
 		List<BigCategory> bcList = sqlSession.getMapper(BigCategoryDao.class).getList();
 		
@@ -346,13 +346,13 @@ public class SiteBoardController {
 				siteBoard.setBigCategoryId(bigCategoryId);
 				siteBoard.setSmallCategoryId(smallCategoryId);
 				
-				System.out.println("이게수정할사이트아이디"+siteBoard.getId());
+				System.out.println("�씠寃뚯닔�젙�븷�궗�씠�듃�븘�씠�뵒"+siteBoard.getId());
 				
 				tagDao.delete(siteBoard.getId());
 				
 				if(name!=null){
 					
-					System.out.println("포문전태그네임"+name);
+					System.out.println("�룷臾몄쟾�깭洹몃꽕�엫"+name);
 					
 					
 					String[] tagName=(name.replace(" ", "")).split(",");
@@ -366,18 +366,18 @@ public class SiteBoardController {
 						tag.setSiteBoardId(siteBoard.getId());
 						tagDao.add(tag);
 						
-						System.out.println("사이트보드아이디"+siteBoard.getId());
-						System.out.println("태그네임"+tagName);
-						System.out.println("아이디"+tag.getId());
+						System.out.println("�궗�씠�듃蹂대뱶�븘�씠�뵒"+siteBoard.getId());
+						System.out.println("�깭洹몃꽕�엫"+tagName);
+						System.out.println("�븘�씠�뵒"+tag.getId());
 					}
 				}
 				
 				siteBoardDao.update(siteBoard);
 		 	
-			System.out.println("대분류"+bigCategoryId);
-			System.out.println("소분류"+smallCategoryId);
+			System.out.println("��遺꾨쪟"+bigCategoryId);
+			System.out.println("�냼遺꾨쪟"+smallCategoryId);
 
-			System.out.println("태크삭제할아이디"+siteBoard.getId());
+			System.out.println("�깭�겕�궘�젣�븷�븘�씠�뵒"+siteBoard.getId());
 			
 			
 
@@ -402,9 +402,9 @@ public class SiteBoardController {
 				@RequestParam(value="siteBoardId")String siteBoardId,
 				@RequestParam(value="memberId")String memberId
 				){
-		    System.out.println("타나여");
-			System.out.println("좋아요누른사이트아이디"+siteBoardId);
-			System.out.println("좋아요누른멤버아이디"+memberId);
+		    System.out.println("���굹�뿬");
+			System.out.println("醫뗭븘�슂�늻瑜몄궗�씠�듃�븘�씠�뵒"+siteBoardId);
+			System.out.println("醫뗭븘�슂�늻瑜몃ħ踰꾩븘�씠�뵒"+memberId);
 
 			siteBoardLike.setSiteBoardId(siteBoardId);
 			siteBoardLike.setMemberId(memberId);
