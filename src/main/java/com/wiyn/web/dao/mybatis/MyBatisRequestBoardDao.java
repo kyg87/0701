@@ -49,11 +49,11 @@ public class MyBatisRequestBoardDao implements RequestBoardDao {
 	}
 	
 	@Override
-	public int delete(String memberId) {
+	public int delete(String id) {
 		
 		RequestBoardDao requestBoardDao;
 		requestBoardDao = sqlSession.getMapper(RequestBoardDao.class);
-	    return requestBoardDao.delete(memberId);
+	    return requestBoardDao.delete(id);
 	}
 
 

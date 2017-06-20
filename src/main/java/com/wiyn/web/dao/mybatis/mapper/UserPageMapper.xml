@@ -14,9 +14,23 @@
             RequestBoard.boardName, RequestBoard.id, RequestBoard.title, RequestBoard.regDate
             From lsedb.RequestBoard where RequestBoard.memberId=#{param1}
 			order by regDate desc;
-					
-		
+							
 	</select>
+	
+	<select resultType="com.wiyn.web.entity.AddBoard" id="getFreeList">
+	SELECT  FreeBoard.boardName,FreeBoard.id,FreeBoard.title,FreeBoard.regDate
+			FROM lsedb.FreeBoard where FreeBoard.memberId = #{param1} order by regDate desc;	
+	</select>
+	<select resultType="com.wiyn.web.entity.AddBoard" id="getSiteList">
+	SELECT  SiteBoard.boardName,SiteBoard.id,SiteBoard.title,SiteBoard.regDate
+			FROM lsedb.SiteBoard where SiteBoard.memberId = #{param1} order by regDate desc;	 
+	</select>
+	<select resultType="com.wiyn.web.entity.AddBoard" id="getRequestList">
+	SELECT  RequestBoard.boardName,RequestBoard.id,RequestBoard.title,RequestBoard.regDate
+			FROM lsedb.RequestBoard where RequestBoard.memberId = #{param1} order by regDate desc;
+	</select>
+	
+	
 	
 	<select resultType="com.wiyn.web.entity.AddBoard" id="getCommentList">
 	 
@@ -40,6 +54,5 @@
 	</select>
 	
 	
-
 
 </mapper>

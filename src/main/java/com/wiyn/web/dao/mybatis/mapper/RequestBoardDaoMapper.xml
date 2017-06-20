@@ -73,12 +73,10 @@
 	UPDATE RequestBoard SET hit = hit + 1 where id = #{id}  
      </update>
 
-	<delete id="delete" parameterType="com.wiyn.web.entity.RequestBoard">
+	<delete id="delete">
 		
-		DELETE FROM `lsedb`.`RequestBoard`
-		
-		WHERE
-		`id` = #{id}
+		DELETE FROM RequestBoard
+		WHERE id=#{id}
 		
 		
 	</delete>

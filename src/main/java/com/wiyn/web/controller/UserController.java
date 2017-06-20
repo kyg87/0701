@@ -23,6 +23,7 @@ import com.wiyn.web.dao.SmallCategoryDao;
 import com.wiyn.web.dao.UserPageDao;
 import com.wiyn.web.entity.AddBoard;
 import com.wiyn.web.entity.BigCategory;
+import com.wiyn.web.entity.FreeBoard;
 import com.wiyn.web.entity.SiteBoard;
 import com.wiyn.web.entity.SmallCategory;
 
@@ -34,38 +35,54 @@ public class UserController {
 	private SqlSession sqlSession;
 	
 	@Autowired
-	private UserPageDao userPageDao;
-	
-	@Autowired
-	private SiteBoardDao siteBoardDao;
-	@Autowired
 	private FreeBoardDao freeBoardDao;
+	
 	@Autowired
 	private RequestBoardDao requestBoardDao;
 	
 	@Autowired
-	private BigCategoryDao bigCategoryDao;
+	private SiteBoardDao siteBoardDao;
 	
-	@Autowired
-	private SmallCategoryDao smallCategoryDao;
 	
 	@RequestMapping("mypage")
 	public String UserMain(Authentication auth,Model model, AddBoard addboard, String title,
 			@RequestParam(value="bigCa",defaultValue="")String bigCategoryId,
-            @RequestParam(value="smallCa",defaultValue="")String smallCategoryId){
+            @RequestParam(value="smallCa",defaultValue="")String smallCategoryId
+            
+			){
 
 		
 		System.out.println(auth.getName());
-		List<AddBoard> list = sqlSession.getMapper(UserPageDao.class).getList(auth.getName());
+		/*List<AddBoard> list = sqlSession.getMapper(UserPageDao.class).getList(auth.getName());*/
+		
+		List<AddBoard> free = sqlSession.getMapper(UserPageDao.class).getFreeList(auth.getName());
+		List<AddBoard> site = sqlSession.getMapper(UserPageDao.class).getSiteList(auth.getName());
+		List<AddBoard> request = sqlSession.getMapper(UserPageDao.class).getRequestList(auth.getName());
+	
 		List<AddBoard> list2 = sqlSession.getMapper(UserPageDao.class).getCommentList(auth.getName());
 		List<AddBoard> list3 = sqlSession.getMapper(UserPageDao.class).getLikeList(auth.getName());
 		
+	/*	if(data.equals("1")){
+			List<AddBoard> result = sqlSession.getMapper(UserPageDao.class).getFreeList(auth.getName());
+			model.addAttribute("list", result);
+		}
 		
+		else if(data.equals("2")){
+			List<AddBoard> result = sqlSession.getMapper(UserPageDao.class).getSiteList(auth.getName());
+			model.addAttribute("list", result);
+		}
 		
-	/*	for (AddBoard addBoard2 : list3) {
-			System.out.println(addBoard2.getTitle());
+		else if(data.equals("3")){
+			List<AddBoard> result = sqlSession.getMapper(UserPageDao.class).getRequestList(auth.getName());
+			model.addAttribute("list", result);
 		}*/
-		model.addAttribute("list",list);
+		
+		model.addAttribute("free",free);
+		model.addAttribute("site",site);
+		model.addAttribute("request",request);
+		
+		
+		/*model.addAttribute("list",list);*/
 		model.addAttribute("list2",list2);
 		model.addAttribute("list3",list3);
 		
@@ -87,54 +104,36 @@ public class UserController {
 		System.out.println(valueArr);
 	}
 	*/
-	@RequestMapping(value = "del", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	
+	
+	
+	@RequestMapping(value = "del", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")	
 	public String delList(Authentication auth,Model model,
 		
-			SiteBoard siteBoard,AddBoard addBoard,
-			@RequestParam(value="boardName")ArrayList<String> boardname,
+			AddBoard addBoard, 
+			@RequestParam(value="boardName") String boardname,
 			@RequestParam(value="array")ArrayList<String> send_array, //[id=18, boardname=asdkfj]
 			@RequestParam(value="id") String id
 			){
 		
 		
-		//System.out.println("삭제");
-		System.out.println(boardname.get(4));
-		//System.out.println(boardname);
 	
-		
-		HashMap hm = new HashMap();
-		List al = new ArrayList();
 		for(int i=0;i<send_array.size();i++){
-		hm.put(send_array.get(i), boardname.get(i));
-		
+			System.out.println(send_array.get(i));
+			id = send_array.get(i);
+			
+			
+				freeBoardDao.delete(id);
+				
+				requestBoardDao.delete(id);
+				
+				siteBoardDao.delete(id);
+			
 		}
-		al.add(hm);
-		System.out.println("결과"+ al);
-	
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		/*send_array = send_array.split(",");
-		for(int i=0;i<aa.length;i++){
-		
-		
-		if(aa[i].equals("free")){		
+	/*	if(aa[i].equals("free")){		
 			freeBoardDao.delete(id);
 			
 		}
@@ -146,6 +145,18 @@ public class UserController {
 			requestBoardDao.delete(id);
 		}
 		}*/
+	/*	HashMap hm = new HashMap();
+		List al = new ArrayList();
+		//System.out.println(boardname);
+		for(int i=0;i<send_array.size();i++){
+			
+			hm.put(send_array.get(i), boardname.get(i));
+			
+		}
+		al.add(hm);
+		
+		System.out.println(al);*/
+		
 		return "redirect:mypage";
 	}
 

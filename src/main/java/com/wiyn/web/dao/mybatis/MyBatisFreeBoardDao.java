@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.wiyn.web.dao.FreeBoardDao;
 import com.wiyn.web.dao.FreeCommentDao;
+import com.wiyn.web.dao.RequestBoardDao;
 import com.wiyn.web.entity.FreeBoard;
 
 
@@ -112,6 +113,14 @@ public class MyBatisFreeBoardDao implements FreeBoardDao{
 	public List<FreeBoard> getList(int page) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	@Override
+	public int count() {
+		FreeBoardDao FreeBoardDao;
+		FreeBoardDao = sqlSession.getMapper(FreeBoardDao.class);
+		return FreeBoardDao.count();
 	}
 
 

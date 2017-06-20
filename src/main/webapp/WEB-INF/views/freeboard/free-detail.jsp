@@ -68,20 +68,6 @@
 			            
 			          </tr>
 			          
-			         
-			          <tr>
-			            <td>
-			            	<div class="chip">
-								Tag
-							</div>
-							<div class="chip">
-								Tag
-							</div>
-							<div class="chip">
-								Tag
-							</div>
-			            </td>
-			          </tr>
 			           
 			          <tr>
 			          

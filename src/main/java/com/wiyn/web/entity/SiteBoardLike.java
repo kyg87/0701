@@ -5,6 +5,9 @@ public class SiteBoardLike {
 	private String id;
 	private String memberId;
 	private String siteBoardId;
+	private String boardName;
+	private String content;
+	private String title;
 	
 	
 	public String getId() {
@@ -24,6 +27,24 @@ public class SiteBoardLike {
 	}
 	public void setSiteBoardId(String siteBoardId) {
 		this.siteBoardId = siteBoardId;
+	}
+	public String getBoardName() {
+		return boardName;
+	}
+	public void setBoardName(String boardName) {
+		this.boardName = boardName;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	
 	

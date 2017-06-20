@@ -27,7 +27,7 @@ public interface FreeBoardDao {
 	public int updateHit(String id);
 	public String getSize(String commentCount);
 	public int updateCommentCount(String id);
-	
+	int count();
 	// 페이징 함수
 	public int getPage();
 }

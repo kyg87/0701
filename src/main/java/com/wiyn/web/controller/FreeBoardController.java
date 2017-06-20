@@ -34,16 +34,6 @@ public class FreeBoardController {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	@Autowired
-	private FreeCommentDao freeCommentDao;
-	
-	
-	@Autowired
-	private BigCategoryDao bigCategoryDao;
-	
-	@Autowired
-	private SmallCategoryDao smallCategoryDao;
-	
 
 
 	@RequestMapping("freeboard")

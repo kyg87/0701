@@ -18,7 +18,7 @@ public interface RequestBoardDao {
 	
 	int add(RequestBoard requestBoard);
 	int update(RequestBoard requestBoard);
-	int delete(String memberId);
+	int delete(String id);
 	int count();
 	int updateViewCnt(String id);
 	
