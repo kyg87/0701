@@ -330,7 +330,7 @@ nav a{
  
                 </div>
                 <div class="row margin">
-                <a class="btn waves-effect waves-light col s12" href="#modal11">Sign Up</a>
+                <a class="btn waves-effect waves-light col s12" href="#modal11">SIGN UP</a>
                 </div>
             </div>
     </form>
