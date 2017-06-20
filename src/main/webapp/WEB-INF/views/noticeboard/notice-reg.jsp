@@ -15,6 +15,15 @@ body, html {
 	color: #846C63;
 }
 
+.card-panel {
+    transition: box-shadow .25s;
+    padding: 20px;
+    margin: 0.5rem 0 1rem 0;
+    border-radius: 2px;
+    background-color: #F0E5D7 !important;
+    min-height: 640px;
+}
+
 #main {
 	width: 100%;
 	min-height: 500px;
@@ -75,8 +84,8 @@ body, html {
 	margin-left: 10px;
 }
 
-#btn {
-	margin-left: 500px;
+.btn{
+	background: rgb(210, 178, 149);
 }
 
 
@@ -86,6 +95,7 @@ body, html {
         $(function() {
             $("#imgInp").on('change', function(){
                 readURL(this);
+                $("#blah").attr('style', "visibility:visible; width:300px; height:300px; float:right;");
             });
         });
 
@@ -111,18 +121,16 @@ body, html {
 		<div class="row">
 
 			<div class="col s12 l6">
-				<h2 class="title">고옹지이사하아아아앙~~</h2>
+				<h2 class="title">Notice Board</h2>
 
 				<div class="content">
-					<h5>예압 췌키랏! 등록해봐 공지사항 예압 노티스!!</h5>
-				</div>
-
-				<div>
-					<h3>공지사항 등록하기~</h3>
+					<h5>Notice Reg</h5>
 				</div>
 				
 				<div class = "preview">
-					<img id="blah" src="#" alt="your image" style="width:300px; height:300px; float:right;" />
+				
+			        <img id="blah" src="#" style="width:300px; height:300px; float:right; visibility:hidden;" />
+					
 				</div>
 				
 			</div>
@@ -136,7 +144,7 @@ body, html {
 						<div class="input-field col s12">
 							<input placeholder=" title " id="titleinput" type="text"
 								name="title" class="validate" value="" required="required"> <label
-								for="name" class="active"> 제목을 입력 : 하시오~ </label>
+								for="name" class="active"><i class="tiny material-icons">mode_edit</i> 제목 입력 : </label>
 						</div>
 					</div>
 
@@ -144,15 +152,15 @@ body, html {
 						<div class="input-field col s12">
 							<input placeholder=" http:// " id="contentSrc" type="text"
 								name="contentSrc" class="contentSrc" value="" required="required"> <label
-								for="name" class="active"> 주소를 입력 : 하시오오오오~~ </label>
+								for="name" class="active"><i class="tiny material-icons">language</i> 주소 입력 : </label>
 						</div>
 					</div>
 
 					<div class="file-field input-field">
 
 						<div class="btn">
-							<span>파일을 첨부 : 해애봅시이다아 </span>
-							<input type="file" id="imgInp" name="file" multiple />
+							<span>파일 첨부  </span>
+							<input type="file" id="imgInp" class="btn" name="file" multiple />
 						</div>
 
 						<div class="file-path-wrapper">
@@ -167,14 +175,14 @@ body, html {
 							<textarea name="content"
 								class="form-control materialize-textarea" rows="15" id="comment"
 								data-length="130" required="required"></textarea>
-							<label for="name" class="active"> 내용을 입력 : 하시오오오오옹!~!~!~
-							</label>
+							<label for="name" class="active"><i class="tiny material-icons">textsms</i> 내용 입력 : </label>
 						</div>
 					</div>
+					
 
 					<div id="btn">
 						<button class="btn waves-effect waves-light" type="submit"
-							name="action">
+							name="action" id="test">
 							등록 완료 <i class="material-icons right">send</i>
 						</button>
 					</div>
@@ -184,6 +192,9 @@ body, html {
 
 					<script>
 							$(function() {
+								
+								/* var comment = $("#comment"); */
+								
 								$("#comment").keydown(function(e) {
 
 									if ($("#comment").val().length > 130) {
@@ -193,8 +204,11 @@ body, html {
 									}
 
 								});
+																								
+								comment = comment.replaceAll("\n", "test"); // 줄바꿈 처리
+								comment = comment.replaceAll("\u0020", "&nbsp;"); // 스페이스바 처리 
 								
-								$("#comment").val().replace("/n", "<br>");
+								/* $("#comment").val().replace("\\n", "--enter"); */
 								
 							});
 					</script>
@@ -204,7 +218,7 @@ body, html {
 					<input type="hidden" name="memberId"
 						value=<security:authentication property="name"/> />
 				</form>
-			</div>
+			
 		</div>
 	</div>
 </div>

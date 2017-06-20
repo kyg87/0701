@@ -25,6 +25,16 @@ body, html {
 	box-shadow: 1px 1px 5px #383838;
 	background: #F6F4F1 !important;
 }
+
+.card-panel {
+    transition: box-shadow .25s;
+    padding: 20px;
+    margin: 0.5rem 0 1rem 0;
+    border-radius: 2px;
+    background-color: #F0E5D7 !important;
+    min-height: 640px;
+}
+
 #title {
 	width: 40px;
 	font-family: bold;
@@ -76,6 +86,12 @@ body, html {
 #btn {
 	margin-left: 500px;
 }
+
+.btn{
+	background: rgb(210, 178, 149);
+}
+
+
 </style>
 
 
@@ -87,15 +103,12 @@ body, html {
 		<div class="row">
 
 			<div class="col s12 l6">
-				<h2 class="title">고옹지이사하아아아앙~~</h2>
+				<h2 class="title">Notice Board</h2>
 
 				<div class="content">
-					<h5>예압 췌키랏! 수정해봐 공지사항 예압 노티스!!</h5>
+					<h5>Notice Edit</h5>
 				</div>
 
-				<div>
-					<h3>공지사항 수정하기~</h3>
-				</div>
 			</div>
 
 			<div class="col s12 l6">
@@ -106,7 +119,7 @@ body, html {
 						<div class="input-field col s12">
 							<input placeholder=" title " id="titleinput" type="text"
 								name="title" class="validate" value="${list.title }"> <label
-								for="name" class="active"> 제목을 입력 : 하시오~ </label>
+								for="name" class="active"><i class="tiny material-icons">mode_edit</i> 제목 입력 : </label>
 						</div>
 					</div>
 
@@ -114,15 +127,15 @@ body, html {
 						<div class="input-field col s12">
 							<input placeholder=" http:// " id="contentSrc" type="text"
 								name="contentSrc" class="contentSrc" value="${list.contentSrc }"> <label
-								for="name" class="active"> 주소를 입력 : 하시오오오오~~ </label>
+								for="name" class="active"> 주소 입력 : </label>
 						</div>
 					</div>
 
 					<div class="file-field input-field">
 
 						<div class="btn">
-							<span>파일을 첨부 : 해애봅시이다아 </span> <input type="file" name="file" value="test"
-								multiple />
+							<span>파일 첨부 </span> <input type="file" name="file" value="test"
+								class="btn" multiple />
 						</div>
 
 						<div class="file-path-wrapper">
@@ -137,7 +150,7 @@ body, html {
 							<textarea name="content"
 								class="form-control materialize-textarea" rows="15" id="comment"
 								data-length="130">${list.content }</textarea>
-							<label for="name" class="active"> 내용을 입력 : 하시오오오오옹!~!~!~
+							<label for="name" class="active"> 내용 입력 : 
 							</label>
 						</div>
 					</div>

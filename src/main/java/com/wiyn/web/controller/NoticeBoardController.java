@@ -125,6 +125,9 @@ public class NoticeBoardController {
 		NoticeFile noticeFile = new NoticeFile();
 		noticeFile = sqlSession.getMapper(NoticeBoardFileDao.class).get(id);
 		
+		String content = noticeBoard.getContent().replace("\n", "<br />");
+		noticeBoard.setContent(content);
+		
 		model.addAttribute("list", noticeBoard);
 		model.addAttribute("file", noticeFile);
 		model.addAttribute("page", page);
