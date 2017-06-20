@@ -102,9 +102,9 @@
 
 	} */
 </script>
-<main> M y P a g e
-
-<div class="row" style="margin-top: 150px;">
+<main id="main">
+<div class="container">
+<div class="row" style="margin-top: 50px;">
 	<form action="del" name="del" method="post">
 		<div>
 
@@ -150,7 +150,7 @@
 
 		<table class="bordered" id="test1">
 			<div>
-				<ul class="tabs" style="width: 70%; position: relative">
+				<ul class="tabs" style="position: relative">
 					<li class="tab col s3"><a href="#sub-test1"> 자유게시판 </a></li>
 					<li class="tab col s3"><a href="#sub-test2" class="inactive">
 							요청게시판</a></li>
@@ -328,7 +328,7 @@
 
 </div>
 <br>
-</div>
+
 
 <div align="center">
 
@@ -362,6 +362,7 @@
 		</c:if>
 
 	</ul>
+</div>
 </div>
 
 </main>
