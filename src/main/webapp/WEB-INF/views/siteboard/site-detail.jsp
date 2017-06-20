@@ -69,7 +69,7 @@ ul {
 hr {
     border-bottom: 0;
     border-right: 0;
-    border-top: 1px solid #846C63;
+    border-top:1px solid rgb(246, 244, 241);
 }
 
 a {
@@ -81,7 +81,8 @@ h6 {
     margin: 0.5rem 0 0.4rem 0;
 }
 
-h2{margin-top: 10px;}
+h2{margin-top: 10px;
+text-shadow: skyblue 0px 0px 0px 4px; }
 
 
 i{
@@ -277,19 +278,25 @@ time {
 				<li>${n.regDate }</li>
 			</ul>
 			<hr>
-			<span class=""><a href="http://${n.url}">http://${n.url}</a></span>
+			<span class=""><i class="material-icons">language</i><a href="http://${n.url}">http://${n.url}</a></span>
 			<hr>
 			<span class="detail-title"><i class="material-icons">textsms </i>comment<div
 							id="minibox">
 			<span class="">${n.content }</span>
+			<span class="detail-title">
+			<c:forEach var="tag" items="${t }">
+					<div id="chip" class="chip">${tag }</div>
+					</c:forEach>
+			</span>
 			<hr>
-			
 		   <form class="box_write" id="comment-add-form"
 								action="siteBoard-comment-add" method="post">
          
-          
+               <security:authorize access="isAnonymous()">
+                  <p>글쓰기는 로그인한 유저만 가능합니다 로그인해주세요</p>
+               </security:authorize>
                
- 
+               <security:authorize access="isAuthenticated()">
                <textarea placeholder="한 줄 댓글을 남겨주세요." name="content"
 										required="required"></textarea>
                
@@ -305,7 +312,7 @@ time {
                     </button>
                </div>
  -->               
-   
+               </security:authorize>
              
              
             
@@ -322,72 +329,16 @@ time {
 		</div>
 			</span>
 
-			<span class="detail-title"><i class="mdi-image-photo-camera"></i>
-				Header photo by <a target="_blank" href="http://mtlbeanstalk.com/">Linh
-					Le-Kim</a></span>
+
 			<hr>
 
 			<!-- Modal Trigger -->
-			<a class="waves-effect waves-light btn modal-trigger"
-						href="#edit-modal">Submit a change</a>
-
-			<!-- Modal Structure -->
-			<div id="edit-modal" class="modal bottom-sheet modal-fixed-footer">
-
-				<form action="" method="POST">
-
-					<div class="modal-content">
-
-						<div class="row">
-
-							<div class="col s12">
-
-								<h4>Submit a change</h4>
-
-
-								<div class="collection edit-options">
-									<a href="#" class="collection-item">Coffee Shop closed
-										permanently</a> <a href="#" class="collection-item">Opening
-										Hours have changed</a> <a href="#" class="collection-item">This
-										coffee shop is using a new roaster</a> <a href="#" data-text=""
-												class="collection-item">Other</a>
-								</div>
-
-							</div>
-
-							<div class="input-field col s12">
-								<textarea id="edit_text" name="edit_text" rows="20"
-											class="materialize-textarea"></textarea>
-								<label for="edit_text">Some details about the change</label>
-							</div>
-
-							<div class="input-field col s12">
-								<input id="edit_email" name="edit_email" type="email"
-											class="validate" value=""> <label for="edit_email">Your
-									email address</label>
-							</div>
-
-						</div>
-
-					</div>
-
-					<div class="modal-footer">
-						<input type="hidden" id="nonce" name="nonce" value="512a793c20"><input
-									type="hidden" name="_wp_http_referer"
-									value="/montreal/westmount/standard-coffee-bar/">
-						<button type="submit" name="action" value="edit_shop"
-									class="btn teal">Submit</button>
-					</div>
-
-				</form>
-
+			<button class="btn waves-effect waves-light list-btn" type="submit" name="action">목록</button>
 			</div>
 			</div>
 			</div>
 </div>
 </div>
-</div>
-
 
 
 	<%-- <table class="table">
@@ -579,8 +530,13 @@ $(function(){
 		}); 
 	});
 });
-
-
+<!-----------------------------------------목록버튼--------------------------------------------->
+$(document).ready(function(){									
+	$(".list-btn").on("click",function(){
+		$('.back').prop('href', history.back());
+	});
+});
+<!-----------------------------------------좋아요--------------------------------------------->
 $(document).ready(function(){
 	$("#likebtn").click(function(){
 		console.log('${loginID}');
@@ -607,12 +563,6 @@ var currentPage = ${page};
 	function onCreate(){
 		
 		var count = 0;
-		
-		if('${loginID}' == 'anonymousUser') {
-			alert("로그인한 유저만 사용 가능합니다.");
-			return;
-		}
-
 		
 		var text = $("#comment-add-form").find("textarea");
 		

@@ -21,9 +21,11 @@ footer .category{
 }
 
 footer .first{
-   padding: 10px; 
-   min-height: 270px;
+   padding-top: 10px; 
+   padding-bottom: 10px; 
+   min-height: 250px;
    color:#fff;
+   font-size: 15px;
 }
 
 .category.column{
@@ -68,13 +70,14 @@ footer .first{
                </div>
          </c:forEach>   
    </div>
+	</div>
    <div class="footer-copyright">
-      <div class="container">
+   	<div class="container">
          Copyright © 2015 <a class="grey-text text-lighten-4"
             href="http://themeforest.net/user/geekslabs/portfolio?ref=geekslabs"
             target="_blank">GeeksLabs</a> All rights reserved. <span
             class="right"><a class="grey-text text-lighten-4"
             href="http://geekslabs.com/"></a></span>
+            </div>
       </div>
-   </div>
 </footer>

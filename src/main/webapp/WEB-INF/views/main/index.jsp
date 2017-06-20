@@ -64,31 +64,30 @@ font-family: 'Jeju Gothic', serif;
 	background-size: 100%;
 }
 
-.visual p:first-child{
-	/* background-color: rgba(255,255,255,0.4); */
+/* .visual p:first-child{
+	/* background-color: rgba(255,255,255,0.4); 
 	height: inherit;
 	font-size: 30px;
 	color:#b86065;
 
 	font-family: 'Hanna', serif;
-}
+} */
 
-.visual p{
-	/* background-color: rgba(255,255,255,0.4); */
-	
+p{
 	height: inherit;
 	font-size: 20px;
 	color:#b86065;
-
 	font-family: 'Hanna', serif;
+	text-align: center;
 }
 
 .visual .banner-text{
+width:inherit;
+height:inherit;
 	position: relative;
-	top:150px;
 	background-color: rgba(255,255,255,0.5);
 }
-
+ 
 /*------------------------- 공지사항 스크롤 부분 ----------------------------------*/
 #scroll {
 	height: 50px;
@@ -444,11 +443,9 @@ textScroll.prototype.start = function() {
 <main id="main">
 <visual>
 	<div class="visual">
-			<div class="banner-text">
-			<p>What is your needs?</p>
-			<p>당신이 원하는 사이트, 당신에게 필요한 사이트</p>
-			<p>추천 받고, 추천할 수 있는 자유로운 공간입니다!</p>
-		</div>
+	<div class="banner-text">
+			<p>What is your needs? <br>당신이 원하는 사이트, 당신에게 필요한 사이트<br>추천 받고, 추천할 수 있는 자유로운 공간입니다! </p>
+</div>
 	</div>
 
 </visual>
@@ -540,11 +537,15 @@ textScroll.prototype.start = function() {
 </div>
 
 <div class="hot-site">
-<h2 class="header lighten-1 section-title">
+<div class="hanna">
+	<p>"무엇이" 필요한 당신에게</p>
+	<p class="point">~~~한 사이트</p>	
+</div>
+<!-- <h2 class="header lighten-1 section-title">
 <div class="hanna">
 	<p>"무엇이" 필요한 당신에게<br> ~~~한 사이트</p>
 </div>
-</h2>
+</h2> -->
 <div class="flex space">
 	<div class="card">
 		<div class="card-image waves-effect waves-block waves-light">
