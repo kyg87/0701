@@ -24,13 +24,13 @@
 }
 
 @media only screen and (max-width: 680px){
-	.flex .card.second{
+	.flex .card:second-child{
 		display: none;
 	}
 }
 
 @media only screen and (max-width: 1220px){
-	.flex .card.third{
+	.flex .card:first-child{
 		display: none;
 	}
 }
