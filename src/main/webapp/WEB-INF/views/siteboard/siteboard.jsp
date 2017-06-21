@@ -6,10 +6,23 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <style>
 .mvaside{
-	position: absolute;
-	top: 100px;
 	left: 0px;
+	
+	width:20%;
+}
 
+.collection{
+	border:none;
+	margin:0px;
+	margin-right: 30px;
+}
+
+.main-div{
+	width:80%;
+}
+
+.table{
+	background-color:#fff;  
 }
 </style>
 
@@ -20,39 +33,40 @@
 	<h4><input type="hidden" value="${param.bigCa}" />${bn.name}</h4>
     <h5><input type="hidden"  value="${param.smallCa }" />${sn.name}</h5>
 
-	
-	<div class="collection mvaside">
-    <a href="?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenew.news }</span>최신순</a>
-    <a href="siteboardlike?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenewL.news }</span>베스트 사이트추천</a>
-    <a href="siteboardhit?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenewH.news }</span>많이 본 사이트</a>
-  	</div>
-	
-	<table class="highlight table">
-		<thead>
-			<tr>
-				<th>번호</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>조회수</th>
-				<th>작성날짜</th>
-			</tr>
-		</thead>
-		<tbody>
+	<div class="flex">
+		<div class="collection mvaside">
+	    <a href="?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenew.news }</span>최신순</a>
+	    <a href="siteboardlike?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenewL.news }</span>베스트 사이트</a>
+	    <a href="siteboardhit?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenewH.news }</span>많이 본 사이트</a>
+	  	</div>
 		
-			<c:forEach var="n" items="${sitelist}">
+		<div class="main-div">
+		<table class="highlight table">
+			<thead>
 				<tr>
-					<td>${n.id}</td>
-					<td class="orange-text text-accent-3 table-title"><a
-						href="site-detail?c=${n.id}&p=${param.p}">${n.title}</a>[${n.countcomment }]</td>
-					<td>${n.memberId }</td>
-					<td>${n.hit }</td>
-					<td><fmt:formatDate value="${n.regDate}"
-							pattern="yyyy-MM-dd HH:mm:ss" /></td>
-			</c:forEach>
+					<th>번호</th>
+					<th>제목</th>
+					<th>작성자</th>
+					<th>조회수</th>
+					<th>작성날짜</th>
+				</tr>
+			</thead>
+			<tbody>
 			
-		</tbody>
-	</table>
-
+				<c:forEach var="n" items="${sitelist}">
+					<tr>
+						<td>${n.id}</td>
+						<td class="orange-text text-accent-3 table-title"><a
+							href="site-detail?c=${n.id}&p=${param.p}">${n.title}</a>[${n.countcomment }]</td>
+						<td>${n.memberId }</td>
+						<td>${n.hit }</td>
+						<td><fmt:formatDate value="${n.regDate}"
+								pattern="yyyy-MM-dd HH:mm:ss" /></td>
+				</c:forEach>
+				
+			</tbody>
+		</table>
+		
 <br>
 <div class="site-button">
 	<a class="waves-effect waves-light btn sitego" href="#">
@@ -91,7 +105,8 @@
 				class="material-icons">chevron_right</i></a>
 		</c:if></li>
 </ul>
-
+</div>
+	</div>
 
 
 <input class="sitein" type="hidden" name="memberId"
