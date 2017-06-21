@@ -137,6 +137,30 @@ nav a{
   }
 }
 
+.dropdown-content {
+
+    margin-top: 60px;
+}
+
+
+.info_top{
+    text-align: center;
+    background: url("http://demo.geekslabs.com/materialize-v1.0/images/user-profile-bg.jpg") no-repeat left center;    
+}
+
+.info_top>img{
+	cursor: pointer;
+}
+
+#profileImg {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: inline-block;
+    margin-top: 24px;
+}
+
 </style>
 
 <header id="header">
@@ -191,17 +215,34 @@ nav a{
 				<a class="login font loge btn" href="#modal10">Login</a>
 			</security:authorize>
 			<security:authorize access="isAuthenticated()">
-				<a class="login font pin btn" href="${root}/user/mypage"> <security:authentication
+		<%-- 		<a class="login font pin btn" href="${root}/user/mypage"> <security:authentication
 						property="name" />
+				</a> --%>
+		
+				<a class="login font pin dropdown-button"  href='#' data-activates='dropdown1'> <security:authentication
+						property="name" />
+						<i class="material-icons right">arrow_drop_down</i>
 				</a>
+				
+				 <!-- Dropdown Structure -->
+				  <ul id='dropdown1' class='dropdown-content'>
+			
+			 <li><a href="#modal110"><i class="material-icons md-36">face</i>Profile</a></li>
+				    <li><a href="${root}/user/mypage"><i class="material-icons">pages</i>Mypage</a></li>
+				        <li class="divider"></li>
+				    <li><a href="${root}/j_spring_security_logout"><i class="material-icons">exit_to_app</i>Logout</a></li>
+				  </ul>
+
+				
 			</security:authorize>
+			
 			</li>
 			<li>
-			<security:authorize access="isAuthenticated()">
+<%-- 			<security:authorize access="isAuthenticated()">
 				<a class="login font lock btn"
 					href="${root}/j_spring_security_logout"> Logout
 				</a>
-			</security:authorize>
+			</security:authorize> --%>
 			</li>		
 	      </ul>
 	      <ul class="side-nav" id="mobile-demo">
@@ -214,13 +255,23 @@ nav a{
 				</a>
 			</security:authorize>
 			<security:authorize access="isAuthenticated()">
-				<a class="login font personal pin" href="${root}/user/mypage"> <security:authentication
+<%-- 				<a class="login font personal pin" href="${root}/user/mypage"> <security:authentication
 						property="name" /><i class="tiny material-icons">person_pin</i>
+						
+				
+				</a> --%>
+				<a class="login font personal pin" href="#" data-activates="profile-dropdown"> <security:authentication
+						property="name" /><i class="tiny material-icons">person_pin</i>
+						
+				
 				</a>
+	
 				<a class="login font personal lock"
 					href="${root}/j_spring_security_logout"> Logout <i
 					class="tiny material-icons">lock_outline</i>
 				</a>
+				
+			
 			</security:authorize>
 			<form action="http://localhost:8080/WiynPrj/main/index" method="GET">
 				<nav class="main-nav">
@@ -280,8 +331,8 @@ nav a{
     </div> 
 
     </div>
-    
-    <!-- Modal Structure -->
+
+  <!-- 로그인  Modal Structure -->
 
   <div id="modal10" class="modal">
     <form id="myForm20" action="${root}/j_spring_security_check" method="post">
@@ -308,11 +359,6 @@ nav a{
                          <input name="j_username" id="j_username" type="email" class="validate">
                         <label for="email" class="center-align">Email</label>
                     </div>
-                <!--     <div class="input-field col s12">
-                        <i class="mdi-social-person-outline prefix"></i>
-                        <input id="username" type="text">
-                        <label for="username" class="center-align">Username</label>
-                      </div> -->
                 </div>
                 <div class="row margin">
                 
@@ -337,7 +383,7 @@ nav a{
     
     </div>
     
-      <!-- Modal Structure -->
+  <!-- 회원가입 Modal Structure -->
   <div id="modal11" class="modal">
   <form id="myForm3" action="${root}/joinus/singIn" method="post">
             <div class="modal-content">
@@ -384,13 +430,24 @@ nav a{
     </form>
   </div>
   
+  <!-- 개인프로필 Modal Structure -->
+	<div id="modal110" class="modal">
+		<div class="info_top">
+		<input id="profileImgbtn" type="file" style="display: none">
+			 <!-- <img id="profileImg" alt="" src="http://d1hk7gw6lgygff.cloudfront.net/assets/_img/mypage/img_edit_profile-3c5f60b7a1ddf555f665e50d2987f7a3.png"> -->
+			 <img id="profileImg" alt="" src="${root}/resource/images/KakaoTalk_20170607_162312318.jpg">
+			<p><security:authentication property="name" /></p>
+		</div>
+    </div>
+	<!-- 로그인 부분 스크립트 ---------------------------------------------------------------------------------->
 <script type="text/javascript">
       $(document).ready(function(){
           var myForm1 = $("#myForm20");
           var j_name = $("#j_username");
           var j_pwd = $("#j_password");
-
-        var data = myForm1.serialize();
+		  var profileImg = $("#profileImg");
+		  var profileImgbtn = $("#profileImgbtn");
+          var data = myForm1.serialize();
           $("#btn2").click(function(){
     
                   console.log(j_name.val());
@@ -410,6 +467,10 @@ nav a{
                 });
                 //myForm1.submit();
             
+          });
+          
+          $("#profileImg").click(function(){
+        	 $("#profileImgbtn").click(); 
           });
 
         });
@@ -474,6 +535,9 @@ nav a{
 		  });
 		  
 		
+		  function profileclick(){
+			  alert("t")
+		  }
 		  
 		  
 		  
