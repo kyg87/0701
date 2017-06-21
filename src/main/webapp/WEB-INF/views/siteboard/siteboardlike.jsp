@@ -5,7 +5,24 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>   
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <jsp:useBean id="now" class="java.util.Date" />
+
 <style>
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+@import url(http://fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
+
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+@import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+
+@import
+	url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
 .mvaside{
 	left: 0px;
 	
@@ -25,15 +42,146 @@
 .table{
 	background-color:#fff;  
 }
+
+
+.sitego {
+	background: rgba(27, 80, 162, 0.69);
+}
+
+.sitego:hover {
+	background: rgba(23, 56, 125, 0.79);
+}
+
+.write {
+	display: flex;
+}
+
+.site-button {
+	margin-top: 10px;
+	display: flex;
+	justify-content: flex-end;
+	font-family: 'Nanum Gothic Coding', serif;
+}
+#breadcrumb {
+  list-style: none;
+  display: inline-block;
+}
+#breadcrumb .icon {
+  font-size: 14px;
+}
+#breadcrumb li {
+  float: left;
+}
+#breadcrumb li a {
+  color: #FFF;
+  display: block;
+  background: #3498db;
+  text-decoration: none;
+  position: relative;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 10px 0 5px;
+  text-align: center;
+  margin-right: 23px;
+}
+#breadcrumb li:nth-child(even) a {
+  background-color: #2980b9;
+}
+#breadcrumb li:nth-child(even) a:before {
+  border-color: #2980b9;
+  border-left-color: transparent;
+}
+#breadcrumb li:nth-child(even) a:after {
+  border-left-color: #2980b9;
+}
+#breadcrumb li:first-child a {
+  padding-left: 15px;
+  -moz-border-radius: 4px 0 0 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px 0 0 4px;
+}
+#breadcrumb li:first-child a:before {
+  border: none;
+}
+#breadcrumb li:last-child a {
+  padding-right: 15px;
+  -moz-border-radius: 0 4px 4px 0;
+  -webkit-border-radius: 0;
+  border-radius: 0 4px 4px 0;
+}
+#breadcrumb li:last-child a:after {
+  border: none;
+}
+#breadcrumb li a:before, #breadcrumb li a:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  border: 0 solid #3498db;
+  border-width: 20px 10px;
+  width: 0;
+  height: 0;
+}
+#breadcrumb li a:before {
+  left: -20px;
+  border-left-color: transparent;
+}
+#breadcrumb li a:after {
+  left: 100%;
+  border-color: transparent;
+  border-left-color: #3498db;
+}
+#breadcrumb li a:hover {
+  background-color: #1abc9c;
+}
+#breadcrumb li a:hover:before {
+  border-color: #1abc9c;
+  border-left-color: transparent;
+}
+#breadcrumb li a:hover:after {
+  border-left-color: #1abc9c;
+}
+#breadcrumb li a:active {
+  background-color: #16a085;
+}
+#breadcrumb li a:active:before {
+  border-color: #16a085;
+  border-left-color: transparent;
+}
+#breadcrumb li a:active:after {
+  border-left-color: #16a085;
+}
+
+
+
 </style>
-
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 <main id="main">
-<div style="display: hidden"><fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" /> </div>
+<div style="display: none"><fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" /> </div>
     <div class="col-xs-12 col-md-8 container">
-
-	<h4><input type="hidden" value="${param.bigCa}" />${bn.name}</h4>
-    <h5><input type="hidden"  value="${param.smallCa }" />${sn.name}</h5>
-
+ <c:choose>
+ 	<c:when test="${empty param.bigCa  }">
+ <ul id="breadcrumb" style="display: none;">
+  <li><a href="#"><span class="icon icon-home"> </span></a></li>
+  <li><a href="#"><span class="icon icon-double-angle-right"> </span> <input type="hidden" value="${param.bigCa}" />${bn.name}</a></li>
+  <li><a href="#"><span class="icon icon-double-angle-right"></span> <input type="hidden"  value="${param.smallCa }" />${sn.name}</a></li>
+</ul>
+ 	</c:when>
+ 
+ 	<c:otherwise>
+ 	<ul id="breadcrumb">
+  <li><a href="siteboard?p=1"><span class="icon icon-home"> </span></a></li>
+  <li><a href="?p=1&q=${param.q}&bigCa=${param.bigCa}"><span class="icon icon-double-angle-right"> </span> <input type="hidden" value="${param.bigCa}" />${bn.name}</a></li>
+  <c:choose>
+  <c:when test="${empty param.smallCa}">
+  </c:when>
+  <c:otherwise>
+  <li><a href="?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}"><span class="icon icon-double-angle-right"></span> <input type="hidden"  value="${param.smallCa }" />${sn.name}</a></li>
+  </c:otherwise>
+  </c:choose>
+	</ul>
+ 	
+	</c:otherwise>
+</c:choose>
 	<div class="flex">
 		<div class="collection mvaside">
 	    <a href="siteboard?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenew.news }</span>최신순</a>
