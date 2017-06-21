@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
 import com.wiyn.web.dao.BigCategoryDao;
 import com.wiyn.web.dao.MemberDao;
 import com.wiyn.web.dao.SmallCategoryDao;
 import com.wiyn.web.entity.BigCategory;
+import com.wiyn.web.entity.Member;
 import com.wiyn.web.entity.SmallCategory;
 
 @Controller
@@ -123,5 +125,18 @@ public class JoinusController {
 		return "joinus.login";
 	}
 	
+	
+	@RequestMapping("getUser")
+	@ResponseBody
+	public String getUser(
+			@RequestParam(value="email")String email){
+		
+		Member member = memberDao.get(email);
+		
+		
+		String gson =  new Gson().toJson(member);
+		
+		return gson;
+	}
 	
 }

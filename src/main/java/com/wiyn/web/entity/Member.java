@@ -8,6 +8,7 @@ public class Member {
 	private String email;
 	private String pwd;
 	private Date regDate;
+	private String profile;
 	
 	public String getId() {
 		return id;
@@ -32,6 +33,12 @@ public class Member {
 	}
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
+	}
+	public String getProfile() {
+		return profile;
+	}
+	public void setProfile(String profile) {
+		this.profile = profile;
 	}
 	
 }

@@ -46,4 +46,12 @@ public class MyBatisMemberDao implements MemberDao {
 		return memberDao.isLogin(email, pwd);
 	}
 
+	@Override
+	public Member get(String email) {
+		MemberDao memberDao;
+		memberDao = sqlSession.getMapper(MemberDao.class);
+		
+		return memberDao.get(email);
+	}
+
 }

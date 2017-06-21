@@ -215,10 +215,7 @@ nav a{
 				<a class="login font loge btn" href="#modal10">Login</a>
 			</security:authorize>
 			<security:authorize access="isAuthenticated()">
-		<%-- 		<a class="login font pin btn" href="${root}/user/mypage"> <security:authentication
-						property="name" />
-				</a> --%>
-		
+	
 				<a class="login font pin dropdown-button"  href='#' data-activates='dropdown1'> <security:authentication
 						property="name" />
 						<i class="material-icons right">arrow_drop_down</i>
@@ -227,24 +224,20 @@ nav a{
 				 <!-- Dropdown Structure -->
 				  <ul id='dropdown1' class='dropdown-content'>
 			
-			 <li><a href="#modal110"><i class="material-icons md-36">face</i>Profile</a></li>
+			 <li><a href="#modal110" onclick="userCheck();"><i class="material-icons md-36">face</i>Profile</a></li>
 				    <li><a href="${root}/user/mypage"><i class="material-icons">pages</i>Mypage</a></li>
 				        <li class="divider"></li>
 				    <li><a href="${root}/j_spring_security_logout"><i class="material-icons">exit_to_app</i>Logout</a></li>
 				  </ul>
 
 				
-			</security:authorize>
+				</security:authorize>
 			
 			</li>
-			<li>
-<%-- 			<security:authorize access="isAuthenticated()">
-				<a class="login font lock btn"
-					href="${root}/j_spring_security_logout"> Logout
-				</a>
-			</security:authorize> --%>
-			</li>		
+	  <!--  <li><a class="board " href="../freeboard/freeboard">chat</a></li> -->
 	      </ul>
+	      
+	   
 	      <ul class="side-nav" id="mobile-demo">
 	      			<security:authorize access="isAnonymous()">
 				<a class="login font personal loge" href="#modal10">Login
@@ -429,16 +422,22 @@ nav a{
             </div>
     </form>
   </div>
-  
+ 
   <!-- 개인프로필 Modal Structure -->
 	<div id="modal110" class="modal">
 		<div class="info_top">
-		<input id="profileImgbtn" type="file" style="display: none">
+			<input id="profileImgbtn" type="file" style="display: none">
 			 <!-- <img id="profileImg" alt="" src="http://d1hk7gw6lgygff.cloudfront.net/assets/_img/mypage/img_edit_profile-3c5f60b7a1ddf555f665e50d2987f7a3.png"> -->
 			 <img id="profileImg" alt="" src="${root}/resource/images/KakaoTalk_20170607_162312318.jpg">
-			<p><security:authentication property="name" /></p>
+		<p><security:authentication property="name" /></p>
+	
+		</div>
+		<div class="btn_area">
+				<button type="button" class="btn waves-effect waves-light">취소</button>
+				<button type="submit" class="btn waves-effect waves-light">저장</button>
 		</div>
     </div>
+    <security:authentication property="name" var="loginID"/>
 	<!-- 로그인 부분 스크립트 ---------------------------------------------------------------------------------->
 <script type="text/javascript">
       $(document).ready(function(){
@@ -471,9 +470,30 @@ nav a{
           
           $("#profileImg").click(function(){
         	 $("#profileImgbtn").click(); 
+        	
           });
-
+           
+           
+      
         });
+      
+      function userCheck(){
+    	  console.log('${loginID}');
+    	  var userName = '${loginID}';
+    	  $.get("${root}/joinus/getUser",{"email":userName} ,function(d){
+    		  
+    		  var obj = JSON.parse(d);
+   /*  		 alert(obj.profile);  */
+   			  if(obj.profile != ''){
+   				profileImg.src = "${root}/resource/images/"+obj.profile;  
+   			  }
+   			  else{
+   				profileImg.src ="http://demo.geekslabs.com/materialize-v1.0/images/avatar.jpg";
+   			  }
+    		  
+    		  
+    	  });
+      }
     </script>
 	<script type="text/javascript">
 	  $(document).ready(function(){

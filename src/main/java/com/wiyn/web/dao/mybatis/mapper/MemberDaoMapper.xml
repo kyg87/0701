@@ -46,4 +46,10 @@
 	<select id="isLogin" parameterType="com.wiyn.web.entity.Member" resultType="Integer" >
 	    SELECT count(*) FROM lsedb.Member where id = #{param1} and pwd = #{param2};
 	</select>
+	
+	<select resultType="com.wiyn.web.entity.Member" id="get"> 
+
+	SELECT * FROM lsedb.Member WHERE id = #{param1}
+
+	</select>
 </mapper>

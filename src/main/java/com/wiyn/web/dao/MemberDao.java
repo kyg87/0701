@@ -12,4 +12,6 @@ public interface MemberDao {
 	int isExistEmail(String email);
 	
 	int isLogin(String email,String pwd);
+	
+	Member get(String email);
 }
