@@ -43,4 +43,7 @@ public interface SiteBoardDao {
 	int count();
 	int countlike();
 	
+	
+	
+	List<SiteBoard> getHotSmall(String id);
 }

@@ -186,4 +186,8 @@
 	</select>
 	
 	
+	<select id="getHotSmall" resultType="com.wiyn.web.entity.SiteBoard">
+	select * from SiteBoard inner join SmallCategory on SiteBoard.smallCategoryId=SmallCategory.id where SiteBoard.smallCategoryId=#{id }	
+	</select>
+	
 </mapper>

@@ -468,70 +468,72 @@ textScroll.prototype.start = function() {
 	<p class="point">~~~한 사이트</p>	
 </div>
 <div class="flex space">
+	<c:forEach var="hot" items="${hot }" begin="1" end="4">
 	<div class="card">
 		<div class="card-image waves-effect waves-block waves-light">
-			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${random.url}&width=250" />
+			<a href="../siteboard/site-detail?c=${hot.id}"><img class="activator"  src="http://api.thumbalizr.com/?url=http://${hot.url}&width=250" /></a>
 		</div>
 		<div class="card-content">
-			<span class="card-title activator grey-text text-darken-4">${random.title}<i class="material-icons right">more_vert</i></span>
+			<span class="card-title activator grey-text text-darken-4">${hot.title}<i class="material-icons right">more_vert</i></span>
 			<p>
-				<a class="card-content" href="#">${random.content}</a>
+				<a href="../siteboard/site-detail?c=${hot.id}">${hot.content}</a>
 			</p>
 		</div>
 		<div class="card-reveal">
-			<span class="card-title grey-text text-darken-4">${random.title}<i
+			<span class="card-title grey-text text-darken-4">${hot.title}<i
 				class="material-icons right">close</i></span>
-			<p>${random.content}</p>
+			<p>${hot.content}</p>
 		</div>
 	</div>
-	<div class="card second">
+	</c:forEach>
+	<%-- <div class="card second">
 		<div class="card-image waves-effect waves-block waves-light">
-			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${random.url}&width=250" />
+			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${hot.url}&width=250" />
 		</div>
 		<div class="card-content">
-			<span class="card-title activator grey-text text-darken-4">${random.title}<i class="material-icons right">more_vert</i></span>
+			<span class="card-title activator grey-text text-darken-4">${hot.title}<i class="material-icons right">more_vert</i></span>
 			<p>
-				<a href="#">${random.content}</a>
+				<a href="#">${hot.content}</a>
 			</p>
 		</div>
 		<div class="card-reveal">
-			<span class="card-title grey-text text-darken-4">${random.title}<i
+			<span class="card-title grey-text text-darken-4">${hot.title}<i
 				class="material-icons right">close</i></span>
-			<p>${random.content}</p>
+			<p>${hot.content}</p>
 		</div>
-	</div>
-	<div class="card third">
+	</div> --%>
+	<%-- <div class="card third">
 		<div class="card-image waves-effect waves-block waves-light">
-			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${random.url}&width=250" />
+			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${hot.url}&width=250" />
 		</div>
 		<div class="card-content">
-			<span class="card-title activator grey-text text-darken-4">${random.title}<i class="material-icons right">more_vert</i></span>
+			<span class="card-title activator grey-text text-darken-4">${hot.title}<i class="material-icons right">more_vert</i></span>
 			<p>
-				<a href="#">${random.content}</a>
+				<a href="#">${hot.content}</a>
 			</p>
 		</div>
 		<div class="card-reveal">
-			<span class="card-title grey-text text-darken-4">${random.title}<i
+			<span class="card-title grey-text text-darken-4">${hot.title}<i
 				class="material-icons right">close</i></span>
-			<p>${random.content}</p>
+			<p>${hot.content}</p>
 		</div>
-	</div>
-	<div class="card">
+	</div> --%>
+	<%-- <div class="card">
 		<div class="card-image waves-effect waves-block waves-light">
-			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${random.url}&width=250" />
+			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${hot.url}&width=250" />
 		</div>
 		<div class="card-content">
-			<span class="card-title activator grey-text text-darken-4">${random.title}<i class="material-icons right">more_vert</i></span>
+			<span class="card-title activator grey-text text-darken-4">${hot.title}<i class="material-icons right">more_vert</i></span>
 			<p>
-				<a href="#">${random.content}</a>
+				<a href="#">${hot.content}</a>
 			</p>
 		</div>
 		<div class="card-reveal">
-			<span class="card-title grey-text text-darken-4">${random.title}<i
+			<span class="card-title grey-text text-darken-4">${hot.title}<i
 				class="material-icons right">close</i></span>
-			<p>${random.content}</p>
+			<p>${hot.content}</p>
 		</div>
-	</div>
+	</div> --%>
 </div>
 </div>
 
@@ -546,23 +548,25 @@ textScroll.prototype.start = function() {
 </div>
 </h2> -->
 <div class="flex space">
+	<c:forEach var="hot2" items="${hot2 }" begin="1" end="4">
 	<div class="card">
 		<div class="card-image waves-effect waves-block waves-light">
-			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${random.url}&width=250" />
+			<a href="../siteboard/site-detail?c=${hot2.id}"><img class="activator"  src="http://api.thumbalizr.com/?url=http://${hot2.url}&width=250" /></a>
 		</div>
 		<div class="card-content">
-			<span class="card-title activator grey-text text-darken-4">${random.title}<i class="material-icons right">more_vert</i></span>
+			<span class="card-title activator grey-text text-darken-4">${hot2.title}<i class="material-icons right">more_vert</i></span>
 			<p>
-				<a href="#">${random.content}</a>
+				<a href="../siteboard/site-detail?c=${hot2.id}">${hot2.content}</a>
 			</p>
 		</div>
 		<div class="card-reveal">
-			<span class="card-title grey-text text-darken-4">${random.title}<i
+			<span class="card-title grey-text text-darken-4">${hot2.title}<i
 				class="material-icons right">close</i></span>
-			<p>${random.content}</p>
+			<p>${hot2.content}</p>
 		</div>
 	</div>
-	<div class="card second">
+	</c:forEach>
+	<%-- <div class="card second">
 		<div class="card-image waves-effect waves-block waves-light">
 			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${random.url}&width=250" />
 		</div>
@@ -577,8 +581,8 @@ textScroll.prototype.start = function() {
 				class="material-icons right">close</i></span>
 			<p>${random.content}</p>
 		</div>
-	</div>
-	<div class="card third">
+	</div> --%>
+	<%-- <div class="card third">
 		<div class="card-image waves-effect waves-block waves-light">
 			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${random.url}&width=250" />
 		</div>
@@ -593,8 +597,8 @@ textScroll.prototype.start = function() {
 				class="material-icons right">close</i></span>
 			<p>${random.content}</p>
 		</div>
-	</div>
-	<div class="card">
+	</div> --%>
+	<%-- <div class="card">
 		<div class="card-image waves-effect waves-block waves-light">
 			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${random.url}&width=250" />
 		</div>
@@ -609,7 +613,7 @@ textScroll.prototype.start = function() {
 				class="material-icons right">close</i></span>
 			<p>${random.content}</p>
 		</div>
-	</div>
+	</div> --%>
 </div>
 </div>
 </div>

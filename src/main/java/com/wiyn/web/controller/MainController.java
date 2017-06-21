@@ -74,7 +74,13 @@ public class MainController {
         SiteBoard prev=sqlSession.getMapper(SiteBoardDao.class).getPrev(id);
         SiteBoard next=sqlSession.getMapper(SiteBoardDao.class).getNext(id);
         
+        String a = "2";
+        List<SiteBoard> hot =sqlSession.getMapper(SiteBoardDao.class).getHotSmall(a);
+        model.addAttribute("hot", hot);
         
+        String b = "3";
+        List<SiteBoard> hot2 =sqlSession.getMapper(SiteBoardDao.class).getHotSmall(b);
+        model.addAttribute("hot2", hot2);
         
        
         /*-------공지사항 불러오기----------*/
