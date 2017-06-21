@@ -69,7 +69,7 @@ ul {
 hr {
     border-bottom: 0;
     border-right: 0;
-    border-top:1px solid #846C63;
+    border-top:1px solid rgba(144, 135, 135, 0.59);
 }
 
 a {
@@ -229,7 +229,7 @@ time {
     /* display: block; */
     width: 123px; 
     height: 71px;
-    background-color: #ff6d00;
+    background-color: #d2b295; 
     border: none;
     color: #fff;
     font-size: 17px;
@@ -247,6 +247,27 @@ time {
 .column{
 	flex-direction:column;
 }
+
+.content-box{
+	padding-top:5px;
+	padding-bottom:10px;
+	border:1px solid rgba(144, 135, 135, 0.59);
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+
+.chip{
+ 	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+ 	background-color: rgb(210, 178, 149);
+ 	margin-bottom:10px;
+}
+
+.material-icons.like{
+	margin-top:10px;
+	color: black;
+	
+}
 </style>
 
 <main id="main">
@@ -256,19 +277,8 @@ time {
 			<div class="col l5 s12">
 			<div class="flex">
 				<h2 class="jeju">${n.title }</h2>
-				<div>
-				<form action="like" method="post">
-						<button id="likebtn" class="waves-effect waves-light btn" type="submit" name="action">
-							<i id="icon-margin" class="material-icons left ">thumb_up</i>
-							${l }
-						</button>
-						<input type="hidden" name="siteBoardId" value=${n.id }>
-						<security:authorize access="isAuthenticated()">
-							<input type="hidden" name="memberId" value=<security:authentication property="name"/>>
-						</security:authorize>
-				</form>
-				</div>
-				</div>
+				<!-- <div><i class="material-icons small like">favorite</i></div> -->
+			</div>
 				<a href="http://${n.url}"> <img
 						sizes="(max-width: 800px) 100vw, 800px" width="800" height="400"
 						class="single-photo responsive-img z-depth-3 wp-post-image" 
@@ -276,9 +286,9 @@ time {
 					</a>
                     <div class="section">
                             <!-- AREA -->
-                            <c:forEach var="tag" items="${t }">
+                     <%--        <c:forEach var="tag" items="${t }">
 					<div id="chip" class="chip">${tag }</div>
-					</c:forEach>
+					</c:forEach> --%>
                                                       <!--   <a title="City" class="btn white-text" href="https://adbeus.com/coffee/montreal/westmount/">Westmount</a> -->
                             
                             <!-- ROASTERS -->
@@ -317,8 +327,7 @@ time {
 					</div>
 					<div><a href="http://${n.url}">http://${n.url}</a></div>
 				</li>
-				<hr>
-				<li class="flex column">
+				<li class="flex column content-box">
 					<div class="flex detail-title">
 						<i class="material-icons tiny">textsms</i>
 						<div class="margin">Content</div>
@@ -326,12 +335,12 @@ time {
 					<div>${n.content }</div>
 				</li>
 				<li>
-				<c:forEach var="tag" items="${t }">
-					<div id="chip" class="chip">${tag }</div>
+					<c:forEach var="tag" items="${t }">
+						<div id="chip" class="chip">${tag }</div>
 					</c:forEach>
 				</li>
 			</ul>
-			<hr>
+			
 			
 			<%-- <span class="detail-title"><i class="material-icons">textsms </i>comment<div
 							id="minibox">
@@ -352,7 +361,7 @@ time {
 										required="required"></textarea>
                
                
-               <button name="button" type="button" onclick="onCreate();">댓글남기기</button>
+               <button name="button" type="button" onclick="onCreate();">등록</button>
                <!-- 
                <div class="input-field">
                   <i class="material-icons prefix">mode_edit</i>
