@@ -81,8 +81,7 @@ h6 {
     margin: 0.5rem 0 0.4rem 0;
 }
 
-h2{margin-top: 10px;
-text-shadow: skyblue 0px 0px 0px 4px; }
+h2{margin-top: 10px; }
 
 
 i{
@@ -244,10 +243,6 @@ time {
 	margin-left:3px;
 }
 
-.column{
-	flex-direction:column;
-}
-
 .content-box{
 	padding-top:5px;
 	padding-bottom:10px;
@@ -304,28 +299,28 @@ time {
 					<hr>	
 			<ul class="opening-hours">
 				
-				<li class="flex column">
+				<li class="flex ">
 					<div class="flex detail-title">
 						<i class="material-icons tiny">person_pin</i>
-						<div class="margin">Writer</div>
+						<div class="margin">Writer :</div>
 					</div>
-					<div>${n.memberId }</div>
+					<div  class="margin">${n.memberId }</div>
 				</li>
 				<hr>
-				<li class="flex column">
+				<li class="flex ">
 					<div class="flex detail-title">
 						<i class="material-icons tiny">schedule</i>
-						<div class="margin">Date</div>
+						<div class="margin">Date :</div>
 					</div>
-					<div><fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd HH:mm:ss" /></div>
+					<div class="margin"><fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd HH:mm:ss" /></div>
 				</li>
 				<hr>
-				<li class="flex column">
+				<li class="flex ">
 					<div class="flex detail-title">
 						<i class="material-icons tiny">language</i>
-						<div class="margin">Url</div>
+						<div class="margin">Url :</div>
 					</div>
-					<div><a href="http://${n.url}">http://${n.url}</a></div>
+					<div class="margin"><a href="http://${n.url}">http://${n.url}</a></div>
 				</li>
 				<li class="flex column content-box">
 					<div class="flex detail-title">

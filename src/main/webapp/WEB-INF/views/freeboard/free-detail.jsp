@@ -33,11 +33,252 @@
 	    margin-top: 5px;
 	    line-height: 1.5;
 	}
+	
+	
+	
+	
+	.head td:first-child{
+	height: 15px;
+}
+
+
+
+
+
+
+body{
+	color: #846C63;
+}
+
+.alcaramel {
+    background-color: #F0E5D7 !important;
+}
+
+.card-panel {
+    transition: box-shadow .25s;
+    padding: 20px;
+    margin: 0.5rem 0 1rem 0;
+    border-radius: 2px;
+    background-color: #fff;
+}
+.card-panel {
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+}
+
+.detail-title {
+    font-weight: 700;
+    display: block;
+    /* text-transform: uppercase; */
+}
+
+i {
+    line-height: inherit;
+}
+
+.opening-hours {
+    margin: 0;
+}
+ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+hr {
+    border-bottom: 0;
+    border-right: 0;
+    border-top:1px solid rgba(144, 135, 135, 0.59);
+}
+
+a {
+    text-decoration: none;
+}
+h6 {
+    font-size: 1rem;
+    line-height: 110%;
+    margin: 0.5rem 0 0.4rem 0;
+}
+
+h2{margin-top: 10px;
+text-shadow: skyblue 0px 0px 0px 4px; }
+
+
+i{
+font-family: "Material-Design-Icons";
+}
+
+
+i.tiny {
+    padding-top: 3px;
+}
+
+span.title {
+    color: #839705;
+    font-family: Microsoft;
+}
+time {
+    margin-left: 17px;
+}
+.box_write{
+	background-color: #f7f7f7;
+    height: 98px;
+    box-sizing: border-box;
+    padding: 13px 18px;
+    border: 1px solid #e6e6e6;
+        display: flex;
+}
+    
+.box_write textarea {
+  /*   width: 535px; */
+    height: 71px;
+    box-sizing: border-box;
+    border: 1px solid #e6e6e6;
+    resize: none;
+    float: left;
+    color: #c7c7c7;
+    font-size: 16px;
+    font-family: Microsoft YaHei,'NSL';
+    text-align: center;
+    padding-top: 20px;
+    color: #313131;
+    overflow: auto;
+
+}
+.box_write button {
+    /* display: block; */
+    width: 123px; 
+    height: 71px;
+    background-color: #d2b295; 
+    border: none;
+    color: #fff;
+    font-size: 17px;
+    font-family: Microsoft YaHei,'NSL';
+    float: right;
+    line-height: 80px\0;
+    margin-left: 10px;
+} 
+
+
+.margin{
+	margin-left:3px;
+}
+
+.content-box{
+	padding-top:5px;
+	padding-bottom:10px;
+	border:1px solid rgba(144, 135, 135, 0.59);
+	margin-top:10px;
+	margin-bottom:10px;
+}
+	
 </style>
 
- <main id="main">
-<div>자유디테일</div>
-	<div id="yy">
+<main id="main">
+<div class="container">
+	<div class="section">
+		<div class="row">
+			<div class="col l5 s12">
+					<h2>자유게시판</h2> 
+			</div>
+			<div class="col l7 s12">
+				<div class="card-panel alcaramel" style="min-height: 640px;">
+					<ul class="opening-hours">
+						<li class="flex">
+							<div class="flex detail-title">
+								<i class="material-icons tiny">mode_edit</i>
+								<div class="margin">Title :</div>
+							</div>
+							<div class="margin"> ${n.title }</div> 
+						</li>
+						<hr>
+						<li class="flex">
+							<div class="flex detail-title">
+								<i class="material-icons tiny">person_pin</i>
+								<div class="margin">Writer :</div>
+							</div>
+							<div class="margin">${n.memberId }</div>
+						</li>
+						<hr>
+						<li class="flex">
+							<div class="flex detail-title">
+								<i class="material-icons tiny">schedule</i>
+								<div class="margin">Date :</div>
+							</div>
+							<div class="margin">
+								<fmt:formatDate value="${n.regDate}"
+									pattern="yyyy-MM-dd HH:mm:ss" />
+							</div>
+						</li>
+						<li class="flex column content-box">
+							<div class="flex detail-title">
+								<i class="material-icons tiny">textsms</i>
+								<div class="margin">Content</div>
+							</div>
+							<div>${n.content }</div>
+						</li>
+
+					</ul>
+					
+					<form id="comment-add-form" action="freeBoard-comment-add"
+						method="post">
+						<div class="row">
+							<security:authorize access="isAnonymous()">
+								<p>글쓰기는 로그인한 유저만 가능합니다 로그인해주세요</p>
+							</security:authorize>
+
+							<security:authorize access="isAuthenticated()">
+								<div class="input-field">
+									<i class="material-icons prefix">mode_edit</i> <input
+										id="icon_prefix2" type="text" class="validate" name="content"
+										required="required"> <label for="icon_prefix2">Message</label>
+									<button class="btn waves-effect waves-light secondary-content"
+										type="button" onclick="onCreate();">
+										등록 <i class="material-icons right">send</i>
+									</button>
+								</div>
+							</security:authorize>
+						</div>
+
+						<input type="hidden" name="freeBoardId" value=${n.id }> <input
+							type="hidden" name="memberId"
+							value=<security:authentication property="name"/>>
+					</form>
+
+					<ul id="commentList" class="collection">
+
+					</ul>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%-- <div id="yy">
 
 		<div id="main">
 			<div id="context">
@@ -100,56 +341,56 @@
 			        </tbody>
 		      	</table>
 
-			</div>
+			</div> --%> <!------------------------------------------------------------- 댓글 영역 ------------------------------------------------------------------------>
+<div>
+	현재 페이지 : ${page} </br> 전체 글 갯수 : ${size} </br>
 
-<!------------------------------------------------------------- 댓글 영역 ------------------------------------------------------------------------>
-		<div>
-			현재 페이지 : ${page} </br> 
-			전체 글 갯수 : ${size} </br>
+</div>
 
+
+<<%-- div id="minibox">
+	<form id="comment-add-form" action="freeBoard-comment-add"
+		method="post">
+		<div class="row">
+			<security:authorize access="isAnonymous()">
+				<p>글쓰기는 로그인한 유저만 가능합니다 로그인해주세요</p>
+			</security:authorize>
+
+			<security:authorize access="isAuthenticated()">
+				<div class="input-field">
+					<i class="material-icons prefix">mode_edit</i> <input
+						id="icon_prefix2" type="text" class="validate" name="content"
+						required="required"> <label for="icon_prefix2">Message</label>
+					<button class="btn waves-effect waves-light secondary-content"
+						type="button" onclick="onCreate();">
+						등록 <i class="material-icons right">send</i>
+					</button>
+				</div>
+			</security:authorize>
 		</div>
 
-
-		<div id="minibox">
-		   <form id="comment-add-form" action="freeBoard-comment-add" method="post">
-             <div class="row">
-               <security:authorize access="isAnonymous()">
-                  <p>글쓰기는 로그인한 유저만 가능합니다 로그인해주세요</p>
-               </security:authorize>
-               
-               <security:authorize access="isAuthenticated()">
-               <div class="input-field">
-                  <i class="material-icons prefix">mode_edit</i>
-                  <input  id="icon_prefix2" type="text" class="validate" name="content" required="required">
-                  <label for="icon_prefix2">Message</label>
-                  <button class="btn waves-effect waves-light secondary-content" type="button" onclick="onCreate();">등록
-                      <i class="material-icons right">send</i>
-                    </button>
-               </div>
-               </security:authorize>
-             </div>
-            
-     	     <input type="hidden" name="freeBoardId" value=${n.id }>
-        	 <input type="hidden" name="memberId" value=<security:authentication property="name"/>>
-         	</form>
+		<input type="hidden" name="freeBoardId" value=${n.id }> <input
+			type="hidden" name="memberId"
+			value=<security:authentication property="name"/>>
+	</form>
 
 
-			<ul id="commentList" class="collection">
+	<ul id="commentList" class="collection">
 
-			</ul>
+	</ul>
 
-		</div>
-
-
-		<ul id="pagination" class="pagination center">
-
-		</ul>
+</div> --%>
 
 
-	</div>
-	</div>
-	
-	
+<ul id="pagination" class="pagination center">
+
+</ul>
+
+
+</div>
+</div>
+
+
 
 </main>
 

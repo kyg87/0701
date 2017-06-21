@@ -379,6 +379,11 @@ height:inherit;
     padding-right: 1.4em;
     background: #fff;
 }
+
+.main-request{
+	margin-top:30px;
+	margin-bottom:50px;
+}
 </style>
 <script type="text/javascript">
 function textScroll(scroll_el_id) {
@@ -636,47 +641,41 @@ textScroll.prototype.start = function() {
 		});
 	});
 </script>
-
-<div class="flex background space category-add">
+<div class="background">
+<div class="container">
 	<form id="reqRegform" action="reg-index" method="post">
 		<span id="location123"></span>
-
-		<div class="flex background space category-add">
+		<div class=" flex  space category-add">
 			<div>
 				<label>원하는 카테고리가 없다면?</label>
 				<p>~~~~~~카테고리추가 설명</p>
 			</div>
-
-
-			<div>
-				<div id="title" class="input-field col s12">
-					<input name="title" id="title1" type="text" class="validate"
-						required="required"> <label for="Title">Title</label>
-				</div>
-
-
-			</div>
-			<div id="content" class="row">
-
-				<div class="row">
-					<div class="input-field col s12">
-						<textarea name="content" id="textarea1"
-							class="materialize-textarea" required="required"></textarea>
-						<label for="textarea1"></label>
+			<div class="flex column main-request">
+				<div>
+					<div id="title" class="input-field col s12 row">
+						<input name="title" id="title1" type="text" class="validate"
+							required="required"> <label for="Title">Title</label>
 					</div>
 				</div>
-
+				<div id="content">
+					<div class="row">
+						<div class="input-field col s12">
+							<textarea name="content" id="textarea1"
+								class="materialize-textarea" required="required"></textarea>
+							<label for="textarea1"></label>
+						</div>
+					</div>
+				</div>
+				<div>
+					<button id="target" class="btn waves-effect waves-light"
+						type="submit" name="action">카테고리 요청하기</button>
+				</div>
 			</div>
-			<div class="row">
-				<button id="target" class="btn waves-effect waves-light"
-					type="submit" name="action">카테고리 요청하기</button>
-			</div>
-
+		</div>
 			<input type="hidden" name="memberId"
 				value=<security:authentication property="name"/>>
-		</div>
-
 	</form>
+</div>
 </div>
 	<%-- <div class="col s12 line">
 		<ul class="tabs">

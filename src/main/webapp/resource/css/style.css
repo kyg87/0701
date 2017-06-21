@@ -1,5 +1,28 @@
 @CHARSET "EUC-KR";
+/*--------------------------폰트-----------------------------------*/
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 
+.hanna{
+font-family: 'Hanna', serif;
+}
+.jeju{
+font-family: 'Jeju Gothic', serif;
+}
+
+/*--------------------------플렉스-----------------------------------*/
+.flex{
+	display: flex;
+}
+
+.column{
+	flex-direction:column;
+}
+
+.space{
+	justify-content:space-between;
+}
+/*--------------------------메인부분-----------------------------------*/
 #main{
 	
 	padding-top:64px;
