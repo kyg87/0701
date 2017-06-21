@@ -4,6 +4,8 @@
 <%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>   
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<jsp:useBean id="now" class="java.util.Date" />
+
 <style>
 .mvaside{
 	left: 0px;
@@ -27,7 +29,7 @@
 </style>
 
 <main id="main">
-
+<div style="display: hidden"><fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" /> </div>
     <div class="col-xs-12 col-md-8 container">
 
 	<h4><input type="hidden" value="${param.bigCa}" />${bn.name}</h4>
@@ -54,10 +56,13 @@
 			<tbody>
 			
 				<c:forEach var="n" items="${sitelist}">
+				<div style="display: hidden;"><fmt:formatDate value="${n.regDate}"
+								pattern="yyyy-MM-dd HH:mm:ss" var="writedate" /></div>
 					<tr>
 						<td>${n.id}</td>
 						<td class="orange-text text-accent-3 table-title"><a
-							href="site-detail?c=${n.id}&p=${param.p}">${n.title}</a>[${n.countcomment }]</td>
+							href="site-detail?c=${n.id}&p=${param.p}">${n.title}</a>[${n.countcomment }]
+							<c:if test="${writedate>=today }"><img src="/WiynPrj/resource/images/new.jpg"/></c:if></td>
 						<td>${n.memberId }</td>
 						<td>${n.hit }</td>
 						<td><fmt:formatDate value="${n.regDate}"

@@ -4,29 +4,44 @@
 <%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>   
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<jsp:useBean id="now" class="java.util.Date" />
 <style>
 .mvaside{
-	position: absolute;
-	top: 100px;
 	left: 0px;
+	
+	width:20%;
+}
 
+.collection{
+	border:none;
+	margin:0px;
+	margin-right: 30px;
+}
+
+.main-div{
+	width:80%;
+}
+
+.table{
+	background-color:#fff;  
 }
 </style>
 
 <main id="main">
-
+<div style="display: hidden"><fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" /> </div>
     <div class="col-xs-12 col-md-8 container">
 
 	<h4><input type="hidden" value="${param.bigCa}" />${bn.name}</h4>
     <h5><input type="hidden"  value="${param.smallCa }" />${sn.name}</h5>
 
-	
-	<div class="collection mvaside">
-    <a href="siteboard?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenew.news }</span>최신순</a>
-    <a href="siteboardlike?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenewL.news }</span>베스트 사이트추천</a>
-    <a href="?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenewH.news }</span>많이 본 사이트</a>
-  	</div>
-	
+	<div class="flex">
+		<div class="collection mvaside">
+	    <a href="siteboard?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenew.news }</span>최신순</a>
+	    <a href="siteboardlike?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenewL.news }</span>베스트 사이트</a>
+	    <a href="?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenewH.news }</span>많이 본 사이트</a>
+	  	</div>
+		
+		<div class="main-div">
 	<table class="highlight table">
 		<thead>
 			<tr>
@@ -38,12 +53,14 @@
 			</tr>
 		</thead>
 		<tbody>
-			<fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd" />
 			<c:forEach var="n" items="${sitelist}">
+				<div style="display: hidden;"><fmt:formatDate value="${n.regDate}"
+								pattern="yyyy-MM-dd HH:mm:ss" var="writedate" /></div>
 				<tr>
 					<td>${n.id}</td>
 					<td class="orange-text text-accent-3 table-title"><a
-						href="site-detail?c=${n.id}&p=${param.p}">${n.title}</a>[${n.countcomment }]</td>
+						href="site-detail?c=${n.id}&p=${param.p}">${n.title}</a>[${n.countcomment }]
+						<c:if test="${writedate>=today }"><img src="/WiynPrj/resource/images/new.jpg"/></c:if></td>
 					<td>${n.memberId }</td>
 					<td>${n.hit }</td>
 					<td><fmt:formatDate value="${n.regDate}"
