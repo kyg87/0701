@@ -22,9 +22,9 @@
 
 	
 	<div class="collection mvaside">
-    <a href="?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenew.news }</span>최신순</a>
+    <a href="siteboard?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenew.news }</span>최신순</a>
     <a href="siteboardlike?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenewL.news }</span>베스트 사이트추천</a>
-    <a href="siteboardhit?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenewH.news }</span>많이 본 사이트</a>
+    <a href="?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenewH.news }</span>많이 본 사이트</a>
   	</div>
 	
 	<table class="highlight table">
@@ -38,7 +38,7 @@
 			</tr>
 		</thead>
 		<tbody>
-		
+			<fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd" />
 			<c:forEach var="n" items="${sitelist}">
 				<tr>
 					<td>${n.id}</td>
@@ -48,8 +48,8 @@
 					<td>${n.hit }</td>
 					<td><fmt:formatDate value="${n.regDate}"
 							pattern="yyyy-MM-dd HH:mm:ss" /></td>
+				</tr>
 			</c:forEach>
-			
 		</tbody>
 	</table>
 

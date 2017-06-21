@@ -17,8 +17,21 @@ public class SiteBoard {
 	private String smallCategoryId;
 	
 	
+	
+
 	private List<SiteComment> siteComments;
 	private int countcomment;
+	
+	private String news;
+	
+	public String getNews() {
+		return news;
+	}
+	public void setNews(String news) {
+		this.news = news;
+	}
+	
+	
 
 	public int getCountcomment() {
 		return countcomment;

@@ -91,7 +91,7 @@ public class SiteBoardController {
         model.addAttribute("checkLast", checkLast);
         model.addAttribute("cnt", cnt);
         
-//        -------------------------占쏙옙占쏙옙絹占�-----------------------
+//        -------------------------����̵�-----------------------
         List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
         
         for (BigCategory bigCategory : bcbList) {
@@ -105,7 +105,142 @@ public class SiteBoardController {
         SmallCategory smallCatego = sqlSession.getMapper(SmallCategoryDao.class).getsmall(bigCategoryId,smallCategoryId);
         model.addAttribute("bn", bigCatego);
         model.addAttribute("sn", smallCatego);
+        
+        SiteBoard sitenews=sqlSession.getMapper(SiteBoardDao.class).getNewsc();
+        SiteBoard sitenewsL=sqlSession.getMapper(SiteBoardDao.class).getNewsL();
+        SiteBoard sitenewsH=sqlSession.getMapper(SiteBoardDao.class).getNewsH();
+        
+        model.addAttribute("sitenew", sitenews);
+        model.addAttribute("sitenewL", sitenewsL);
+        model.addAttribute("sitenewH", sitenewsH);
+        
         return "siteboard.siteboard";    
+    }
+    
+    @RequestMapping("siteboardhit")
+    public String siteboardhit(String id,
+            @RequestParam(value="p", defaultValue="1")Integer page, 
+            @RequestParam(value="q", defaultValue="")String query,
+            @RequestParam(value="bigCa",defaultValue="")String bigCategoryId,
+            @RequestParam(value="smallCa",defaultValue="")String smallCategoryId,
+            Model model){
+        
+
+    	List<SiteBoard> sitelistcomment = sqlSession.getMapper(SiteBoardDao.class).getListComment(page, query,bigCategoryId, smallCategoryId);
+            
+
+        model.addAttribute("sitelist", sitelistcomment);
+        
+        int size= sqlSession.getMapper(SiteBoardDao.class).getSize();
+        String last= sqlSession.getMapper(SiteBoardDao.class).lastId();
+        SiteBoard board=sqlSession.getMapper(SiteBoardDao.class).getBoard(id);
+        model.addAttribute("size", size);
+        model.addAttribute("last", last);
+        model.addAttribute("board", board);
+        
+        int cnt= sqlSession.getMapper(SiteBoardDao.class).count();
+        int listPerFive = (page-1)/5;
+        int checkLast = (listPerFive*5) + 5;
+        
+        if(cnt % 10 == 0)
+            cnt = cnt/10;
+        else
+            cnt = (cnt/10)+1;
+        
+        if(checkLast > cnt)
+            checkLast = cnt;
+        
+        model.addAttribute("listPerFive", listPerFive);
+        model.addAttribute("checkLast", checkLast);
+        model.addAttribute("cnt", cnt);
+        
+//        -------------------------����̵�-----------------------
+        List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
+        
+        for (BigCategory bigCategory : bcbList) {
+            List<SmallCategory> small = sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId());
+            bigCategory.setSmallCategory(small);
+        }
+        model.addAttribute("bcbList", bcbList);
+        
+        
+        BigCategory bigCatego = sqlSession.getMapper(BigCategoryDao.class).getbig(bigCategoryId);
+        SmallCategory smallCatego = sqlSession.getMapper(SmallCategoryDao.class).getsmall(bigCategoryId,smallCategoryId);
+        model.addAttribute("bn", bigCatego);
+        model.addAttribute("sn", smallCatego);
+        
+        SiteBoard sitenews=sqlSession.getMapper(SiteBoardDao.class).getNewsc();
+        SiteBoard sitenewsL=sqlSession.getMapper(SiteBoardDao.class).getNewsL();
+        SiteBoard sitenewsH=sqlSession.getMapper(SiteBoardDao.class).getNewsH();
+        
+        model.addAttribute("sitenew", sitenews);
+        model.addAttribute("sitenewL", sitenewsL);
+        model.addAttribute("sitenewH", sitenewsH);
+        
+        return "siteboard.siteboardhit";    
+    }
+    
+    @RequestMapping("siteboardlike")
+    public String siteboardlike(String id,
+            @RequestParam(value="p", defaultValue="1")Integer page, 
+            @RequestParam(value="q", defaultValue="")String query,
+            @RequestParam(value="bigCa",defaultValue="")String bigCategoryId,
+            @RequestParam(value="smallCa",defaultValue="")String smallCategoryId,
+            Model model){
+        
+
+    	List<SiteBoard> sitelistlike = sqlSession.getMapper(SiteBoardDao.class).getListLike(page, query,bigCategoryId, smallCategoryId);
+            
+
+        model.addAttribute("sitelist", sitelistlike);
+        
+        int size= sqlSession.getMapper(SiteBoardDao.class).getSize();
+        String last= sqlSession.getMapper(SiteBoardDao.class).lastId();
+        SiteBoard board=sqlSession.getMapper(SiteBoardDao.class).getBoard(id);
+        model.addAttribute("size", size);
+        model.addAttribute("last", last);
+        model.addAttribute("board", board);
+        
+        int cnt= sqlSession.getMapper(SiteBoardDao.class).countlike();
+        int listPerFive = (page-1)/5;
+        int checkLast = (listPerFive*5) + 5;
+        
+        if(cnt % 10 == 0)
+            cnt = cnt/10;
+        else
+            cnt = (cnt/10)+1;
+        
+        if(checkLast > cnt)
+            checkLast = cnt;
+        
+        model.addAttribute("listPerFive", listPerFive);
+        model.addAttribute("checkLast", checkLast);
+        model.addAttribute("cnt", cnt);
+        
+//        -------------------------����̵�-----------------------
+        List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
+        
+        for (BigCategory bigCategory : bcbList) {
+            List<SmallCategory> small = sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId());
+            bigCategory.setSmallCategory(small);
+        }
+        model.addAttribute("bcbList", bcbList);
+        
+        
+        BigCategory bigCatego = sqlSession.getMapper(BigCategoryDao.class).getbig(bigCategoryId);
+        SmallCategory smallCatego = sqlSession.getMapper(SmallCategoryDao.class).getsmall(bigCategoryId,smallCategoryId);
+        model.addAttribute("bn", bigCatego);
+        model.addAttribute("sn", smallCatego);
+        
+        SiteBoard sitenews=sqlSession.getMapper(SiteBoardDao.class).getNewsc();
+        SiteBoard sitenewsL=sqlSession.getMapper(SiteBoardDao.class).getNewsL();
+        SiteBoard sitenewsH=sqlSession.getMapper(SiteBoardDao.class).getNewsH();
+        
+        model.addAttribute("sitenew", sitenews);
+        model.addAttribute("sitenewL", sitenewsL);
+        model.addAttribute("sitenewH", sitenewsH);
+        
+        return "siteboard.siteboardlike";    
     }
 
 	@RequestMapping("site-reg")
@@ -178,7 +313,7 @@ public class SiteBoardController {
 		
 		if(name!=null){
 			
-			System.out.println("�룷臾몄쟾�깭洹몃꽕�엫"+name);
+			System.out.println("占쎈７�눧紐꾩읈占쎄묶域밸챶苑뺧옙�뿫"+name);
 			
 			
 			String[] tagName=(name.replace(" ", "")).split(",");
@@ -192,9 +327,9 @@ public class SiteBoardController {
 				tag.setSiteBoardId(siteBoard.getId());
 				tagDao.add(tag);
 				
-				System.out.println("�궗�씠�듃蹂대뱶�븘�씠�뵒"+siteBoard.getId());
-				System.out.println("�깭洹몃꽕�엫"+tagName[i]);
-				System.out.println("�븘�씠�뵒"+tag.getId());
+				System.out.println("占쎄텢占쎌뵠占쎈뱜癰귣�諭띰옙釉섓옙�뵠占쎈탵"+siteBoard.getId());
+				System.out.println("占쎄묶域밸챶苑뺧옙�뿫"+tagName[i]);
+				System.out.println("占쎈툡占쎌뵠占쎈탵"+tag.getId());
 			}
 			
 			
@@ -238,7 +373,7 @@ public class SiteBoardController {
 		model.addAttribute("size", size);
 		siteBoardDao.updateHit(id);
 		
-		System.out.println("�깭洹몃꽕�엫"+tName);
+		System.out.println("占쎄묶域밸챶苑뺧옙�뿫"+tName);
 		
 		
 		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
@@ -261,7 +396,7 @@ public class SiteBoardController {
 			)
 	{
 
-		/*System.out.println("�씠耳�荑쇰━"+query);*/
+		/*System.out.println("占쎌뵠�놂옙�뜎�눖�봺"+query);*/
 	    List<SiteBoard> list	= sqlSession.getMapper(SiteBoardDao.class).getTagLoad(query);
 
 		/*System.out.println(list);*/
@@ -289,7 +424,7 @@ public class SiteBoardController {
              @RequestParam(value="smallCa",defaultValue="")String smallCategoryId,
              Model model){
         
-		System.out.println("���떇");
+		System.out.println("占쏙옙占쎈뻼");
 
 		List<BigCategory> bcList = sqlSession.getMapper(BigCategoryDao.class).getList();
 		
@@ -346,13 +481,13 @@ public class SiteBoardController {
 				siteBoard.setBigCategoryId(bigCategoryId);
 				siteBoard.setSmallCategoryId(smallCategoryId);
 				
-				System.out.println("�씠寃뚯닔�젙�븷�궗�씠�듃�븘�씠�뵒"+siteBoard.getId());
+				System.out.println("占쎌뵠野껊슣�땾占쎌젟占쎈막占쎄텢占쎌뵠占쎈뱜占쎈툡占쎌뵠占쎈탵"+siteBoard.getId());
 				
 				tagDao.delete(siteBoard.getId());
 				
 				if(name!=null){
 					
-					System.out.println("�룷臾몄쟾�깭洹몃꽕�엫"+name);
+					System.out.println("占쎈７�눧紐꾩읈占쎄묶域밸챶苑뺧옙�뿫"+name);
 					
 					
 					String[] tagName=(name.replace(" ", "")).split(",");
@@ -366,18 +501,18 @@ public class SiteBoardController {
 						tag.setSiteBoardId(siteBoard.getId());
 						tagDao.add(tag);
 						
-						System.out.println("�궗�씠�듃蹂대뱶�븘�씠�뵒"+siteBoard.getId());
-						System.out.println("�깭洹몃꽕�엫"+tagName);
-						System.out.println("�븘�씠�뵒"+tag.getId());
+						System.out.println("占쎄텢占쎌뵠占쎈뱜癰귣�諭띰옙釉섓옙�뵠占쎈탵"+siteBoard.getId());
+						System.out.println("占쎄묶域밸챶苑뺧옙�뿫"+tagName);
+						System.out.println("占쎈툡占쎌뵠占쎈탵"+tag.getId());
 					}
 				}
 				
 				siteBoardDao.update(siteBoard);
 		 	
-			System.out.println("��遺꾨쪟"+bigCategoryId);
-			System.out.println("�냼遺꾨쪟"+smallCategoryId);
+			System.out.println("占쏙옙�겫袁⑥첒"+bigCategoryId);
+			System.out.println("占쎈꺖�겫袁⑥첒"+smallCategoryId);
 
-			System.out.println("�깭�겕�궘�젣�븷�븘�씠�뵒"+siteBoard.getId());
+			System.out.println("占쎄묶占쎄쾿占쎄텣占쎌젫占쎈막占쎈툡占쎌뵠占쎈탵"+siteBoard.getId());
 			
 			
 
@@ -402,9 +537,9 @@ public class SiteBoardController {
 				@RequestParam(value="siteBoardId")String siteBoardId,
 				@RequestParam(value="memberId")String memberId
 				){
-		    System.out.println("���굹�뿬");
-			System.out.println("醫뗭븘�슂�늻瑜몄궗�씠�듃�븘�씠�뵒"+siteBoardId);
-			System.out.println("醫뗭븘�슂�늻瑜몃ħ踰꾩븘�씠�뵒"+memberId);
+		    System.out.println("占쏙옙占쎄돌占쎈연");
+			System.out.println("�넫�뿭釉섓옙�뒄占쎈듇�몴紐꾧텢占쎌뵠占쎈뱜占쎈툡占쎌뵠占쎈탵"+siteBoardId);
+			System.out.println("�넫�뿭釉섓옙�뒄占쎈듇�몴紐꺞㎬린袁⑸툡占쎌뵠占쎈탵"+memberId);
 
 			siteBoardLike.setSiteBoardId(siteBoardId);
 			siteBoardLike.setMemberId(memberId);
@@ -424,3 +559,5 @@ public class SiteBoardController {
 	
 
 }
+
+

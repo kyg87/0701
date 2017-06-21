@@ -146,5 +146,29 @@ public class MyBatisSiteBoardDao implements SiteBoardDao{
 		siteBoardDao = sqlSession.getMapper(SiteBoardDao.class);
 		return siteBoardDao.count();
 	}
+	@Override
+	public SiteBoard getNewsc() {
+		SiteBoardDao siteBoardDao;
+		siteBoardDao = sqlSession.getMapper(SiteBoardDao.class);
+		return siteBoardDao.getNewsc();
+	}
+	@Override
+	public SiteBoard getNewsL() {
+		SiteBoardDao siteBoardDao;
+		siteBoardDao = sqlSession.getMapper(SiteBoardDao.class);
+		return siteBoardDao.getNewsL();
+	}
+	@Override
+	public SiteBoard getNewsH() {
+		SiteBoardDao siteBoardDao;
+		siteBoardDao = sqlSession.getMapper(SiteBoardDao.class);
+		return siteBoardDao.getNewsH();
+	}
+	@Override
+	public int countlike() {
+		SiteBoardDao siteBoardDao;
+		siteBoardDao = sqlSession.getMapper(SiteBoardDao.class);
+		return siteBoardDao.countlike();
+	}
 
 }

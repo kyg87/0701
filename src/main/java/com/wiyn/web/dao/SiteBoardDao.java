@@ -18,6 +18,11 @@ public interface SiteBoardDao {
     SiteBoard getNext(String id);
     SiteBoard getRandom();
     
+    
+    SiteBoard getNewsc();
+    SiteBoard getNewsL();
+    SiteBoard getNewsH();
+    
 
 	public int add(SiteBoard siteBoard);
 	public int delete(String id);
@@ -36,4 +41,6 @@ public interface SiteBoardDao {
 	
 	public int updateCommentCount(String Id);
 	int count();
+	int countlike();
+	
 }

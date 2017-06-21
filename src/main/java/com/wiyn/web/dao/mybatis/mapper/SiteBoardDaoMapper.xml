@@ -48,6 +48,15 @@
 	<select id="count" resultType="Integer">
 	SELECT COUNT(*) FROM SiteBoard
 </select>
+
+
+<select id="countlike" resultType="Integer">
+		select count(*) from
+		(select N.* FROM SiteBoard N 
+		left outer JOIN SiteBoardLike C ON C.siteBoardId= N.id
+		GROUP BY N.id, N.regDate
+        Having COUNT(C.siteBoardId)>=1) SiteBoard
+</select>
 	
 	
 		<select id="getListLike" resultType="com.wiyn.web.entity.SiteBoard">
@@ -56,15 +65,12 @@
 		FROM SiteBoard N 
 		LEFT OUTER JOIN SiteBoardLike C ON C.siteBoardId= N.id 
 		WHERE N.title like '%${query}%' and bigCategoryId like '%${bigCa}%' and smallCategoryId like '%${smallCa}%'
-		GROUP BY N.id, N.title, N.content, N.regDate, N.url, N.hit 
+		GROUP BY N.id, N.title, N.content, N.regDate, N.url, N.hit
+		having Good>=1
 		order by Good desc, regDate desc LIMIT ${(page-1)*10},10
 
 	</select>
-	<!-- 		select N.*, COUNT(C.siteBoardId) Good
-		FROM SiteBoard N 
-		LEFT OUTER JOIN SiteBoardLike C ON C.siteBoardId= N.id WHERE N.title like '%${query}%'
-		GROUP BY N.id, N.title, N.content, N.regDate, N.url, N.hit 
-		order by Good desc LIMIT ${(page-1)*10},10 -->
+
 	<select id="getListComment" resultType="com.wiyn.web.entity.SiteBoard">
 	select *
 	FROM SiteBoard WHERE title like '%${query}%' and 
@@ -161,5 +167,23 @@
 	<select id="getTagLoad" resultType="com.wiyn.web.entity.SiteBoard">
 		select * from SiteBoard inner join Tag on Tag.siteBoardId=SiteBoard.id where Tag.name=#{tag}
 	</select>
+	
+	
+	<select id="getNewsc" resultType="com.wiyn.web.entity.SiteBoard">
+	SELECT count(*) news FROM SiteBoard WHERE regDate > curdate();
+	</select>
+	
+	<select id="getNewsL" resultType="com.wiyn.web.entity.SiteBoard">
+	select count(*) news from
+(select N.* FROM SiteBoard N 
+		left outer JOIN SiteBoardLike C ON C.siteBoardId= N.id
+		GROUP BY N.id, N.regDate
+        Having COUNT(C.siteBoardId)>=1) SiteBoard where regDate > curdate()
+	</select>
+	
+	<select id="getNewsH" resultType="com.wiyn.web.entity.SiteBoard">
+	SELECT count(*) news  FROM SiteBoard WHERE regDate > curdate() and  hit>=20
+	</select>
+	
 	
 </mapper>

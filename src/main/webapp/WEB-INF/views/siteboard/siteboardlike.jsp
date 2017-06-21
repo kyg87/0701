@@ -22,8 +22,8 @@
 
 	
 	<div class="collection mvaside">
-    <a href="?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenew.news }</span>최신순</a>
-    <a href="siteboardlike?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenewL.news }</span>베스트 사이트추천</a>
+    <a href="siteboard?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenew.news }</span>최신순</a>
+    <a href="?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenewL.news }</span>베스트 사이트추천</a>
     <a href="siteboardhit?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenewH.news }</span>많이 본 사이트</a>
   	</div>
 	
@@ -38,7 +38,7 @@
 			</tr>
 		</thead>
 		<tbody>
-		
+			<fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd" />
 			<c:forEach var="n" items="${sitelist}">
 				<tr>
 					<td>${n.id}</td>
@@ -48,8 +48,8 @@
 					<td>${n.hit }</td>
 					<td><fmt:formatDate value="${n.regDate}"
 							pattern="yyyy-MM-dd HH:mm:ss" /></td>
+				</tr>
 			</c:forEach>
-			
 		</tbody>
 	</table>
 
@@ -64,8 +64,6 @@
 <c:set var="last" value="${(size%10)>0 ? sizeInt+1 : sizeInt }" />
 
 
-<%-- <div>${empty param.p ? 1 : param.p}/${last }pages</div>
-<div>${size}</div> --%>
 <ul class="pagination center">
 	<li class="disabled"><c:if test="${((listPerFive-1)*5 + 5) > 1 }">
 			<a
@@ -83,7 +81,6 @@
 					href="?p=${i }&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}">${i}</a></li>
 			</c:otherwise>
 		</c:choose>
-		<%-- <li class="waves-effect"><a href="?p=${i }&q=${param.q}">${i }</a></li>  --%>
 	</c:forEach>
 	<li class="waves-effect"><c:if test="${cnt > ((listPerFive+1)*5 + 1) }">
 			<a
