@@ -73,7 +73,7 @@ font-family: 'Jeju Gothic', serif;
 	font-family: 'Hanna', serif;
 } */
 
-p{
+.visual p{
 	height: inherit;
 	font-size: 20px;
 	color:#b86065;
@@ -126,13 +126,7 @@ height:inherit;
 }
 
 
-.flex{
-	display: flex;
-}
 
-.space{
-	justify-content:space-between;
-}
 
 .background{
 	background-color:#e9e9e9;
@@ -644,47 +638,46 @@ textScroll.prototype.start = function() {
 </script>
 
 <div class="flex background space category-add">
-		<div>
-			<label>원하는 카테고리가 없다면?</label>
-			<p>~~~~~~카테고리추가 설명</p>
-		</div>
-		<form  id="reqRegform" action="reg-index" method="post">
-<span id="location123"></span>
+	<form id="reqRegform" action="reg-index" method="post">
+		<span id="location123"></span>
 
-	<div class="flex background space category-add">
-		<div>
-			<label>원하는 카테고리가 없다면?</label>
-			<p>~~~~~~카테고리추가 설명</p>
-		</div>
+		<div class="flex background space category-add">
+			<div>
+				<label>원하는 카테고리가 없다면?</label>
+				<p>~~~~~~카테고리추가 설명</p>
+			</div>
 
-		
+
 			<div>
 				<div id="title" class="input-field col s12">
-					<input name="title" id="title1" type="text" class="validate" required="required">
-					<label for="Title">Title</label>
+					<input name="title" id="title1" type="text" class="validate"
+						required="required"> <label for="Title">Title</label>
 				</div>
 
 
 			</div>
 			<div id="content" class="row">
-				
-					<div class="row">
-						<div class="input-field col s12">
-							<textarea name="content" id="textarea1" class="materialize-textarea" required="required"></textarea>
-							<label for="textarea1"></label>
-						</div>
+
+				<div class="row">
+					<div class="input-field col s12">
+						<textarea name="content" id="textarea1"
+							class="materialize-textarea" required="required"></textarea>
+						<label for="textarea1"></label>
 					</div>
-				
+				</div>
+
 			</div>
-	<div class="row">
-					<button id="target" class="btn waves-effect waves-light" type="submit" name="action">카테고리 요청하기</button>
-	</div>
-				
-			<input type="hidden" name="memberId" value=<security:authentication property="name"/>	>
+			<div class="row">
+				<button id="target" class="btn waves-effect waves-light"
+					type="submit" name="action">카테고리 요청하기</button>
+			</div>
+
+			<input type="hidden" name="memberId"
+				value=<security:authentication property="name"/>>
 		</div>
 
-</form>
-	</div>
+	</form>
+</div>
 	<%-- <div class="col s12 line">
 		<ul class="tabs">
 			<li class="tab col s3"><a class="active" target="_self" href="index?p=${param.p}&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}">최신순</a></li>
