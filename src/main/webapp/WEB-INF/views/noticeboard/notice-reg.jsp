@@ -159,7 +159,7 @@ body, html {
 
 						<div class="btn">
 							<span>파일 첨부  </span>
-							<input type="file" id="imgInp" class="btn" name="file" multiple />
+							<input type="file" id="imgInp" class="btn" name="file" />
 						</div>
 
 						<div class="file-path-wrapper">

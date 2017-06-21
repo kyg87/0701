@@ -309,21 +309,19 @@ public class NoticeBoardController {
 		    }
 		    
 		    fullPath = "\\WiynPrj\\resource\\upload\\";
-		    System.out.println(fullPath);
-		    System.out.println(rename);
-		    System.out.println(id);
-		    
+		    		    
 		    noticeFile.setName(rename);
 		    noticeFile.setSrc(fullPath);
-		    noticeFile.setId(id);
+		    noticeFile.setNoticeBoardId(id);
 		    
-		    int result = noticeBoardFileDao.update(noticeFile);
-		    System.out.println(result);
+		    if(noticeBoardFileDao.get(id) == null)
+		    	noticeBoardFileDao.add(noticeFile);
 		    
-		    System.out.println(noticeFile.getId());
-		    System.out.println(noticeFile.getSrc());
-		    System.out.println(noticeFile.getName());
+		    else
+		    	noticeBoardFileDao.update(noticeFile);
 		    
+		    System.out.println(noticeBoardFileDao.get(id));
+		    		    
 		}
 		
 		model.addAttribute("p", page);

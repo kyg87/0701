@@ -40,7 +40,7 @@ SELECT * FROM NoticeFile
 </insert>
 
 <update id="update">
-	UPDATE NoticeFile SET src = #{src}, name = #{name} WHERE id = #{id}
+	UPDATE NoticeFile SET src = #{src}, name = #{name} WHERE noticeBoardId = #{noticeBoardId}
 </update>
 
 </mapper>
