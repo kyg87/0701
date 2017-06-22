@@ -30,12 +30,31 @@
 	
 	
 	
-body{
+
+hr {
+    border-bottom: 0;
+    border-right: 0;
+    border-top:1px solid rgba(144, 135, 135, 0.59);
+}
+body {
+	background-color: rgb(238, 238, 238);
+}
+
+body, html {
+	font-family: 'Abel', sans-serif;
 	color: #846C63;
 }
 
-.alcaramel {
-    background-color: #F0E5D7 !important;
+#main {
+	width: 100%;
+	min-height: 500px;
+	font-size: 14px;
+	line-height: 1.5em;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 3px;
+	box-shadow: 1px 1px 5px #383838;
+	background: #F6F4F1 !important;
 }
 
 .card-panel {
@@ -43,127 +62,182 @@ body{
     padding: 20px;
     margin: 0.5rem 0 1rem 0;
     border-radius: 2px;
-    background-color: #fff;
+    background-color: #F0E5D7 !important;
+    min-height: 640px;
 }
-.card-panel {
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+
+#category {
+	margin: 10px;
+	min-height: 660px;
+	width: 150px;
+	box-shadow: 1px 1px 5px #383838;
+}
+
+#context {
+	min-height: 200px;
+	/* width: 400px; */
+	box-shadow: 1px 1px 5px #383838;
+}
+
+#minibox {
+	min-height: 100px;
+	width: 400px;
+	box-shadow: 1px 1px 5px #383838;
+	margin-top: 10px;
+}
+
+#re {
+	float: right;
+}
+
+#reg {
+	float: right;
+}
+
+#mini{
+	float: right;
+}
+
+#btn{
+	float:right;
+	background: rgb(210, 178, 149);
+}
+
+#back{
+	background: rgb(210, 178, 149);
+}
+
+.udButtons a{
+	margin-left: 5px;
 }
 
 .detail-title {
     font-weight: 700;
     display: block;
     /* text-transform: uppercase; */
-}
-
-i {
-    line-height: inherit;
-}
-
-.opening-hours {
-    margin: 0;
-}
-ul {
-    padding: 0;
-    list-style-type: none;
-}
-
-hr {
-    border-bottom: 0;
-    border-right: 0;
-    border-top:1px solid rgba(144, 135, 135, 0.59);
-}
-
-a {
-    text-decoration: none;
-}
-h6 {
-    font-size: 1rem;
-    line-height: 110%;
-    margin: 0.5rem 0 0.4rem 0;
-}
-
-h2{margin-top: 10px;
-text-shadow: skyblue 0px 0px 0px 4px; }
-
-
-i{
-font-family: "Material-Design-Icons";
-}
-
-
-i.tiny {
-    padding-top: 3px;
-}
-
-span.title {
-    color: #839705;
-    font-family: Microsoft;
-}
-time {
-    margin-left: 17px;
-}
-.box_write{
-	background-color: #f7f7f7;
-    height: 98px;
-    box-sizing: border-box;
-    padding: 13px 18px;
-    border: 1px solid #e6e6e6;
-        display: flex;
-}
-    
-.box_write textarea {
-  /*   width: 535px; */
-    height: 71px;
-    box-sizing: border-box;
-    border: 1px solid #e6e6e6;
-    resize: none;
-    float: left;
-    color: #c7c7c7;
-    font-size: 16px;
-    font-family: Microsoft YaHei,'NSL';
-    text-align: center;
-    padding-top: 20px;
-    color: #313131;
-    overflow: auto;
-
-}
-.box_write button {
-    /* display: block; */
-    width: 123px; 
-    height: 71px;
-    background-color: #d2b295; 
-    border: none;
-    color: #fff;
-    font-size: 17px;
-    font-family: Microsoft YaHei,'NSL';
-    float: right;
-    line-height: 80px\0;
-    margin-left: 10px;
 } 
-
-
-.margin{
-	margin-left:3px;
-}
-
-.content-box{
-	padding-top:5px;
-	padding-bottom:10px;
-	border:1px solid rgba(144, 135, 135, 0.59);
-	margin-top:10px;
-	margin-bottom:10px;
-}
-	.column{
-		flex-direction:column;
-	}
 </style>
 
 
 
 
 <main id="main">
-
 <div class="container">
+		<div class="section">
+			<div class="row">
+				
+				<div class="col s12 l6">
+					<h2>요청 게시판</h2>
+					
+					<div class="content">
+						<h5>notice</h5>
+					</div>
+					
+				</div>
+				
+				<div class="col s12 l6">
+					
+					<div class="card-panel">
+						
+						<h4>NOTICE DETAIL</h4>
+						<hr /><br />
+						
+						<div>
+							<span class="detail-title"><i class="tiny material-icons">mode_edit</i>Title</span>
+							<span>${n.title }</span>
+							<hr /><br />
+						</div>
+						
+						<div>
+							<span class="detail-title"><i class="tiny material-icons">person_pin</i>Writer</span>
+							<span> ${n.memberId } </span>
+							<hr /><br />
+						</div>
+						
+						<div>
+							<span class="detail-title"><i class="tiny material-icons">av_timer</i>Write Time</span>
+							<span><fmt:formatDate value="${n.regDate }" pattern="yyyy-MM-dd HH:mm:ss" /></span>
+							<hr /><br />
+						</div>
+
+						<div>
+							<span class="detail-title"><i class="tiny material-icons">textsms</i> Content </span>
+							<c:set var="newLine" value="\r" />
+							<span>${n.content }</span>
+							<hr /><br />
+						</div>
+						
+									<div>
+						<a id="btn" class="waves-effect waves-light btn" href="#modal2"
+							id="noticeArticleDel">삭제</a> <a id="btn"
+							class="waves-effect waves-light btn"
+							a href="request-edit?c=${n.id}">수정</a> <a
+							class="waves-effect waves-light btn" id="back"
+							href="requestboard?p=${page}">목록으로</a>
+					</div>
+
+
+
+				
+					</div>
+					
+					<div id="modal2" class="modal">
+					<div class="modal-content">
+						<h4>게시물 삭제</h4>
+						<p>정말 삭제하시겠습니까?</p>
+					</div>
+					<div class="modal-footer">
+						<button class="btn waves-effect waves-light" type="button"
+							id="ArticleDelCancel">Cancel</button>
+
+						
+						<button class="btn waves-effect waves-light" type="button"
+							id="ArticleDelBtn">Submit</button>
+							
+
+					</div>
+				</div>
+					
+					 <!-- <form id="comment-add-form" action="freeBoard-comment-add" method="post"> -->
+             <div class="row">
+               <security:authorize access="isAnonymous()">
+                  <p>글쓰기는 로그인한 유저만 가능합니다 로그인해주세요</p>
+               </security:authorize>
+               
+               <security:authorize access="isAuthenticated()">
+               <div class="input-field">
+                  <i class="material-icons prefix">mode_edit</i>
+                  <input  id="icon_prefix2" type="text" class="validate" name="content" required="required">
+                  <label for="icon_prefix2">Message</label>
+                  <button class="btn waves-effect waves-light secondary-content" type="button" onclick="onCreate();">등록
+                      <i class="material-icons right">send</i>
+                    </button>
+               </div>
+               </security:authorize>
+             </div>
+            
+     	     <input type="hidden" name="requestBoardId" value=${n.id }>
+        	 <input type="hidden" name="memberId" value=<security:authentication property="name"/>>
+					
+					
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+<%-- <div class="container">
 	<div class="section">
 		<div class="row">
 			
@@ -212,54 +286,7 @@ time {
 
 					</ul>
 					
-					<div>
-						<a id="btn" class="waves-effect waves-light btn" href="#modal2"
-							id="noticeArticleDel">삭제</a> <a id="btn"
-							class="waves-effect waves-light btn"
-							a href="request-edit?c=${n.id}">수정</a> <a
-							class="waves-effect waves-light btn" id="back"
-							href="requestboard?p=${page}">목록으로</a>
-					</div>
-
-
-
-				<div id="modal2" class="modal">
-					<div class="modal-content">
-						<h4>게시물 삭제</h4>
-						<p>정말 삭제하시겠습니까?</p>
-					</div>
-					<div class="modal-footer">
-						<button class="btn waves-effect waves-light" type="button"
-							id="ArticleDelCancel">Cancel</button>
-
-						
-						<button class="btn waves-effect waves-light" type="button"
-							id="ArticleDelBtn">Submit</button>
-							
-
-					</div>
-				</div>
-					
-					 <!-- <form id="comment-add-form" action="freeBoard-comment-add" method="post"> -->
-             <div class="row">
-               <security:authorize access="isAnonymous()">
-                  <p>글쓰기는 로그인한 유저만 가능합니다 로그인해주세요</p>
-               </security:authorize>
-               
-               <security:authorize access="isAuthenticated()">
-               <div class="input-field">
-                  <i class="material-icons prefix">mode_edit</i>
-                  <input  id="icon_prefix2" type="text" class="validate" name="content" required="required">
-                  <label for="icon_prefix2">Message</label>
-                  <button class="btn waves-effect waves-light secondary-content" type="button" onclick="onCreate();">등록
-                      <i class="material-icons right">send</i>
-                    </button>
-               </div>
-               </security:authorize>
-             </div>
-            
-     	     <input type="hidden" name="requestBoardId" value=${n.id }>
-        	 <input type="hidden" name="memberId" value=<security:authentication property="name"/>>
+		
          	<!-- </form> -->
 
 
@@ -272,7 +299,7 @@ time {
 			</div>
 		</div>
 	</div>
-</div>
+</div> --%>
 
 
 
