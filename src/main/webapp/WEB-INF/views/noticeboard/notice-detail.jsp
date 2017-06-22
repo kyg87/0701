@@ -28,6 +28,12 @@ body, html {
 	background: #F6F4F1 !important;
 }
 
+hr {
+    border-bottom: 0;
+    border-right: 0;
+    border-top:1px solid rgba(144, 135, 135, 0.59);
+}
+
 .card-panel {
     transition: box-shadow .25s;
     padding: 20px;
@@ -114,14 +120,14 @@ body, html {
 					
 					<div class="card-panel">
 						
-						<h4>NOTICE DETAIL</h4>
+						<h4>${list.title }</h4>
 						<hr /><br />
 						
-						<div>
+						<%-- <div>
 							<span class="detail-title"><i class="tiny material-icons">mode_edit</i>Title</span>
 							<span>${list.title }</span>
 							<hr /><br />
-						</div>
+						</div> --%>
 						
 						<div>
 							<span class="detail-title"><i class="tiny material-icons">person_pin</i>Writer</span>
