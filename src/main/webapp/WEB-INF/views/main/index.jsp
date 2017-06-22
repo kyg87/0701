@@ -23,20 +23,25 @@
 	padding: 0;
 }
 
-@media only screen and (max-width: 680px){
-	.flex .card:second-child{
-		display: none;
+@media only screen and (max-width: 630px){
+	.hot-site ul{
+		flex-direction:column;
+	}
+	
+	.hot-site.flex.column{
+		align-items:center;
 	}
 }
 
 @media only screen and (max-width: 1220px){
-	.flex .card:first-child{
+.lst_recipe li:first-child{
 		display: none;
 	}
+		
 }
 
 @media only screen and (max-width: 1560px){
-	.flex .card:last-child{
+.lst_recipe li:last-child{
 		display: none;
 	}
 }
@@ -164,6 +169,7 @@ height:inherit;
 .hi{
 text-align: center;
 margin-bottom:15px;
+margin-top:40px;
 }
 
 .hit{
@@ -214,6 +220,17 @@ margin: 0px;
 
 .background .btn{
 background-color:rgb(221, 93, 88);
+}
+
+
+
+
+
+
+
+
+.thema{
+	margin-bottom:20px;
 }
 /*------------------------- 최신순,점수순,댓글순 부분 ----------------------------------*/
 .tabs {
@@ -464,8 +481,7 @@ background-color:rgb(221, 93, 88);
 
 .lst_recipe {
     overflow: hidden;
-    margin-bottom: 56px;
-    width: 1040px;
+    margin-bottom: 0px;
     position: relative;
     left: -16px;
 }
@@ -712,16 +728,16 @@ textScroll.prototype.start = function() {
 </div>
 
 <!-- 핫한사이트부분 -->
-<div class="container">
-<div class="hot-site">
-		<div class="hanna">
-			<p>"무엇이" 필요한 당신에게</p>
+<div class="container flex column">
+<div class="hot-site flex column">
+		<div class="hanna center thema">
+			<p class="">"무엇이" 필요한 당신에게</p>
 			<p class="point">~~~한 사이트</p>
 		</div>
-		<div class="flex space">
-			<ul class="lst_recipe">
+		<div class="card-div">
+			<ul class="lst_recipe flex space">
 				<c:forEach var="hot" items="${hot }" begin="1" end="4">
-					<li><a class="call_recipe thmb" href="/recipes/4145"> <img
+					<li><a class="call_recipe thmb" href="../siteboard/site-detail?c=${hot.id}"> <img
 							src="http://api.thumbalizr.com/?url=http://${hot.url}" />
 					</a> <span class="author"> <a href="/profile/321451">
 					<c:choose>
@@ -740,7 +756,7 @@ textScroll.prototype.start = function() {
 						</a> <strong><a class="jeju" " href="/profile/321451">${hot.memberId }</a></strong>
 					</span>
 						<p>
-							<a class="call_recipe jeju" href="/recipes/4145">${hot.title }
+							<a class="call_recipe jeju" href="../siteboard/site-detail?c=${hot.id}">${hot.title }
 							</a>
 						
 						</p>
@@ -834,20 +850,20 @@ textScroll.prototype.start = function() {
 	</div> --%>
 
 
-	<div class="hot-site">
-		<div class="hanna">
-			<p>"무엇이" 필요한 당신에게</p>
-			<p class="point">~~~한 사이트</p>
+	<div class="hot-site flex column">
+		<div class="hanna center thema">
+			<p class="">"무엇이" 필요한 당신에게</p>
+			<p class="point ">~~~한 사이트</p>
 		</div>
 		<!-- <h2 class="header lighten-1 section-title">
 <div class="hanna">
 	<p>"무엇이" 필요한 당신에게<br> ~~~한 사이트</p>
 </div>
 </h2> -->
-		<div class="flex space">
-			<ul class="lst_recipe">
+		<div class="card-div">
+			<ul class="lst_recipe flex space">
 				<c:forEach var="hot2" items="${hot2 }" begin="1" end="4">
-					<li><a class="call_recipe thmb" href="/recipes/4145"> <img
+					<li><a class="call_recipe thmb" href="../siteboard/site-detail?c=${hot2.id}"> <img
 							src="http://api.thumbalizr.com/?url=http://${hot2.url}" />
 					</a> <span class="author"> <a href="/profile/321451"> <img
 								alt="푸드텔러"
@@ -855,7 +871,7 @@ textScroll.prototype.start = function() {
 						</a> <strong><a class="jeju" " href="/profile/321451">${hot2.memberId }</a></strong>
 					</span>
 						<p>
-							<a class="call_recipe jeju" href="/recipes/4145">${hot2.title }
+							<a class="call_recipe jeju" href="../siteboard/site-detail?c=${hot2.id}">${hot2.title }
 							</a>
 						</p>
 						<div class="option">
@@ -996,7 +1012,7 @@ textScroll.prototype.start = function() {
 		<span id="location123"></span>
 		<div class=" flex between category-add">
 		
-			<div class="categoryy main-request">
+			<div class="categoryy main-request background">
 				<p class="category-p">현재 원하는 카테고리가 없다면?</p>
 				<br>
 				<label> 왼쪽 작성란에 제목과 그 아래에 생기길 원하는 카테고리를 자세하게 써주시면 관리자가 확인 후에 해당 카테고리를 생성해드립니다!</label>
@@ -1022,8 +1038,8 @@ textScroll.prototype.start = function() {
 						</div>
 					</div>
 				</div>
-				<div class="right">
-					<button id="target" class="btn waves-effect waves-light"
+				<div>
+					<button id="target" class="btn waves-effect waves-light right"
 						type="submit" name="action">카테고리 요청하기</button>
 				</div>
 			</div>
