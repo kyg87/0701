@@ -4,6 +4,7 @@
 <%@ taglib prefix="tiles"  uri="http://tiles.apache.org/tags-tiles" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <!DOCTYPE html>
 
 <style>
@@ -26,14 +27,6 @@
 	    margin-top: 5px;
 	    line-height: 1.5;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
@@ -160,28 +153,34 @@ time {
 	margin-top:10px;
 	margin-bottom:10px;
 }
-	
+	.column{
+		flex-direction:column;
+	}
 </style>
 
 
 
 
- <main id="main">
+<main id="main">
+
 <div class="container">
 	<div class="section">
 		<div class="row">
+			
 			<div class="col l5 s12">
 					<h2 class="jeju">요청 게시판</h2> 
 			</div>
+			
 			<div class="col l7 s12">
 				<div class="card-panel alcaramel" style="min-height: 640px;">
+					
 					<ul class="opening-hours">
 						<li class="flex">
 							<div class="flex detail-title">
 								<i class="material-icons tiny">mode_edit</i>
 								<div class="margin">Title :</div>
 							</div>
-							<div class="margin"> ${n.title }</div> 
+							<div class="margin"> ${n.title}</div> 
 						</li>
 						<hr>
 						<li class="flex">
@@ -189,7 +188,7 @@ time {
 								<i class="material-icons tiny">person_pin</i>
 								<div class="margin">Writer :</div>
 							</div>
-							<div class="margin">${n.memberId }</div>
+							<div class="margin">${n.memberId}</div>
 						</li>
 						<hr>
 						<li class="flex">
@@ -202,17 +201,46 @@ time {
 									pattern="yyyy-MM-dd HH:mm:ss" />
 							</div>
 						</li>
+						
 						<li class="flex column content-box">
 							<div class="flex detail-title">
 								<i class="material-icons tiny">textsms</i>
 								<div class="margin">Content</div>
 							</div>
-							<div>${n.content }</div>
+							<div>${n.content}</div>
 						</li>
 
 					</ul>
 					
-					 <form id="comment-add-form" action="freeBoard-comment-add" method="post">
+					<div>
+						<a id="btn" class="waves-effect waves-light btn" href="#modal2"
+							id="noticeArticleDel">삭제</a> <a id="btn"
+							class="waves-effect waves-light btn"
+							a href="request-edit?c=${n.id}">수정</a> <a
+							class="waves-effect waves-light btn" id="back"
+							href="requestboard?p=${page}">목록으로</a>
+					</div>
+
+
+
+				<div id="modal2" class="modal">
+					<div class="modal-content">
+						<h4>게시물 삭제</h4>
+						<p>정말 삭제하시겠습니까?</p>
+					</div>
+					<div class="modal-footer">
+						<button class="btn waves-effect waves-light" type="button"
+							id="ArticleDelCancel">Cancel</button>
+
+						
+						<button class="btn waves-effect waves-light" type="button"
+							id="ArticleDelBtn">Submit</button>
+							
+
+					</div>
+				</div>
+					
+					 <!-- <form id="comment-add-form" action="freeBoard-comment-add" method="post"> -->
              <div class="row">
                <security:authorize access="isAnonymous()">
                   <p>글쓰기는 로그인한 유저만 가능합니다 로그인해주세요</p>
@@ -232,12 +260,12 @@ time {
             
      	     <input type="hidden" name="requestBoardId" value=${n.id }>
         	 <input type="hidden" name="memberId" value=<security:authentication property="name"/>>
-         	</form>
+         	<!-- </form> -->
 
 
-			<ul id="commentList" class="collection">
+			<!-- <ul id="commentList" class="collection">
 
-			</ul>
+			</ul> -->
 
 				</div>
 
@@ -249,7 +277,36 @@ time {
 
 
 
+<script>
+	$(function(){
+			
+		$("#ArticleDelBtn").on('click', function(){
+			
+			var id = ${n.id};		
+			
+			$.post("request-del", {"id":id});
+			location.href='requestboard';
+			
+		});
 
+		  $("#ArticleDelCancel").on('click', function(){
+			
+			location.href='http:\/\/localhost:8080\/WiynPrj\/requestboard\/request-detail?c='+${n.id};
+			
+		});  
+			
+	});
+	</script>
+	
+
+<script type="text/javascript">
+
+	$(document).ready(function() {
+		// the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+		$('.modal').modal();
+	});
+	
+</script>
 
 
 

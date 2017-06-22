@@ -18,7 +18,7 @@
 	
 	<select id ="getList" resultType="com.wiyn.web.entity.RequestBoard">
 	
-	 select*from RequestBoard  order by regDate desc limit ${(page-1) *10},10; 
+	 select*from RequestBoard  order by regDate desc <!-- limit ${(page-1) *10},10;  -->
 	
 	</select>
 
