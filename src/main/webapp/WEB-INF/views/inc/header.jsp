@@ -163,13 +163,27 @@ nav a{
     margin-top: 24px;
 }
 
+header .button-collapse{
+ margin:0px;
+}
+
+.main-nav #search{
+border-bottom: 1px solid #d8d8d8;
+}
+
+
+nav .input-field label i {
+
+color:black;
+}
+
 </style>
 
 <header id="header">
 	<nav class="container">
 	    <div class="nav-wrapper">
 	      <a href="${root }/main/index" class="brand-logo logo font">Logo</a>
-	      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+	      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons medium">menu</i></a>
 	      <security:authentication property="authorities" var="auths" />
 		  <security:authentication property="name" var="name" />
 	      <ul class="right hide-on-med-and-down">
