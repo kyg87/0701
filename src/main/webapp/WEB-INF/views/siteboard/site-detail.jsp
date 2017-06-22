@@ -798,7 +798,7 @@ var currentPage = ${page};
 			  }
 			  else{
 				src ="http://demo.geekslabs.com/materialize-v1.0/images/avatar.jpg";
-
+ 
 				//console.log($("#commentList > li > span));
 			  }
 			  
