@@ -190,4 +190,14 @@
 	select * from SiteBoard inner join SmallCategory on SiteBoard.smallCategoryId=SmallCategory.id where SiteBoard.smallCategoryId=#{id }	
 	</select>
 	
+	<select id="likeBig" resultType="com.wiyn.web.entity.SiteBoard">
+		select N.*, COUNT(C.siteBoardId) Good
+		FROM SiteBoard N 
+		LEFT OUTER JOIN SiteBoardLike C ON C.siteBoardId= N.id 
+		WHERE bigCategoryId like '%${bigCa}%'
+		GROUP BY N.id, N.title, N.content, N.regDate, N.url, N.hit
+		having Good>=1
+		order by Good desc, regDate desc LIMIT 3
+	</select>
+	
 </mapper>

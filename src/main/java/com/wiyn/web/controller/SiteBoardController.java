@@ -86,7 +86,8 @@ public class SiteBoardController {
         
         if(checkLast > cnt)
             checkLast = cnt;
-        
+
+
         model.addAttribute("listPerFive", listPerFive);
         model.addAttribute("checkLast", checkLast);
         model.addAttribute("cnt", cnt);
@@ -113,6 +114,10 @@ public class SiteBoardController {
         model.addAttribute("sitenew", sitenews);
         model.addAttribute("sitenewL", sitenewsL);
         model.addAttribute("sitenewH", sitenewsH);
+        
+        List<SiteBoard> bigList = sqlSession.getMapper(SiteBoardDao.class).likeBig(bigCategoryId);
+        
+        model.addAttribute("likelist",bigList);
         
         return "siteboard.siteboard";    
     }
@@ -177,6 +182,11 @@ public class SiteBoardController {
         model.addAttribute("sitenewL", sitenewsL);
         model.addAttribute("sitenewH", sitenewsH);
         
+        
+        List<SiteBoard> bigList = sqlSession.getMapper(SiteBoardDao.class).likeBig(bigCategoryId);
+        
+        model.addAttribute("likelist",bigList);
+        
         return "siteboard.siteboardhit";    
     }
     
@@ -239,6 +249,10 @@ public class SiteBoardController {
         model.addAttribute("sitenew", sitenews);
         model.addAttribute("sitenewL", sitenewsL);
         model.addAttribute("sitenewH", sitenewsH);
+        
+        List<SiteBoard> bigList = sqlSession.getMapper(SiteBoardDao.class).likeBig(bigCategoryId);
+        
+        model.addAttribute("likelist",bigList);
         
         return "siteboard.siteboardlike";    
     }

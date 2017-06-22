@@ -46,4 +46,6 @@ public interface SiteBoardDao {
 	
 	
 	List<SiteBoard> getHotSmall(String id);
+	
+	List<SiteBoard> likeBig(@Param("bigCa") String bigCategoryId);
 }
