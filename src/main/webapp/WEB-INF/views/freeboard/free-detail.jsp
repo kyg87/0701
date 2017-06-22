@@ -251,6 +251,12 @@ $(document).ready(function(){
                      <span><fmt:formatDate value="${n.regDate }" pattern="yyyy-MM-dd HH:mm:ss" /></span>
                      <hr /><br />
                   </div>
+                  
+                  <div>
+					<span class="detail-title"><i class="tiny material-icons">language</i> Adress </span> 
+					<span> ${n.contentSrc }</span>
+					<hr /><br />
+				</div>
                
                   <div>
                      <span class="detail-title"><i class="tiny material-icons">textsms</i> Comment </span>
