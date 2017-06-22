@@ -41,7 +41,7 @@ footer .first{
 }
 </style>
 
-<footer class="page-footer">
+<footer class="page-footer jeju">
    <div class="first space container">
       <div class="category space">
          <div class="col s12 m3 hide-on-small-only">

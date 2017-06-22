@@ -129,7 +129,7 @@ height:inherit;
 
 
 .background{
-	background-color:#e9e9e9;
+	background-color:#F6F4F1;
 }
 
 .write{
@@ -152,6 +152,69 @@ height:inherit;
 	width:250px;
 }
 
+
+
+
+
+.white{
+	background-color: #fff;
+}
+
+
+.hi{
+text-align: center;
+margin-bottom:15px;
+}
+
+.hit{
+	font-weight: bold;
+	font-size: 42px;
+}
+
+
+.categoryy{
+	width: 450px;
+}
+.categoryy label{
+	font-size:15px;
+}
+
+.category-p{
+	font-size:25px;
+}
+
+
+
+
+
+
+
+
+input[type="text"]{
+border-bottom:1px solid #b7b7b7;
+}
+
+
+
+
+.between{
+	justify-content:center;
+}
+.main-request{
+	width:450px;
+}
+#reqRegform {
+    margin-left: 200px;
+}
+
+
+.background textarea.materialize-textarea{
+margin: 0px;
+}
+
+.background .btn{
+background-color:rgb(221, 93, 88);
+}
 /*------------------------- 최신순,점수순,댓글순 부분 ----------------------------------*/
 .tabs {
 	font-family: 'Jeju Gothic', serif;
@@ -220,7 +283,14 @@ height:inherit;
 }
 
 .sitego{
-	background:rgba(27, 80, 162, 0.69);
+	background: rgb(221, 93, 88);
+	width: 100%;
+	height: 50px;
+	text-align: center;
+	padding-top: 15px;
+	color: #fff;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+	font-size: 16px;
 }
 
 .sitego:hover{
@@ -384,6 +454,187 @@ height:inherit;
 	margin-top:30px;
 	margin-bottom:50px;
 }
+
+
+
+
+
+
+
+
+.lst_recipe {
+    overflow: hidden;
+    margin-bottom: 56px;
+    width: 1040px;
+    position: relative;
+    left: -16px;
+}
+
+ol, ul {
+    list-style: none;
+}
+.lst_recipe li .thmb {
+    display: block;
+    margin: 4px;
+    position: relative;
+}
+
+button, a {
+    outline: none;
+    text-decoration: none;
+    color: #444;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+.lst_recipe li .judge {
+    position: absolute;
+    top: 187px;
+    right: 10px;
+    color: #eee;
+    font-size: 13px;
+    text-align: center;
+    line-height: 1;
+    z-index: 5;
+}
+
+.lst_recipe li .author {
+    text-align: center;
+    width: 100%;
+    z-index: 5;
+    display: block;
+    margin-top: -40px;
+    position: relative;
+}
+
+.lst_recipe li .author strong {
+    color: #808080;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.lst_recipe li p a {
+    color: #3b3b3b;
+}
+.lst_recipe .option {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    height: 27px;
+    border-top: 1px solid #e1e1e1;
+    text-align: right;
+    display: flex;
+    justify-content: space-around;
+}
+
+.lst_recipe .option>div:first-child {
+    border: none;
+}
+
+.lst_recipe .option>div {
+    width: 80px;
+    height: 100%;
+    float: left;
+    border-left: 1px solid #ddd;
+}
+
+.lst_recipe .option .like {
+    position: relative;
+    background: url(http://d1hk7gw6lgygff.cloudfront.net/assets/_img/main/ico_like-92022602fb2947a641036b1f0be28af2.png) 9px center no-repeat;
+}
+
+.lst_recipe .option>div {
+    width: 80px;
+    height: 100%;
+    float: left;
+    border-left: 1px solid #ddd;
+}
+input, button, img {
+    vertical-align: middle;
+}
+.lst_recipe li p {
+    text-align: center;
+    font-size: 15px;
+    font-family: Microsoft YaHei,'NSB';
+    line-height: 19px;
+    letter-spacing: -0.025em;
+    padding: 2px 20px 0;
+}
+.lst_recipe li .author img {
+    width: 61px;
+    height: 61px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: block;
+    margin: 0 auto 5px;
+}
+
+
+.lst_recipe>li {
+    width: 244px;
+    height: 390px;
+    margin: 0 0 16px 16px;
+    position: relative;
+    border: 1px solid #e1e1e1;
+    box-sizing: border-box;
+    float: left;
+    background-color: #fff;
+}
+.lst_recipe .option .like button {
+    display: block;
+    width: 100%;
+    height: 27px;
+    text-align: right;
+    background-color: transparent;
+    border: none;
+    color: #999;
+    box-sizing: border-box;
+    padding-right: 10px;
+    line-height: 25px;
+    line-height: 32px\0;
+}
+.lst_recipe li .thmb {
+    display: block;
+    margin: 4px;
+    position: relative;
+}
+.lst_recipe li .thmb img {
+    width: 234px;
+    height: 234px;
+    display: block;
+    border:1px solid #e1e1e1;
+}
+.lst_recipe .option .share a {
+    display: block;
+    overflow: hidden;
+    color: #999;
+    background: url(http://d1hk7gw6lgygff.cloudfront.net/assets/_img/main/ico_share-e234119ec47de3fa22d0c1c2569f756f.png) 7px 50% no-repeat;
+    width: 100%;
+    padding: 7px 5px 0 0\0;
+}
+.lst_recipe li .thmb:after {
+    position: absolute;
+    display: block;
+    content: '';
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+   
+    background-size: 234px 234px;
+    z-index: 1;
+}
+.lst_recipe li .thmb {
+    display: block;
+    margin: 4px;
+    position: relative;
+}
+
+.lst_recipe .option>div:first-child {
+    border: none;
+    color:#999;
+}
 </style>
 <script type="text/javascript">
 function textScroll(scroll_el_id) {
@@ -442,9 +693,9 @@ textScroll.prototype.start = function() {
 <main id="main">
 <visual>
 	<div class="visual">
-	<div class="banner-text">
+	<!-- <div class="banner-text">
 			<p>What is your needs? <br>당신이 원하는 사이트, 당신에게 필요한 사이트<br>추천 받고, 추천할 수 있는 자유로운 공간입니다! </p>
-</div>
+</div> -->
 	</div>
 
 </visual>
@@ -461,14 +712,49 @@ textScroll.prototype.start = function() {
 </div>
 
 <!-- 핫한사이트부분 -->
-<div class="hot-site container">
-<div>
-<div class="hanna">
-	<p>"무엇이" 필요한 당신에게</p>
-	<p class="point">~~~한 사이트</p>	
-</div>
-<div class="flex space">
-	<c:forEach var="hot" items="${hot }" begin="1" end="4">
+<div class="container">
+<div class="hot-site">
+		<div class="hanna">
+			<p>"무엇이" 필요한 당신에게</p>
+			<p class="point">~~~한 사이트</p>
+		</div>
+		<div class="flex space">
+			<ul class="lst_recipe">
+				<c:forEach var="hot" items="${hot }" begin="1" end="4">
+					<li><a class="call_recipe thmb" href="/recipes/4145"> <img
+							src="http://api.thumbalizr.com/?url=http://${hot.url}" />
+					</a> <span class="author"> <a href="/profile/321451"> <img
+								alt="푸드텔러"
+								src="http://cloudfront.haemukja.com/vh.php?url=http://d1hk7gw6lgygff.cloudfront.net/uploads/user/image_file/321451/thumb_____2.jpg&amp;convert=jpgmin&amp;rt=600">
+						</a> <strong><a class="jeju" " href="/profile/321451">${hot.memberId }</a></strong>
+					</span>
+						<p>
+							<a class="call_recipe jeju" href="/recipes/4145">${hot.title }
+							</a>
+						</p>
+						<div class="option">
+							<div class="time">
+
+								<a class="jeju" href="/recipes?cooking_time=30"><fmt:formatDate
+										value="${hot.regDate}" pattern="yyyy-MM-dd" /></a>
+							</div>
+							<div class="like jeju">
+								<form action="/bookmarks" accept-charset="UTF-8" method="post">
+									<input name="utf8" type="hidden" value="✓"><input
+										type="hidden" name="authenticity_token"
+										value="1KsNCn9Nc+jSqMhlkd2O/z1lDEshD5VeAGksB4qrC9X00j2B38Liaig4mEJdcGZA3DINWqn/AextRSJNdckgsg==">
+									<input type="hidden" name="linked_model_type" value="Recipe">
+									<input type="hidden" name="linked_model_id" value="4145">
+									<button type="submit" class="btn_like">2345명</button>
+								</form>
+							</div>
+
+						</div></li>
+				</c:forEach>
+			</ul>
+		</div>
+	</div>
+			<%-- <c:forEach var="hot" items="${hot }" begin="1" end="4">
 	<div class="card">
 		<div class="card-image waves-effect waves-block waves-light">
 			<a href="../siteboard/site-detail?c=${hot.id}"><img class="activator"  src="http://api.thumbalizr.com/?url=http://${hot.url}&width=250" /></a>
@@ -485,8 +771,8 @@ textScroll.prototype.start = function() {
 			<p>${hot.content}</p>
 		</div>
 	</div>
-	</c:forEach>
-	<%-- <div class="card second">
+	</c:forEach> --%>
+			<%-- <div class="card second">
 		<div class="card-image waves-effect waves-block waves-light">
 			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${hot.url}&width=250" />
 		</div>
@@ -502,7 +788,7 @@ textScroll.prototype.start = function() {
 			<p>${hot.content}</p>
 		</div>
 	</div> --%>
-	<%-- <div class="card third">
+			<%-- <div class="card third">
 		<div class="card-image waves-effect waves-block waves-light">
 			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${hot.url}&width=250" />
 		</div>
@@ -518,7 +804,7 @@ textScroll.prototype.start = function() {
 			<p>${hot.content}</p>
 		</div>
 	</div> --%>
-	<%-- <div class="card">
+			<%-- <div class="card">
 		<div class="card-image waves-effect waves-block waves-light">
 			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${hot.url}&width=250" />
 		</div>
@@ -534,21 +820,61 @@ textScroll.prototype.start = function() {
 			<p>${hot.content}</p>
 		</div>
 	</div> --%>
-</div>
-</div>
 
-<div class="hot-site">
-<div class="hanna">
-	<p>"무엇이" 필요한 당신에게</p>
-	<p class="point">~~~한 사이트</p>	
-</div>
-<!-- <h2 class="header lighten-1 section-title">
+
+	<div class="hot-site">
+		<div class="hanna">
+			<p>"무엇이" 필요한 당신에게</p>
+			<p class="point">~~~한 사이트</p>
+		</div>
+		<!-- <h2 class="header lighten-1 section-title">
 <div class="hanna">
 	<p>"무엇이" 필요한 당신에게<br> ~~~한 사이트</p>
 </div>
 </h2> -->
-<div class="flex space">
-	<c:forEach var="hot2" items="${hot2 }" begin="1" end="4">
+		<div class="flex space">
+			<ul class="lst_recipe">
+				<c:forEach var="hot2" items="${hot2 }" begin="1" end="4">
+					<li><a class="call_recipe thmb" href="/recipes/4145"> <img
+							src="http://api.thumbalizr.com/?url=http://${hot2.url}" />
+					</a> <span class="author"> <a href="/profile/321451"> <img
+								alt="푸드텔러"
+								src="http://cloudfront.haemukja.com/vh.php?url=http://d1hk7gw6lgygff.cloudfront.net/uploads/user/image_file/321451/thumb_____2.jpg&amp;convert=jpgmin&amp;rt=600">
+						</a> <strong><a class="jeju" " href="/profile/321451">${hot2.memberId }</a></strong>
+					</span>
+						<p>
+							<a class="call_recipe jeju" href="/recipes/4145">${hot2.title }
+							</a>
+						</p>
+						<div class="option">
+							<div class="time">
+
+								<a class="jeju" href="/recipes?cooking_time=30"><fmt:formatDate
+										value="${hot2.regDate}" pattern="yyyy-MM-dd" /></a>
+							</div>
+							<div class="like jeju">
+								<form action="/bookmarks" accept-charset="UTF-8" method="post">
+									<input name="utf8" type="hidden" value="✓"><input
+										type="hidden" name="authenticity_token"
+										value="1KsNCn9Nc+jSqMhlkd2O/z1lDEshD5VeAGksB4qrC9X00j2B38Liaig4mEJdcGZA3DINWqn/AextRSJNdckgsg==">
+									<input type="hidden" name="linked_model_type" value="Recipe">
+									<input type="hidden" name="linked_model_id" value="4145">
+									<button type="submit" class="btn_like">2345명</button>
+								</form>
+							</div>
+
+						</div></li>
+				</c:forEach>
+			</ul>
+
+
+
+
+
+
+
+
+			<%-- <c:forEach var="hot2" items="${hot2 }" begin="1" end="4">
 	<div class="card">
 		<div class="card-image waves-effect waves-block waves-light">
 			<a href="../siteboard/site-detail?c=${hot2.id}"><img class="activator"  src="http://api.thumbalizr.com/?url=http://${hot2.url}&width=250" /></a>
@@ -565,8 +891,8 @@ textScroll.prototype.start = function() {
 			<p>${hot2.content}</p>
 		</div>
 	</div>
-	</c:forEach>
-	<%-- <div class="card second">
+	</c:forEach> --%>
+			<%-- <div class="card second">
 		<div class="card-image waves-effect waves-block waves-light">
 			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${random.url}&width=250" />
 		</div>
@@ -582,7 +908,7 @@ textScroll.prototype.start = function() {
 			<p>${random.content}</p>
 		</div>
 	</div> --%>
-	<%-- <div class="card third">
+			<%-- <div class="card third">
 		<div class="card-image waves-effect waves-block waves-light">
 			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${random.url}&width=250" />
 		</div>
@@ -598,7 +924,7 @@ textScroll.prototype.start = function() {
 			<p>${random.content}</p>
 		</div>
 	</div> --%>
-	<%-- <div class="card">
+			<%-- <div class="card">
 		<div class="card-image waves-effect waves-block waves-light">
 			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${random.url}&width=250" />
 		</div>
@@ -614,16 +940,23 @@ textScroll.prototype.start = function() {
 			<p>${random.content}</p>
 		</div>
 	</div> --%>
-</div>
-</div>
-</div>
-
-<div class="write hot-site">
-	<div>
-	<h5 class="white-text">당신이 알고 있는 "유용한 사이트"를 모두에게 추천해주세요!</h5>
+		</div>
 	</div>
-	<a class="waves-effect waves-light btn sitego" href="#">글을 쓰러 가시겠습니까?</a>
 </div>
+<div class="white">
+<!-- <div class="container hi">
+	<div class="jeju">
+		<p >당신이 알고 있는</p> 
+		<p class="hit">"유용한 사이트"</p>
+		<p>를 모두에게 추천해주세요!</p>
+	</div>
+</div> -->
+</div>
+	<div class="hi">
+	<p class="jeju category-p">당신이 알고 있는 "유용한 사이트"를 모두에게 추천해주세요!</p> 
+	</div>
+	<a class="jeju waves-effect waves-light sitego" href="#">글을 쓰러 가시겠습니까?</a>
+
 <input class="sitein" type="hidden" name="memberId"
 	value=<security:authentication property="name"/>>
 <script>
@@ -646,19 +979,26 @@ textScroll.prototype.start = function() {
 	});
 </script>
 <div class="background">
-<div class="container">
-	<form id="reqRegform" action="reg-index" method="post">
+<div class="container jeju">
+	
 		<span id="location123"></span>
-		<div class=" flex  space category-add">
-			<div>
-				<label>원하는 카테고리가 없다면?</label>
-				<p>~~~~~~카테고리추가 설명</p>
+		<div class=" flex between category-add">
+		
+			<div class="categoryy main-request">
+				<p class="category-p">현재 원하는 카테고리가 없다면?</p>
+				<br>
+				<label> 왼쪽 작성란에 제목과 그 아래에 생기길 원하는 카테고리를 자세하게 써주시면 관리자가 확인 후에 해당 카테고리를 생성해드립니다!</label>
+				<br>
+				<br><label> 카테고리 생성에 대한 답변을 받아보고 싶으시다면 내용란에 "이메일"을 꼭 적어주세요.</label>
+				<br>
+				<br><label>그 외 기타 궁금한 문의사항은 thjds8@gmail.com으로 보내주시면 감사하겠습니다.</label>
 			</div>
+			<form id="reqRegform" action="reg-index" method="post">
 			<div class="flex column main-request">
 				<div>
 					<div id="title" class="input-field col s12 row">
 						<input name="title" id="title1" type="text" class="validate"
-							required="required"> <label for="Title">Title</label>
+							required="required"> <label for="Title">제목</label>
 					</div>
 				</div>
 				<div id="content">
@@ -666,19 +1006,20 @@ textScroll.prototype.start = function() {
 						<div class="input-field col s12">
 							<textarea name="content" id="textarea1"
 								class="materialize-textarea" required="required"></textarea>
-							<label for="textarea1"></label>
+							<label for="textarea1">내용</label>
 						</div>
 					</div>
 				</div>
-				<div>
+				<div class="right">
 					<button id="target" class="btn waves-effect waves-light"
 						type="submit" name="action">카테고리 요청하기</button>
 				</div>
 			</div>
+			</form>
 		</div>
 			<input type="hidden" name="memberId"
 				value=<security:authentication property="name"/>>
-	</form>
+	
 </div>
 </div>
 	<%-- <div class="col s12 line">

@@ -59,7 +59,8 @@
 
 .login.loge {
 	/* background-color:mediumturquoise; */
-	background-color: #2E8965;
+	/* background-color: rgb(169, 134, 103); */
+	background-color: rgb(221, 93, 88);
 }
 
 .login.lock {
@@ -70,7 +71,8 @@
 
 .login.pin {
 	/* background:#81b344; */
-	background-color: #62A8D1;
+	/* background-color: #62A8D1; */
+	background-color: rgb(221, 93, 88);
 }
 
 .login {
@@ -166,7 +168,7 @@ nav a{
 <header id="header">
 	<nav class="container">
 	    <div class="nav-wrapper">
-	      <a href="${root }/main/index" class="brand-logo logo font">로고로고</a>
+	      <a href="${root }/main/index" class="brand-logo logo font">Logo</a>
 	      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 	      <security:authentication property="authorities" var="auths" />
 		  <security:authentication property="name" var="name" />
@@ -212,7 +214,7 @@ nav a{
 			</c:choose>
 			<li>
 			<security:authorize access="isAnonymous()">
-				<a class="login font loge btn" href="#modal10">Login</a>
+				<a class="login font loge" href="#modal10">Login</a>
 			</security:authorize>
 			<security:authorize access="isAuthenticated()">
 	
