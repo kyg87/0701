@@ -138,7 +138,13 @@ body, html {
 	
 	
 </style>
-
+<script>
+$(document).ready(function(){                           
+   $(".list-btn").on("click",function(){
+      $('.back').prop('href', history.back());
+   });
+});
+</script>
 <main id="main">
 <div class="container">
 		<div class="section">
@@ -188,7 +194,7 @@ body, html {
   						</form>
 
 <form action="freeboard" method="post">
-							 <button class="btn waves-effect waves-light" type="submit" name="action">목록</button>
+							 <button class="btn waves-effect waves-light list-btn" type="submit" name="action">목록</button>
 						</form>
 					</div>
 					
