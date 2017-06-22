@@ -94,6 +94,11 @@ hr {
     /* text-transform: uppercase; */
 }
 
+.btn:hover {
+	/* background: rgb(210, 178, 149); */
+	background-color: rgb(195, 143, 95) !important;
+}
+
 </style>
 
  <main id="main">
@@ -104,13 +109,9 @@ hr {
 				<div class="col s12 l6">
 					<h2>Notice Board</h2>
 					
-					<div class="content">
-						<h5>notice</h5>
-					</div>
-					
 					<div>
 						<c:if test="${file.src != null }">
-			            	<img src=${file.src }${file.name } style="width:500px; height:500px; " />
+			            	<img src=${file.src }${file.name } style="width:500px; height:500px; margin-top:42px;" />
 			            </c:if>
 					</div>
 					

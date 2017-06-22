@@ -14,6 +14,15 @@ body, html {
 	color: #846C63;
 }
 
+.card-panel {
+	transition: box-shadow .25s;
+	padding: 20px;
+	margin: 0.5rem 0 1rem 0;
+	border-radius: 2px;
+	background-color: #F0E5D7 !important;
+	min-height: 640px;
+}
+
 #main {
 	width: 100%;
 	min-height: 500px;
@@ -26,17 +35,8 @@ body, html {
 	background: #F6F4F1 !important;
 }
 
-.card-panel {
-    transition: box-shadow .25s;
-    padding: 20px;
-    margin: 0.5rem 0 1rem 0;
-    border-radius: 2px;
-    background-color: #F0E5D7 !important;
-    min-height: 640px;
-}
-
 #title {
-	width: 40px;
+	width: 20px;
 	font-family: bold;
 	display: inline;
 	font-style: black;
@@ -45,7 +45,7 @@ body, html {
 }
 
 #address {
-	width: 40px;
+	width: 20px;
 	display: inline;
 	font-style: black;
 	font-weight: bolder;
@@ -69,8 +69,8 @@ body, html {
 }
 
 #titleinput {
-	width: 400px;
-	margin-right: 100px;
+	width: 100%;
+	margin-right: 10%;
 }
 
 #input-field1 {
@@ -83,15 +83,14 @@ body, html {
 	margin-left: 10px;
 }
 
-#btn {
-	margin-left: 500px;
-}
-
-.btn{
+.btn {
 	background: rgb(210, 178, 149);
 }
 
-
+.btn:hover {
+	/* background: rgb(210, 178, 149); */
+	background-color: rgb(195, 143, 95) !important;
+}
 </style>
 
 <script type="text/javascript">
@@ -99,8 +98,10 @@ body, html {
             $("#imgInp").on('change', function(){
                 readURL(this);
                 $("#originImg").attr('style', "display: none;");
-                $("#blah").attr('style', "visibility:visible; width:300px; height:300px;"+
-                "float:right; margin-top:100px; margin-right:50px;");
+                $("#blah").attr('style', " visibility:visible; width:500px; height:500px; "
+    					+ "margin-top: 42px; -webkit-box-shadow: 9px 11px 22px -3px rgba(151,151,151,1); "
+    					+ " -moz-box-shadow: 9px 11px 22px -3px rgba(151,151,151,1); "
+    					+ " box-shadow: 9px 11px 22px -3px rgba(151,151,151,1); ");
             });
         });
 
@@ -126,19 +127,17 @@ body, html {
 
 			<div class="col s12 l6">
 				<h2 class="title">Notice Board</h2>
-
-				<div class="content">
-					<h5>Notice Edit</h5>
-				</div>
 				
 				<div>
 				
 					<c:if test="${file.src != null }">
-			           	<img src=${file.src }${file.name } id="originImg" style="width:300px; height:300px; float:right;
-			           	 margin-top:100px; margin-right:50px;" />
+			           	<img src=${file.src }${file.name } id="originImg" style="width:500px; height:500px;
+			           	 	margin-top: 42px; -webkit-box-shadow: 9px 11px 22px -3px rgba(151,151,151,1);
+			           	 	-moz-box-shadow: 9px 11px 22px -3px rgba(151,151,151,1);
+			           	 	box-shadow: 9px 11px 22px -3px rgba(151,151,151,1);" />
 			        </c:if>
 					
-					<img id="blah" src="#" style="width:300px; height:300px; float:right; visibility:hidden;" />
+					<img id="blah" src="#" style="width:500px; height:500px; visibility:hidden;" />
 					
 				</div>
 
@@ -152,7 +151,7 @@ body, html {
 						<div class="input-field col s12">
 							<input placeholder=" title " id="titleinput" type="text"
 								name="title" class="validate" value="${list.title }"> <label
-								for="name" class="active"><i class="tiny material-icons">mode_edit</i> 제목 입력 : </label>
+								for="name" class="active"><i class="tiny material-icons">mode_edit</i> 제목  </label>
 						</div>
 					</div>
 
@@ -160,7 +159,7 @@ body, html {
 						<div class="input-field col s12">
 							<input placeholder=" http:// " id="contentSrc" type="text"
 								name="contentSrc" class="contentSrc" value="${list.contentSrc }"> <label
-								for="name" class="active"> 주소 입력 : </label>
+								for="name" class="active"> 주소   </label>
 						</div>
 					</div>
 
@@ -183,16 +182,13 @@ body, html {
 							<textarea name="content"
 								class="form-control materialize-textarea" rows="15" id="comment"
 								data-length="130">${list.content }</textarea>
-							<label for="name" class="active"> 내용 입력 : 
-							</label>
+							<label for="name" class="active"> 내용  </label>
 						</div>
 					</div>
 
 					<div id="btn">
-						<button class="btn waves-effect waves-light" type="submit"
-							name="action">
-							등록 완료 <i class="material-icons right">send</i>
-						</button>
+						<button class="btn waves-effect waves-light right" type="submit"
+							name="action" id="test">등록</button>
 					</div>
 					
 					<input type="hidden" name="id" value=${list.id }>

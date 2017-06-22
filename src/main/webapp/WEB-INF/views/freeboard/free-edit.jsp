@@ -8,10 +8,22 @@ body {
 	background-color: rgb(238, 238, 238);
 }
 
+body, html {
+	font-family: 'Abel', sans-serif;
+	color: #846C63;
+}
+
+.card-panel {
+	transition: box-shadow .25s;
+	padding: 20px;
+	margin: 0.5rem 0 1rem 0;
+	border-radius: 2px;
+	background-color: #F0E5D7 !important;
+	min-height: 640px;
+}
+
 #main {
-	width: 600px;
-	margin-top: 30px;
-	margin: 0px auto;
+	width: 100%;
 	min-height: 500px;
 	font-size: 14px;
 	line-height: 1.5em;
@@ -19,16 +31,11 @@ body {
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 3px;
 	box-shadow: 1px 1px 5px #383838;
-	background-color: white;
-	/* background: pink; */
-	padding: 10px;
-	margin: 0px auto;
-	margin-top:70px;
+	background: #F6F4F1 !important;
 }
 
 #title {
-	width: 40px;
-	/* border: 1px solid black; */
+	width: 20px;
 	font-family: bold;
 	display: inline;
 	font-style: black;
@@ -37,8 +44,7 @@ body {
 }
 
 #address {
-	width: 40px;
-	/* border: 1px solid black; */
+	width: 20px;
 	display: inline;
 	font-style: black;
 	font-weight: bolder;
@@ -62,8 +68,8 @@ body {
 }
 
 #titleinput {
-	width: 400px;
-	margin-right: 100px;
+	width: 100%;
+	margin-right: 10%;
 }
 
 #input-field1 {
@@ -75,139 +81,116 @@ body {
 	float: left;
 	margin-left: 10px;
 }
-#btn{
- margin-left: 500px;
+
+.btn {
+	background: rgb(210, 178, 149);
 }
 
-
-
+.btn:hover {
+	/* background: rgb(210, 178, 149); */
+	background-color: rgb(195, 143, 95) !important;
+}
 </style>
 
+<main id = "main">
 
+<div class="container">
+	<div class="section">
+		<div class="row">
 
-<body>
-
-<form action="free-details" method="post">
-	<div id="main">
-		<table>
-			<thead>
-				<tr>
-				</tr>
-				<tr>
-					<th>
-						<div id="title">제목</div>
-					</th>
+			<div class="col s12 l6">
+				<h2 class="title">Free Board</h2>
+				
+				<div>
+				
+					<%-- <c:if test="${file.src != null }">
+			           	<img src=${file.src }${file.name } id="originImg" style="width:500px; height:500px;
+			           	 	margin-top: 42px; -webkit-box-shadow: 9px 11px 22px -3px rgba(151,151,151,1);
+			           	 	-moz-box-shadow: 9px 11px 22px -3px rgba(151,151,151,1);
+			           	 	box-shadow: 9px 11px 22px -3px rgba(151,151,151,1);" />
+			        </c:if> --%>
 					
-					<th><input id="titleinput" name="title" type="text" value="${n.title }"></th>
+					<img id="blah" src="#" style="width:500px; height:500px; visibility:hidden;" />
 					
-				</tr>
-				<tr>
-					<th>
-						<div id="contentSrc">IMAGE : </div>
-					</th>
-					<th><input id="titleinput" name="contentSrc" type="text" value="${n.contentSrc }"></th>
-				</tr>
-			</thead>
-
-			<tbody>
-				<tr>
-					<td colspan="2">
-						<div id="divcontent">
-							<form>
-								<div class="form-group">
-									<label for="comment">Comment :</label>
-									<textarea class="form-control" name="content" rows="15" id="comment">${n.content }</textarea>
-								</div>
-							</form>
-						</div>
-
-					</td>
-
-				</tr>
-				<tr>
-					<td><div id="title">Tag</div></td>
-					<td><input id="titleinput" type="text" value=""></td>
-				</tr>
-				<tr>
-					<td colspan="2">
-					<div id="btn">
-					 
-							<input type="hidden" name="id" value =${n.id }>
-							
-							 <button class="btn waves-effect waves-light" type="submit" name="action">저장</button>
-							 <a href="free-detail?c=${n.id}">취소</a>
-  					 </div>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		
-		<input type="hidden" name="memberId" value="large@a.a">
-	</div>
-</form>
-
-
-
-	<!-- <div id="main">
-		<div>
-			<div>
-				<div class="input-field">
-					<select>
-						<option value="" disabled selected></option>
-						<option value="1">Option 1</option>
-						<option value="2">Option 2</option>
-						<option value="3">Option 3</option>
-					</select>
 				</div>
 
-				<div id="input-field2" class="input-field">
-					<select>
-						<option value="" disabled selected></option>
-						<option value="1">Option 1</option>
-						<option value="2">Option 2</option>
-						<option value="3">Option 3</option>
-					</select>
-				</div>
 			</div>
 
-			<div id="divtitle">
-			<div id="title">제목</div>
-			<input id="titleinput" type="text" value="">
+			<div class="col s12 l6">
+				<form action="free-details" method="post" class="card-panel">
+
+					<div class="row">
+						<div class="input-field col s12">
+							<input placeholder=" title " id="titleinput" type="text"
+								name="title" class="validate" value="${n.title }"> <label
+								for="name" class="active"><i class="tiny material-icons">mode_edit</i> 제목  </label>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="input-field col s12">
+							<input placeholder=" http:// " id="contentSrc" type="text"
+								name="contentSrc" class="contentSrc" value="${n.contentSrc }"> <label
+								for="name" class="active"> 주소  </label>
+						</div>
+					</div>
+
+					<div class="file-field input-field">
+
+						<div class="btn">
+							<span>파일 첨부 </span> <input type="file" name="file" value="test"
+								class="btn" id="imgInp" multiple />
+						</div>
+
+						<div class="file-path-wrapper">
+							<input class="file-path validate" type="text">
+						</div>
+
+					</div>
+
+
+					<div class="row">
+						<div class="input-field col s12">
+							<textarea name="content"
+								class="form-control materialize-textarea" rows="15" id="comment"
+								data-length="130">${n.content }</textarea>
+							<label for="name" class="active"> 내용 </label>
+						</div>
+					</div>
+
+					<div id="btn">
+						<button class="btn waves-effect waves-light right" type="submit"
+							name="action" id="test">등록</button>
+					</div>
+					
+					<input type="hidden" name="id" value=${n.id } />
+					<%-- <input type="hidden" name="p" value="${page }" /> --%>
+
+					<script>
+							$(function() {
+								$("#comment").keydown(function(e) {
+
+									if ($("#comment").val().length > 130) {
+										if (e.keyCode != 8) {
+											alert("글자수 초과!!");
+										}
+									}
+
+								});
+							});
+						</script>
+						
+				</form>
+			</div>
 		</div>
-
-
-		<div id="divaddress">
-			<div id="address">주소</div>
-			<input id="titleinput" type="text" value="">
-		</div>
-
-		<div id="divcontent">
-			<form>
-				<div class="form-group">
-					<label for="comment">Comment:</label>
-					<textarea class="form-control" rows="15" id="comment"></textarea>
-				</div>
-			</form>
-		</div>
-
-		<div id="divtag">
-			<div id="title">Tag</div>
-			<input id="titleinput" type="text" value="">
-		</div>
-
-
-
-
-	</div> -->
-
-
-
+	</div>
+</div>
 
 	<!--  Scripts-->
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="/WiynPrj/resource/js/materialize.js"></script>
 	<script type="text/javascript">
-	$('select').material_select('destroy');
+		$('select').material_select('destroy');
 		$(document).ready(function() {
 			$('select').material_select();
 		});
@@ -217,8 +200,6 @@ body {
 			$('.modal').modal();
 		});
 		$(".button-collapse").sideNav();
-		
-	
 	</script>
 
-</body>
+</main>

@@ -100,8 +100,7 @@ body, html {
 			
 			readURL(this);
 			
-			$("#blah").attr(
-				'style', " visibility:visible; width:500px; height:500px; "
+			$("#blah").attr('style', " visibility:visible; width:500px; height:500px; "
 					+ "margin-top: 42px; -webkit-box-shadow: 9px 11px 22px -3px rgba(151,151,151,1); "
 					+ " -moz-box-shadow: 9px 11px 22px -3px rgba(151,151,151,1); "
 					+ " box-shadow: 9px 11px 22px -3px rgba(151,151,151,1); ");
@@ -222,6 +221,8 @@ body, html {
 				
 		</div>
 	</div>
+</div>
+
 </main>
 
 
