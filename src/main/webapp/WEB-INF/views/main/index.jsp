@@ -5,7 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
-
+<c:set var="root" value="${pageContext.request.contextPath}" />
 
 
 <style type="text/css">
@@ -723,14 +723,26 @@ textScroll.prototype.start = function() {
 				<c:forEach var="hot" items="${hot }" begin="1" end="4">
 					<li><a class="call_recipe thmb" href="/recipes/4145"> <img
 							src="http://api.thumbalizr.com/?url=http://${hot.url}" />
-					</a> <span class="author"> <a href="/profile/321451"> <img
-								alt="푸드텔러"
-								src="http://cloudfront.haemukja.com/vh.php?url=http://d1hk7gw6lgygff.cloudfront.net/uploads/user/image_file/321451/thumb_____2.jpg&amp;convert=jpgmin&amp;rt=600">
+					</a> <span class="author"> <a href="/profile/321451">
+					<c:choose>
+					<c:when test="${hot.userProfile eq '' }">
+						<img alt="푸드텔러"src="http://demo.geekslabs.com/materialize-v1.0/images/avatar.jpg">
+					</c:when>
+			
+						
+					<c:otherwise>
+						
+						<img alt="푸드텔러"src="${root}/resource/images/${hot.userProfile }">
+					</c:otherwise>
+						
+					</c:choose>
+				
 						</a> <strong><a class="jeju" " href="/profile/321451">${hot.memberId }</a></strong>
 					</span>
 						<p>
 							<a class="call_recipe jeju" href="/recipes/4145">${hot.title }
 							</a>
+						
 						</p>
 						<div class="option">
 							<div class="time">
@@ -1291,6 +1303,7 @@ $("#target").click(function(d){
 	} 
 });
 
+console.log($(".author img"));
 
 </script>
 

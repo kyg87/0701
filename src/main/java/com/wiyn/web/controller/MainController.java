@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 import com.wiyn.web.dao.BigCategoryDao;
+import com.wiyn.web.dao.MemberDao;
 import com.wiyn.web.dao.NoticeBoardDao;
 import com.wiyn.web.dao.RequestBoardDao;
 import com.wiyn.web.dao.SiteBoardDao;
@@ -76,10 +77,17 @@ public class MainController {
         
         String a = "2";
         List<SiteBoard> hot =sqlSession.getMapper(SiteBoardDao.class).getHotSmall(a);
+        
+        for (SiteBoard siteBoard : hot) {
+			siteBoard.setUserProfile(sqlSession.getMapper(MemberDao.class).get(siteBoard.getMemberId()).getProfile());
+		}
         model.addAttribute("hot", hot);
         
         String b = "3";
         List<SiteBoard> hot2 =sqlSession.getMapper(SiteBoardDao.class).getHotSmall(b);
+        for (SiteBoard siteBoard : hot2) {
+        	siteBoard.setUserProfile(sqlSession.getMapper(MemberDao.class).get(siteBoard.getMemberId()).getProfile());
+		}
         model.addAttribute("hot2", hot2);
         
        

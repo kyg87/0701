@@ -798,11 +798,11 @@ var currentPage = ${page};
 			  }
 			  else{
 				src ="http://demo.geekslabs.com/materialize-v1.0/images/avatar.jpg";
- 
+
 				//console.log($("#commentList > li > span));
 			  }
 			  
-			  console.log(src);
+			  
 				if(comment.memberId=='${loginID}'){
 					
 					$("#commentList").append($('<li class="collection-item avatar">' + + '</li>')
@@ -810,7 +810,7 @@ var currentPage = ${page};
 						 .append($('<span class="title">'+comment.memberId+'</span>'))
 						 .append($('<time>'+js_yyyy_mm_dd_hh_mm_ss(comment.regDate)+'</time>'))
 						 .append($('<p>'+comment.content+'</p>'))
-						 .append($('<a class="waves-effect waves-light btn right top" onclick="onDelete('+comment.id+ ');" value='+comment.id+'>삭제</a>')));
+						 .append($('<a class="waves-effect waves-light btn" onclick="onDelete('+comment.id+ ');" value='+comment.id+'>삭제</a>')));
 				}
 				else{
 					$("#commentList").append($('<li class="collection-item avatar">' + + '</li>')

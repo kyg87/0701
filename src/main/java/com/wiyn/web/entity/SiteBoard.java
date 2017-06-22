@@ -16,7 +16,7 @@ public class SiteBoard {
 	private String bigCategoryId;
 	private String smallCategoryId;
 	
-	
+	private String userProfile;
 	
 
 	private List<SiteComment> siteComments;
@@ -105,6 +105,12 @@ public class SiteBoard {
 	}
 	public void setSiteComments(List<SiteComment> siteComments) {
 		this.siteComments = siteComments;
+	}
+	public String getUserProfile() {
+		return userProfile;
+	}
+	public void setUserProfile(String userProfile) {
+		this.userProfile = userProfile;
 	}
 	
 
