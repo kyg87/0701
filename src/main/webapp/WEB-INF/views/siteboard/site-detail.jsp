@@ -380,6 +380,9 @@ time {
 			<ul id="commentList" class="collection">
 
 			</ul>
+			<ul id="pagination" class="pagination center">
+
+			</ul>
 
 
 					<form action="like" method="post">
@@ -620,7 +623,7 @@ page(${page});
 
 
 var currentPage = ${page};
-var src = '';	
+	
 	function onCreate(){
 		
 		var count = 0;
@@ -678,7 +681,6 @@ var src = '';
   function page(page){
 	   currentPage = page;
 		console.log(currentPage);
-	
 	   $.post("commentPage", {"page":page ,"id":${n.id }}, function(d) {
 		      
 		      $("#commentList").empty();
@@ -688,28 +690,25 @@ var src = '';
 		     
 		      if(obj.length != 0){
 		    	  
-		    		
 
 					for (var i = 0; i < obj.length; i++) {
-					
-						console.log(src);
-						if(obj[i].memberId=='${loginID}'){
-							
+						userCheck(obj[i]);
+		/* 				if(obj[i].memberId=='${loginID}'){
+						
 							$("#commentList").append($('<li class="collection-item avatar">' + + '</li>')
-								 .append($('<img src='+ src + 'alt="" class="circle"> '))
+								 .append($('<img src="/WiynPrj/resource/images/test.png" alt="" class="circle"> '))
 								 .append($('<span class="title">'+obj[i].memberId+'</span>'))
 								 .append($('<time>'+js_yyyy_mm_dd_hh_mm_ss(obj[i].regDate)+'</time>'))
 								 .append($('<p>'+obj[i].content+'</p>'))
 								 .append($('<a class="waves-effect waves-light btn" onclick="onDelete('+obj[i].id+ ');" value='+obj[i].id+'>삭제</a>')));
 						}
 						else{
-							
-							$("#commentList").append($('<li class="collection-item avatar">' + userCheck(obj[i].memberId)+ '</li>')
-									 .append($('<img src='+ src + 'alt="" class="circle"> '))
+							$("#commentList").append($('<li class="collection-item avatar">' + + '</li>')
+									 .append($('<img src="/WiynPrj/resource/images/test.png" alt="" class="circle"> '))
 									 .append($('<span class="title">'+obj[i].memberId+'</span>'))
 									 .append($('<time>'+js_yyyy_mm_dd_hh_mm_ss(obj[i].regDate)+'</time>'))
 									 .append($('<p>'+obj[i].content+'</p>')));
-						}
+						} */
 
 					}
 			    	
@@ -785,22 +784,44 @@ var src = '';
      page(s_page);
  }
  
- function userCheck(userName){
-
-
-	  $.get("${root}/joinus/getUser",{"email":userName} ,function(d){
+ function userCheck(comment){
+	  console.log('${loginID}');
+	  var userName = '${loginID}';
+	  var src ="";
+	  $.get("${root}/joinus/getUser",{"email":comment.memberId} ,function(d){
 		  
 		  var obj = JSON.parse(d);
 /*  		 alert(obj.profile);  */
 			  if(obj.profile != ''){
 				src = "${root}/resource/images/"+obj.profile;  
+				//console.log($("#commentList > li > span").text());
 			  }
 			  else{
 				src ="http://demo.geekslabs.com/materialize-v1.0/images/avatar.jpg";
+
+				//console.log($("#commentList > li > span));
 			  }
+			  
+			  console.log(src);
+				if(comment.memberId=='${loginID}'){
+					
+					$("#commentList").append($('<li class="collection-item avatar">' + + '</li>')
+						 .append($('<img src='+ src   +' class="circle"> '))
+						 .append($('<span class="title">'+comment.memberId+'</span>'))
+						 .append($('<time>'+js_yyyy_mm_dd_hh_mm_ss(comment.regDate)+'</time>'))
+						 .append($('<p>'+comment.content+'</p>'))
+						 .append($('<a class="waves-effect waves-light btn right top" onclick="onDelete('+comment.id+ ');" value='+comment.id+'>삭제</a>')));
+				}
+				else{
+					$("#commentList").append($('<li class="collection-item avatar">' + + '</li>')
+							 .append($('<img src='+ src  + ' class="circle"> '))
+							 .append($('<span class="title">'+comment.memberId+'</span>'))
+							 .append($('<time>'+js_yyyy_mm_dd_hh_mm_ss(comment.regDate)+'</time>'))
+							 .append($('<p>'+comment.content+'</p>')));
+				}
+
 		  
 		  
-		  return src;
 	  });
  }
 
