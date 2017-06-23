@@ -97,7 +97,31 @@ body, html {
 
 
 </style>
+<script type="text/javascript">
+	$(function() {
+		$("#imgInp").on('change',function() {
+			
+			readURL(this);
+			
+			$("#blah").attr('style', " visibility:visible; width:500px; height:500px; "
+					+ "margin-top: 42px; -webkit-box-shadow: 9px 11px 22px -3px rgba(151,151,151,1); "
+					+ " -moz-box-shadow: 9px 11px 22px -3px rgba(151,151,151,1); "
+					+ " box-shadow: 9px 11px 22px -3px rgba(151,151,151,1); ");
+			});
+	});
 
+	function readURL(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+	
+			reader.onload = function(e) {
+				$('#blah').attr('src', e.target.result);
+			}
+	
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+</script>
 
 
 <main id="main">
@@ -119,7 +143,7 @@ body, html {
 			</div>
 			
 			<div class="col s12 l6">
-					<form action="reg" method="post" class="card-panel">
+					<form action="reg" method="post" enctype="multipart/form-data"  class="card-panel">
 
 						<div class="row">
 							<div class="input-field col s12">

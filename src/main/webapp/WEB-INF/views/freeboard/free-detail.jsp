@@ -313,6 +313,12 @@ $(document).ready(function(){
             
             <div class="col s12 l6">
                <h2>Free Board</h2>
+               
+              	 <div>
+						<c:if test="${file.src != null }">
+			            	<img src=${file.src }${file.name } style="width:500px; height:500px; margin-top:42px;" />
+			            </c:if>
+				</div>
             </div>
             
             <div class="col s12 l6">

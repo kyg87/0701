@@ -42,6 +42,7 @@
 	<bean class="com.wiyn.web.dao.mybatis.MyBatisSiteBoardLikeDao" />
 	<bean class="com.wiyn.web.dao.mybatis.MyBatisTagDao" />
 	<bean class="com.wiyn.web.dao.mybatis.MyBatisNoticeBoardFileDao" />
+	<bean class="com.wiyn.web.dao.mybatis.MyBatisFreeBoardFileDao" />
 	
 	<context:annotation-config /><!-- Autowired가 필요한 곳에서 설정함 -->
 <!-- 	<context:annotation-config />Autowired가 필요한 곳에서 설정함
