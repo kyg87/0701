@@ -427,11 +427,9 @@ a.waves-effect.waves-light {
 		   <form class="box_write" id="comment-add-form"
 								action="siteBoard-comment-add" method="post">
          
-               <security:authorize access="isAnonymous()">
-                  <p>글쓰기는 로그인한 유저만 가능합니다 로그인해주세요</p>
-               </security:authorize>
+
                
-               <security:authorize access="isAuthenticated()">
+              
                <textarea placeholder="한 줄 댓글을 남겨주세요." name="content"
 										required="required"></textarea>
                
@@ -447,7 +445,7 @@ a.waves-effect.waves-light {
                     </button>
                </div>
  -->               
-               </security:authorize>
+            
              
              
             
@@ -657,11 +655,6 @@ a.waves-effect.waves-light {
 
 <script>
 
-$(document).ready(function() {
-    $("img").error(function() {
-        $("img").attr("src", "${root}/resource/images/avatar.png");
-    });
-});
 <!-----------------------------------------태그--------------------------------------------->
 $(function(){
 	$(".chip").on('click', function(){
@@ -693,16 +686,9 @@ $(document).ready(function(){
 
 		
 	});
-    $("img").error(function() {
-        $("img").attr("src", "${root}/resource/images/avatar.png");
-    });
+
 });
 
-$(document).ready(function() {
-    $("img").error(function() {
-        $("img").attr("src", "${root}/resource/images/avatar.png");
-    });
-});
 
 
  
@@ -715,6 +701,12 @@ var currentPage = ${page};
 	
 	function onCreate(){
 		
+		console.log('${loginID}');
+ 		if('${loginID}' == 'anonymousUser') {
+			alert("로그인한 유저만 사용 가능합니다.");
+			return ;
+		} 
+
 		var count = 0;
 		
 		var text = $("#comment-add-form").find("textarea");
@@ -739,8 +731,7 @@ var currentPage = ${page};
 			if(z =="1"){
 
 				page(1);
-	 	/* 	 	count++;
-				if(count <100)onCreate();  */
+				text.val('');
 			}
 			
 		});
@@ -775,31 +766,36 @@ var currentPage = ${page};
 		      $("#commentList").empty();
 		      $("#pagination").empty();
 		      var obj = JSON.parse(d);
-		      
+		      var src ="";
 		     
 		      if(obj.length != 0){
-		    	  
-
+	
 					for (var i = 0; i < obj.length; i++) {
-						userCheck(obj[i]);
-		/* 				if(obj[i].memberId=='${loginID}'){
+						
+						src = "${root}/resource/images/" +obj[i].profile
+						
+		 				if(obj[i].memberId=='${loginID}'){
 						
 							$("#commentList").append($('<li class="collection-item avatar">' + + '</li>')
-								 .append($('<img src="/WiynPrj/resource/images/test.png" alt="" class="circle"> '))
+									 .append($('<img src='+ src   +' class="circle"> '))
 								 .append($('<span class="title">'+obj[i].memberId+'</span>'))
 								 .append($('<time>'+js_yyyy_mm_dd_hh_mm_ss(obj[i].regDate)+'</time>'))
 								 .append($('<p>'+obj[i].content+'</p>'))
-								 .append($('<a class="waves-effect waves-light btn" onclick="onDelete('+obj[i].id+ ');" value='+obj[i].id+'>삭제</a>')));
+								 .append($('<a class="waves-effect waves-light" onclick="onDelete('+obj[i].id+ ');" value='+obj[i].id+'><i class="material-icons">clear</i></a>')));
 						}
 						else{
 							$("#commentList").append($('<li class="collection-item avatar">' + + '</li>')
-									 .append($('<img src="/WiynPrj/resource/images/test.png" alt="" class="circle"> '))
+									 .append($('<img src='+ src   +' class="circle"> '))
 									 .append($('<span class="title">'+obj[i].memberId+'</span>'))
 									 .append($('<time>'+js_yyyy_mm_dd_hh_mm_ss(obj[i].regDate)+'</time>'))
 									 .append($('<p>'+obj[i].content+'</p>')));
-						} */
+						} 
 
 					}
+			 	   $("img").error(function() {
+				          $("#commentList img").attr("src", "${root}/resource/images/avatar.png");
+				      }); 
+
 			
 			    	
 			    	
@@ -875,7 +871,7 @@ var currentPage = ${page};
  }
  
  function userCheck(comment){
-	  console.log('${loginID}');
+	  
 	  var userName = '${loginID}';
 	  var src ="";
 	  $.get("${root}/joinus/getUser",{"email":comment.memberId} ,function(d){
