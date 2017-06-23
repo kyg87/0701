@@ -748,8 +748,8 @@ textScroll.prototype.start = function() {
 			
 						
 					<c:otherwise>
-						
-						<img alt="푸드텔러"src="${root}/resource/images/${hot.userProfile }">
+	
+						<img alt="푸드텔러"src="${root}/resource/images/${hot.userProfile }" onerror="this.src ='${root}/resource/images/avatar.png'">
 					</c:otherwise>
 						
 					</c:choose>
@@ -1319,9 +1319,6 @@ $("#target").click(function(d){
 		return true;
 	} 
 });
-
-console.log($(".author img"));
-
 </script>
 
 <script type="text/javascript">
@@ -1332,5 +1329,9 @@ real_search_keyword.start(); // 스크롤링 시작
 <script>
 $(document).ready(function(){
     $('ul.tabs').tabs('select_tab', '#test1');
+    
+
   });
+  
+
  </script>

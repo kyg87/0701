@@ -585,6 +585,12 @@ time {
 <security:authentication property="name" var="loginID"/>
 
 <script>
+
+$(document).ready(function() {
+    $("img").error(function() {
+        $("img").attr("src", "${root}/resource/images/avatar.png");
+    });
+});
 <!-----------------------------------------태그--------------------------------------------->
 $(function(){
 	$(".chip").on('click', function(){
@@ -616,7 +622,19 @@ $(document).ready(function(){
 
 		
 	});
+    $("img").error(function() {
+        $("img").attr("src", "${root}/resource/images/avatar.png");
+    });
 });
+
+$(document).ready(function() {
+    $("img").error(function() {
+        $("img").attr("src", "${root}/resource/images/avatar.png");
+    });
+});
+
+
+ 
 	
 page(${page});
 
@@ -711,6 +729,7 @@ var currentPage = ${page};
 						} */
 
 					}
+			
 			    	
 			    	
 					 var lastPage = ${size/10+(1-(size/10%1))%1};
@@ -751,7 +770,7 @@ var currentPage = ${page};
 					 }
 					  
 				}
-		      
+		   
 		    
 		   	});
  	}
@@ -819,10 +838,14 @@ var currentPage = ${page};
 							 .append($('<time>'+js_yyyy_mm_dd_hh_mm_ss(comment.regDate)+'</time>'))
 							 .append($('<p>'+comment.content+'</p>')));
 				}
+				
+			   $("img").error(function() {
+			          $("#commentList img").attr("src", "${root}/resource/images/avatar.png");
+			      });
 
 		  
 		  
 	  });
  }
-
+ 
 </script>
