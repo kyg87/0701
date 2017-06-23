@@ -549,7 +549,8 @@ button, a {
 }
 
 .lst_recipe .option>div {
-    width: 80px;
+padding-right: 20px;
+    width: 100%;
     height: 100%;
     float: left;
     border-left: 1px solid #ddd;
@@ -561,7 +562,7 @@ button, a {
 }
 
 .lst_recipe .option>div {
-    width: 80px;
+    width: 100%;
     height: 100%;
     float: left;
     border-left: 1px solid #ddd;
