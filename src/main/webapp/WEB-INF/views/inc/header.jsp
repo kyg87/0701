@@ -60,7 +60,7 @@
 .login.loge {
 	/* background-color:mediumturquoise; */
 	/* background-color: rgb(169, 134, 103); */
-	background-color: rgb(221, 93, 88);
+	background-color: #337ab7;
 }
 
 .login.loge:hover {
@@ -183,6 +183,10 @@ nav .input-field label i {
 color:black;
 }
 
+.btn{
+	background-color: #337ab7;
+}
+
 </style>
 
 <header id="header">
@@ -234,7 +238,7 @@ color:black;
 			</c:choose>
 			<li>
 			<security:authorize access="isAnonymous()">
-				<a class="login font loge" href="#modal10">Login</a>
+				<a class="login font loge btn" href="#modal10">Login</a>
 			</security:authorize>
 			<security:authorize access="isAuthenticated()">
 	

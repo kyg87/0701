@@ -39,9 +39,10 @@ footer .first{
 .space{
    justify-content:space-around;
 }
+
 </style>
 
-<footer class="page-footer jeju">
+<footer class="page-footer">
    <div class="first space container">
       <div class="category space">
          <div class="col s12 m3 hide-on-small-only">
@@ -58,10 +59,10 @@ footer .first{
             </ul>
          </div>
          <c:forEach var="bcb" items="${bcbList }">
-            <div class="col category column s12 m3 hide-on-small-only">
+            <div class="col category  column s12 m3 hide-on-small-only">
                <h5 class="white-text">
                   <input type="hidden" value="${bcb.id }" name="bigCa" />${bcb.name }</h5>
-               <ul>
+               <ul >
                   <c:forEach var="small" items="${bcb.smallCategory}">
                      <li><a class="grey-text text-lighten-3"
                         href="http://localhost:8080/WiynPrj/siteboard/siteboard?p=1&q=&bigCa=${bcb.id}&smallCa=${small.id}"> <input type="hidden"  value="${small.id }" name="SmallCa" />${small.name }</a></li>

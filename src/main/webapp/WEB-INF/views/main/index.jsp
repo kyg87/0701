@@ -88,10 +88,11 @@
 /*--------------------------비쥬얼-----------------------------------*/
 .visual {
 	background-color: #fff;
-	height: 400px;
-	text-align: center;
-	background-image:
-		url("/WiynPrj/resource/images/season-1985856_1920.jpg");
+	height: 390px;
+	align-items: center;
+	
+	/* background-image:
+		url("/WiynPrj/resource/images/season-1985856_1920.jpg"); */
 	background-position: center;
 	background-origin: content-box;
 	background-size: 100%;
@@ -105,26 +106,46 @@
 
 	font-family: 'Hanna', serif;
 } */
+visual{
+box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0
+		rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+
 .visual p {
-	height: inherit;
-	font-size: 20px;
-	color: #b86065;
-	font-family: 'Hanna', serif;
-	text-align: center;
+	height: initial;
+    top: 101px;
+    font-size: 70px;
+    color: #000000;
+    text-align: center;
+    position: absolute;
+    z-index: 9999;
+    text-align: center;
 }
 
 .visual .banner-text {
-	width: inherit;
-	height: inherit;
+	top:0px;
 	position: relative;
-	background-color: rgba(255, 255, 255, 0.5);
+	width:100%;
+	height:100%;;
+	background-image:url("/WiynPrj/resource/images/back.png");
 }
+
+.visual .banner-img{
+	height: 200px;
+	background-color: fuchsia;
+}
+
+.visual .banner-card{
+	height: 200px;
+	background-color: lime;
+}
+
 
 /*------------------------- 공지사항 스크롤 부분 ----------------------------------*/
 #scroll {
 	height: 50px;
 	font-weight: 300;
-	background-color: #f3e8d7;
+	background-color: #fff;
 	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0
 		rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 	border-radius: 1.5px;
@@ -137,13 +158,11 @@
 #scroll a {
 	padding-left: 110px;
 	color: #000;
-	font-family: 'Jeju Gothic', serif;
 	font-size: 21px;
 }
 
 .noticelabel {
 	padding-left: 30px;
-	font-family: 'Jeju Gothic', serif;
 	font-size: 15px;
 	font-style: bold;
 }
@@ -200,7 +219,7 @@
 }
 
 .category-p {
-	font-size: 25px;
+	font-size: 16px;
 }
 
 input[type="text"] {
@@ -229,6 +248,11 @@ input[type="text"] {
 
 .thema {
 	margin-bottom: 20px;
+}
+
+.thema .top-p{
+	
+    font-size: 18px;
 }
 /*------------------------- 최신순,점수순,댓글순 부분 ----------------------------------*/
 .tabs {
@@ -297,7 +321,7 @@ input[type="text"] {
 }
 
 .sitego {
-	background: rgb(221, 93, 88);
+	background:#337ab7; 
 	width: 100%;
 	height: 50px;
 	text-align: center;
@@ -657,6 +681,23 @@ input, button, img {
 	border: none;
 	color: #999;
 }
+
+
+
+
+
+
+
+
+.collapsible{
+margin:0px;
+text-align: center;
+}
+.collapsible:hover{
+text-decoration:underline; ;
+
+}
+
 </style>
 <script type="text/javascript">
 function textScroll(scroll_el_id) {
@@ -714,7 +755,13 @@ textScroll.prototype.start = function() {
 
 <main id="main">
 <visual>
-	<div class="visual">
+	<div class="visual ">
+		<div class="banner-text ">
+			<div class="container flex">
+				<div class="banner-img col l7 s12"></div>
+				<div class="banner-card col l5 s12"></div>
+			</div>
+		</div>
 	<!-- <div class="banner-text">
 			<p>What is your needs? <br>당신이 원하는 사이트, 당신에게 필요한 사이트<br>추천 받고, 추천할 수 있는 자유로운 공간입니다! </p>
 </div> -->
@@ -725,20 +772,25 @@ textScroll.prototype.start = function() {
 <div>
 	<ul id="scroll">
 	<div class="container">
-   <label class="noticelabel hanna">공지사항 > </label>
+   <label class="noticelabel">공지사항 > </label>
       <c:forEach var="m" items="${noticelist}">
          <li class="hite"><a href="../noticeboard/notice-detail?c=${m.id}&p=${param.p}">${m.title}</a></li>
       </c:forEach>
+      </div>
    </ul>
+   
    </div>
-</div>
+
 
 <!-- 핫한사이트부분 -->
 <div class="container flex column">
 <div class="hot-site flex column">
-		<div class="hanna center thema">
-			<p class="">"무엇이" 필요한 당신에게</p>
-			<p class="point">~~~한 사이트</p>
+		<div class="thema flex">
+			<i class="medium material-icons">play_arrow</i>
+			<div class="flex column">
+			<p class="top-p">오븐이 없는 당신에게 유용한 사이트</p>
+			<p>오븐이 없어도 만들 수 있는 다양한 레시피!</p>
+			</div>
 		</div>
 		<div class="card-div">
 			<ul class="lst_recipe flex space">
@@ -759,20 +811,20 @@ textScroll.prototype.start = function() {
 						
 					</c:choose>
 				
-						</a> <strong><a class="jeju" " href="/profile/321451">${hot.memberId }</a></strong>
+						</a> <strong><a class=""  href="/profile/321451">${hot.memberId }</a></strong>
 					</span>
 						<p>
-							<a class="call_recipe jeju" href="../siteboard/site-detail?c=${hot.id}">${hot.title }
+							<a class="call_recipe" href="../siteboard/site-detail?c=${hot.id}">${hot.title }
 							</a>
 						
 						</p>
 						<div class="option">
 							<div class="time">
 
-								<a class="jeju" href="/recipes?cooking_time=30"><fmt:formatDate
+								<a class="" href="/recipes?cooking_time=30"><fmt:formatDate
 										value="${hot.regDate}" pattern="yyyy-MM-dd" /></a>
 							</div>
-							<div class="like jeju">
+							<div class="like">
 								<form action="/bookmarks" accept-charset="UTF-8" method="post">
 									<input name="utf8" type="hidden" value="✓"><input
 										type="hidden" name="authenticity_token"
@@ -857,9 +909,9 @@ textScroll.prototype.start = function() {
 
 
 	<div class="hot-site flex column">
-		<div class="hanna center thema">
-			<p class="">"무엇이" 필요한 당신에게</p>
-			<p class="point ">~~~한 사이트</p>
+		<div class="thema flex">
+			<i class="medium material-icons">done</i>
+			<p class="">오븐이 없는 당신에게 유용한 사이트</p>
 		</div>
 		<!-- <h2 class="header lighten-1 section-title">
 <div class="hanna">
@@ -874,19 +926,19 @@ textScroll.prototype.start = function() {
 					</a> <span class="author"> <a href="/profile/321451"> <img
 								alt="푸드텔러"
 								src="http://cloudfront.haemukja.com/vh.php?url=http://d1hk7gw6lgygff.cloudfront.net/uploads/user/image_file/321451/thumb_____2.jpg&amp;convert=jpgmin&amp;rt=600">
-						</a> <strong><a class="jeju" " href="/profile/321451">${hot2.memberId }</a></strong>
+						</a> <strong><a class=""  href="/profile/321451">${hot2.memberId }</a></strong>
 					</span>
 						<p>
-							<a class="call_recipe jeju" href="../siteboard/site-detail?c=${hot2.id}">${hot2.title }
+							<a class="call_recipe" href="../siteboard/site-detail?c=${hot2.id}">${hot2.title }
 							</a>
 						</p>
 						<div class="option">
 							<div class="time">
 
-								<a class="jeju" href="/recipes?cooking_time=30"><fmt:formatDate
+								<a class="" href="/recipes?cooking_time=30"><fmt:formatDate
 										value="${hot2.regDate}" pattern="yyyy-MM-dd" /></a>
 							</div>
-							<div class="like jeju">
+							<div class="like">
 								<form action="/bookmarks" accept-charset="UTF-8" method="post">
 									<input name="utf8" type="hidden" value="✓"><input
 										type="hidden" name="authenticity_token"
@@ -1013,7 +1065,44 @@ textScroll.prototype.start = function() {
 	});
 </script>
 <div class="background">
-<div class="container jeju">
+<ul class="collapsible" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header"><p class="category-p">현재 원하는 카테고리가 없다면?</p></div>
+      <div class="collapsible-body">
+      <div class="categoryy main-request background">
+      <label> 왼쪽 작성란에 제목과 그 아래에 생기길 원하는 카테고리를 자세하게 써주시면 관리자가 확인 후에 해당 카테고리를 생성해드립니다!</label>
+				<br>
+				<br><label> 카테고리 생성에 대한 답변을 받아보고 싶으시다면 내용란에 "이메일"을 꼭 적어주세요.</label>
+				<br>
+				<br><label>그 외 기타 궁금한 문의사항은 thjds8@gmail.com으로 보내주시면 감사하겠습니다.</label>
+				</div>
+				
+				<form id="reqRegform" action="reg-index" method="post">
+			<div class="flex column main-request">
+				<div>
+					<div id="title" class="input-field col s12 row">
+						<input name="title" id="title1" type="text" class="validate"
+							required="required"> <label for="Title">제목</label>
+					</div>
+				</div>
+				<div id="content">
+					<div class="row">
+						<div class="input-field col s12">
+							<textarea name="content" id="textarea1"
+								class="materialize-textarea" required="required"></textarea>
+							<label for="textarea1">내용</label>
+						</div>
+					</div>
+				</div>
+				<div>
+					<button id="target" class="btn waves-effect waves-light right"
+						type="submit" name="action">카테고리 요청하기</button>
+				</div>
+			</div>
+			</form>
+		</div>
+    </li>
+<!-- <div class="container jeju">
 	
 		<span id="location123"></span>
 		<div class=" flex between category-add">
@@ -1054,7 +1143,7 @@ textScroll.prototype.start = function() {
 			<input type="hidden" name="memberId"
 				value=<security:authentication property="name"/>>
 	
-</div>
+</div> -->
 </div>
 	<%-- <div class="col s12 line">
 		<ul class="tabs">
