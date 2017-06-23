@@ -21,7 +21,9 @@ body, html {
    margin: 0.5rem 0 1rem 0;
    border-radius: 2px;
    background-color: #F0E5D7 !important;
-   min-height: 640px;
+   min-height: 500px;
+   margin-top: 100px;
+   border-radius: 10px;
 }
 
 #main {
@@ -92,6 +94,21 @@ body, html {
    /* background: rgb(210, 178, 149); */
    background-color: rgb(195, 143, 95) !important;
 }
+
+ #label{
+	font-size: 15px;
+}
+
+
+#hehe{
+	padding-top: 50px;
+}	
+
+
+ .imgpencil{
+	margin-bottom:50px;
+}	
+
 </style>
 
 <!-- <script type="text/javascript">
@@ -129,13 +146,14 @@ body, html {
 
          <div class="col s12 l6">
             <h2 class="title">Request Board</h2>
-                        
-            <div class="preview">
             
-               <img id="blah" src="#"
-                  style="width: 500px; height: 500px; visibility: hidden;" />
-            
-            </div>
+            <div class="imgpencil">
+		
+							<img src="/WiynPrj/resource/images/notepad.jpg" 
+								style="width: 500px; height: 350px; ; margin-top: 100px; margin-right: 50px; border-radius: 10px; " />
+					
+			</div>            
+           
 
          </div>
          
@@ -143,13 +161,14 @@ body, html {
               <%--  <form id="reg" action="requestBoard-reg?p=${n.id}"
                   method="post" enctype="multipart/form-data" class="card-panel"> --%>
                   
-                  <form action="reg" method="post" class="card-panel">
+                  <form action="reg" method="post" class="card-panel" 
+                  style="width: 500px; height: 350px; ; margin-top: 100px; margin-right: 50px; "	>
 
-                  <div class="row">
-                     <div class="input-field col s12">
-                        <input placeholder=" title " id="titleinput" type="text"
+                  <div class="row" id="hehe">
+                     <div class="input-field col s12" >
+                        <input placeholder="" id="titleinput" type="text"
                            name="title" class="validate" value="" required="required">
-                        <label for="name" class="active"><i
+                        <label for="name" class="active" id="label"><i
                            class="tiny material-icons">mode_edit</i> 제목 </label>
                      </div>
                   </div>
@@ -182,7 +201,7 @@ body, html {
                         <textarea name="content"
                            class="form-control materialize-textarea" rows="15"
                            id="comment" data-length="130" required="required"></textarea>
-                        <label for="name" class="active">
+                        <label for="name" class="active" id="label">
                         <i class="tiny material-icons">textsms</i> 내용 </label>
                      </div>
                   </div>
