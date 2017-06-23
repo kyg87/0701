@@ -263,6 +263,12 @@ time {
 	color: black;
 	
 }
+
+a.waves-effect.waves-light {
+    position: absolute;
+    top: 9px;
+    right: 7px;
+}
 </style>
 
 <main id="main">
@@ -585,6 +591,12 @@ time {
 <security:authentication property="name" var="loginID"/>
 
 <script>
+
+$(document).ready(function() {
+    $("img").error(function() {
+        $("img").attr("src", "${root}/resource/images/avatar.png");
+    });
+});
 <!-----------------------------------------태그--------------------------------------------->
 $(function(){
 	$(".chip").on('click', function(){
@@ -616,7 +628,19 @@ $(document).ready(function(){
 
 		
 	});
+    $("img").error(function() {
+        $("img").attr("src", "${root}/resource/images/avatar.png");
+    });
 });
+
+$(document).ready(function() {
+    $("img").error(function() {
+        $("img").attr("src", "${root}/resource/images/avatar.png");
+    });
+});
+
+
+ 
 	
 page(${page});
 
@@ -711,6 +735,7 @@ var currentPage = ${page};
 						} */
 
 					}
+			
 			    	
 			    	
 					 var lastPage = ${size/10+(1-(size/10%1))%1};
@@ -751,7 +776,7 @@ var currentPage = ${page};
 					 }
 					  
 				}
-		      
+		   
 		    
 		   	});
  	}
@@ -810,7 +835,7 @@ var currentPage = ${page};
 						 .append($('<span class="title">'+comment.memberId+'</span>'))
 						 .append($('<time>'+js_yyyy_mm_dd_hh_mm_ss(comment.regDate)+'</time>'))
 						 .append($('<p>'+comment.content+'</p>'))
-						 .append($('<a class="waves-effect waves-light btn" onclick="onDelete('+comment.id+ ');" value='+comment.id+'>삭제</a>')));
+						 .append($('<a class="waves-effect waves-light" onclick="onDelete('+comment.id+ ');" value='+comment.id+'><i class="material-icons">clear</i></a>')));
 				}
 				else{
 					$("#commentList").append($('<li class="collection-item avatar">' + + '</li>')
@@ -819,10 +844,14 @@ var currentPage = ${page};
 							 .append($('<time>'+js_yyyy_mm_dd_hh_mm_ss(comment.regDate)+'</time>'))
 							 .append($('<p>'+comment.content+'</p>')));
 				}
+				
+			   $("img").error(function() {
+			          $("#commentList img").attr("src", "${root}/resource/images/avatar.png");
+			      });
 
 		  
 		  
 	  });
  }
-
+ 
 </script>
