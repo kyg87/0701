@@ -253,15 +253,37 @@ time {
 
 
 .chip{
- 	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
- 	background-color: rgb(210, 178, 149);
- 	margin-bottom:10px;
+
+    /* box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2); */
+    background-color: rgba(255, 255, 255, 0);
+    margin-bottom: 10px;
+    border: 1px solid #846C63;
+	color:#846C63;
+	font-size:12px;
+	height: auto;
 }
 
 .material-icons.like{
 	margin-top:10px;
 	color: black;
-	
+}
+
+
+
+
+i.left{
+	margin-right:6px;
+}
+#likebtn{
+padding:2px;
+font-size:13px;
+height: auto;
+line-height: 22px;
+
+}
+
+#likebtn i.tiny{
+padding-top:0px;  
 }
 
 a.waves-effect.waves-light {
@@ -302,8 +324,60 @@ a.waves-effect.waves-light {
 					<div class="jeju">
 						<span >${b }</span> <span>> ${s }</span> 
 					</div> 
-					<hr>	
-			<ul class="opening-hours">
+					<hr>
+
+					<div>
+						<span class="detail-title"><i class="tiny material-icons">person_pin</i>Writer</span>
+						<span> ${n.memberId } </span>
+						<hr />
+						<br />
+					</div>
+
+					<div>
+						<span class="detail-title"><i class="tiny material-icons">query_builder</i>Write
+							Time</span> <span><fmt:formatDate value="${n.regDate }"
+								pattern="yyyy-MM-dd HH:mm:ss" /></span>
+						<hr />
+						<br />
+					</div>
+
+					<div>
+						<span class="detail-title"><i class="tiny material-icons">language</i>
+							Url </span> <span> ${n.url }</span>
+						<hr />
+						<br />
+					</div>
+
+					<div>
+						<span class="detail-title"><i class="tiny material-icons">textsms</i>
+							Comment </span>
+						<c:set var="newLine" value="\r" />
+						<span>${n.content }</span>
+						<hr />
+						<br />
+					</div>
+					
+					<form action="like" method="post">
+						<button id="likebtn" class="waves-effect waves-light btn" type="submit" name="action">
+							<i id="icon-margin" class="material-icons left tiny">thumb_up</i>
+							좋아요 ${l }개
+						</button>
+						<input type="hidden" name="siteBoardId" value=${n.id }>
+						<security:authorize access="isAuthenticated()">
+							<input type="hidden" name="memberId" value=<security:authentication property="name"/>>
+						</security:authorize>
+					</form>
+					
+					<hr>
+
+					<div class="jeju">
+						<c:forEach var="tag" items="${t }">
+							<div id="chip" class="chip">${tag }</div>
+						</c:forEach>
+					</div>
+
+
+					<%-- <%-- <ul class="opening-hours">
 				
 				<li class="flex ">
 					<div class="flex detail-title">
@@ -340,7 +414,7 @@ a.waves-effect.waves-light {
 						<div id="chip" class="chip">${tag }</div>
 					</c:forEach>
 				</li>
-			</ul>
+			</ul> --%> 
 			
 			
 			<%-- <span class="detail-title"><i class="material-icons">textsms </i>comment<div
@@ -391,16 +465,7 @@ a.waves-effect.waves-light {
 			</ul>
 
 
-					<form action="like" method="post">
-						<button id="likebtn" class="waves-effect waves-light btn" type="submit" name="action">
-							<i id="icon-margin" class="material-icons left ">thumb_up</i>
-							${l }
-						</button>
-						<input type="hidden" name="siteBoardId" value=${n.id }>
-						<security:authorize access="isAuthenticated()">
-							<input type="hidden" name="memberId" value=<security:authentication property="name"/>>
-						</security:authorize>
-					</form>
+				
 		<button class="btn waves-effect waves-light list-btn" type="submit" name="action">목록</button>
 		</div>
 

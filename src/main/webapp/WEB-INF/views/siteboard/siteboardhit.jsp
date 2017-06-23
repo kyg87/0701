@@ -231,6 +231,30 @@
 	bottom: 50px;
 	right: 50px;
 }
+
+
+.caption{
+	position:absolute;
+	
+	left:0;
+	padding:10px 20px 20px 20px;
+	background:7f7f7f;
+	background: rgba(0,0,0,0.5);
+	width:100%;
+	max-height:32%;
+	
+
+}
+
+
+.slider .slides li .caption {
+    
+    width: 100%;
+    left: 0px;
+    top: auto;
+    bottom:0;
+    }
+    
 </style>
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 <main id="main">
@@ -273,19 +297,29 @@
  	
 	</c:otherwise>
 </c:choose>
-<label for="${bn.name} 베스트">${bn.name} 베스트</label>
-   <div> 
-<c:forEach var="hotlist" items="${likelist }" begin="0" varStatus="status" end="5">
-  ${status.count }<a  href="site-detail?c=${hotlist.id}&p=${param.p}"><img class="activator"  src="http://api.thumbalizr.com/?url=http://${hotlist.url}&width=250" /></a>
-</c:forEach>
-</div>
-
 
 		<div class="collection mvaside">
 	    <a href="?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenew.news }</span>최신순</a>
 	    <a href="siteboardlike?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenewL.news }</span>베스트 사이트</a>
 	    <a href="siteboardhit?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenewH.news }</span>많이 본 사이트</a>
 	  	</div>
+<label for="${bn.name} 베스트">${bn.name} 베스트</label>
+  <div class="slider">
+    <ul class="slides">
+    <c:forEach var="hotlist" items="${likelist }" begin="0" varStatus="status" end="3">
+      <li>
+        <a  href="site-detail?c=${hotlist.id}&p=${param.p}"><img class="activator"  src="http://api.thumbalizr.com/?url=http://${hotlist.url}" /></a>
+        <div class="caption center-align">
+          <h3>${status.count }</h3>
+          <h5 class="light grey-text text-lighten-3">${hotlist.title}</h5>
+        </div>
+      </li>
+      </c:forEach>
+    </ul>
+  </div>
+
+
+
 	<table class="highlight table">
 		<thead>
 			<tr>
@@ -352,6 +386,8 @@
 				class="material-icons">chevron_right</i></a>
 		</c:if></li>
 </ul>
+</div>
+</div>
 
 
 
@@ -378,7 +414,7 @@
 </script>
  <script>
  $(document).ready(function() {
-
+	 $('.slider').slider();
 	  // toggle search bar and disable request if blank...
 	  $('[data-expanding-search-button]').on('click', function() {
 	    var parent = $(this).closest('[data-expanding-search]');
