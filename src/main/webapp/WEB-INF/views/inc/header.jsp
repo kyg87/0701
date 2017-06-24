@@ -187,6 +187,10 @@ color:black;
 	background-color: #337ab7;
 }
 
+.btn_area {
+    background-color: #fff;
+}
+
 </style>
 
 <header id="header">
@@ -456,13 +460,16 @@ color:black;
 				<input id="profileImgbtn" name="file" type="file" style="display: none">
 				 <!-- <img id="profileImg" alt="" src="http://d1hk7gw6lgygff.cloudfront.net/assets/_img/mypage/img_edit_profile-3c5f60b7a1ddf555f665e50d2987f7a3.png"> -->
 				 <img id="profileImg" alt="" src="${root}/resource/images/KakaoTalk_20170607_162312318.jpg">
-			<span><security:authentication property="name" /></span>
-		
-			</div>
-			<div class="btn_area">
+				<div>
+					<span><security:authentication property="name" /></span>
+				</div>
+				
+				<div class="btn_area">
 					<button type="button" class="btn waves-effect waves-light">취소</button>
 					<button id="editBtn" type="button" class="btn waves-effect waves-light">저장</button>
+				</div>
 			</div>
+	
 			
 			<input type="hidden" name="email" value=<security:authentication property="name"/> />
 		</form>
