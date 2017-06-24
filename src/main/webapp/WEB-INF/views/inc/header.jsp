@@ -442,7 +442,7 @@ color:black;
   <!-- 개인프로필 Modal Structure -->
 	<div id="modal110" class="modal">
 		<div class="info_top">
-			<input id="profileImgbtn" type="file" style="display: none">
+			<input id="profileImgbtn" name="file" type="file" style="display: none">
 			 <!-- <img id="profileImg" alt="" src="http://d1hk7gw6lgygff.cloudfront.net/assets/_img/mypage/img_edit_profile-3c5f60b7a1ddf555f665e50d2987f7a3.png"> -->
 			 <img id="profileImg" alt="" src="${root}/resource/images/KakaoTalk_20170607_162312318.jpg">
 		<p><security:authentication property="name" /></p>
