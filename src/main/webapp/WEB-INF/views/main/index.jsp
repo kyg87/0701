@@ -30,23 +30,22 @@
 	margin: 0;
 	padding: 0;
 }
+
 @media only screen and (max-width: 500px) {
-.hi .category-p {
-    display:none;
-}
-
-.main-request .category-p {
-    font-size:18px;
-}
+	.hi .category-p {
+		display: none;
+	}
+	.main-request .category-p {
+		font-size: 18px;
+	}
 	.category-add .main-request {
-    width: 280px;
+		width: 280px;
+	}
+	.main-request 
+	#reqRegform .main-request {
+		width: 280px;
+	}
 }
-.main-request 
-	#reqRegform .main-request{
-    width: 280px;
-	} 
-}
-
 
 @media only screen and (max-width: 630px) {
 	.hot-site ul {
@@ -66,7 +65,7 @@
 		align-items: center;
 	}
 	form#reqRegform {
-    margin: 0px;
+		margin: 0px;
 	}
 }
 
@@ -90,56 +89,95 @@
 	background-color: #fff;
 	height: 390px;
 	align-items: center;
-	
-	/* background-image:
-		url("/WiynPrj/resource/images/season-1985856_1920.jpg"); */
 	background-position: center;
 	background-origin: content-box;
 	background-size: 100%;
 }
 
-/* .visual p:first-child{
-	/* background-color: rgba(255,255,255,0.4); 
-	height: inherit;
-	font-size: 30px;
-	color:#b86065;
-
-	font-family: 'Hanna', serif;
-} */
-visual{
-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0
+visual {
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0
 		rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
-.visual p {
-	height: initial;
-    top: 101px;
-    font-size: 70px;
-    color: #000000;
-    text-align: center;
-    position: absolute;
-    z-index: 9999;
-    text-align: center;
-}
-
-.visual .banner-text {
-	top:0px;
+.visual .banner{
+	top: 0px;
 	position: relative;
-	width:100%;
-	height:100%;;
-	background-image:url("/WiynPrj/resource/images/back.png");
+	width: 100%;
+	height: 100%;;
+	background-image: url("/WiynPrj/resource/images/back.png");
 }
 
-.visual .banner-img{
-	height: 200px;
-	background-color: fuchsia;
+/* .visual p {
+	height: initial;
+	top: 101px;
+	font-size: 70px;
+	color: #000000;
+	text-align: center;
+	position: absolute;
+	z-index: 9999;
+	text-align: center;
+}
+ */
+
+
+.visual .banner-img {
+	background-image:
+		url("/WiynPrj/resource/images/responsive-2044921_1920.jpg");
+	width:auto;
+	height: auto;
 }
 
-.visual .banner-card{
+.visual .banner-card {
 	height: 200px;
 	background-color: lime;
 }
 
+/*---------------------------------------*/
+.ui-12 .ui-content {
+	max-width: 600px;
+	margin: 20px auto;
+}
+
+.ui-12 .ui-head {
+	width: 200px;
+	height: 40px;
+	position: relative;
+	top: 21px;
+	left: 22px;
+	box-shadow: 2px 2px 0px 2px rgba(0, 0, 0, 0.1);
+	border-radius: 4px;
+}
+
+.bg-blue {
+	background-color: #0782c5 !important;
+}
+
+.ui-12 .ui-head h2 {
+	font-size: 15px;
+	line-height: 40px;
+	margin-left: 14px;
+	color: #fff;
+	text-transform: uppercase;
+}
+
+.ui-12 .ui-body {
+	padding: 25px;
+	padding-top: 30px;
+	border-width: 2px;
+	background: #fff;
+	box-shadow: 4px 4px 0px 2px rgba(0, 0, 0, 0.05);
+	border-radius: 4px;
+	min-width: 300px;
+	min-height: 240px;
+}
+
+.br-blue {
+	border: 1px solid #cecece;
+}
+
+.visual p {
+	margin: 0 0 11px;
+}
 
 /*------------------------- 공지사항 스크롤 부분 ----------------------------------*/
 #scroll {
@@ -155,9 +193,15 @@ box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0
 	justify-content: center;
 }
 
+label {
+	color: #337ab7;
+	font-weight: bold;
+}
+
 #scroll a {
 	padding-left: 110px;
 	color: #000;
+	font-weight: bold;
 	font-size: 21px;
 }
 
@@ -234,10 +278,6 @@ input[type="text"] {
 	width: 450px;
 }
 
-#reqRegform {
-	margin-left: 200px;
-}
-
 .background textarea.materialize-textarea {
 	margin: 0px;
 }
@@ -250,9 +290,8 @@ input[type="text"] {
 	margin-bottom: 20px;
 }
 
-.thema .top-p{
-	
-    font-size: 18px;
+.thema .top-p {
+	font-size: 18px;
 }
 /*------------------------- 최신순,점수순,댓글순 부분 ----------------------------------*/
 .tabs {
@@ -321,7 +360,7 @@ input[type="text"] {
 }
 
 .sitego {
-	background:#337ab7; 
+	background: #337ab7;
 	width: 100%;
 	height: 50px;
 	text-align: center;
@@ -682,22 +721,14 @@ input, button, img {
 	color: #999;
 }
 
-
-
-
-
-
-
-
-.collapsible{
-margin:0px;
-text-align: center;
-}
-.collapsible:hover{
-text-decoration:underline; ;
-
+.collapsible {
+	margin: 0px;
+	text-align: center;
 }
 
+.collapsible:hover {
+	text-decoration: underline;;
+}
 </style>
 <script type="text/javascript">
 function textScroll(scroll_el_id) {
@@ -756,23 +787,59 @@ textScroll.prototype.start = function() {
 <main id="main">
 <visual>
 	<div class="visual ">
-		<div class="banner-text ">
-			<div class="container flex">
-				<div class="banner-img col l7 s12"></div>
-				<div class="banner-card col l5 s12"></div>
+		<div class="banner">
+			<div class="container">
+				<div class="section">
+					<div class="row">
+						<div class="col l5 s12">
+							<!-- <img src="/WiynPrj/resource/images/responsive-2044921_1920.jpg"/> -->
+						</div>
+						<div class="col l7 s12">
+						
+						</div>
+					</div>
+				</div>
 			</div>
+		</div>
+	</div>
+</visual>
+
+
+			<!-- <div class="container flex">
+				<div class="banner-img col l7 s12">
+					<img src="/WiynPrj/resource/images/responsive-2044921_1920"/>
+				</div>
+				<div class="col-sm-5">          
+	              <div class="ui-12 col-sm-9 center">                
+	                  UI Content
+	                  <div class="ui-content">
+	                    Ui head
+	                    <div class="ui-head bg-blue">
+	                      Heading
+	                      <h2>이곳은 어떤 곳인가요?</h2>
+	                    </div> 
+	                    UI Body
+	                    <div class="ui-body br-blue">
+	                      <div class="row">
+	                        <div class="col-sm-12 col-sm-12">
+	                          <p>당신이 원하는 사이트, 당신에게 필요한 사이트를 추천 받고, 추천 할 수 있는 자유로운 공간입니다!</p>
+	                          <a href="us" class="btn btn-primary">Learn More</a>
+	                        </div>  
+	                      </div>
+	                    </div>
+	                  </div>                 
+	              </div>		             
+	            </div>
+			</div> -->
 		</div>
 	<!-- <div class="banner-text">
 			<p>What is your needs? <br>당신이 원하는 사이트, 당신에게 필요한 사이트<br>추천 받고, 추천할 수 있는 자유로운 공간입니다! </p>
 </div> -->
-	</div>
-
-</visual>
 <!-- 공지사항 스크롤부분 -->
 <div>
 	<ul id="scroll">
 	<div class="container">
-   <label class="noticelabel">공지사항 > </label>
+   <label class="noticelabel">공지사항 ▶  </label>
       <c:forEach var="m" items="${noticelist}">
          <li class="hite"><a href="../noticeboard/notice-detail?c=${m.id}&p=${param.p}">${m.title}</a></li>
       </c:forEach>
@@ -1039,9 +1106,9 @@ textScroll.prototype.start = function() {
 </div> -->
 </div>
 	<div class="hi">
-	<p class="jeju category-p">당신이 알고 있는 "유용한 사이트"를 모두에게 추천해주세요!</p> 
+	<p class="category-p">당신이 알고 있는 "유용한 사이트"를 모두에게 추천해주세요!</p> 
 	</div>
-	<a class="jeju waves-effect waves-light sitego" href="#">글을 쓰러 가시겠습니까?</a>
+	<a class="waves-effect waves-light sitego" href="#">글을 쓰러 가시겠습니까?</a>
 
 <input class="sitein" type="hidden" name="memberId"
 	value=<security:authentication property="name"/>>
@@ -1065,44 +1132,48 @@ textScroll.prototype.start = function() {
 	});
 </script>
 <div class="background">
-<ul class="collapsible" data-collapsible="accordion">
-    <li>
-      <div class="collapsible-header"><p class="category-p">현재 원하는 카테고리가 없다면?</p></div>
-      <div class="collapsible-body">
-      <div class="categoryy main-request background">
-      <label> 왼쪽 작성란에 제목과 그 아래에 생기길 원하는 카테고리를 자세하게 써주시면 관리자가 확인 후에 해당 카테고리를 생성해드립니다!</label>
-				<br>
-				<br><label> 카테고리 생성에 대한 답변을 받아보고 싶으시다면 내용란에 "이메일"을 꼭 적어주세요.</label>
-				<br>
-				<br><label>그 외 기타 궁금한 문의사항은 thjds8@gmail.com으로 보내주시면 감사하겠습니다.</label>
+	<ul class="collapsible" data-collapsible="accordion">
+		<li>
+			<div class="collapsible-header">
+				<p class="category-p">현재 원하는 카테고리가 없다면?</p>
+			</div>
+			
+			<div class="collapsible-body flex space">
+				<div class="categoryy main-request background">
+					<label> 왼쪽 작성란에 제목과 그 아래에 생기길 원하는 카테고리를 자세하게 써주시면 관리자가 확인
+						후에 해당 카테고리를 생성해드립니다!</label> <br> <br>
+					<label> 카테고리 생성에 대한 답변을 받아보고 싶으시다면 내용란에 "이메일"을 꼭 적어주세요.</label> <br>
+					<br>
+					<label>그 외 기타 궁금한 문의사항은 thjds8@gmail.com으로 보내주시면 감사하겠습니다.</label>
 				</div>
-				
+
 				<form id="reqRegform" action="reg-index" method="post">
-			<div class="flex column main-request">
-				<div>
-					<div id="title" class="input-field col s12 row">
-						<input name="title" id="title1" type="text" class="validate"
-							required="required"> <label for="Title">제목</label>
-					</div>
-				</div>
-				<div id="content">
-					<div class="row">
-						<div class="input-field col s12">
-							<textarea name="content" id="textarea1"
-								class="materialize-textarea" required="required"></textarea>
-							<label for="textarea1">내용</label>
+					<div class="flex column main-request">
+						<div>
+							<div id="title" class="input-field col s12 row">
+								<input name="title" id="title1" type="text" class="validate"
+									required="required"> <label for="Title">제목</label>
+							</div>
+						</div>
+						<div id="content">
+							<div class="row">
+								<div class="input-field col s12">
+									<textarea name="content" id="textarea1"
+										class="materialize-textarea" required="required"></textarea>
+									<label for="textarea1">내용</label>
+								</div>
+							</div>
+						</div>
+						<div>
+							<button id="target" class="btn waves-effect waves-light right"
+								type="submit" name="action">카테고리 요청하기</button>
 						</div>
 					</div>
-				</div>
-				<div>
-					<button id="target" class="btn waves-effect waves-light right"
-						type="submit" name="action">카테고리 요청하기</button>
-				</div>
+				</form>
 			</div>
-			</form>
-		</div>
-    </li>
-<!-- <div class="container jeju">
+		</li>
+	</ul>
+	<!-- <div class="container jeju">
 	
 		<span id="location123"></span>
 		<div class=" flex between category-add">

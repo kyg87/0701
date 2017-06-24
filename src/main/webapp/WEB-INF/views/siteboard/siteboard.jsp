@@ -113,12 +113,17 @@
   border-left-color: #16a085;
 }
 
+.collection .collection-item:not(.active):hover {
+    background-color: #ddd;
+}
 
+.site-list{
+box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
+}
 
 
 .mvaside{
 	display: flex;
-	justify-content : space-between;
 	width: 100%;
 }
 
@@ -176,9 +181,12 @@
   margin: 0;
   border-radius: 40px;
   overflow: hidden;
-background: #dd5d58;
-/* box-shadow: 0px 0px 0px 2px rgba(255,255,255,0.90); */
+/* background: #dd5d58;
+/* box-shadow: 0px 0px 0px 2px rgba(255,255,255,0.90); */ */
   transition: width 0.5s cubic-bezier(0.65, -0.5, 0.4, 1.5);
+  
+  background: #337ab7;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
 .broker-expanding-search--open {
@@ -264,6 +272,30 @@ background: #dd5d58;
     top: auto;
     bottom:0;
     }
+    
+    
+    
+    
+    
+ .collection {
+    margin: 0px;
+    /* margin-right: 30px; */
+    background-color: #fff;
+}
+
+.collection.with-header .collection-item {
+	height:270px;
+    width: 100%;
+}
+
+.best{
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
+	margin-bottom:40px;
+}
+
+.collection .collection-item {
+   border-bottom: none;
+}
 </style>
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 <main id="main">
@@ -306,18 +338,18 @@ background: #dd5d58;
  	
 	</c:otherwise>
 </c:choose>
-		<div class="collection mvaside">
+<%-- 		<div class="collection mvaside">
 	    <a href="?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenew.news }</span>최신순</a>
 	    <a href="siteboardlike?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenewL.news }</span>베스트 사이트</a>
 	    <a href="siteboardhit?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenewH.news }</span>많이 본 사이트</a>
-	  	</div>
-<label for="${bn.name} 베스트">${bn.name} 베스트</label>
+	  	</div> --%>
+<%-- <label for="${bn.name} 베스트">${bn.name} 베스트</label> --%>
 <%--    <div> 
 <c:forEach var="hotlist" items="${likelist }" begin="0" varStatus="status" end="3">
   ${status.count }<a  href="site-detail?c=${hotlist.id}&p=${param.p}"><img class="activator"  src="http://api.thumbalizr.com/?url=http://${hotlist.url}&width=100%&height=100%" /></a>
 </c:forEach>
 </div> --%>
-  <div class="slider">
+<%--   <div class="slider">
     <ul class="slides">
     <c:forEach var="hotlist" items="${likelist }" begin="0" varStatus="status" end="3">
       <li>
@@ -329,12 +361,47 @@ background: #dd5d58;
       </li>
       </c:forEach>
     </ul>
-  </div>
-      
+  </div> --%>
+
+
+
+			<div class="collection with-header best">
+				<div class="collection-header">
+					<h4>First Names</h4>
+				</div>
+				<div class="flex">
+					<div class="collection-item">Alvin</div>
+					<div class="collection-item">Alvin</div>
+					<div class="collection-item">Alvin</div>
+				</div>
+			</div>
+
+
+
+			<div class="site-list">
+			<div class="collection mvaside">
+	    <a href="?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenew.news }</span>최신순</a>
+	    <a href="siteboardlike?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenewL.news }</span>베스트 사이트</a>
+	    <a href="siteboardhit?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenewH.news }</span>많이 본 사이트</a>
+	  	</div>
+	     	<c:forEach var="n" items="${sitelist}">
+	     	<ul class="collection">
+			    <li class="collection-item avatar">
+			      <img src="http://api.thumbalizr.com/?url=http://${n.url}" class="circle"/>
+			      <span class="title"><a href="site-detail?c=${n.id}&p=${param.p}">${n.title}</a></span>
+			      <p>${n.memberId } <br>
+			      <fmt:formatDate value="${n.regDate}" pattern="yyyy.MM.dd HH:mm" />
+			      </p>
+			       <a href="#!" class="secondary-content center"><i class="material-icons">grade</i><div><label class="like-s">2개</label></div></a>
+			    </li>
+			  </ul>
+			</c:forEach>
+		</div>
+
 
 
 	  	
-		<table class="highlight table">
+		<%-- <table class="highlight table">
 			<thead>
 				<tr>
 					<th>번호</th>
@@ -361,7 +428,7 @@ background: #dd5d58;
 				</c:forEach>
 				
 			</tbody>
-		</table>
+		</table> --%>
 		
 <br>
 <div class="site-button">

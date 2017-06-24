@@ -43,6 +43,10 @@ font-size:16px;
 .aritta{
 	font-family:'aritta';
 }
+
+#main{
+	background-image: url(/WiynPrj/resource/images/back.png);
+}
 </style>
 <body>
 	<!-- <div class="wrapper">	 -->

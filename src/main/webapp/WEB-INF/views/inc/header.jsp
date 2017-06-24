@@ -78,7 +78,7 @@
 .login.pin {
 	/* background:#81b344; */
 	/* background-color: #62A8D1; */
-	background-color: rgb(221, 93, 88);
+	background-color:rgb(51, 122, 183);
 }
 
 .login {
