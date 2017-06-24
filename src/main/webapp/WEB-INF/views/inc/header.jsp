@@ -451,17 +451,21 @@ color:black;
  
   <!-- 개인프로필 Modal Structure -->
 	<div id="modal110" class="modal">
-		<div class="info_top">
-			<input id="profileImgbtn" name="file" type="file" style="display: none">
-			 <!-- <img id="profileImg" alt="" src="http://d1hk7gw6lgygff.cloudfront.net/assets/_img/mypage/img_edit_profile-3c5f60b7a1ddf555f665e50d2987f7a3.png"> -->
-			 <img id="profileImg" alt="" src="${root}/resource/images/KakaoTalk_20170607_162312318.jpg">
-		<p><security:authentication property="name" /></p>
-	
-		</div>
-		<div class="btn_area">
-				<button type="button" class="btn waves-effect waves-light">취소</button>
-				<button type="submit" class="btn waves-effect waves-light">저장</button>
-		</div>
+		<form id="profileForm" action="${root }/joinus/profileUpdate"method="post" enctype="multipart/form-data" >
+			<div class="info_top">
+				<input id="profileImgbtn" name="file" type="file" style="display: none">
+				 <!-- <img id="profileImg" alt="" src="http://d1hk7gw6lgygff.cloudfront.net/assets/_img/mypage/img_edit_profile-3c5f60b7a1ddf555f665e50d2987f7a3.png"> -->
+				 <img id="profileImg" alt="" src="${root}/resource/images/KakaoTalk_20170607_162312318.jpg">
+			<span><security:authentication property="name" /></span>
+		
+			</div>
+			<div class="btn_area">
+					<button type="button" class="btn waves-effect waves-light">취소</button>
+					<button id="editBtn" type="button" class="btn waves-effect waves-light">저장</button>
+			</div>
+			
+			<input type="hidden" name="email" value=<security:authentication property="name"/> />
+		</form>
     </div>
     <security:authentication property="name" var="loginID"/>
 	<!-- 로그인 부분 스크립트 ---------------------------------------------------------------------------------->
@@ -502,7 +506,59 @@ color:black;
            
       
         });
+      $("#profileImgbtn").on('change',function(){
+    	  readURL(this);
+      });
       
+  	function readURL(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+
+			reader.onload = function(e) {
+				$('#profileImg').attr('src', e.target.result);
+			}
+
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+  	
+      $("#editBtn").click(function() {
+		
+			var userName = '${loginID}';
+
+			var file = $("input[name=file]")[0].files[0];
+
+			
+			
+			if(typeof file == 'undefined'){
+				alert('선택하신파일이 없습니다');	
+				return;
+			}
+			/*  $.post("${root}/joinus/profileUpdate",{"file":file,"email":userName},function(d){
+				alert(d);
+			});  */
+			
+			var formData = new FormData();
+			
+			formData.append("file",file);
+			formData.append("email",userName);
+			 
+		       $.ajax({
+	                url: "${root}/joinus/profileUpdate",
+	                processData: false,
+	                    contentType: false,
+	                data: formData,
+	                type: 'POST',
+	                success: function(result){
+	                    alert("업로드 성공!!");
+	                    userCheck();
+	                }
+	            });
+
+
+	
+    	  
+		});
       function userCheck(){
     	  console.log('${loginID}');
     	  var userName = '${loginID}';
@@ -511,7 +567,7 @@ color:black;
     		  var obj = JSON.parse(d);
    /*  		 alert(obj.profile);  */
    			  if(obj.profile != ''){
-   				profileImg.src = "${root}/resource/images/"+obj.profile;  
+   				profileImg.src = "${root}/resource/profile/"+obj.profile;  
    			  }
    			  else{
    				profileImg.src ="http://demo.geekslabs.com/materialize-v1.0/images/avatar.jpg";
