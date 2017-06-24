@@ -141,15 +141,6 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 	background-color:#fff;  
 }
 
-
-.sitego {
-	background: rgba(27, 80, 162, 0.69);
-}
-
-.sitego:hover {
-	background: rgba(23, 56, 125, 0.79);
-}
-
 .write {
 	display: flex;
 }
@@ -290,11 +281,34 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 
 .best{
 	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
-	margin-bottom:40px;
+	margin-bottom:16px;
 }
 
 .collection .collection-item {
    border-bottom: none;
+}
+
+.sitgo{
+	width: 100%;
+}
+.sitgo i{
+	padding-top: 10px;
+    padding-right: 16px;
+}
+
+.collection a.collection-item {
+    width: 100%;
+}
+.circle {
+    border-radius: 0%;
+    border:1px solid #e9e9e9;
+}
+
+.collection .collection-item.avatar .circle {
+
+    width: 46px;
+    height: 66px;
+
 }
 </style>
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
@@ -367,12 +381,12 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 
 			<div class="collection with-header best">
 				<div class="collection-header">
-					<h4>First Names</h4>
+					<h4>요즘 뜨는 사이트</h4>
 				</div>
 				<div class="flex">
-					<div class="collection-item">Alvin</div>
-					<div class="collection-item">Alvin</div>
-					<div class="collection-item">Alvin</div>
+					<c:forEach var="hotlist" items="${likelist }" begin="0" varStatus="status" end="5">
+					<div class="collection-item"><img src="http://api.thumbalizr.com/?url=http://${hotlist.url}"/></div>
+					</c:forEach>
 				</div>
 			</div>
 
@@ -383,18 +397,39 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 	    <a href="?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenew.news }</span>최신순</a>
 	    <a href="siteboardlike?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenewL.news }</span>베스트 사이트</a>
 	    <a href="siteboardhit?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenewH.news }</span>많이 본 사이트</a>
+	  	<div class="sitgo sitego">
+	  	<a class="waves-effect waves-light sitego right" href="#">
+			<i class="material-icons">mode_edit</i>
+		</a>
+	  	</div>
 	  	</div>
 	     	<c:forEach var="n" items="${sitelist}">
 	     	<ul class="collection">
-			    <li class="collection-item avatar">
-			      <img src="http://api.thumbalizr.com/?url=http://${n.url}" class="circle"/>
-			      <span class="title"><a href="site-detail?c=${n.id}&p=${param.p}">${n.title}</a></span>
-			      <p>${n.memberId } <br>
-			      <fmt:formatDate value="${n.regDate}" pattern="yyyy.MM.dd HH:mm" />
-			      </p>
-			       <a href="#!" class="secondary-content center"><i class="material-icons">grade</i><div><label class="like-s">2개</label></div></a>
-			    </li>
-			  </ul>
+						<li class="collection-item avatar flex">
+							<div>
+								<p>${n.id }</p>
+							</div>
+							<div>
+								<span class="title"><a
+									href="site-detail?c=${n.id}&p=${param.p}">${n.title}</a></span>
+								<p>${n.memberId }
+									<br>
+									<fmt:formatDate value="${n.regDate}" pattern="yyyy.MM.dd HH:mm" />
+								</p>
+							</div>
+							<div>
+								<a href="#!" class="secondary-content center"><i
+									class="material-icons">grade</i>
+								<div>
+										<label class="like-s">2개</label>
+									</div></a>
+							</div>
+							<div>
+								<img src="http://api.thumbalizr.com/?url=http://${n.url}"
+									class="circle" />
+							</div>
+						</li>
+					</ul>
 			</c:forEach>
 		</div>
 
@@ -431,11 +466,11 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 		</table> --%>
 		
 <br>
-<div class="site-button">
+<!-- <div class="site-button">
 	<a class="waves-effect waves-light btn sitego" href="#">
 	<div class="write">Write<i class="tiny material-icons">mode_edit</i></div>
 	</a>
-</div>
+</div> -->
 <fmt:parseNumber var="sizeInt" integerOnly="true" value="${size/10 }" />
 <c:set var="last" value="${(size%10)>0 ? sizeInt+1 : sizeInt }" />
 <%-- <div>${empty param.p ? 1 : param.p}/${last }pages</div>
