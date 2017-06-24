@@ -5,6 +5,7 @@ public class FreeFile {
 
 	private String id;
     private String src;
+    private String name;
     private String freeBoardId;
     
     public String getId() {
@@ -24,6 +25,12 @@ public class FreeFile {
 	}
 	public void setFreeBoardId(String freeBoardId) {
 		this.freeBoardId = freeBoardId;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	

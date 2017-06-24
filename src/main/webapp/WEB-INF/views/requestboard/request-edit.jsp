@@ -18,8 +18,13 @@ body, html {
     padding: 20px;
     margin: 0.5rem 0 1rem 0;
     border-radius: 2px;
-    background-color: #F0E5D7 !important;
+     background-color: #F0E5D7 !important; 
     min-height: 500px;
+    margin-top: 100px;
+    border-radius: 10px;
+    
+    
+    
 }
 
 #main {
@@ -31,7 +36,9 @@ body, html {
    -moz-border-radius: 10px;
    -webkit-border-radius: 3px;
    box-shadow: 1px 1px 5px #383838;
-   background: #F6F4F1 !important;
+   background: #F6F4F1 !important,;
+ 
+  
 }
 
 #title {
@@ -85,7 +92,29 @@ body, html {
 
 .btn{
    background: rgb(210, 178, 149);
+   
+   
 }
+
+ #label{
+	font-size: 15px;
+}
+
+
+#hehe{
+	padding-top: 50px;
+}
+
+ .imgpencil{
+	margin-bottom:50px;
+}	
+
+
+	
+
+
+
+
 
 
 
@@ -99,7 +128,8 @@ body, html {
 
 	<div class="container">
 		<div class="section">
-			<div class="row">
+			
+			<div class="row" >
 
 				<div class="col s12 l6">
 					<h2 class="title">Request Board</h2>
@@ -108,33 +138,30 @@ body, html {
 						<h5>Request Edit</h5>
 					</div>
 
-					<div>
-
-						<c:if test="${file.src != null }">
-							<img src=${file.src } ${file.name } id="originImg"
-								style="width: 300px; height: 300px; float: right; margin-top: 100px; margin-right: 50px;" />
-						</c:if>
-
-						<img id="blah" src="#"
-							style="width: 300px; height: 300px; float: right; visibility: hidden;" />
-
-					</div>
+					<div class="imgpencil">
+		
+							<img src="/WiynPrj/resource/images/notepad.jpg" 
+								style="width: 500px; height: 350px; ; margin-top: 100px; margin-right: 50px; border-radius: 10px; " />
+					
+					</div> 
 
 				</div>
 
 				<div class="col s12 l6">
+					
 					<form id="reg" action="update" method="post"
-						enctype="multipart/form-data" class="card-panel">
+						enctype="multipart/form-data" class="card-panel" 
+								style="width: 500px; height: 350px; ; margin-top: 100px; margin-right: 50px; ">
 
-						<div class="row">
+						<div class="row" id="hehe">
 							<div class="input-field col s12">
-								<input placeholder=" title " id="titleinput" type="text"
+								<input placeholder="" id="titleinput" type="text"
 									name="title" class="validate" value="" required="required">
-								<label for="name" class="active"><i
-									class="tiny material-icons">mode_edit</i> 제목 입력 : </label>
+								<label for="name" class="active" id="label"><i
+									class="tiny material-icons" id="titleIcon">mode_edit</i> 제목 입력 : </label>
 							</div>
 						</div>
-
+		
 
 
 						<div class="row">
@@ -142,21 +169,21 @@ body, html {
 								<textarea name="content"
 									class="form-control materialize-textarea" rows="15"
 									id="comment" data-length="130" required="required"></textarea>
-								<label for="name" class="active"><i
+								<label for="name" class="active" id="label"><i
 									class="tiny material-icons">textsms</i> 내용 입력 : </label>
 							</div>
 						</div>
 
 						<div id="btn">
-							<button class="btn waves-effect waves-light" type="submit"
-								name="action">
+							<button class="btn waves-effect waves-light right" type="submit"
+								name="action" id="">
 								등록 <!-- <i class="material-icons right">send</i> -->
 							</button>
 						</div>
 
 						<input type="hidden" name="id" value=${n.id }> <input
 							type="hidden" name="p" value="${page }" />
-
+						</form>
 						<script>
 							$(function() {
 								$("#comment").keydown(function(e) {
@@ -171,7 +198,7 @@ body, html {
 							});
 						</script>
 
-					</form>
+					
 				</div>
 			</div>
 		</div>

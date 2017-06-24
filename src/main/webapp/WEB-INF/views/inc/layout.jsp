@@ -28,8 +28,20 @@ s"></script>
 </head>
 <style>
 
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+@font-face{
+   font-family: 'aritta';
+   src: url('/WiynPrj/resource/fonts/아리따-돋움(TTF)-Light.ttf') format('truetype');
+}
+
 body{ 
-background-color: #F6F4F1!important;
+background-color: #FAFAFA !important;
+font-family: 'Nanum Gothic Coding', serif;
+font-size:16px;
+}
+
+.aritta{
+	font-family:'aritta';
 }
 </style>
 <body>

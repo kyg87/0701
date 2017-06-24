@@ -20,6 +20,7 @@
 	url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
 
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+
 * {
 	margin: 0;
 	padding: 0;
@@ -31,6 +32,8 @@
 	background: none;
 	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0
 		rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+		
+	margin-top: 50px;
 }
 
 .table *{
@@ -50,6 +53,7 @@
 	font-family: 'Jeju Gothic', serif;
 	font: menu;
 	border-bottom:1px solid #e9e9e9;
+	background: #26a69a;
 }
 
 .table-body {
@@ -82,6 +86,9 @@
 	justify-content:flex-end;
 	font-family: 'Nanum Gothic Coding', serif;
 }
+
+
+
 </style>
 
 
@@ -118,7 +125,7 @@
 </table>
 
  <div class="site-button">
-	<a class="waves-effect waves-light btn sitego" href="../requestboard/request-reg"">
+	<a class="waves-effect waves-light btn sitego" href="../requestboard/request-reg">
 	<div class="write">Write<i class="tiny material-icons">mode-edit</i>
 	</div>
 	</a>

@@ -10,62 +10,91 @@
 
 <style type="text/css">
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+
 @import url(http://fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
+
 @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
 @import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+
 @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
-@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+
+@import
+	url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+
 @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 
 * {
 	margin: 0;
 	padding: 0;
 }
+@media only screen and (max-width: 500px) {
+.hi .category-p {
+    display:none;
+}
 
-@media only screen and (max-width: 630px){
-	.hot-site ul{
-		flex-direction:column;
+.main-request .category-p {
+    font-size:18px;
+}
+	.category-add .main-request {
+    width: 280px;
+}
+.main-request 
+	#reqRegform .main-request{
+    width: 280px;
+	} 
+}
+
+
+@media only screen and (max-width: 630px) {
+	.hot-site ul {
+		flex-direction: column;
 	}
-	
-	.hot-site.flex.column{
-		align-items:center;
+	.hot-site.flex.column {
+		align-items: center;
 	}
 }
 
-@media only screen and (max-width: 1220px){
-.lst_recipe li:first-child{
+@media only screen and (max-width: 1220px) {
+	.lst_recipe li:first-child {
 		display: none;
 	}
-		
+	.category-add.flex {
+		flex-direction: column;
+		align-items: center;
+	}
+	form#reqRegform {
+    margin: 0px;
+	}
 }
 
-@media only screen and (max-width: 1560px){
-.lst_recipe li:last-child{
+@media only screen and (max-width: 1560px) {
+	.lst_recipe li:last-child {
 		display: none;
 	}
 }
 
 /*--------------------------폰트-----------------------------------*/
-
-.hanna{
-font-family: 'Hanna', serif;
+/* .hanna {
+	font-family: 'Hanna', serif;
 }
 
-.jeju{
-font-family: 'Jeju Gothic', serif;
-}
+.jeju {
+	font-family: 'Jeju Gothic', serif;
+} */
 
 /*--------------------------비쥬얼-----------------------------------*/
-
-.visual{
+.visual {
 	background-color: #fff;
-	height: 400px;
-	text-align: center;
+	height: 390px;
+	align-items: center;
 	
-	background-image: url("/WiynPrj/resource/images/season-1985856_1920.jpg");
-	background-position:center;
-	background-origin:content-box;
+	/* background-image:
+		url("/WiynPrj/resource/images/season-1985856_1920.jpg"); */
+	background-position: center;
+	background-origin: content-box;
 	background-size: 100%;
 }
 
@@ -77,166 +106,159 @@ font-family: 'Jeju Gothic', serif;
 
 	font-family: 'Hanna', serif;
 } */
-
-.visual p{
-	height: inherit;
-	font-size: 20px;
-	color:#b86065;
-	font-family: 'Hanna', serif;
-	text-align: center;
+visual{
+box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0
+		rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
-.visual .banner-text{
-width:inherit;
-height:inherit;
+.visual p {
+	height: initial;
+    top: 101px;
+    font-size: 70px;
+    color: #000000;
+    text-align: center;
+    position: absolute;
+    z-index: 9999;
+    text-align: center;
+}
+
+.visual .banner-text {
+	top:0px;
 	position: relative;
-	background-color: rgba(255,255,255,0.5);
+	width:100%;
+	height:100%;;
+	background-image:url("/WiynPrj/resource/images/back.png");
 }
- 
+
+.visual .banner-img{
+	height: 200px;
+	background-color: fuchsia;
+}
+
+.visual .banner-card{
+	height: 200px;
+	background-color: lime;
+}
+
+
 /*------------------------- 공지사항 스크롤 부분 ----------------------------------*/
 #scroll {
 	height: 50px;
 	font-weight: 300;
-	background-color: #f3e8d7;
+	background-color: #fff;
 	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0
 		rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 	border-radius: 1.5px;
 	cursor: pointer;
-	
 	display: flex;
-   flex-direction: column;
-   justify-content: center;
+	flex-direction: column;
+	justify-content: center;
 }
 
-#scroll a{
-	padding-left:110px;
-	color:#000;
-	font-family: 'Jeju Gothic', serif;
+#scroll a {
+	padding-left: 110px;
+	color: #000;
 	font-size: 21px;
 }
 
-.noticelabel{
+.noticelabel {
 	padding-left: 30px;
-	font-family: 'Jeju Gothic', serif;
-	font-size:15px;
+	font-size: 15px;
 	font-style: bold;
 }
 
 /*------------------------- 핫한사이트 ----------------------------------*/
-
-
-.tm1{
+.tm1 {
 	border: 1px solid red;
-	
 }
 
-
-
-
-.background{
-	background-color:#F6F4F1;
+.background {
+	background-color: #F6F4F1;
 }
 
-.write{
-	justify-content:center;
+.write {
+	justify-content: center;
 }
 
-
-#main .category-add{
-	padding:20px;
+#main .category-add {
+	padding: 20px;
 }
 
-.card-content span{
+.card-content span {
 	overflow: hidden;
 	height: 32px;
 }
 
-.card-title p{
+.card-title p {
 	overflow: hidden;
 	height: 10px;
-	width:250px;
+	width: 250px;
 }
 
-
-
-
-
-.white{
+.white {
 	background-color: #fff;
 }
 
-
-.hi{
-text-align: center;
-margin-bottom:15px;
-margin-top:40px;
+.hi {
+	text-align: center;
+	margin-bottom: 15px;
+	margin-top: 40px;
 }
 
-.hit{
+.hit {
 	font-weight: bold;
 	font-size: 42px;
 }
 
-
-.categoryy{
+.categoryy {
 	width: 450px;
 }
-.categoryy label{
-	font-size:15px;
+
+.categoryy label {
+	font-size: 15px;
 }
 
-.category-p{
-	font-size:25px;
+.category-p {
+	font-size: 16px;
 }
 
-
-
-
-
-
-
-
-input[type="text"]{
-border-bottom:1px solid #b7b7b7;
+input[type="text"] {
+	border-bottom: 1px solid #b7b7b7;
 }
 
-
-
-
-.between{
-	justify-content:center;
+.between {
+	justify-content: center;
 }
-.main-request{
-	width:450px;
+
+.main-request {
+	width: 450px;
 }
+
 #reqRegform {
-    margin-left: 200px;
+	margin-left: 200px;
 }
 
-
-.background textarea.materialize-textarea{
-margin: 0px;
+.background textarea.materialize-textarea {
+	margin: 0px;
 }
 
-.background .btn{
-background-color:rgb(221, 93, 88);
+.background .btn {
+	background-color: rgb(221, 93, 88);
 }
 
+.thema {
+	margin-bottom: 20px;
+}
 
-
-
-
-
-
-
-.thema{
-	margin-bottom:20px;
+.thema .top-p{
+	
+    font-size: 18px;
 }
 /*------------------------- 최신순,점수순,댓글순 부분 ----------------------------------*/
 .tabs {
 	font-family: 'Jeju Gothic', serif;
 	font-size: 12px;
-	background:none;
+	background: none;
 }
 
 .tabs .tab a {
@@ -247,12 +269,12 @@ background-color:rgb(221, 93, 88);
 .tabs .tab a.active {
 	color: rgb(69, 95, 140);
 	font-size: 12px;
-	border:1px solid #e9e9e9;
-	border-bottom:none;
+	border: 1px solid #e9e9e9;
+	border-bottom: none;
 }
 
-.row .col.s3{
-	width:initial;
+.row .col.s3 {
+	width: initial;
 }
 
 /*------------------------- 메인 테이블 부분 ----------------------------------*/
@@ -264,28 +286,27 @@ background-color:rgb(221, 93, 88);
 		rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
-.table *{
+.table * {
 	text-align: center;
 }
 
-.table .table-title{
+.table .table-title {
 	text-align: left;
 }
 
-.table .table-title a{
-	color:#505050;
+.table .table-title a {
+	color: #505050;
 }
-
 
 .table-head {
 	font-family: 'Jeju Gothic', serif;
 	font: menu;
-	border-bottom:1px solid #e9e9e9;
+	border-bottom: 1px solid #e9e9e9;
 }
 
 .table-body {
 	text-align: center;
-	font:14px;
+	font: 14px;
 }
 
 .table-body {
@@ -293,38 +314,43 @@ background-color:rgb(221, 93, 88);
 }
 
 /*------------------------- 사이트글쓰기 부분 ----------------------------------*/
-.site-button{
+.site-button {
 	display: flex;
-	justify-content:flex-end;
+	justify-content: flex-end;
 	font-family: 'Nanum Gothic Coding', serif;
 }
 
-.sitego{
-	background: rgb(221, 93, 88);
+.sitego {
+	background:#337ab7; 
 	width: 100%;
 	height: 50px;
 	text-align: center;
 	padding-top: 15px;
 	color: #fff;
-	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0
+		rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 	font-size: 16px;
 }
 
-.sitego:hover{
-	background:rgba(23, 56, 125, 0.79);
+.sitego:hover {
+	background: rgb(185, 65, 60);
 }
 
-.write{
+.write {
 	display: flex;
-	flex-direction:column;
-	text-align:center;
+	flex-direction: column;
+	text-align: center;
 }
 
-.write div{
-	min-height:200px;
+.write div {
+	min-height: 200px;
 	background-color: red;
-	text-align:center;
-	margin:0px;
+	text-align: center;
+	margin: 0px;
+}
+
+#target:hover {
+	background: rgb(185, 65, 60);
 }
 /*------------------------- 랜덤페이지 부분 ----------------------------------*/
 .col.line {
@@ -421,236 +447,257 @@ background-color:rgb(221, 93, 88);
 
 .col {
 	padding: 10px;
-	
 }
 
-
-
-.hanna .point{
+.hanna .point {
 	font-size: 25px;
 }
-.hot-site{
+
+.hot-site {
 	margin-top: 40px;
 }
 
-
 .section-title:before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    border-bottom: 4px solid #dddddd;
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 100%;
+	border-bottom: 4px solid #dddddd;
 }
 
 .section-title {
-    position: relative;
-    margin-bottom: 1em;
-    font-size: 22px;
-    font-weight: 400;
-    text-align: left;
+	position: relative;
+	margin-bottom: 1em;
+	font-size: 22px;
+	font-weight: 400;
+	text-align: left;
 }
 
 .section-title:before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    border-bottom: 4px solid #dddddd;
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 100%;
+	border-bottom: 4px solid #dddddd;
 }
 
-.section-title p{
-    position: relative;
-    display: inline-block;
-    padding-right: 1.4em;
-    background: #fff;
+.section-title p {
+	position: relative;
+	display: inline-block;
+	padding-right: 1.4em;
+	background: #fff;
 }
 
-.main-request{
-	margin-top:30px;
-	margin-bottom:50px;
+.main-request {
+	margin-top: 30px;
+	margin-bottom: 50px;
 }
-
-
-
-
-
-
-
 
 .lst_recipe {
-    overflow: hidden;
-    margin-bottom: 0px;
-    position: relative;
-    left: -16px;
+	overflow: hidden;
+	margin-bottom: 0px;
+	position: relative;
+	left: -16px;
 }
 
 ol, ul {
-    list-style: none;
+	list-style: none;
 }
+
 .lst_recipe li .thmb {
-    display: block;
-    margin: 4px;
-    position: relative;
+	display: block;
+	margin: 4px;
+	position: relative;
 }
 
 button, a {
-    outline: none;
-    text-decoration: none;
-    color: #444;
-    padding: 0;
-    margin: 0;
-    cursor: pointer;
+	outline: none;
+	text-decoration: none;
+	color: #444;
+	padding: 0;
+	margin: 0;
+	cursor: pointer;
 }
 
 .lst_recipe li .judge {
-    position: absolute;
-    top: 187px;
-    right: 10px;
-    color: #eee;
-    font-size: 13px;
-    text-align: center;
-    line-height: 1;
-    z-index: 5;
+	position: absolute;
+	top: 187px;
+	right: 10px;
+	color: #eee;
+	font-size: 13px;
+	text-align: center;
+	line-height: 1;
+	z-index: 5;
 }
 
 .lst_recipe li .author {
-    text-align: center;
-    width: 100%;
-    z-index: 5;
-    display: block;
-    margin-top: -40px;
-    position: relative;
+	text-align: center;
+	width: 100%;
+	z-index: 5;
+	display: block;
+	margin-top: -40px;
+	position: relative;
 }
 
 .lst_recipe li .author strong {
-    color: #808080;
-    font-size: 14px;
-    font-weight: normal;
+	color: #808080;
+	font-size: 14px;
+	font-weight: normal;
 }
 
 .lst_recipe li p a {
-    color: #3b3b3b;
+	color: #3b3b3b;
 }
+
 .lst_recipe .option {
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    height: 27px;
-    border-top: 1px solid #e1e1e1;
-    text-align: right;
-    display: flex;
-    justify-content: space-around;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	height: 27px;
+	border-top: 1px solid #e1e1e1;
+	text-align: right;
+	display: flex;
+	justify-content: space-around;
 }
 
 .lst_recipe .option>div:first-child {
-    border: none;
+	border: none;
 }
 
 .lst_recipe .option>div {
-    width: 80px;
-    height: 100%;
-    float: left;
-    border-left: 1px solid #ddd;
+	padding-right: 20px;
+	width: 100%;
+	height: 100%;
+	float: left;
+	border-left: 1px solid #ddd;
 }
 
 .lst_recipe .option .like {
-    position: relative;
-    background: url(http://d1hk7gw6lgygff.cloudfront.net/assets/_img/main/ico_like-92022602fb2947a641036b1f0be28af2.png) 9px center no-repeat;
+	position: relative;
+	background:
+		url(http://d1hk7gw6lgygff.cloudfront.net/assets/_img/main/ico_like-92022602fb2947a641036b1f0be28af2.png)
+		9px center no-repeat;
 }
 
 .lst_recipe .option>div {
-    width: 80px;
-    height: 100%;
-    float: left;
-    border-left: 1px solid #ddd;
-}
-input, button, img {
-    vertical-align: middle;
-}
-.lst_recipe li p {
-    text-align: center;
-    font-size: 15px;
-    font-family: Microsoft YaHei,'NSB';
-    line-height: 19px;
-    letter-spacing: -0.025em;
-    padding: 2px 20px 0;
-}
-.lst_recipe li .author img {
-    width: 61px;
-    height: 61px;
-    border-radius: 50%;
-    overflow: hidden;
-    display: block;
-    margin: 0 auto 5px;
+	width: 100%;
+	height: 100%;
+	float: left;
+	border-left: 1px solid #ddd;
 }
 
+input, button, img {
+	vertical-align: middle;
+}
+
+.lst_recipe li p {
+	text-align: center;
+	font-size: 15px;
+	font-family: Microsoft YaHei, 'NSB';
+	line-height: 19px;
+	letter-spacing: -0.025em;
+	padding: 2px 20px 0;
+}
+
+.lst_recipe li .author img {
+	width: 61px;
+	height: 61px;
+	border-radius: 50%;
+	overflow: hidden;
+	display: block;
+	margin: 0 auto 5px;
+}
 
 .lst_recipe>li {
-    width: 244px;
-    height: 390px;
-    margin: 0 0 16px 16px;
-    position: relative;
-    border: 1px solid #e1e1e1;
-    box-sizing: border-box;
-    float: left;
-    background-color: #fff;
+	width: 244px;
+	height: 390px;
+	margin: 0 0 16px 16px;
+	position: relative;
+	border: 1px solid #e1e1e1;
+	box-sizing: border-box;
+	float: left;
+	background-color: #fff;
 }
+
 .lst_recipe .option .like button {
-    display: block;
-    width: 100%;
-    height: 27px;
-    text-align: right;
-    background-color: transparent;
-    border: none;
-    color: #999;
-    box-sizing: border-box;
-    padding-right: 10px;
-    line-height: 25px;
-    line-height: 32px\0;
+	display: block;
+	width: 100%;
+	height: 27px;
+	text-align: right;
+	background-color: transparent;
+	border: none;
+	color: #999;
+	box-sizing: border-box;
+	padding-right: 10px;
+	line-height: 25px;
+	line-height: 32px\0;
 }
+
 .lst_recipe li .thmb {
-    display: block;
-    margin: 4px;
-    position: relative;
+	display: block;
+	margin: 4px;
+	position: relative;
 }
+
 .lst_recipe li .thmb img {
-    width: 234px;
-    height: 234px;
-    display: block;
-    border:1px solid #e1e1e1;
+	width: 234px;
+	height: 234px;
+	display: block;
+	border: 1px solid #e1e1e1;
 }
+
 .lst_recipe .option .share a {
-    display: block;
-    overflow: hidden;
-    color: #999;
-    background: url(http://d1hk7gw6lgygff.cloudfront.net/assets/_img/main/ico_share-e234119ec47de3fa22d0c1c2569f756f.png) 7px 50% no-repeat;
-    width: 100%;
-    padding: 7px 5px 0 0\0;
+	display: block;
+	overflow: hidden;
+	color: #999;
+	background:
+		url(http://d1hk7gw6lgygff.cloudfront.net/assets/_img/main/ico_share-e234119ec47de3fa22d0c1c2569f756f.png)
+		7px 50% no-repeat;
+	width: 100%;
+	padding: 7px 5px 0 0\0;
 }
+
 .lst_recipe li .thmb:after {
-    position: absolute;
-    display: block;
-    content: '';
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-   
-    background-size: 234px 234px;
-    z-index: 1;
+	position: absolute;
+	display: block;
+	content: '';
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-size: 234px 234px;
+	z-index: 1;
 }
+
 .lst_recipe li .thmb {
-    display: block;
-    margin: 4px;
-    position: relative;
+	display: block;
+	margin: 4px;
+	position: relative;
 }
 
 .lst_recipe .option>div:first-child {
-    border: none;
-    color:#999;
+	border: none;
+	color: #999;
 }
+
+
+
+
+
+
+
+
+.collapsible{
+margin:0px;
+text-align: center;
+}
+.collapsible:hover{
+text-decoration:underline; ;
+
+}
+
 </style>
 <script type="text/javascript">
 function textScroll(scroll_el_id) {
@@ -708,7 +755,13 @@ textScroll.prototype.start = function() {
 
 <main id="main">
 <visual>
-	<div class="visual">
+	<div class="visual ">
+		<div class="banner-text ">
+			<div class="container flex">
+				<div class="banner-img col l7 s12"></div>
+				<div class="banner-card col l5 s12"></div>
+			</div>
+		</div>
 	<!-- <div class="banner-text">
 			<p>What is your needs? <br>당신이 원하는 사이트, 당신에게 필요한 사이트<br>추천 받고, 추천할 수 있는 자유로운 공간입니다! </p>
 </div> -->
@@ -719,20 +772,25 @@ textScroll.prototype.start = function() {
 <div>
 	<ul id="scroll">
 	<div class="container">
-   <label class="noticelabel hanna">공지사항 > </label>
+   <label class="noticelabel">공지사항 > </label>
       <c:forEach var="m" items="${noticelist}">
          <li class="hite"><a href="../noticeboard/notice-detail?c=${m.id}&p=${param.p}">${m.title}</a></li>
       </c:forEach>
+      </div>
    </ul>
+   
    </div>
-</div>
+
 
 <!-- 핫한사이트부분 -->
 <div class="container flex column">
 <div class="hot-site flex column">
-		<div class="hanna center thema">
-			<p class="">"무엇이" 필요한 당신에게</p>
-			<p class="point">~~~한 사이트</p>
+		<div class="thema flex">
+			<i class="medium material-icons">play_arrow</i>
+			<div class="flex column">
+			<p class="top-p">오븐이 없는 당신에게 유용한 사이트</p>
+			<p>오븐이 없어도 만들 수 있는 다양한 레시피!</p>
+			</div>
 		</div>
 		<div class="card-div">
 			<ul class="lst_recipe flex space">
@@ -747,26 +805,26 @@ textScroll.prototype.start = function() {
 			
 						
 					<c:otherwise>
-						
-						<img alt="푸드텔러"src="${root}/resource/images/${hot.userProfile }">
+	
+						<img alt="푸드텔러"src="${root}/resource/images/${hot.userProfile }" onerror="this.src ='${root}/resource/images/avatar.png'">
 					</c:otherwise>
 						
 					</c:choose>
 				
-						</a> <strong><a class="jeju" " href="/profile/321451">${hot.memberId }</a></strong>
+						</a> <strong><a class=""  href="/profile/321451">${hot.memberId }</a></strong>
 					</span>
 						<p>
-							<a class="call_recipe jeju" href="../siteboard/site-detail?c=${hot.id}">${hot.title }
+							<a class="call_recipe" href="../siteboard/site-detail?c=${hot.id}">${hot.title }
 							</a>
 						
 						</p>
 						<div class="option">
 							<div class="time">
 
-								<a class="jeju" href="/recipes?cooking_time=30"><fmt:formatDate
+								<a class="" href="/recipes?cooking_time=30"><fmt:formatDate
 										value="${hot.regDate}" pattern="yyyy-MM-dd" /></a>
 							</div>
-							<div class="like jeju">
+							<div class="like">
 								<form action="/bookmarks" accept-charset="UTF-8" method="post">
 									<input name="utf8" type="hidden" value="✓"><input
 										type="hidden" name="authenticity_token"
@@ -851,9 +909,9 @@ textScroll.prototype.start = function() {
 
 
 	<div class="hot-site flex column">
-		<div class="hanna center thema">
-			<p class="">"무엇이" 필요한 당신에게</p>
-			<p class="point ">~~~한 사이트</p>
+		<div class="thema flex">
+			<i class="medium material-icons">done</i>
+			<p class="">오븐이 없는 당신에게 유용한 사이트</p>
 		</div>
 		<!-- <h2 class="header lighten-1 section-title">
 <div class="hanna">
@@ -868,19 +926,19 @@ textScroll.prototype.start = function() {
 					</a> <span class="author"> <a href="/profile/321451"> <img
 								alt="푸드텔러"
 								src="http://cloudfront.haemukja.com/vh.php?url=http://d1hk7gw6lgygff.cloudfront.net/uploads/user/image_file/321451/thumb_____2.jpg&amp;convert=jpgmin&amp;rt=600">
-						</a> <strong><a class="jeju" " href="/profile/321451">${hot2.memberId }</a></strong>
+						</a> <strong><a class=""  href="/profile/321451">${hot2.memberId }</a></strong>
 					</span>
 						<p>
-							<a class="call_recipe jeju" href="../siteboard/site-detail?c=${hot2.id}">${hot2.title }
+							<a class="call_recipe" href="../siteboard/site-detail?c=${hot2.id}">${hot2.title }
 							</a>
 						</p>
 						<div class="option">
 							<div class="time">
 
-								<a class="jeju" href="/recipes?cooking_time=30"><fmt:formatDate
+								<a class="" href="/recipes?cooking_time=30"><fmt:formatDate
 										value="${hot2.regDate}" pattern="yyyy-MM-dd" /></a>
 							</div>
-							<div class="like jeju">
+							<div class="like">
 								<form action="/bookmarks" accept-charset="UTF-8" method="post">
 									<input name="utf8" type="hidden" value="✓"><input
 										type="hidden" name="authenticity_token"
@@ -1007,7 +1065,44 @@ textScroll.prototype.start = function() {
 	});
 </script>
 <div class="background">
-<div class="container jeju">
+<ul class="collapsible" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header"><p class="category-p">현재 원하는 카테고리가 없다면?</p></div>
+      <div class="collapsible-body">
+      <div class="categoryy main-request background">
+      <label> 왼쪽 작성란에 제목과 그 아래에 생기길 원하는 카테고리를 자세하게 써주시면 관리자가 확인 후에 해당 카테고리를 생성해드립니다!</label>
+				<br>
+				<br><label> 카테고리 생성에 대한 답변을 받아보고 싶으시다면 내용란에 "이메일"을 꼭 적어주세요.</label>
+				<br>
+				<br><label>그 외 기타 궁금한 문의사항은 thjds8@gmail.com으로 보내주시면 감사하겠습니다.</label>
+				</div>
+				
+				<form id="reqRegform" action="reg-index" method="post">
+			<div class="flex column main-request">
+				<div>
+					<div id="title" class="input-field col s12 row">
+						<input name="title" id="title1" type="text" class="validate"
+							required="required"> <label for="Title">제목</label>
+					</div>
+				</div>
+				<div id="content">
+					<div class="row">
+						<div class="input-field col s12">
+							<textarea name="content" id="textarea1"
+								class="materialize-textarea" required="required"></textarea>
+							<label for="textarea1">내용</label>
+						</div>
+					</div>
+				</div>
+				<div>
+					<button id="target" class="btn waves-effect waves-light right"
+						type="submit" name="action">카테고리 요청하기</button>
+				</div>
+			</div>
+			</form>
+		</div>
+    </li>
+<!-- <div class="container jeju">
 	
 		<span id="location123"></span>
 		<div class=" flex between category-add">
@@ -1048,7 +1143,7 @@ textScroll.prototype.start = function() {
 			<input type="hidden" name="memberId"
 				value=<security:authentication property="name"/>>
 	
-</div>
+</div> -->
 </div>
 	<%-- <div class="col s12 line">
 		<ul class="tabs">
@@ -1318,9 +1413,6 @@ $("#target").click(function(d){
 		return true;
 	} 
 });
-
-console.log($(".author img"));
-
 </script>
 
 <script type="text/javascript">
@@ -1331,5 +1423,9 @@ real_search_keyword.start(); // 스크롤링 시작
 <script>
 $(document).ready(function(){
     $('ul.tabs').tabs('select_tab', '#test1');
+    
+
   });
+  
+
  </script>

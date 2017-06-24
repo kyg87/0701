@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wiyn.web.dao.FreeBoardFileDao">
+<select resultType="com.wiyn.web.entity.FreeFile" id="getList"> 
+
+SELECT * FROM FreeFile
+
+</select>
+
+<select resultType="com.wiyn.web.entity.FreeFile" id="get"> 
+
+	SELECT * FROM FreeFile WHERE freeBoardId = #{freeBoardId}
+
+</select>
+
+<insert id="add" parameterType="com.wiyn.web.entity.FreeFile">
+	<selectKey order="BEFORE" keyProperty="id" resultType="String">
+         select max(cast(id as unsigned))+1 id from FreeFile
+      </selectKey>
+
+		INSERT INTO
+		`lsedb`.`FreeFile`
+		(
+		`id`,
+		`src`,
+		`name`,
+		`freeBoardId`		
+		)
+		VALUES
+		(
+		#{id},
+		#{src},
+		#{name},
+		#{freeBoardId}
+		)
+
+</insert>
+
+<update id="update">
+	UPDATE FreeFile SET src = #{src}, name = #{name} WHERE freeBoardId = #{freeBoardId}
+</update>
+
+</mapper>
+

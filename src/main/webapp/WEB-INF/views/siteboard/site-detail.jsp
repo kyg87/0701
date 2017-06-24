@@ -253,15 +253,43 @@ time {
 
 
 .chip{
- 	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
- 	background-color: rgb(210, 178, 149);
- 	margin-bottom:10px;
+
+    /* box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2); */
+    background-color: rgba(255, 255, 255, 0);
+    margin-bottom: 10px;
+    border: 1px solid #846C63;
+	color:#846C63;
+	font-size:12px;
+	height: auto;
 }
 
 .material-icons.like{
 	margin-top:10px;
 	color: black;
-	
+}
+
+
+
+
+i.left{
+	margin-right:6px;
+}
+#likebtn{
+padding:2px;
+font-size:13px;
+height: auto;
+line-height: 22px;
+
+}
+
+#likebtn i.tiny{
+padding-top:0px;  
+}
+
+a.waves-effect.waves-light {
+    position: absolute;
+    top: 9px;
+    right: 7px;
 }
 </style>
 
@@ -296,8 +324,60 @@ time {
 					<div class="jeju">
 						<span >${b }</span> <span>> ${s }</span> 
 					</div> 
-					<hr>	
-			<ul class="opening-hours">
+					<hr>
+
+					<div>
+						<span class="detail-title"><i class="tiny material-icons">person_pin</i>Writer</span>
+						<span> ${n.memberId } </span>
+						<hr />
+						<br />
+					</div>
+
+					<div>
+						<span class="detail-title"><i class="tiny material-icons">query_builder</i>Write
+							Time</span> <span><fmt:formatDate value="${n.regDate }"
+								pattern="yyyy-MM-dd HH:mm:ss" /></span>
+						<hr />
+						<br />
+					</div>
+
+					<div>
+						<span class="detail-title"><i class="tiny material-icons">language</i>
+							Url </span> <span> ${n.url }</span>
+						<hr />
+						<br />
+					</div>
+
+					<div>
+						<span class="detail-title"><i class="tiny material-icons">textsms</i>
+							Comment </span>
+						<c:set var="newLine" value="\r" />
+						<span>${n.content }</span>
+						<hr />
+						<br />
+					</div>
+					
+					<form action="like" method="post">
+						<button id="likebtn" class="waves-effect waves-light btn" type="submit" name="action">
+							<i id="icon-margin" class="material-icons left tiny">thumb_up</i>
+							좋아요 ${l }개
+						</button>
+						<input type="hidden" name="siteBoardId" value=${n.id }>
+						<security:authorize access="isAuthenticated()">
+							<input type="hidden" name="memberId" value=<security:authentication property="name"/>>
+						</security:authorize>
+					</form>
+					
+					<hr>
+
+					<div class="jeju">
+						<c:forEach var="tag" items="${t }">
+							<div id="chip" class="chip">${tag }</div>
+						</c:forEach>
+					</div>
+
+
+					<%-- <%-- <ul class="opening-hours">
 				
 				<li class="flex ">
 					<div class="flex detail-title">
@@ -334,7 +414,7 @@ time {
 						<div id="chip" class="chip">${tag }</div>
 					</c:forEach>
 				</li>
-			</ul>
+			</ul> --%> 
 			
 			
 			<%-- <span class="detail-title"><i class="material-icons">textsms </i>comment<div
@@ -347,11 +427,9 @@ time {
 		   <form class="box_write" id="comment-add-form"
 								action="siteBoard-comment-add" method="post">
          
-               <security:authorize access="isAnonymous()">
-                  <p>글쓰기는 로그인한 유저만 가능합니다 로그인해주세요</p>
-               </security:authorize>
+
                
-               <security:authorize access="isAuthenticated()">
+              
                <textarea placeholder="한 줄 댓글을 남겨주세요." name="content"
 										required="required"></textarea>
                
@@ -367,7 +445,7 @@ time {
                     </button>
                </div>
  -->               
-               </security:authorize>
+            
              
              
             
@@ -385,16 +463,7 @@ time {
 			</ul>
 
 
-					<form action="like" method="post">
-						<button id="likebtn" class="waves-effect waves-light btn" type="submit" name="action">
-							<i id="icon-margin" class="material-icons left ">thumb_up</i>
-							${l }
-						</button>
-						<input type="hidden" name="siteBoardId" value=${n.id }>
-						<security:authorize access="isAuthenticated()">
-							<input type="hidden" name="memberId" value=<security:authentication property="name"/>>
-						</security:authorize>
-					</form>
+				
 		<button class="btn waves-effect waves-light list-btn" type="submit" name="action">목록</button>
 		</div>
 
@@ -585,6 +654,7 @@ time {
 <security:authentication property="name" var="loginID"/>
 
 <script>
+
 <!-----------------------------------------태그--------------------------------------------->
 $(function(){
 	$(".chip").on('click', function(){
@@ -616,7 +686,12 @@ $(document).ready(function(){
 
 		
 	});
+
 });
+
+
+
+ 
 	
 page(${page});
 
@@ -626,6 +701,12 @@ var currentPage = ${page};
 	
 	function onCreate(){
 		
+		console.log('${loginID}');
+ 		if('${loginID}' == 'anonymousUser') {
+			alert("로그인한 유저만 사용 가능합니다.");
+			return ;
+		} 
+
 		var count = 0;
 		
 		var text = $("#comment-add-form").find("textarea");
@@ -650,8 +731,7 @@ var currentPage = ${page};
 			if(z =="1"){
 
 				page(1);
-	 	/* 	 	count++;
-				if(count <100)onCreate();  */
+				text.val('');
 			}
 			
 		});
@@ -686,31 +766,40 @@ var currentPage = ${page};
 		      $("#commentList").empty();
 		      $("#pagination").empty();
 		      var obj = JSON.parse(d);
-		      
+		      var src ="";
 		     
 		      if(obj.length != 0){
-		    	  
-
+	
 					for (var i = 0; i < obj.length; i++) {
-						userCheck(obj[i]);
+			
+		 				if(obj[i].memberId=='${loginID}'){
+						
+						src = "${root}/resource/images/" +obj[i].profile
+						
 		 				if(obj[i].memberId=='${loginID}'){
 						
 							$("#commentList").append($('<li class="collection-item avatar">' + + '</li>')
-								 .append($('<img src=${root}/resource/profile/'+obj[i].profile + ' alt="" class="circle"> '))
+							
+								 .append($('<img src='+ src   +' class="circle"> '))
 								 .append($('<span class="title">'+obj[i].memberId+'</span>'))
 								 .append($('<time>'+js_yyyy_mm_dd_hh_mm_ss(obj[i].regDate)+'</time>'))
 								 .append($('<p>'+obj[i].content+'</p>'))
 								 .append($('<a class="waves-effect waves-light btn" onclick="onDelete('+obj[i].id+ ');" value='+obj[i].id+'>삭제</a>')));
 						}
 						else{
-							$("#commentList").append($('<li class="collection-item avatar">' + + '</li>')
-									 .append($('<img src=${root}/resource/profile/'+obj[i].profile + ' alt="" class="circle"> '))
+							$("#commentList").append($('<li class="collection-item avatar">' + + '</li>')									 
+									 .append($('<img src='+ src   +' class="circle"> '))
 									 .append($('<span class="title">'+obj[i].memberId+'</span>'))
 									 .append($('<time>'+js_yyyy_mm_dd_hh_mm_ss(obj[i].regDate)+'</time>'))
 									 .append($('<p>'+obj[i].content+'</p>')));
 						} 
 
 					}
+			 	   $("img").error(function() {
+				          $("#commentList img").attr("src", "${root}/resource/images/avatar.png");
+				      }); 
+
+			
 			    	
 			    	
 					 var lastPage = ${size/10+(1-(size/10%1))%1};
@@ -751,7 +840,7 @@ var currentPage = ${page};
 					 }
 					  
 				}
-		      
+		   
 		    
 		   	});
  	}
