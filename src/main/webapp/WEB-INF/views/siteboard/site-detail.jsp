@@ -771,34 +771,29 @@ var currentPage = ${page};
 		      if(obj.length != 0){
 	
 					for (var i = 0; i < obj.length; i++) {
-			
-		 				if(obj[i].memberId=='${loginID}'){
 						
-						src = "${root}/resource/images/" +obj[i].profile
+						src = "${root}/resource/profile/" +obj[i].profile
 						
 		 				if(obj[i].memberId=='${loginID}'){
 						
 							$("#commentList").append($('<li class="collection-item avatar">' + + '</li>')
-							
-								 .append($('<img src='+ src   +' class="circle"> '))
+									 .append($('<img src='+ src   +' class="circle"> '))
 								 .append($('<span class="title">'+obj[i].memberId+'</span>'))
 								 .append($('<time>'+js_yyyy_mm_dd_hh_mm_ss(obj[i].regDate)+'</time>'))
 								 .append($('<p>'+obj[i].content+'</p>'))
-								 .append($('<a class="waves-effect waves-light btn" onclick="onDelete('+obj[i].id+ ');" value='+obj[i].id+'>삭제</a>')));
+								 .append($('<a class="waves-effect waves-light" onclick="onDelete('+obj[i].id+ ');" value='+obj[i].id+'><i class="material-icons">clear</i></a>')));
 						}
 						else{
-							$("#commentList").append($('<li class="collection-item avatar">' + + '</li>')									 
+							$("#commentList").append($('<li class="collection-item avatar">' + + '</li>')
 									 .append($('<img src='+ src   +' class="circle"> '))
 									 .append($('<span class="title">'+obj[i].memberId+'</span>'))
 									 .append($('<time>'+js_yyyy_mm_dd_hh_mm_ss(obj[i].regDate)+'</time>'))
 									 .append($('<p>'+obj[i].content+'</p>')));
 						} 
-
 					}
 			 	   $("img").error(function() {
 				          $("#commentList img").attr("src", "${root}/resource/images/avatar.png");
 				      }); 
-
 			
 			    	
 			    	
@@ -809,13 +804,11 @@ var currentPage = ${page};
 					
 			        //현재 블럭 구하기 
 			        var n_block = Math.ceil(currentPage / 5);
-
 			        //페이징의 시작페이지와 끝페이지 구하기
 			        var s_page = (n_block - 1) * 5 + 1; // 현재블럭의 시작 페이지
 			        var e_page = n_block * 5; // 현재블럭의 끝 페이지
 				
 				
-
 					 if(n_block != 1){
 						  	$("#pagination").append($('<li class="waves-effect"><a onclick="prevButton();"><i class="material-icons">chevron_left</i></a></li>'));
 						 }
@@ -823,8 +816,6 @@ var currentPage = ${page};
 					 for (var i = s_page; i <= e_page; i++){
 						 if (i > lastPage)    break;
 						 
-
-
 		
 						 if(page == i){
 							 $("#pagination").append($(' <li class="waves-effect active"><a class="page" onclick="page('+i+');" value='+i+'>'+i+'</a></li>'));
@@ -844,6 +835,12 @@ var currentPage = ${page};
 		    
 		   	});
  	}
+		   
+		      
+		     
+		
+
+ 
  
  function js_yyyy_mm_dd_hh_mm_ss (date) {
 	  
@@ -872,47 +869,5 @@ var currentPage = ${page};
      var s_page = (n_block) * 5 + 1; // 현재블럭의 시작 페이지
      page(s_page);
  }
- /* 
- function userCheck(comment){
-	  console.log('${loginID}');
-	  var userName = '${loginID}';
-	  var src ="";
-	  $.get("${root}/joinus/getUser",{"email":comment.memberId} ,function(d){
-		  
-		  var obj = JSON.parse(d);
-/*  		 alert(obj.profile);  */
-			  if(obj.profile != ''){
-				 
-				src = "${root}/resource/profile/"+obj.profile;  
-				//console.log($("#commentList > li > span").text());
-			  }
-			  else{
-				src ="http://demo.geekslabs.com/materialize-v1.0/images/avatar.jpg";
-
-				//console.log($("#commentList > li > span));
-			  }
-			  
-			  
-				if(comment.memberId=='${loginID}'){
-					
-					$("#commentList").append($('<li class="collection-item avatar">' + + '</li>')
-						 .append($("<img src="+ src   +" class= 'circle'> "))
-						 .append($('<span class="title">'+comment.memberId+'</span>'))
-						 .append($('<time>'+js_yyyy_mm_dd_hh_mm_ss(comment.regDate)+'</time>'))
-						 .append($('<p>'+comment.content+'</p>'))
-						 .append($('<a class="waves-effect waves-light btn" onclick="onDelete('+comment.id+ ');" value='+comment.id+'>삭제</a>')));
-				}
-				else{
-					$("#commentList").append($('<li class="collection-item avatar">' + + '</li>')
-							 .append($('<img src='+ src  + ' class="circle"> '))
-							 .append($('<span class="title">'+comment.memberId+'</span>'))
-							 .append($('<time>'+js_yyyy_mm_dd_hh_mm_ss(comment.regDate)+'</time>'))
-							 .append($('<p>'+comment.content+'</p>')));
-				}
-
-		  
-		  
-	  });
- } */
 
 </script>
