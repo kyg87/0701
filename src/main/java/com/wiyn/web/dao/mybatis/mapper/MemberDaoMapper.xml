@@ -52,4 +52,9 @@
 	SELECT * FROM lsedb.Member WHERE id = #{param1}
 
 	</select>
+	
+	<update id="update">
+		UPDATE lsedb.Member SET profile = #{param2}WHERE id = #{param1}
+	</update>
+	
 </mapper>

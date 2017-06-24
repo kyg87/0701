@@ -9,6 +9,7 @@ public class SiteComment {
 	private Date regDate;
 	private String siteBoardId;
 	private String memberId;
+	private String profile;
 	
 	public String getId() {
 		return id;
@@ -39,6 +40,12 @@ public class SiteComment {
 	}
 	public void setMemberId(String memberId) {
 		this.memberId = memberId;
+	}
+	public String getProfile() {
+		return profile;
+	}
+	public void setProfile(String profile) {
+		this.profile = profile;
 	}
 	
 	

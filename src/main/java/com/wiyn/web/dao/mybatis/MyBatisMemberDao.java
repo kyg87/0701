@@ -4,6 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.wiyn.web.dao.MemberDao;
+import com.wiyn.web.dao.NoticeBoardDao;
 import com.wiyn.web.entity.Member;
 
 public class MyBatisMemberDao implements MemberDao {
@@ -52,6 +53,14 @@ public class MyBatisMemberDao implements MemberDao {
 		memberDao = sqlSession.getMapper(MemberDao.class);
 		
 		return memberDao.get(email);
+	}
+
+	@Override
+	public int update(String email, String profile) {
+		MemberDao memberDao;
+		memberDao = sqlSession.getMapper(MemberDao.class);
+		
+		return memberDao.update(email, profile);
 	}
 
 }
