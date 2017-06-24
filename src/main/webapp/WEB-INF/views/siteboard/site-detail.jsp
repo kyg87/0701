@@ -772,7 +772,7 @@ var currentPage = ${page};
 	
 					for (var i = 0; i < obj.length; i++) {
 						
-						src = "${root}/resource/profile/" +obj[i].profile
+						src = "${root}/resource/profile/" +obj[i].profile;
 						
 		 				if(obj[i].memberId=='${loginID}'){
 						
@@ -791,8 +791,9 @@ var currentPage = ${page};
 									 .append($('<p>'+obj[i].content+'</p>')));
 						} 
 					}
-			 	   $("img").error(function() {
-				          $("#commentList img").attr("src", "${root}/resource/images/avatar.png");
+			 	   $("#commentList img").error(function() {
+			 		   console.log(this);
+				         this.src ="${root}/resource/images/avatar.png";
 				      }); 
 			
 			    	
