@@ -9,6 +9,7 @@ public class FreeComment {
     private Date regDate;
     private String freeBoardId;
     private String memberId;
+    private String profile;
     
 	public String getId() {
 		return id;
@@ -40,6 +41,11 @@ public class FreeComment {
 	public void setMemberId(String memberId) {
 		this.memberId = memberId;
 	}
-
+	public String getProfile() {
+		return profile;
+	}
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
 
 }

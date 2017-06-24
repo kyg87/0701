@@ -131,6 +131,7 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 	border:none;
 	margin:0px;
 	margin-right: 30px;
+	border-bottom: 1px solid #e0e0e0;
 }
 
 .main-div{
@@ -310,6 +311,100 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
     height: 66px;
 
 }
+
+/*Start site-list */
+
+
+.list-item{
+    min-height: 96px;
+    padding-left: 22px;
+    position: relative;
+}
+.list-item:HOVER{
+	background-color: #e0e0e0;
+}
+
+.list-item .index{
+    top: 15px;
+    position: absolute;
+    font-size: 20px;
+    color: rgba(0,0,0,0.87);
+}
+
+.list-item .title{
+    color: rgba(0,0,0,0.87);
+    font-size: 20px;
+    font-weight: 400;
+    margin-left: 72px;
+    margin-right: 260px;
+    max-width: 770px;
+    overflow: hidden;
+    padding-top: 36px;
+    padding-bottom: 16px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+.url-warpper {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: 70px;
+}
+.url{
+	width: 100%
+}
+
+
+
+.writer-warpper{
+    position: absolute;
+    right: 176px;
+    top: 50%;
+    height: 32px;
+    margin: -45px 0;
+}
+
+.url-warpper img{
+    border: 0;
+    height: 96px;
+    width: 96px;
+}
+.like-warpper{
+	position: absolute;
+    top: 16px;
+    right: 16px;
+}
+
+@media screen and (max-width: 640px){
+	.list-item .title{
+	    font-size: 16px;
+	    line-height: 67px;
+	    margin-left: 48px;
+	    margin-right: 90px;
+	    padding-top: 16px;
+	    white-space: normal;
+	}
+	.writer-warpper{
+ 		display: none;
+	}
+	.url-warpper {
+
+	    right: 0px;
+	}
+	.writer-warpper{
+	    border: 0;
+	    height: 96px;
+	    width: 96px;
+	}
+	.like-warpper{
+		display: none;
+	}
+}
+
+/*End site-list  */
+
 </style>
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 <main id="main">
@@ -352,33 +447,7 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
  	
 	</c:otherwise>
 </c:choose>
-<%-- 		<div class="collection mvaside">
-	    <a href="?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenew.news }</span>최신순</a>
-	    <a href="siteboardlike?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenewL.news }</span>베스트 사이트</a>
-	    <a href="siteboardhit?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenewH.news }</span>많이 본 사이트</a>
-	  	</div> --%>
-<%-- <label for="${bn.name} 베스트">${bn.name} 베스트</label> --%>
-<%--    <div> 
-<c:forEach var="hotlist" items="${likelist }" begin="0" varStatus="status" end="3">
-  ${status.count }<a  href="site-detail?c=${hotlist.id}&p=${param.p}"><img class="activator"  src="http://api.thumbalizr.com/?url=http://${hotlist.url}&width=100%&height=100%" /></a>
-</c:forEach>
-</div> --%>
-<%--   <div class="slider">
-    <ul class="slides">
-    <c:forEach var="hotlist" items="${likelist }" begin="0" varStatus="status" end="3">
-      <li>
-        <a  href="site-detail?c=${hotlist.id}&p=${param.p}"><img class="activator"  src="http://api.thumbalizr.com/?url=http://${hotlist.url}" /></a>
-        <div class="caption center-align">
-          <h3>${status.count }</h3>
-          <h5 class="light grey-text text-lighten-3">${hotlist.title}</h5>
-        </div>
-      </li>
-      </c:forEach>
-    </ul>
-  </div> --%>
-
-
-
+			<!-- Start 요즘 뜨는 사이트--------------------------------------------------------------------------------------------------------------->
 			<div class="collection with-header best">
 				<div class="collection-header">
 					<h4>요즘 뜨는 사이트</h4>
@@ -389,81 +458,63 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 					</c:forEach>
 				</div>
 			</div>
+			<!-- End 요즘 뜨는 사이트--------------------------------------------------------------------------------------------------------------->
 
-
-
+			<!-- Start site-list --------------------------------------------------------------------------------------------------------------->
 			<div class="site-list">
-			<div class="collection mvaside">
-	    <a href="?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenew.news }</span>최신순</a>
-	    <a href="siteboardlike?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenewL.news }</span>베스트 사이트</a>
-	    <a href="siteboardhit?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenewH.news }</span>많이 본 사이트</a>
-	  	<div class="sitgo sitego">
-	  	<a class="waves-effect waves-light sitego right" href="#">
-			<i class="material-icons">mode_edit</i>
-		</a>
-	  	</div>
-	  	</div>
-	     	<c:forEach var="n" items="${sitelist}">
-	     	<ul class="collection">
-						<li class="collection-item avatar flex">
-							<div>
-								<p>${n.id }</p>
-							</div>
-							<div>
-								<span class="title"><a
-									href="site-detail?c=${n.id}&p=${param.p}">${n.title}</a></span>
-								<p>${n.memberId }
-									<br>
-									<fmt:formatDate value="${n.regDate}" pattern="yyyy.MM.dd HH:mm" />
-								</p>
-							</div>
-							<div>
-								<a href="#!" class="secondary-content center"><i
-									class="material-icons">grade</i>
-								<div>
-										<label class="like-s">2개</label>
-									</div></a>
-							</div>
-							<div>
-								<img src="http://api.thumbalizr.com/?url=http://${n.url}"
-									class="circle" />
-							</div>
-						</li>
-					</ul>
-			</c:forEach>
-		</div>
-
-
-
-	  	
-		<%-- <table class="highlight table">
-			<thead>
-				<tr>
-					<th>번호</th>
-					<th>제목</th>
-					<th>작성자</th>
-					<th>조회수</th>
-					<th>작성날짜</th>
-				</tr>
-			</thead>
-			<tbody>
-			
+				<div class="collection mvaside">
+					<a
+						href="?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}"
+						class="collection-item"><span class="new badge">${sitenew.news }</span>최신순</a>
+					<a
+						href="siteboardlike?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}"
+						class="collection-item"><span class="new badge">${sitenewL.news }</span>베스트
+						사이트</a> <a
+						href="siteboardhit?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}"
+						class="collection-item"><span class="new badge">${sitenewH.news }</span>많이
+						본 사이트</a>
+					<div class="sitgo sitego">
+						<a class="waves-effect waves-light sitego right" href="#"> <i
+							class="material-icons">mode_edit</i>
+						</a>
+					</div>
+				</div>
 				<c:forEach var="n" items="${sitelist}">
-				<div style="display: none;"><fmt:formatDate value="${n.regDate}"
-								pattern="yyyy-MM-dd HH:mm:ss" var="writedate" /></div>
-					<tr>
-						<td>${n.id}</td>
-						<td class="orange-text text-accent-3 table-title"><a
-							href="site-detail?c=${n.id}&p=${param.p}">${n.title}</a>[${n.countcomment }]
-							<c:if test="${writedate>=today }"><img src="/WiynPrj/resource/images/new.jpg"/></c:if></td>
-						<td>${n.memberId }</td>
-						<td>${n.hit }</td>
-						<td><fmt:formatDate value="${n.regDate}"
-								pattern="yyyy-MM-dd HH:mm:ss" /></td>
+					<ul class="collection">
+
+						<li class="list-item flex">
+							<a href="site-detail?c=${n.id}&p=${param.p}" class="url">
+								<div class="index">
+									<p>${n.id }</p>
+								</div>
+								<div class="title">
+									<span>${n.title}</span>
+
+								</div>
+								<div class="writer-warpper">
+									<p>${n.memberId }
+										<br>
+										<fmt:formatDate value="${n.regDate}"
+											pattern="yyyy.MM.dd HH:mm" />
+									</p>
+								</div>
+								<div  class="like-warpper">
+									<i class="material-icons">grade</i>
+									<div>
+										<label class="like-s">2개</label>
+									</div>
+								</div>
+								<div class="url-warpper">
+									<img src="http://api.thumbalizr.com/?url=http://${n.url}" />
+								</div>
+							</a>
+						</li>
+
+					</ul>
 				</c:forEach>
-				
-			</tbody>
-		</table> --%>
+			</div>
+			<!-- End site-list --------------------------------------------------------------------------------------------------------------->
+
 		
 <br>
 <!-- <div class="site-button">

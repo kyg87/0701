@@ -300,7 +300,7 @@ a.waves-effect.waves-light {
 			<div class="col l5 s12">
 			<div class="flex">
 				<h2 class="jeju">${n.title }</h2>
-				<!-- <div><i class="material-icons small like">favorite</i></div> -->
+	
 			</div>
 				<a href="http://${n.url}"> <img
 						sizes="(max-width: 800px) 100vw, 800px" width="800" height="400"
@@ -308,13 +308,7 @@ a.waves-effect.waves-light {
 						src="http://api.thumbalizr.com/?url=http://${n.url}&width=250" />
 					</a>
                     <div class="section">
-                            <!-- AREA -->
-                     <%--        <c:forEach var="tag" items="${t }">
-					<div id="chip" class="chip">${tag }</div>
-					</c:forEach> --%>
-                                                      <!--   <a title="City" class="btn white-text" href="https://adbeus.com/coffee/montreal/westmount/">Westmount</a> -->
-                            
-                            <!-- ROASTERS -->
+
                             
                           </div>
 
@@ -375,76 +369,19 @@ a.waves-effect.waves-light {
 							<div id="chip" class="chip">${tag }</div>
 						</c:forEach>
 					</div>
-
-
-					<%-- <%-- <ul class="opening-hours">
-				
-				<li class="flex ">
-					<div class="flex detail-title">
-						<i class="material-icons tiny">person_pin</i>
-						<div class="margin">Writer :</div>
-					</div>
-					<div  class="margin">${n.memberId }</div>
-				</li>
-				<hr>
-				<li class="flex ">
-					<div class="flex detail-title">
-						<i class="material-icons tiny">schedule</i>
-						<div class="margin">Date :</div>
-					</div>
-					<div class="margin"><fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd HH:mm:ss" /></div>
-				</li>
-				<hr>
-				<li class="flex ">
-					<div class="flex detail-title">
-						<i class="material-icons tiny">language</i>
-						<div class="margin">Url :</div>
-					</div>
-					<div class="margin"><a href="http://${n.url}">http://${n.url}</a></div>
-				</li>
-				<li class="flex column content-box">
-					<div class="flex detail-title">
-						<i class="material-icons tiny">textsms</i>
-						<div class="margin">Content</div>
-					</div>
-					<div>${n.content }</div>
-				</li>
-				<li>
-					<c:forEach var="tag" items="${t }">
-						<div id="chip" class="chip">${tag }</div>
-					</c:forEach>
-				</li>
-			</ul> --%> 
-			
-			
-			<%-- <span class="detail-title"><i class="material-icons">textsms </i>comment<div
-							id="minibox">
-			<span class="">${n.content }</span>
-			<span class="detail-title">
-			
-			</span>
-			<hr> --%>
+		   <!--Start 댓글 영역  -->
 		   <form class="box_write" id="comment-add-form"
 								action="siteBoard-comment-add" method="post">
          
 
                
               
-               <textarea placeholder="한 줄 댓글을 남겨주세요." name="content"
-										required="required"></textarea>
-               
-               
-               <button name="button" type="button" onclick="onCreate();">등록</button>
-               <!-- 
-               <div class="input-field">
-                  <i class="material-icons prefix">mode_edit</i>
-                  <input  id="icon_prefix2" type="text" class="validate" name="content" required="required">
-                  <label for="icon_prefix2">Message</label>
-                  <button class="btn waves-effect waves-light secondary-content" type="button" onclick="onCreate();">등록
-                      <i class="material-icons right">send</i>
-                    </button>
-               </div>
- -->               
+           <textarea placeholder="한 줄 댓글을 남겨주세요." name="content"
+						required="required"></textarea>
+           
+           
+           <button name="button" type="button" onclick="onCreate();">등록</button>
+         
             
              
              
@@ -461,7 +398,7 @@ a.waves-effect.waves-light {
 			<ul id="pagination" class="pagination center">
 
 			</ul>
-
+			<!--End 댓글 영역  -->
 
 				
 		<button class="btn waves-effect waves-light list-btn" type="submit" name="action">목록</button>
@@ -472,182 +409,6 @@ a.waves-effect.waves-light {
 			</div>
 </div>
 
-
-
-	<%-- <table class="table">
-		<thead class="head">
-			<tr>
-				<td class="category" colspan="4">
-					<nav class="nav">
-						<div class="nav-wrapper">
-							<div class="col s12">
-								<a href="#!" class="breadcrumb big-category">${b }</a> <a
-									href="#!" class="breadcrumb small-category">${s }</a>
-							</div>
-						</div>
-					</nav>
-				</td>
-			</tr>
-			<tr>
-				<td class="title" colspan="4">${n.title }</td>
-				<td class="hidden">즐겨찾기</td>
-			</tr>
-			<tr class="reg-like">
-				<td class="detail-font" colspan="4" class="reg-date"><i
-					class="tiny material-icons">schedule</i>
-				<fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-			</tr>
-			<tr>
-				<td class="detail-font" colspan="4"><i
-					class="tiny material-icons">perm_identity</i>${n.memberId }</td>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td colspan="4"></td>
-			</tr>
-			<tr>
-				<td colspan="4">
-					<a href="http://${n.url}"> 
-					<img src="http://api.thumbalizr.com/?url=http://${n.url}&width=250" />
-					</a>
-					<div>
-						<a href="http://${n.url}">http://${n.url}</a>
-					</div>
-				</td>
-				<script>
-					$(document).ready(function(){
-						$("a[href^='http://']").attr("target","_blank");
-					});
-				</script>
-			</tr>
-			<tr>
-				<td colspan="4">${n.content }</td>
-			</tr>
-			<tr>
-				<td colspan="4">
-					<c:forEach var="tag" items="${t }">
-					<div id="chip" class="chip">${tag }</div>
-					</c:forEach>
-					<script>
-						$(function(){
-							$(".chip").on('click', function(){
-								var query = $(this).text();
-								$.post("site-list", {"query":query}, function(){
-									location.replace("site-list?query="+query);
-								}); 
-							});
-						});
-					</script>
-				</td>
-			</tr>
-			<tr class="td-padding">
-				<td colspan="2">
-					<form action="like" method="post">
-						<button id="likebtn" class="waves-effect waves-light btn" type="submit" name="action">
-							<i id="icon-margin" class="material-icons left ">thumb_up</i>
-							${l }
-						</button>
-						<input type="hidden" name="siteBoardId" value=${n.id }>
-						<security:authorize access="isAuthenticated()">
-							<input type="hidden" name="memberId" value=<security:authentication property="name"/>>
-						</security:authorize>
-					</form>
-				</td>
-				<td class="form-end"colspan="2">
-					<a class="back" href="">
-					<button class="btn waves-effect waves-light list-btn" type="submit" name="action">목록</button>
-					</a> 
-					<script>
-						$(document).ready(function(){									
-							$(".list-btn").on("click",function(){
-								$('.back').prop('href', history.back());
-							});
-						});
-					</script>
-				</td>
-			</tr>
-			
-			<security:authentication property="name" var="loginID"/>
-			<security:authorize access="isAuthenticated()">
-			<tr>
-				<c:if test="${loginID eq n.memberId }">
-				<td colspan="2">
-					<form action="site-edit?c=${n.id}" method="post">
-						<input type="hidden" name="id" value=${n.id }>
-						<button class="btn waves-effect waves-light" type="submit"
-							name="action">수정</button>
-					</form>
-				</td>
-				<td colspan="2">
-					<form class="form-end" action="site-delete" method="post">
-						<input type="hidden" name="id" value=${n.id }>
-						<button class="btn waves-effect waves-light" type="submit"
-							name="action">삭제</button>
-					</form>
-				</td>
-				</c:if>
-			</tr>
-			</security:authorize>
-			
-		</tbody>
-</table>
-	<br>
-	
-			
-	<!-- <input type="hidden" name="siteBoardId" value="">  -->
-	<input type="hidden"	name="memberId" value="${n.memberId }"/>
-	
-	
-	
-	<!------------------------------------------------------------- 댓글 영역 ------------------------------------------------------------------------>
-		<div>
-			현재 페이지 : ${page} </br> 
-			전체 글 갯수 : ${size} </br>
-		</div>
-
-
-		<div id="minibox">
-		   <form class = "box_write" id="comment-add-form" action="siteBoard-comment-add" method="post">
-         
-               <security:authorize access="isAnonymous()">
-                  <p>글쓰기는 로그인한 유저만 가능합니다 로그인해주세요</p>
-               </security:authorize>
-               
-               <security:authorize access="isAuthenticated()">
-               <textarea placeholder="한 줄 댓글을 남겨주세요." name="content" required="required"></textarea>
-               
-               
-               <button name="button" type="button" onclick="onCreate();">댓글남기기</button>
-               <!-- 
-               <div class="input-field">
-                  <i class="material-icons prefix">mode_edit</i>
-                  <input  id="icon_prefix2" type="text" class="validate" name="content" required="required">
-                  <label for="icon_prefix2">Message</label>
-                  <button class="btn waves-effect waves-light secondary-content" type="button" onclick="onCreate();">등록
-                      <i class="material-icons right">send</i>
-                    </button>
-               </div>
- -->               
-               </security:authorize>
-             
-             
-            
-     	     <input type="hidden" name="siteBoardId" value=${n.id }>
-        	 <input type="hidden" name="memberId" value=<security:authentication property="name"/>>
-         	</form>
-
-
-			<ul id="commentList" class="collection">
-
-			</ul>
-
-		</div>
-
-
-		<ul id="pagination" class="pagination center">
-
-		</ul> --%>
 	
 	
 </main>
@@ -792,10 +553,10 @@ var currentPage = ${page};
 						} 
 					}
 			 	   $("#commentList img").error(function() {
-			 		   console.log(this);
+			 
 				         this.src ="${root}/resource/images/avatar.png";
 				      }); 
-			
+			 	 
 			    	
 			    	
 					 var lastPage = ${size/10+(1-(size/10%1))%1};

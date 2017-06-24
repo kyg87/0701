@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 import com.wiyn.web.dao.FreeBoardDao;
 import com.wiyn.web.dao.FreeCommentDao;
+import com.wiyn.web.dao.MemberDao;
 import com.wiyn.web.dao.SmallCategoryDao;
 import com.wiyn.web.entity.FreeBoard;
 import com.wiyn.web.entity.FreeComment;
+import com.wiyn.web.entity.SiteComment;
 import com.wiyn.web.entity.SmallCategory;
 
 @Controller
@@ -90,7 +92,10 @@ public class FreeBoardCommentController {
 		
 
 		List<FreeComment> freeComments = sqlSession.getMapper(FreeCommentDao.class).getList(id, Integer.parseInt(page));
-	
+		
+		for (FreeComment freeComment : freeComments) {
+			freeComment.setProfile(sqlSession.getMapper(MemberDao.class).get(freeComment.getMemberId()).getProfile());
+		}
 		
 		Gson gson = new Gson();
 		String json = gson.toJson(freeComments);

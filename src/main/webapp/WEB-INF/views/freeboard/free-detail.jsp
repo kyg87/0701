@@ -4,7 +4,7 @@
 <%@ taglib prefix="tiles"  uri="http://tiles.apache.org/tags-tiles" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<c:set var="root" value="${pageContext.request.contextPath}" />
 
 
 <!DOCTYPE html>
@@ -293,7 +293,11 @@ background: #dd5d58;
 	bottom: 50px;
 	right: 50px;
 }
-
+a.waves-effect.waves-light {
+    position: absolute;
+    top: 9px;
+    right: 7px;
+}
 /* ---------------------------------------------- */
 </style>
 
@@ -360,9 +364,38 @@ $(document).ready(function(){
                      href="free-edit?c=${n.id}">수정</a>
                   <a class="waves-effect waves-light btn list-btn" id="back" >목록으로</a>
                </div>
+                          <!--Start 댓글 영역  -->
+		   <form class="box_write" id="comment-add-form"
+								action="freeBoard-comment-add" method="post">
+         
+
                
+              
+           <textarea placeholder="한 줄 댓글을 남겨주세요." name="content"
+						required="required"></textarea>
+           
+           
+           <button name="button" type="button" onclick="onCreate();">등록</button>
+         
+            
+             
+             
+            
+     	     <input type="hidden" name="freeBoardId" value=${n.id }>
+        	 <input type="hidden" name="memberId"
+									value=<security:authentication property="name"/>>
+         	</form>
+
+
+			<ul id="commentList" class="collection">
+
+			</ul>
+			<ul id="pagination" class="pagination center">
+
+			</ul>
+			<!--End 댓글 영역  -->
                </div>
-               
+
                <div id="modal2" class="modal">
                   <div class="modal-content">
                      <h4>게시물 삭제</h4>
@@ -403,109 +436,8 @@ $(document).ready(function(){
    </script>
 
 
-<%-- <div id="yy">
-
-      <div id="main">
-         <div id="context">
-            <nav>
-            
-            </nav>
-            <table>
-                 <thead>
-                 
-                   <tr>
-                       <th>제목 : ${n.title}</th>                      
-                   </tr>
-                   <tr>
-                      <th>작성시간 : <fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd HH:mm:ss"/></th>
-                   </tr>
-                   <tr>
-                      <th>ID : ${n.memberId}</th>
-                   </tr>
-                  
-                                   </thead>
-                 <tbody>
-                   <tr>
-                     <td id="thum"><img src="../../../WiynPrj/resource/images/foto/13.jpg"/>${n.contentSrc}</td>
-                   </tr>        
-                   <tr>
-                   
-                     <td id="content">Content: ${n.content }</td>
-                     
-                   </tr>
-                   
-                    
-                   <tr>
-                   
-                     <td>
-                    
-                        <input type="hidden" name="id" value =${n.id }>
-                        <form action="free-edit?c=${n.id}" method="post"> 
-                        
-                        <button class="btn waves-effect waves-light" type="submit" name="action">수정</button>
-                     </form> 
-                     </td>
-                     
-                     <td>
-                     <form action="free-del" method="post">
-                     <input type="hidden" name="id" value =${n.id }>
-                      <button class="btn waves-effect waves-light" type="submit" name="action">삭제</button>
-            
-                    
-                    </form>
-                       
-                     </td>
-                     <td>
-                       <form action="freeboard" method="post">
-                      <button class="btn waves-effect waves-light" type="submit" name="action">목록</button>
-                  </form>
-                     </td>
-                     
-                   </tr>
-                   
-                 </tbody>
-               </table>
-
-         </div> --%> <!------------------------------------------------------------- 댓글 영역 ------------------------------------------------------------------------>
 
 
-<<%-- div id="minibox">
-   <form id="comment-add-form" action="freeBoard-comment-add"
-      method="post">
-      <div class="row">
-         <security:authorize access="isAnonymous()">
-            <p>글쓰기는 로그인한 유저만 가능합니다 로그인해주세요</p>
-         </security:authorize>
-
-         <security:authorize access="isAuthenticated()">
-            <div class="input-field">
-               <i class="material-icons prefix">mode_edit</i> <input
-                  id="icon_prefix2" type="text" class="validate" name="content"
-                  required="required"> <label for="icon_prefix2">Message</label>
-               <button class="btn waves-effect waves-light secondary-content"
-                  type="button" onclick="onCreate();">
-                  등록 <i class="material-icons right">send</i>
-               </button>
-            </div>
-         </security:authorize>
-      </div>
-
-      <input type="hidden" name="freeBoardId" value=${n.id }> <input
-         type="hidden" name="memberId"
-         value=<security:authentication property="name"/>>
-   </form>
-
-
-   <ul id="commentList" class="collection">
-
-   </ul>
-
-</div> --%>
-
-
-<ul id="pagination" class="pagination center">
-
-</ul>
 
 
 </div>
@@ -546,171 +478,220 @@ $(document).ready(function(){
 
 <script>
 
-   
+<!-----------------------------------------태그--------------------------------------------->
+$(function(){
+	$(".chip").on('click', function(){
+		var query = $(this).text();
+		$.post("site-list", {"query":query}, function(){
+			location.replace("site-list?query="+query);
+		}); 
+	});
+});
+<!-----------------------------------------목록버튼--------------------------------------------->
+$(document).ready(function(){									
+	$(".list-btn").on("click",function(){
+		$('.back').prop('href', history.back());
+	});
+});
+<!-----------------------------------------좋아요--------------------------------------------->
+$(document).ready(function(){
+	$("#likebtn").click(function(){
+		console.log('${loginID}');
+		
+		
+		if('${loginID}' == 'anonymousUser') {
+			alert("로그인한 유저만 사용 가능합니다.");
+			return false;
+		}
+		else{
+			return true;
+		}
+
+		
+	});
+
+});
+
+
+
+ 
+	
 page(${page});
 
 
 
 var currentPage = ${page};
-   
-   function onCreate(){
-      
-      var count = 0;
-      
-      var text = $("#comment-add-form").find("input");
-      
-   
-      var tt= text.val();
-      tt = tt.trim();//공백 제거
+	
+	function onCreate(){
+		
+		console.log('${loginID}');
+ 		if('${loginID}' == 'anonymousUser') {
+			alert("로그인한 유저만 사용 가능합니다.");
+			return ;
+		} 
+
+		var count = 0;
+		
+		var text = $("#comment-add-form").find("textarea");
+		
+	
+		var tt= text.val();
+		tt = tt.trim();//공백 제거
         
         if(!tt){
             alert("내용이 없습니다.");
             text.focus();//해당입력란으로 포커싱
             return;
         }
-      
+		
 
-      var data = $("#comment-add-form").serialize();
-   
-   
-      
-      $.post("freeBoard-comment-add", data, function(z) {
+		var data = $("#comment-add-form").serialize();
+	
+	
+		
+		$.post("freeBoard-comment-add", data, function(z) {
 
-         if(z =="1"){
+			if(z =="1"){
 
-            page(1);
-          /*    count++;
-            if(count <100)onCreate(); */ 
-         }
-         
-      });
-      
-   }
-   
-   
-   function onDelete(d){
-      
-      if (confirm("정말 삭제하시겠습니까??") == true){    //확인
-         $.post("freeCommentDelete", {"id":d}, function(z) {
-            if(z =="1"){
-               alert("삭제했습니다.");
-               
-               page(currentPage);
-               
-            
-            }
-            
-         });
-         
-      }else{   //취소
-          return;
-      }
+				page(1);
+				text.val('');
+			}
+			
+		});
+		
+	}
+	
+	
+	function onDelete(d){
+		
+		if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+			$.post("freeCommentDelete", {"id":d}, function(z) {
+				if(z =="1"){
+					alert("삭제했습니다.");
+					
+					page(currentPage);
+					
+				
+				}
+				
+			});
+			
+		}else{   //취소
+		    return;
+		}
 
-   }
+	}
   function page(page){
-      currentPage = page;
-      console.log(currentPage);
-      $.post("commentPage", {"page":page ,"id":${n.id }}, function(d) {
-            
-            $("#commentList").empty();
-            $("#pagination").empty();
-            var obj = JSON.parse(d);
-            
-           
-            if(obj.length != 0){
-               
+	   currentPage = page;
+		console.log(currentPage);
+	   $.post("commentPage", {"page":page ,"id":${n.id }}, function(d) {
+		      
+		      $("#commentList").empty();
+		      $("#pagination").empty();
+		      var obj = JSON.parse(d);
+		      var src ="";
+		     
+		      if(obj.length != 0){
+	
+					for (var i = 0; i < obj.length; i++) {
+						
+						src = "${root}/resource/profile/" +obj[i].profile;
+						
+		 				if(obj[i].memberId=='${loginID}'){
+						
+							$("#commentList").append($('<li class="collection-item avatar">' + + '</li>')
+									 .append($('<img src='+ src   +' class="circle"> '))
+								 .append($('<span class="title">'+obj[i].memberId+'</span>'))
+								 .append($('<time>'+js_yyyy_mm_dd_hh_mm_ss(obj[i].regDate)+'</time>'))
+								 .append($('<p>'+obj[i].content+'</p>'))
+								 .append($('<a class="waves-effect waves-light" onclick="onDelete('+obj[i].id+ ');" value='+obj[i].id+'><i class="material-icons">clear</i></a>')));
+						}
+						else{
+							$("#commentList").append($('<li class="collection-item avatar">' + + '</li>')
+									 .append($('<img src='+ src   +' class="circle"> '))
+									 .append($('<span class="title">'+obj[i].memberId+'</span>'))
+									 .append($('<time>'+js_yyyy_mm_dd_hh_mm_ss(obj[i].regDate)+'</time>'))
+									 .append($('<p>'+obj[i].content+'</p>')));
+						} 
+					}
+			 	/*    $("#commentList img").error(function() {
+			 
+				         this.src ="${root}/resource/images/avatar.png";
+				      });  */
+			 	 
+			    	
+			    	
+					 var lastPage = ${size/10+(1-(size/10%1))%1};
+					  
+					 var last_block = Math.ceil(lastPage / 5);
+	
+					
+			        //현재 블럭 구하기 
+			        var n_block = Math.ceil(currentPage / 5);
+			        //페이징의 시작페이지와 끝페이지 구하기
+			        var s_page = (n_block - 1) * 5 + 1; // 현재블럭의 시작 페이지
+			        var e_page = n_block * 5; // 현재블럭의 끝 페이지
+				
+				
+					 if(n_block != 1){
+						  	$("#pagination").append($('<li class="waves-effect"><a onclick="prevButton();"><i class="material-icons">chevron_left</i></a></li>'));
+						 }
+					 
+					 for (var i = s_page; i <= e_page; i++){
+						 if (i > lastPage)    break;
+						 
+		
+						 if(page == i){
+							 $("#pagination").append($(' <li class="waves-effect active"><a class="page" onclick="page('+i+');" value='+i+'>'+i+'</a></li>'));
+						 }
+						 else{
+							 $("#pagination").append($(' <li class="waves-effect"><a class="page" onclick="page('+i+');" value='+i+'>'+i+'</a></li>'));
+						 }
+					 }
+			        
+		
+					 if(n_block != last_block){
+						$("#pagination").append($('<li class="waves-effect"><a onclick="nextButton();"><i class="material-icons">chevron_right</i></a></li>')); 
+					 }
+					  
+				}
+		   
+		    
+		   	});
+ 	}
+		   
+		      
+		     
+		
 
-               for (var i = 0; i < obj.length; i++) {
-                  
-                  if(obj[i].memberId=='${loginID}'){
-                  
-                     $("#commentList").append($('<li class="collection-item avatar">' + + '</li>')
-                         .append($('<img src="https://yt3.ggpht.com/-X8NM_peInU0/AAAAAAAAAAI/AAAAAAAAAAA/5YLtRwfY47Y/s88-c-k-no-mo-rj-c0xffffff/photo.jpg" alt="" class="circle"> '))
-                         .append($('<span class="title">'+obj[i].memberId+'</span>'))
-                         .append($('<time>'+js_yyyy_mm_dd_hh_mm_ss(obj[i].regDate)+'</time>'))
-                         .append($('<p>'+obj[i].content+'</p>'))
-                         .append($('<a class="waves-effect waves-light btn" onclick="onDelete('+obj[i].id+ ');" value='+obj[i].id+'>삭제</a>')));
-                  }
-                  else{
-                     $("#commentList").append($('<li class="collection-item avatar">' + + '</li>')
-                            .append($('<img src="https://yt3.ggpht.com/-X8NM_peInU0/AAAAAAAAAAI/AAAAAAAAAAA/5YLtRwfY47Y/s88-c-k-no-mo-rj-c0xffffff/photo.jpg" alt="" class="circle"> '))
-                            .append($('<span class="title">'+obj[i].memberId+'</span>'))
-                            .append($('<time>'+js_yyyy_mm_dd_hh_mm_ss(obj[i].regDate)+'</time>'))
-                            .append($('<p>'+obj[i].content+'</p>')));
-                  }
+ 
+ 
+ function js_yyyy_mm_dd_hh_mm_ss (date) {
+	  
+	  now = new Date(date);
+	  year = "" + now.getFullYear();
+	  month = "" + (now.getMonth() + 1); if (month.length == 1) { month = "0" + month; }
+	  day = "" + now.getDate(); if (day.length == 1) { day = "0" + day; }
+	  hour = "" + now.getHours(); if (hour.length == 1) { hour = "0" + hour; }
+	  minute = "" + now.getMinutes(); if (minute.length == 1) { minute = "0" + minute; }
+	  second = "" + now.getSeconds(); if (second.length == 1) { second = "0" + second; }
+	  return year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
+	}
+ 
+ function prevButton(){
+	  var n_block = Math.ceil(currentPage / 5);
 
-               }
-                
-                
-                var lastPage = ${size/10+(1-(size/10%1))%1};
-                 
-                var last_block = Math.ceil(lastPage / 5);
-   
-               
-                 //현재 블럭 구하기 
-                 var n_block = Math.ceil(currentPage / 5);
+     //페이징의 시작페이지와 끝페이지 구하기
+     var s_page = (n_block-1) * 5 -4 ; // 현재블럭의 시작 페이지
+     page(s_page);
+ }
+ 
+ function nextButton(){
+	  var n_block = Math.ceil(currentPage / 5);
 
-                 //페이징의 시작페이지와 끝페이지 구하기
-                 var s_page = (n_block - 1) * 5 + 1; // 현재블럭의 시작 페이지
-                 var e_page = n_block * 5; // 현재블럭의 끝 페이지
-            
-            
-
-                if(n_block != 1){
-                       $("#pagination").append($('<li class="waves-effect"><a onclick="prevButton();"><i class="material-icons">chevron_left</i></a></li>'));
-                   }
-                
-                for (var i = s_page; i <= e_page; i++){
-                   if (i > lastPage)    break;
-                   
-
-
-      
-                   if(page == i){
-                      $("#pagination").append($(' <li class="waves-effect active"><a class="page" onclick="page('+i+');" value='+i+'>'+i+'</a></li>'));
-                   }
-                   else{
-                      $("#pagination").append($(' <li class="waves-effect"><a class="page" onclick="page('+i+');" value='+i+'>'+i+'</a></li>'));
-                   }
-                }
-                 
-      
-                if(n_block != last_block){
-                  $("#pagination").append($('<li class="waves-effect"><a onclick="nextButton();"><i class="material-icons">chevron_right</i></a></li>')); 
-                }
-                 
-            }
-            
-          
-            });
-     }
-  
-  function js_yyyy_mm_dd_hh_mm_ss (date) {
-     
-     now = new Date(date);
-     year = "" + now.getFullYear();
-     month = "" + (now.getMonth() + 1); if (month.length == 1) { month = "0" + month; }
-     day = "" + now.getDate(); if (day.length == 1) { day = "0" + day; }
-     hour = "" + now.getHours(); if (hour.length == 1) { hour = "0" + hour; }
-     minute = "" + now.getMinutes(); if (minute.length == 1) { minute = "0" + minute; }
-     second = "" + now.getSeconds(); if (second.length == 1) { second = "0" + second; }
-     return year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
-   }
-  
-  function prevButton(){
-     var n_block = Math.ceil(currentPage / 5);
-
-      //페이징의 시작페이지와 끝페이지 구하기
-      var s_page = (n_block-1) * 5 -4 ; // 현재블럭의 시작 페이지
-      page(s_page);
-  }
-  
-  function nextButton(){
-     var n_block = Math.ceil(currentPage / 5);
-
-      //페이징의 시작페이지와 끝페이지 구하기
-      var s_page = (n_block) * 5 + 1; // 현재블럭의 시작 페이지
-      page(s_page);
-  }
+     //페이징의 시작페이지와 끝페이지 구하기
+     var s_page = (n_block) * 5 + 1; // 현재블럭의 시작 페이지
+     page(s_page);
+ }
 
 </script>

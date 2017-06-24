@@ -873,7 +873,7 @@ textScroll.prototype.start = function() {
 						
 					<c:otherwise>
 	
-						<img alt="푸드텔러"src="${root}/resource/images/${hot.userProfile }" onerror="this.src ='${root}/resource/images/avatar.png'">
+						<img alt="푸드텔러"src="${root}/resource/profile/${hot.userProfile }" onerror="this.src ='${root}/resource/images/avatar.png'">
 					</c:otherwise>
 						
 					</c:choose>
