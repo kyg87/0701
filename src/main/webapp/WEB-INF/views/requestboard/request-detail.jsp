@@ -5,6 +5,7 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+<c:set var="root" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 
 <style>
@@ -197,8 +198,53 @@ background: #dd5d58;
 	bottom: 50px;
 	right: 50px;
 }
+ a.waves-effect.waves-light {
+    position: absolute;
+    top: 9px;
+    right: 7px;
+}
+.box_write{
+	background-color: #f7f7f7;
+    height: 98px;
+    box-sizing: border-box;
+    padding: 13px 18px;
+    border: 1px solid #e6e6e6;
+        display: flex;
+}
+    
+.box_write textarea {
+  /*   width: 535px; */
+    height: 71px;
+    box-sizing: border-box;
+    border: 1px solid #e6e6e6;
+    resize: none;
+    float: left;
+    color: #c7c7c7;
+    font-size: 16px;
+    font-family: Microsoft YaHei,'NSL';
+    text-align: center;
+    padding-top: 20px;
+    color: #313131;
+    overflow: auto;
+
+}
+
+.box_write button {
+    /* display: block; */
+    width: 123px; 
+    height: 71px;
+    background-color: #d2b295; 
+    border: none;
+    color: #fff;
+    font-size: 17px;
+    font-family: Microsoft YaHei,'NSL';
+    float: right;
+    line-height: 80px\0;
+    margin-left: 10px;
+} 
+
 /* ---------------------------------------------- */
- 
+
  
 
 </style>
@@ -260,7 +306,36 @@ background: #dd5d58;
 							class="waves-effect waves-light btn" id="back"
 							href="requestboard?p=${page}">목록으로</a>
 					</div>
+		   <!--Start 댓글 영역  -->
+		   <form class="box_write" id="comment-add-form"
+								action="requestBoard-comment-add" method="post">
+         
 
+               
+              
+           <textarea placeholder="한 줄 댓글을 남겨주세요." name="content"
+						required="required"></textarea>
+           
+           
+           <button name="button" type="button" onclick="onCreate();">등록</button>
+         
+            
+             
+             
+            
+     	     <input type="hidden" name="requestBoardId" value=${n.id }>
+        	 <input type="hidden" name="memberId"
+									value=<security:authentication property="name"/>>
+         	</form>
+
+
+			<ul id="commentList" class="collection">
+
+			</ul>
+			<ul id="pagination" class="pagination center">
+
+			</ul>
+			<!--End 댓글 영역  -->
 
 
 				
@@ -596,9 +671,15 @@ var currentPage = ${page};
 	
 	function onCreate(){
 		
+		console.log('${loginID}');
+ 		if('${loginID}' == 'anonymousUser') {
+			alert("로그인한 유저만 사용 가능합니다.");
+			return ;
+		} 
+
 		var count = 0;
 		
-		var text = $("#comment-add-form").find("input");
+		var text = $("#comment-add-form").find("textarea");
 		
 	
 		var tt= text.val();
@@ -620,8 +701,7 @@ var currentPage = ${page};
 			if(z =="1"){
 
 				page(1);
-	 		 	//count++;
-				//if(count <100)onCreate();  
+				text.val('');
 			}
 			
 		});
@@ -656,38 +736,56 @@ var currentPage = ${page};
 		      $("#commentList").empty();
 		      $("#pagination").empty();
 		      var obj = JSON.parse(d);
-		      
+		      var src ="";
 		     
 		      if(obj.length != 0){
-		    	  
-
+	
 					for (var i = 0; i < obj.length; i++) {
 						
-						if(obj[i].memberId=='${loginID}'){
+						src = "${root}/resource/profile/" +obj[i].profile;
+						
+		 				if(obj[i].memberId=='${loginID}'){
 						
 							$("#commentList").append($('<li class="collection-item avatar">' + + '</li>')
-								 .append($('<img src="/WiynPrj/resource/images/test.png" alt="" class="circle"> '))
+									 .append($('<img src='+ src   +' class="circle"> '))
 								 .append($('<span class="title">'+obj[i].memberId+'</span>'))
-								 .append($('<time>'+obj[i].regDate+'</time>'))
+								 .append($('<time>'+js_yyyy_mm_dd_hh_mm_ss(obj[i].regDate)+'</time>'))
 								 .append($('<p>'+obj[i].content+'</p>'))
-								 .append($('<a class="waves-effect waves-light btn" onclick="onDelete('+obj[i].id+ ');" value='+obj[i].id+'>삭제</a>')));
+								 .append($('<a class="waves-effect waves-light" onclick="onDelete('+obj[i].id+ ');" value='+obj[i].id+'><i class="material-icons">clear</i></a>')));
 						}
 						else{
 							$("#commentList").append($('<li class="collection-item avatar">' + + '</li>')
-									 .append($('<img src="/WiynPrj/resource/images/test.png" alt="" class="circle"> '))
+									 .append($('<img src='+ src   +' class="circle"> '))
 									 .append($('<span class="title">'+obj[i].memberId+'</span>'))
-									 .append($('<time>'+obj[i].regDate+'</time>'))
+									 .append($('<time>'+js_yyyy_mm_dd_hh_mm_ss(obj[i].regDate)+'</time>'))
 									 .append($('<p>'+obj[i].content+'</p>')));
-						}
-
+						} 
 					}
-			    	  $("#pagination").append($('<li class="waves-effect"><a><i class="material-icons">chevron_left</i></a></li>'));
+			 	/*    $("#commentList img").error(function() {
+			 
+				         this.src ="${root}/resource/images/avatar.png";
+				      });  */
+			 	 
+			    	
 			    	
 					 var lastPage = ${size/10+(1-(size/10%1))%1};
 					  
-			
+					 var last_block = Math.ceil(lastPage / 5);
+	
+					
+			        //현재 블럭 구하기 
+			        var n_block = Math.ceil(currentPage / 5);
+			        //페이징의 시작페이지와 끝페이지 구하기
+			        var s_page = (n_block - 1) * 5 + 1; // 현재블럭의 시작 페이지
+			        var e_page = n_block * 5; // 현재블럭의 끝 페이지
+				
+				
+					 if(n_block != 1){
+						  	$("#pagination").append($('<li class="waves-effect"><a onclick="prevButton();"><i class="material-icons">chevron_left</i></a></li>'));
+						 }
 					 
-					 for (var i = 1; i <= lastPage; i++){
+					 for (var i = s_page; i <= e_page; i++){
+						 if (i > lastPage)    break;
 						 
 		
 						 if(page == i){
@@ -697,21 +795,50 @@ var currentPage = ${page};
 							 $("#pagination").append($(' <li class="waves-effect"><a class="page" onclick="page('+i+');" value='+i+'>'+i+'</a></li>'));
 						 }
 					 }
-					 
-					  $("#pagination").append($('<li class="waves-effect"><a><i class="material-icons">chevron_right</i></a></li>'));
+			        
+		
+					 if(n_block != last_block){
+						$("#pagination").append($('<li class="waves-effect"><a onclick="nextButton();"><i class="material-icons">chevron_right</i></a></li>')); 
+					 }
+					  
 				}
-		      
+		   
 		    
 		   	});
-  }
+ 	}
+		   
+		      
+		     
+		
 
+ 
+ 
+ function js_yyyy_mm_dd_hh_mm_ss (date) {
+	  
+	  now = new Date(date);
+	  year = "" + now.getFullYear();
+	  month = "" + (now.getMonth() + 1); if (month.length == 1) { month = "0" + month; }
+	  day = "" + now.getDate(); if (day.length == 1) { day = "0" + day; }
+	  hour = "" + now.getHours(); if (hour.length == 1) { hour = "0" + hour; }
+	  minute = "" + now.getMinutes(); if (minute.length == 1) { minute = "0" + minute; }
+	  second = "" + now.getSeconds(); if (second.length == 1) { second = "0" + second; }
+	  return year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
+	}
+ 
+ function prevButton(){
+	  var n_block = Math.ceil(currentPage / 5);
 
-$(function(){
+     //페이징의 시작페이지와 끝페이지 구하기
+     var s_page = (n_block-1) * 5 -4 ; // 현재블럭의 시작 페이지
+     page(s_page);
+ }
+ 
+ function nextButton(){
+	  var n_block = Math.ceil(currentPage / 5);
 
-   $("#rightBtn").click(function(){
-
-   });
-});
-
+     //페이징의 시작페이지와 끝페이지 구하기
+     var s_page = (n_block) * 5 + 1; // 현재블럭의 시작 페이지
+     page(s_page);
+ }
 
 </script>

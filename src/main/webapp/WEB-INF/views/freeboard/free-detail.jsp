@@ -364,7 +364,7 @@ $(document).ready(function(){
                      href="free-edit?c=${n.id}">수정</a>
                   <a class="waves-effect waves-light btn list-btn" id="back" >목록으로</a>
                </div>
-                          <!--Start 댓글 영역  -->
+           <!--Start 댓글 영역  -->
 		   <form class="box_write" id="comment-add-form"
 								action="freeBoard-comment-add" method="post">
          

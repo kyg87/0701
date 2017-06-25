@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 import com.wiyn.web.dao.FreeBoardDao;
 import com.wiyn.web.dao.FreeCommentDao;
+import com.wiyn.web.dao.MemberDao;
 import com.wiyn.web.dao.RequestBoardDao;
 import com.wiyn.web.dao.RequestCommentDao;
 import com.wiyn.web.dao.SmallCategoryDao;
@@ -82,6 +83,9 @@ public class RequestBoardCommentController {
 
 		List<RequestComment> requestComments = sqlSession.getMapper(RequestCommentDao.class).getList(id, Integer.parseInt(page));
 	
+		for (RequestComment requestComment : requestComments) {
+			requestComment.setProfile(sqlSession.getMapper(MemberDao.class).get(requestComment.getMemberId()).getProfile());
+		}
 		
 		Gson gson = new Gson();
 		String json = gson.toJson(requestComments);
