@@ -384,7 +384,9 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 			display: block;
 			bottom: -100px; /* 캡션을 안보이게 처리 */
 			height: 70px;
-			background-color:rgba(250,250,250,0.5);
+	background:7f7f7f;
+	background: rgba(0,0,0,0.5);
+			width: 33.333%;
 		}
 
 
