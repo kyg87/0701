@@ -3,6 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<jsp:useBean id="now" class="java.util.Date" />
 
 <style type="text/css">
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
@@ -173,15 +174,109 @@ background: #dd5d58;
 	bottom: 50px;
 	right: 50px;
 }
-/* ---------------------------------------------- */
-</style>
+/* -------------------------상단목록이동----------------------------- */
 
+#breadcrumb {
+  list-style: none;
+  display: flex;
+}
+#breadcrumb .icon {
+  font-size: 14px;
+}
+#breadcrumb li {
+}
+#breadcrumb li a {
+  color: #FFF;
+  display: block;
+  background: #3498db;
+  text-decoration: none;
+  position: relative;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 10px 0 5px;
+  text-align: center;
+  margin-right: 23px;
+}
+#breadcrumb li:nth-child(even) a {
+  background-color: #2980b9;
+}
+#breadcrumb li:nth-child(even) a:before {
+  border-color: #2980b9;
+  border-left-color: transparent;
+}
+#breadcrumb li:nth-child(even) a:after {
+  border-left-color: #2980b9;
+  }
+#breadcrumb li:first-child a {
+  padding-left: 15px;
+  -moz-border-radius: 4px 0 0 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px 0 0 4px;
+}
+#breadcrumb li:first-child a:before {
+  border: none;
+}
+#breadcrumb li:last-child a {
+  padding-right: 15px;
+  -moz-border-radius: 0 4px 4px 0;
+  -webkit-border-radius: 0;
+  border-radius: 0 4px 4px 0;
+}
+#breadcrumb li:last-child a:after {
+  border: none;
+}
+#breadcrumb li a:before, #breadcrumb li a:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  border: 0 solid #3498db;
+  border-width: 20px 10px;
+  width: 0;
+  height: 0;
+}
+#breadcrumb li a:before {
+  left: -20px;
+  border-left-color: transparent;
+}
+#breadcrumb li a:after {
+  left: 100%;
+  border-color: transparent;
+  border-left-color: #3498db;
+}
+#breadcrumb li a:hover {
+  background-color: #1abc9c;
+}
+#breadcrumb li a:hover:before {
+  border-color: #1abc9c;
+  border-left-color: transparent;
+}
+#breadcrumb li a:hover:after {
+  border-left-color: #1abc9c;
+}
+#breadcrumb li a:active {
+  background-color: #16a085;
+}
+#breadcrumb li a:active:before {
+  border-color: #16a085;
+  border-left-color: transparent;
+}
+#breadcrumb li a:active:after {
+  border-left-color: #16a085;
+}
+/* --------------------------------------------------------- */
+</style>
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 <div>
 	<label class="board-title">Notice Board</label>
 </div>
 
 <main id="main">
+
 <div class="container">
+<ul id="breadcrumb">
+  <li><a href="../main/index"><span class="icon icon-home"> </span></a></li>
+  <li><a href="?p=1"><span class="icon icon-double-angle-right"> </span>공지사항</a></li>  
+</ul>
 	<table border="1" class="highlight table">
 		<thead class="table-head">
 			<tr class="head-tr">
@@ -196,12 +291,15 @@ background: #dd5d58;
 
 			<c:forEach var="mem" begin="${(page*10)-10 }" end="${page*10-1 }"
 				items="${list}">
-
+<div style="display: none"><fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" /> </div>				
+<div style="display: none;"><fmt:formatDate value="${mem.regDate}"
+								pattern="yyyy-MM-dd HH:mm:ss" var="writedate" /></div>	
 				<tr>
 
 					<td>${mem.id}</td>
 					<td class="orange-text text-accent-3 table-title"><a
-						href="notice-detail?c=${mem.id}&p=${page}">${mem.title}</a></td>
+						href="notice-detail?c=${mem.id}&p=${page}">${mem.title}</a>
+						<c:if test="${writedate>=today }"><img src="/WiynPrj/resource/images/new.jpg"/></c:if></td>
 					<td>${mem.memberId }</td>
 					<td>${mem.hit }</td>
 					<td><fmt:formatDate value="${mem.regDate}"
