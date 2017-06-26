@@ -145,14 +145,16 @@
     display: flex;
     justify-content: flex-end;
 }
-
+.tabs li a{
+	padding: 0px !important;
+}
 
 </style>
 <main id="main">
 <div class="container">
 	<div class="section">
 		<div class="row">
-			<div class="col l4 s12"><h2>My Page</h2>
+			<h2>My Page</h2>
 			
 				  <!-- 개인프로필 Modal Structure -->
 		
@@ -183,17 +185,20 @@
  
     <security:authentication property="name" var="loginID"/>
 	</div>
-	</div>
 	
-			<div class="col l8 s12 profile">
+	
+			
 				<div class="row" style="margin-top: 50px;">
 					<form id="testform" action="del" name="del" method="post">
 						<div>
 
 							<ul class="tabs">
-								<li class="tab col s3"><a href="#test1"> 등록한 글 </a></li>
-								<li class="tab col s3"><a href="#test2">등록한 댓글</a></li>
-								<li class="tab col s3"><a href="#test3">좋아요한 게시물</a></li>
+								<!-- <li class="tab col s3"><a href="#test1"> 등록한 글 </a></li> -->
+								<li class="tab col s2"><a href="#sub-test1">자유게시판</a></li> 
+								<li class="tab col s2"><a href="#sub-test2">요청게시판</a></li>
+								<li class="tab col s2"><a href="#sub-test3">사이트 게시판</a></li> 
+								<li class="tab col s2"><a href="#test3">좋아요한 게시물</a></li>
+								<li class="tab col s2"><a href="#test2">등록한 댓글</a></li>
 
 							</ul>
 						</div>
@@ -231,7 +236,7 @@
 
 
 						<table class="bordered" id="test1">
-							<div>
+						<!-- 	<div>
 								<ul class="tabs" style="position: relative; width: 85%">
 									<li class="tab col s3"><a href="#sub-test1"> 자유게시판 </a></li>
 									<li class="tab col s3"><a href="#sub-test2"
@@ -240,11 +245,11 @@
 										class="inactive"> 사이트게시판</a></li>
 
 								</ul>
-							</div>
+							</div> -->
 							<thead>
 								<tr>
 
-									
+									<th style="text-align:center"></th>
 									<th style="text-align: center">게시글</th>
 									<th style="text-align: center">작성시간</th>
 									<th style="text-align: center">게시판종류</th>
@@ -323,14 +328,7 @@
 
 
 						<table class="bordered" id="test2">
-							<thead>
-								<tr>
-									
-									<th style="text-align: center">댓글</th>
-									<th style="text-align: center">작성시간</th>
-
-								</tr>
-							</thead>
+						
 							<tbody>
 								<c:forEach var="v" items="${list2}">
 									<tr>
@@ -348,18 +346,12 @@
 						</table>
 
 						<table class="bordered" id="test3">
-							<thead>
-								<tr>
-									
-									<th style="text-align: center">게시글</th>
-									<th style="text-align: center">작성시간</th>
-
-								</tr>
-							</thead>
+						
 
 							<tbody>
 								<c:forEach var="v" items="${list3}">
 									<tr>
+										
 										<td><input type="checkbox" id="test${v}" /><label
 											for="test${v}"></label></td>
 										<td style="text-align: center"><a
@@ -456,7 +448,7 @@
     $(this).addClass("active"); 
 });
 			</script>
-			</div>
+			
 		</div>
 	</div>
 </div>
