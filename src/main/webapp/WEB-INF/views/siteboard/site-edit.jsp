@@ -3,14 +3,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <style>
-body {
-	background-color: rgb(238, 238, 238);
+.chips{
+border-bottom: none;
+}
+
+.card-panel {
+	transition: box-shadow .25s;
+	padding: 20px;
+	margin: 0.5rem 0 1rem 0;
+	border-radius: 2px;
+	background-color: #F0E5D7 !important;
+	min-height: 640px;
 }
 
 #main {
-	width: 600px;
-	margin-top: 30px;
-	margin: 0px auto;
+	width: 100%;
 	min-height: 500px;
 	font-size: 14px;
 	line-height: 1.5em;
@@ -18,16 +25,11 @@ body {
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 3px;
 	box-shadow: 1px 1px 5px #383838;
-	background-color: white;
-	/* background: pink; */
-	padding: 10px;
-	margin: 0px auto;
-	margin-top:70px;
+	
 }
 
 #title {
-	width: 40px;
-	/* border: 1px solid black; */
+	width: 20px;
 	font-family: bold;
 	display: inline;
 	font-style: black;
@@ -36,8 +38,7 @@ body {
 }
 
 #address {
-	width: 40px;
-	/* border: 1px solid black; */
+	width: 20px;
 	display: inline;
 	font-style: black;
 	font-weight: bolder;
@@ -61,8 +62,8 @@ body {
 }
 
 #titleinput {
-	width: 400px;
-	margin-right: 100px;
+	width: 100%;
+	margin-right: 10%;
 }
 
 #input-field1 {
@@ -74,19 +75,235 @@ body {
 	float: left;
 	margin-left: 10px;
 }
-#btn{
- margin-left: 500px;
+
+.btn {
+	background: rgb(210, 178, 149); 
 }
 
-
+.btn:hover {
+	/* background: rgb(210, 178, 149); */
+	background-color: rgb(195, 143, 95) !important;
+} 
 
 </style>
 
-<main>
+<main id="main">
+<div class="container">
+	<div class="section">
+		<div class="row">
 
-<form action="edit" method="post">
-	<div id="main">
-	<div>자유게시판등록</div>
+			<div class="col s12 l6">
+				<h2 class="title">Site Board</h2>
+								
+				<div class="preview">
+
+				</div>
+
+			</div>
+			
+			<div class="col s12 l6">
+			<form action="edit" method="post">
+						<div class="row">
+							<div class="input-field">
+						<input type="hidden" value="${n.bigCategoryId }" name="aa"/>
+							<select name="bigCategoryId" id="bigCategoryId">
+								<option id="default" value="" disabled selected>${b }</option>
+								<c:forEach var="bc" items="${bcList }">
+									<option value="${bc.id }">${bc.name }</option>
+								</c:forEach>
+							</select>
+							<script>
+						$(function() {
+				               $("#bigCategoryId").on('change', function() {
+
+				                        var data = $("#bigCategoryId");
+				                        var smallCategory = $("#smallCategoryId");
+				                        var smli = $("#scList>div>select");
+				      
+				                        smli.empty();
+				                        
+				                        $.post("getListWithBC", data, function(d) {
+
+				                           var obj = JSON.parse(d);
+				               
+				                           smallCategory.append( $('<option disabled selected><span> 소분류 선택 </span></option'));
+				                           
+				                           if(obj.length != 0){
+				                              for (var i = 0; i < obj.length; i++) {
+				                                    
+				                                 smallCategory.append( $('<option value=' +obj[i].id +  '><span>'+ obj[i].name +'</span></option>'));
+				                        
+				                                    $('select').material_select();
+				                              }
+				                           }
+				                           else if(obj.length == 0){
+				                              $('select').material_select();
+				                           }
+				                        });
+				                        
+				                        var bcDelpost = $("#bcdel");
+				                        var bcModpost = $("#bcmod");
+				                        var scCheckpost = $("#scAddCheck");
+				                        
+				                        bcDelpost.val($(this).val());
+				                        bcModpost.val($(this).val());
+				                        scCheckpost.val($(this).val());
+				                        
+				                     });
+				            });
+						</script>
+<!-- 							<select>
+								 <option value="" disabled selected>${b }</option> 
+								<option value="1">Option 1</option>
+								<option value="2">Option 2</option>
+								<option value="3">Option 3</option>
+							</select> -->
+						</div>
+							
+							<div class="input-field" id="scList">
+						<input type="hidden" value="${n.smallCategoryId }" name="bb"/>
+						<select name="smallCategoryId" id="smallCategoryId">
+							<option id="default"  value="" disabled selected>${s }</option>
+						</select>
+					</div> 
+					<script>
+						$(function() {
+							$("#smallCategoryId").on('change', function() {
+
+								var smList = $("#smallCategoryId");
+
+								var scDelpost = $("#scdel");
+								var scModpost = $("#scmod");
+
+								scDelpost.val($(this).val());
+								scModpost.val($(this).val());
+
+							});
+						});
+					</script> 
+						</div>
+						
+						<div class="row">
+							<div class="input-field col s12">
+								<input id="titleinput" name="title" type="text" value=${n.title }>
+								<label for="name" class="active"><i
+									class="tiny material-icons">mode_edit</i> 제목 </label>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="input-field col s12">
+								<input placeholder=" http:// " id="titleinput contentSrc"  name="url"  type="text" value=" ${n.url }">
+								<label for="name" class="active"><i
+									class="tiny material-icons">language</i> 주소 </label>
+							</div>
+						</div>
+
+
+						<div class="row">
+							<div class="input-field col s12">
+								<textarea class="form-control" name="content" rows="15" id="comment">${n.content }</textarea>
+							
+								<label for="name" class="active">
+								<i class="tiny material-icons">textsms</i> 내용 </label>
+							</div>
+						</div>
+						
+						<div class="chips chips-placeholder">
+							<input class="tag" id="e385bafe-7ce5-436e-e3f3-12af51285ada" type="text"  placeholder="+Tag" />
+							
+							<c:forEach var="tag" items="${t }">
+								<div id="chip" class="chip" ><input type="hidden" name="tag" value="${tag }"/>${tag }<i class='material-icons close'>close</i></div>
+							</c:forEach>
+						</div>
+						<script>				
+							$('.tag').keydown(function(e){
+								
+								   if(e.keyCode == 32){
+									   
+									   var value = $(this).val();
+
+									   $("<div class='chip'><input type='hidden' name='tag' value='"+value+"'>"+value+"</input><i class='material-icons close'>close</i></div>").appendTo('.chips');
+
+									   $(this).val(null);
+								   }	  
+								
+							});	
+						</script>
+
+
+						<div id="btn">
+							<button class="btn waves-effect waves-light right" type="submit"
+								name="action" id="test">등록</button>
+						</div>
+						<input type="hidden" name="memberId"
+							value=<security:authentication property="name"/> />
+
+				</form>
+				</div>
+						<script>
+							$(function() {
+
+								/* var comment = $("#comment"); */
+
+								$("#comment").keydown(function(e) {
+
+									if ($("#comment").val().length > 130) {
+										if (e.keyCode != 8) {
+											alert("글자수 초과!!");
+										}
+									}
+
+								});
+
+							});
+						</script>
+
+
+
+						
+					
+				</div>
+				
+		</div>
+	
+
+
+
+
+	
+					<%-- 	<script>	
+						
+							$('.tag').keydown(function(e){
+								
+								   if(e.keyCode == 32){
+									   
+									   var value = $(this).val();
+									   
+									   /*  $("<div class='chip'>"+value+"<i class='material-icons close'>close</i></div>").appendTo('.chips');  */
+									   $("<div class='chip'><input type='hidden' name='tag' value='"+value+"'>"+value+"</input><i class='material-icons close'>close</i></div>").appendTo('.chips');
+									   /* alert(value); */
+									   $(this).val(null);
+								   }	  
+								
+							});				
+							</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		<table>
 			<thead>
 				<tr>
@@ -170,13 +387,13 @@ body {
 							});
 						});
 					</script> 
-<%-- <div id="input-field2" class="input-field">							
+<div id="input-field2" class="input-field">							
 <select>
 								<option value="" disabled selected>${s }</option> 
 								<option value="1">Option 1</option>
 								<option value="2">Option 2</option>
 								<option value="3">Option 3</option> 
-							</select> --%>
+							</select>
 						</div>
 					</th>
 				</tr>
@@ -248,7 +465,7 @@ body {
 		
 		<input type="hidden" name="memberId" value="LSE@mb">
 	</div>
-</form>
+</form> --%>
 
 
 
