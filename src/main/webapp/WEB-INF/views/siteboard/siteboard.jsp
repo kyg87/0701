@@ -358,6 +358,36 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 
 
 
+.collection-header h4 {
+    font-size: 15px;
+    line-height: 110%;
+    margin: 1.14rem 0 0.912rem 0;
+}
+
+.best.collection.with-header .collection-header {
+    padding: 0px 20px;
+}
+
+.best.collection.with-header .collection-item {
+    padding-left: 0px;
+}
+
+.best.collection .collection-item {
+    padding: 10px 0px;
+}
+
+.collection-item:hover .caption_box{
+			bottom: 0px;
+}
+.collection-item .caption_box{
+			position: absolute;
+			display: block;
+			bottom: -100px; /* 캡션을 안보이게 처리 */
+			height: 70px;
+			background-color:rgba(250,250,250,0.5);
+		}
+
+
 .writer-warpper{
     position: absolute;
     right: 176px;
@@ -453,8 +483,14 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 					<h4>요즘 뜨는 사이트</h4>
 				</div>
 				<div class="flex">
-					<c:forEach var="hotlist" items="${likelist }" begin="0" varStatus="status" end="5">
-					<div class="collection-item"><img src="http://api.thumbalizr.com/?url=http://${hotlist.url}"/></div>
+					<c:forEach var="hotlist" items="${likelist }" begin="0"
+						varStatus="status" end="5">
+						<div class="collection-item center">
+							<img
+								src="http://api.thumbalizr.com/?url=http://${hotlist.url}&width=332&heigt=270"/><span
+								class="caption_box"> <span class="title"></span> <span class="info">${hotlist.title }</span>
+							</span>
+						</div>
 					</c:forEach>
 				</div>
 			</div>
@@ -496,7 +532,7 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 									<p>${n.memberId }
 										<br>
 										<fmt:formatDate value="${n.regDate}"
-											pattern="yyyy.MM.dd HH:mm" />
+											pattern="yy.MM.dd HH:mm" />
 									</p>
 								</div>
 								<div  class="like-warpper">
