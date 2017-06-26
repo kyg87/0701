@@ -35,14 +35,13 @@
 	.hi .category-p {
 		display: none;
 	}
-	.main-request .category-p {
+	.active .category-p {
 		font-size: 18px;
 	}
-	.category-add .main-request {
+	.active .main-request {
 		width: 280px;
 	}
-	.main-request 
-	#reqRegform .main-request {
+	.active .main-request {
 		width: 280px;
 	}
 }
@@ -54,13 +53,17 @@
 	.hot-site.flex.column {
 		align-items: center;
 	}
+	
+	.banner .banner-img{
+		display: none;
+	}
 }
 
 @media only screen and (max-width: 1220px) {
 	.lst_recipe li:first-child {
 		display: none;
 	}
-	.category-add.flex {
+	.collapsible-body.flex.space {
 		flex-direction: column;
 		align-items: center;
 	}
@@ -121,12 +124,12 @@ visual {
 
 
 .visual .banner-img {
-	background-image:
-		url("/WiynPrj/resource/images/responsive-2044921_1920.jpg");
-	width:auto;
-	height: auto;
+    background-image: url(/WiynPrj/resource/images/wordpress-2171594_1920.jpg);
+    width: 500px;
+    height: 300px;
+    margin-top: 35px;
+    margin-right: 150px;
 }
-
 .visual .banner-card {
 	height: 200px;
 	background-color: lime;
@@ -167,7 +170,7 @@ visual {
 	background: #fff;
 	box-shadow: 4px 4px 0px 2px rgba(0, 0, 0, 0.05);
 	border-radius: 4px;
-	min-width: 300px;
+	    max-width: 350px;
 	min-height: 240px;
 }
 
@@ -199,16 +202,17 @@ label {
 }
 
 #scroll a {
-	padding-left: 110px;
+	padding-left: 80px;
 	color: #000;
 	font-weight: bold;
 	font-size: 21px;
 }
 
 .noticelabel {
-	padding-left: 30px;
+	padding-left: 0px;
 	font-size: 15px;
 	font-style: bold;
+	color: #424242;
 }
 
 /*------------------------- 핫한사이트 ----------------------------------*/
@@ -217,7 +221,8 @@ label {
 }
 
 .background {
-	background-color: #F6F4F1;
+background-img:url("/WiynPrj/resource/images/back.png");
+	
 }
 
 .write {
@@ -275,7 +280,7 @@ input[type="text"] {
 }
 
 .main-request {
-	width: 450px;
+	width: 430px;
 }
 
 .background textarea.materialize-textarea {
@@ -283,7 +288,7 @@ input[type="text"] {
 }
 
 .background .btn {
-	background-color: rgb(221, 93, 88);
+	background-color: rgb(51, 122, 183);
 }
 
 .thema {
@@ -360,7 +365,7 @@ input[type="text"] {
 }
 
 .sitego {
-	background: #337ab7;
+	background-color:#424242;
 	width: 100%;
 	height: 50px;
 	text-align: center;
@@ -726,8 +731,30 @@ input, button, img {
 	text-align: center;
 }
 
-.collapsible:hover {
+.collapsible .category-p:hover {
 	text-decoration: underline;;
+}
+
+
+
+
+
+.gallery-action {
+    margin-right: 15px;
+}
+
+.btn-floating {
+
+    background-color: #424242;
+}
+
+.hi .category-p{
+font-size: 20px;
+    font-weight: bold;
+}
+
+.collapsible {
+    text-align: justify;
 }
 </style>
 <script type="text/javascript">
@@ -748,14 +775,14 @@ function textScroll(scroll_el_id) {
     for(var i=0; i<this.num; i++){
         this.objLi[i].style.position = 'absolute';
         this.objTop[i] = this.height*i;
-        this.objLi[i].style.top = this.objTop[i]+11+"px";
+        this.objLi[i].style.top = this.objTop[i]+8+"px";
     }
 }
 
 textScroll.prototype.move = function(){
     for(var i=0; i<this.num; i++) {
         this.objTop[i] = this.objTop[i] - this.scrollspeed;
-        this.objLi[i].style.top = this.objTop[i]+11+"px";
+        this.objLi[i].style.top = this.objTop[i]+8+"px";
     }
     if(this.objTop[0]%this.height == 0){
         this.jump();
@@ -788,41 +815,20 @@ textScroll.prototype.start = function() {
 <visual>
 	<div class="visual ">
 		<div class="banner">
-			<div class="container">
-				<div class="section">
-					<div class="row">
-						<div class="col l5 s12">
-							<!-- <img src="/WiynPrj/resource/images/responsive-2044921_1920.jpg"/> -->
-						</div>
-						<div class="col l7 s12">
-						
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</visual>
-
-
-			<!-- <div class="container flex">
+			<div class="container flex">
 				<div class="banner-img col l7 s12">
-					<img src="/WiynPrj/resource/images/responsive-2044921_1920"/>
 				</div>
 				<div class="col-sm-5">          
-	              <div class="ui-12 col-sm-9 center">                
-	                  UI Content
+	              <div class="ui-12 col-sm-9">                
+
 	                  <div class="ui-content">
-	                    Ui head
 	                    <div class="ui-head bg-blue">
-	                      Heading
 	                      <h2>이곳은 어떤 곳인가요?</h2>
 	                    </div> 
-	                    UI Body
 	                    <div class="ui-body br-blue">
 	                      <div class="row">
 	                        <div class="col-sm-12 col-sm-12">
-	                          <p>당신이 원하는 사이트, 당신에게 필요한 사이트를 추천 받고, 추천 할 수 있는 자유로운 공간입니다!</p>
+	                          <p>당신이 원하는 사이트,<br> 당신에게 필요한 사이트를 추천 받고, <br>추천 할 수 있는 자유로운 공간입니다!</p>
 	                          <a href="us" class="btn btn-primary">Learn More</a>
 	                        </div>  
 	                      </div>
@@ -830,8 +836,14 @@ textScroll.prototype.start = function() {
 	                  </div>                 
 	              </div>		             
 	            </div>
-			</div> -->
+			</div>
 		</div>
+	</div>
+</visual>
+
+
+			
+
 	<!-- <div class="banner-text">
 			<p>What is your needs? <br>당신이 원하는 사이트, 당신에게 필요한 사이트<br>추천 받고, 추천할 수 있는 자유로운 공간입니다! </p>
 </div> -->
@@ -839,7 +851,7 @@ textScroll.prototype.start = function() {
 <div>
 	<ul id="scroll">
 	<div class="container">
-   <label class="noticelabel">공지사항 ▶  </label>
+   <label class="noticelabel">공지사항   </label>
       <c:forEach var="m" items="${noticelist}">
          <li class="hite"><a href="../noticeboard/notice-detail?c=${m.id}&p=${param.p}">${m.title}</a></li>
       </c:forEach>
@@ -853,7 +865,10 @@ textScroll.prototype.start = function() {
 <div class="container flex column">
 <div class="hot-site flex column">
 		<div class="thema flex">
-			<i class="medium material-icons">play_arrow</i>
+			<div class="gallery-action" style="top: 257px;">
+                <a class="btn-floating btn-large waves-effect waves-light k"><i class="material-icons">thumb_up</i></a>
+              </div>
+			
 			<div class="flex column">
 			<p class="top-p">오븐이 없는 당신에게 유용한 사이트</p>
 			<p>오븐이 없어도 만들 수 있는 다양한 레시피!</p>
@@ -974,11 +989,16 @@ textScroll.prototype.start = function() {
 		</div>
 	</div> --%>
 
-
-	<div class="hot-site flex column">
-		<div class="thema flex">
-			<i class="medium material-icons">done</i>
-			<p class="">오븐이 없는 당신에게 유용한 사이트</p>
+<div class="hot-site flex column">
+	<div class="thema flex">
+			<div class="gallery-action" style="top: 257px;">
+                <a class="btn-floating btn-large waves-effect waves-light k"><i class="material-icons">thumb_up</i></a>
+              </div>
+			
+			<div class="flex column">
+			<p class="top-p">오븐이 없는 당신에게 유용한 사이트</p>
+			<p>오븐이 없어도 만들 수 있는 다양한 레시피!</p>
+			</div>
 		</div>
 		<!-- <h2 class="header lighten-1 section-title">
 <div class="hanna">
@@ -1021,7 +1041,7 @@ textScroll.prototype.start = function() {
 			</ul>
 
 
-
+</div>
 
 
 
@@ -1095,7 +1115,7 @@ textScroll.prototype.start = function() {
 	</div> --%>
 		</div>
 	</div>
-</div>
+
 <div class="white">
 <!-- <div class="container hi">
 	<div class="jeju">
@@ -1135,7 +1155,7 @@ textScroll.prototype.start = function() {
 	<ul class="collapsible" data-collapsible="accordion">
 		<li>
 			<div class="collapsible-header">
-				<p class="category-p">현재 원하는 카테고리가 없다면?</p>
+				<p class="category-p center">현재 원하는 카테고리가 없다면?</p>
 			</div>
 			
 			<div class="collapsible-body flex space">
