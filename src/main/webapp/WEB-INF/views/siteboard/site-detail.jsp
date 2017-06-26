@@ -400,8 +400,30 @@ a.waves-effect.waves-light {
 			</ul>
 			<!--End 댓글 영역  -->
 
-				
-		<button class="btn waves-effect waves-light list-btn" type="submit" name="action">목록</button>
+					<div>
+							<form class="form-end" action="site-delete" method="post">
+								<input type="hidden" name="id" value=${n.id }>
+								<button class="btn waves-effect waves-light" type="submit"
+									name="action">삭제</button>
+							</form>
+
+							<form action="site-edit?c=${n.id}" method="post">
+								<input type="hidden" name="id" value=${n.id }>
+								<button class="btn waves-effect waves-light" type="submit" name="action">수정</button>
+							</form>
+						 <a class="back" href="">
+              <button class="btn waves-effect waves-light list-btn" type="submit" name="action">목록</button>
+               </a> 
+               <script>
+                  $(document).ready(function(){                           
+                     $(".list-btn").on("click",function(){
+                        $('.back').prop('href', history.back());
+                     });
+                  });
+               </script>
+
+					</div>
+	
 		</div>
 
 			</div>
