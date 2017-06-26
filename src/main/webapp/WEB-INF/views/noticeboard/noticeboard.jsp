@@ -23,10 +23,7 @@
 
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
 
-* {
-	margin: 0;
-	padding: 0;
-}
+
 /*------------------------- 메인 테이블 부분 ----------------------------------*/
 #main .table {
 	border-radius: 2px;
@@ -264,6 +261,165 @@ background: #dd5d58;
   border-left-color: #16a085;
 }
 /* --------------------------------------------------------- */
+
+/*Start site-list */
+
+
+.list-item{
+    min-height: 96px;
+    padding-left: 22px;
+    position: relative;
+}
+.list-item:HOVER{
+	background-color: #e0e0e0;
+}
+
+.list-item .index{
+    top: 15px;
+    position: absolute;
+    font-size: 20px;
+    color: rgba(0,0,0,0.87);
+}
+
+.list-item .title{
+    color: rgba(0,0,0,0.87);
+    font-size: 20px;
+    font-weight: 400;
+    margin-left: 72px;
+    margin-right: 260px;
+    max-width: 770px;
+    overflow: hidden;
+    padding-top: 36px;
+    padding-bottom: 16px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+.url-warpper {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: 70px;
+}
+.url{
+	width: 100%
+}
+
+
+
+.writer-warpper{
+    position: absolute;
+    right: 176px;
+    top: 50%;
+    height: 32px;
+    margin: -45px 0;
+}
+
+.url-warpper img{
+    border: 0;
+    height: 96px;
+    width: 96px;
+}
+.like-warpper{
+	position: absolute;
+    top: 16px;
+    right: 16px;
+}
+
+@media screen and (max-width: 640px){
+	.list-item .title{
+	    font-size: 16px;
+	    line-height: 67px;
+	    margin-left: 48px;
+	    margin-right: 90px;
+	    padding-top: 16px;
+	    white-space: normal;
+	}
+	.writer-warpper{
+ 		display: none;
+	}
+	.url-warpper {
+
+	    right: 0px;
+	}
+	.writer-warpper{
+	    border: 0;
+	    height: 96px;
+	    width: 96px;
+	}
+	.like-warpper{
+		display: none;
+	}
+}
+
+.collection .collection-item:not(.active):hover {
+    background-color: #ddd;
+}
+
+.notice-list{
+box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
+}
+
+
+.mvaside{
+	display: flex;
+	width: 100%;
+}
+
+.collection{
+	border:none;
+	margin:0px;
+	margin-right: 30px;
+	border-bottom: 1px solid #e0e0e0;
+}
+
+.collection {
+    margin: 0px;
+    /* margin-right: 30px; */
+    background-color: #fff;
+}
+
+.collection.with-header .collection-item {
+	height:270px;
+    width: 100%;
+}
+
+.collection .collection-item {
+   border-bottom: none;
+}
+
+.collection a.collection-item {
+    width: 100%;
+}
+.circle {
+    border-radius: 0%;
+    border:1px solid #e9e9e9;
+}
+
+.collection .collection-item.avatar .circle {
+
+    width: 46px;
+    height: 66px;
+
+}
+
+.main-div{
+	width:100%;
+}
+
+.table{
+	background-color:#fff;  
+}
+
+.write {
+	display: flex;
+}
+
+.headdd{
+	margin-bottom: 16px;
+}
+
 </style>
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 <div>
@@ -271,44 +427,61 @@ background: #dd5d58;
 </div>
 
 <main id="main">
+<div class="col-xs-12 col-md-8 container">
+	<div class="flex">		
+		<div class="main-div">
 
-<div class="container">
-<ul id="breadcrumb">
-  <li><a href="../main/index"><span class="icon icon-home"> </span></a></li>
-  <li><a href="?p=1"><span class="icon icon-double-angle-right"> </span>공지사항</a></li>  
-</ul>
-	<table border="1" class="highlight table">
-		<thead class="table-head">
-			<tr class="head-tr">
-				<th>번호</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>조회 수</th>
-				<th>작성 날짜</th>
-			</tr>
-		</thead>
-		<tbody class="table-body">
+			<ul id="breadcrumb" class="headdd">
+				<li><a href="../main/index"><span class="icon icon-home">
+					</span></a></li>
+				<li><a href="?p=1"><span
+						class="icon icon-double-angle-right"> </span>공지사항</a></li>
+			</ul>
 
-			<c:forEach var="mem" begin="${(page*10)-10 }" end="${page*10-1 }"
-				items="${list}">
+			<div class="notice-list">
+
+
+
+<c:forEach var="mem" begin="${(page*10)-10 }" end="${page*10-1 }" items="${list}">
+					<ul class="collection">
 <div style="display: none"><fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" /> </div>				
 <div style="display: none;"><fmt:formatDate value="${mem.regDate}"
-								pattern="yyyy-MM-dd HH:mm:ss" var="writedate" /></div>	
-				<tr>
+								pattern="yyyy-MM-dd HH:mm:ss" var="writedate" /></div>
+						<li class="list-item flex">
+							<a href="notice-detail?c=${mem.id}&p=${page}" class="url">
+								<div class="index">
+									<p>${mem.id }</p>
+								</div>
+								<div class="title">
+									<span>${mem.title} <c:if test="${writedate>=today }"><img src="/WiynPrj/resource/images/new.jpg"/></c:if></span>
 
-					<td>${mem.id}</td>
-					<td class="orange-text text-accent-3 table-title"><a
-						href="notice-detail?c=${mem.id}&p=${page}">${mem.title}</a>
-						<c:if test="${writedate>=today }"><img src="/WiynPrj/resource/images/new.jpg"/></c:if></td>
-					<td>${mem.memberId }</td>
-					<td>${mem.hit }</td>
-					<td><fmt:formatDate value="${mem.regDate}"
-							pattern="yyyy-MM-dd HH:mm:ss" /></td>
+								</div>
+								<div class="writer-warpper">
+									<p>${mem.memberId }
+										<br>
+										<fmt:formatDate value="${mem.regDate}"
+											pattern="yyyy.MM.dd HH:mm" />
+									</p>
+								</div>
+								<%-- <div  class="like-warpper">
+									<i class="material-icons">grade</i>
+									<div>
+										<label class="like-s">${mem.good }개</label>
+									</div>
+								</div> --%>
+								
+								<div class="url-warpper">
+									<c:forEach var="flist" items="${flist }">
+									<c:if test="${mem.id == flist.noticeBoardId }">
+										<img src=${flist.src }${flist.name } />
+									</c:if>
+								</c:forEach>
+								</div>
+							</a>
+						</li>
 
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+					</ul>
+				</c:forEach>
 
 	<div class="site-button">
 		<a class="waves-effect waves-light btn sitego"
@@ -354,6 +527,8 @@ background: #dd5d58;
 
 	</div>
 </div>
+</div>
+</div>
 
 <form class="searchbar1" action="http://localhost/WiynPrj/siteboard/siteboard" method="GET">
   <div class="broker-expanding-search" data-expanding-search>
@@ -381,6 +556,7 @@ background: #dd5d58;
 	 
 	});
 </script>
+</div>
 </main>
 
 

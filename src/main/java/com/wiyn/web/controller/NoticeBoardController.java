@@ -86,6 +86,9 @@ public class NoticeBoardController {
 		if(checkLast > cnt)
 			checkLast = cnt;
 		
+		List<NoticeFile> fileList = sqlSession.getMapper(NoticeBoardFileDao.class).getList();
+		
+		model.addAttribute("flist", fileList);
 		model.addAttribute("list", list);
 		model.addAttribute("page", page);
 		model.addAttribute("listPerFive", listPerFive);

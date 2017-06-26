@@ -14,12 +14,12 @@ public class MyBatisNoticeBoardFileDao implements NoticeBoardFileDao{
    private SqlSession sqlSession;
    
    @Override
-   public List<NoticeFile> getList(String noticeBoardId) {
+   public List<NoticeFile> getList() {
       
 	  NoticeBoardFileDao noticeBoardFileDao;
 	  noticeBoardFileDao = sqlSession.getMapper(NoticeBoardFileDao.class);
       
-      return noticeBoardFileDao.getList(noticeBoardId);
+      return noticeBoardFileDao.getList();
    }
 
    @Override
