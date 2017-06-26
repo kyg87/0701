@@ -23,7 +23,15 @@ public class SiteBoard {
 	private int countcomment;
 	
 	private String news;
+	private String good;
 	
+	
+	public String getGood() {
+		return good;
+	}
+	public void setGood(String good) {
+		this.good = good;
+	}
 	public String getNews() {
 		return news;
 	}

@@ -39,10 +39,12 @@
 	</insert>
 
 	<select id="getList" resultType="com.wiyn.web.entity.SiteBoard">
-		select * FROM SiteBoard 
-		WHERE title like '%${query}%' and bigCategoryId
-		 like '%${bigCa}%' and smallCategoryId like '%${smallCa}%'  
-		 order by regDate DESC LIMIT ${(page-1)*10},10 
+		select N.*, COUNT(C.siteBoardId) good
+		FROM SiteBoard N 
+		LEFT OUTER JOIN SiteBoardLike C ON C.siteBoardId= N.id WHERE title like '%${query}%' and 
+		bigCategoryId like '%${bigCa}%' and smallCategoryId like '%${smallCa}%'  
+		GROUP BY N.id, N.title, N.content, N.regDate, N.url, N.hit 
+		order by regDate DESC LIMIT ${(page-1)*10},10 
 	</select>
 	
 	<select id="count" resultType="Integer">
@@ -61,7 +63,7 @@
 	
 		<select id="getListLike" resultType="com.wiyn.web.entity.SiteBoard">
 
-		select N.*, COUNT(C.siteBoardId) Good
+		select N.*, COUNT(C.siteBoardId) good
 		FROM SiteBoard N 
 		LEFT OUTER JOIN SiteBoardLike C ON C.siteBoardId= N.id 
 		WHERE N.title like '%${query}%' and bigCategoryId like '%${bigCa}%' and smallCategoryId like '%${smallCa}%'
@@ -72,9 +74,11 @@
 	</select>
 
 	<select id="getListComment" resultType="com.wiyn.web.entity.SiteBoard">
-	select *
-	FROM SiteBoard WHERE title like '%${query}%' and 
+	select N.*, COUNT(C.siteBoardId) good
+	FROM SiteBoard N 
+	LEFT OUTER JOIN SiteBoardLike C ON C.siteBoardId= N.id WHERE title like '%${query}%' and 
 	bigCategoryId like '%${bigCa}%' and smallCategoryId like '%${smallCa}%'
+	GROUP BY N.id, N.title, N.content, N.regDate, N.url, N.hit 
 	order by countcomment DESC, regDate desc LIMIT ${(page-1)*10},10
 	</select>
 <!-- select S.*,COUNT(C.siteBoardId) countcomment

@@ -481,14 +481,15 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 				</div>
 				<c:forEach var="n" items="${sitelist}">
 					<ul class="collection">
-
+<div style="display: none;"><fmt:formatDate value="${n.regDate}"
+								pattern="yyyy-MM-dd HH:mm:ss" var="writedate" /></div>
 						<li class="list-item flex">
 							<a href="site-detail?c=${n.id}&p=${param.p}" class="url">
 								<div class="index">
 									<p>${n.id }</p>
 								</div>
 								<div class="title">
-									<span>${n.title}</span>
+									<span>${n.title} <c:if test="${writedate>=today }"><img src="/WiynPrj/resource/images/new.jpg"/></c:if></span>
 
 								</div>
 								<div class="writer-warpper">
@@ -501,7 +502,7 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 								<div  class="like-warpper">
 									<i class="material-icons">grade</i>
 									<div>
-										<label class="like-s">2개</label>
+										<label class="like-s">${n.good }개</label>
 									</div>
 								</div>
 								<div class="url-warpper">

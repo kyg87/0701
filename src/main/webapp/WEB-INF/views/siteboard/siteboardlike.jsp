@@ -23,45 +23,8 @@
 	url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
 
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
-.mvaside{
-	display: flex;
-	justify-content : space-between;
-	width: 100%;
-}
-
-.collection{
-	border:none;
-	margin:0px;
-	margin-right: 30px;
-}
-
-.main-div{
-	width:100%;
-}
-
-.table{
-	background-color:#fff;  
-}
 
 
-.sitego {
-	background: rgba(27, 80, 162, 0.69);
-}
-
-.sitego:hover {
-	background: rgba(23, 56, 125, 0.79);
-}
-
-.write {
-	display: flex;
-}
-
-.site-button {
-	margin-top: 10px;
-	display: flex;
-	justify-content: flex-end;
-	font-family: 'Nanum Gothic Coding', serif;
-}
 #breadcrumb {
   list-style: none;
   display: inline-block;
@@ -70,7 +33,6 @@
   font-size: 14px;
 }
 #breadcrumb li {
-  float: left;
 }
 #breadcrumb li a {
   color: #FFF;
@@ -93,7 +55,7 @@
 }
 #breadcrumb li:nth-child(even) a:after {
   border-left-color: #2980b9;
-}
+  }
 #breadcrumb li:first-child a {
   padding-left: 15px;
   -moz-border-radius: 4px 0 0 4px;
@@ -151,6 +113,51 @@
   border-left-color: #16a085;
 }
 
+.collection .collection-item:not(.active):hover {
+    background-color: #ddd;
+}
+
+.site-list{
+box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
+}
+
+
+.mvaside{
+	display: flex;
+	width: 100%;
+}
+
+.collection{
+	border:none;
+	margin:0px;
+	margin-right: 30px;
+	border-bottom: 1px solid #e0e0e0;
+}
+
+.main-div{
+	width:100%;
+}
+
+.table{
+	background-color:#fff;  
+}
+
+.write {
+	display: flex;
+}
+
+.site-button {
+	margin-top: 10px;
+	display: flex;
+	justify-content: flex-end;
+	font-family: 'Nanum Gothic Coding', serif;
+}
+
+#breadcrumb{
+	display:flex;
+}
+
+
 
 .broker-expanding-search,
 .broker-expanding-search *,
@@ -166,9 +173,12 @@
   margin: 0;
   border-radius: 40px;
   overflow: hidden;
-  background: orange;
-  box-shadow: 0px 0px 0px 2px rgba(255,255,255,0.90);
+/* background: #dd5d58;
+/* box-shadow: 0px 0px 0px 2px rgba(255,255,255,0.90); */ */
   transition: width 0.5s cubic-bezier(0.65, -0.5, 0.4, 1.5);
+  
+  background: #337ab7;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
 .broker-expanding-search--open {
@@ -218,18 +228,20 @@
   background-size: 50px 50px;
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFQAAABUCAMAAAArteDzAAAB7FBMVEX////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////zN5IfAAAAo3RSTlMAAQIDBAUGBwgJCgsNDg8QERITFhcaGxweICIjJCUoKSorLC0uLzIzNjc4OTo7PD5AREVGSEpLTE5PUFFSU1RVVldYWl1eX2BjZGZoaWtsbW5vcHZ5fH6AgYKDhYqNjo+Vl5ucoaKjpqerrq+wsbW3ubzCw8TGx8jJysvMzc7P0NHT1NXW19na3ODi4+Xm6Onq6+zt7vDx8vP09vf4+fr7/P3+BP089AAAAiVJREFUGBntwflbTFEABuAvyVQixGTLlCVRdg0RDVKWlJAsSQoJKRXRoFJiVMzQYumSvn9U95yZVHP1POd0f/G47wuHw+FwOP5ZsZtKbz14/OTRvSqvG/ZwX/KPM2KoIS8W87bsWpAztedhnrx9jHZ7CeajbJxWXmyAvuv8i/4c6KrglPFBf1vPCKd88ECPlxGdFzYmA3Gr9taNMOzlYuhY0U8pWBKPiLS7DKuCjpuUujyYrsSgMLYZ6tZ+pdCxEjMdNyjUQ90NCu/dmO0chR8ZUJUUoFCAaE0UrkDVDgqtMYi2m4I/BoouUyiGBVcvTUMpUFRP0/c1sFJD08QWKGqlKZAIKycpeKGom6ZXC2BlJ4VCKOqjqQOWtlE4A0WdNPUshJV9FE5AUTNNoeWwcpHCLiiqpWkiC1YaaTLWQ9FpCtWwkDpC02ASFKX9pCmYgmjlFB5CVUwLhVpEcX+kUARlRZSKMYurmcJAMpQlvKUwlo8ZXHcoVUBDPqVflYvwR0YLpeeJ0NHAsPZDcZBWXx1mWAW0pLxjRHd18cHcI+fvf+aUUR+0ZIY4B6MAWrIHOYex/dCS1sY5fDkKLfGVo5ztWdkwJcMHPZ6aT5yuuyQBe4YpGT5oSj3bNEDhW2/dARcm5YQoGQXQtnTr4cJTx3LXxSEsO0TJ8ME+WQFKhhf2SQ9Q8sNG6QEKA7BTRpCmN7DV9iAnlcNemY2vn5bC4XA4HI7/3m/UtMhMrbR7mQAAAABJRU5ErkJggg==);
 }
-
 /* ----------------------검색창 수정------------ */
 .searchbar1 input[type=text]{
   font-family: Verdana, Geneva, sans-serif;
   color:white;
   margin: 0 0 0 0;
+
 }
 .searchbar1{
 	position: fixed;
 	bottom: 50px;
 	right: 50px;
 }
+/* ---------------------------------------------- */
+
 
 .caption{
 	position:absolute;
@@ -251,7 +263,148 @@
     left: 0px;
     top: auto;
     bottom:0;
- }
+    }
+    
+    
+    
+    
+    
+ .collection {
+    margin: 0px;
+    /* margin-right: 30px; */
+    background-color: #fff;
+}
+
+.collection.with-header .collection-item {
+	height:270px;
+    width: 100%;
+}
+
+.best{
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
+	margin-bottom:16px;
+}
+
+.collection .collection-item {
+   border-bottom: none;
+}
+
+.sitgo{
+	width: 100%;
+}
+.sitgo i{
+	padding-top: 10px;
+    padding-right: 16px;
+}
+
+.collection a.collection-item {
+    width: 100%;
+}
+.circle {
+    border-radius: 0%;
+    border:1px solid #e9e9e9;
+}
+
+.collection .collection-item.avatar .circle {
+
+    width: 46px;
+    height: 66px;
+
+}
+
+/*Start site-list */
+
+
+.list-item{
+    min-height: 96px;
+    padding-left: 22px;
+    position: relative;
+}
+.list-item:HOVER{
+	background-color: #e0e0e0;
+}
+
+.list-item .index{
+    top: 15px;
+    position: absolute;
+    font-size: 20px;
+    color: rgba(0,0,0,0.87);
+}
+
+.list-item .title{
+    color: rgba(0,0,0,0.87);
+    font-size: 20px;
+    font-weight: 400;
+    margin-left: 72px;
+    margin-right: 260px;
+    max-width: 770px;
+    overflow: hidden;
+    padding-top: 36px;
+    padding-bottom: 16px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+.url-warpper {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: 70px;
+}
+.url{
+	width: 100%
+}
+
+
+
+.writer-warpper{
+    position: absolute;
+    right: 176px;
+    top: 50%;
+    height: 32px;
+    margin: -45px 0;
+}
+
+.url-warpper img{
+    border: 0;
+    height: 96px;
+    width: 96px;
+}
+.like-warpper{
+	position: absolute;
+    top: 16px;
+    right: 16px;
+}
+
+@media screen and (max-width: 640px){
+	.list-item .title{
+	    font-size: 16px;
+	    line-height: 67px;
+	    margin-left: 48px;
+	    margin-right: 90px;
+	    padding-top: 16px;
+	    white-space: normal;
+	}
+	.writer-warpper{
+ 		display: none;
+	}
+	.url-warpper {
+
+	    right: 0px;
+	}
+	.writer-warpper{
+	    border: 0;
+	    height: 96px;
+	    width: 96px;
+	}
+	.like-warpper{
+		display: none;
+	}
+}
+
+/*End site-list  */
+
 </style>
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 <main id="main">
@@ -270,7 +423,7 @@
 <div style="display: none"><fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" /> </div>
     
     <div class="col-xs-12 col-md-8 container">
-	<div class="flex">	
+	<div class="flex">		
 		<div class="main-div">
 		 <c:choose>
  	<c:when test="${empty param.bigCa  }">
@@ -294,66 +447,86 @@
  	
 	</c:otherwise>
 </c:choose>
-		<div class="collection mvaside">
-	    <a href="?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenew.news }</span>최신순</a>
-	    <a href="siteboardlike?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenewL.news }</span>베스트 사이트</a>
-	    <a href="siteboardhit?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}" class="collection-item"><span class="new badge">${sitenewH.news }</span>많이 본 사이트</a>
-	  	</div>
-<label for="${bn.name} 베스트">${bn.name} 베스트</label>
-  <div class="slider">
-    <ul class="slides">
-    <c:forEach var="hotlist" items="${likelist }" begin="0" varStatus="status" end="3">
-      <li>
-        <a  href="site-detail?c=${hotlist.id}&p=${param.p}"><img class="activator"  src="http://api.thumbalizr.com/?url=http://${hotlist.url}" /></a>
-        <div class="caption center-align">
-          <h3>${status.count }</h3>
-          <h5 class="light grey-text text-lighten-3">${hotlist.title}</h5>
-        </div>
-      </li>
-      </c:forEach>
-    </ul>
-  </div>
-	  	
-	<table class="highlight table">
-		<thead>
-			<tr>
-				<th>번호</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>조회수</th>
-				<th>작성날짜</th>
-			</tr>
-		</thead>
-		<tbody>
-				
-			<c:forEach var="n" items="${sitelist}">
-				<div style="display: hidden;"><fmt:formatDate value="${n.regDate}"
-								pattern="yyyy-MM-dd HH:mm:ss" var="writedate" /></div>
-				<tr>
-					<td>${n.id}</td>
-					<td class="orange-text text-accent-3 table-title"><a
-						href="site-detail?c=${n.id}&p=${param.p}">${n.title}</a>[${n.countcomment }]
-						<c:if test="${writedate>=today }"><img src="/WiynPrj/resource/images/new.jpg"/></c:if></td>
-					<td>${n.memberId }</td>
-					<td>${n.hit }</td>
-					<td><fmt:formatDate value="${n.regDate}"
-							pattern="yyyy-MM-dd HH:mm:ss" /></td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+			<!-- Start 요즘 뜨는 사이트--------------------------------------------------------------------------------------------------------------->
+			<div class="collection with-header best">
+				<div class="collection-header">
+					<h4>요즘 뜨는 사이트</h4>
+				</div>
+				<div class="flex">
+					<c:forEach var="hotlist" items="${likelist }" begin="0" varStatus="status" end="5">
+					<div class="collection-item"><img src="http://api.thumbalizr.com/?url=http://${hotlist.url}"/></div>
+					</c:forEach>
+				</div>
+			</div>
+			<!-- End 요즘 뜨는 사이트--------------------------------------------------------------------------------------------------------------->
 
+			<!-- Start site-list --------------------------------------------------------------------------------------------------------------->
+			<div class="site-list">
+				<div class="collection mvaside">
+					<a
+						href="siteboard?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}"
+						class="collection-item"><span class="new badge">${sitenew.news }</span>최신순</a>
+					<a
+						href="?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}"
+						class="collection-item"><span class="new badge">${sitenewL.news }</span>베스트
+						사이트</a> <a
+						href="siteboardhit?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}"
+						class="collection-item"><span class="new badge">${sitenewH.news }</span>많이
+						본 사이트</a>
+					<div class="sitgo sitego">
+						<a class="waves-effect waves-light sitego right" href="#"> <i
+							class="material-icons">mode_edit</i>
+						</a>
+					</div>
+				</div>
+				<c:forEach var="n" items="${sitelist}">
+					<ul class="collection">
+<div style="display: none;"><fmt:formatDate value="${n.regDate}"
+								pattern="yyyy-MM-dd HH:mm:ss" var="writedate" /></div>
+						<li class="list-item flex">
+							<a href="site-detail?c=${n.id}&p=${param.p}" class="url">
+								<div class="index">
+									<p>${n.id }</p>
+								</div>
+								<div class="title">
+									<span>${n.title} <c:if test="${writedate>=today }"><img src="/WiynPrj/resource/images/new.jpg"/></c:if></span>
+
+								</div>
+								<div class="writer-warpper">
+									<p>${n.memberId }
+										<br>
+										<fmt:formatDate value="${n.regDate}"
+											pattern="yyyy.MM.dd HH:mm" />
+									</p>
+								</div>
+								<div  class="like-warpper">
+									<i class="material-icons">grade</i>
+									<div>
+										<label class="like-s">${n.good }개</label>
+									</div>
+								</div>
+								<div class="url-warpper">
+									<img src="http://api.thumbalizr.com/?url=http://${n.url}" />
+								</div>
+							</a>
+						</li>
+
+					</ul>
+				</c:forEach>
+			</div>
+			<!-- End site-list --------------------------------------------------------------------------------------------------------------->
+
+		
 <br>
-<div class="site-button">
+<!-- <div class="site-button">
 	<a class="waves-effect waves-light btn sitego" href="#">
 	<div class="write">Write<i class="tiny material-icons">mode_edit</i></div>
 	</a>
-</div>
-<br>
+</div> -->
 <fmt:parseNumber var="sizeInt" integerOnly="true" value="${size/10 }" />
 <c:set var="last" value="${(size%10)>0 ? sizeInt+1 : sizeInt }" />
-
-
+<%-- <div>${empty param.p ? 1 : param.p}/${last }pages</div>
+<div>${size}</div> --%>
 <ul class="pagination center">
 	<li class="disabled"><c:if test="${((listPerFive-1)*5 + 5) > 1 }">
 			<a
@@ -379,7 +552,8 @@
 		</c:if></li>
 </ul>
 </div>
-</div>
+	</div>
+
 
 
 
@@ -417,8 +591,6 @@
 	  });
 
 	});
- 
- 
 			$(".pagination").on('click','li',function(){
     // remove classname 'active' from all li who already has classname 'active'
     $(".pagination li.active").removeClass("active"); 
