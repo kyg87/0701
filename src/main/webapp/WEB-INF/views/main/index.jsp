@@ -905,12 +905,12 @@ textScroll.prototype.start = function() {
 <div class="hot-site flex column">
 		<div class="thema flex">
 			<div class="gallery-action" style="top: 257px;">
-                <a class="btn-floating btn-large waves-effect waves-light k"><i class="material-icons">thumb_up</i></a>
+                <div class="btn-floating btn-large waves-effect waves-light k"><i class="material-icons">thumb_up</i></div>
               </div>
 			
 			<div class="flex column">
-			<p class="top-p">오븐이 없는 당신에게 유용한 사이트</p>
-			<p>오븐이 없어도 만들 수 있는 다양한 레시피!</p>
+			<p class="top-p">매일매일 심심하고 지루한 당신에게!</p>
+			<p>무료로 볼 수 있는 만화사이트</p>
 			</div>
 		</div>
 		<div class="card-div">
@@ -1035,8 +1035,8 @@ textScroll.prototype.start = function() {
               </div>
 			
 			<div class="flex column">
-			<p class="top-p">오븐이 없는 당신에게 유용한 사이트</p>
-			<p>오븐이 없어도 만들 수 있는 다양한 레시피!</p>
+			<p class="top-p">포토샵이 없는데... 이미지를 어떻게 수정하지?</p>
+			<p>포토샵 없이 할 수 있는 디자인 사이트</p>
 			</div>
 		</div>
 		<!-- <h2 class="header lighten-1 section-title">
