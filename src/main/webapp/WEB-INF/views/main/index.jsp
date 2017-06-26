@@ -284,7 +284,8 @@ input[type="text"] {
 }
 
 .thema .top-p {
-	font-size: 18px;
+    font-size: 23px;
+    font-weight: bold;
 }
 /*------------------------- 최신순,점수순,댓글순 부분 ----------------------------------*/
 .tabs {
@@ -737,7 +738,8 @@ input, button, img {
 }
 
 .hi .category-p{
-font-size: 20px;
+margin-top:100px;
+font-size: 45px;
     font-weight: bold;
 }
 

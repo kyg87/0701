@@ -387,6 +387,9 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 	background:7f7f7f;
 	background: rgba(0,0,0,0.5);
 			width: 33.333%;
+			    color: #fff;
+    font-size: 25px;
+    padding-top: 20px;
 		}
 
 
@@ -437,6 +440,23 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 
 /*End site-list  */
 
+
+
+
+.collection-header.flex {
+    align-items: center;
+}
+
+.collection-header .btn {
+   padding: 0px;
+    padding-left: 2px;
+    padding-right: 2px;
+    font-size: 5px;
+    height: 17px;
+    line-height: 17px;
+    letter-spacing: 0px;
+    background-color: #fb6226;
+}
 </style>
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 <main id="main">
@@ -483,8 +503,13 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 </c:choose>
 			<!-- Start 요즘 뜨는 사이트--------------------------------------------------------------------------------------------------------------->
 			<div class="collection with-header best">
-				<div class="collection-header">
+				<div class="collection-header flex center">
+					<div>
 					<h4>요즘 뜨는 사이트</h4>
+					</div>
+					<div>
+					<button id="likebtn" class="waves-effect waves-light btn" type="submit" name="action">hot</button>
+					</div>
 				</div>
 				<div class="flex">
 					<c:forEach var="hotlist" items="${likelist }" begin="0"
@@ -531,13 +556,9 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 								</div>
 								<div class="title">
 									<span>${n.title} <span class="orange-text text-accent-3">[${n.countcomment }]</span><c:if test="${writedate>=today }"><img src="/WiynPrj/resource/images/new.jpg"/></c:if></span>
-
 								</div>
 								<div class="writer-warpper">
-									<p>${n.memberId }
-										<br>
-										<fmt:formatDate value="${n.regDate}"
-											pattern="yy.MM.dd HH:mm" />
+									<p>${n.memberId }<br><fmt:formatDate value="${n.regDate}" pattern="yy.MM.dd HH:mm" />
 									</p>
 								</div>
 								<div  class="like-warpper">
