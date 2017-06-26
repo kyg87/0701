@@ -5,7 +5,14 @@ public class SmallCategory {
 	private String id;
 	private String name;
 	private String bigCategoryId;
+	private String hot;
 	
+	public String getHot() {
+		return hot;
+	}
+	public void setHot(String hot) {
+		this.hot = hot;
+	}
 	public String getId() {
 		return id;
 	}

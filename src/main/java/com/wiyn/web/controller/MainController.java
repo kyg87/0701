@@ -75,7 +75,7 @@ public class MainController {
         SiteBoard prev=sqlSession.getMapper(SiteBoardDao.class).getPrev(id);
         SiteBoard next=sqlSession.getMapper(SiteBoardDao.class).getNext(id);
         
-        String a = "2";
+        String a = sqlSession.getMapper(SmallCategoryDao.class).getFirstHot();
         List<SiteBoard> hot =sqlSession.getMapper(SiteBoardDao.class).getHotSmall(a);
         
         for (SiteBoard siteBoard : hot) {
@@ -83,7 +83,7 @@ public class MainController {
 		}
         model.addAttribute("hot", hot);
         
-        String b = "3";
+        String b = sqlSession.getMapper(SmallCategoryDao.class).getSecondHot();
         List<SiteBoard> hot2 =sqlSession.getMapper(SiteBoardDao.class).getHotSmall(b);
         for (SiteBoard siteBoard : hot2) {
         	siteBoard.setUserProfile(sqlSession.getMapper(MemberDao.class).get(siteBoard.getMemberId()).getProfile());

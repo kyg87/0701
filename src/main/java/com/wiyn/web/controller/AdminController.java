@@ -67,6 +67,8 @@ public class AdminController {
 		
 		List<BigCategory> bcList = sqlSession.getMapper(BigCategoryDao.class).getList();
 		
+		List<SmallCategory> hotList = sqlSession.getMapper(SmallCategoryDao.class).loadHot();
+		model.addAttribute("hotList", hotList);
 		
 		for (BigCategory bigCategory : bcList) {
 			bigCategory.setSmallCategory(sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId()));
@@ -189,6 +191,20 @@ public class AdminController {
 		System.out.println(result);
 						
 		return Integer.toString(result);
+	}
+	
+	@RequestMapping(value="hotSelect", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
+	public String HotSelect(Model model,
+			@RequestParam(value="hotLine")String hotLine,
+			@RequestParam(value="hotName")String hotName){
+		
+		int result1 = smallCategoryDao.resetHot(hotLine);
+		int result2 = smallCategoryDao.updateHot(hotLine, hotName);
+		
+		System.out.println(result1);
+		System.out.println(result2);
+		
+		return "redirect:admin";
 	}
 	
 }

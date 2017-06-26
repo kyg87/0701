@@ -11,6 +11,20 @@
 		
 	</select>
 	
+	<select resultType="com.wiyn.web.entity.SmallCategory" id="loadHot">
+	 
+		SELECT * FROM SmallCategory WHERE hot = 0;
+		
+	</select>
+	
+	<select resultType="String" id="getFirstHot">
+		SELECT * FROM SmallCategory WHERE hot = 1;
+	</select>
+	
+	<select resultType="String" id="getSecondHot">
+		SELECT * FROM SmallCategory WHERE hot = 2;
+	</select>
+	
 	<select resultType="com.wiyn.web.entity.SmallCategory" id="getListWithBC">
 	
 		SELECT id, name FROM SmallCategory WHERE bigCategoryId = #{param1 };
@@ -50,6 +64,14 @@
 	
 	<update id="modify" parameterType="com.wiyn.web.entity.BigCategory">
 		UPDATE SmallCategory SET name = #{param3} where id = #{param2} and bigCategoryId = #{param1};
+	</update>
+	
+	<update id="resetHot">
+		UPDATE SmallCategory SET hot = 0 WHERE hot = #{param1};
+	</update>
+	
+	<update id="updateHot">
+		UPDATE SmallCategory SET hot = #{param1} WHERE id = #{param2};
 	</update>
 	
 	<delete id="del" parameterType="com.wiyn.web.entity.SmallCategory">

@@ -24,87 +24,54 @@
 	rel="stylesheet" />
 
 
+<style>
+
+.view{
+	display: flex;
+}
+
+.admin-hot{
+	margin-left: 50px;
+	margin-top: 28px;
+}
+
+.category-admin{
+}
+
+.divv{
+	margin-left: 50px;
+	width: 5px;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+}
+
+.btn{
+	float:right;
+	margin-left: 5px;
+	background: rgb(210, 178, 149);
+}
+
+.btn:hover {
+	/* background: rgb(210, 178, 149); */
+	background-color: rgb(195, 143, 95) !important;
+}
+
+
+</style>
 
 </head>
-<body>
-
-	<%-- 
-			<!-- --------------------- 게시판 ---------------------  -->
-	<form action="#">
-		
-		<div class="big-div">
-			<div class="content">
-				<div class="menu">				
-					<ul class="collection with-header">
-						<li class="collection-header"><h4>Admin Page</h4></li>
-						<li class="collection-item"><a href="#!"
-							class="collection-item">카테고리 수정</a></li>
-						<li class="collection-item"><a href="#!"
-							class="collection-item active">공지사항 수정</a></li>
-						<li class="collection-item"><a href="#!"
-							class="collection-item">요청게시판 수정</a></li>
-						<li class="collection-item"><a href="#!"
-							class="collection-item">일반게시판 수정</a></li>
-							<li class="collection-item"><a href="#!"
-							class="collection-item">자유게시판 수정</a></li>
-					</ul>
-				</div>
-
-				<div class="view">
-					<ul class="collection with-header">
-						<li class="collection-header"><h4>공지사항(10)</h4></li>
-					</ul>
-					
-					<table class="article-list">
-						<c:forEach var="list" begin="1" end="10">
-							<tr>
-								<td width="50">
-									<input type="checkbox" class="filled-in" id="filled-in-box${list }"/>
-      								<label for="filled-in-box${list }"></label>									
-								</td>
-								<td>
-									<a href="#!" class="collection-item">${list } 번째 글 </a>
-								</td>
-							</tr>
-						</c:forEach>					
-					</table>
-					
-					<div class="article-btn right">
-						<a class="waves-effect waves-light btn card-panel blue lighten-2">글쓰기</a>
-						<a class="waves-effect waves-light btn card-panel blue lighten-2">선택 삭제</a>
-					</div>
-						
-					<div class="pagenavi">
-						<ul class="pagination center">
-							<li class="disabled"><a href="#!"><i
-									class="material-icons">chevron_left</i></a></li>
-							<li class="active"><a href="#!">1</a></li>
-							<li class="waves-effect"><a href="#!">2</a></li>
-							<li class="waves-effect"><a href="#!">3</a></li>
-							<li class="waves-effect"><a href="#!">4</a></li>
-							<li class="waves-effect"><a href="#!">5</a></li>
-							<li class="waves-effect"><a href="#!"><i
-									class="material-icons">chevron_right</i></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-				
-	</form>
-	<!-- --------------------- 게시판 end --------------------- --> --%>
-
-
+<main id="main">
 
 	<div class="view">
-		<ul class="collection with-header">
-			<li class="collection-header"><h4>카테고리 관리</h4></li>
-		</ul>
-
 		<div class="category-admin">
+			
+			<div class="input-field header-down">
+			
+			<ul class="collection with-header">
+				<li class="collection-header"><h4>카테고리 관리</h4></li>
+			</ul>
 
-
-			<div class="input-field">
+			
 				<select name="bigCategoryId" id="bigCategoryId">
 					<option id="default" value="" disabled selected>대분류를 선택하세요</option>
 
@@ -210,6 +177,66 @@
 
 
 		</div>
+		
+		<div class="divv">
+		</div>
+		
+		<form id="selHot" action="hotSelect" method="post">
+			<div class="admin-hot">
+				<div class="input-field">
+				
+				<ul class="collection with-header">
+					<li class="collection-header"><h4>인기 게시물 관리</h4></li>
+				</ul>
+	
+					<div>
+						
+							<select name="hotLine" id="hotLine">
+								<option id="default" value="" disabled selected>Line Select</option>
+								<option id="first" value="1" > 첫 번째 Hot </option>
+								<option id="second" value="2" > 두 번째 Hot </option>
+							</select>
+						
+							<select name="hotName" id="hotName">
+								<option id="default" value="" disabled selected >Name Select</option>
+								
+								<c:forEach var="hotList" items="${hotList }">
+									<option id="${hotList.id }" value="${hotList.id }" > ${hotList.name } </option>
+								</c:forEach>
+								
+							</select>
+						
+					</div>
+				</div>
+				
+				<div>
+					<button class="btn waves-effect waves-light" type="button" id="hotLineBtn">Submit</button>
+				</div>
+						
+				<script>
+						
+					$(function() {
+						$("#hotLineBtn").on('click', function() {
+							
+							if($("#hotLine").val() == null || $("#hotName").val() == null){
+								alert("HotLine 혹은 HotName 선택이 올바르지 않습니다.");
+								
+								location.href='http:\/\/localhost\/WiynPrj\/admin\/admin';
+							}
+							
+							else{
+								$("#selHot").submit();
+							}
+							
+						});
+					});
+					
+				</script>
+			
+			</div>
+		
+		</form>
+		
 	</div>
 
 	<!-- </form> -->
@@ -551,5 +578,5 @@
 
 	</script>
 
-</body>
+</main>
 </html>

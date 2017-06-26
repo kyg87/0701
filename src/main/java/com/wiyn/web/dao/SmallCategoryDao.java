@@ -12,6 +12,7 @@ public interface SmallCategoryDao {
 	List<SmallCategory> getList();
 	List<SmallCategory> getListWithBC(String bigCategoryId);
 	List<SmallCategory> getListOfBC(String bigCategoryId);
+	List<SmallCategory> loadHot();
 	
 	SmallCategory getsmall(String bigCategoryId, String smallCategoryId);
 	
@@ -19,5 +20,9 @@ public interface SmallCategoryDao {
 	int del(String bigCategoryId, String smallCategoryId);
 	int modify(String bigCategoryId, String smallCategoryId, String name);
 	int addCheck(String bigCategoryId, String name);
-
+	int resetHot(String hotLine);
+	int updateHot(String hotLine, String hotName);
+	String getFirstHot();
+	String getSecondHot();
+	
 }

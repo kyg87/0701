@@ -72,6 +72,41 @@ public class MyBatisSmallCategoryDao implements SmallCategoryDao {
 		return smallCategoryDao.getsmall(bigCategoryId, smallCategoryId);
 	}
 
+	@Override
+	public List<SmallCategory> loadHot() {
+		SmallCategoryDao smallCategoryDao;
+		smallCategoryDao = sqlSession.getMapper(SmallCategoryDao.class);
+		return smallCategoryDao.loadHot();
+	}
+
+	@Override
+	public int resetHot(String hotLine) {
+		SmallCategoryDao smallCategoryDao;
+		smallCategoryDao = sqlSession.getMapper(SmallCategoryDao.class);
+		return smallCategoryDao.resetHot(hotLine);
+	}
+
+	@Override
+	public int updateHot(String hotLine, String hotName) {
+		SmallCategoryDao smallCategoryDao;
+		smallCategoryDao = sqlSession.getMapper(SmallCategoryDao.class);
+		return smallCategoryDao.updateHot(hotLine, hotName);
+	}
+
+	@Override
+	public String getFirstHot() {
+		SmallCategoryDao smallCategoryDao;
+		smallCategoryDao = sqlSession.getMapper(SmallCategoryDao.class);
+		return smallCategoryDao.getFirstHot();
+	}
+
+	@Override
+	public String getSecondHot() {
+		SmallCategoryDao smallCategoryDao;
+		smallCategoryDao = sqlSession.getMapper(SmallCategoryDao.class);
+		return smallCategoryDao.getSecondHot();
+	}
+
 
 
 }
