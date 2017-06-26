@@ -125,7 +125,7 @@
 }
 .info_top1{
 	height: 400px;
-	box-shadow:0px 0px 20px 10px #d880a4;;
+	box-shadow:0px 0px 10px 5px #f7f95a;
     display: flex;
     flex-direction: column;
     background: url("http://demo.geekslabs.com/materialize-v1.0/images/user-profile-bg.jpg") no-repeat left center; 
@@ -145,6 +145,7 @@
     display: flex;
     justify-content: flex-end;
 }
+
 
 </style>
 <main id="main">
@@ -184,7 +185,7 @@
 	</div>
 	</div>
 	
-			<div class="col l8 s12">
+			<div class="col l8 s12 profile">
 				<div class="row" style="margin-top: 50px;">
 					<form id="testform" action="del" name="del" method="post">
 						<div>
@@ -243,8 +244,7 @@
 							<thead>
 								<tr>
 
-									<th><input type="checkbox" id="ListCheck" /><label
-										for="ListCheck"></label></th>
+									
 									<th style="text-align: center">게시글</th>
 									<th style="text-align: center">작성시간</th>
 									<th style="text-align: center">게시판종류</th>
@@ -325,8 +325,7 @@
 						<table class="bordered" id="test2">
 							<thead>
 								<tr>
-									<th><input type="checkbox" id="CommentCheck" /><label
-										for="CommentCheck"></label></th>
+									
 									<th style="text-align: center">댓글</th>
 									<th style="text-align: center">작성시간</th>
 
@@ -351,8 +350,7 @@
 						<table class="bordered" id="test3">
 							<thead>
 								<tr>
-									<th><input type="checkbox" id="LikeCheck" /><label
-										for="LikeCheck"></label></th>
+									
 									<th style="text-align: center">게시글</th>
 									<th style="text-align: center">작성시간</th>
 

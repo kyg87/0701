@@ -5,6 +5,7 @@
 <%@ taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="root" value="${pageContext.request.contextPath}" />
 <%
 	
 %>
@@ -88,8 +89,19 @@
 	justify-content:flex-end;
 	font-family: 'Nanum Gothic Coding', serif;
 }
+
+.free-title {
+    color: #3c5a5a;
+    position: absolute;
+    top: 52%;
+    -webkit-transition: color 1s;  
+    transition: color 1s;
+    text-align:center;
+    left:37%;
+}
+
  /* ----------------------검색창 수정------------ */
- .broker-expanding-search,
+ .broker-expanding-search, 
 .broker-expanding-search *,
 .broker-expanding-search *:after,
 .broker-expanding-search *:before {
@@ -264,7 +276,15 @@ background: #dd5d58;
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 
 <main id="main">
+<div class="banner">
+
+	<img src="${root}/resource/images/typewriter-801921_1920.jpg" style="width: 100%;height:800px;opacity:0.774" /> 
+	<div class="free-title">
+		<h1>당신의 생각을<br>자유롭게 표현하세요</h1>
+	</div>
+</div>
 <div class="container">
+
 <ul id="breadcrumb">
   <li><a href="../main/index"><span class="icon icon-home"> </span></a></li>
   <li><a href="?p=1"><span class="icon icon-double-angle-right"> </span>자유게시판</a></li>  
@@ -351,8 +371,8 @@ background: #dd5d58;
 	<!-- <button style="float: right;" class="waves-effect waves-light btn"
 		onclick="location.href ='free-reg'">글쓰기</button> -->
 </security:authorize> <
+	</div>
 
-</div>
 <form class="searchbar1" action="http://localhost/WiynPrj/siteboard/siteboard" method="GET">
   <div class="broker-expanding-search" data-expanding-search>
     <div class="broker-expanding-search__column broker-expanding-search__column--left">
