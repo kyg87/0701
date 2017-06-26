@@ -67,8 +67,6 @@ public class MainController {
         List<SiteBoard> sitelistlike = sqlSession.getMapper(SiteBoardDao.class).getListLike(page, query,bigCategoryId, smallCategoryId);
         List<SiteBoard> sitelistcomment = sqlSession.getMapper(SiteBoardDao.class).getListComment(page, query,bigCategoryId, smallCategoryId);
         
-
-        
         int size= sqlSession.getMapper(SiteBoardDao.class).getSize();
         String last= sqlSession.getMapper(SiteBoardDao.class).lastId();
         SiteBoard board=sqlSession.getMapper(SiteBoardDao.class).getBoard(id);
@@ -76,6 +74,7 @@ public class MainController {
         SiteBoard next=sqlSession.getMapper(SiteBoardDao.class).getNext(id);
         
         String a = sqlSession.getMapper(SmallCategoryDao.class).getFirstHot();
+        System.out.println("asd");
         List<SiteBoard> hot =sqlSession.getMapper(SiteBoardDao.class).getHotSmall(a);
         
         for (SiteBoard siteBoard : hot) {
