@@ -895,7 +895,7 @@ textScroll.prototype.start = function() {
 		</div>
 		<div class="card-div">
 			<ul class="lst_recipe flex space">
-				<c:forEach var="hot" items="${hot }" begin="1" end="4">
+				<c:forEach var="hot" items="${hot }" begin="0" end="3">
 					<li><a class="call_recipe thmb" href="../siteboard/site-detail?c=${hot.id}"> <img
 							src="http://api.thumbalizr.com/?url=http://${hot.url}" />
 					</a> <span class="author"> <a href="/profile/321451">
@@ -1026,7 +1026,7 @@ textScroll.prototype.start = function() {
 </h2> -->
 		<div class="card-div">
 			<ul class="lst_recipe flex space">
-				<c:forEach var="hot2" items="${hot2 }" begin="1" end="4">
+				<c:forEach var="hot2" items="${hot2 }" begin="0" end="3">
 					<li><a class="call_recipe thmb" href="../siteboard/site-detail?c=${hot2.id}"> <img
 							src="http://api.thumbalizr.com/?url=http://${hot2.url}" />
 					</a> <span class="author"> <a href="/profile/321451">
