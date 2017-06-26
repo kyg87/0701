@@ -4,6 +4,8 @@
 <%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:useBean id="now" class="java.util.Date" />
+<%@ taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
 
 <style type="text/css">
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
@@ -483,6 +485,7 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 					</ul>
 				</c:forEach>
 
+	<security:authorize access="hasRole('ROLE_ADMIN')">
 	<div class="site-button">
 		<a class="waves-effect waves-light btn sitego"
 			href="/WiynPrj/noticeboard/notice-reg?p=${page }">
@@ -491,7 +494,7 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 			</div>
 		</a>
 	</div>
-
+	</security:authorize>
 	<div align="center">
 		<ul class="pagination">
 

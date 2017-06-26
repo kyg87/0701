@@ -4,6 +4,8 @@
 <%@taglib prefix="tiles"  uri="http://tiles.apache.org/tags-tiles" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+<%@ taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 
 <style>
@@ -236,10 +238,12 @@ background: #dd5d58;
 						</div>
 						
 						<div>
-						<a id="btn" class="waves-effect waves-light btn"
-							href="#modal2" id="noticeArticleDel">삭제</a>							
-						<a id="btn" class="waves-effect waves-light btn"
-							href="notice-modify-load?id=${list.id}&p=${page}">수정</a>
+						<security:authorize access="hasRole('ROLE_ADMIN')">
+							<a id="btn" class="waves-effect waves-light btn"
+								href="#modal2" id="noticeArticleDel">삭제</a>							
+							<a id="btn" class="waves-effect waves-light btn"
+								href="notice-modify-load?id=${list.id}&p=${page}">수정</a>
+						</security:authorize>
 						<a class="waves-effect waves-light btn" id="back"
 							href="noticeboard?p=${page }">목록으로</a>
 					</div>
