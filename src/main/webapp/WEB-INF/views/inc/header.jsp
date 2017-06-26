@@ -11,10 +11,18 @@
 	#header .logo img{
 		display:none;
 	}
+	
+	.logo .mlogo{
+		display: block;
+		font-size: 24px;
+	}
 }
 
-
-
+@media only screen and (min-width: 619px) {
+.logo .mlogo{
+	display: none;
+}
+}
 
 #header {
 	background-color: #fff;
@@ -205,7 +213,7 @@ color:black;
 <header id="header">
 	<nav class="container">
 	    <div class="nav-wrapper">
-	      <a href="${root }/main/index" class="brand-logo logo font"><img src="/WiynPrj/resource/images/wwlogo.png"/></a>
+	      <a href="${root }/main/index" class="brand-logo logo font"><img src="/WiynPrj/resource/images/wwlogo.png"/><div class="mlogo">what is your needs?</div></a>
 	      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons medium">menu</i></a>
 	      <security:authentication property="authorities" var="auths" />
 		  <security:authentication property="name" var="name" />

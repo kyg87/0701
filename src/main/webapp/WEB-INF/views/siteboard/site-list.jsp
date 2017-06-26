@@ -445,7 +445,7 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 				<ul id="breadcrumb">
 				  <li><a href="../main/index"><span class="icon icon-home"> </span></a></li>
 				  <li><a href="siteboard?p=1"><span class="icon icon-double-angle-right"> </span>사이트게시판</a></li>  
-				   <li><a href="?p=1&query=${query }"><span class="icon icon-double-angle-right"> </span>#${query }</a></li>	
+				   <li><a href="?p=1&query=${query }"><span class="icon icon-double-angle-right"> </span>${query }</a></li>	
 				</ul>
 			<div class="collection with-header best">
 				<div class="collection-header">

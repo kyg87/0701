@@ -92,6 +92,13 @@ font-family: "Material-Design-Icons";
 i.tiny {
     padding-top: 3px;
 }
+
+
+div#chip:hover {
+    background: #8f786f;
+    color: #fff;
+    cursor: pointer;
+}
 /* .table{
 	border-radius: 3px;
 	width:100%;

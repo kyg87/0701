@@ -368,7 +368,7 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
     top: 50%;
     height: 32px;
     margin: -45px 0;
-    
+    text-align: right;
 }
 
 .url-warpper img{

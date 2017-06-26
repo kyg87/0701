@@ -53,10 +53,31 @@
 	.hot-site.flex.column {
 		align-items: center;
 	}
-	
 	.banner .banner-img{
 		display: none;
+	} 
+	
+	.visual .hero_home__copy{
+	width: 65%;
+    left: 21%;
+    }
+    
+    .visual .hero_home__copy  h1{ 
+		font-size:25px;
 	}
+	
+}
+
+@media only screen and (max-width: 720px) {
+	.visual .hero_home__copy{
+	width: 65%;
+    left: 21%;
+    }
+    
+    .visual .hero_home__copy  h1{ 
+		font-size:35px;
+	}
+	
 }
 
 @media only screen and (max-width: 1220px) {
