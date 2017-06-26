@@ -359,10 +359,12 @@ $(document).ready(function(){
                   </div>
                   
                   <div>
-                  <a id="btn" class="waves-effect waves-light btn"
-                     href="#modal2" id="freeArticleDel">삭제</a>                     
-                  <a id="btn" class="waves-effect waves-light btn"
-                     href="free-edit?c=${n.id}">수정</a>
+                  <c:if test="${n.id eq  loginID}">
+	                  <a id="btn" class="waves-effect waves-light btn"
+	                     href="#modal2" id="freeArticleDel">삭제</a>                     
+	                  <a id="btn" class="waves-effect waves-light btn"
+	                     href="free-edit?c=${n.id}">수정</a>
+                  </c:if>
                   <a class="waves-effect waves-light btn list-btn" id="back" >목록으로</a>
                </div>
            <!--Start 댓글 영역  -->
