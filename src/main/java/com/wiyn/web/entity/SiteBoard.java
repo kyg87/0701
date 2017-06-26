@@ -25,6 +25,8 @@ public class SiteBoard {
 	private String news;
 	private String good;
 	
+	private int likeCount;
+	
 	
 	public String getGood() {
 		return good;
@@ -119,6 +121,12 @@ public class SiteBoard {
 	}
 	public void setUserProfile(String userProfile) {
 		this.userProfile = userProfile;
+	}
+	public int getLikeCount() {
+		return likeCount;
+	}
+	public void setLikeCount(int likeCount) {
+		this.likeCount = likeCount;
 	}
 	
 

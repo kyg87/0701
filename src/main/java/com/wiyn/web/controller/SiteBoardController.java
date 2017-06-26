@@ -92,7 +92,7 @@ public class SiteBoardController {
         model.addAttribute("checkLast", checkLast);
         model.addAttribute("cnt", cnt);
         
-//        -------------------------����̵�-----------------------
+//        -------------------------占쏙옙占쏙옙絹占�-----------------------
         List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
         
         for (BigCategory bigCategory : bcbList) {
@@ -159,7 +159,7 @@ public class SiteBoardController {
         model.addAttribute("checkLast", checkLast);
         model.addAttribute("cnt", cnt);
         
-//        -------------------------����̵�-----------------------
+//        -------------------------占쏙옙占쏙옙絹占�-----------------------
         List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
         
         for (BigCategory bigCategory : bcbList) {
@@ -227,7 +227,7 @@ public class SiteBoardController {
         model.addAttribute("checkLast", checkLast);
         model.addAttribute("cnt", cnt);
         
-//        -------------------------����̵�-----------------------
+//        -------------------------占쏙옙占쏙옙絹占�-----------------------
         List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
         
         for (BigCategory bigCategory : bcbList) {
@@ -327,7 +327,7 @@ public class SiteBoardController {
 		
 		if(name!=null){
 			
-			System.out.println("占쎈７�눧紐꾩읈占쎄묶域밸챶苑뺧옙�뿫"+name);
+			System.out.println("�뜝�럥竊쀯옙�닱筌뤾쑴�쓧�뜝�럡臾뜹윜諛몄굡�땻類㏃삕占쎈엮"+name);
 			
 			
 			String[] tagName=(name.replace(" ", "")).split(",");
@@ -341,9 +341,9 @@ public class SiteBoardController {
 				tag.setSiteBoardId(siteBoard.getId());
 				tagDao.add(tag);
 				
-				System.out.println("占쎄텢占쎌뵠占쎈뱜癰귣�諭띰옙釉섓옙�뵠占쎈탵"+siteBoard.getId());
-				System.out.println("占쎄묶域밸챶苑뺧옙�뿫"+tagName[i]);
-				System.out.println("占쎈툡占쎌뵠占쎈탵"+tag.getId());
+				System.out.println("�뜝�럡�뀬�뜝�럩逾졾뜝�럥諭쒐솻洹ｏ옙獄��씛�삕�뇡�꼻�삕占쎈턄�뜝�럥�꺏"+siteBoard.getId());
+				System.out.println("�뜝�럡臾뜹윜諛몄굡�땻類㏃삕占쎈엮"+tagName[i]);
+				System.out.println("�뜝�럥�닡�뜝�럩逾졾뜝�럥�꺏"+tag.getId());
 			}
 			
 			
@@ -367,6 +367,8 @@ public class SiteBoardController {
 
 		siteBoard = sqlSession.getMapper(SiteBoardDao.class).getBoard(id);
 		
+	
+		
 		siteBoard.setSiteComments(sqlSession.getMapper(SiteCommentDao.class).getList(id, page));
 		System.out.println(siteBoard.getMemberId());
 		int size = sqlSession.getMapper(SiteCommentDao.class).getSize(id);
@@ -387,7 +389,7 @@ public class SiteBoardController {
 		model.addAttribute("size", size);
 		siteBoardDao.updateHit(id);
 		
-		System.out.println("占쎄묶域밸챶苑뺧옙�뿫"+tName);
+		System.out.println("�뜝�럡臾뜹윜諛몄굡�땻類㏃삕占쎈엮"+tName);
 		
 		
 		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
@@ -480,7 +482,7 @@ public class SiteBoardController {
              @RequestParam(value="smallCa",defaultValue="")String smallCategoryId,
              Model model){
         
-		System.out.println("占쏙옙占쎈뻼");
+		System.out.println("�뜝�룞�삕�뜝�럥六�");
 
 		List<BigCategory> bcList = sqlSession.getMapper(BigCategoryDao.class).getList();
 		
@@ -537,13 +539,13 @@ public class SiteBoardController {
 				siteBoard.setBigCategoryId(bigCategoryId);
 				siteBoard.setSmallCategoryId(smallCategoryId);
 				
-				System.out.println("占쎌뵠野껊슣�땾占쎌젟占쎈막占쎄텢占쎌뵠占쎈뱜占쎈툡占쎌뵠占쎈탵"+siteBoard.getId());
+				System.out.println("�뜝�럩逾좈뇦猿딆뒩占쎈빢�뜝�럩�젧�뜝�럥留됧뜝�럡�뀬�뜝�럩逾졾뜝�럥諭쒎뜝�럥�닡�뜝�럩逾졾뜝�럥�꺏"+siteBoard.getId());
 				
 				tagDao.delete(siteBoard.getId());
 				
 				if(name!=null){
 					
-					System.out.println("占쎈７�눧紐꾩읈占쎄묶域밸챶苑뺧옙�뿫"+name);
+					System.out.println("�뜝�럥竊쀯옙�닱筌뤾쑴�쓧�뜝�럡臾뜹윜諛몄굡�땻類㏃삕占쎈엮"+name);
 					
 					
 					String[] tagName=(name.replace(" ", "")).split(",");
@@ -557,18 +559,18 @@ public class SiteBoardController {
 						tag.setSiteBoardId(siteBoard.getId());
 						tagDao.add(tag);
 						
-						System.out.println("占쎄텢占쎌뵠占쎈뱜癰귣�諭띰옙釉섓옙�뵠占쎈탵"+siteBoard.getId());
-						System.out.println("占쎄묶域밸챶苑뺧옙�뿫"+tagName);
-						System.out.println("占쎈툡占쎌뵠占쎈탵"+tag.getId());
+						System.out.println("�뜝�럡�뀬�뜝�럩逾졾뜝�럥諭쒐솻洹ｏ옙獄��씛�삕�뇡�꼻�삕占쎈턄�뜝�럥�꺏"+siteBoard.getId());
+						System.out.println("�뜝�럡臾뜹윜諛몄굡�땻類㏃삕占쎈엮"+tagName);
+						System.out.println("�뜝�럥�닡�뜝�럩逾졾뜝�럥�꺏"+tag.getId());
 					}
 				}
 				
 				siteBoardDao.update(siteBoard);
 		 	
-			System.out.println("占쏙옙�겫袁⑥첒"+bigCategoryId);
-			System.out.println("占쎈꺖�겫袁⑥첒"+smallCategoryId);
+			System.out.println("�뜝�룞�삕占쎄껀熬곣뫁泥�"+bigCategoryId);
+			System.out.println("�뜝�럥爰뽳옙寃ヨ쥈�뫁泥�"+smallCategoryId);
 
-			System.out.println("占쎄묶占쎄쾿占쎄텣占쎌젫占쎈막占쎈툡占쎌뵠占쎈탵"+siteBoard.getId());
+			System.out.println("�뜝�럡臾뜹뜝�럡苡욕뜝�럡�뀭�뜝�럩�젷�뜝�럥留됧뜝�럥�닡�뜝�럩逾졾뜝�럥�꺏"+siteBoard.getId());
 			
 			
 
@@ -593,9 +595,9 @@ public class SiteBoardController {
 				@RequestParam(value="siteBoardId")String siteBoardId,
 				@RequestParam(value="memberId")String memberId
 				){
-		    System.out.println("占쏙옙占쎄돌占쎈연");
-			System.out.println("�넫�뿭釉섓옙�뒄占쎈듇�몴紐꾧텢占쎌뵠占쎈뱜占쎈툡占쎌뵠占쎈탵"+siteBoardId);
-			System.out.println("�넫�뿭釉섓옙�뒄占쎈듇�몴紐꺞㎬린袁⑸툡占쎌뵠占쎈탵"+memberId);
+		    System.out.println("�뜝�룞�삕�뜝�럡�룎�뜝�럥�뿰");
+			System.out.println("占쎈꽞占쎈열�뇡�꼻�삕占쎈뭵�뜝�럥�뱡占쎈ご筌뤾쑨�뀬�뜝�럩逾졾뜝�럥諭쒎뜝�럥�닡�뜝�럩逾졾뜝�럥�꺏"+siteBoardId);
+			System.out.println("占쎈꽞占쎈열�뇡�꼻�삕占쎈뭵�뜝�럥�뱡占쎈ご筌뤾틷�렗由계쥈�뫖�닡�뜝�럩逾졾뜝�럥�꺏"+memberId);
 
 			siteBoardLike.setSiteBoardId(siteBoardId);
 			siteBoardLike.setMemberId(memberId);

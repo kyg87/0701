@@ -286,7 +286,7 @@ line-height: 22px;
 padding-top:0px;  
 }
 
-a.waves-effect.waves-light {
+a.del.waves-effect.waves-light {
     position: absolute;
     top: 9px;
     right: 7px;
@@ -401,6 +401,7 @@ a.waves-effect.waves-light {
 			<!--End 댓글 영역  -->
 
 					<div>
+				<c:if test="${n.id eq  loginID}">
 							<form class="form-end" action="site-delete" method="post">
 								<input type="hidden" name="id" value=${n.id }>
 								<button class="btn waves-effect waves-light" type="submit"
@@ -412,6 +413,7 @@ a.waves-effect.waves-light {
 								<button class="btn waves-effect waves-light" type="submit" name="action">수정</button>
 							</form>
 						 <a class="back" href="">
+				</c:if>
               <button class="btn waves-effect waves-light list-btn" type="submit" name="action">목록</button>
                </a> 
                <script>
@@ -564,7 +566,7 @@ var currentPage = ${page};
 								 .append($('<span class="title">'+obj[i].memberId+'</span>'))
 								 .append($('<time>'+js_yyyy_mm_dd_hh_mm_ss(obj[i].regDate)+'</time>'))
 								 .append($('<p>'+obj[i].content+'</p>'))
-								 .append($('<a class="waves-effect waves-light" onclick="onDelete('+obj[i].id+ ');" value='+obj[i].id+'><i class="material-icons">clear</i></a>')));
+								 .append($('<a class="del waves-effect waves-light" onclick="onDelete('+obj[i].id+ ');" value='+obj[i].id+'><i class="material-icons">clear</i></a>')));
 						}
 						else{
 							$("#commentList").append($('<li class="collection-item avatar">' + + '</li>')

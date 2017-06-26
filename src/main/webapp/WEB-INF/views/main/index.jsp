@@ -654,7 +654,7 @@ input, button, img {
 	background-color: #fff;
 }
 
-.lst_recipe .option .like button {
+.btn_like {
 	display: block;
 	width: 100%;
 	height: 27px;
@@ -665,7 +665,6 @@ input, button, img {
 	box-sizing: border-box;
 	padding-right: 10px;
 	line-height: 25px;
-	line-height: 32px\0;
 }
 
 .lst_recipe li .thmb {
@@ -922,18 +921,18 @@ textScroll.prototype.start = function() {
 						<div class="option">
 							<div class="time">
 
-								<a class="" href="/recipes?cooking_time=30"><fmt:formatDate
-										value="${hot.regDate}" pattern="yyyy-MM-dd" /></a>
+								<fmt:formatDate
+										value="${hot.regDate}" pattern="yyyy-MM-dd" />
 							</div>
 							<div class="like">
-								<form action="/bookmarks" accept-charset="UTF-8" method="post">
+								
 									<input name="utf8" type="hidden" value="✓"><input
 										type="hidden" name="authenticity_token"
 										value="1KsNCn9Nc+jSqMhlkd2O/z1lDEshD5VeAGksB4qrC9X00j2B38Liaig4mEJdcGZA3DINWqn/AextRSJNdckgsg==">
 									<input type="hidden" name="linked_model_type" value="Recipe">
 									<input type="hidden" name="linked_model_id" value="4145">
-									<button type="submit" class="btn_like">2345명</button>
-								</form>
+									<div class="btn_like">${hot.likeCount }명</div>
+								
 							</div>
 
 						</div></li>
@@ -1054,18 +1053,17 @@ textScroll.prototype.start = function() {
 						<div class="option">
 							<div class="time">
 
-								<a class="" href="/recipes?cooking_time=30"><fmt:formatDate
-										value="${hot2.regDate}" pattern="yyyy-MM-dd" /></a>
+								<fmt:formatDate value="${hot2.regDate}" pattern="yyyy-MM-dd" />
 							</div>
 							<div class="like">
-								<form action="/bookmarks" accept-charset="UTF-8" method="post">
+								
 									<input name="utf8" type="hidden" value="✓"><input
 										type="hidden" name="authenticity_token"
 										value="1KsNCn9Nc+jSqMhlkd2O/z1lDEshD5VeAGksB4qrC9X00j2B38Liaig4mEJdcGZA3DINWqn/AextRSJNdckgsg==">
 									<input type="hidden" name="linked_model_type" value="Recipe">
 									<input type="hidden" name="linked_model_id" value="4145">
-									<button type="submit" class="btn_like">2345명</button>
-								</form>
+									<div class="btn_like">${hot2.likeCount }명</div>
+								
 							</div>
 
 						</div></li>

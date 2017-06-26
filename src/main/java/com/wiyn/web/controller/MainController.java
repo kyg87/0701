@@ -18,6 +18,7 @@ import com.wiyn.web.dao.NoticeBoardDao;
 import com.wiyn.web.dao.RequestBoardDao;
 import com.wiyn.web.dao.SiteBoardDao;
 import com.wiyn.web.dao.SiteBoardLikeDao;
+import com.wiyn.web.dao.SiteCommentDao;
 import com.wiyn.web.dao.SmallCategoryDao;
 import com.wiyn.web.entity.BigCategory;
 import com.wiyn.web.entity.FreeBoard;
@@ -79,13 +80,16 @@ public class MainController {
         
         for (SiteBoard siteBoard : hot) {
 			siteBoard.setUserProfile(sqlSession.getMapper(MemberDao.class).get(siteBoard.getMemberId()).getProfile());
+			siteBoard.setLikeCount(sqlSession.getMapper(SiteBoardLikeDao.class).getLike(siteBoard.getId()));
 		}
         model.addAttribute("hot", hot);
         
         String b = sqlSession.getMapper(SmallCategoryDao.class).getSecondHot();
         List<SiteBoard> hot2 =sqlSession.getMapper(SiteBoardDao.class).getHotSmall(b);
+        
         for (SiteBoard siteBoard : hot2) {
         	siteBoard.setUserProfile(sqlSession.getMapper(MemberDao.class).get(siteBoard.getMemberId()).getProfile());
+        	siteBoard.setLikeCount(sqlSession.getMapper(SiteBoardLikeDao.class).getLike(siteBoard.getId()));
 		}
         model.addAttribute("hot2", hot2);
         
