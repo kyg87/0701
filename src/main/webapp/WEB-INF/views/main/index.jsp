@@ -90,7 +90,7 @@
 /*--------------------------비쥬얼-----------------------------------*/
 .visual {
 	background-color: #fff;
-	height: 390px;
+	height: 800px;
 	align-items: center;
 	background-position: center;
 	background-origin: content-box;
@@ -107,7 +107,7 @@ visual {
 	position: relative;
 	width: 100%;
 	height: 100%;;
-	background-image: url("/WiynPrj/resource/images/back.png");
+	background-image: url("/WiynPrj/resource/images/web-1738159_1920.jpg");
 }
 
 /* .visual p {
@@ -122,18 +122,6 @@ visual {
 }
  */
 
-
-.visual .banner-img {
-    background-image: url(/WiynPrj/resource/images/wordpress-2171594_1920.jpg);
-    width: 500px;
-    height: 300px;
-    margin-top: 35px;
-    margin-right: 150px;
-}
-.visual .banner-card {
-	height: 200px;
-	background-color: lime;
-}
 
 /*---------------------------------------*/
 .ui-12 .ui-content {
@@ -756,6 +744,30 @@ font-size: 20px;
 .collapsible {
     text-align: justify;
 }
+
+
+
+
+
+
+
+.hero_home__copy {
+    color: #4a4a4a;
+    position: absolute;
+    top: 22%;
+    -webkit-transition: color 1s;
+    transition: color 1s;
+    width: 33%;
+}
+
+.hero_home__copy  h1 {
+    font-size: 48px;
+    font-weight: 100;
+    line-height: 62px;
+    color:#fff;
+}
+
+
 </style>
 <script type="text/javascript">
 function textScroll(scroll_el_id) {
@@ -815,7 +827,7 @@ textScroll.prototype.start = function() {
 <visual>
 	<div class="visual ">
 		<div class="banner">
-			<div class="container flex">
+			<!-- <div class="container flex">
 				<div class="banner-img col l7 s12">
 				</div>
 				<div class="col-sm-5">          
@@ -836,7 +848,12 @@ textScroll.prototype.start = function() {
 	                  </div>                 
 	              </div>		             
 	            </div>
-			</div>
+			</div> -->
+		</div>
+		<div class="container">
+		<div class="hero_home__copy">
+		<h1>당신에게 필요한 사이트를<br> 추천 받고, 추천 할 수 있는 자유로운 공간</h1>
+		</div>
 		</div>
 	</div>
 </visual>
