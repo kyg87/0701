@@ -199,9 +199,7 @@ background: #dd5d58;
 	right: 50px;
 }
  a.waves-effect.waves-light {
-    position: absolute;
-    top: 9px;
-    right: 7px;
+ 
 }
 .box_write{
 	background-color: #f7f7f7;
@@ -243,6 +241,9 @@ background: #dd5d58;
     margin-left: 10px;
 } 
 
+.box_write{
+	margin-top: 10px;
+}
 /* ---------------------------------------------- */
 
  
@@ -298,7 +299,7 @@ background: #dd5d58;
 							<hr /><br />
 						</div>
 						
-									<div>
+					<div>
 						<a id="btn" class="waves-effect waves-light btn" href="#modal2"
 							id="noticeArticleDel">삭제</a> <a id="btn"
 							class="waves-effect waves-light btn"
