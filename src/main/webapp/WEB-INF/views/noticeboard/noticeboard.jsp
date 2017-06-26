@@ -4,8 +4,6 @@
 <%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:useBean id="now" class="java.util.Date" />
-<%@ taglib prefix="security"
-	uri="http://www.springframework.org/security/tags"%>
 
 <style type="text/css">
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
@@ -316,6 +314,7 @@ background: #dd5d58;
     top: 50%;
     height: 32px;
     margin: -45px 0;
+    text-align: right;
 }
 
 .url-warpper img{
@@ -422,6 +421,19 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 	margin-bottom: 16px;
 }
 
+
+.collection .write i{
+    line-height: inherit; 
+    
+}
+.write a{
+    background: #fff;
+}
+
+
+.col-xs-12.col-md-8.container {
+    margin-bottom: 30px;
+}
 </style>
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 <div>
@@ -443,7 +455,14 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 			<div class="notice-list">
 
 
-
+<div class="collection mvaside">
+					
+					<div class="write">
+						<a class="waves-effect waves-light sitego" href="/WiynPrj/noticeboard/notice-reg?p=${page }"> <i
+							class="material-icons ">mode_edit</i>
+						</a>
+					</div>
+				</div>
 <c:forEach var="mem" begin="${(page*10)-10 }" end="${page*10-1 }" items="${list}">
 					<ul class="collection">
 <div style="display: none"><fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" /> </div>				
@@ -459,10 +478,7 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 
 								</div>
 								<div class="writer-warpper">
-									<p>${mem.memberId }
-										<br>
-										<fmt:formatDate value="${mem.regDate}"
-											pattern="yyyy.MM.dd HH:mm" />
+									<p>${mem.memberId }<br><fmt:formatDate value="${mem.regDate}" pattern="yyyy.MM.dd HH:mm" />
 									</p>
 								</div>
 								<%-- <div  class="like-warpper">
@@ -484,17 +500,16 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 
 					</ul>
 				</c:forEach>
-
-	<security:authorize access="hasRole('ROLE_ADMIN')">
-	<div class="site-button">
+</div>
+	<%-- <div class="site-button">
 		<a class="waves-effect waves-light btn sitego"
 			href="/WiynPrj/noticeboard/notice-reg?p=${page }">
 			<div class="write">
 				Write <i class="tiny material-icons">mode_edit</i>
 			</div>
 		</a>
-	</div>
-	</security:authorize>
+	</div> --%>
+
 	<div align="center">
 		<ul class="pagination">
 
@@ -529,7 +544,7 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 		</ul>
 
 	</div>
-</div>
+
 </div>
 </div>
 

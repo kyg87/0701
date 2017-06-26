@@ -5,34 +5,14 @@
 <%@page import="com.google.gson.*"%>
 
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, maximum-scale=1.0" />
-<title>Starter Template - Materialize</title>
-
-<!-- CSS  -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet" />
-<link href="/WiynPrj/resource/css/materialize.css" type="text/css"
-	rel="stylesheet" media="screen,projection" />
-<!-- <link href="/WiynPrj/resource/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" /> -->
-<link href="/WiynPrj/resource/css/main.css" type="text/css"
-	rel="stylesheet" media="screen,projection" />
-<link href="/WiynPrj/resource/css/admin/admin.css" type="text/css"
-	rel="stylesheet" />
-
-
 <style>
+
+#main{
+	min-height: 700px;
+}
 
 .view{
 	display: flex;
-}
-
-.admin-hot{
-	margin-left: 50px;
-	margin-top: 28px;
 }
 
 .category-admin{
@@ -56,13 +36,25 @@
 	background-color: rgb(195, 143, 95) !important;
 }
 
+.col.l5.s12{
+box-shadow:  2px 2px 0 rgba(0,0,0,0.12);
+background: #fff;
+min-height: 400px;
+}
+
+.row .cate{
+	margin-right: 100px;
+}
+
 
 </style>
 
-</head>
 <main id="main">
-
-	<div class="view">
+<div class="container">
+<div class="section">
+		<div class="row">
+		<div class="col l5 s12 cate">
+		<div class="view">
 		<div class="category-admin">
 			
 			<div class="input-field header-down">
@@ -174,13 +166,11 @@
 
 			<!-- Modal Structure -->
 
-
-
 		</div>
-		
-		<div class="divv">
 		</div>
-		
+		</div>
+
+		<div class="col l5 s12">
 		<form id="selHot" action="hotSelect" method="post">
 			<div class="admin-hot">
 				<div class="input-field">
@@ -210,7 +200,7 @@
 				</div>
 				
 				<div>
-					<button class="btn waves-effect waves-light" type="button" id="hotLineBtn">Submit</button>
+					<button class="btn waves-effect waves-light" type="button" id="hotLineBtn">등록</button>
 				</div>
 						
 				<script>
@@ -236,8 +226,7 @@
 			</div>
 		
 		</form>
-		
-	</div>
+		</div>
 
 	<!-- </form> -->
 	
@@ -577,6 +566,8 @@
 		});
 
 	</script>
-
+</div>
+</div>
+</div>
 </main>
 </html>
