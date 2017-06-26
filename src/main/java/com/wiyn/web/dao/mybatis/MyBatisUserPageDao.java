@@ -56,7 +56,30 @@ public class MyBatisUserPageDao implements UserPageDao {
 	    return userPageDao.getRequestList(memberId);
 	}
 
+	@Override
+	public int getReplyCount(String memberId) {
+		UserPageDao userPageDao;
+		userPageDao = sqlSession.getMapper(UserPageDao.class);
+	    return userPageDao.getReplyCount(memberId);
+	}
 
+	@Override
+	public int getLikeCount(String memberId) {
+		UserPageDao userPageDao;
+		userPageDao = sqlSession.getMapper(UserPageDao.class);
+	    return userPageDao.getLikeCount(memberId);
+	}
+
+	@Override
+	public int getListCount(String memberId) {
+		UserPageDao userPageDao;
+		userPageDao = sqlSession.getMapper(UserPageDao.class);
+	    return userPageDao.getLikeCount(memberId);
+	}
+
+	
+
+	
 
 	
 	

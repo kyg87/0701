@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.jws.soap.SOAPBinding.Use;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -48,7 +50,7 @@ public class UserController {
 	public String UserMain(Authentication auth,Model model, AddBoard addboard, String title,
 			@RequestParam(value="bigCa",defaultValue="")String bigCategoryId,
             @RequestParam(value="smallCa",defaultValue="")String smallCategoryId
-            
+           
 			){
 
 		
@@ -61,6 +63,11 @@ public class UserController {
 	
 		List<AddBoard> list2 = sqlSession.getMapper(UserPageDao.class).getCommentList(auth.getName());
 		List<AddBoard> list3 = sqlSession.getMapper(UserPageDao.class).getLikeList(auth.getName());
+		
+		int sum = sqlSession.getMapper(UserPageDao.class).getReplyCount(auth.getName());
+		int like = sqlSession.getMapper(UserPageDao.class).getLikeCount(auth.getName());
+		int list = sqlSession.getMapper(UserPageDao.class).getListCount(auth.getName());
+	
 		
 	/*	if(data.equals("1")){
 			List<AddBoard> result = sqlSession.getMapper(UserPageDao.class).getFreeList(auth.getName());
@@ -76,6 +83,11 @@ public class UserController {
 			List<AddBoard> result = sqlSession.getMapper(UserPageDao.class).getRequestList(auth.getName());
 			model.addAttribute("list", result);
 		}*/
+			
+		model.addAttribute("list",list);
+		model.addAttribute("sum",sum);
+		model.addAttribute("like",like);
+		
 		
 		model.addAttribute("free",free);
 		model.addAttribute("site",site);
@@ -116,18 +128,18 @@ public class UserController {
 			@RequestParam(value="id") String id
 			){
 		
-		
+		System.out.println(boardname);
 	
 		for(int i=0;i<send_array.size();i++){
 			System.out.println(send_array.get(i));
 			id = send_array.get(i);
 			
 			
-				freeBoardDao.delete(id);
+				/*freeBoardDao.delete();
 				
-				requestBoardDao.delete(id);
+				requestBoardDao.delete();
 				
-				siteBoardDao.delete(id);
+				siteBoardDao.delete();*/
 			
 		}
 		

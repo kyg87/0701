@@ -149,7 +149,8 @@ time {
     box-sizing: border-box;
     padding: 13px 18px;
     border: 1px solid #e6e6e6;
-        display: flex;
+    display: flex;
+    margin-top: 30px;
 }
     
 .box_write textarea {
@@ -294,7 +295,7 @@ background: #dd5d58;
 	right: 50px;
 }
 a.waves-effect.waves-light {
-    position: absolute;
+   /* position: absolute; */
     top: 9px;
     right: 7px;
 }
@@ -478,40 +479,13 @@ $(document).ready(function(){
 
 <script>
 
-<!-----------------------------------------태그--------------------------------------------->
-$(function(){
-	$(".chip").on('click', function(){
-		var query = $(this).text();
-		$.post("site-list", {"query":query}, function(){
-			location.replace("site-list?query="+query);
-		}); 
-	});
-});
+
 <!-----------------------------------------목록버튼--------------------------------------------->
 $(document).ready(function(){									
 	$(".list-btn").on("click",function(){
-		$('.back').prop('href', history.back());
+		$('#back').prop('href', "freeboard");
 	});
 });
-<!-----------------------------------------좋아요--------------------------------------------->
-$(document).ready(function(){
-	$("#likebtn").click(function(){
-		console.log('${loginID}');
-		
-		
-		if('${loginID}' == 'anonymousUser') {
-			alert("로그인한 유저만 사용 가능합니다.");
-			return false;
-		}
-		else{
-			return true;
-		}
-
-		
-	});
-
-});
-
 
 
  

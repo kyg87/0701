@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.wiyn.web.entity.AddBoard;
 
+
 public interface UserPageDao {
 	
 	List<AddBoard> getList(String memberId);
@@ -17,6 +18,11 @@ public interface UserPageDao {
 	List<AddBoard> getCommentList(String memberId);
 	List<AddBoard> getLikeList(String memberId);
 	
+	int getReplyCount(String memberId);
+	int getLikeCount(String memberId);
+	int getListCount(String memberId);
+
+
 	
 
 }

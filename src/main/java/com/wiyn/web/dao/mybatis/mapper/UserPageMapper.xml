@@ -31,6 +31,30 @@
 	</select>
 	
 	
+	<select resultType="Integer" id="getListCount">
+		  SELECT sum(A+B+C) sum FROM(
+            (SELECT COUNT(*) A 
+            FROM lsedb.FreeBoard where lsedb.FreeBoard.memberId=#{param1}) as A 
+            join
+			(SELECT Count(*) B FROM lsedb.SiteBoard where memberId=#{param1}) As B
+            join
+            (SELECT COUNT(*) C FROM lsedb.RequestBoard where memberId=#{param1}) as C);
+	</select>
+	
+ 	<select  resultType="Integer" id="getReplyCount">
+		SELECT sum(A+B+C) sum
+		FROM(
+		(SELECT COUNT(*) A
+		FROM lsedb.FreeComment where lsedb.FreeComment.memberId=#{param1}) as A
+		join
+		(SELECT Count(*) B FROM lsedb.SiteComment where memberId=#{param1}) As B
+		join
+		(SELECT COUNT(*) C FROM lsedb.RequestComment where memberId=#{param1}) as C); 
+	</select>
+	
+	<select resultType="Integer" id="getLikeCount">
+		SELECT count(*) FROM lsedb.SiteBoardLike where memberId=#{param1};
+	</select> 
 	
 	<select resultType="com.wiyn.web.entity.AddBoard" id="getCommentList">
 	 
@@ -41,6 +65,7 @@
 			SiteComment.boardName,SiteComment.content,SiteComment.regDate, SiteComment.siteBoardId id
 			From lsedb.SiteComment where SiteComment.memberId=#{param1}
 			order by regDate desc;
+		
 		
 		
 	</select>
