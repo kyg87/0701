@@ -1010,10 +1010,23 @@ textScroll.prototype.start = function() {
 				<c:forEach var="hot2" items="${hot2 }" begin="1" end="4">
 					<li><a class="call_recipe thmb" href="../siteboard/site-detail?c=${hot2.id}"> <img
 							src="http://api.thumbalizr.com/?url=http://${hot2.url}" />
-					</a> <span class="author"> <a href="/profile/321451"> <img
-								alt="푸드텔러"
-								src="http://cloudfront.haemukja.com/vh.php?url=http://d1hk7gw6lgygff.cloudfront.net/uploads/user/image_file/321451/thumb_____2.jpg&amp;convert=jpgmin&amp;rt=600">
-						</a> <strong><a class=""  href="/profile/321451">${hot2.memberId }</a></strong>
+					</a> <span class="author"> <a href="/profile/321451">
+					
+					<c:choose>
+					<c:when test="${hot2.userProfile eq '' }">
+						<img alt="푸드텔러"src="http://demo.geekslabs.com/materialize-v1.0/images/avatar.jpg">
+					</c:when>
+			
+						
+					<c:otherwise>
+	
+						<img alt="푸드텔러"src="${root}/resource/profile/${hot2.userProfile }" onerror="this.src ='${root}/resource/images/avatar.png'">
+					</c:otherwise>
+						
+					</c:choose>
+					
+					
+					<strong><a class=""  href="/profile/321451">${hot2.memberId }</a></strong>
 					</span>
 						<p>
 							<a class="call_recipe" href="../siteboard/site-detail?c=${hot2.id}">${hot2.title }

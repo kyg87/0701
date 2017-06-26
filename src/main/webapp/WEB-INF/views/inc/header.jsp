@@ -459,13 +459,13 @@ color:black;
 			<div class="info_top">
 				<input id="profileImgbtn" name="file" type="file" style="display: none">
 				 <!-- <img id="profileImg" alt="" src="http://d1hk7gw6lgygff.cloudfront.net/assets/_img/mypage/img_edit_profile-3c5f60b7a1ddf555f665e50d2987f7a3.png"> -->
-				 <img id="profileImg" alt="" src="${root}/resource/images/KakaoTalk_20170607_162312318.jpg">
+				 <img id="profileImg" alt="" src="${root}/resource/images/avatar.png">
 				<div>
 					<span><security:authentication property="name" /></span>
 				</div>
 				
 				<div class="btn_area">
-					<button type="button" class="btn waves-effect waves-light">취소</button>
+					<button id="profileCloseBtn" type="button" class="btn waves-effect waves-light">취소</button>
 					<button id="editBtn" type="button" class="btn waves-effect waves-light">저장</button>
 				</div>
 			</div>
@@ -513,6 +513,10 @@ color:black;
            
       
         });
+      
+      $("#profileCloseBtn").click(function(){
+    	  $('#modal110').modal('close'); 
+      });
       $("#profileImgbtn").on('change',function(){
     	  readURL(this);
       });
