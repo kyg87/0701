@@ -244,7 +244,7 @@ color:black;
 			<security:authorize access="isAnonymous()">
 				<a class="login font loge btn" href="#modal10">Login</a>
 			</security:authorize>
-			<security:authorize access="isAuthenticated()">
+						<security:authorize access="isAuthenticated()">
 	
 				<a class="login font pin dropdown-button"  href='#' data-activates='dropdown1'> <security:authentication
 						property="name" />
@@ -254,8 +254,12 @@ color:black;
 				 <!-- Dropdown Structure -->
 				  <ul id='dropdown1' class='dropdown-content'>
 			
-			 <li><a href="#modal110" onclick="userCheck();"><i class="material-icons md-36">face</i>Profile</a></li>
-				    <li><a href="${root}/user/mypage"><i class="material-icons">pages</i>Mypage</a></li>
+					<li><a href="#modal110" onclick="userCheck();"><i class="material-icons md-36">face</i>Profile</a></li>
+				    
+				    <li><a href="${root}/user/mypage"><i class="material-icons">pages</i>UserPage</a></li>
+					 <security:authorize access="hasRole('ROLE_ADMIN')">
+					 <li><a href="${root}/admin/admin"><i class="material-icons">pages</i>AdminPage</a></li>
+					 </security:authorize>   
 				        <li class="divider"></li>
 				    <li><a href="${root}/j_spring_security_logout"><i class="material-icons">exit_to_app</i>Logout</a></li>
 				  </ul>
