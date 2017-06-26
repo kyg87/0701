@@ -303,9 +303,10 @@ border-bottom: none;
 							<button class="btn waves-effect waves-light right" type="submit"
 								name="action" id="test">등록</button>
 						</div>
+<input type="hidden" name="memberId"
+							value=<security:authentication property="name"/> />
 
-
-</div>
+			</div>
 </form>
 
 						<script>
@@ -328,8 +329,7 @@ border-bottom: none;
 
 
 
-						<input type="hidden" name="memberId"
-							value=<security:authentication property="name"/> />
+						
 					
 				</div>
 				
