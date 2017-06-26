@@ -7,6 +7,15 @@
 
 <style>
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+@media only screen and (max-width: 620px) {
+	#header .logo img{
+		display:none;
+	}
+}
+
+
+
+
 #header {
 	background-color: #fff;
 	z-index: 998;
