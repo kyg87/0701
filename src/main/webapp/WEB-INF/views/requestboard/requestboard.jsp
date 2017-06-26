@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>   
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <jsp:useBean id="now" class="java.util.Date" />
-<style type="text/css">
+
+<style>
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
 
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
@@ -22,78 +24,10 @@
 
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
 
-* {
-	margin: 0;
-	padding: 0;
-}
-/*------------------------- 메인 테이블 부분 ----------------------------------*/
-#main .table {
-	border-radius: 2px;
-	width: 100%;
-	background: none;
-	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0
-		rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-		
-	margin-top: 50px;
-}
-
-.table *{
-	text-align: center;
-}
-
-.table .table-title{
-	text-align: left;
-}
-
-.table .table-title a{
-	color:#505050;
-}
-
-
-.table-head {
-	font-family: 'Jeju Gothic', serif;
-	font: menu;
-	border-bottom:1px solid #e9e9e9;
-	background: #26a69a;
-}
-
-.table-body {
-	text-align: center;
-	font:14px;
-}
-
-.table-body {
-	font-family: 'Nanum Gothic Coding', serif;
-}
-
-
-
-.sitego{
-	background:rgba(27, 80, 162, 0.69);
-	
-}
-
-.sitego:hover{
-	background:rgba(23, 56, 125, 0.79);
-}
-
-.write{
-	display: flex;
-}
-
-.site-button{
-	
-	display: flex;
-	justify-content:flex-end;
-	font-family: 'Nanum Gothic Coding', serif;
-}
-
-
 /* -------------------------상단목록이동----------------------------- */
-
 #breadcrumb {
   list-style: none;
-  display: flex;
+  display: inline-block;
 }
 #breadcrumb .icon {
   font-size: 14px;
@@ -178,17 +112,404 @@
 #breadcrumb li a:active:after {
   border-left-color: #16a085;
 }
-/* --------------------------------------------------------- */
+/* ------------------------------------------------------------- */
+.collection .collection-item:not(.active):hover {
+    background-color: #ddd;
+}
+
+.site-list{
+box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
+}
+
+
+.mvaside{
+	display: flex;
+	width: 100%;
+}
+
+.collection{
+	border:none;
+	margin:0px;
+	margin-right: 30px;
+	border-bottom: 1px solid #e0e0e0;
+}
+
+.main-div{
+	width:100%;
+}
+
+.table{
+	background-color:#fff;  
+}
+
+.write {
+	display: flex;
+}
+
+.site-button {
+	margin-top: 10px;
+	display: flex;
+	justify-content: flex-end;
+	font-family: 'Nanum Gothic Coding', serif;
+}
+
+#breadcrumb{
+	display:flex;
+}
+
+
+
+.broker-expanding-search,
+.broker-expanding-search *,
+.broker-expanding-search *:after,
+.broker-expanding-search *:before {
+  box-sizing: border-box;
+}
+
+.broker-expanding-search {
+  display: table;
+  table-layout: fixed;
+  width: 50px;
+  margin: 0;
+  border-radius: 40px;
+  overflow: hidden;
+/* background: #dd5d58;
+/* box-shadow: 0px 0px 0px 2px rgba(255,255,255,0.90); */ */
+  transition: width 0.5s cubic-bezier(0.65, -0.5, 0.4, 1.5);
+  
+  background: #337ab7;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+
+.broker-expanding-search--open {
+  width: 250px;
+}
+
+.broker-expanding-search__column {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.broker-expanding-search__column--left {
+  width: 100%;
+  padding-left: 15px;
+}
+
+.broker-expanding-search__column--right {
+  width: 50px;
+}
+
+.broker-expanding-search__input {
+  display: block;
+  margin: 0;
+  padding: 0;
+  display: block;
+  border: none;
+  outline: none;
+  color: white;
+  border-radius: 0;
+  background: none;
+  font-size: 16px;
+}
+
+.broker-expanding-search__input--text {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+}
+
+.broker-expanding-search__input--submit {
+  font-size: 0;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50px 50px;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFQAAABUCAMAAAArteDzAAAB7FBMVEX////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////zN5IfAAAAo3RSTlMAAQIDBAUGBwgJCgsNDg8QERITFhcaGxweICIjJCUoKSorLC0uLzIzNjc4OTo7PD5AREVGSEpLTE5PUFFSU1RVVldYWl1eX2BjZGZoaWtsbW5vcHZ5fH6AgYKDhYqNjo+Vl5ucoaKjpqerrq+wsbW3ubzCw8TGx8jJysvMzc7P0NHT1NXW19na3ODi4+Xm6Onq6+zt7vDx8vP09vf4+fr7/P3+BP089AAAAiVJREFUGBntwflbTFEABuAvyVQixGTLlCVRdg0RDVKWlJAsSQoJKRXRoFJiVMzQYumSvn9U95yZVHP1POd0f/G47wuHw+FwOP5ZsZtKbz14/OTRvSqvG/ZwX/KPM2KoIS8W87bsWpAztedhnrx9jHZ7CeajbJxWXmyAvuv8i/4c6KrglPFBf1vPCKd88ECPlxGdFzYmA3Gr9taNMOzlYuhY0U8pWBKPiLS7DKuCjpuUujyYrsSgMLYZ6tZ+pdCxEjMdNyjUQ90NCu/dmO0chR8ZUJUUoFCAaE0UrkDVDgqtMYi2m4I/BoouUyiGBVcvTUMpUFRP0/c1sFJD08QWKGqlKZAIKycpeKGom6ZXC2BlJ4VCKOqjqQOWtlE4A0WdNPUshJV9FE5AUTNNoeWwcpHCLiiqpWkiC1YaaTLWQ9FpCtWwkDpC02ASFKX9pCmYgmjlFB5CVUwLhVpEcX+kUARlRZSKMYurmcJAMpQlvKUwlo8ZXHcoVUBDPqVflYvwR0YLpeeJ0NHAsPZDcZBWXx1mWAW0pLxjRHd18cHcI+fvf+aUUR+0ZIY4B6MAWrIHOYex/dCS1sY5fDkKLfGVo5ztWdkwJcMHPZ6aT5yuuyQBe4YpGT5oSj3bNEDhW2/dARcm5YQoGQXQtnTr4cJTx3LXxSEsO0TJ8ME+WQFKhhf2SQ9Q8sNG6QEKA7BTRpCmN7DV9iAnlcNemY2vn5bC4XA4HI7/3m/UtMhMrbR7mQAAAABJRU5ErkJggg==);
+}
+/* ----------------------검색창 수정------------ */
+.searchbar1 input[type=text]{
+  font-family: Verdana, Geneva, sans-serif;
+  color:white;
+  margin: 0 0 0 0;
+
+}
+.searchbar1{
+	position: fixed;
+	bottom: 50px;
+	right: 50px;
+}
+/* ---------------------------------------------- */
+
+
+.caption{
+	position:absolute;
+	
+	left:0;
+	padding:10px 20px 20px 20px;
+	background:7f7f7f;
+	background: rgba(0,0,0,0.5);
+	width:100%;
+	max-height:32%;
+	
+
+}
+
+
+.slider .slides li .caption {
+    
+    width: 100%;
+    left: 0px;
+    top: auto;
+    bottom:0;
+    }
+    
+    
+    
+    
+    
+ .collection {
+    margin: 0px;
+    /* margin-right: 30px; */
+    background-color: #fff;
+}
+
+.collection.with-header .collection-item {
+	height:270px;
+    width: 100%;
+}
+
+.best{
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
+	margin-bottom:16px;
+}
+
+.collection .collection-item {
+   border-bottom: none;
+}
+
+.sitgo{
+	/* width: 100%; */
+}
+.sitgo i{
+	padding-top: 10px;
+    padding-right: 16px;
+}
+
+.collection a.collection-item {
+    width: 25%;
+    text-align: justify;
+}
+
+
+.circle {
+    border-radius: 0%;
+    border:1px solid #e9e9e9;
+}
+
+.collection .collection-item.avatar .circle {
+
+    width: 46px;
+    height: 66px;
+
+}
+
+/*Start site-list */
+
+
+.list-item{
+    min-height: 60px;
+    padding-left: 50px;
+    position: relative;
+}
+.list-item:HOVER{
+	background-color: #e0e0e0;
+}
+
+.list-item .index{
+    left:25px;
+    top: 15px;
+    position: absolute;
+    font-size: 20px;
+    color: rgba(0,0,0,0.87);
+}
+
+.list-item .title{
+    color: rgba(0,0,0,0.87);
+    font-size: 20px;
+    font-weight: 400;
+    margin-left: 150px;
+    margin-right: 260px;
+    max-width: 770px;
+    overflow: hidden;
+    padding-top: 36px;
+    padding-bottom: 36px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+.url-warpper {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: 70px;
+}
+.url{
+	width: 100%
+}
+
+
+
+.writer-warpper{
+    position: absolute;
+    right: 230px;
+    top: 50%;
+    height: 32px;
+    margin: -45px 0;
+    
+}
+
+.url-warpper img{
+    border: 0;
+    height: 96px;
+    width: 96px;
+}
+.like-warpper{
+	position: absolute;
+    top: 16px;
+    right: 16px;
+}
+
+@media screen and (max-width: 640px){
+
+	.index{
+		width: 25%;
+	}
+	
+	.list-item .title{
+	    font-size: 16px;
+	    line-height: 50px;
+	    margin-left: 48px;
+	    margin-right: 90px;
+	    padding-top: 25px;
+	    white-space: normal;
+	    width: 25%;
+	}
+	.writer-warpper{
+ 		
+ 		font-size: 12px;
+ 		margin-right: -150px;
+ 		 width: 25%;
+	}
+	.url-warpper {
+
+	    right: 0px;
+	}
+	.writer-warpper{
+	   	
+	   	margin-left : 150px;
+	    border: 0;
+	    height: 96px;
+	    width: 25%;
+	}
+	.like-warpper{
+		
+		right: -10px;	
+		 width: 25%;
+	}
+	
+	
+	
+	
+}
+
+.banner h1 {
+    font-size: 4.2rem;
+    line-height: 145%;
+    margin: 2.1rem 0 1.68rem 0;
+    top: 7%;
+    left :56%;
+    position: absolute;
+    color:#7b9cb9;
+}
+
+
+
 </style>
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 
 <main id="main">
+<div class="banner">
+   <img src="/WiynPrj/resource/images/iphone-1852901_1920.jpg" style="width: 100%;height:600px; opacity: 0.9;" /> 
+   <div class="free-title">
+      <h1>당신의 NEEDS,<br>여기에 올려주세요</h1>
+   </div>
+</div>
 <div class="container">
 <ul id="breadcrumb">
   <li><a href="../main/index"><span class="icon icon-home"> </span></a></li>
   <li><a href="?p=1"><span class="icon icon-double-angle-right"> </span>요청게시판</a></li>  
 </ul>
-<table border="1" class="highlight table">
+
+	<div class="site-list">
+				<div class="collection mvaside">
+					<a class="collection-item">번호</a>
+					<a class="collection-item" style="text-align: center";>제목</a> 
+					<a class="collection-item" style="text-align: right";>작성자</a>
+					<a class="collection-item" style="text-align: right; margin-right:10px"   >조회수</a>	
+				</div>
+				<c:forEach var="n"  begin="${(page*10)-10 }" end="${page*10-1 }" items="${list}">
+					<ul class="collection">
+				<div style="display: none;"><fmt:formatDate value="${n.regDate}"
+								pattern="yyyy-MM-dd HH:mm:ss" var="writedate" /></div>
+						
+						
+						
+						
+						<li class="list-item flex">
+							<a href="request-detail?c=${n.id}" class="url">
+								<div class="index">
+									<p>${n.id }</p>
+								</div>
+								<div class="title">
+									<span>${n.title} <c:if test="${writedate>=today }"><img src="/WiynPrj/resource/images/new.jpg"/></c:if></span>
+
+								</div>
+								<div class="writer-warpper">
+									<p>${n.memberId }
+										<br>
+										<fmt:formatDate value="${n.regDate}"
+											pattern="yyyy.MM.dd HH:mm" />
+									</p>
+								</div>
+								 <div  class="like-warpper" style="width: 50px ">
+									<p>HIT</p>
+									<div>
+										<label class="like-s" style="margin-right: 10px; text-align: center; width: 10px; ">${n.hit}</label>
+									</div>
+								</div>
+								<%-- <div class="url-warpper">
+									<img src="http://api.thumbalizr.com/?url=http://${n.url}" />
+								</div> --%>
+							</a>
+						</li>
+
+					</ul>
+				</c:forEach>
+			</div>
+
+
+
+
+
+
+
+
+
+
+<%-- <table border="1" class="highlight table">
 	<thead class="table-head">
 		<tr class="head-tr">
 			<td>번호</td>
@@ -220,8 +541,11 @@
 		
 		</c:forEach>
 	</tbody>
-</table>
+</table> --%>
 
+ 
+ 
+ 
  <div class="site-button">
 	<a class="waves-effect waves-light btn sitego" href="../requestboard/request-reg">
 	<div class="write">Write<i class="tiny material-icons">mode-edit</i>
