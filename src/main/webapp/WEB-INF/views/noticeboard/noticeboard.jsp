@@ -68,10 +68,6 @@
 	background: rgba(23, 56, 125, 0.79);
 }
 
-.write {
-	display: flex;
-}
-
 .site-button {
 	margin-top: 20px;
 	display: flex;
@@ -455,9 +451,9 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 			<div class="notice-list">
 
 
-<div class="collection mvaside">
+				<div class="collection">
 					
-					<div class="write">
+					<div class="write right">
 						<a class="waves-effect waves-light sitego" href="/WiynPrj/noticeboard/notice-reg?p=${page }"> <i
 							class="material-icons ">mode_edit</i>
 						</a>
