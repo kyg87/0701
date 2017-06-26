@@ -24,7 +24,7 @@
 
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
 
-
+/* -------------------------상단목록이동----------------------------- */
 #breadcrumb {
   list-style: none;
   display: inline-block;
@@ -112,7 +112,7 @@
 #breadcrumb li a:active:after {
   border-left-color: #16a085;
 }
-
+/* ------------------------------------------------------------- */
 .collection .collection-item:not(.active):hover {
     background-color: #ddd;
 }
@@ -428,13 +428,15 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 		 <c:choose>
  	<c:when test="${empty param.bigCa  }">
  <ul id="breadcrumb">
-  <li><a href="siteboard?p=1"><span class="icon icon-home"> </span></a></li>
+  <li><a href="../main/index"><span class="icon icon-home"> </span></a></li>
+<li><a href="?p=1"><span class="icon icon-double-angle-right"> </span>사이트게시판</a></li>
 </ul>
  	</c:when>
  
  	<c:otherwise>
  	<ul id="breadcrumb">
-  <li><a href="siteboard?p=1"><span class="icon icon-home"> </span></a></li>
+  <li><a href="../main/index"><span class="icon icon-home"> </span></a></li>
+  <li><a href="?p=1"><span class="icon icon-double-angle-right"> </span>사이트게시판</a></li>
   <li><a href="?p=1&q=&bigCa=${param.bigCa}"><span class="icon icon-double-angle-right"> </span> <input type="hidden" value="${param.bigCa}" />${bn.name}</a></li>
   <c:choose>
   <c:when test="${empty param.smallCa}">
