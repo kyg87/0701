@@ -539,7 +539,7 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 						href="siteboardhit?p=1&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}"
 						class="collection-item"><span class="new badge">${sitenewH.news }</span>많이
 						본 사이트</a>
-					<div class="sitgo sitego">
+					<div class="sitgo">
 						<a class="waves-effect waves-light sitego right" href="#"> <i
 							class="material-icons">mode_edit</i>
 						</a>

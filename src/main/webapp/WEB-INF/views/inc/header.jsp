@@ -4,7 +4,7 @@
 <%@ taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 <c:set var="root" value="${pageContext.request.contextPath}" />
-
+<security:authentication property="name" var="loginID"/>
 <style>
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
 @media only screen and (max-width: 620px) {
@@ -273,7 +273,7 @@ color:black;
 			
 					<li><a href="#modal110" onclick="userCheck();"><i class="material-icons md-36">face</i>Profile</a></li>
 				    
-				    <li><a href="${root}/user/mypage"><i class="material-icons">pages</i>MyPage</a></li>
+				    <li><a href="${root}/user/mypage?memberId=${loginID}"><i class="material-icons">pages</i>MyPage</a></li>
 					 <security:authorize access="hasRole('ROLE_ADMIN')">
 					 <li><a href="${root}/admin/admin"><i class="material-icons">pages</i>AdminPage</a></li>
 					 </security:authorize>   
@@ -495,7 +495,7 @@ color:black;
 			<input type="hidden" name="email" value=<security:authentication property="name"/> />
 		</form>
     </div>
-    <security:authentication property="name" var="loginID"/>
+
 	<!-- 로그인 부분 스크립트 ---------------------------------------------------------------------------------->
 <script type="text/javascript">
       $(document).ready(function(){

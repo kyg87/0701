@@ -324,7 +324,7 @@ background: #dd5d58;
 </table>
 
  <div class="site-button">
-	<a class="waves-effect waves-light btn sitego" href="free-reg">
+	<a class="waves-effect waves-light btn sitego" href="#">
 	<div class="write">Write<i class="tiny material-icons">mode-edit</i>
 	</div>
 	</a>
@@ -365,12 +365,7 @@ background: #dd5d58;
 
 </ul>
 
-<security:authorize access="isAnonymous()">
-	<p>글쓰기는 로그인한 유저만 가능합니다 로그인해주세요</p>
-</security:authorize> <security:authorize access="isAuthenticated()">
-	<!-- <button style="float: right;" class="waves-effect waves-light btn"
-		onclick="location.href ='free-reg'">글쓰기</button> -->
-</security:authorize> <
+
 	</div>
 
 <form class="searchbar1" action="http://localhost/WiynPrj/siteboard/siteboard" method="GET">
@@ -400,3 +395,26 @@ background: #dd5d58;
 	});
 </script>
 </main>
+
+
+<input class="sitein" type="hidden" name="memberId"
+	value=<security:authentication property="name"/>>
+<script>
+
+$('.sitego').on('click', function() {
+
+	
+	var value = $('.sitein').val();
+
+		//console.log(value);
+	if (value == 'anonymousUser') {
+		alert("로그인을 한 회원만 이용이 가능합니다.");
+		//$('.sitego').prop('href', "../joinus/login"); 
+		 $('#modal10').modal('open');
+	} else {
+		$('.sitego').prop('href', "free-reg");
+	} 
+
+});
+
+</script>

@@ -298,15 +298,16 @@ background: #dd5d58;
 							<span>${n.content }</span>
 							<hr /><br />
 						</div>
-						
-					<div>
-						<a id="btn" class="waves-effect waves-light btn" href="#modal2"
-							id="noticeArticleDel">삭제</a> <a id="btn"
-							class="waves-effect waves-light btn"
-							a href="request-edit?c=${n.id}">수정</a> <a
-							class="waves-effect waves-light btn" id="back"
-							href="requestboard?p=${page}">목록으로</a>
-					</div>
+					<c:if test="${n.id eq  loginID}">
+						<div>
+							<a id="btn" class="waves-effect waves-light btn" href="#modal2"
+								id="noticeArticleDel">삭제</a> <a id="btn"
+								class="waves-effect waves-light btn"
+								a href="request-edit?c=${n.id}">수정</a> 
+						</div>
+					</c:if>
+					<a class="waves-effect waves-light btn" id="back"
+								href="requestboard?p=${page}">목록으로</a>
 		   <!--Start 댓글 영역  -->
 		   <form class="box_write" id="comment-add-form"
 								action="requestBoard-comment-add" method="post">
@@ -361,9 +362,6 @@ background: #dd5d58;
 					
 					 <!-- <form id="comment-add-form" action="freeBoard-comment-add" method="post"> -->
              <div class="row">
-               <security:authorize access="isAnonymous()">
-                  <p>글쓰기는 로그인한 유저만 가능합니다 로그인해주세요</p>
-               </security:authorize>
                
                <security:authorize access="isAuthenticated()">
                <div class="input-field">

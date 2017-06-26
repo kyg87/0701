@@ -5,6 +5,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:useBean id="now" class="java.util.Date" />
 
+<%@ taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
+
 <style type="text/css">
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
 
@@ -454,10 +457,13 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 				<div class="collection">
 					
 					<div class="write right">
+						<security:authorize access="hasRole('ROLE_ADMIN')">
 						<a class="waves-effect waves-light sitego" href="/WiynPrj/noticeboard/notice-reg?p=${page }"> <i
 							class="material-icons ">mode_edit</i>
 						</a>
+						</security:authorize>
 					</div>
+		
 				</div>
 <c:forEach var="mem" begin="${(page*10)-10 }" end="${page*10-1 }" items="${list}">
 					<ul class="collection">

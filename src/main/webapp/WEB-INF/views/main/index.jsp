@@ -918,7 +918,7 @@ textScroll.prototype.start = function() {
 				<c:forEach var="hot" items="${hot }" begin="0" end="3">
 					<li><a class="call_recipe thmb" href="../siteboard/site-detail?c=${hot.id}"> <img
 							src="http://api.thumbalizr.com/?url=http://${hot.url}" />
-					</a> <span class="author"> <a href="/profile/321451">
+					</a> <span class="author"> <a href="${root}/user/mypage?memberId=${hot.memberId }">
 					<c:choose>
 					<c:when test="${hot.userProfile eq '' }">
 						<img alt="푸드텔러"src="http://demo.geekslabs.com/materialize-v1.0/images/avatar.jpg">
@@ -932,7 +932,8 @@ textScroll.prototype.start = function() {
 						
 					</c:choose>
 				
-						</a> <strong><a class=""  href="/profile/321451">${hot.memberId }</a></strong>
+						</a> 
+						<strong><a class=""  href="${root}/user/mypage?memberId=${hot.memberId }">${hot.memberId }</a></strong>
 					</span>
 						<p>
 							<a class="call_recipe" href="../siteboard/site-detail?c=${hot.id}">${hot.title }
@@ -1049,7 +1050,7 @@ textScroll.prototype.start = function() {
 				<c:forEach var="hot2" items="${hot2 }" begin="0" end="3">
 					<li><a class="call_recipe thmb" href="../siteboard/site-detail?c=${hot2.id}"> <img
 							src="http://api.thumbalizr.com/?url=http://${hot2.url}" />
-					</a> <span class="author"> <a href="/profile/321451">
+					</a> <span class="author"> <a href="${root}/user/mypage?memberId=${hot2.memberId }">
 					
 					<c:choose>
 					<c:when test="${hot2.userProfile eq '' }">
@@ -1065,7 +1066,9 @@ textScroll.prototype.start = function() {
 					</c:choose>
 					
 					
-					<strong><a class=""  href="/profile/321451">${hot2.memberId }</a></strong>
+						</a> 
+						<strong><a class=""  href="${root}/user/mypage?memberId=${hot2.memberId }">${hot2.memberId }</a></strong>
+				
 					</span>
 						<p>
 							<a class="call_recipe" href="../siteboard/site-detail?c=${hot2.id}">${hot2.title }

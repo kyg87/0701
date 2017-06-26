@@ -149,14 +149,256 @@
 	padding: 0px !important;
 }
 
+
+/* 레시피 */
+.lst_recipe {
+	overflow: hidden;
+	margin-bottom: 0px;
+	position: relative;
+	left: -16px;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+.lst_recipe li .thmb {
+	display: block;
+	margin: 4px;
+	position: relative;
+}
+
+button, a {
+	outline: none;
+	text-decoration: none;
+	color: #444;
+	padding: 0;
+	margin: 0;
+	cursor: pointer;
+}
+
+.lst_recipe li .judge {
+	position: absolute;
+	top: 187px;
+	right: 10px;
+	color: #eee;
+	font-size: 13px;
+	text-align: center;
+	line-height: 1;
+	z-index: 5;
+}
+
+.lst_recipe li .author {
+	text-align: center;
+	width: 100%;
+	z-index: 5;
+	display: block;
+	margin-top: -40px;
+	position: relative;
+}
+
+.lst_recipe li .author strong {
+	color: #808080;
+	font-size: 14px;
+	font-weight: normal;
+}
+
+.lst_recipe li p a {
+	color: #3b3b3b;
+}
+
+.lst_recipe .option {
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	height: 27px;
+	border-top: 1px solid #e1e1e1;
+	text-align: right;
+	display: flex;
+	justify-content: space-around;
+}
+
+.lst_recipe .option>div:first-child {
+	border: none;
+}
+
+.lst_recipe .option>div {
+	padding-right: 20px;
+	width: 100%;
+	height: 100%;
+	float: left;
+	border-left: 1px solid #ddd;
+}
+
+.lst_recipe .option .like {
+	position: relative;
+	background:
+		url(http://d1hk7gw6lgygff.cloudfront.net/assets/_img/main/ico_like-92022602fb2947a641036b1f0be28af2.png)
+		9px center no-repeat;
+}
+
+.lst_recipe .option>div {
+	width: 100%;
+	height: 100%;
+	float: left;
+	border-left: 1px solid #ddd;
+}
+
+input, button, img {
+	vertical-align: middle;
+}
+
+.lst_recipe li p {
+	text-align: center;
+	font-size: 15px;
+	font-family: Microsoft YaHei, 'NSB';
+	line-height: 19px;
+	letter-spacing: -0.025em;
+	padding: 2px 20px 0;
+}
+
+.lst_recipe li .author img {
+	width: 61px;
+	height: 61px;
+	border-radius: 50%;
+	overflow: hidden;
+	display: block;
+	margin: 0 auto 5px;
+}
+
+.lst_recipe>li {
+	width: 244px;
+	height: 390px;
+	margin: 0 0 16px 16px;
+	position: relative;
+	border: 1px solid #e1e1e1;
+	box-sizing: border-box;
+	float: left;
+	background-color: #fff;
+}
+
+.btn_like {
+	display: block;
+	width: 100%;
+	height: 27px;
+	text-align: right;
+	background-color: transparent;
+	border: none;
+	color: #999;
+	box-sizing: border-box;
+	padding-right: 10px;
+	line-height: 25px;
+}
+
+.lst_recipe li .thmb {
+	display: block;
+	margin: 4px;
+	position: relative;
+}
+
+.lst_recipe li .thmb img {
+	width: 234px;
+	height: 234px;
+	display: block;
+	border: 1px solid #e1e1e1;
+}
+
+.lst_recipe .option .share a {
+	display: block;
+	overflow: hidden;
+	color: #999;
+	background:
+		url(http://d1hk7gw6lgygff.cloudfront.net/assets/_img/main/ico_share-e234119ec47de3fa22d0c1c2569f756f.png)
+		7px 50% no-repeat;
+	width: 100%;
+	padding: 7px 5px 0 0\0;
+}
+
+.lst_recipe li .thmb:after {
+	position: absolute;
+	display: block;
+	content: '';
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-size: 234px 234px;
+	z-index: 1;
+}
+
+.lst_recipe li .thmb {
+	display: block;
+	margin: 4px;
+	position: relative;
+}
+
+.lst_recipe .option>div:first-child {
+	border: none;
+	color: #999;
+}
+/* user_information */
+.user_information {
+    background: #fff;
+    width: 100%;
+    margin-top: 43px;
+    position: relative;
+}
+.user_information .inner {
+    min-height: 167px;
+    box-sizing: border-box;
+    padding: 50px 0 50px 150px;
+}
+.user_information img {
+    display: block;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+}
+.user_information>.inner>strong {
+    display: inline-block;
+    font-size: 22px;
+    color: #3b3b3b;
+    font-family: Microsoft YaHei,'NST';
+}
+
+.user_information .dsc {
+    width: 500px;
+    font-size: 13px;
+    color: #676767;
+    margin: 7px 0 0 2px;
+}
+.user_information .btn_area {
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+}
+
+.user_information  a {
+	font-size: 16px;
+    color: #26a69a;
+    display: block;
+    line-height: 22px;
+    padding: 14px 16px;
+  
+}
+.user_information a i{
+    height: inherit;
+    line-height: inherit;
+    float: left;
+    margin: 0 12px 0 0;
+    width: 24px;
+}
 </style>
 <main id="main">
 <div class="container">
 	<div class="section">
 		<div class="row">
-			<h2>My Page</h2>
+			<!-- <h2>My Page</h2> -->
 			
-				  <!-- 개인프로필 Modal Structure -->
+	<%-- 			  <!-- 개인프로필 Modal Structure -->
 		
 		<div class="info_top1">
 		<div class ="info_profile">
@@ -177,12 +419,26 @@
 				<th>${sum}</th>
 				<th>${like }</th>
 				
-		</table>
-		<div class="btn_area">
+		</table> --%>
+	<!-- 	<div class="btn_area">
 				<button type="submit" class="btn waves-effect waves-light">수정</button>
 				
+		</div> -->
+ <div class="user_information">
+	 <div class="inner">
+	<img alt="푸드텔러"src="${root}/resource/profile/${member.profile }" onerror="this.src ='${root}/resource/images/avatar.png'">
+	 	<strong>${member.id}</strong>
+	 	<p class="dsc">
+	 	${member.introduction }
+					
+		</p>
+		<div class="btn_area">
+		<a href ="#"><i class="material-icons">settings</i>프로필 설정</a>
+		
 		</div>
+	 </div>
  
+ </div>
     <security:authentication property="name" var="loginID"/>
 	</div>
 	
@@ -246,7 +502,7 @@
 
 								</ul>
 							</div> -->
-							<thead>
+				<!-- 			<thead>
 								<tr>
 
 									<th style="text-align:center"></th>
@@ -254,7 +510,7 @@
 									<th style="text-align: center">작성시간</th>
 									<th style="text-align: center">게시판종류</th>
 								</tr>
-							</thead>
+							</thead> -->
 
 
 							<tbody id="sub-test1">
@@ -292,23 +548,55 @@
 								</c:forEach>
 							</tbody>
 
-							<tbody id="sub-test3">
-								<c:forEach var="v" items="${site}">
+<div id="sub-test3" class="card-div">
+			<ul class="lst_recipe flex space">
+				<c:forEach var="siteBoard" items="${site }" begin="0" end="3">
+					<li><a class="call_recipe thmb" href="../siteboard/site-detail?c=${siteBoard.siteBoard.id}"> <img
+							src="http://api.thumbalizr.com/?url=http://${siteBoard.siteBoard.url}" />
+					</a> <span class="author"> <a href="#">
+					
+					<c:choose>
+					<c:when test="${siteBoard.siteBoard.userProfile eq '' }">
+						<img alt="푸드텔러"src="http://demo.geekslabs.com/materialize-v1.0/images/avatar.jpg">
+					</c:when>
+			
+						
+					<c:otherwise>
+	
+						<img alt="푸드텔러"src="${root}/resource/profile/${siteBoard.siteBoard.userProfile }" onerror="this.src ='${root}/resource/images/avatar.png'">
+					</c:otherwise>
+						
+					</c:choose>
+					
+					
+					<strong><a class=""  href="/profile/321451">${siteBoard.siteBoard.memberId }</a></strong>
+					</span>
+						<p>
+							<a class="call_recipe" href="../siteboard/site-detail?c=${siteBoard.siteBoard.id}">${siteBoard.siteBoard.title }
+							</a>
+						</p>
+						<div class="option">
+							<div class="time">
 
-									<tr>
-										<td><input  type="checkbox" id="${v.id}" name="check_del"
-											value="${v.id }" /><label for="${v.id}"></label></td>
-										<td style="text-align: center"><a
-											href="../${v.boardName}board/${v.boardName}-detail?c=${v.id}">${v.title}</a></td>
-										<td style="text-align: center"><fmt:formatDate
-												value="${v.regDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+								<fmt:formatDate value="${siteBoard.siteBoard.regDate}" pattern="yyyy-MM-dd" />
+							</div>
+							<div class="like">
+								
+									<input name="utf8" type="hidden" value="✓"><input
+										type="hidden" name="authenticity_token"
+										value="1KsNCn9Nc+jSqMhlkd2O/z1lDEshD5VeAGksB4qrC9X00j2B38Liaig4mEJdcGZA3DINWqn/AextRSJNdckgsg==">
+									<input type="hidden" name="linked_model_type" value="Recipe">
+									<input type="hidden" name="linked_model_id" value="4145">
+									<div class="btn_like">${siteBoard.siteBoard.likeCount }명</div>
+								
+							</div>
 
-										<td style="text-align: center"><input type="hidden"
-											name="boardName" value="${v.boardName}" />${v.boardName}</td>
-									</tr>
-								</c:forEach>
+						</div></li>
+				</c:forEach>
+			</ul>
 
-							</tbody>
+
+</div>
 
 							<%-- 	<c:forEach var="list" items="${list}">
 					<tr>
@@ -376,8 +664,8 @@
 
 
 
-							<button class="btn waves-effect waves-light" type="button"
-								name="action" onclick="go_delete();">삭제</button>
+							<!-- <button class="btn waves-effect waves-light" type="button"
+								name="action" onclick="go_delete();">삭제</button> -->
 							<!-- 	<a class="waves-effect waves-light btn " href="#modal2">삭제</a> -->
 					</form>
 					<div id="modal2" class="modal">

@@ -547,7 +547,7 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
  
  
  <div class="site-button">
-	<a class="waves-effect waves-light btn sitego" href="../requestboard/request-reg">
+	<a class="waves-effect waves-light btn sitego" href="#">
 	<div class="write">Write<i class="tiny material-icons">mode-edit</i>
 	</div>
 	</a>
@@ -630,3 +630,24 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 
 
 </main>
+<input class="sitein" type="hidden" name="memberId"
+	value=<security:authentication property="name"/>>
+<script>
+
+$('.sitego').on('click', function() {
+
+	
+	var value = $('.sitein').val();
+
+		//console.log(value);
+	if (value == 'anonymousUser') {
+		alert("로그인을 한 회원만 이용이 가능합니다.");
+		//$('.sitego').prop('href', "../joinus/login"); 
+		 $('#modal10').modal('open');
+	} else {
+		$('.sitego').prop('href', "../requestboard/request-reg");
+	} 
+
+});
+
+</script>

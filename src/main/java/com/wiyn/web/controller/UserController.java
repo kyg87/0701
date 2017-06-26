@@ -19,15 +19,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.wiyn.web.dao.BigCategoryDao;
 import com.wiyn.web.dao.FreeBoardDao;
+import com.wiyn.web.dao.MemberDao;
 import com.wiyn.web.dao.RequestBoardDao;
 import com.wiyn.web.dao.SiteBoardDao;
+import com.wiyn.web.dao.SiteBoardLikeDao;
 import com.wiyn.web.dao.SmallCategoryDao;
 import com.wiyn.web.dao.UserPageDao;
 import com.wiyn.web.entity.AddBoard;
 import com.wiyn.web.entity.BigCategory;
 import com.wiyn.web.entity.FreeBoard;
+import com.wiyn.web.entity.Member;
 import com.wiyn.web.entity.SiteBoard;
 import com.wiyn.web.entity.SmallCategory;
+import com.wiyn.web.entity.UserSiteBoard;
 
 @Controller
 @RequestMapping("/user/*")
@@ -49,26 +53,39 @@ public class UserController {
 	@RequestMapping("mypage")
 	public String UserMain(Authentication auth,Model model, AddBoard addboard, String title,
 			@RequestParam(value="bigCa",defaultValue="")String bigCategoryId,
-            @RequestParam(value="smallCa",defaultValue="")String smallCategoryId
+            @RequestParam(value="smallCa",defaultValue="")String smallCategoryId,
+            @RequestParam(value="memberId",defaultValue="")String memberId
            
 			){
 
 		
-		System.out.println(auth.getName());
+	
 		/*List<AddBoard> list = sqlSession.getMapper(UserPageDao.class).getList(auth.getName());*/
 		
-		List<AddBoard> free = sqlSession.getMapper(UserPageDao.class).getFreeList(auth.getName());
-		List<AddBoard> site = sqlSession.getMapper(UserPageDao.class).getSiteList(auth.getName());
-		List<AddBoard> request = sqlSession.getMapper(UserPageDao.class).getRequestList(auth.getName());
-	
-		List<AddBoard> list2 = sqlSession.getMapper(UserPageDao.class).getCommentList(auth.getName());
-		List<AddBoard> list3 = sqlSession.getMapper(UserPageDao.class).getLikeList(auth.getName());
+		List<AddBoard> free = sqlSession.getMapper(UserPageDao.class).getFreeList(memberId);
+		List<UserSiteBoard> site = sqlSession.getMapper(UserPageDao.class).getSiteList(memberId);
 		
-		int sum = sqlSession.getMapper(UserPageDao.class).getReplyCount(auth.getName());
-		int like = sqlSession.getMapper(UserPageDao.class).getLikeCount(auth.getName());
-		int list = sqlSession.getMapper(UserPageDao.class).getListCount(auth.getName());
-	
+		for (UserSiteBoard userSiteBoard : site) {
+			
+			userSiteBoard.setSiteBoard(sqlSession.getMapper(SiteBoardDao.class).getBoard(userSiteBoard.getId()));
+			
+			userSiteBoard.getSiteBoard().setUserProfile(sqlSession.getMapper(MemberDao.class).get(userSiteBoard.getSiteBoard().getMemberId()).getProfile());
+			userSiteBoard.getSiteBoard().setLikeCount(sqlSession.getMapper(SiteBoardLikeDao.class).getLike(userSiteBoard.getSiteBoard().getId()));
 		
+		}
+		
+
+		List<AddBoard> request = sqlSession.getMapper(UserPageDao.class).getRequestList(memberId);
+	
+		List<AddBoard> list2 = sqlSession.getMapper(UserPageDao.class).getCommentList(memberId);
+		List<AddBoard> list3 = sqlSession.getMapper(UserPageDao.class).getLikeList(memberId);
+		
+		int sum = sqlSession.getMapper(UserPageDao.class).getReplyCount(memberId);
+		int like = sqlSession.getMapper(UserPageDao.class).getLikeCount(memberId);
+		int list = sqlSession.getMapper(UserPageDao.class).getListCount(memberId);
+	
+		Member member = sqlSession.getMapper(MemberDao.class).get(memberId);
+
 	/*	if(data.equals("1")){
 			List<AddBoard> result = sqlSession.getMapper(UserPageDao.class).getFreeList(auth.getName());
 			model.addAttribute("list", result);
@@ -83,7 +100,7 @@ public class UserController {
 			List<AddBoard> result = sqlSession.getMapper(UserPageDao.class).getRequestList(auth.getName());
 			model.addAttribute("list", result);
 		}*/
-			
+		model.addAttribute("member", member);	
 		model.addAttribute("list",list);
 		model.addAttribute("sum",sum);
 		model.addAttribute("like",like);

@@ -21,7 +21,7 @@
 	SELECT  FreeBoard.boardName,FreeBoard.id,FreeBoard.title,FreeBoard.regDate
 			FROM lsedb.FreeBoard where FreeBoard.memberId = #{param1} order by regDate desc;	
 	</select>
-	<select resultType="com.wiyn.web.entity.AddBoard" id="getSiteList">
+	<select resultType="com.wiyn.web.entity.UserSiteBoard" id="getSiteList">
 	SELECT  SiteBoard.boardName,SiteBoard.id,SiteBoard.title,SiteBoard.regDate
 			FROM lsedb.SiteBoard where SiteBoard.memberId = #{param1} order by regDate desc;	 
 	</select>

@@ -9,6 +9,7 @@ public class Member {
 	private String pwd;
 	private Date regDate;
 	private String profile;
+	private String introduction;
 	
 	public String getId() {
 		return id;
@@ -39,6 +40,12 @@ public class Member {
 	}
 	public void setProfile(String profile) {
 		this.profile = profile;
+	}
+	public String getIntroduction() {
+		return introduction;
+	}
+	public void setIntroduction(String introduction) {
+		this.introduction = introduction;
 	}
 	
 }
