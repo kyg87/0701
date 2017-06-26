@@ -170,6 +170,7 @@ public class MyBatisSiteBoardDao implements SiteBoardDao{
 		siteBoardDao = sqlSession.getMapper(SiteBoardDao.class);
 		return siteBoardDao.countlike();
 	}
+	
 	@Override
 	public List<SiteBoard> getHotSmall(String id) {
 		SiteBoardDao siteBoardDao;
@@ -181,6 +182,12 @@ public class MyBatisSiteBoardDao implements SiteBoardDao{
 		SiteBoardDao siteBoardDao;
 		siteBoardDao = sqlSession.getMapper(SiteBoardDao.class);
 		return siteBoardDao.likeBig(bigCategoryId);
+	}
+	@Override
+	public int countquery(String query) {
+		SiteBoardDao siteBoardDao;
+		siteBoardDao = sqlSession.getMapper(SiteBoardDao.class);
+		return siteBoardDao.countquery(query);
 	}
 
 }

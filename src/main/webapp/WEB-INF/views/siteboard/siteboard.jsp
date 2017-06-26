@@ -523,13 +523,14 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 					<ul class="collection">
 <div style="display: none;"><fmt:formatDate value="${n.regDate}"
 								pattern="yyyy-MM-dd HH:mm:ss" var="writedate" /></div>
+<div style="display: none"><fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" /> </div>
 						<li class="list-item flex">
 							<a href="site-detail?c=${n.id}&p=${param.p}" class="url">
 								<div class="index">
 									<p>${n.id }</p>
 								</div>
 								<div class="title">
-									<span>${n.title} <c:if test="${writedate>=today }"><img src="/WiynPrj/resource/images/new.jpg"/></c:if></span>
+									<span>${n.title} <span class="orange-text text-accent-3">[${n.countcomment }]</span><c:if test="${writedate>=today }"><img src="/WiynPrj/resource/images/new.jpg"/></c:if></span>
 
 								</div>
 								<div class="writer-warpper">

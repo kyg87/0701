@@ -491,7 +491,7 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 									<p>${n.id }</p>
 								</div>
 								<div class="title">
-									<span>${n.title} <c:if test="${writedate>=today }"><img src="/WiynPrj/resource/images/new.jpg"/></c:if></span>
+									<span>${n.title} <span class="orange-text text-accent-3">[${n.countcomment }]</span><c:if test="${writedate>=today }"><img src="/WiynPrj/resource/images/new.jpg"/></c:if></span>
 
 								</div>
 								<div class="writer-warpper">

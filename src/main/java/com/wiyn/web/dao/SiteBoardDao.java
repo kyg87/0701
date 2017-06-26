@@ -42,7 +42,7 @@ public interface SiteBoardDao {
 	public int updateCommentCount(String Id);
 	int count();
 	int countlike();
-	
+	int countquery(String query);
 	
 	
 	List<SiteBoard> getHotSmall(String id);

@@ -405,18 +405,60 @@ public class SiteBoardController {
 	
 	@RequestMapping(value="site-list",  produces="text/plain;charset=UTF-8")
 	public String siteTag(
+			 @RequestParam(value="p", defaultValue="1")Integer page, 
 			@RequestParam("query")String query,
+			@RequestParam(value="bigCa",defaultValue="")String bigCategoryId,
+            @RequestParam(value="smallCa",defaultValue="")String smallCategoryId,
 			Model model
 			)
 	{
 
-		/*System.out.println("占쎌뵠�놂옙�뜎�눖�봺"+query);*/
 	    List<SiteBoard> list	= sqlSession.getMapper(SiteBoardDao.class).getTagLoad(query);
-
-		/*System.out.println(list);*/
 		
+        int cnt= sqlSession.getMapper(SiteBoardDao.class).countquery(query);
+        int listPerFive = (page-1)/5;
+        int checkLast = (listPerFive*5) + 5;
+        
+        if(cnt % 10 == 0)
+            cnt = cnt/10;
+        else
+            cnt = (cnt/10)+1;
+        
+        if(checkLast > cnt)
+            checkLast = cnt;
+        
 		model.addAttribute("query", query);
 		model.addAttribute("list",list);
+		
+        model.addAttribute("listPerFive", listPerFive);
+        model.addAttribute("checkLast", checkLast);
+        model.addAttribute("cnt", cnt);
+		
+        BigCategory bigCatego = sqlSession.getMapper(BigCategoryDao.class).getbig(bigCategoryId);
+        SmallCategory smallCatego = sqlSession.getMapper(SmallCategoryDao.class).getsmall(bigCategoryId,smallCategoryId);
+        model.addAttribute("bn", bigCatego);
+        model.addAttribute("sn", smallCatego);
+        
+        SiteBoard sitenews=sqlSession.getMapper(SiteBoardDao.class).getNewsc();
+        SiteBoard sitenewsL=sqlSession.getMapper(SiteBoardDao.class).getNewsL();
+        SiteBoard sitenewsH=sqlSession.getMapper(SiteBoardDao.class).getNewsH();
+        
+        model.addAttribute("sitenew", sitenews);
+        model.addAttribute("sitenewL", sitenewsL);
+        model.addAttribute("sitenewH", sitenewsH);
+        
+		
+		List<BigCategory> bcbList = sqlSession.getMapper(BigCategoryDao.class).getList();
+		
+		for (BigCategory bigCategory : bcbList) {
+			List<SmallCategory> small = sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId());
+			bigCategory.setSmallCategory(small);
+		}
+		model.addAttribute("bcbList", bcbList);
+		
+        List<SiteBoard> bigList = sqlSession.getMapper(SiteBoardDao.class).likeBig(bigCategoryId);
+        
+        model.addAttribute("likelist",bigList);
 		
 		return "siteboard.site-list";
 	}
