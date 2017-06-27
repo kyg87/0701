@@ -205,7 +205,18 @@ color:black;
 }
 
 .btn_area {
+    border-top: 1px solid #e1e1e1;
     background-color: #fff;
+    padding: 20px;
+}
+.introduction {
+    padding: 10px 20px;
+      
+}
+.pr{
+	height: 120px;
+	padding: 10px 20px;
+	  border: 1px solid #e1e1e1;
 }
 
 </style>
@@ -484,7 +495,9 @@ color:black;
 				<div>
 					<span><security:authentication property="name" /></span>
 				</div>
-				
+				<div class="introduction">
+					<textarea placeholder="회원님의 소개를 간단히 입력해주세요." class="pr" name="user[introduction]" id="user_introduction">b</textarea>
+				</div>
 				<div class="btn_area">
 					<button id="profileCloseBtn" type="button" class="btn waves-effect waves-light">취소</button>
 					<button id="editBtn" type="button" class="btn waves-effect waves-light">저장</button>
