@@ -573,11 +573,9 @@ visual {
 	<div class="collection">
 					
 					<div class="write right">
-						<security:authorize access="hasRole('ROLE_USER'')">
-						<a class="waves-effect waves-light sitego" href="/WiynPrj/requestboard/request-reg?p=${page }"> <i
+						<a class="waves-effect waves-light sitego" href="#"> <i
 							class="material-icons ">mode_edit</i>
 						</a>
-						</security:authorize>
 					</div>
 		
 				</div>
