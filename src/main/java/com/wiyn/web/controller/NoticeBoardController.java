@@ -259,7 +259,7 @@ public class NoticeBoardController {
 		
 		System.out.println("del?!");
 		
-		return "redirect:noticeboard";
+		return "noticeboard:noticeboard";
 	}
 	
 	@RequestMapping(value = "notice-update", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")

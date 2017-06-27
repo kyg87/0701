@@ -6,6 +6,7 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <%@ taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
+<c:set var="root" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 
 <style>
@@ -310,7 +311,8 @@ background: #dd5d58;
 
 		$("#ArticleDelCancel").on('click', function(){
 			
-			location.href='http:\/\/localhost\/WiynPrj\/noticeboard\/notice-detail?c='+${list.id}+'&p='+${page};
+			//location.href='http:\/\/localhost\/WiynPrj\/noticeboard\/notice-detail?c='+${list.id}+'&p='+${page};
+			location.href='${root}/noticeboard/notice-detail?c='+${list.id}+'&p='+${page};
 			
 		});
 			
