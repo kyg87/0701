@@ -335,11 +335,11 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
     color: rgba(0,0,0,0.87);
 }
 
-.list-item .title{
+.list-item .title {
     color: rgba(0,0,0,0.87);
     font-size: 20px;
     font-weight: 400;
-    margin-left: 150px;
+    margin-left: 30px;
     margin-right: 260px;
     max-width: 770px;
     overflow: hidden;
@@ -347,7 +347,11 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
     padding-bottom: 36px;
     text-overflow: ellipsis;
     white-space: nowrap;
-}
+} 
+
+
+
+
 
 
 .url-warpper {
@@ -367,15 +371,14 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
     right: 25px;
 }
 
-.writer-warpper{
+.writer-warpper {
     position: absolute;
-    right: 230px;
+    right: 70px;
     top: 50%;
     height: 32px;
     margin: -45px 0;
     text-align: right;
-}
-
+} 
 .url-warpper img{
     border: 0;
     height: 96px;
@@ -396,7 +399,7 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 	.list-item .title{
 	    font-size: 16px;
 	    line-height: 50px;
-	    margin-left: 48px;
+	    margin-left: 4px;
 	    margin-right: 90px;
 	    padding-top: 25px;
 	    white-space: normal;
@@ -424,11 +427,7 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 		right: -10px;	
 		 width: 25%;
 	}
-	
-	.hit-wrapper{
-		display: none;
-	}
-	
+
 	
 }
 
@@ -601,17 +600,14 @@ visual {
 			</tr>
 		
 		</c:forEach>
-	</tbody>
+	</tbody> 
 </table> --%>
 
  
  
- 
- <div class="site-button">
-	<a class="waves-effect waves-light btn sitego" href="#">
-	<div class="write">Write<i class="tiny material-icons">mode-edit</i>
-	</div>
-	</a>
+  
+ <div class="site-button"> 
+	<a class="waves-effect waves-light btn sitego" href="#"><i class="material-icons">mode-edit</i></a>
 </div>
 
 <div align="center">
