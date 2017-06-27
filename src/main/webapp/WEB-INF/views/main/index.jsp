@@ -1240,9 +1240,11 @@ textScroll.prototype.start = function() {
 						</div>
 						<div>
 							<button id="target" class="btn waves-effect waves-light right"
-								type="submit" name="action">카테고리 요청하기</button>
+								type="submit" name="action" herf="">요청하기</button>
 						</div>
 					</div>
+					<input class="sitein" type="hidden" name="memberId"
+	value=<security:authentication property="name"/>>
 				</form>
 			</div>
 		</li>
@@ -1555,7 +1557,7 @@ $("#target").click(function(d){
 	}
 	else{
 		alert("요청게시판에 글이 등록되었습니다.");
-		return true;
+		return location.href='http:\/\/localhost:8080\/WiynPrj\/main\/index';
 	} 
 });
 </script>

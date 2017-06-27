@@ -320,6 +320,8 @@ visual {
     margin-top: 40px;
     margin-bottom: 60px;
 } 
+
+
 </style>
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 
@@ -342,7 +344,7 @@ visual {
 		<h1>당신의 생각을<br>자유롭게 표현하세요</h1>
 	</div>
 </div> --%>
-<div class="container">
+<div class="container contain">
 
 <ul id="breadcrumb">
   <li><a href="../main/index"><span class="icon icon-home"> </span></a></li>
