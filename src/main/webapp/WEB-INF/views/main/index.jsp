@@ -648,7 +648,8 @@ input, button, img {
 
 .lst_recipe li p {
 	text-align: center;
-	font-size: 15px;
+	font-size: 19px;
+    font-weight: bold; 
 	font-family: Microsoft YaHei, 'NSB';
 	line-height: 19px;
 	letter-spacing: -0.025em;
