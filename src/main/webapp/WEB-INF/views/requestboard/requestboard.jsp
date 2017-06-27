@@ -290,11 +290,17 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 }
 
 .sitgo{
-	/* width: 100%; */
+	width: 100%;
 }
-.sitgo i{
-	padding-top: 10px;
-    padding-right: 16px;
+.material-icons {
+    margin-right: 25px;
+    margin-top: 5px;
+}
+ 
+.sitego i:hover {
+	border-radius: 3px; 
+	background-color: #337ab7; 
+	color:#fff; 
 }
 
 .collection a.collection-item {
@@ -520,7 +526,17 @@ visual {
   <li><a href="../main/index"><span class="icon icon-home"> </span></a></li>
   <li><a href="?p=1"><span class="icon icon-double-angle-right"> </span>요청게시판</a></li>  
 </ul>
-
+	<div class="collection">
+					
+					<div class="write right">
+						<security:authorize access="hasRole('ROLE_ADMIN')">
+						<a class="waves-effect waves-light sitego" href="/WiynPrj/noticeboard/notice-reg?p=${page }"> <i
+							class="material-icons ">mode_edit</i>
+						</a>
+						</security:authorize>
+					</div>
+		
+				</div>
 	<div class="site-list">
 				<!-- <div class="collection mvaside">
 					<a class="collection-item">번호</a>

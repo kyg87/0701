@@ -292,10 +292,19 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 .sitgo{
 	width: 100%;
 }
-.sitgo i{
-	padding-top: 10px;
-    padding-right: 16px;
+.sitgo i {
+    margin-top: 10px; 
+    margin-right: 16px;
 }
+
+.sitego i:hover {
+	border-radius: 3px;
+	background-color: #337ab7; 
+	color:#fff; 
+}
+
+
+
 
 .collection a.collection-item {
     width: 100%;
@@ -463,6 +472,8 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
     margin-top: 20px;
     margin-bottom: 60px;
 } 
+
+
 </style>
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 <main id="main">

@@ -63,12 +63,17 @@
 	font-family: 'Nanum Gothic Coding', serif;
 }
 
-.sitego {
-	background: rgba(27, 80, 162, 0.69);
+.sitgo{
+	width: 100%;
 }
-
-.sitego:hover {
-	background: rgba(23, 56, 125, 0.79);
+.material-icons {
+    margin-right: 25px;
+    margin-top: 5px;
+} 
+.sitego i:hover {
+	border-radius: 3px; 
+	background-color: #337ab7; 
+	color:#fff; 
 }
 
 .site-button {
@@ -444,9 +449,7 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 }
 </style>
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-<div>
-	<label class="board-title">Notice Board</label>
-</div>
+
 
 <main id="main">
 <div class="col-xs-12 col-md-8 container">
