@@ -540,7 +540,7 @@ visual {
 	background-size: 100% 980px;
 }
 .contain.container {
-    margin-top: 40px;
+    margin-top: 50px; 
     margin-bottom: 60px;
 }
 

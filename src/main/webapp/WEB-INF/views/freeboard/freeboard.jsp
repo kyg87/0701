@@ -552,7 +552,10 @@ visual {
 	background-color: #337ab7; 
 	color:#fff; 
 }   
-
+.contain.container {
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
 
 </style>
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
@@ -562,7 +565,7 @@ visual {
 	<div class="visual ">
 		<div class="banner">
 		</div>
-		<div class="container">
+		<div class="container ">
 		<div class="hero_home__copy">
 		<h1>당신의 생각을<br>자유롭게 표현하세요</h1>
 		</div>
@@ -575,10 +578,10 @@ visual {
 	<div class="free-title">
 		<h1>당신의 생각을<br>자유롭게 표현하세요</h1>
 	</div>
-</div> --%>
+</div> --%> 
 
 
-<div class="col-xs-12 col-md-8 container">
+<div class="col-xs-12 col-md-8 container contain">
 	<div class="flex">
 		<div class="main-div">
 			<ul id="breadcrumb" class="headdd">
