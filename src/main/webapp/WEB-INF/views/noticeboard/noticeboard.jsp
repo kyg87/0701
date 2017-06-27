@@ -446,12 +446,19 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 .col-xs-12.col-md-8.container {
     margin-bottom: 30px;
 }
+
+
+.contain.container { 
+    margin-top: 50px;
+    margin-bottom: 60px;
+    min-height: 600px;
+} 
 </style>
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 
 
 <main id="main">
-<div class="col-xs-12 col-md-8 container">
+<div class="col-xs-12 col-md-8 container contain">
 	<div class="flex">		
 		<div class="main-div">
 
