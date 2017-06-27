@@ -515,7 +515,7 @@ visual {
 .visual .hero_home__copy {
     color: #4a4a4a;
     position: absolute;
-    top: 28%;
+    top: 41%;
     -webkit-transition: color 1s;
     transition: color 1s;
         width: 100%;
@@ -524,9 +524,9 @@ visual {
 .visual .hero_home__copy h1 {
     font-size: 25px;
     font-weight: bold;  
-    line-height: 62px;
+    line-height: 30px;
     color: #fff;  
-    margin: 0px;
+    margin: 0px; 
     padding: 0px;
 }
 .visual h4 {

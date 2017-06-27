@@ -5,6 +5,7 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="root" value="${pageContext.request.contextPath}" />
+<security:authentication property="name" var="loginID"/>
 
 
 <!DOCTYPE html>
@@ -359,7 +360,7 @@ $(document).ready(function(){
                   </div>
                   
                   <div>
-                  <c:if test="${n.id eq  loginID}">
+                  <c:if test="${n.memberId eq  loginID}">
 	                  <a id="btn" class="waves-effect waves-light btn"
 	                     href="#modal2" id="freeArticleDel">삭제</a>                     
 	                  <a id="btn" class="waves-effect waves-light btn"
@@ -477,7 +478,7 @@ $(document).ready(function(){
 
 
 <!------------------------------------------------------------- 댓글 영역 ------------------------------------------------------------------------>
-<security:authentication property="name" var="loginID"/>
+
 
 <script>
 
