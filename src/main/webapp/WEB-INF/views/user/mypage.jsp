@@ -6,6 +6,7 @@
 <%@ taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 <c:set var="root" value="${pageContext.request.contextPath}" />
+<security:authentication property="name" var="loginID"/>
 
 <link href="/WiynPrj/resource/css/main.css" type="text/css"
 	rel="stylesheet" media="screen,projection" />
@@ -433,15 +434,18 @@ input, button, img {
 					<img alt="푸드텔러" src="${root}/resource/profile/${member.profile }"
 						onerror="this.src ='${root}/resource/images/avatar.png'"> <strong>${member.id}</strong>
 					<p class="dsc">${member.introduction }</p>
-					<div class="setting_area">
-						<a href="#modal110" onclick="userCheck();"><i class="material-icons">settings</i>프로필 설정</a>
-
-					</div>
+					
+					<c:if test="${member.id eq  loginID}"> 
+						<div class="setting_area">
+							<a href="#modal110" onclick="userCheck();"><i class="material-icons">settings</i>프로필 설정</a>
+	
+						</div>
+					</c:if>
 				</div>
-
+			
 			</div>
 
-			<security:authentication property="name" var="loginID"/>
+	
 		</div>
 	
 	
