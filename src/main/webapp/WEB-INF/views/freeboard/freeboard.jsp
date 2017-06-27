@@ -29,10 +29,6 @@
 
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
 
-* {
-	margin: 0;
-	padding: 0;
-}
 /*------------------------- 메인 테이블 부분 ----------------------------------*/
 #main .table {
 	border-radius: 2px;
@@ -42,66 +38,62 @@
 		rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
-.table *{
+.table * {
 	text-align: center;
 }
 
-.table .table-title{
+.table .table-title {
 	text-align: left;
 }
 
-.table .table-title a{
-	color:#505050;
+.table .table-title a {
+	color: #505050;
 }
-
 
 .table-head {
 	font-family: 'Jeju Gothic', serif;
 	font: menu;
-	border-bottom:1px solid #e9e9e9;
+	border-bottom: 1px solid #e9e9e9;
 }
 
 .table-body {
 	text-align: center;
-	font:14px;
+	font: 14px;
 }
 
 .table-body {
 	font-family: 'Nanum Gothic Coding', serif;
 }
 
-
-
-.sitego{
-	background:rgba(27, 80, 162, 0.69);
+.sitego {
+	background: rgba(27, 80, 162, 0.69);
 }
 
-.sitego:hover{
-	background:rgba(23, 56, 125, 0.79);
+.sitego:hover {
+	background: rgba(23, 56, 125, 0.79);
 }
 
-.write{
+.site-button {
+	margin-top: 20px;
 	display: flex;
-}
-
-.site-button{
-	display: flex;
-	justify-content:flex-end;
+	justify-content: flex-end;
 	font-family: 'Nanum Gothic Coding', serif;
 }
 
-.free-title {
-    color: #3c5a5a;
-    position: absolute;
-    top: 52%;
-    -webkit-transition: color 1s;  
-    transition: color 1s;
-    text-align:center;
-    left:37%;
+.board-title {
+	
+}
+
+.head-tr {
+	background: rgba(84, 135, 164, 0.3);
+}
+
+.pagination{
+	margin-bottom: 10px;
 }
 
  /* ----------------------검색창 수정------------ */
- .broker-expanding-search, 
+ .broker-expanding-search,
 .broker-expanding-search *,
 .broker-expanding-search *:after,
 .broker-expanding-search *:before {
@@ -109,15 +101,17 @@
 }
 
 .broker-expanding-search {
-    display: table;
-    table-layout: fixed;
-    width: 50px;
-    margin: 0;
-    border-radius: 40px;
-    overflow: hidden;
-    background: #337ab7;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  display: table;
+  table-layout: fixed;
+  width: 50px;
+  margin: 0;
+  border-radius: 40px;
+  overflow: hidden;
+background: #dd5d58;
+/* box-shadow: 0px 0px 0px 2px rgba(255,255,255,0.90); */
+  transition: width 0.5s cubic-bezier(0.65, -0.5, 0.4, 1.5);
 }
+
 .broker-expanding-search--open {
   width: 250px;
 }
@@ -178,7 +172,6 @@
 	bottom: 50px;
 	right: 50px;
 }
-/* ---------------------------------------------- */
 /* -------------------------상단목록이동----------------------------- */
 
 #breadcrumb {
@@ -270,54 +263,187 @@
 }
 /* --------------------------------------------------------- */
 
+/*Start site-list */
 
 
+.list-item{
+    min-height: 96px;
+    padding-left: 22px;
+    position: relative;
+}
+.list-item:HOVER{
+	background-color: #e0e0e0;
+}
 
-.hero_home__copy {
-    color: #4a4a4a;
+.list-item .index{
+    top: 15px;
     position: absolute;
-    top: 63%;
-    -webkit-transition: color 1s;
-    transition: color 1s;
-    width: 38%;
+    font-size: 20px;
+    color: rgba(0,0,0,0.87);
+}
+
+.list-item .title{
+    color: rgba(0,0,0,0.87);
+    font-size: 20px;
+    font-weight: 400;
+    margin-left: 72px;
+    margin-right: 260px;
+    max-width: 770px;
+    overflow: hidden;
+    padding-top: 36px;
+    padding-bottom: 16px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 
-.hero_home__copy  h1 {
-    font-size: 58px;
-    font-weight: 100;
-    line-height: 62px;
-    color:black;
-    margin:0px;
-    padding:0px;
+.url-warpper {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: 70px;
 }
-.visual {
-	background-color: #fff;
-	height: 800px;
-	align-items: center;
-	background-position: center;
-	background-origin: content-box;
-	background-size: 100%; 
-	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0
-		rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2); 
+.url{
+	width: 100%
 }
 
-visual {
+.hit-wrapper{
+	width: 24px;
+    position: absolute;
+    bottom: 20px;
+    right: 25px;
+}
+
+.writer-warpper{
+    position: absolute;
+    right: 176px;
+    top: 50%;
+    height: 32px;
+    margin: -45px 0;
+    text-align: right;
+}
+
+.url-warpper img{
+    border: 0;
+    height: 96px;
+    width: 96px;
+}
+.like-warpper{
+	position: absolute;
+    top: 16px;
+    right: 16px;
+}
+
+@media screen and (max-width: 640px){
+	.list-item .title{
+	    font-size: 16px;
+	    line-height: 67px;
+	    margin-left: 48px;
+	    margin-right: 90px;
+	    padding-top: 16px;
+	    white-space: normal;
+	}
+	.writer-warpper{
+ 		display: none;
+	}
+	.url-warpper {
+
+	    right: 0px;
+	}
+	.writer-warpper{
+	    border: 0;
+	    height: 96px;
+	    width: 96px;
+	}
+	.like-warpper{
+		display: none;
+	}
 	
+	.hit-wrapper{
+		display: none;
+	}
 }
 
-.visual .banner{
-	top: 0px;
-	position: relative;
-	width: 100%;
-	height: 100%;;
-	background-image: url("/WiynPrj/resource/images/typewriter-2325552_1920.jpg");
-	background-size: 100% 980px;
+.collection .collection-item:not(.active):hover {
+    background-color: #ddd;
 }
-.contain.container {
-    margin-top: 40px;
-    margin-bottom: 60px;
-} 
+
+.free-list{
+box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
+}
+
+
+.mvaside{
+	display: flex;
+	width: 100%;
+}
+
+.collection{
+	border:none;
+	margin:0px;
+	margin-right: 30px;
+	border-bottom: 1px solid #e0e0e0;
+}
+
+.collection {
+    margin: 0px;
+    /* margin-right: 30px; */
+    background-color: #fff;
+}
+
+.collection.with-header .collection-item {
+	height:270px;
+    width: 100%;
+}
+
+.collection .collection-item {
+   border-bottom: none;
+}
+
+.collection a.collection-item {
+    width: 100%;
+}
+.circle {
+    border-radius: 0%;
+    border:1px solid #e9e9e9;
+}
+
+.collection .collection-item.avatar .circle {
+
+    width: 46px;
+    height: 66px;
+
+}
+
+.main-div{
+	width:100%;
+}
+
+.table{
+	background-color:#fff;  
+}
+
+.write {
+	display: flex;
+}
+
+.headdd{
+	margin-bottom: 16px;
+}
+
+
+.collection .write i{
+    line-height: inherit; 
+    
+}
+.write a{
+    background: #fff;
+}
+
+
+.col-xs-12.col-md-8.container {
+    margin-bottom: 30px;
+}
 
 
 </style>
@@ -342,54 +468,66 @@ visual {
 		<h1>당신의 생각을<br>자유롭게 표현하세요</h1>
 	</div>
 </div> --%>
-<div class="container contain">
 
-<ul id="breadcrumb">
-  <li><a href="../main/index"><span class="icon icon-home"> </span></a></li>
-  <li><a href="?p=1"><span class="icon icon-double-angle-right"> </span>자유게시판</a></li>  
-</ul>
-<table border="1" class="highlight table">
-	<thead class="table-head">
-		<tr class="head-tr">
-			<td>번호</td>
-			<td>제목</td>
-			<td>작성자</td>
-			<td>조회 수</td>
-			<td>작성 날짜</td>
-		</tr>
-	</thead>
+
+<div class="col-xs-12 col-md-8 container">
+	<div class="flex">
+		<div class="main-div">
+			<ul id="breadcrumb" class="headdd">
+  				<li><a href="../main/index"><span class="icon icon-home">
+					</span></a></li>
+				<li><a href="?p=1"><span
+						class="icon icon-double-angle-right"> </span>자유 게시판</a></li>  
+			</ul>
+			
+			<div class="free-list">
 	
-	<tbody class="table-body">
-		<c:forEach var="v"   items="${pageList}">
-			<tr>
-			<div style="display: none"><fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" /> </div>
-			<div style="display: none;"><fmt:formatDate value="${v.regDate}"
-								pattern="yyyy-MM-dd HH:mm:ss" var="writedate" /></div>	
-
-				<td>${v.id}</td>
-				<td class="orange-text text-accent-3 table-title">
-					<a href="free-detail?c=${v.id}">${v.title} 
-						</a>
-						<c:if test="${writedate>=today }"><img src="/WiynPrj/resource/images/new.jpg"/></c:if>
-						</td>
-				<td>${v.memberId}</td>
-				<td>${v.hit}</td>
-				<td><fmt:formatDate value="${v.regDate}"
-						pattern="yyyy-MM-dd HH:mm:ss" /></td>
-
-			</tr>
+			<c:forEach var="v"   items="${pageList}">
+				<ul class="collection">
+					<div style="display: none"><fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" /> </div>
+					<div style="display: none;"><fmt:formatDate value="${v.regDate}"
+										pattern="yyyy-MM-dd HH:mm:ss" var="writedate" /></div>	
+					<li class="list-item flex">
+						<a href="free-detail?c=${v.id}" class="url">
+							<div class="index">
+										<p>${v.id }</p>
+							</div>
+							
+							<div class="title">
+								<span>${v.title} <c:if test="${writedate>=today }"><img src="/WiynPrj/resource/images/new.jpg"/></c:if></span>
+							</div>
+							
+							<div class="writer-warpper">
+								<p>${v.memberId }<br><fmt:formatDate value="${v.regDate}" pattern="yyyy.MM.dd HH:mm" />
+								</p>
+							</div>
+							
+							<%-- <div class="url-warpper">
+								<c:forEach var="flist" items="${flist }">
+									<c:if test="${mem.id == flist.noticeBoardId }">
+										<img src=${flist.src }${flist.name } />
+									</c:if>
+								</c:forEach>
+							</div> --%>
+							
+							<div class="hit-wrapper center">
+								<span><i class="material-icons">visibility</i>${v.hit }</span>
+							</div>
+					</a>
+				</li>
+			</ul>
 		</c:forEach>
-	</tbody>
-</table>
+</div>
 
- <div class="site-button">
+<div class="site-button">
 	<a class="waves-effect waves-light btn sitego" href="#">
-	<div class="write">Write<i class="tiny material-icons">mode-edit</i>
-	</div>
+		<div class="write">
+			Write<i class="tiny material-icons">mode-edit</i>
+		</div>
 	</a>
 </div>
 
-<fmt:parseNumber var="pageInt" integerOnly="true" value="${paging/10 }" />
+			<fmt:parseNumber var="pageInt" integerOnly="true" value="${paging/10 }" />
 <c:set var="last" value="${(paging%10)>0 ? pageInt+1 : pageInt }" /> 
 <c:if test="${empty param.p }">
 	<c:set var="param.p" value="1" />
@@ -477,3 +615,9 @@ $('.sitego').on('click', function() {
 });
 
 </script>
+
+
+
+
+
+
