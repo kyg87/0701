@@ -245,7 +245,7 @@ background: #dd5d58;
 								href="notice-modify-load?id=${list.id}&p=${page}">수정</a>
 						</security:authorize>
 						<a class="waves-effect waves-light btn" id="back"
-							href="noticeboard?p=${page }">목록으로</a>
+							href="noticeboard?p=${page }">목록</a>
 					</div>
 					
 					</div>
