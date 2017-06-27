@@ -573,7 +573,7 @@ visual {
 	<div class="collection">
 					
 					<div class="write right">
-						<security:authorize access="hasRole('ROLE_ADMIN')">
+						<security:authorize access="hasRole('ROLE_USER'')">
 						<a class="waves-effect waves-light sitego" href="/WiynPrj/requestboard/request-reg?p=${page }"> <i
 							class="material-icons ">mode_edit</i>
 						</a>
