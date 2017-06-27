@@ -235,6 +235,7 @@ border-bottom: none;
 						<div id="btn">
 							<button class="btn waves-effect waves-light right" type="submit"
 								name="action" id="test">등록</button>
+								<input type="hidden" name="id" value=${n.id }> 
 						</div>
 						<input type="hidden" name="memberId"
 							value=<security:authentication property="name"/> />
