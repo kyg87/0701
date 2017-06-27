@@ -496,7 +496,7 @@ color:black;
 					<span><security:authentication property="name" /></span>
 				</div>
 				<div class="introduction">
-					<textarea placeholder="회원님의 소개를 간단히 입력해주세요." class="pr" name="user[introduction]" id="user_introduction">b</textarea>
+					<textarea placeholder="회원님의 소개를 간단히 입력해주세요." class="pr" name="user[introduction]" id="user_introduction"></textarea>
 				</div>
 				<div class="btn_area">
 					<button id="profileCloseBtn" type="button" class="btn waves-effect waves-light">취소</button>
@@ -576,9 +576,9 @@ color:black;
 
 			var file = $("input[name=file]")[0].files[0];
 			
-			var introduction = $(".pr").text();
+			var introduction = $("#user_introduction").val();
 			
-			
+			 
 			if(typeof file == 'undefined'){
 				var formData = new FormData();
 				
@@ -594,9 +594,9 @@ color:black;
 		                data: formData,
 		                type: 'POST',
 		                success: function(result){
-		      
+		      				
 		                    alert("수정 성공!!");
-		                    userCheck();
+		                    //userCheck();
 		                }
 		            });
 			}
@@ -606,7 +606,7 @@ color:black;
 			
 			formData.append("file",file);
 			formData.append("email",userName);
-			formData.append("introduction",$(".pr").text());
+			formData.append("introduction",introduction);
 			 
 		       $.ajax({
 	                url: "${root}/joinus/profileUpdate",
@@ -615,9 +615,9 @@ color:black;
 	                data: formData,
 	                type: 'POST',
 	                success: function(result){
-	             
+	             		//alert(result);
 	                    alert("수정 성공!!");
-	                    userCheck();
+	                    //userCheck();
 	                }
 	            });
 			}
