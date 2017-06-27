@@ -387,7 +387,7 @@ input[type="text"] {
 }
 
 .sitego:hover {
-	background: rgb(185, 65, 60);
+	background: #c1c1c1;
 }
 
 .write {

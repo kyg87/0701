@@ -109,17 +109,15 @@
 }
 
 .broker-expanding-search {
-  display: table;
-  table-layout: fixed;
-  width: 50px;
-  margin: 0;
-  border-radius: 40px;
-  overflow: hidden;
-background: #dd5d58;
-/* box-shadow: 0px 0px 0px 2px rgba(255,255,255,0.90); */
-  transition: width 0.5s cubic-bezier(0.65, -0.5, 0.4, 1.5);
+    display: table;
+    table-layout: fixed;
+    width: 50px;
+    margin: 0;
+    border-radius: 40px;
+    overflow: hidden;
+    background: #337ab7;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
-
 .broker-expanding-search--open {
   width: 250px;
 }
