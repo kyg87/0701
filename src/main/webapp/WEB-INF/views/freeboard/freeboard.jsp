@@ -278,7 +278,7 @@ background: #dd5d58;
 .hero_home__copy {
     color: #4a4a4a;
     position: absolute;
-    top: 37%;
+    top: 63%;
     -webkit-transition: color 1s;
     transition: color 1s;
     width: 38%;
@@ -286,7 +286,7 @@ background: #dd5d58;
 
 
 .hero_home__copy  h1 {
-    font-size: 48px;
+    font-size: 58px;
     font-weight: 100;
     line-height: 62px;
     color:black;
