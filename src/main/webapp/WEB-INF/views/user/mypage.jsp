@@ -346,6 +346,7 @@ input, button, img {
     min-height: 167px;
     box-sizing: border-box;
     padding: 50px 0 50px 150px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 }
 .user_information img {
     display: block;
@@ -445,7 +446,7 @@ input, button, img {
 	
 	
 			
-		<div class="row" style="margin-top: 50px;">
+		<div class="row" style="box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);background:white;"> 
 			<form id="testform" action="del" name="del" method="post">
 				<div>
 
