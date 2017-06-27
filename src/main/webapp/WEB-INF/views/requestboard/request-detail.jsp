@@ -478,7 +478,7 @@ background: #dd5d58;
 
 		  $("#ArticleDelCancel").on('click', function(){
 			
-			location.href='http:\/\/localhost:8080\/WiynPrj\/requestboard\/request-detail?c='+${n.id};
+			location.href='${root}/requestboard/request-detail?c='+${n.id};
 			
 		});  
 			

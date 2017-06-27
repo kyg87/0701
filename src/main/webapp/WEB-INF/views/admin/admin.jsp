@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="com.wiyn.web.entity.SmallCategory"%>
 <%@page import="com.google.gson.*"%>
+<c:set var="root" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
 <style>
@@ -211,7 +212,7 @@ min-height: 400px;
 							if($("#hotLine").val() == null || $("#hotName").val() == null){
 								alert("HotLine 혹은 HotName 선택이 올바르지 않습니다.");
 								
-								location.href='http:\/\/localhost\/WiynPrj\/admin\/admin';
+								location.href='${root}/admin/admin';
 							}
 							
 							else{
@@ -329,7 +330,7 @@ min-height: 400px;
 		
 		$("#modCancel").on('click', function(){
 			
-			location.href='http:\/\/localhost\/WiynPrj\/admin\/admin';
+			location.href='${root}/admin/admin';
 			
 		});
 		
@@ -386,7 +387,7 @@ min-height: 400px;
 			
 			$("#delCancel").on('click', function(){
 				
-				location.href='http:\/\/localhost\/WiynPrj\/admin\/admin';
+				location.href='${root}/admin/admin';
 				
 			});
 			
@@ -452,7 +453,7 @@ min-height: 400px;
 		
 		$("#BCaddCancel").on('click', function(){
 			
-			location.href='http:\/\/localhost\/WiynPrj\/admin\/admin';
+			location.href='${root}\admin\admin';
 			
 		});
 		
@@ -535,7 +536,7 @@ min-height: 400px;
 		
 		$("#SCaddCancel").on('click', function(){
 			
-			location.href='http:\/\/localhost\/WiynPrj\/admin\/admin';
+			location.href='${root}/admin/admin';
 			
 		});
 		
