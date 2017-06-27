@@ -504,7 +504,7 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
     top: 37%;
     -webkit-transition: color 1s;
     transition: color 1s;
-    width: 38%;
+    width: 42%;
 }
 
 
@@ -512,7 +512,7 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
     font-size: 48px;
     font-weight: 100;
     line-height: 62px;
-    color:black;
+    color:black; 
     margin:0px;
     padding:0px;
 }
