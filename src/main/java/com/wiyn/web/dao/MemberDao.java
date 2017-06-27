@@ -13,7 +13,7 @@ public interface MemberDao {
 	
 	int isLogin(String email,String pwd);
 	
-	int update(String email,String profile);
+	int update(String email,String profile,String introduction);
 	
 	Member get(String email);
 }

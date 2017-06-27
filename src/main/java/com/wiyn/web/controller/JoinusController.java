@@ -69,7 +69,6 @@ public class JoinusController {
 		
 		System.out.println("joinusController.java:" + memberId);
 		
-		
 		return "redirect:../main/index";	
 	}
 	
@@ -152,7 +151,8 @@ public class JoinusController {
 	@ResponseBody
 	public String profileUpdate(
 			@RequestParam(value="file", defaultValue="null") MultipartFile file,
-			@RequestParam(value="email")String email){
+			@RequestParam(value="email")String email,
+			@RequestParam(value="introduction")String introduction){
 		
 		int result = 0 ;
 		if(!file.isEmpty()){
@@ -182,16 +182,33 @@ public class JoinusController {
 		        //model.addAttribute("resultMsg", "업로드할 파일을 선택해주시기 바랍니다.");
 		    	System.out.println("업로드 파일 x");
 		    }
-		    
-		 
-		   
-		    result = memberDao.update(email, originalFilename);
+
+		    result = memberDao.update(email, originalFilename,introduction);
 		    		    
 		}
-		
-		
-		
+
 		return Integer.toString(result);
 	}
+	
+	@RequestMapping(value="profileUpdate1", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	@ResponseBody
+	public String profileUpdate1(
+			@RequestParam(value="email")String email,
+			@RequestParam(value="introduction")String introduction){
+		
+		int result = 0 ;
+		
+		Member member = memberDao.get(email);
+		
+		String originalFilename = member.getProfile();
+
+		result = memberDao.update(email, originalFilename,introduction);
+		    		    
+	
+
+		return Integer.toString(result);
+	}
+	
+	
 	
 }

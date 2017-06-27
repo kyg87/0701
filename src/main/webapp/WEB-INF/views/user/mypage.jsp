@@ -143,10 +143,7 @@
 	align-items: center;
 
 }
-.btn_area {
-    display: flex;
-    justify-content: flex-end;
-}
+
 .tabs li a{
 	padding: 0px !important;
 }
@@ -372,7 +369,7 @@ input, button, img {
     color: #676767;
     margin: 7px 0 0 2px;
 }
-.user_information .btn_area {
+.user_information .setting_area {
     position: absolute;
     right: 0;
     bottom: 20px;
@@ -435,8 +432,8 @@ input, button, img {
 					<img alt="푸드텔러" src="${root}/resource/profile/${member.profile }"
 						onerror="this.src ='${root}/resource/images/avatar.png'"> <strong>${member.id}</strong>
 					<p class="dsc">${member.introduction }</p>
-					<div class="btn_area">
-						<a href="#"><i class="material-icons">settings</i>프로필 설정</a>
+					<div class="setting_area">
+						<a href="#modal110" onclick="userCheck();"><i class="material-icons">settings</i>프로필 설정</a>
 
 					</div>
 				</div>
