@@ -315,7 +315,7 @@ justify-content: space-between;
 				<h2 class="jeju">${n.title }</h2>
 	
 			</div>
-				<a href="http://${n.url}"> <img
+				<a href="http://${n.url}"  target="_blank"> <img
 						sizes="(max-width: 800px) 100vw, 800px" width="800" height="400"
 						class="single-photo responsive-img z-depth-3 wp-post-image" 
 						src="http://api.thumbalizr.com/?url=http://${n.url}&width=250" />
@@ -350,7 +350,7 @@ justify-content: space-between;
 
 					<div>
 						<span class="detail-title"><i class="tiny material-icons">language</i>
-							Url </span> <span> ${n.url }</span>
+							Url </span> <a href="http://${n.url}"  target="_blank"><span> ${n.url }</span></a>
 						<hr />
 						<br />
 					</div>
@@ -415,10 +415,8 @@ justify-content: space-between;
 
 						<div class="flex between">  
 							<div>
-								<a class="back" href="">
-									<button class="btn waves-effect waves-light list-btn"
-										type="submit" name="action">목록</button>
-								</a>
+								<a class="waves-effect waves-light btn" id="back"
+								href="siteboard?p=${page }">목록</a>
 							</div>
 							<div class="right">
 							<c:if test="${n.memberId eq  loginID}"> 

@@ -529,14 +529,18 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 					</div>
 				</div>
 				<div class="flex">
-					<c:forEach var="hotlist" items="${likelist }" begin="0"
-						varStatus="status" end="5">
-						<div class="collection-item center">
-							<img
-								src="http://api.thumbalizr.com/?url=http://${hotlist.url}&width=332&heigt=270"/><span
-								class="caption_box"> <span class="title"></span> <span class="info">${hotlist.title }</span>
+					<c:forEach var="hotlist" items="${likelist }" begin="0" varStatus="status" end="2">
+						
+						<div class="collection-item center"> 
+							<a href="site-detail?c=${hotlist.id}&p=${param.p}" > 
+							<img src="http://api.thumbalizr.com/?url=http://${hotlist.url}&width=450%&heigt=270"/>
+							<span class="caption_box"> 
+								<span class="title"></span> 
+								<span class="info">${hotlist.title }</span>
 							</span>
+							</a>
 						</div>
+						
 					</c:forEach>
 				</div>
 			</div>
