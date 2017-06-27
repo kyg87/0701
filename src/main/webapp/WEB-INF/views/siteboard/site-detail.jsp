@@ -5,6 +5,7 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>	
 <c:set var="root" value="${pageContext.request.contextPath}" />
+<security:authentication property="name" var="loginID"/>
 <!DOCTYPE html>
 
 <style>
@@ -408,7 +409,7 @@ a.del.waves-effect.waves-light {
 			<!--End 댓글 영역  -->
 
 					<div>
-				<c:if test="${n.id eq  loginID}">
+				<c:if test="${n.memberId eq  loginID}">
 							<form class="form-end" action="site-delete" method="post">
 								<input type="hidden" name="id" value=${n.id }>
 								<button class="btn waves-effect waves-light" type="submit"
