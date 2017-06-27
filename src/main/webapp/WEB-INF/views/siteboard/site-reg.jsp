@@ -180,7 +180,7 @@ border-bottom: none;
 				<h2 class="title">Site Board</h2>
 								
 				<div class="preview">
-
+					<h4>평소에 유용하다고 생각했던 사이트를 자세하게 적어주세요.</h4>
 				</div>
 
 			</div>

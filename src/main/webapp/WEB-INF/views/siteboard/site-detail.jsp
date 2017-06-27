@@ -299,6 +299,11 @@ a.del.waves-effect.waves-light {
     top: 9px;
     right: 7px;
 }
+
+
+.flex.between{
+justify-content: space-between; 
+}
 </style>
 
 <main id="main">
@@ -310,7 +315,7 @@ a.del.waves-effect.waves-light {
 				<h2 class="jeju">${n.title }</h2>
 	
 			</div>
-				<a href="http://${n.url}"> <img
+				<a href="http://${n.url}"  target="_blank"> <img
 						sizes="(max-width: 800px) 100vw, 800px" width="800" height="400"
 						class="single-photo responsive-img z-depth-3 wp-post-image" 
 						src="http://api.thumbalizr.com/?url=http://${n.url}&width=250" />
@@ -345,7 +350,7 @@ a.del.waves-effect.waves-light {
 
 					<div>
 						<span class="detail-title"><i class="tiny material-icons">language</i>
-							Url </span> <span> ${n.url }</span>
+							Url </span> <a href="http://${n.url}"  target="_blank"><span> ${n.url }</span></a>
 						<hr />
 						<br />
 					</div>
@@ -408,23 +413,31 @@ a.del.waves-effect.waves-light {
 			</ul>
 			<!--End 댓글 영역  -->
 
-					<div>
-				<c:if test="${n.memberId eq  loginID}">
-							<form class="form-end" action="site-delete" method="post">
-								<input type="hidden" name="id" value=${n.id }>
-								<button class="btn waves-effect waves-light" type="submit"
-									name="action">삭제</button>
-							</form>
-
-							<form action="site-edit?c=${n.id}" method="post">
-								<input type="hidden" name="id" value=${n.id }>
-								<button class="btn waves-effect waves-light" type="submit" name="action">수정</button>
-							</form>
-						 <a class="back" href="">
-				</c:if>
-              <button class="btn waves-effect waves-light list-btn" type="submit" name="action">목록</button>
-               </a> 
-               <script>
+						<div class="flex between">  
+							<div>
+								<a class="waves-effect waves-light btn" id="back"
+								href="siteboard?p=${page }">목록</a>
+							</div>
+							<div class="right">
+							<c:if test="${n.memberId eq  loginID}"> 
+								<div>
+									<form action="site-edit?c=${n.id}" method="post">
+										<input type="hidden" name="id" value=${n.id }> 
+										<button class="btn waves-effect waves-light" type="submit"
+											name="action">수정</button>
+									</form>
+								</div>
+								<div> 
+									<form class="form-end" action="site-delete" method="post">
+										<input type="hidden" name="id" value=${n.id }>
+										<button class="btn waves-effect waves-light" type="submit"
+											name="action">삭제</button>
+									</form>
+								</div>
+							</c:if>
+							</div>
+							</div> 
+						<script>
                   $(document).ready(function(){                           
                      $(".list-btn").on("click",function(){
                         $('.back').prop('href', history.back());
@@ -433,8 +446,8 @@ a.del.waves-effect.waves-light {
                </script>
 
 					</div>
-	
-		</div>
+
+				</div>
 
 			</div>
 			</div>

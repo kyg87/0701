@@ -270,7 +270,7 @@ color:black;
 			</c:choose>
 			<li>
 			<security:authorize access="isAnonymous()">
-				<a class="login font loge btn" href="#modal10">Login</a>
+				<a class="login font loge" href="#modal10">Login</a>
 			</security:authorize>
 						<security:authorize access="isAuthenticated()">
 	
