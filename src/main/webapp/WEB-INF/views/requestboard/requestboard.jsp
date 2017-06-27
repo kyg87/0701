@@ -360,7 +360,12 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 	width: 100%
 }
 
-
+.hit-wrapper{
+	width: 24px;
+    position: absolute;
+    bottom: 20px;
+    right: 25px;
+}
 
 .writer-warpper{
     position: absolute;
@@ -420,7 +425,9 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 		 width: 25%;
 	}
 	
-	
+	.hit-wrapper{
+		display: none;
+	}
 	
 	
 }
@@ -516,19 +523,17 @@ visual {
 </ul>
 
 	<div class="site-list">
-				<div class="collection mvaside">
+				<!-- <div class="collection mvaside">
 					<a class="collection-item">번호</a>
 					<a class="collection-item" style="text-align: center";>제목</a> 
 					<a class="collection-item" style="text-align: right";>작성자</a>
 					<a class="collection-item" style="text-align: right; margin-right:10px"   >조회수</a>	
-				</div>
+				</div> -->
 				<c:forEach var="n"  begin="${(page*10)-10 }" end="${page*10-1 }" items="${list}">
 					<ul class="collection">
-				<div style="display: none;"><fmt:formatDate value="${n.regDate}"
+<div style="display: none"><fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" /> </div>				
+<div style="display: none;"><fmt:formatDate value="${n.regDate}"
 								pattern="yyyy-MM-dd HH:mm:ss" var="writedate" /></div>
-						
-						
-						
 						
 						<li class="list-item flex">
 							<a href="request-detail?c=${n.id}" class="url">
@@ -540,17 +545,11 @@ visual {
 
 								</div>
 								<div class="writer-warpper">
-									<p>${n.memberId }
-										<br>
-										<fmt:formatDate value="${n.regDate}"
-											pattern="yyyy.MM.dd HH:mm" />
-									</p>
+									<p>${n.memberId }<br><fmt:formatDate value="${n.regDate}"
+											pattern="yyyy.MM.dd HH:mm" /></p>
 								</div>
-								 <div  class="like-warpper" style="width: 50px ">
-									<p>HIT</p>
-									<div>
-										<label class="like-s" style="margin-right: 10px; text-align: center; width: 10px; ">${n.hit}</label>
-									</div>
+								<div class="hit-wrapper center">
+									<span><i class="material-icons">visibility</i>${n.hit }</span>
 								</div>
 								<%-- <div class="url-warpper">
 									<img src="http://api.thumbalizr.com/?url=http://${n.url}" />

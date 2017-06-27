@@ -261,9 +261,9 @@ background: #dd5d58;
 				<div class="col s12 l6">
 					<h2>요청 게시판</h2>
 					
-					<div class="content">
+					<!-- <div class="content">
 						<h5>notice</h5>
-					</div>
+					</div> -->
 					
 				</div>
 				
@@ -271,14 +271,14 @@ background: #dd5d58;
 					
 					<div class="card-panel">
 						
-						<h4>NOTICE DETAIL</h4>
+						<h4>${n.title }</h4>
 						<hr /><br />
 						
-						<div>
+						<%-- <div>
 							<span class="detail-title"><i class="tiny material-icons">mode_edit</i>Title</span>
 							<span>${n.title }</span>
 							<hr /><br />
-						</div>
+						</div> --%>
 						
 						<div>
 							<span class="detail-title"><i class="tiny material-icons">person_pin</i>Writer</span>
@@ -361,7 +361,7 @@ background: #dd5d58;
 				</div>
 					
 					 <!-- <form id="comment-add-form" action="freeBoard-comment-add" method="post"> -->
-             <div class="row">
+             <%-- <div class="row">
                
                <security:authorize access="isAuthenticated()">
                <div class="input-field">
@@ -373,7 +373,7 @@ background: #dd5d58;
                     </button>
                </div>
                </security:authorize>
-             </div>
+             </div> --%>
             
      	     <input type="hidden" name="requestBoardId" value=${n.id }>
         	 <input type="hidden" name="memberId" value=<security:authentication property="name"/>>

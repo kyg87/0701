@@ -305,7 +305,12 @@ background: #dd5d58;
 	width: 100%
 }
 
-
+.hit-wrapper{
+	width: 24px;
+    position: absolute;
+    bottom: 20px;
+    right: 25px;
+}
 
 .writer-warpper{
     position: absolute;
@@ -349,6 +354,10 @@ background: #dd5d58;
 	    width: 96px;
 	}
 	.like-warpper{
+		display: none;
+	}
+	
+	.hit-wrapper{
 		display: none;
 	}
 }
@@ -497,12 +506,15 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 									</c:if>
 								</c:forEach>
 								</div>
+								<div class="hit-wrapper center">
+									<span><i class="material-icons">visibility</i>${mem.hit }</span>
+								</div>
 							</a>
 						</li>
 
 					</ul>
 				</c:forEach>
-</div>
+	</div>
 	<%-- <div class="site-button">
 		<a class="waves-effect waves-light btn sitego"
 			href="/WiynPrj/noticeboard/notice-reg?p=${page }">
