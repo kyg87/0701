@@ -458,6 +458,11 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
     letter-spacing: 0px;
     background-color: #fb6226;
 }
+
+.contain.container {
+    margin-top: 20px;
+    margin-bottom: 60px;
+} 
 </style>
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 <main id="main">
@@ -475,7 +480,7 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 
 <div style="display: none"><fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" /> </div>
     
-    <div class="col-xs-12 col-md-8 container">
+    <div class="col-xs-12 col-md-8 container contain">
 	<div class="flex">		
 		<div class="main-div">
 		 <c:choose>

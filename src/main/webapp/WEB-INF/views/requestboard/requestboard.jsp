@@ -425,7 +425,7 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 	
 }
 
-.banner h1 {
+/* .banner h1 {
     font-size: 4.2rem;
     line-height: 145%;
     margin: 2.1rem 0 1.68rem 0;
@@ -433,21 +433,83 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
     left :56%;
     position: absolute;
     color:#7b9cb9;
+} */
+
+
+
+
+
+
+
+
+.hero_home__copy {
+    color: #4a4a4a;
+    position: absolute;
+    top: 37%;
+    -webkit-transition: color 1s;
+    transition: color 1s;
+    width: 38%;
 }
 
 
+.hero_home__copy  h1 {
+    font-size: 48px;
+    font-weight: 100;
+    line-height: 62px;
+    color:black;
+    margin:0px;
+    padding:0px;
+}
+.visual {
+	background-color: #fff;
+	height: 800px;
+	align-items: center;
+	background-position: center;
+	background-origin: content-box;
+	background-size: 100%; 
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0
+		rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2); 
+}
+
+visual {
+	
+}
+
+.visual .banner{
+	top: 0px;
+	position: relative;
+	width: 100%;
+	height: 100%;;
+	background-image: url("/WiynPrj/resource/images/draw-1772745_1920.jpg");
+	background-size: 100% 980px;
+}
+.contain.container {
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
 
 </style>
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 
 <main id="main">
-<div class="banner">
-   <img src="/WiynPrj/resource/images/iphone-1852901_1920.jpg" style="width: 100%;height:600px; opacity: 0.9;" /> 
+<visual>
+	<div class="visual ">
+		<div class="banner">
+		</div>
+		<div class="container">
+		<div class="hero_home__copy">
+		<h1>당신에게는 무엇이 필요한가요?</h1><h4>자유로운 요청글을 작성해보세요.</h4>
+		</div>
+		</div>
+	</div>
+</visual>
+<!-- <div class="banner">
+   <img src="/WiynPrj/resource/images/draw-1772745_1920.jpg" style="width: 100%;height:600px; opacity: 0.9;" /> 
    <div class="free-title">
       <h1>당신의 NEEDS,<br>여기에 올려주세요</h1>
    </div>
-</div>
-<div class="container">
+</div> --> 
+<div class="container contain">
 <ul id="breadcrumb">
   <li><a href="../main/index"><span class="icon icon-home"> </span></a></li>
   <li><a href="?p=1"><span class="icon icon-double-angle-right"> </span>요청게시판</a></li>  

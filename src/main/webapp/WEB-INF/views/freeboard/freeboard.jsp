@@ -272,17 +272,76 @@ background: #dd5d58;
 }
 /* --------------------------------------------------------- */
 
+
+
+
+.hero_home__copy {
+    color: #4a4a4a;
+    position: absolute;
+    top: 37%;
+    -webkit-transition: color 1s;
+    transition: color 1s;
+    width: 38%;
+}
+
+
+.hero_home__copy  h1 {
+    font-size: 48px;
+    font-weight: 100;
+    line-height: 62px;
+    color:black;
+    margin:0px;
+    padding:0px;
+}
+.visual {
+	background-color: #fff;
+	height: 800px;
+	align-items: center;
+	background-position: center;
+	background-origin: content-box;
+	background-size: 100%; 
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0
+		rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2); 
+}
+
+visual {
+	
+}
+
+.visual .banner{
+	top: 0px;
+	position: relative;
+	width: 100%;
+	height: 100%;;
+	background-image: url("/WiynPrj/resource/images/typewriter-2325552_1920.jpg");
+	background-size: 100% 980px;
+}
+.contain.container {
+    margin-top: 40px;
+    margin-bottom: 60px;
+} 
 </style>
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 
 <main id="main">
-<div class="banner">
+<visual>
+	<div class="visual ">
+		<div class="banner">
+		</div>
+		<div class="container">
+		<div class="hero_home__copy">
+		<h1>당신의 생각을<br>자유롭게 표현하세요</h1>
+		</div>
+		</div>
+	</div>
+</visual>
+<%-- <div class="banner">
 
 	<img src="${root}/resource/images/typewriter-801921_1920.jpg" style="width: 100%;height:800px;opacity:0.774" /> 
 	<div class="free-title">
 		<h1>당신의 생각을<br>자유롭게 표현하세요</h1>
 	</div>
-</div>
+</div> --%>
 <div class="container">
 
 <ul id="breadcrumb">
