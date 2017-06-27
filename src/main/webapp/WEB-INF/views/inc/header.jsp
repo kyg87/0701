@@ -578,7 +578,7 @@ color:black;
 			
 			var introduction = $("#user_introduction").val();
 			
-			
+			 
 			if(typeof file == 'undefined'){
 				var formData = new FormData();
 				
