@@ -6,6 +6,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <c:set var="root" value="${pageContext.request.contextPath}" />
+<security:authentication property="name" var="loginID"/>
 <!DOCTYPE html>
 
 <style>
@@ -298,7 +299,7 @@ background: #dd5d58;
 							<span>${n.content }</span>
 							<hr /><br />
 						</div>
-					<c:if test="${n.id eq  loginID}">
+					<c:if test="${n.memberId eq  loginID}">
 						<div>
 							<a id="btn" class="waves-effect waves-light btn" href="#modal2"
 								id="noticeArticleDel">삭제</a> <a id="btn"
@@ -657,7 +658,6 @@ background: #dd5d58;
 </main>
 
 <!------------------------------------------------------------- 댓글 영역 ------------------------------------------------------------------------>
-<security:authentication property="name" var="loginID"/>
 
 <script>
 
