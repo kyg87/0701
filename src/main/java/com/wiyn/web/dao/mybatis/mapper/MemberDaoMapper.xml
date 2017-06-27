@@ -54,7 +54,7 @@
 	</select>
 	
 	<update id="update">
-		UPDATE lsedb.Member SET profile = #{param2}WHERE id = #{param1}
+		UPDATE lsedb.Member SET profile = #{param2} , introduction = #{param3} WHERE id = #{param1}
 	</update>
 	
 </mapper>

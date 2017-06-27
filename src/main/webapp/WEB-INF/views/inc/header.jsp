@@ -170,7 +170,7 @@ nav a{
 
 .info_top{
     text-align: center;
-    background: url("http://demo.geekslabs.com/materialize-v1.0/images/user-profile-bg.jpg") no-repeat left center;    
+    /* background: url("http://demo.geekslabs.com/materialize-v1.0/images/user-profile-bg.jpg") no-repeat left center; */    
 }
 
 .info_top>img{
@@ -205,7 +205,18 @@ color:black;
 }
 
 .btn_area {
+    border-top: 1px solid #e1e1e1;
     background-color: #fff;
+    padding: 20px;
+}
+.introduction {
+    padding: 10px 20px;
+      
+}
+.pr{
+	height: 120px;
+	padding: 10px 20px;
+	  border: 1px solid #e1e1e1;
 }
 
 </style>
@@ -484,7 +495,9 @@ color:black;
 				<div>
 					<span><security:authentication property="name" /></span>
 				</div>
-				
+				<div class="introduction">
+					<textarea placeholder="회원님의 소개를 간단히 입력해주세요." class="pr" name="user[introduction]" id="user_introduction">b</textarea>
+				</div>
 				<div class="btn_area">
 					<button id="profileCloseBtn" type="button" class="btn waves-effect waves-light">취소</button>
 					<button id="editBtn" type="button" class="btn waves-effect waves-light">저장</button>
@@ -504,6 +517,9 @@ color:black;
           var j_pwd = $("#j_password");
 		  var profileImg = $("#profileImg");
 		  var profileImgbtn = $("#profileImgbtn");
+		
+		 
+		  
           var data = myForm1.serialize();
           $("#btn2").click(function(){
     
@@ -555,25 +571,42 @@ color:black;
 	}
   	
       $("#editBtn").click(function() {
-		
+    	  console.log($(".pr").text());
 			var userName = '${loginID}';
 
 			var file = $("input[name=file]")[0].files[0];
-
+			
+			var introduction = $(".pr").text();
 			
 			
 			if(typeof file == 'undefined'){
-				alert('선택하신파일이 없습니다');	
-				return;
+				var formData = new FormData();
+				
+				
+				formData.append("email",userName);
+				formData.append("introduction",introduction);
+				 
+				console.log(formData);
+			       $.ajax({
+		                url: "${root}/joinus/profileUpdate1",
+		                processData: false,
+		                    contentType: false,
+		                data: formData,
+		                type: 'POST',
+		                success: function(result){
+		      
+		                    alert("수정 성공!!");
+		                    userCheck();
+		                }
+		            });
 			}
-			/*  $.post("${root}/joinus/profileUpdate",{"file":file,"email":userName},function(d){
-				alert(d);
-			});  */
+			else{
 			
 			var formData = new FormData();
 			
 			formData.append("file",file);
 			formData.append("email",userName);
+			formData.append("introduction",$(".pr").text());
 			 
 		       $.ajax({
 	                url: "${root}/joinus/profileUpdate",
@@ -582,10 +615,12 @@ color:black;
 	                data: formData,
 	                type: 'POST',
 	                success: function(result){
-	                    alert("업로드 성공!!");
+	             
+	                    alert("수정 성공!!");
 	                    userCheck();
 	                }
 	            });
+			}
 
 
 	
@@ -597,6 +632,7 @@ color:black;
     	  $.get("${root}/joinus/getUser",{"email":userName} ,function(d){
     		  
     		  var obj = JSON.parse(d);
+    		  
    /*  		 alert(obj.profile);  */
    			  if(obj.profile != ''){
    				profileImg.src = "${root}/resource/profile/"+obj.profile;  
@@ -604,6 +640,8 @@ color:black;
    			  else{
    				profileImg.src ="http://demo.geekslabs.com/materialize-v1.0/images/avatar.jpg";
    			  }
+   
+   			console.log($(".pr").text(obj.introduction));
     		  
     		  
     	  });

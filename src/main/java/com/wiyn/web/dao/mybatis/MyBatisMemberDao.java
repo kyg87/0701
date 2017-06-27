@@ -56,11 +56,11 @@ public class MyBatisMemberDao implements MemberDao {
 	}
 
 	@Override
-	public int update(String email, String profile) {
+	public int update(String email, String profile,String introduction) {
 		MemberDao memberDao;
 		memberDao = sqlSession.getMapper(MemberDao.class);
 		
-		return memberDao.update(email, profile);
+		return memberDao.update(email, profile,introduction);
 	}
 
 }

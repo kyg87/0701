@@ -143,10 +143,7 @@
 	align-items: center;
 
 }
-.btn_area {
-    display: flex;
-    justify-content: flex-end;
-}
+
 .tabs li a{
 	padding: 0px !important;
 }
@@ -349,6 +346,7 @@ input, button, img {
     min-height: 167px;
     box-sizing: border-box;
     padding: 50px 0 50px 150px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 }
 .user_information img {
     display: block;
@@ -372,7 +370,7 @@ input, button, img {
     color: #676767;
     margin: 7px 0 0 2px;
 }
-.user_information .btn_area {
+.user_information .setting_area {
     position: absolute;
     right: 0;
     bottom: 20px;
@@ -435,8 +433,8 @@ input, button, img {
 					<img alt="푸드텔러" src="${root}/resource/profile/${member.profile }"
 						onerror="this.src ='${root}/resource/images/avatar.png'"> <strong>${member.id}</strong>
 					<p class="dsc">${member.introduction }</p>
-					<div class="btn_area">
-						<a href="#"><i class="material-icons">settings</i>프로필 설정</a>
+					<div class="setting_area">
+						<a href="#modal110" onclick="userCheck();"><i class="material-icons">settings</i>프로필 설정</a>
 
 					</div>
 				</div>
@@ -448,7 +446,7 @@ input, button, img {
 	
 	
 			
-		<div class="row" style="margin-top: 50px;">
+		<div class="row" style="box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);background:white;"> 
 			<form id="testform" action="del" name="del" method="post">
 				<div>
 
