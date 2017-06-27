@@ -623,13 +623,13 @@ visual {
 								</p>
 							</div>
 							
-							<%-- <div class="url-warpper">
-								<c:forEach var="flist" items="${flist }">
-									<c:if test="${mem.id == flist.noticeBoardId }">
+							<div class="url-warpper">
+								<c:forEach var="flist" items="${fileList }">
+									<c:if test="${v.id == flist.freeBoardId }">
 										<img src=${flist.src }${flist.name } />
 									</c:if>
 								</c:forEach>
-							</div> --%>
+							</div>
 							
 							<div class="hit-wrapper center">
 								<span><i class="material-icons">visibility</i>${v.hit }</span>

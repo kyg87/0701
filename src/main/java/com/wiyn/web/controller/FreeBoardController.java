@@ -67,6 +67,7 @@ public class FreeBoardController {
 			
 		}*/
 		
+		List<FreeFile> fileList = sqlSession.getMapper(FreeBoardFileDao.class).getList();
 
 		List<FreeBoard> pageList = sqlSession.getMapper(FreeBoardDao.class).getList(page);
 		int paging = sqlSession.getMapper(FreeBoardDao.class).getPage();
@@ -75,6 +76,7 @@ public class FreeBoardController {
 		model.addAttribute("paging", paging);
 	/*	model.addAttribute("list", list);*/
 		model.addAttribute("freeboard", "freeboard");
+		model.addAttribute("fileList", fileList);
 		
 		
 		System.out.println("www"+paging);
