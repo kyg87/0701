@@ -501,10 +501,11 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 .hero_home__copy {
     color: #4a4a4a;
     position: absolute;
-    top: 37%;
+    top: 70%;
     -webkit-transition: color 1s;
     transition: color 1s;
     width: 42%;
+    left:58%;
 }
 
 
@@ -512,9 +513,15 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
     font-size: 48px;
     font-weight: 100;
     line-height: 62px;
-    color:black; 
+    color:#0e3150;
     margin:0px;
     padding:0px;
+    font-weight: 500;
+}
+.hero_home__copy  h4 {
+    
+   font-weight:200;
+   color: white;
 }
 .visual {
 	background-color: #fff;
@@ -536,7 +543,7 @@ visual {
 	position: relative;
 	width: 100%;
 	height: 100%;;
-	background-image: url("/WiynPrj/resource/images/draw-1772745_1920.jpg");
+	background-image: url("/WiynPrj/resource/images/macbook-577758_1920.jpg");
 	background-size: 100% 980px;
 }
 .contain.container {
