@@ -530,7 +530,7 @@ visual {
 					
 					<div class="write right">
 						<security:authorize access="hasRole('ROLE_ADMIN')">
-						<a class="waves-effect waves-light sitego" href="/WiynPrj/noticeboard/notice-reg?p=${page }"> <i
+						<a class="waves-effect waves-light sitego" href="/WiynPrj/requestboard/request-reg?p=${page }"> <i
 							class="material-icons ">mode_edit</i>
 						</a>
 						</security:authorize>
@@ -621,11 +621,11 @@ visual {
 
  
  
-  
+<!--   
  <div class="site-button"> 
 	<a class="waves-effect waves-light btn sitego" href="#"><i class="material-icons">mode-edit</i></a>
-</div>
-
+</div> 
+ -->
 <div align="center">
 	<ul class="pagination">
 		
