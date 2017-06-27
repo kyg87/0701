@@ -453,7 +453,7 @@ input, button, img {
 		<div class="row" style="box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);background:white;"> 
 			<form id="testform" action="del" name="del" method="post">
 				<div>
-
+ 
 					<ul class="tabs">
 						<!-- <li class="tab col s3"><a href="#test1"> 등록한 글 </a></li> -->
 						<li class="tab col s2"><a href="#sub-test1">자유게시판</a></li> 
