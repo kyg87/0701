@@ -398,38 +398,39 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 
 @media screen and (max-width: 420px){
 
-.visual { 
-    height: 500px;
- 
+visual .visual {  
+    height: 500px; 
+  
 }
-	.visual .banner {
+	visual .visual .banner {
     top: 0px;
     position: relative;
     width: 100%;
     height: 100%;
-    background-image: url(/WiynPrj/resource/images/draw-1772745_1920.jpg);
+    background-image: url(/WiynPrj/resource/images/macbook-577758_1920.jpg);
     background-size: 100% 800px;
 }
 
-.visual .container {
+.visual .container { 
     margin: 0 auto;
-    max-width: 1280px;
+    max-width: 1280px; 
     width: 100%;
 }
-.visual .hero_home__copy {
+visual .visual .hero_home__copy {   
     color: #4a4a4a;
     position: absolute;
-    top: 28%;
+    top: 44%;
     -webkit-transition: color 1s;
     transition: color 1s;
-        width: 100%;
-    text-align: center; 
+    text-align: center;
+    width: 100%;  
+	left:0%; 
 }
 .visual .hero_home__copy h1 {
-    font-size: 20px;
-    font-weight: 100;  
-    line-height: 62px;
-    color: black;
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 13px;
+    color: white;
     margin: 0px;
     padding: 0px;
 }
@@ -458,7 +459,7 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 	.writer-warpper{
  		
  		font-size: 12px;
- 		margin-right: -150px;
+ 		margin-right: -160px; 
  		 width: 25%;
 	}
 	.url-warpper {
@@ -512,11 +513,11 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 .hero_home__copy  h1 {
     font-size: 48px;
     font-weight: 100;
-    line-height: 62px;
-    color:#0e3150;
-    margin:0px;
-    padding:0px;
-    font-weight: 500;
+    line-height: 49px;
+    color: rgb(152, 207, 255);
+    margin: 0px;
+    padding: 0px;
+    font-weight: 500; 
 }
 .hero_home__copy  h4 {
     
@@ -528,7 +529,7 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 	height: 800px;
 	align-items: center;
 	background-position: center;
-	background-origin: content-box;
+	background-origin: content-box; 
 	background-size: 100%; 
 	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0
 		rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2); 

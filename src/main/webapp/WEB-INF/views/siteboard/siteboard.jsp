@@ -474,6 +474,15 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 } 
 
 
+
+
+
+
+@media screen and (max-width: 1330px){
+}
+
+
+
 </style>
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 <main id="main">
