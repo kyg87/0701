@@ -210,7 +210,7 @@ border-bottom: none;
 						</div>
 						
 						<div class="chips chips-placeholder">
-							<input class="tag" id="e385bafe-7ce5-436e-e3f3-12af51285ada" type="text"  placeholder="+Tag 스페이스바를 눌러주세요." />
+							<input class="tag" id="e385bafe-7ce5-436e-e3f3-12af51285ada" type="text"  placeholder="+Tag 스페이스바를 누르면 추가됩니다." />
 							
 							<c:forEach var="tag" items="${t }">
 								<div id="chip" class="chip" ><input type="hidden" name="tag" value="${tag }"/>${tag }<i class='material-icons close'>close</i></div>

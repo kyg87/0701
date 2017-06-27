@@ -294,7 +294,7 @@ border-bottom: none;
 						
 						<div class="chips chips-placeholder">
 							<!-- add생성될곳 -->
-							<input class="tag" id="e385bafe-7ce5-436e-e3f3-12af51285ada" type="text"  placeholder="+Tag" />
+							<input class="tag" id="e385bafe-7ce5-436e-e3f3-12af51285ada" type="text"  placeholder="+Tag 스페이스바를 누르면 추가됩니다." />
 							<!-- add가생성되는곳 -->
 						</div>
 
