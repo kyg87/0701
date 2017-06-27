@@ -396,6 +396,50 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
     right: 16px;
 }
 
+@media screen and (max-width: 420px){
+
+.visual { 
+    height: 500px;
+ 
+}
+	.visual .banner {
+    top: 0px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-image: url(/WiynPrj/resource/images/draw-1772745_1920.jpg);
+    background-size: 100% 800px;
+}
+
+.visual .container {
+    margin: 0 auto;
+    max-width: 1280px;
+    width: 100%;
+}
+.visual .hero_home__copy {
+    color: #4a4a4a;
+    position: absolute;
+    top: 28%;
+    -webkit-transition: color 1s;
+    transition: color 1s;
+        width: 100%;
+    text-align: center; 
+}
+.visual .hero_home__copy h1 {
+    font-size: 20px;
+    font-weight: 100;  
+    line-height: 62px;
+    color: black;
+    margin: 0px;
+    padding: 0px;
+}
+.visual h4 {
+    font-size: 17px;
+    line-height: 110%;
+    margin: 1.14rem 0 0.912rem 0;
+} 
+}  
+
 @media screen and (max-width: 640px){
 
 	.index{

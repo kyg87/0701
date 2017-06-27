@@ -67,11 +67,7 @@
 
 .sitego {
 	background: rgba(27, 80, 162, 0.69);
-}
-
-.sitego:hover {
-	background: rgba(23, 56, 125, 0.79);
-}
+} 
 
 .site-button {
 	margin-top: 20px;
@@ -396,7 +392,7 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
     width: 100%;
 }
 
-.collection .collection-item {
+.collection .collection-item { 
    border-bottom: none;
 }
 
@@ -446,6 +442,120 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 }
 
 
+
+
+
+
+
+
+
+.hero_home__copy {
+    color: #4a4a4a;
+    position: absolute;
+    top: 73%;
+    -webkit-transition: color 1s;
+    transition: color 1s;
+    width: 38%;
+} 
+
+
+.hero_home__copy  h1 {
+    font-size: 58px;
+    font-weight: 100;
+    line-height: 62px;
+    color:black;
+    margin:0px;
+    padding:0px;
+}
+.visual {
+	background-color: #fff;
+	height: 800px;
+	align-items: center;
+	background-position: center;
+	background-origin: content-box;
+	background-size: 100%; 
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0
+		rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2); 
+}
+
+visual {
+	
+}
+
+.visual .banner{
+	top: 0px;
+	position: relative;
+	width: 100%;
+	height: 100%;;
+	background-image: url("/WiynPrj/resource/images/typewriter-2325552_1920.jpg");
+	background-size: 100% 980px;
+}
+.contain.container {
+    margin-top: 40px;
+    margin-bottom: 60px;
+} 
+
+@media screen and (max-width: 420px){
+
+.visual { 
+    height: 500px;
+ 
+}
+	.visual .banner {
+    top: 0px;
+    position: relative;
+    width: 100%;
+    height: 100%; 
+    background-size: 100% 800px;
+}
+
+.visual .container {
+    margin: 0 auto;
+    max-width: 1280px;
+    width: 100%;
+}
+.visual .hero_home__copy {
+    color: #4a4a4a;
+    position: absolute;
+    top: 28%;
+    -webkit-transition: color 1s;
+    transition: color 1s;
+        width: 100%;
+    text-align: center; 
+}
+.visual .hero_home__copy h1 {
+    font-size: 25px;
+    font-weight: bold;  
+    line-height: 62px;
+    color: #fff;  
+    margin: 0px;
+    padding: 0px;
+}
+.visual h4 {
+    font-size: 17px;
+    line-height: 110%; 
+    margin: 1.14rem 0 0.912rem 0;
+} 
+}  
+
+
+
+
+.sitgo{
+	width: 100%;
+}
+.material-icons {
+    margin-right: 25px;
+    margin-top: 5px;
+}
+ 
+.sitego i:hover {
+	border-radius: 3px; 
+	background-color: #337ab7; 
+	color:#fff; 
+}   
+
+
 </style>
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 
@@ -479,7 +589,17 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 				<li><a href="?p=1"><span
 						class="icon icon-double-angle-right"> </span>자유 게시판</a></li>  
 			</ul>
-			
+			<div class="collection">
+					 
+					<div class="write right">
+						<security:authorize access="hasRole('ROLE_ADMIN')">
+						<a class="waves-effect waves-light sitego" href="/WiynPrj/freeboard/free-reg?p=${page }"> <i
+							class="material-icons ">mode_edit</i>
+						</a>
+						</security:authorize>
+					</div>
+		 
+				</div>
 			<div class="free-list">
 	
 			<c:forEach var="v"   items="${pageList}">
@@ -519,13 +639,13 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 		</c:forEach>
 </div>
 
-<div class="site-button">
+<!-- <div class="site-button">
 	<a class="waves-effect waves-light btn sitego" href="#">
 		<div class="write">
 			Write<i class="tiny material-icons">mode-edit</i>
 		</div>
-	</a>
-</div>
+	</a> 
+</div> -->
 
 			<fmt:parseNumber var="pageInt" integerOnly="true" value="${paging/10 }" />
 <c:set var="last" value="${(paging%10)>0 ? pageInt+1 : pageInt }" /> 
