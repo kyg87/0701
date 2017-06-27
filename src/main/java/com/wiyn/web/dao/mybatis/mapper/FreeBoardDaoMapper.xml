@@ -37,7 +37,7 @@ FROM `lsedb`.`FreeBoard` ORDER BY regDate DESC; -->
 
 <insert id="add" parameterType="com.wiyn.web.entity.FreeBoard">
 	<selectKey order="BEFORE" keyProperty="id" resultType="String">
-		select max(cast(id as unsigned))+1 id from FreeBoard
+		select IFNULL(max(cast(id as unsigned)), 0)+1 id from FreeBoard
 	</selectKey>
 
 	INSERT INTO FreeBoard
