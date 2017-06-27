@@ -299,6 +299,11 @@ a.del.waves-effect.waves-light {
     top: 9px;
     right: 7px;
 }
+
+
+.flex.between{
+justify-content: space-between; 
+}
 </style>
 
 <main id="main">
@@ -408,23 +413,33 @@ a.del.waves-effect.waves-light {
 			</ul>
 			<!--End 댓글 영역  -->
 
-					<div>
-				<c:if test="${n.memberId eq  loginID}">
-							<form class="form-end" action="site-delete" method="post">
-								<input type="hidden" name="id" value=${n.id }>
-								<button class="btn waves-effect waves-light" type="submit"
-									name="action">삭제</button>
-							</form>
-
-							<form action="site-edit?c=${n.id}" method="post">
-								<input type="hidden" name="id" value=${n.id }>
-								<button class="btn waves-effect waves-light" type="submit" name="action">수정</button>
-							</form>
-						 <a class="back" href="">
-				</c:if>
-              <button class="btn waves-effect waves-light list-btn" type="submit" name="action">목록</button>
-               </a> 
-               <script>
+						<div class="flex between">  
+							<div>
+								<a class="back" href="">
+									<button class="btn waves-effect waves-light list-btn"
+										type="submit" name="action">목록</button>
+								</a>
+							</div>
+							<div class="right">
+							<c:if test="${n.memberId eq  loginID}"> 
+								<div>
+									<form action="site-edit?c=${n.id}" method="post">
+										<input type="hidden" name="id" value=${n.id }> 
+										<button class="btn waves-effect waves-light" type="submit"
+											name="action">수정</button>
+									</form>
+								</div>
+								<div> 
+									<form class="form-end" action="site-delete" method="post">
+										<input type="hidden" name="id" value=${n.id }>
+										<button class="btn waves-effect waves-light" type="submit"
+											name="action">삭제</button>
+									</form>
+								</div>
+							</c:if>
+							</div>
+							</div> 
+						<script>
                   $(document).ready(function(){                           
                      $(".list-btn").on("click",function(){
                         $('.back').prop('href', history.back());
@@ -433,8 +448,8 @@ a.del.waves-effect.waves-light {
                </script>
 
 					</div>
-	
-		</div>
+
+				</div>
 
 			</div>
 			</div>
