@@ -298,16 +298,16 @@ border-bottom: none;
 							<!-- add가생성되는곳 -->
 						</div>
 
-
+						<div class="row">
 						<div id="btn">
 							<button class="btn waves-effect waves-light right" type="submit"
 								name="action" id="test">등록</button>
 						</div>
-<input type="hidden" name="memberId"
+						<input type="hidden" name="memberId"
 							value=<security:authentication property="name"/> />
 
-			</div>
-</form>
+					</div>
+			</form>
 
 						<script>
 							$(function() {
