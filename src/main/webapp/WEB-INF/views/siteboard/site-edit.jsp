@@ -102,9 +102,9 @@ border-bottom: none;
 			</div>
 			
 			<div class="col s12 l6">
-			<form action="edit" method="post">
+			<form action="edit" method="post" class="card-panel">
 						<div class="row">
-							<div class="input-field">
+							<div class="input-field"> 
 						<input type="hidden" value="${n.bigCategoryId }" name="aa"/>
 							<select name="bigCategoryId" id="bigCategoryId">
 								<option id="default" value="" disabled selected>${b }</option>
@@ -210,7 +210,7 @@ border-bottom: none;
 						</div>
 						
 						<div class="chips chips-placeholder">
-							<input class="tag" id="e385bafe-7ce5-436e-e3f3-12af51285ada" type="text"  placeholder="+Tag" />
+							<input class="tag" id="e385bafe-7ce5-436e-e3f3-12af51285ada" type="text"  placeholder="+Tag 스페이스바를 눌러주세요." />
 							
 							<c:forEach var="tag" items="${t }">
 								<div id="chip" class="chip" ><input type="hidden" name="tag" value="${tag }"/>${tag }<i class='material-icons close'>close</i></div>
@@ -238,7 +238,7 @@ border-bottom: none;
 								<input type="hidden" name="id" value=${n.id }> 
 						</div>
 						<input type="hidden" name="memberId"
-							value=<security:authentication property="name"/> />
+							value=<security:authentication property="name"/>/>
 
 				</form>
 				</div>
