@@ -449,8 +449,8 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 
 
 .contain.container { 
-    margin-top: 50px;
-    margin-bottom: 60px;
+    margin-top: 20px;  
+    margin-bottom: 60px; 
     min-height: 600px;
 } 
 </style>
