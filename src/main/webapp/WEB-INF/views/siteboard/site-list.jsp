@@ -291,10 +291,19 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 .sitgo{
 	width: 100%;
 }
-.sitgo i{
-	padding-top: 10px;
-    padding-right: 16px;
+.sitgo i {
+    margin-top: 10px; 
+    margin-right: 16px;
 }
+
+.sitego i:hover {
+	border-radius: 3px;
+	background-color: #337ab7; 
+	color:#fff; 
+}
+
+
+
 
 .collection a.collection-item {
     width: 100%;
@@ -386,6 +395,9 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 	background:7f7f7f;
 	background: rgba(0,0,0,0.5);
 			width: 33.333%;
+			    color: #fff;
+    font-size: 25px;
+    padding-top: 20px;
 		}
 
 
@@ -395,6 +407,7 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
     top: 50%;
     height: 32px;
     margin: -45px 0;
+    text-align: right;
 }
 
 .url-warpper img{
@@ -436,7 +449,40 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 
 /*End site-list  */
 
-</style>  
+
+
+
+.collection-header.flex {
+    align-items: center;
+}
+
+.collection-header .btn {
+   padding: 0px;
+    padding-left: 2px;
+    padding-right: 2px;
+    font-size: 5px;
+    height: 17px;
+    line-height: 17px;
+    letter-spacing: 0px;
+    background-color: #fb6226;
+}
+
+.contain.container {
+    margin-top: 20px;
+    margin-bottom: 60px;
+} 
+
+
+
+
+
+
+@media screen and (max-width: 1330px){
+}
+
+
+
+</style>
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">       
 	         <main id="main">
 	         <div class="col-xs-12 col-md-8 container">
@@ -448,18 +494,27 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 				   <li><a href="?p=1&query=${query }"><span class="icon icon-double-angle-right"> </span>${query }</a></li>	
 				</ul>
 			<div class="collection with-header best">
-				<div class="collection-header">
+				<div class="collection-header flex center">
+					<div>
 					<h4>요즘 뜨는 사이트</h4>
+					</div>
+					<div>
+					<button id="likebtn" class="waves-effect waves-light btn" type="submit" name="action">hot</button>
+					</div>
 				</div>
 				<div class="flex">
-					<c:forEach var="hotlist" items="${likelist }" begin="0"
-						varStatus="status" end="5">
-						<div class="collection-item center">
-							<img
-								src="http://api.thumbalizr.com/?url=http://${hotlist.url}&width=332&heigt=270"/><span
-								class="caption_box"> <span class="title"></span> <span class="info">${hotlist.title }</span>
+					<c:forEach var="hotlist" items="${likelist }" begin="0" varStatus="status" end="2">
+						
+						<div class="collection-item center"> 
+							<a href="site-detail?c=${hotlist.id}&p=${param.p}" > 
+							<img src="http://api.thumbalizr.com/?url=http://${hotlist.url}&width=450%&heigt=270"/>
+							<span class="caption_box"> 
+								<span class="title"></span> 
+								<span class="info">${hotlist.title }</span>
 							</span>
+							</a>
 						</div>
+						
 					</c:forEach>
 				</div>
 			</div>
