@@ -219,6 +219,10 @@ color:black;
 	  border: 1px solid #e1e1e1;
 }
 
+.responsive-img{
+    max-width: 72%;
+}
+
 </style>
 
 <header id="header">
@@ -394,10 +398,9 @@ color:black;
             <div class="modal-content">
                 <div class="row margin">
                     <div class="input-field col s12 center">
-                        <img src="${root}/resource/images/login-logo.png" alt=""
+                        <img src="${root}/resource/images/KakaoTalk_20170627_140513042.png" alt=""
                             class="circle responsive-img valign profile-image-login">
-                        <p class="center login-form-text">Material Design Admin
-                            Template</p>
+                        <p class="center login-form-text"></p>
                     </div>
                 </div>
 
