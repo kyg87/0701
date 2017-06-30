@@ -201,7 +201,7 @@ public class NoticeBoardController {
 		    	System.out.println("업로드 파일 x");
 		    }
 		    
-		    fullPath = "\\WiynPrj\\resource\\upload\\";
+		    fullPath = "\\resource\\upload\\";
 		    
 		    noticeFile.setName(rename);
 			noticeFile.setNoticeBoardId(noticeBoard.getId());
@@ -311,7 +311,7 @@ public class NoticeBoardController {
 		    	System.out.println("업로드 파일 x");
 		    }
 		    
-		    fullPath = "\\WiynPrj\\resource\\upload\\";
+		    fullPath = "\\resource\\upload\\";
 		    		    
 		    noticeFile.setName(rename);
 		    noticeFile.setSrc(fullPath);

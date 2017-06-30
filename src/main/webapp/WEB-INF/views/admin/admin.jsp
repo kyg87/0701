@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="com.wiyn.web.entity.SmallCategory"%>
 <%@page import="com.google.gson.*"%>
-<c:set var="root" value="${pageContext.request.contextPath}" />
+
 
 <!DOCTYPE html>
 <style>

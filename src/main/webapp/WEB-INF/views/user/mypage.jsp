@@ -8,9 +8,9 @@
 <c:set var="root" value="${pageContext.request.contextPath}" />
 <security:authentication property="name" var="loginID"/>
 
-<link href="/WiynPrj/resource/css/main.css" type="text/css"
+<link href="${root }/resource/css/main.css" type="text/css"
 	rel="stylesheet" media="screen,projection" />
-<link href="/WiynPrj/resource/css/mypage.css" type="text/css"
+<link href="${root }/resource/css/mypage.css" type="text/css"
 	rel="stylesheet" media="screen,projection" />
 <script type="text/javascript"
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>

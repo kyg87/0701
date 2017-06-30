@@ -407,7 +407,7 @@ visual .visual {
     position: relative;
     width: 100%;
     height: 100%;
-    background-image: url(/WiynPrj/resource/images/macbook-577758_1920.jpg);
+    background-image: url(${root }/resource/images/macbook-577758_1920.jpg);
     background-size: 100% 800px;
 }
 
@@ -544,7 +544,7 @@ visual {
 	position: relative;
 	width: 100%;
 	height: 100%;;
-	background-image: url("/WiynPrj/resource/images/macbook-577758_1920.jpg");
+	background-image: url("${root }/resource/images/macbook-577758_1920.jpg");
 	background-size: 100% 980px;
 }
 .contain.container {
@@ -606,7 +606,7 @@ visual {
 									<p>${n.id }</p>
 								</div>
 								<div class="title">
-									<span>${n.title} <c:if test="${writedate>=today }"><img src="/WiynPrj/resource/images/new.jpg"/></c:if></span>
+									<span>${n.title} <c:if test="${writedate>=today }"><img src="${root }/resource/images/new.jpg"/></c:if></span>
 
 								</div>
 								<div class="writer-warpper">

@@ -140,7 +140,7 @@ body, html {
 
 					<div class="imgpencil">
 		
-							<img src="/WiynPrj/resource/images/notepad.jpg" 
+							<img src="${root }/resource/images/notepad.jpg" 
 								style="width: 500px; height: 350px; ; margin-top: 100px; margin-right: 50px; border-radius: 10px; " />
 					
 					</div> 
@@ -283,7 +283,7 @@ body, html {
 	</form>
 	 --%> <!------------------------------------------------  --> <!--  Scripts-->
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script> <script
-		src="/WiynPrj/resource/js/materialize.js"></script> <script
+		src="${root }/resource/js/materialize.js"></script> <script
 		type="text/javascript">
 	$('select').material_select('destroy');
 		$(document).ready(function() {

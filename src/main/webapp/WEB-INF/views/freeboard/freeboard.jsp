@@ -485,7 +485,7 @@ visual {
 	position: relative;
 	width: 100%;
 	height: 100%;;
-	background-image: url("/WiynPrj/resource/images/typewriter-2325552_1920.jpg");
+	background-image: url("${root }/resource/images/typewriter-2325552_1920.jpg");
 	background-size: 100% 980px;
 }
 .contain.container {
@@ -613,7 +613,7 @@ visual {
 							</div>
 							
 							<div class="title">
-								<span>${v.title} <c:if test="${writedate>=today }"><img src="/WiynPrj/resource/images/new.jpg"/></c:if></span>
+								<span>${v.title} <c:if test="${writedate>=today }"><img src="${root }/resource/images/new.jpg"/></c:if></span>
 							</div>
 							
 							<div class="writer-warpper">
@@ -684,7 +684,7 @@ visual {
 
 	</div>
 
-<form class="searchbar1" action="http://localhost/WiynPrj/siteboard/siteboard" method="GET">
+<form class="searchbar1" action="${root }/siteboard/siteboard" method="GET">
   <div class="broker-expanding-search" data-expanding-search>
     <div class="broker-expanding-search__column broker-expanding-search__column--left">
        <input type="hidden" name="p" value="1" />

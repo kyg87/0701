@@ -476,7 +476,7 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 					
 					<div class="write right">
 						<security:authorize access="hasRole('ROLE_ADMIN')">
-						<a class="waves-effect waves-light sitego" href="/WiynPrj/noticeboard/notice-reg?p=${page }"> <i
+						<a class="waves-effect waves-light sitego" href="${root}/noticeboard/notice-reg?p=${page }"> <i
 							class="material-icons ">mode_edit</i>
 						</a>
 						</security:authorize>
@@ -494,7 +494,7 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 									<p>${mem.id }</p>
 								</div>
 								<div class="title">
-									<span>${mem.title} <c:if test="${writedate>=today }"><img src="/WiynPrj/resource/images/new.jpg"/></c:if></span>
+									<span>${mem.title} <c:if test="${writedate>=today }"><img src="${root}/resource/images/new.jpg"/></c:if></span>
 
 								</div>
 								<div class="writer-warpper">
@@ -524,14 +524,7 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 					</ul>
 				</c:forEach>
 	</div>
-	<%-- <div class="site-button">
-		<a class="waves-effect waves-light btn sitego"
-			href="/WiynPrj/noticeboard/notice-reg?p=${page }">
-			<div class="write">
-				Write <i class="tiny material-icons">mode_edit</i>
-			</div>
-		</a>
-	</div> --%>
+
 
 	<div align="center">
 		<ul class="pagination">
@@ -571,7 +564,7 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 </div>
 </div>
 
-<form class="searchbar1" action="http://localhost/WiynPrj/siteboard/siteboard" method="GET">
+<form class="searchbar1" action="${root}/siteboard/siteboard" method="GET">
   <div class="broker-expanding-search" data-expanding-search>
     <div class="broker-expanding-search__column broker-expanding-search__column--left">
        <input type="hidden" name="p" value="1" />

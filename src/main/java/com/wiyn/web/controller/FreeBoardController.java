@@ -164,7 +164,7 @@ public class FreeBoardController {
 		    	System.out.println("업로드 파일 x");
 		    }
 		    
-		    fullPath = "\\WiynPrj\\resource\\upload\\";
+		    fullPath = "\\resource\\upload\\";
 		    
 		    freeFile.setName(rename);
 			freeFile.setFreeBoardId(freeboard.getId());

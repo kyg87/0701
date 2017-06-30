@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
-<c:set var="root" value="${pageContext.request.contextPath}" />
+
 <security:authentication property="name" var="loginID"/>
 <style>
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
@@ -228,7 +228,7 @@ color:black;
 <header id="header">
 	<nav class="container">
 	    <div class="nav-wrapper">
-	      <a href="${root }/main/index" class="brand-logo logo font"><img src="/WiynPrj/resource/images/wwlogo.png"/><div class="mlogo">what is your needs?</div></a>
+	      <a href="${root }/main/index" class="brand-logo logo font"><img src="${root }/resource/images/wwlogo.png"/><div class="mlogo">what is your needs?</div></a>
 	      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons medium">menu</i></a>
 	      <security:authentication property="authorities" var="auths" />
 		  <security:authentication property="name" var="name" />
@@ -332,7 +332,7 @@ color:black;
 				
 			
 			</security:authorize>
-			<form action="http://localhost:8080/WiynPrj/main/index" method="GET">
+			<form action="${root }/main/index" method="GET">
 				<nav class="main-nav">
 						<div class="input-field">
 							<input type="hidden" name="p" value="1" /> <input name="q"

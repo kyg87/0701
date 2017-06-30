@@ -6,7 +6,7 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <%@ taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
-<c:set var="root" value="${pageContext.request.contextPath}" />
+
 <!DOCTYPE html>
 
 <style>
@@ -268,7 +268,7 @@ background: #dd5d58;
 			</div>
 		</div>
 	</div>
-	<form class="searchbar1" action="http://localhost/WiynPrj/siteboard/siteboard" method="GET">
+	<form class="searchbar1" action="${root }/siteboard/siteboard" method="GET">
   <div class="broker-expanding-search" data-expanding-search>
     <div class="broker-expanding-search__column broker-expanding-search__column--left">
        <input type="hidden" name="p" value="1" />

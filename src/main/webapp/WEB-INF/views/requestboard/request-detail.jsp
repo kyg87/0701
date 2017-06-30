@@ -629,7 +629,7 @@ background: #dd5d58;
 
  --%>
  
- <form class="searchbar1" action="http://localhost/WiynPrj/siteboard/siteboard" method="GET">
+ <form class="searchbar1" action="${root }/siteboard/siteboard" method="GET">
   <div class="broker-expanding-search" data-expanding-search>
     <div class="broker-expanding-search__column broker-expanding-search__column--left">
        <input type="hidden" name="p" value="1" />

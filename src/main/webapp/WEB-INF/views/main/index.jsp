@@ -128,7 +128,7 @@ visual {
 	position: relative;
 	width: 100%;
 	height: 100%;;
-	background-image: url("/WiynPrj/resource/images/web-1738159_1920.jpg");
+	background-image: url("${root}/resource/images/web-1738159_1920.jpg");
 }
 
 /* .visual p {
@@ -230,7 +230,7 @@ label {
 }
 
 .background {
-background-img:url("/WiynPrj/resource/images/back.png");
+background-img:url("${root}/resource/images/back.png");
 	
 }
 
@@ -1558,7 +1558,7 @@ $("#target").click(function(d){
 	}
 	else{
 		alert("요청게시판에 글이 등록되었습니다.");
-		return location.href='http:\/\/localhost:8080\/WiynPrj\/main\/index';
+		return location.href='${root}/main/index';
 	} 
 });
 </script>

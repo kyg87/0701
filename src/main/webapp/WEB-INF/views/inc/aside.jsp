@@ -32,7 +32,7 @@ nav .input-field label i{
 	<ul id="nav-mobile" class="side-nav fixed"
 		style="overflow: auto; transform: translateX(0%);">
 		<label style="display: none">Search</label>
-		<form action="http://localhost/WiynPrj/main/index" method="GET">
+		<form action="${root}/main/index" method="GET">
 			<nav class="main-nav">
 				<div class="nav-wrapper main-nav-div">
 					<div class="input-field">
@@ -60,10 +60,10 @@ nav .input-field label i{
                 <c:forEach var="small" items="${bcb.smallCategory}">
                 <c:choose>
                 	<c:when test="${param.smallCa eq small.id }">
-                  <li class="active"><a href="http://localhost/WiynPrj/main/index?p=1&q=&bigCa=${bcb.id}&smallCa=${small.id}"><input type="hidden"  value="${small.id }" name="SmallCa" />${small.name }</a></li>
+                  <li class="active"><a href="${root}/main/index?p=1&q=&bigCa=${bcb.id}&smallCa=${small.id}"><input type="hidden"  value="${small.id }" name="SmallCa" />${small.name }</a></li>
                 	</c:when>
                 	<c:otherwise>
-                	<li><a href="http://localhost/WiynPrj/main/index?p=1&q=&bigCa=${bcb.id}&smallCa=${small.id}"><input type="hidden"  value="${small.id }" name="SmallCa" />${small.name }</a></li>
+                	<li><a href="${root}/main/index?p=1&q=&bigCa=${bcb.id}&smallCa=${small.id}"><input type="hidden"  value="${small.id }" name="SmallCa" />${small.name }</a></li>
                 	</c:otherwise>
                 </c:choose>
                 </c:forEach>
@@ -80,7 +80,7 @@ nav .input-field label i{
               <div class="collapsible-body">
                 <ul>
                 <c:forEach var="small" items="${bcb.smallCategory}">
-                  <li><a href="http://localhost/WiynPrj/main/index?p=1&q=&bigCa=${bcb.id}&smallCa=${small.id}"><input type="hidden"  value="${small.id }" name="SmallCa" />${small.name }</a></li>
+                  <li><a href="${root}/main/index?p=1&q=&bigCa=${bcb.id}&smallCa=${small.id}"><input type="hidden"  value="${small.id }" name="SmallCa" />${small.name }</a></li>
                 </c:forEach>
                 </ul>
               </div>

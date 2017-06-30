@@ -2,19 +2,31 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+<c:set var="root" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+<!-- 구글 애드센스 신청 -->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-2651262364281330",
+    enable_page_level_ads: true
+  });
+</script>
+<!-- 구글 애드센스 신청 end -->
+
 <!--Import Google Icon Font-->
 <link href="http://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <!--Import materialize.css-->
 <link type="text/css" rel="stylesheet"
-	href="/WiynPrj/resource/css/materialize.css" 
+	href="${root }/resource/css/materialize.css" 
 
 media="screen,projection" />
 <link type="text/css" rel="stylesheet"
-	href="/WiynPrj/resource/css/style.css" 
+	href="${root }/resource/css/style.css" 
 
 media="screen,projection" />
 <!--Let browser know website is optimized for mobile-->
@@ -31,7 +43,7 @@ s"></script>
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
 @font-face{
    font-family: 'aritta';
-   src: url('/WiynPrj/resource/fonts/아리따-돋움(TTF)-Light.ttf') format('truetype');
+   src: url('${root }/resource/fonts/아리따-돋움(TTF)-Light.ttf') format('truetype');
 }
 
 body{ 
@@ -45,7 +57,7 @@ font-size:16px;
 }
 
 #main{
-	background-image: url(/WiynPrj/resource/images/back.png);
+	background-image: url(${root }/resource/images/back.png);
 }
 </style>
 <body>
@@ -75,7 +87,7 @@ font-size:16px;
 	<!--Import jQuery before materialize.js-->
 
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<script type="text/javascript" src="/WiynPrj/resource/js/materialize.min.js"></script>
+	<script type="text/javascript" src="${root }/resource/js/materialize.min.js"></script>
 	<script type="text/javascript">
       $(".button-collapse").sideNav();
       $('.modal').modal();

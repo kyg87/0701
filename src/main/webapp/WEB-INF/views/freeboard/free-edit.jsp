@@ -188,7 +188,7 @@ body, html {
 
 	<!--  Scripts-->
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<script src="/WiynPrj/resource/js/materialize.js"></script>
+	<script src="${root }/resource/js/materialize.js"></script>
 	<script type="text/javascript">
 		$('select').material_select('destroy');
 		$(document).ready(function() {

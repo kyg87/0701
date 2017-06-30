@@ -481,7 +481,7 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 </style>
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 <main id="main">
-<form class="searchbar1" action="http://localhost/WiynPrj/siteboard/siteboard" method="GET">
+<form class="searchbar1" action="${root }/siteboard/siteboard" method="GET">
   <div class="broker-expanding-search" data-expanding-search>
     <div class="broker-expanding-search__column broker-expanding-search__column--left">
        <input type="hidden" name="p" value="1" />
@@ -579,7 +579,7 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 									<p>${n.id }</p>
 								</div>
 								<div class="title">
-									<span>${n.title} <span class="orange-text text-accent-3">[${n.countcomment }]</span><c:if test="${writedate>=today }"><img src="/WiynPrj/resource/images/new.jpg"/></c:if></span>
+									<span>${n.title} <span class="orange-text text-accent-3">[${n.countcomment }]</span><c:if test="${writedate>=today }"><img src="${root }/resource/images/new.jpg"/></c:if></span>
 
 								</div>
 								<div class="writer-warpper">
