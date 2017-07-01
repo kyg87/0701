@@ -453,8 +453,8 @@ visual .visual .hero_home__copy {
 	    margin-left: 4px;
 	    margin-right: 90px;
 	    padding-top: 25px;
-	    white-space: normal;
-	    width: 25%;
+	/*     white-space: normal;
+	    width: 25%; */
 	}
 	.writer-warpper{
  		

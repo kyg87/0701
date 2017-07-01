@@ -1,6 +1,10 @@
 package com.wiyn.web.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,7 +67,7 @@ public class MainController {
             @RequestParam(value="q", defaultValue="")String query,
             @RequestParam(value="bigCa",defaultValue="")String bigCategoryId,
             @RequestParam(value="smallCa",defaultValue="")String smallCategoryId,
-            Model model) {
+            Model model ,HttpServletRequest request) {
         List<SiteBoard> sitelist = sqlSession.getMapper(SiteBoardDao.class).getList(page,query,bigCategoryId, smallCategoryId);
         List<SiteBoard> sitelistlike = sqlSession.getMapper(SiteBoardDao.class).getListLike(page, query,bigCategoryId, smallCategoryId);
         List<SiteBoard> sitelistcomment = sqlSession.getMapper(SiteBoardDao.class).getListComment(page, query,bigCategoryId, smallCategoryId);
@@ -75,7 +79,7 @@ public class MainController {
         SiteBoard next=sqlSession.getMapper(SiteBoardDao.class).getNext(id);
         
         String a = sqlSession.getMapper(SmallCategoryDao.class).getFirstHot();
-        System.out.println("asd");
+       
         List<SiteBoard> hot =sqlSession.getMapper(SiteBoardDao.class).getHotSmall(a);
         
         for (SiteBoard siteBoard : hot) {
@@ -118,7 +122,7 @@ public class MainController {
 		String sName = siteBoardDao.getSName(random.getId());
 		List<Tag> tName = siteBoardDao.getTName(random.getId());
 		
-		System.out.println(bName);
+		
 		
 		
         model.addAttribute("random", random);
@@ -152,6 +156,19 @@ public class MainController {
 		}
 		model.addAttribute("bcbList", bcbList);
 		
+		
+		Date dt = new Date();
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd, hh:mm:ss a"); 
+		System.out.println(sdf.format(dt).toString()); 
+		
+		
+		String ip = request.getRemoteAddr();
+
+		System.out.println(ip);
+
+		
+			
         return "main.index";        
         
     }
@@ -202,7 +219,7 @@ public class MainController {
  		String sName = siteBoardDao.getSName(random.getId());
  		List<Tag> tName = siteBoardDao.getTName(random.getId());
  		
- 		System.out.println(bName);
+ 		
  		
  		
          model.addAttribute("random", random);
@@ -286,7 +303,7 @@ public class MainController {
  		String sName = siteBoardDao.getSName(random.getId());
  		List<Tag> tName = siteBoardDao.getTName(random.getId());
  		
- 		System.out.println(bName);
+ 	
  		
  		
          model.addAttribute("random", random);
@@ -331,7 +348,7 @@ public class MainController {
    		
    		
 
-   		System.out.print("이거타니");
+   		
    		requestBoard.setTitle(title);
    		requestBoard.setContent(content);
    		requestBoard.setMemberId(memberId);

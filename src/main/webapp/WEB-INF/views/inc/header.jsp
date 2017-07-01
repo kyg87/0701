@@ -26,6 +26,7 @@
 
 #header {
 	background-color: #fff;
+	height: 64px;
 	z-index: 998;
     position: fixed;
     width: 100%;
@@ -664,9 +665,12 @@ color:black;
 		        var myForm = $("#myForm3");
 		        
 		        var str = email.val();//이메일 데이터값
-		         
-		        str = str.trim();//공백 제거
 		        
+		        var str1 = pass.val();
+		        
+		        
+		        str = str.trim();//공백 제거
+		        str1 = str1.trim();
 		        if(!str){
 		            alert("이메일을 입력하세요");
 		            email.focus();//해당입력란으로 포커싱
@@ -679,7 +683,7 @@ color:black;
 		            return;
 		        }
 
-		        if(pass.val().length ==0){
+		        if(!str1){
 		            alert("비밀번호를 입력하세요");
 		            pass.focus();
 		            return;
