@@ -295,8 +295,8 @@ background: #dd5d58;
 	bottom: 50px;
 	right: 50px;
 }
-a.waves-effect.waves-light {
-   /* position: absolute; */
+a.del.waves-effect.waves-light {
+    position: absolute;
     top: 9px;
     right: 7px;
 }
@@ -581,7 +581,7 @@ var currentPage = ${page};
 								 .append($('<span class="title">'+obj[i].memberId+'</span>'))
 								 .append($('<time>'+js_yyyy_mm_dd_hh_mm_ss(obj[i].regDate)+'</time>'))
 								 .append($('<p>'+obj[i].content+'</p>'))
-								 .append($('<a class="waves-effect waves-light" onclick="onDelete('+obj[i].id+ ');" value='+obj[i].id+'><i class="material-icons">clear</i></a>')));
+								 .append($('<a class="del waves-effect waves-light" onclick="onDelete('+obj[i].id+ ');" value='+obj[i].id+'><i class="material-icons">clear</i></a>')));
 						}
 						else{
 							$("#commentList").append($('<li class="collection-item avatar">' + + '</li>')
@@ -591,6 +591,11 @@ var currentPage = ${page};
 									 .append($('<p>'+obj[i].content+'</p>')));
 						} 
 					}
+					
+					   $("#commentList img").error(function() {
+							 
+					         this.src ="${root}/resource/images/avatar.png";
+					      }); 
 			 	/*    $("#commentList img").error(function() {
 			 
 				         this.src ="${root}/resource/images/avatar.png";
