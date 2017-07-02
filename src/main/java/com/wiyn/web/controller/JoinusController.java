@@ -159,28 +159,28 @@ public class JoinusController {
 			String path = context.getRealPath("/resource/profile");
 			
 			File d = new File(path);
-			if(!d.exists())//°æ·Î°¡ Á¸ÀçÇÏÁö ¾Ê´Â´Ù¸é
+			if(!d.exists())//ï¿½ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´Â´Ù¸ï¿½
 				d.mkdir();
 		
 			String originalFilename = file.getOriginalFilename(); // fileName.jpg
 		   
-			String fullPath = path + "\\" + originalFilename;
+			String fullPath = path + "/" + originalFilename;
 		    if (!file.isEmpty()) {
 		        try {
 		            byte[] bytes = file.getBytes();
 		            BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(fullPath)));
 		            stream.write(bytes);
 		            stream.close();
-		            //model.addAttribute("resultMsg", "ÆÄÀÏÀ» ¾÷·Îµå ¼º°ø!");
-		            System.out.println("¾÷·Îµå ¼º°ø");
+		            //model.addAttribute("resultMsg", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½ï¿½ï¿½!");
+		            System.out.println("ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½ï¿½ï¿½");
 		        } catch (Exception e) {
-		            //model.addAttribute("resultMsg", "ÆÄÀÏÀ» ¾÷·ÎµåÇÏ´Â µ¥¿¡ ½ÇÆÐÇß½À´Ï´Ù.");
+		            //model.addAttribute("resultMsg", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.");
 		        	System.out.println(e);
-		        	System.out.println("¾÷·Îµå ½ÇÆÐ");
+		        	System.out.println("ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½ï¿½ï¿½");
 		        }
 		    } else {
-		        //model.addAttribute("resultMsg", "¾÷·ÎµåÇÒ ÆÄÀÏÀ» ¼±ÅÃÇØÁÖ½Ã±â ¹Ù¶ø´Ï´Ù.");
-		    	System.out.println("¾÷·Îµå ÆÄÀÏ x");
+		        //model.addAttribute("resultMsg", "ï¿½ï¿½ï¿½Îµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö½Ã±ï¿½ ï¿½Ù¶ï¿½ï¿½Ï´ï¿½.");
+		    	System.out.println("ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½ï¿½ï¿½ x");
 		    }
 
 		    result = memberDao.update(email, originalFilename,introduction);
