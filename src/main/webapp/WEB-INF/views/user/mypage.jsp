@@ -8,12 +8,7 @@
 <c:set var="root" value="${pageContext.request.contextPath}" />
 <security:authentication property="name" var="loginID"/>
 
-<link href="${root }/resource/css/main.css" type="text/css"
-	rel="stylesheet" media="screen,projection" />
-<link href="${root }/resource/css/mypage.css" type="text/css"
-	rel="stylesheet" media="screen,projection" />
-<script type="text/javascript"
-	src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
+
 <script type="text/javascript">
 	$(function() {
 		//전체선택 체크박스 클릭
@@ -32,32 +27,7 @@
 		})
 	})
 
-	/*  $(function(){
-		$(".aa").click(function(){
-	  		$('input:checkbox[name="check_del"]').each(function() {
 
-	      		this.checked = true; //checked 처리
-
-	      		
-
-	 })
-	})
-	})  */
-
-	/* $("#tes[]").on("click", function() {
-	var chk = $("checkbox[name='check']:checked").map(function() {
-		return $(this).val();
-	}).get().join(" | ");
-	$("#result").text(chk);
-	});  */
-	/*
-		for(i=0;i<chkbox.length;i++) {
-		    if (chkbox[i].checked == true){
-		        send_array[send_cnt] = chkbox[i].value;
-		        send_cnt++;
-		    }
-		}
-	 */
 	var send_array = [];
 	var boardname = [];
 	function go_delete() {
@@ -103,21 +73,10 @@
 	
 
 	
-	/* function goSelect(frm) {
-		$.ajax({
-			url : '<c:url value="mypage" />',
-			data : 'select=' + $(this).val(),
-			dataType : 'text',
-			success : function(data) {
-				if (!data.data || data.data == '' || data.data.length < 1)
-					return false;
-				$('#test1').html(data);
-			},
-		}); // $.ajax 
 
-	} */
 </script>
 <style>
+
 #border{
 	border:1px solid #6d3737;
 }
@@ -366,7 +325,7 @@ input, button, img {
 }
 
 .user_information .dsc {
-    width: 500px;
+    
     font-size: 13px;
     color: #676767;
     margin: 7px 0 0 2px;
@@ -392,42 +351,18 @@ input, button, img {
     margin: 0 12px 0 0;
     width: 24px;
 }
+.contain.container {
+    margin-top: 40px;   
+    margin-bottom: 60px; 
+}
 
 
 </style>
 <main id="main">
-<div class="container">
-	<div class="section">
+<div class="container contain">
+
 		<div class="row">
-			<!-- <h2>My Page</h2> -->
-			
-<%-- 				  <!-- 개인프로필 Modal Structure -->
-		
-		<div class="info_top1">
-		<div class ="info_profile">
-			<input id="profileImgbtn" type="file" style="display: none">
-			 <!-- <img id="profileImg" alt="" src="http://d1hk7gw6lgygff.cloudfront.net/assets/_img/mypage/img_edit_profile-3c5f60b7a1ddf555f665e50d2987f7a3.png"> -->
-			 <img id="profileImg" alt="" src="${root}/resource/images/large.jpg">
-		<p><security:authentication property="name" /></p>
-		</div>
-		<table style="border: 2px solid #6d3737;width: 80%;margin: auto;text-align: center;">
-		
-		
-			<tr id="border">
-				<th>내가 쓴 글</th>
-				<th>내가 쓴 댓글 </th>
-				<th>좋아요 글</th>
-			</tr>
-			<tr id="border">
-				<th>${list}</th>
-				<th>${sum}</th>
-				<th>${like }</th>
-				
-		</table> --%>
-		<!-- <div class="btn_area">
-				<button type="submit" class="btn waves-effect waves-light">수정</button>
-				
-		</div> -->
+
 
 			<div class="user_information">
 				<div class="inner">
@@ -465,60 +400,8 @@ input, button, img {
 					</ul>
 				</div>
 
-				<!-- <select class="tab col s3" id="select" name="select" onChange="goSelect(this.form)" style="display: block;" >
-		<option value="0" selected>게시글종류</option>
-	 	<option value="1" >Free</option>
-   		<option value="2" >Site</option>
-   		<option value="3">Request</option>	
-   		
- </select>
-  -->
-				<!-- 	<script>
- 
- 	$(function(){
- 		$("#select").on('change', function(){
- 			
- 			var data = $("#select").val();
- 			var selList = $("#select"); 
- 			
- 			$.post("mypage", {"selData":data}, function(d) {
- 				
- 				
- 				
- 			});
- 			
- 		});
- 	});
- 	
- </script> -->
-
-				<!--  <input type="text" name="optionValue" value=""/> -->
-
-
-
-
 				<table class="bordered" id="test1">
-				<!-- 	<div>
-						<ul class="tabs" style="position: relative; width: 85%">
-							<li class="tab col s3"><a href="#sub-test1"> 자유게시판 </a></li>
-							<li class="tab col s3"><a href="#sub-test2"
-								class="inactive"> 요청게시판</a></li>
-							<li class="tab col s3"><a href="#sub-test3"
-								class="inactive"> 사이트게시판</a></li>
-
-						</ul>
-					</div> -->
-					<!-- <thead>
-						<tr>
-
-							<th style="text-align:center"></th>
-							<th style="text-align: center">게시글</th>
-							<th style="text-align: center">작성시간</th>
-							<th style="text-align: center">게시판종류</th>
-						</tr>
-					</thead> -->
-
-
+			
 					<tbody id="sub-test1">
 					
 						<c:forEach var="v" items="${free}">
@@ -606,38 +489,7 @@ input, button, img {
           				</ul>
 					</div>
 
-					<%-- <tbody id="sub-test3">
-						<c:forEach var="v" items="${site}">
-
-							<tr>
-								<td><input  type="checkbox" id="${v.id}" name="check_del"
-									value="${v.id }" /><label for="${v.id}"></label></td>
-								<td style="text-align: center"><a
-									href="../${v.boardName}board/${v.boardName}-detail?c=${v.id}">${v.title}</a></td>
-								<td style="text-align: center"><fmt:formatDate
-										value="${v.regDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-
-								<td style="text-align: center"><input type="hidden"
-									name="boardName" value="${v.boardName}" />${v.boardName}</td>
-							</tr>
-						</c:forEach>
-
-					</tbody> --%>
-
-					<%-- 	<c:forEach var="list" items="${list}">
-			<tr>
-				<td><input type="checkbox" id="${list.id}" name="check_del"
-					value="${list.id }" /><label for="${list.id}"></label></td>
-				<td style="text-align: center"><a
-					href="../${list.boardName}board/${list.boardName}-detail?c=${list.id}">${list.title}</a></td>
-				<td style="text-align: center"><fmt:formatDate
-						value="${list.regDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-
-				<td style="text-align: center"><input type="hidden"
-					name="boardName" value="${list.boardName}" />${list.boardName}</td>
-			</tr>
-		</c:forEach>
-		--%>
+	
 				</table>
 
 
@@ -687,9 +539,7 @@ input, button, img {
 
 
 
-					<!-- <button class="btn waves-effect waves-light" type="button"
-						name="action" onclick="go_delete();">삭제</button> -->
-					<!-- 	<a class="waves-effect waves-light btn " href="#modal2">삭제</a> -->
+	
 			</form>
 			<div id="modal2" class="modal">
 				<div class="modal-content">
@@ -760,7 +610,7 @@ input, button, img {
 			});
 		</script>
 
-	</div>
+
 	</div>
 </main>
 

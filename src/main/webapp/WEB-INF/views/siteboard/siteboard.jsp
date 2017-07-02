@@ -429,7 +429,7 @@ box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12);
 	    margin-left: 48px;
 	    margin-right: 90px;
 	    padding-top: 16px;
-	    white-space: normal;
+	   /*  white-space: normal; */
 	}
 	.writer-warpper{
  		display: none;

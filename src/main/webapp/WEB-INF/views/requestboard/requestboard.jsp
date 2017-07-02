@@ -567,12 +567,7 @@ visual {
 		</div>
 	</div>
 </visual>
-<!-- <div class="banner">
-   <img src="/WiynPrj/resource/images/draw-1772745_1920.jpg" style="width: 100%;height:600px; opacity: 0.9;" /> 
-   <div class="free-title">
-      <h1>당신의 NEEDS,<br>여기에 올려주세요</h1>
-   </div>
-</div> --> 
+
 <div class="container contain">
 <ul id="breadcrumb">
   <li><a href="../main/index"><span class="icon icon-home"> </span></a></li>
@@ -626,56 +621,6 @@ visual {
 				</c:forEach>
 			</div>
 
-
-
-
-
-
-
-
-
-
-<%-- <table border="1" class="highlight table">
-	<thead class="table-head">
-		<tr class="head-tr">
-			<td>번호</td>
-			<td>제목</td>
-			<td>작성자</td>
-			<td>조회 수</td>
-			<td>작성 날짜</td>
-		</tr>
-	</thead>
-	
-	<tbody class="table-body">
-		
-		<c:forEach var="v"  begin="${(page*10)-10 }" end="${page*10-1 }" items="${list}">
-			<div style="display: none"><fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" /> </div>
-			<div style="display: none;"><fmt:formatDate value="${v.regDate}"
-								pattern="yyyy-MM-dd HH:mm:ss" var="writedate" /></div>	
-			<tr>
-				<td>${v.id}</td>
-				<td class="orange-text text-accent-3 table-title">
-					<a href="request-detail?c=${v.id}">${v.title}</a>
-					<c:if test="${writedate>=today }"><img src="/WiynPrj/resource/images/new.jpg"/></c:if>
-					</td>
-				<td>${v.memberId}</td>
-				<td>${v.hit}</td>
-				<td><fmt:formatDate value="${v.regDate}"
-						pattern="yyyy-MM-dd HH:mm:ss" /></td>
-
-			</tr>
-		
-		</c:forEach>
-	</tbody> 
-</table> --%>
-
- 
- 
-<!--   
- <div class="site-button"> 
-	<a class="waves-effect waves-light btn sitego" href="#"><i class="material-icons">mode-edit</i></a>
-</div> 
- -->
 <div align="center">
 	<ul class="pagination">
 		
@@ -705,49 +650,6 @@ visual {
 </div>
 
 
-<%-- <fmt:parseNumber var="sizeInt" integerOnly="true" value="${size/10 }" />
-<c:set var="last" value="${(size%10)>0 ? sizeInt+1 : sizeInt }" />
-
-<c:if test="${empty param.p }">
-<c:set var="param.p" value="1"  />
-</c:if>
-
-
-
-<!-- <ul style="text-align: center" class="pagination"> -->
-<ul class="pagination center">
- <li class="disabled">
-<!-- <li class="disabled"> -->
-
-<a href="#!"><i class="material-icons">chevron_left</i></a></li>
-
-<c:forEach var="i" begin="1" end="${last}">
-
-		<c:choose>
-			<c:when test="${i eq param.p or empty param.p and i eq '1'}">
-				<li class="waves-effect  active"><a href="?p=${i}">${i}</a></li>
-			</c:when>
-			<c:otherwise>
-				<li class="waves-effect "><a href="?p=${i}">${i}</a></li>
-			</c:otherwise>
-		</c:choose>
-		
-	</c:forEach>
-	<li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-</ul>
-	    
-					    <li class="disabled"><a href="freeboard?p=${page }"><i class="material-icons">chevron_left</i></a></li>
-						<li class="active"><a href="freeboard?p=${page}">1</a></li>
-						<li class="waves-effect"><a href="">2</a></li>
-						<li class="waves-effect"><a href="#!">3</a></li>
-						<li class="waves-effect"><a href="#!">4</a></li>
-						<li class="waves-effect"><a href="#!">5</a></li>
-						<li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-						
-
-
-
- --%>
  
 </div>
 

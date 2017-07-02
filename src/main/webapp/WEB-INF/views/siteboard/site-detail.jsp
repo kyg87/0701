@@ -404,7 +404,7 @@ $(document).ready(function(){
 
  
 	
-page(${page});
+page(1);
 
 
 

@@ -322,7 +322,7 @@ $(document).ready(function(){
                
               	 <div>
 						<c:if test="${file.src != null }">
-			            	<img src=${file.src }${file.name } style="width:500px; height:500px; margin-top:42px;" />
+			            	<img src=${file.src }${file.name } class="col s12 l12" />
 			            </c:if>
 				</div>
             </div>

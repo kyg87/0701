@@ -310,9 +310,7 @@ color:black;
 				<a class="login font personal loge" href="#modal10">Login
 					<i class="tiny material-icons">lock</i>
 				</a>
-				<a class="login font personal input" href="${root}/joinus/singin">Join 
-					<i class="tiny material-icons">input</i>
-				</a>
+			
 			</security:authorize>
 			<security:authorize access="isAuthenticated()">
 <%-- 				<a class="login font personal pin" href="${root}/user/mypage"> <security:authentication
@@ -320,7 +318,7 @@ color:black;
 						
 				
 				</a> --%>
-				<a class="login font personal pin" href="#" data-activates="profile-dropdown"> <security:authentication
+				<a class="login font personal pin" href="${root}/user/mypage?memberId=${loginID}" data-activates="profile-dropdown"> <security:authentication
 						property="name" /><i class="tiny material-icons">person_pin</i>
 						
 				
@@ -653,7 +651,7 @@ color:black;
     </script>
 	<script type="text/javascript">
 	  $(document).ready(function(){
-		  
+		  console.log(2);
 		  $("#btn1").click(function(){
 			  
 			  	var email = $("#email1");
@@ -668,9 +666,9 @@ color:black;
 		        
 		        var str1 = pass.val();
 		        
-		        
+		        var pattern = /\s/g;
 		        str = str.trim();//공백 제거
-		        str1 = str1.trim();
+		       
 		        if(!str){
 		            alert("이메일을 입력하세요");
 		            email.focus();//해당입력란으로 포커싱
@@ -683,6 +681,12 @@ color:black;
 		            return;
 		        }
 
+		        if(str1.match(pattern)){
+			        alert("비밀번호에 공백이 있습니다");	
+			        pass.focus();
+		            return;
+		        }
+		        
 		        if(!str1){
 		            alert("비밀번호를 입력하세요");
 		            pass.focus();

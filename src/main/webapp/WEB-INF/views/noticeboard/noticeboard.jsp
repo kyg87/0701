@@ -343,7 +343,7 @@
 	    margin-left: 48px;
 	    margin-right: 90px;
 	    padding-top: 16px;
-	    white-space: normal;
+	    /* white-space: normal; */
 	}
 	.writer-warpper{
  		display: none;
