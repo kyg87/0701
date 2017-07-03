@@ -51,7 +51,11 @@ public class JoinusController {
 			@RequestParam(value="pass")String pwd
 			) {
 
+		System.out.println("email:"+email);
+		System.out.println("pwd:"+pwd);
+		
 		int result = memberDao.add(email, pwd);
+		
 		
 		System.out.println(result);
 		
