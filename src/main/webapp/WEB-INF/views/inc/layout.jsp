@@ -88,12 +88,12 @@ font-size:16px;
 }
 
 .ad-side{
-	position: absolute;
+position: absolute;
     top: 930px;
     width: 160px;
     height: 600px;
-    left: 45%;
-    margin: 0 0 0 -620px;
+    left: 40%;
+    margin: 0px 0 0 -770px;
     z-index: 2;
 }
 
@@ -102,8 +102,8 @@ font-size:16px;
     top: 930px;
     width: 160px;
     height: 600px;
-    left: 44%;
-    margin: 0px 0 0 670px;
+    left: 50%;
+    margin: 0px 0 0 647px;
     z-index: 2;
 }
 
@@ -150,14 +150,14 @@ font-size:16px;
 	</div>
 	<div class ="ad-side-right">
 		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-		<!-- ad-right -->
+		<!-- ad -->
 		<ins class="adsbygoogle"
 		     style="display:inline-block;width:300px;height:600px"
 		     data-ad-client="ca-pub-2651262364281330"
-		     data-ad-slot="1250612200"></ins>
+		     data-ad-slot="4461430600"></ins>
 		<script>
 		(adsbygoogle = window.adsbygoogle || []).push({});
-	</script>
+		</script>
 	</div>	
 	<!-- 풋터 -->
 	<!-- Modal Structure -->
