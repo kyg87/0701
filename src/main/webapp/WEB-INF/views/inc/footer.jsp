@@ -7,6 +7,7 @@
    background: rgb(66,66,66);
    z-index:999;
    padding:0px;
+   margin-top: 8px;
 }
 
 .page-footer .footer-copyright{

@@ -72,8 +72,49 @@ font-size:16px;
 #main{
 	background-image: url(${root }/resource/images/back.png);
 }
+@media screen and (max-width: 640px){
+	.ad-side{
+		display: none;
+	}
+	
+	.ad-side-right{
+	  	display: none;
+	}
+	
+	.banner-tab-mobil-bottom{
+	
+	    display: block;
+	}
+}
+
+.ad-side{
+	position: absolute;
+    top: 930px;
+    width: 160px;
+    height: 600px;
+    left: 45%;
+    margin: 0 0 0 -620px;
+    z-index: 2;
+}
+
+.ad-side-right{
+    position: absolute;
+    top: 930px;
+    width: 160px;
+    height: 600px;
+    left: 44%;
+    margin: 0px 0 0 670px;
+    z-index: 2;
+}
+
+.banner-tab-mobil-bottom{
+    margin-top: 8px;
+    display: none;
+}
+
 </style>
 <body>
+
 	<!-- <div class="wrapper">	 -->
 	<div>
 		<tiles:insertAttribute name="header" />
@@ -81,11 +122,43 @@ font-size:16px;
 	<div>
 		<tiles:insertAttribute name="main" />
 	</div>
+	<div class="banner-tab-mobil-bottom">
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- ad-mb -->
+		<ins class="adsbygoogle"
+		     style="display:inline-block;width:320px;height:100px"
+		     data-ad-client="ca-pub-2651262364281330"
+		     data-ad-slot="8634278207"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
 	<div>
 		<tiles:insertAttribute name="footer" />
 	</div>
-
-		
+	
+	<div class ="ad-side">
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<!-- ad -->
+	<ins class="adsbygoogle"
+	     style="display:inline-block;width:300px;height:600px"
+	     data-ad-client="ca-pub-2651262364281330"
+	     data-ad-slot="4461430600"></ins>
+	<script>
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	</script>
+	</div>
+	<div class ="ad-side-right">
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- ad-right -->
+		<ins class="adsbygoogle"
+		     style="display:inline-block;width:300px;height:600px"
+		     data-ad-client="ca-pub-2651262364281330"
+		     data-ad-slot="1250612200"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+	</script>
+	</div>	
 	<!-- 풋터 -->
 	<!-- Modal Structure -->
 	<div id="modal1" class="modal">
