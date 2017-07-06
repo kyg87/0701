@@ -72,20 +72,7 @@ font-size:16px;
 #main{
 	background-image: url(${root }/resource/images/back.png);
 }
-@media screen and (max-width: 640px){
-	.ad-side{
-		display: none;
-	}
-	
-	.ad-side-right{
-	  	display: none;
-	}
-	
-	.banner-tab-mobil-bottom{
-	
-	    display: block;
-	}
-}
+
 
 .ad-side{
 position: absolute;
@@ -112,6 +99,21 @@ position: absolute;
     display: none;
 }
 
+@media screen and (max-width: 640px){
+	.ad-side{
+		display: none;
+	}
+	
+	.ad-side-right{
+	  	display: none;
+	}
+	
+	.banner-tab-mobil-bottom{
+	
+	    display: block;
+	}
+}
+
 </style>
 <body>
 
@@ -122,7 +124,7 @@ position: absolute;
 	<div>
 		<tiles:insertAttribute name="main" />
 	</div>
-	<div class="banner-tab-mobil-bottom">
+	<div class="banner-tab-mobil-bottom center">
 		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 		<!-- ad-mb -->
 		<ins class="adsbygoogle"
