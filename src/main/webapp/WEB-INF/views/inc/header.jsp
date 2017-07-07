@@ -463,7 +463,7 @@ color:black;
 				<div class="row margin">
 					<div class="input-field col s12">
 					<i class="material-icons prefix">lock_outline</i>
-				<input name="pass" id="pass" type="password" class="validate"
+				<input name="password" id="pass" type="password" class="validate"
 						required="required"> <label for="password">Password</label>
 					</div>
 				</div>

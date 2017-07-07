@@ -48,7 +48,7 @@ public class JoinusController {
 	@RequestMapping(value="singIn", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
 	public String singIn(
 			@RequestParam(value="email1")String email, 
-			@RequestParam(value="pass")String pwd
+			@RequestParam(value="password")String pwd
 			) {
 
 		System.out.println("email:"+email);
