@@ -31,12 +31,6 @@ media="screen,projection" />
 media="screen,projection" />
 <!--Let browser know website is optimized for mobile-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<script
-	
-
-src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.j
-
-s"></script>
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -177,8 +171,11 @@ position: absolute;
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script type="text/javascript" src="${root }/resource/js/materialize.min.js"></script>
 	<script type="text/javascript">
-      $(".button-collapse").sideNav();
-      $('.modal').modal();
-      </script>
+		$(document).ready(function(){	
+		     $(".button-collapse").sideNav();
+		     $('.modal').modal();
+		});
+	</script>
+
 </body>
 </html>

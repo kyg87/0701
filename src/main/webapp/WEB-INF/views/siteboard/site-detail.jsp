@@ -6,7 +6,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>	
 <c:set var="root" value="${pageContext.request.contextPath}" />
 <security:authentication property="name" var="loginID"/>
-<!DOCTYPE html>
+
 
 <style>
 

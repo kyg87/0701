@@ -7,7 +7,7 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <c:set var="root" value="${pageContext.request.contextPath}" />
 <security:authentication property="name" var="loginID"/>
-<!DOCTYPE html>
+
 
 <style>
 	span.title {
@@ -508,139 +508,6 @@ a.del.waves-effect.waves-light {
 	
 </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-	<%-- <div id="yy">
-		<div id="main">
-			<div id="context">
-				<nav>
-					<div class="nav-wrapper">
-						<div class="col s12">
-							<a href="#!" class="breadcrumb">category1</a> <a href="#!"
-								class="breadcrumb">category2</a>
-						</div>
-					</div>
-				</nav>
-				<table>
-			        <thead>
-			          <tr>
-			              <th id="title">${n.title}<i id="re" class="small material-icons">launch</i></th>			             
-			          </tr>
-			          <tr>
-			          	 <th id="writedate"><fmt:formatDate value="${n.regDate}" pattern="yyyy-MM-dd HH:mm:ss"/><i class="small material-icons">star</i> 23</th>
-			          </tr>
-			          <tr>
-			          	<th id="writer">${n.memberId}</th>
-			          </tr>
-			        </thead>
-			        <tbody>
-			        <!--   <tr>
-			            <td id="thum">thum</td>
-			          </tr> -->
-			          <!-- <tr>
-			            <td id="url">url</td>
-			          </tr> -->
-			          <tr>
-			            <td id="content">${n.content}</td>
-			          </tr>
-			          <tr>
-			            <td>
-			            	<div class="chip">
-								Tag
-							</div>
-							<div class="chip">
-								Tag
-							</div>
-							<div class="chip">
-								Tag
-							</div>
-			            </td>
-			          </tr>
-			          <tr>
-			        
-			          
-			          	
-			          	
-			          	<form action="request-del" method="post">
-			          	<input type="hidden" name="id" value =${n.id }>
-						<button  id="btn" class="waves-effect waves-light btn" type="submit" name="action">삭제</button>
-						</form>
-			            
-			          
-			            <td>
-							<a  id="btn" class="waves-effect waves-light btn" a href="request-edit?c=${n.id}">수정</a>
-			            </td>
-			            <td>
-							<a id="btn" class="waves-effect waves-light btn" a href="requestboard">목록</a>
-			            </td>
-			          </tr>
-			        </tbody>
-		      	</table>
-
-			</div>
-			
-			
-	<!------------------------------------------------------------- 댓글 영역 ------------------------------------------------------------------------>
-		<div>
-			현재 페이지 : ${page} </br> 
-			전체 글 갯수 : ${size} </br>
-
-		</div>
-
-
-		<div id="minibox">
-		   <form id="comment-add-form" action="freeBoard-comment-add" method="post">
-             <div class="row">
-               <security:authorize access="isAnonymous()">
-                  <p>글쓰기는 로그인한 유저만 가능합니다 로그인해주세요</p>
-               </security:authorize>
-               
-               <security:authorize access="isAuthenticated()">
-               <div class="input-field">
-                  <i class="material-icons prefix">mode_edit</i>
-                  <input  id="icon_prefix2" type="text" class="validate" name="content" required="required">
-                  <label for="icon_prefix2">Message</label>
-                  <button class="btn waves-effect waves-light secondary-content" type="button" onclick="onCreate();">등록
-                      <i class="material-icons right">send</i>
-                    </button>
-               </div>
-               </security:authorize>
-             </div>
-            
-     	     <input type="hidden" name="requestBoardId" value=${n.id }>
-        	 <input type="hidden" name="memberId" value=<security:authentication property="name"/>>
-         	</form>
-
-
-			<ul id="commentList" class="collection">
-
-			</ul>
-
-		</div>
-
-
-		<ul id="pagination" class="pagination center">
-
-		</ul>
-            
-		</div>
-	</div>
-
- --%>
  
  <form class="searchbar1" action="${root }/siteboard/siteboard" method="GET">
   <div class="broker-expanding-search" data-expanding-search>

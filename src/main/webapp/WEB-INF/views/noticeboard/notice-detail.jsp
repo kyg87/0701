@@ -7,7 +7,7 @@
 <%@ taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 
-<!DOCTYPE html>
+
 
 <style>
 body {
