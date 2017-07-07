@@ -6,6 +6,7 @@ public class SmallCategory {
 	private String name;
 	private String bigCategoryId;
 	private String hot;
+	private String des;
 	
 	public String getHot() {
 		return hot;
@@ -30,6 +31,12 @@ public class SmallCategory {
 	}
 	public void setBigCategoryId(String bigCategoryId) {
 		this.bigCategoryId = bigCategoryId;
+	}
+	public String getDes() {
+		return des;
+	}
+	public void setDes(String des) {
+		this.des = des;
 	}
 	
 }

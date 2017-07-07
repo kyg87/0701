@@ -107,6 +107,13 @@ public class MyBatisSmallCategoryDao implements SmallCategoryDao {
 		return smallCategoryDao.getSecondHot();
 	}
 
+	@Override
+	public SmallCategory get(String smallCategoryId) {
+		SmallCategoryDao smallCategoryDao;
+		smallCategoryDao = sqlSession.getMapper(SmallCategoryDao.class);
+		return smallCategoryDao.get(smallCategoryId);
+	}
+
 
 
 }

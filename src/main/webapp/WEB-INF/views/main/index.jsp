@@ -910,8 +910,9 @@ textScroll.prototype.start = function() {
               </div>
 			
 			<div class="flex column">
-			<p class="top-p">매일매일 심심하고 지루한 당신에게!</p>
-			<p>무료로 볼 수 있는 만화사이트</p>
+			<%-- <p class="top-p">매일매일 심심하고 지루한 당신에게!</p>
+			<p>${hotDes }</p> --%>
+			<p class="top-p">${hotDes }</p>
 			</div>
 		</div>
 		<div class="card-div">
@@ -922,13 +923,13 @@ textScroll.prototype.start = function() {
 					</a> <span class="author"> <a href="${root}/user/mypage?memberId=${hot.memberId }">
 					<c:choose>
 					<c:when test="${hot.userProfile eq '' }">
-						<img alt="푸드텔러"src="http://demo.geekslabs.com/materialize-v1.0/images/avatar.jpg">
+						<img alt=""src="http://demo.geekslabs.com/materialize-v1.0/images/avatar.jpg">
 					</c:when>
 			
 						
 					<c:otherwise>
 	
-						<img alt="푸드텔러"src="${root}/resource/profile/${hot.userProfile }" onerror="this.src ='${root}/resource/images/avatar.png'">
+						<img alt=""src="${root}/resource/profile/${hot.userProfile }" onerror="this.src ='${root}/resource/images/avatar.png'">
 					</c:otherwise>
 						
 					</c:choose>
@@ -963,72 +964,7 @@ textScroll.prototype.start = function() {
 			</ul>
 		</div>
 	</div>
-			<%-- <c:forEach var="hot" items="${hot }" begin="1" end="4">
-	<div class="card">
-		<div class="card-image waves-effect waves-block waves-light">
-			<a href="../siteboard/site-detail?c=${hot.id}"><img class="activator"  src="http://api.thumbalizr.com/?url=http://${hot.url}&width=250" /></a>
-		</div>
-		<div class="card-content">
-			<span class="card-title activator grey-text text-darken-4">${hot.title}<i class="material-icons right">more_vert</i></span>
-			<p>
-				<a href="../siteboard/site-detail?c=${hot.id}">${hot.content}</a>
-			</p>
-		</div>
-		<div class="card-reveal">
-			<span class="card-title grey-text text-darken-4">${hot.title}<i
-				class="material-icons right">close</i></span>
-			<p>${hot.content}</p>
-		</div>
-	</div>
-	</c:forEach> --%>
-			<%-- <div class="card second">
-		<div class="card-image waves-effect waves-block waves-light">
-			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${hot.url}&width=250" />
-		</div>
-		<div class="card-content">
-			<span class="card-title activator grey-text text-darken-4">${hot.title}<i class="material-icons right">more_vert</i></span>
-			<p>
-				<a href="#">${hot.content}</a>
-			</p>
-		</div>
-		<div class="card-reveal">
-			<span class="card-title grey-text text-darken-4">${hot.title}<i
-				class="material-icons right">close</i></span>
-			<p>${hot.content}</p>
-		</div>
-	</div> --%>
-			<%-- <div class="card third">
-		<div class="card-image waves-effect waves-block waves-light">
-			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${hot.url}&width=250" />
-		</div>
-		<div class="card-content">
-			<span class="card-title activator grey-text text-darken-4">${hot.title}<i class="material-icons right">more_vert</i></span>
-			<p>
-				<a href="#">${hot.content}</a>
-			</p>
-		</div>
-		<div class="card-reveal">
-			<span class="card-title grey-text text-darken-4">${hot.title}<i
-				class="material-icons right">close</i></span>
-			<p>${hot.content}</p>
-		</div>
-	</div> --%>
-			<%-- <div class="card">
-		<div class="card-image waves-effect waves-block waves-light">
-			<img class="activator"  src="http://api.thumbalizr.com/?url=http://${hot.url}&width=250" />
-		</div>
-		<div class="card-content">
-			<span class="card-title activator grey-text text-darken-4">${hot.title}<i class="material-icons right">more_vert</i></span>
-			<p>
-				<a href="#">${hot.content}</a>
-			</p>
-		</div>
-		<div class="card-reveal">
-			<span class="card-title grey-text text-darken-4">${hot.title}<i
-				class="material-icons right">close</i></span>
-			<p>${hot.content}</p>
-		</div>
-	</div> --%>
+	
 
 <div class="hot-site flex column">
 	<div class="thema flex">
@@ -1037,15 +973,12 @@ textScroll.prototype.start = function() {
               </div>
 			
 			<div class="flex column">
-			<p class="top-p">포토샵이 없는데... 이미지를 어떻게 수정하지?</p>
-			<p>포토샵 없이 할 수 있는 디자인 사이트</p>
+			<p class="top-p">${hot2Des }</p>
+			<%-- <p class="top-p">포토샵이 없는데... 이미지를 어떻게 수정하지?</p>
+			<p>${hot2Des }</p> --%>
 			</div>
 		</div>
-		<!-- <h2 class="header lighten-1 section-title">
-<div class="hanna">
-	<p>"무엇이" 필요한 당신에게<br> ~~~한 사이트</p>
-</div>
-</h2> -->
+
 		<div class="card-div">
 			<ul class="lst_recipe flex space">
 				<c:forEach var="hot2" items="${hot2 }" begin="0" end="3">
@@ -1055,13 +988,13 @@ textScroll.prototype.start = function() {
 					
 					<c:choose>
 					<c:when test="${hot2.userProfile eq '' }">
-						<img alt="푸드텔러"src="http://demo.geekslabs.com/materialize-v1.0/images/avatar.jpg">
+						<img alt=""src="http://demo.geekslabs.com/materialize-v1.0/images/avatar.jpg">
 					</c:when>
 			
 						
 					<c:otherwise>
 	
-						<img alt="푸드텔러"src="${root}/resource/profile/${hot2.userProfile }" onerror="this.src ='${root}/resource/images/avatar.png'">
+						<img alt=""src="${root}/resource/profile/${hot2.userProfile }" onerror="this.src ='${root}/resource/images/avatar.png'">
 					</c:otherwise>
 						
 					</c:choose>
@@ -1250,270 +1183,7 @@ textScroll.prototype.start = function() {
 			</div>
 		</li>
 	</ul>
-	<!-- <div class="container jeju">
-	
-		<span id="location123"></span>
-		<div class=" flex between category-add">
-		
-			<div class="categoryy main-request background">
-				<p class="category-p">현재 원하는 카테고리가 없다면?</p>
-				<br>
-				<label> 왼쪽 작성란에 제목과 그 아래에 생기길 원하는 카테고리를 자세하게 써주시면 관리자가 확인 후에 해당 카테고리를 생성해드립니다!</label>
-				<br>
-				<br><label> 카테고리 생성에 대한 답변을 받아보고 싶으시다면 내용란에 "이메일"을 꼭 적어주세요.</label>
-				<br>
-				<br><label>그 외 기타 궁금한 문의사항은 thjds8@gmail.com으로 보내주시면 감사하겠습니다.</label>
-			</div>
-			<form id="reqRegform" action="reg-index" method="post">
-			<div class="flex column main-request">
-				<div>
-					<div id="title" class="input-field col s12 row">
-						<input name="title" id="title1" type="text" class="validate"
-							required="required"> <label for="Title">제목</label>
-					</div>
-				</div>
-				<div id="content">
-					<div class="row">
-						<div class="input-field col s12">
-							<textarea name="content" id="textarea1"
-								class="materialize-textarea" required="required"></textarea>
-							<label for="textarea1">내용</label>
-						</div>
-					</div>
-				</div>
-				<div>
-					<button id="target" class="btn waves-effect waves-light right"
-						type="submit" name="action">카테고리 요청하기</button>
-				</div>
-			</div>
-			</form>
-		</div>
-			<input type="hidden" name="memberId"
-				value=<security:authentication property="name"/>>
-	
-</div> -->
-</div>
-	<%-- <div class="col s12 line">
-		<ul class="tabs">
-			<li class="tab col s3"><a class="active" target="_self" href="index?p=${param.p}&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}">최신순</a></li>
-			<li class="tab col s3"> <a target="_self" href="index2?p=${param.p}&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}">점수순</a></li>
-			<li class="tab col s3"> <a target="_self" href="index3?p=${param.p}&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}">댓글순</a></li>
-		</ul>
-	</div>
-
-	<table id="index" class="highlight table">
-		<thead class="table-head">
-			<tr class="head-tr">
-				<th>번호</th>
-				<th>제목</th>
-				<th>작성자</th>
-				<th>조회수</th>
-				<th>작성날짜</th>
-			</tr>
-		</thead>
-
-		<tbody class="table-body">
-			<c:forEach var="n" items="${sitelist}">
-				<tr>
-					<td>${n.id}</td>
-					<td class="orange-text text-accent-3 table-title"><a
-						href="../siteboard/site-detail?c=${n.id}&p=${param.p}">${n.title}</a>[${n.countcomment }]</td>
-					<td>${n.memberId }</td>
-					<td>${n.hit }</td>
-					<td><fmt:formatDate value="${n.regDate}"
-							pattern="yyyy-MM-dd HH:mm:ss" /></td>
-
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-</div>
-<br>
-<div class="site-button">
-	<a class="waves-effect waves-light btn sitego" href="">
-	<div class="write">Write<i class="tiny material-icons">mode_edit</i></div>
-	</a>
-</div>
-<br>
-<fmt:parseNumber var="sizeInt" integerOnly="true" value="${size/10 }" />
-<c:set var="last" value="${(size%10)>0 ? sizeInt+1 : sizeInt }" />
-
-
-<div>${empty param.p ? 1 : param.p}/${last }pages</div>
-<div>${size}</div>
-<ul class="pagination center">
-	<li class="disabled"><c:if test="${((listPerFive-1)*5 + 5) > 1 }">
-			<a
-				href="?p=${(listPerFive-1)*5 + 5 }&q=${parma.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}"><i
-				class="material-icons">chevron_left</i></a>
-		</c:if></li>
-	<c:forEach var="i" begin="${(listPerFive*5) + 1 }" end="${checkLast }">
-		<c:choose>
-			<c:when test="${i eq param.p or empty param.p and i eq '1'}">
-				<li class="waves-effect  active"><a
-					href="?p=${i }&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}">${i}</a></li>
-			</c:when>
-			<c:otherwise>
-				<li class="waves-effect "><a
-					href="?p=${i }&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}">${i}</a></li>
-			</c:otherwise>
-		</c:choose>
-		<li class="waves-effect"><a href="?p=${i }&q=${param.q}">${i }</a></li> 
-	</c:forEach>
-	<li class="waves-effect"><c:if test="${cnt > ((listPerFive+1)*5 + 1) }">
-			<a
-				href="?p=${(listPerFive+1)*5 + 1 }&q=${param.q}&bigCa=${param.bigCa}&smallCa=${param.smallCa}"><i
-				class="material-icons">chevron_right</i></a>
-		</c:if></li>
-</ul>
-
-
-
-<input class="sitein" type="hidden" name="memberId"
-	value=<security:authentication property="name"/>> <script>
-			$(document).ready(function(){
-				$('.sitego').on('click', function(){
-					
-					var value = $('.sitein').val();
-
-					if(value=='anonymousUser')
-					{
-						alert("로그인을 한 회원만 이용이 가능합니다.");
-						$('.sitego').prop('href', "../joinus/login");
-					}
-				 	else{
-				 		$('.sitego').prop('href', "../siteboard/site-reg");
-					}    
- 
-				});
-			});
-			
-			</script> <script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
-
-         </script> <script>
-			$(".pagination").on('click','li',function(){
-    // remove classname 'active' from all li who already has classname 'active'
-    $(".pagination li.active").removeClass("active"); 
-    // adding classname 'active' to current click li 
-    $(this).addClass("active"); 
-});
-			</script> <!-- -------------------------------랜덤 페이지--------------------------------- -->
- --%>
-<%-- <div class="row">
-	<div class="col s12 m6">
-		<div class="card">
-			<div class="card-image">
-				<img src="images/sample-1.jpg"> <span class="card-title">Card
-					Title</span> <a
-					class="btn-floating halfway-fab waves-effect waves-light red"><i
-					class="material-icons">add</i></a>
-			</div>
-			<div class="card-content">
-				<p>I am a very simple card. I am good at containing small bits
-					of information. I am convenient because I require little markup to
-					use effectively.</p>
-			</div>
-		</div>
-	</div>
-</div>
-
-
-
-
-<div class="col s12 m7">
-	<div class="card horizontal line">
-		<div class="card-image">
-			<a href="http://${random.url}"> <img
-				src="http://api.thumbalizr.com/?url=http://${random.url}&width=250" />
-			</a>
-		</div>
-
-		<div class="card-stacked contents">
-			<div class="top">
-				<span class="category"> <a href="#!"
-					class="breadcrumb big-category">${b }</a> <a href="#!"
-					class="breadcrumb small-category">${s }</a>
-				</span> <span class="date"> <i class="tiny material-icons">schedule</i>
-					<fmt:formatDate value="${random.regDate }"
-						pattern="yyyy-MM-dd HH:mm:ss" />
-				</span>
-			</div>
-			<div class="card-content">
-				<span class="title">${random.title }</span>
-				<p class="content">${random.content }</p>
-			</div>
-			<div class="card-action">
-				<c:forEach var="tag" items="${t }">
-					<div class="chip">${tag }</div>
-				</c:forEach>
-				<script>
-					$(function() {
-						$(".chip").on('click', function() {
-							var query = $(this).text();
-
-							$.post("site-list", {
-								"query" : query
-							}, function() {
-								location.replace("site-list?query=" + query);
-							});
-						});
-					});
-				</script>
-			</div>
-		</div>
-	</div>
-</div> --%>
-
-<%-- <table class="table">
-		<thead>
-			<tr>
-				<td colspan="4">
-					<nav>
-						<div class="nav-wrapper">
-							<div class="col s12">
-								<a href="#!" class="breadcrumb big-category">${b }</a> 
-								<a href="#!" class="breadcrumb small-category">${s }</a>
-							</div>
-						</div>
-					</nav>
-				</td>
-			</tr>
-			<tr>
-				<td class="title" colspan="4">${random.title }</td>
-				<td class="hidden">즐겨찾기</td>
-			</tr>
-			<tr class="reg-like">
-				<td class="detail-font" colspan="4" class="reg-date"><i class="tiny material-icons">schedule</i>${random.regDate }</td>
-			</tr>
-			<tr>
-				<td class="detail-font" colspan="4"><i class="tiny material-icons">perm_identity</i>${random.memberId }</td>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td colspan="4">${random.url }</td>
-			</tr>
-			<tr>
-				<td colspan="4">
-				<a href="http://${random.url}">	
-					<img src="http://api.thumbalizr.com/?url=http://${random.url}&width=250" />
-				</a>
-				<div><a href="http://${random.url}">http://${random.url}</a></div>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="4">${random.content }</td>
-			</tr>
-			<tr>
-				<td colspan="4">
-				<c:forEach var="tag" items="${t }">
-				<div class="chip">${tag }</div>
-				</c:forEach>
-				</td>			
-			</tr>
-			</tbody>
-			</table> --%> </main>
+</main>
 			
 			<security:authentication property="name" var="loginID"/>
 <script>

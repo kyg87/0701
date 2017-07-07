@@ -27,13 +27,13 @@
 	
 	<select resultType="com.wiyn.web.entity.SmallCategory" id="getListWithBC">
 	
-		SELECT id, name FROM SmallCategory WHERE bigCategoryId = #{param1 };
+		SELECT id, name, des FROM SmallCategory WHERE bigCategoryId = #{param1 };
 	
 	</select>
 	
 	<select resultType="com.wiyn.web.entity.SmallCategory" id="getsmall">
 	
-		SELECT id, name FROM SmallCategory WHERE bigCategoryId = #{param1 } and id=#{param2};
+		SELECT id, name, des FROM SmallCategory WHERE bigCategoryId = #{param1 } and id=#{param2};
 	
 	</select>
 	
@@ -78,5 +78,11 @@
 		DELETE FROM SmallCategory WHERE bigCategoryId = #{param1} and id = #{param2};
 	
 	</delete>
+	
+	<select resultType="com.wiyn.web.entity.SmallCategory" id="get"> 
+
+		SELECT * FROM lsedb.smallcategory WHERE id = #{param1};
+
+	</select>
 
 </mapper>

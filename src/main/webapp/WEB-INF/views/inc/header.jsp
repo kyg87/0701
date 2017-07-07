@@ -252,6 +252,8 @@ color:black;
 				<c:otherwise>
 					<li><a class="board " href="../siteboard/siteboard">Site</a></li>
 				</c:otherwise>
+				
+				
 			</c:choose>
 
 			<c:choose>
@@ -352,14 +354,40 @@ color:black;
 			</c:choose>
 
 			<c:choose>
+			
+		
+			
 				<c:when test="${not empty siteboard  }">
 					<li class="active"><a class="board "
-						href="../siteboard/siteboard">Site</a></li>
+						href="../siteboard/siteboard">1Site</a></li>
 				</c:when>
 				<c:otherwise>
-					<li><a class="board " href="../siteboard/siteboard">Site</a></li>
+				<!-- 	<li><a class="board " href="../siteboard/siteboard">2Site</a></li> -->
+					<ul class="collapsible collapsible-accordion">
+			
+		
+				<c:forEach var="bcb" items="${bcbList }">
+			        <li>	
+		      
+		              
+		               <a class="collapsible-header waves-effect waves-teal">${bcb.name }</a>
+		                  <%-- <input type="hidden" value="${bcb.id }" name="bigCa" />${bcb.name }</h5> --%>
+		               <div class="collapsible-body">
+		               		<ul>
+		                  		<c:forEach var="small" items="${bcb.smallCategory}">
+			                     <li><a 
+			                        href="${root }/siteboard/siteboard?p=1&q=&bigCa=${bcb.id}&smallCa=${small.id}"> <input type="hidden"  value="${small.id }" name="SmallCa" />${small.des }</a></li>
+			                     </c:forEach>
+		                  	</ul>
+		               </div>
+		     		 </li>
+		         </c:forEach>   
+         	
+         	</ul>
 				</c:otherwise>
 			</c:choose>
+
+
 
 			<c:choose>
 				<c:when test="${not empty freeboard  }">
@@ -514,6 +542,9 @@ color:black;
 	<!-- 로그인 부분 스크립트 ---------------------------------------------------------------------------------->
 <script type="text/javascript">
       $(document).ready(function(){
+    	  
+
+    	  
           var myForm1 = $("#myForm20");
           var j_name = $("#j_username");
           var j_pwd = $("#j_password");
@@ -559,6 +590,7 @@ color:black;
       $("#profileImgbtn").on('change',function(){
     	  readURL(this);
       });
+      
       
   	function readURL(input) {
 		if (input.files && input.files[0]) {

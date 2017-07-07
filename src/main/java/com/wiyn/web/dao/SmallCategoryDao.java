@@ -22,6 +22,9 @@ public interface SmallCategoryDao {
 	int addCheck(String bigCategoryId, String name);
 	int resetHot(String hotLine);
 	int updateHot(String hotLine, String hotName);
+	
+	SmallCategory get(String smallCategoryId);
+	
 	String getFirstHot();
 	String getSecondHot();
 	

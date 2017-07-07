@@ -80,6 +80,10 @@ public class MainController {
         
         String a = sqlSession.getMapper(SmallCategoryDao.class).getFirstHot();
        
+        SmallCategory smallCategory1 = sqlSession.getMapper(SmallCategoryDao.class).get(a);
+        
+        
+        
         List<SiteBoard> hot =sqlSession.getMapper(SiteBoardDao.class).getHotSmall(a);
         
         for (SiteBoard siteBoard : hot) {
@@ -87,8 +91,11 @@ public class MainController {
 			siteBoard.setLikeCount(sqlSession.getMapper(SiteBoardLikeDao.class).getLike(siteBoard.getId()));
 		}
         model.addAttribute("hot", hot);
+        model.addAttribute("hotDes", smallCategory1.getDes());
         
         String b = sqlSession.getMapper(SmallCategoryDao.class).getSecondHot();
+        
+        SmallCategory smallCategory2 = sqlSession.getMapper(SmallCategoryDao.class).get(b);
         List<SiteBoard> hot2 =sqlSession.getMapper(SiteBoardDao.class).getHotSmall(b);
         
         for (SiteBoard siteBoard : hot2) {
@@ -96,7 +103,7 @@ public class MainController {
         	siteBoard.setLikeCount(sqlSession.getMapper(SiteBoardLikeDao.class).getLike(siteBoard.getId()));
 		}
         model.addAttribute("hot2", hot2);
-        
+        model.addAttribute("hot2Des", smallCategory2.getDes());
        
         /*-------공지사항 불러오기----------*/
         List<NoticeBoard> noticelist = sqlSession.getMapper(NoticeBoardDao.class).getList();
@@ -152,7 +159,9 @@ public class MainController {
 		
 		for (BigCategory bigCategory : bcbList) {
 			List<SmallCategory> small = sqlSession.getMapper(SmallCategoryDao.class).getListWithBC(bigCategory.getId());
+
 			bigCategory.setSmallCategory(small);
+		
 		}
 		model.addAttribute("bcbList", bcbList);
 		

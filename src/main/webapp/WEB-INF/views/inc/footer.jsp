@@ -67,7 +67,7 @@ footer .first{
                <ul >
                   <c:forEach var="small" items="${bcb.smallCategory}">
                      <li><a class="grey-text text-lighten-3"
-                        href="${root }/siteboard/siteboard?p=1&q=&bigCa=${bcb.id}&smallCa=${small.id}"> <input type="hidden"  value="${small.id }" name="SmallCa" />${small.name }</a></li>
+                        href="${root }/siteboard/siteboard?p=1&q=&bigCa=${bcb.id}&smallCa=${small.id}"> <input type="hidden"  value="${small.id }" name="SmallCa" />${small.des }</a></li>
                      </c:forEach>
                   </ul>
                </div>
